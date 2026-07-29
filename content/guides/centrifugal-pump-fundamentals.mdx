@@ -1,0 +1,145 @@
+---
+title: "Centrifugal Pump Fundamentals"
+description: "Understand centrifugal pump operating principles, pump curves, system curves, affinity laws, performance characteristics, and common operating problems."
+category: "Pump Engineering"
+keywords: ["centrifugal pump", "pump curve", "system curve", "affinity laws", "impeller", "specific speed"]
+updated: "2026-07-29"
+related:
+  - pump-head-calculator
+  - pump-power-calculator
+  - pump-efficiency-calculator
+  - pump-affinity-law-calculator
+---
+
+## How a Centrifugal Pump Works
+
+A centrifugal pump converts driver energy (motor/turbine) to kinetic energy in the liquid by accelerating it through a rotating impeller. The liquid enters at the eye (center) of the impeller, is thrown outward by centrifugal force through the vanes, and exits at high velocity into the volute (casing), where velocity is converted to pressure.
+
+Key components:
+- **Impeller**: Rotating element that adds energy (closed, semi-open, or open design)
+- **Volute/casing**: Collects flow and converts velocity to pressure
+- **Shaft**: Transmits torque from driver
+- **Wear rings**: Seals clearance between impeller and casing (replaced when worn)
+- **Mechanical seal/packing**: Prevents leakage along shaft
+- **Bearings**: Support shaft and absorb radial/axial loads
+
+## The Pump Curve
+
+Pump manufacturers publish performance curves showing:
+
+1. **Head vs Flow (H-Q curve)**: How much head the pump produces at each flow rate — typically a declining curve
+2. **Efficiency vs Flow**: Bell-shaped curve peaking at BEP (Best Efficiency Point)
+3. **Power vs Flow**: Rises with flow (for radial impellers)
+4. **NPSHr vs Flow**: Rises with flow
+5. **Multiple impeller diameters**: Curves for different trimmed impellers
+
+<Calculator id="pump-head-calculator" label="Calculate Pump Head" />
+
+### Reading a Typical Curve
+
+For a given pump at fixed speed:
+- **Shut-off head** (zero flow): Maximum head, zero flow (dead-headed)
+- **Rated point**: Design flow and head (usually near BEP)
+- **Runout** (maximum flow): Minimum head, highest flow
+
+<Callout type="warning" title="Never Dead-Head a Pump">
+Operating at shut-off (closed discharge valve) causes all input energy to heat the fluid inside the pump. Pumps can overheat and fail within minutes. Minimum flow bypass lines protect against this.
+</Callout>
+
+## The System Curve
+
+The system curve shows what head the piping system requires at each flow rate:
+
+<Formula>H<sub>system</sub> = H<sub>static</sub> + ΔP/(ρg) + KQ²</Formula>
+
+- H<sub>static</sub> = static elevation difference (constant)
+- ΔP/(ρg) = pressure head difference (constant)
+- KQ² = friction losses (proportional to flow²)
+
+The pump operating point is where the pump curve intersects the system curve. Changing a valve, adding pipe, or changing fluid level shifts the system curve.
+
+<Calculator id="pump-efficiency-calculator" label="Calculate Pump Efficiency" />
+
+## Affinity Laws
+
+When pump speed or impeller diameter changes, performance scales predictably:
+
+| Change | Flow Q | Head H | Power P |
+|---|---|---|---|
+| Speed change N₂/N₁ | Q₂ = Q₁ × (N₂/N₁) | H₂ = H₁ × (N₂/N₁)² | P₂ = P₁ × (N₂/N₁)³ |
+| Impeller trim D₂/D₁ | Q₂ = Q₁ × (D₂/D₁) | H₂ = H₁ × (D₂/D₁)² | P₂ = P₁ × (D₂/D₁)³ |
+
+<Formula>Q₂ = Q₁ × (N₂/N₁),  H₂ = H₁ × (N₂/N₁)²,  P₂ = P₁ × (N₂/N₁)³</Formula>
+
+<Callout type="tip" title="VFD Saves Energy">
+Reducing pump speed by 20% reduces power by ~50% (0.8³ = 0.512). Variable frequency drives (VFDs) provide huge energy savings in variable-flow systems vs throttling valves.
+</Callout>
+
+<Calculator id="pump-affinity-law-calculator" label="Pump Affinity Law Calculator" />
+
+## Specific Speed
+
+Specific speed characterizes impeller geometry for a given operating point:
+
+<Formula>N<sub>s</sub> = N × √Q / H<sup>0.75</sup></Formula>
+
+| N<sub>s</sub> (metric, m-m³/h) | Impeller Type | Application |
+|---|---|---|
+| < 40 | Radial vane | High head, low flow |
+| 40-130 | Francis vane | Medium head/flow (most process pumps) |
+| 130-300 | Mixed flow | Low head, high flow |
+| > 300 | Axial/propeller | Very high flow, very low head |
+
+## Pump Operating Regions
+
+For reliable operation, pumps should run between 80-110% of BEP flow:
+
+| Region | % of BEP Flow | Problems |
+|---|---|---|
+| < 50% | Low flow recirculation | Suction recirculation, high vibration, shaft deflection, bearing failure |
+| 50-80% | Acceptable short-term | Reduced efficiency, some vibration |
+| 80-110% | Preferred operating window | Optimal reliability and efficiency |
+| 110-125% | High flow | Elevated NPSHr, possible motor overload |
+| > 125% | Runout | Cavitation, motor overload, excessive vibration |
+
+## Impeller Types
+
+| Type | Application |
+|---|---|
+| Closed (shrouded) | Clean, low-viscosity liquids; highest efficiency |
+| Semi-open | Slightly dirty liquids, some solids |
+| Open | Solids-laden, slurry; lower efficiency |
+| Recessed/channel | Large solids (sewage, sludge) |
+| Inducer | Low-NPSH applications (special first stage) |
+
+## Common Pump Problems and Symptoms
+
+| Symptom | Likely Cause |
+|---|---|
+| Insufficient flow/pressure | Wrong rotation, air leak in suction, clogged impeller, NPSH cavitation |
+| High vibration | Misalignment, unbalance, cavitation, bearing wear, off-BEP operation |
+| Excessive power draw | Wrong rotation, oversize impeller, high viscosity, mechanical binding |
+| Short seal life | Cavitation, misalignment, dry running, wrong seal material, shaft deflection |
+| Short bearing life | Misalignment, improper lubrication, off-BEP operation, excessive thrust |
+| Noise (gravel sound) | Cavitation — NPSH problem |
+
+<Calculator id="pump-energy-calculator" label="Calculate Pump Energy Cost" />
+
+<Callout type="info" title="Pump Efficiency Range">
+Standard end-suction pumps: 70-85% at BEP. Multi-stage high-pressure: 65-80%. Small pumps (&lt;5 kW): much lower. Pump efficiency degrades 5-15% over life due to wear ring clearances opening up.
+</Callout>
+
+## System Head Calculation
+
+To determine what pump you need, calculate TDH (Total Dynamic Head):
+
+1. Static head = discharge tank level − suction tank level
+2. Pressure head = (P<sub>discharge</sub> − P<sub>suction</sub>) / (ρg)
+3. Friction head = suction + discharge piping losses (pipe + fittings + valves)
+4. TDH = static + pressure + friction
+
+Add 10-15% safety margin but avoid oversizing beyond 20% — oversized pumps run off-BEP.
+
+## Summary
+
+Centrifugal pumps follow predictable relationships: the H-Q curve drops with flow, efficiency peaks at BEP, and power/head scale with the cube/square of speed per affinity laws. Always operate within 80-110% of BEP for reliability. Match pump curve to system curve carefully and provide adequate NPSH margin. VFDs offer the best energy efficiency for variable-flow applications.

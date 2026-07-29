@@ -1,0 +1,182 @@
+---
+title: "Flow Measurement Methods"
+description: "Overview of industrial flow measurement technologies: orifice plates, venturi, magnetic, ultrasonic, turbine, vortex, Coriolis, and PD meters."
+category: "Instrumentation"
+keywords: ["flow measurement", "orifice plate", "magmeter", "coriolis", "ultrasonic flow", "venturi"]
+updated: "2026-07-29"
+related:
+  - orifice-flow-calculator
+  - flow-rate-calculator
+  - flow-conversion-calculator
+  - "/guides/pressure-drop-pipes"
+---
+
+## Introduction to Flow Measurement
+
+Accurate flow measurement is essential for process control, custody transfer, material balancing, and regulatory reporting. Industrial flow meters operate on several physical principles. This guide compares the major technologies by accuracy, cost, pressure drop, and suitable applications.
+
+## Differential Pressure (DP) Meters
+
+The oldest and most common flow measurement method — create a restriction, measure pressure drop.
+
+### Orifice Plate
+
+A thin plate with a concentric bore creates a pressure drop proportional to flow².
+
+| Attribute | Value |
+|---|---|
+| Accuracy | ±1-2% of full scale |
+| Pressure drop | High (permanent loss ~60-90% of ΔP) |
+| Cost | Low (cheapest of all meters) |
+| Pipe sizes | DN15 to DN1000+ |
+| Best for | Clean liquids/gases, general purpose |
+
+<Calculator id="orifice-flow-calculator" label="Orifice Plate Flow Calculator" />
+
+<Callout type="info" title="Beta Ratio">
+β = d/D (bore/pipe diameter). Recommended: 0.4-0.6 for accuracy. Must maintain straight pipe runs: typically 10-40D upstream, 5D downstream. ISO 5167 governs installation requirements.
+</Callout>
+
+### Venturi Tube
+
+A smooth converging-diverging tube:
+
+| Attribute | Value |
+|---|---|
+| Accuracy | ±0.5-1% |
+| Pressure drop | Low (10-20% of ΔP) — energy efficient |
+| Cost | High (precision casting) |
+| Best for | Large pipes, high-value fluids, slurry (gradual contraction) |
+
+### Other DP Devices
+
+- **Flow nozzle**: Between orifice and venturi in cost/loss; good for high-velocity steam
+- **Pitot tube**: Single-point velocity measurement; very low pressure drop; for gas ducts
+- **Averaging pitot (Annubar)**: Multiple sensing points across pipe diameter
+
+## Velocity Meters
+
+### Magnetic Flow Meter (Magmeter)
+
+Faraday's law: conductive liquid moving through magnetic field generates voltage proportional to velocity.
+
+| Attribute | Value |
+|---|---|
+| Accuracy | ±0.2-0.5% of reading |
+| Pressure drop | Zero (full bore, no obstruction) |
+| Requires | Fluid conductivity > 5 µS/cm (most water-based fluids) |
+| Cannot measure | Hydrocarbons, gases, deionized water |
+| Best for | Wastewater, slurry, food/pharma (sanitary designs), corrosive liquids |
+
+<Callout type="tip" title="Magmeter Advantages">
+Magmeters have no moving parts, no flow obstruction, and are immune to fluid density, viscosity, and temperature effects. They are the preferred choice for dirty or conductive liquids.
+</Callout>
+
+### Turbine Meter
+
+Rotor spins in the flow stream; pulse output proportional to velocity.
+
+| Attribute | Value |
+|---|---|
+| Accuracy | ±0.1-0.5% |
+| Pressure drop | Moderate |
+| Best for | Clean, low-viscosity liquids; custody transfer of refined products |
+| Limitations | Bearings wear, damaged by entrained gas/solids; viscosity sensitive |
+
+### Vortex Meter
+
+Von Kármán effect — bluff body sheds vortices at frequency proportional to velocity.
+
+| Attribute | Value |
+|---|---|
+| Accuracy | ±0.7-1.5% |
+| Pressure drop | Moderate |
+| Best for | Steam (excellent!), gases, clean liquids; wide turndown |
+| Cannot use | Very low velocity or high viscosity; vibration-sensitive |
+
+### Ultrasonic Meters
+
+- **Transit time**: Measures time difference of ultrasound pulses with/against flow. For clean liquids.
+- **Doppler**: Reflects ultrasound off bubbles/particles. For dirty/slurry liquids.
+
+| Attribute | Value |
+|---|---|
+| Accuracy | ±0.5-2% depending on type |
+| Pressure drop | Zero (clamp-on models available — no pipe cutting!) |
+| Best for | Retrofit applications, large pipes, where shutdown is impossible |
+| Limitations | Transit time needs clean fluid; Doppler needs particles/bubbles |
+
+## Mass Flow Meters
+
+### Coriolis Meter
+
+Fluid flows through vibrating tubes; Coriolis force causes twist proportional to mass flow.
+
+| Attribute | Value |
+|---|---|
+| Accuracy | ±0.1-0.2% of reading — BEST of any meter |
+| Measures | Mass flow directly (not volumetric), density, temperature |
+| Pressure drop | Moderate to high (small tubes) |
+| Cost | Very high, especially large sizes |
+| Best for | Custody transfer, high-value products, batching, chemical injection |
+| Limitations | Expensive above DN100; vibration-sensitive; pressure drop significant |
+
+<Callout type="success" title="Mass Flow is King">
+Coriolis meters measure true mass flow independent of temperature, pressure, density, or viscosity. For custody transfer, chemical dosing, or precision batching, they are the gold standard.
+</Callout>
+
+### Thermal Mass Meter
+
+For gases: measures heat carried away from heated element.
+
+| Attribute | Value |
+|---|---|
+| Accuracy | ±1-2% |
+| Best for | Compressed air, gas flow measurement, stack gas |
+| Cannot use | Liquids |
+
+## Positive Displacement (PD) Meters
+
+Traps and counts discrete volumes of fluid (like a water meter in your house).
+
+| Type | Best For |
+|---|---|
+| Oval gear | Viscous liquids (oils, fuels) |
+| Nutating disc | Residential water meters |
+| Rotary vane | High-accuracy oil/gasoline custody transfer |
+| Diaphragm | Gas billing meters |
+
+- Accuracy: ±0.1-0.5%
+- Best for: Viscous fluids, high accuracy at low flow, no straight-run needed
+- Limitations: Moving parts wear, filter required, some pressure drop
+
+## Technology Selection Summary
+
+| Fluid/Application | Recommended Meter |
+|---|---|
+| Clean liquid, general purpose | Orifice plate or turbine |
+| Dirty/slurry liquid | Magmeter or electromagnetic |
+| Steam | Vortex |
+| Natural gas custody transfer | Coriolis or ultrasonic (gas-calibrated) |
+| Compressed air | Thermal mass or vortex |
+| Chemical dosing, high accuracy | Coriolis |
+| Large pipes, low cost | DP (pitot) or ultrasonic clamp-on |
+| Viscous oils | Oval gear PD |
+| Wastewater | Magmeter |
+| Hydrocarbon custody transfer | Coriolis or turbine (with proving) |
+
+## Installation Best Practices
+
+- All meters require sufficient upstream/downstream straight pipe runs (consult manufacturer)
+- Avoid installation at high points where air can collect
+- Ensure full pipe (no partially filled lines)
+- For liquid meters, mount at low point to avoid gas entrainment
+- For gas meters, mount at high point to avoid liquid dropout
+- Provide bypass piping for maintenance without shutdown
+- Calibrate against traceable standards per QA program
+
+<Calculator id="flow-conversion-calculator" label="Convert Flow Rate Units" />
+
+## Summary
+
+DP meters (orifice, venturi) remain the workhorse of industrial flow measurement due to low cost and standardization. Coriolis provides best accuracy but at highest cost. Magmeters are ideal for conductive liquids. Ultrasonic offers zero pressure drop and clamp-on convenience. Select based on fluid properties, required accuracy, cost, and maintenance access.

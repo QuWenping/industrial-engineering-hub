@@ -1,0 +1,120 @@
+---
+title: "Heat Exchanger Selection Guide"
+description: "Compare shell-and-tube, plate-frame, and air-cooled heat exchangers. Learn LMTD, U-values, TEMA types, and sizing procedures for industrial thermal design."
+category: "Thermal Engineering"
+keywords: ["heat exchanger", "LMTD", "shell and tube", "plate frame", "TEMA", "U value"]
+updated: "2026-07-29"
+related:
+  - heat-exchanger-calculator
+  - lmtd-calculator
+  - "/tools/heat-transfer-calculator"
+---
+
+## Introduction
+
+Heat exchangers transfer thermal energy between two fluid streams without mixing. Selecting the right type — shell-and-tube, plate-frame, air-cooled, or other — requires matching the fluids, temperatures, pressures, fouling tendency, and duty to the technology's strengths.
+
+<Callout type="info" title="Selection drivers">
+Four factors dominate heat exchanger selection: (1) operating pressure and temperature, (2) fouling and cleaning access, (3) plot space and weight limits, (4) capital vs operating cost trade-off.
+</Callout>
+
+## Type Comparison
+
+| Type | Max Pressure | Max Temperature | Fouling Tolerance | Compactness |
+|---|---|---|---|---|
+| Shell-and-tube | > 300 bar | > 550°C | Excellent | Poor |
+| Plate-and-frame (gasketed) | 25 bar | 180°C | Fair | Excellent |
+| Welded / brazed plate | 40 – 100 bar | 400°C | Poor | Excellent |
+| Air-cooled (fin fan) | > 300 bar | 500°C | Very good | Poor |
+| Spiral | 25 bar | 400°C | Excellent (slurries) | Good |
+| Double-pipe / hairpin | 300+ bar | 600°C | Good | Poor |
+
+**Shell-and-tube** is the workhorse of refineries and chemical plants — robust, well understood, tolerant of high pressures and dirty services. **Plate-frame** dominates HVAC, dairy, and clean-fluid duties where compactness and easy cleaning matter. **Air-cooled** removes heat when cooling water is unavailable or expensive.
+
+## The LMTD Method
+
+For simple counter-current or co-current flow, the log mean temperature difference (LMTD) is:
+
+<Formula>ΔT<sub>LM</sub> = (ΔT<sub>1</sub> − ΔT<sub>2</sub>) / ln(ΔT<sub>1</sub> / ΔT<sub>2</sub>)</Formula>
+
+Where ΔT<sub>1</sub> and ΔT<sub>2</sub> are the terminal temperature differences at each end of the exchanger.
+
+The heat duty is:
+
+<Formula>Q = U × A × F × ΔT<sub>LM</sub></Formula>
+
+Where **U** is the overall heat transfer coefficient (W/m²·K), **A** is the heat transfer area (m²), and **F** is the LMTD correction factor for multi-pass arrangements (typically 0.75 – 1.0).
+
+<Calculator id="lmtd-calculator" label="Try the LMTD Calculator" />
+
+## Typical Overall U-Values
+
+| Service | U (W/m²·K) |
+|---|---|
+| Water — water | 850 – 1700 |
+| Water — light oil | 350 – 900 |
+| Water — heavy oil | 60 – 300 |
+| Steam — water | 1000 – 4000 |
+| Steam — light oil | 400 – 900 |
+| Condensing hydrocarbon — water | 500 – 1100 |
+| Gas — water | 30 – 300 |
+| Air-cooler (gas service) | 100 – 350 (based on bare tube) |
+
+<Callout type="warning" title="Fouling factors matter">
+Design U-values assume clean tubes. Real operation must include fouling resistances. Typical fouling factors: cooling water 0.0002 m²·K/W; steam 0.0001; light hydrocarbons 0.0002; heavy fouling service 0.0005 – 0.001. Fouling can reduce effective U by 30 – 60%.
+</Callout>
+
+## TEMA Designations for Shell-and-Tube
+
+Shell-and-tube exchangers follow the **TEMA** (Tubular Exchanger Manufacturers Association) nomenclature: three letters designating (1) front head, (2) shell, (3) rear head.
+
+| Front | Shell | Rear |
+|---|---|---|
+| A: channel with cover | E: one-pass shell | L: fixed tubesheet |
+| B: bonnet | F: two-pass with longitudinal baffle | M: fixed tubesheet |
+| C: channel integral with tubesheet | H: double split flow | P: outside packed floating |
+| N: channel integral with tubesheet | J: divided flow | S: floating head with backing device |
+| D: high-pressure closure | K: kettle reboiler | T: pull-through floating |
+| | X: cross flow | U: U-tube bundle |
+
+**Common types:**
+- **BEM** — fixed tubesheet, cheap, non-removable bundle, for clean-clean service
+- **AES** — floating head, most flexible, tubes accessible for cleaning
+- **AEU** — U-tube, no differential expansion, but tube-side cleaning is limited
+- **AKT** — kettle reboiler, common in distillation column reboilers
+
+## Sizing Procedure
+
+1. **Set the duty:** Q = m × c<sub>p</sub> × ΔT (or m × Δh for phase change).
+2. **Determine terminal temperatures** — both cold and hot inlet/outlet from process requirements.
+3. **Compute LMTD** and F factor for multi-pass.
+4. **Estimate U** from tables or from resistances 1/U = 1/h<sub>i</sub> + R<sub>foul,i</sub> + t/k + R<sub>foul,o</sub> + 1/h<sub>o</sub>.
+5. **Solve for A** = Q / (U × F × ΔT<sub>LM</sub>).
+6. **Verify velocities and pressure drop** — tube-side liquid 1 – 2 m/s, shell-side 0.5 – 1 m/s.
+7. **Iterate** the geometry until pressure drop is within budget (typically 0.2 – 0.7 bar per side).
+
+<Calculator id="heat-exchanger-calculator" label="Try the Heat Exchanger Calculator" />
+
+## Worked Example
+
+**Duty:** Cool 50 t/h of process oil (c<sub>p</sub> = 2.2 kJ/kg·K) from 120°C to 60°C, using cooling water 30°C in, 40°C out.
+
+1. Heat duty: Q = (50,000/3600) × 2.2 × (120 − 60) = **1833 kW**.
+2. LMTD (counter-current): ΔT<sub>1</sub> = 120 − 40 = 80; ΔT<sub>2</sub> = 60 − 30 = 30. LMTD = (80 − 30)/ln(80/30) = **51.0 K**.
+3. Assume 1-2 shell/tube exchanger: F ≈ 0.87.
+4. Estimated U (water-oil, moderate fouling) = 400 W/m²·K.
+5. Area: A = 1,833,000 / (400 × 0.87 × 51) = **103 m²**.
+6. Select a BEM or AES exchanger with ~110 m² area for margin.
+
+## Choosing Between Types
+
+<Callout type="tip" title="Quick decision rules">
+- **Plate-frame** if pressure ≤ 25 bar, temperature ≤ 180°C, both fluids clean, and compact footprint matters.
+- **Shell-and-tube** for high pressure, high temperature, fouling service, or when the fluid is a slurry.
+- **Air-cooled** when cooling water is unavailable, water-hostile fluids, or when reducing water treatment cost.
+- **Double-pipe or spiral** for very small duties (< 50 kW) or highly fouling slurries.
+</Callout>
+
+## Summary
+
+Heat exchanger selection begins with the process conditions and ends with a technology whose materials, geometry, and cleaning provisions match the service. LMTD-U-A sizing gives the required area; TEMA type governs the mechanical design; realistic fouling assumptions keep the exchanger performing over its design life. Always cross-check with vendor thermal software before finalizing.

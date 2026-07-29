@@ -1,0 +1,121 @@
+---
+title: "Pipe Sizing Fundamentals"
+description: "Learn how to size industrial piping using velocity criteria, pressure-drop limits, and economic considerations, with typical velocity tables and worked examples."
+category: "Fluid Mechanics"
+keywords: ["pipe sizing", "pipe velocity", "line sizing", "pressure drop", "economic pipe diameter"]
+updated: "2026-07-29"
+related:
+  - pipe-diameter-calculator
+  - pipe-flow-calculator
+  - pressure-drop-calculator
+  - "/tools/reynolds-number-calculator"
+---
+
+## Introduction
+
+Pipe sizing balances two competing objectives: a smaller diameter reduces capital cost but increases pressure drop (and therefore pumping energy); a larger diameter reduces energy cost but adds up-front expense. Good line-sizing practice picks the diameter where the total lifecycle cost is minimized, while respecting practical velocity and pressure-drop limits.
+
+<Callout type="info" title="Two-step method">
+Industry practice sizes pipes in two steps: (1) pick a diameter that satisfies the recommended **velocity range** for the service, (2) verify the resulting **pressure drop** is acceptable for the pump and process constraints.
+</Callout>
+
+## Recommended Velocity Ranges
+
+Velocities are chosen to avoid three problems: excessive pressure drop, noise and vibration, and erosion or cavitation.
+
+| Service | Typical Velocity |
+|---|---|
+| Pump suction (liquid) | 0.5 – 1.5 m/s (2 – 5 ft/s) |
+| Pump discharge (liquid) | 1.5 – 3 m/s (5 – 10 ft/s) |
+| Water — general utility | 1 – 2.5 m/s |
+| Boiler feed water | 2 – 4 m/s |
+| Steam — saturated | 20 – 30 m/s |
+| Steam — superheated | 30 – 60 m/s |
+| Gas — process | 15 – 25 m/s |
+| Gas — vent/relief | up to 60 m/s |
+| Slurries | 1.2 – 2.5 m/s (above settling velocity) |
+
+<Callout type="warning" title="Erosion velocity for two-phase flow">
+For two-phase or gas-with-droplets flow, the API RP 14E erosion velocity limit is a common guideline: v<sub>e</sub> = C / √ρ<sub>m</sub> where C ≈ 100 (US units) or 122 (SI, m/s with ρ in kg/m³). Exceeding this accelerates erosion at elbows and tees.
+</Callout>
+
+## Pressure Drop Limits
+
+After choosing a diameter from velocity, verify pressure drop is within these typical limits:
+
+| Service | Typical ΔP/100 m |
+|---|---|
+| Pump suction | ≤ 0.1 bar (0.5 psi/100 ft) |
+| Liquid discharge | 0.15 – 0.5 bar (1 – 4 psi/100 ft) |
+| Steam distribution | 0.05 – 0.15 bar |
+| Compressed air | 0.02 – 0.05 bar |
+| Long transmission lines | 0.01 – 0.03 bar |
+
+## Sizing Equations
+
+Diameter from a target velocity:
+
+<Formula>D = √(4Q / (π × v))</Formula>
+
+Where Q is volumetric flow (m³/s) and v is target velocity (m/s).
+
+Reynolds number:
+
+<Formula>Re = ρvD / μ</Formula>
+
+Darcy-Weisbach pressure drop for verification:
+
+<Formula>ΔP = f × (L/D) × (ρv²/2)</Formula>
+
+<Calculator id="pipe-diameter-calculator" label="Try the Pipe Diameter Calculator" />
+
+## Worked Example
+
+**Problem:** Size a discharge line for a pump moving 150 m³/h of water at 60°C over 80 m to a tank.
+
+1. Convert flow: Q = 150/3600 = 0.0417 m³/s.
+2. Target velocity 2 m/s (mid-range for discharge). Required D = √(4 × 0.0417 / (π × 2)) = 0.163 m.
+3. Nearest standard size: DN150 (ID ≈ 154 mm, Sch 40). Actual velocity: v = 4Q/(πD²) = 4 × 0.0417 / (π × 0.154²) = **2.24 m/s** — acceptable.
+4. Verify pressure drop. Re = 1000 × 2.24 × 0.154 / 0.00047 ≈ 730,000 (turbulent). For commercial steel, ε/D = 0.045/154 = 0.00029, giving f ≈ 0.017.
+5. ΔP = 0.017 × (80/0.154) × (1000 × 2.24²/2) = 0.017 × 519 × 2508 = **22,100 Pa ≈ 0.22 bar** over 80 m — well within limits.
+
+<Calculator id="pipe-flow-calculator" label="Try the Pipe Flow Calculator" />
+
+## Economic Diameter
+
+For long lines with continuous flow, the economic diameter is where the annualized cost of piping (proportional to D<sup>1.3</sup>) plus pumping (proportional to 1/D<sup>5</sup>) is minimized. A useful empirical form:
+
+<Formula>D<sub>opt</sub> ≈ 293 × Q<sup>0.53</sup> / ρ<sup>0.37</sup></Formula>
+
+(D in mm, Q in kg/s, ρ in kg/m³) for turbulent flow in carbon steel, based on 2020s energy prices. This gives typically 1.5 – 2 m/s liquid velocities — consistent with the velocity table above.
+
+## Special Cases
+
+### Slurry Lines
+
+Solid-liquid slurries must exceed the **deposition velocity**. Below this velocity, particles settle and the line plugs. For sand-water slurries, deposition velocity is typically 1.2 – 1.8 m/s depending on particle size.
+
+### Gravity Drains
+
+Gravity lines should be sized for a maximum liquid depth of **half the pipe diameter** to allow vapor above the liquid. Manning's equation applies.
+
+### Two-Phase Flow
+
+Two-phase flow (gas + liquid) requires flow-regime analysis (bubble, plug, slug, annular, mist). Line sizing must avoid slug flow, which causes severe vibration.
+
+## Practical Guidance
+
+<Callout type="tip" title="Standard diameters">
+Always specify a **standard pipe size** (DN15, DN25, DN40, DN50, DN80, DN100, DN150, DN200, DN250, DN300, DN400, DN500, etc.). Non-standard sizes require special fittings and increase cost.
+</Callout>
+
+Additional rules of thumb:
+
+- **Round up** to the next standard size — never down, unless velocity would be too low.
+- **Suction lines are one size larger** than discharge in most pump systems.
+- **Avoid sudden expansions** — use eccentric reducers on horizontal pump suctions with the flat side up to prevent vapor pockets.
+- **Include future capacity** — many plants size lines for 120-150% of current flow.
+
+## Summary
+
+Effective pipe sizing starts with a velocity check against tabulated ranges, followed by a pressure-drop verification. For long lines or high-flow services, run an economic optimization considering both installed cost and pumping energy. Always specify standard pipe sizes and always verify NPSH on suction lines separately, since they are often the constraining case.

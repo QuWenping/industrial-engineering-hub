@@ -1,0 +1,158 @@
+---
+title: "Pipe Support Spacing Guide"
+description: "Recommended pipe support spacing for steel, copper, PVC, and insulated piping across common pipe sizes — including span calculation methods."
+category: "Mechanical Engineering"
+keywords: ["pipe support", "pipe span", "pipe hanger", "support spacing", "pipe stress"]
+updated: "2026-07-29"
+related:
+  - pipe-weight-calculator
+  - "/guides/pipe-material-selection"
+  - "/guides/water-hammer-analysis"
+---
+
+## Why Support Spacing Matters
+
+Proper pipe support prevents excessive sagging, overloading of connected equipment, stress at joints, and fatigue failure. Supports too far apart cause:
+- Sagging that traps condensate (in steam lines) or debris (in drains)
+- Excessive bending stress leading to pipe failure
+- Load transfer to equipment nozzles (pumps, vessels)
+- Vibration and water hammer amplification
+- Flange/gasket leaks from joint deflection
+
+## Maximum Spacing for Horizontal Carbon Steel Pipe (Sch 40, Water-Filled)
+
+Based on ASME B31.1/B31.3 with stress limits and 2.5mm maximum sag:
+
+| NPS | DN | Max Span (m) | Max Span (ft) |
+|---|---|---|---|
+| ½" | 15 | 2.0 | 7 |
+| 1" | 25 | 2.5 | 8 |
+| 1½" | 40 | 3.0 | 10 |
+| 2" | 50 | 3.5 | 12 |
+| 3" | 80 | 4.5 | 15 |
+| 4" | 100 | 5.0 | 17 |
+| 6" | 150 | 6.0 | 20 |
+| 8" | 200 | 7.0 | 23 |
+| 10" | 250 | 8.0 | 26 |
+| 12" | 300 | 9.0 | 29 |
+| 16" | 400 | 10.5 | 34 |
+| 20" | 500 | 11.5 | 38 |
+| 24" | 600 | 12.5 | 41 |
+
+<Callout type="info" title="Insulated Pipes Need Closer Supports">
+Add insulation weight (typically 10-25% of fluid-filled pipe weight) and reduce span by 10-15% for insulated lines. Heavy insulation (calcium silicate with aluminum jacket) requires closer spacing.
+</Callout>
+
+## Factors That Reduce Spacing
+
+| Factor | Span Reduction |
+|---|---|
+| Insulated (mineral wool) | 10-15% |
+| Steam/gas lines (lighter fluid) | Can increase 20% vs water-filled |
+| High-temperature (>200°C) | 20% less (creep consideration) |
+| PVC/CPVC | 40-50% less than steel |
+| Copper (Type L) | 30-40% less than steel |
+| Fiberglass (FRP) | 20-30% less |
+| Thin-wall (Sch 10/10S) | 10-15% less |
+| Vibration-prone | Add supports, reduce by 30% |
+
+## Span Calculation Method
+
+The maximum span is limited by two criteria, whichever gives smaller span:
+
+### 1. Bending Stress Limit
+
+<Formula>L<sub>stress</sub> = √(Z × S<sub>allow</sub> / (w × 0.125))</Formula>
+
+Where Z = section modulus, S<sub>allow</sub> = allowable stress, w = weight per unit length (pipe + fluid + insulation).
+
+### 2. Sag Limit (Deflection)
+
+<Formula>L<sub>sag</sub> = (384 × E × I × δ / (5 × w))<sup>1/4</sup></Formula>
+
+Where E = modulus of elasticity, I = moment of inertia, δ = allowable sag (typically 2.5mm per meter or 10mm absolute).
+
+<Callout type="tip" title="Sag Usually Governs for Small Pipes" severity="info">
+For pipes up to NPS 6, sag deflection is typically the limiting factor. For large pipes (>12"), bending stress usually governs. Steam headers with condensate traps need very tight sag limits to avoid trapping condensate.
+</Callout>
+
+## Support Types
+
+| Type | Purpose | Movement Allowed |
+|---|---|---|
+| **Hanger (rod/clevis)** | Vertical support from above | Allows lateral/axial movement |
+| **Rigid support (stanchion)** | Vertical support from below | Some lateral, no vertical movement |
+| **Variable spring hanger** | Supports load while allowing thermal movement | Vertical travel |
+| **Constant spring hanger** | Constant supporting force over large travel | Large vertical movement |
+| **Guide** | Prevents lateral movement, allows axial | Axial only |
+| **Anchor** | Prevents ALL movement and rotation | None (fixed point) |
+| **Sway brace/strut** | Prevents dynamic movement/vibration | Limited |
+
+## Vertical Pipe Support
+
+Vertical pipe runs require supports at:
+- Every floor penetration (or every 5m for tall columns)
+- At changes in direction
+- Near heavy valves/instruments
+- Every 2-3 pipe diameters below flanged joints
+
+Riser clamps or welded lugs transfer vertical load to the structure.
+
+## Special Considerations
+
+### Thermal Expansion
+Supports must not restrict thermal growth. Use:
+- Hangers that allow swing (long rod hangers)
+- Slide plates under stanchions (PTFE or graphite)
+- Spring hangers where vertical movement is significant
+- Guides at appropriate intervals to direct expansion into loops/expansion joints
+
+<Callout type="warning" title="Don't Restrict Thermal Expansion">
+A steel pipe heated from 20°C to 200°C expands ~2.2mm per meter. If supports prevent movement, enormous forces develop (thousands of kN) that can bend pipe, break anchors, or damage equipment.
+</Callout>
+
+### Near Equipment
+Supports near pumps, turbines, and vessels must be placed carefully:
+- First support on pump suction/discharge should be a spring hanger or provide flexibility
+- Never support piping from the equipment itself (except for small valves/instruments)
+- Provide anchor points far enough from nozzles that thermal growth doesn't overstress nozzles
+
+### Steam Lines
+- Install supports at close spacing to prevent condensate traps at sags
+- Always slope steam lines 1:100 toward drip legs
+- Steam lines require frequent drip traps at low points and every 30-50m
+- Insulation and steam weight during startup (warm-up) add load
+
+### Plastic Pipe
+PVC/CPVC/HDPE expand much more than steel and creep under sustained load:
+- PVC: Spans 40-50% of steel; use hangers with wide saddles to avoid point loading
+- HDPE: Very flexible; requires continuous support or close spacing
+- Never use metal clamps directly on plastic — use plastic shields
+
+### Vibration Concerns
+- Near reciprocating compressors/pumps: supports every 2-3m
+- Use sway braces or snubbers to damp vibration
+- Avoid natural frequency matching excitation frequency (resonance!)
+
+## Hanger and Support Hardware
+
+- **Clevis hanger**: Most common for suspended horizontal pipe
+- **Roller hanger**: For lines that move axially
+- **Pipe clamp**: For vertical risers or attachment point
+- **Beam clamp**: Attaches hanger rod to structural steel
+- **Trapeze**: Supports multiple pipes from a single structure
+- **Shield/saddle**: Distributes load on thin-wall or plastic pipe
+
+## Installation Best Practices
+
+1. Install supports BEFORE connecting flanges/bolting up to equipment
+2. Leave clearance for insulation (hanger must accommodate final OD)
+3. Set spring hangers to "cold" position before pipe warm-up; lock pins removed after
+4. Place supports within 300mm of heavy valves (> DN200 or > 50 kg)
+5. Don't support pipe from other pipes (especially not small pipes!)
+6. Field-verify critical hanger positions against stress isometrics
+7. Maintain clearances for welding, inspection, and maintenance
+
+## Summary
+
+Pipe support spacing ranges from 2m for ½" steel pipe to ~12m for 24" diameter. Sag limits govern small pipes; bending stress governs large pipes. Insulated, plastic, and high-temperature lines require closer spacing. Choose support types to allow thermal expansion while preventing excessive movement, vibration, and equipment loading. Never hang pipes from equipment nozzles or other pipes. For critical systems, follow the pipe stress engineer's formal analysis.

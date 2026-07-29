@@ -1,0 +1,154 @@
+---
+title: "Understanding P&ID Diagrams"
+description: "A practical guide to reading Piping and Instrumentation Diagrams (P&IDs), including ISA S5.1 symbols, tag numbering, line designations, and best practices."
+category: "Process Engineering"
+keywords: ["P&ID", "piping diagram", "ISA S5.1", "instrument tags", "process diagram"]
+updated: "2026-07-29"
+related:
+  - pipe-flow-calculator
+  - valve-sizing-calculator
+  - "/tools/orifice-flow-calculator"
+---
+
+## What is a P&ID?
+
+A **Piping and Instrumentation Diagram (P&ID)** is the master document of a process plant. It shows every piece of equipment, every pipe, every valve, and every instrument connected on a single set of drawings. Where the Process Flow Diagram (PFD) shows the overall process concept, the P&ID shows the plant *as it will be built*.
+
+<Callout type="info" title="Governing standards">
+Symbol conventions come from ISA S5.1 (instrumentation) and ISO 10628 / ASME Y32.11 (equipment). Most owners have a company-specific "legend sheet" that overrides the standard for their site — always read the legend first.
+</Callout>
+
+## What Appears on a P&ID
+
+- All process equipment with tag numbers and key data (T-101, P-201A/B, E-301)
+- All piping with line numbers, sizes, and specification classes
+- Every valve — hand, control, safety, isolation
+- Every instrument, its measurement type, location, and control function
+- Interlocks, alarms, and shutdown logic references
+- Insulation, tracing, and slope requirements
+
+## Instrument Tag Numbering (ISA S5.1)
+
+Instruments are identified by a **function letter block** and a loop number, e.g. **FIC-201** or **PSHH-315**.
+
+| First letter | Measured variable |
+|---|---|
+| F | Flow |
+| L | Level |
+| P | Pressure |
+| T | Temperature |
+| A | Analysis |
+| H | Hand (manual) |
+| J | Power |
+
+| Succeeding letters | Function |
+|---|---|
+| I | Indicate |
+| R | Record |
+| C | Control |
+| T | Transmit |
+| S | Switch |
+| V | Valve |
+| E | Element (primary sensor) |
+| Y | Compute / relay |
+| H / L / HH / LL | High / Low / High-High / Low-Low |
+
+**Examples:**
+- **TIC-101** = Temperature Indicating Controller, loop 101
+- **PSHH-201** = Pressure Switch, High-High, loop 201 (shutdown trip)
+- **FE-301** = Flow Element (primary sensor, e.g., orifice plate), loop 301
+- **LAH-402** = Level Alarm, High, loop 402
+
+## Line Numbering
+
+Each pipe gets a line number of the form:
+
+`{size}-{service}-{sequence}-{spec}-{insulation}`
+
+For example: **6"-CWS-101-A1A-H** = 6-inch diameter, chilled water supply, line 101, pipe spec A1A, hot-insulated.
+
+<Formula>Line number = SIZE − SERVICE − NUMBER − SPEC − INSULATION</Formula>
+
+The **pipe spec** (e.g., A1A, CS150, SS300) defines materials, wall thickness, flange rating, gaskets, and bolting for that line. All lines in the same spec share the same material of construction — this is fundamental to procurement and quality control.
+
+## Common Symbols
+
+| Symbol shape | Meaning |
+|---|---|
+| Bare circle | Field-mounted instrument |
+| Circle with horizontal line | Panel-mounted (control room) |
+| Circle with dashed line | Auxiliary panel |
+| Hexagon | Computer/DCS function |
+| Square with circle inside | PLC / logic function |
+| Two triangles meeting | Gate or globe valve |
+| Ball outline | Ball valve |
+| Butterfly wafer | Butterfly valve |
+| Bowtie with actuator top | Control valve |
+
+<Calculator id="valve-sizing-calculator" label="Try the Valve Sizing Calculator" />
+
+## Signal Line Conventions
+
+- **Solid line** — process piping
+- **Dashed line** — electrical signal
+- **Dotted line with slashes** — pneumatic signal (typically /)
+- **Line with bubbles** — capillary tubing
+- **Zigzag line** — hydraulic signal
+- **Wavy line** — sonic / radio
+
+## Worked Example: Reading a Simple Loop
+
+Consider a control loop with these tags on the P&ID:
+
+- **FE-201** on the pipe (orifice element)
+- **FT-201** (differential pressure transmitter)
+- **FIC-201** in a circle with a horizontal line (controller in DCS)
+- **FV-201** (control valve on discharge)
+
+**Reading this loop:** an orifice plate senses flow, the transmitter converts differential pressure to a 4-20 mA signal, the controller compares to setpoint and modulates the control valve. Together this is a **flow control loop**. If you see additional tags **FSH-201** and **FSL-201** connected, those are high and low flow alarms feeding the same loop.
+
+<Callout type="tip" title="Loop numbering discipline">
+Loop numbers group related instruments. Everything with number **201** in this example belongs to the same flow loop. When troubleshooting, chase the whole loop by matching the number.
+</Callout>
+
+## Equipment Tags
+
+| Prefix | Equipment |
+|---|---|
+| P | Pump |
+| C | Compressor |
+| E | Heat exchanger |
+| T | Tank / vessel |
+| V | Vessel (drum) |
+| K | Blower |
+| F | Filter |
+| R | Reactor |
+| S | Separator |
+| M | Motor / mixer |
+
+A duplicate equipment set is shown as **P-101 A/B** meaning two pumps, one operating and one spare.
+
+## Reading P&IDs Efficiently
+
+1. **Start with the legend sheet.** Every plant has one — it defines symbols and tag conventions for the site.
+2. **Trace the process forward.** Follow lines from feed to product, understanding the sequence of unit operations.
+3. **Check every valve.** Identify isolation, drain, vent, and bypass valves for each equipment item.
+4. **Verify safety instrumentation.** All PSHH, TSHH, LSHH tags represent trip functions — understand the shutdown logic.
+5. **Confirm the line spec is consistent** with the service. If cold service piping crosses a hot service via a heat exchanger, note the spec break.
+
+<Callout type="warning" title="P&ID vs PFD confusion">
+A PFD shows heat/mass balance and major equipment only. A P&ID shows every valve, drain, vent, and instrument as installed. Never use a PFD as an operational reference — use the current, revision-controlled P&ID.
+</Callout>
+
+<Calculator id="orifice-flow-calculator" label="Try the Orifice Flow Calculator" />
+
+## Best Practices for Engineers
+
+- Always work from the **latest revision** — mark up P&IDs are legal documents.
+- Use color highlighting when tracing a system for review or HAZOP.
+- Cross-reference P&IDs to line lists, instrument index, and cause-and-effect matrices.
+- When modifying a P&ID, follow **Management of Change (MOC)** — every red-line becomes an issued revision.
+
+## Summary
+
+P&IDs are the definitive engineering record of a process plant. Fluency in reading them requires understanding ISA S5.1 tags, line numbering, and equipment symbols. Investing an hour learning your site's legend sheet pays dividends every day you work with the plant — for design reviews, safety studies, maintenance, and troubleshooting alike.

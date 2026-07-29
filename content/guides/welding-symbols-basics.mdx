@@ -1,0 +1,194 @@
+---
+title: "Welding Symbols Basics"
+description: "Learn to read AWS/ISO welding symbols including fillet welds, groove welds, weld size, length, pitch, and common joint designations."
+category: "Mechanical Engineering"
+keywords: ["welding symbols", "AWS A2.4", "fillet weld", "groove weld", "weld size", "welding symbols chart"]
+updated: "2026-07-29"
+related:
+  - bolt-torque-calculation
+  - "/guides/pipe-material-selection"
+  - "/guides/flange-rating-standards"
+---
+
+## Standard Welding Symbol Standards
+
+Welding symbols communicate weld requirements on engineering drawings. Two main standards:
+
+- **AWS A2.4** (American Welding Society) — used in USA, Americas, oil/gas industry
+- **ISO 2553** (International) — used in Europe, Asia, many international projects
+
+This guide focuses on AWS symbols (most common in international engineering).
+
+## The Welding Symbol Structure
+
+A complete welding symbol has:
+
+```
+     <-- Tail (reference/spec)
+     /
+----||----  <-- Reference line (horizontal)
+      \
+       <-- Arrow (points to joint)
+```
+
+Elements that may appear:
+- Reference line (always present, horizontal)
+- Arrow line (points to joint location)
+- Basic weld symbol (triangle for fillet, V for V-groove, etc.)
+- Dimensions (size, length, pitch)
+- Supplementary symbols (field weld, all-around, etc.)
+- Tail (reference to specification or process)
+
+<Callout type="info" title="Arrow Side vs Other Side">
+If the weld symbol is BELOW the reference line, the weld is on the ARROW SIDE (the side the arrow points to). If ABOVE the line, it's on the OTHER SIDE (opposite from arrow). If symbols appear on BOTH sides, welds go on both sides.
+</Callout>
+
+## Basic Weld Symbols
+
+| Symbol | Shape | Weld Type |
+|---|---|---|
+| △ (triangle) | Right triangle | Fillet weld (most common) |
+| V | V shape | V-groove weld |
+| √ (bevel) | One-sided V | Bevel groove |
+| U | U shape | U-groove |
+| J | J shape | J-groove |
+| □ (square) | Two parallel lines | Square groove |
+| ○ (circle) | Circle at reference/arrow junction | Plug/slot weld |
+| || (two vertical bars) | | Slot or spot weld |
+| ☆ (flare-V) | Flared V | Flare bevel/V |
+
+## Fillet Welds (Most Common)
+
+Fillet welds are triangular welds at T-, lap, and corner joints. The symbol is a right triangle.
+
+### Dimensioning Fillet Welds
+
+**Size**: Leg length in mm (or inches) placed to the LEFT of the triangle.
+- 6mm fillet = "6" left of triangle
+- Equal-leg fillets are standard; unequal legs noted as two numbers
+
+**Length**: Weld length in mm placed to the RIGHT of the triangle.
+- "100" means 100mm long weld
+
+**Pitch/intermittent spacing**: Center-to-center spacing of intermittent welds after a hyphen.
+- "6-100-200" = 6mm fillet, 100mm long, every 200mm
+
+<Formula>Fillet weld throat = leg size × sin(45°) = leg × 0.707</Formula>
+
+<Callout type="tip" title="Minimum/Maximum Fillet Size" severity="info">
+Minimum fillet size depends on thinner member thickness (AWS D1.1):
+- 3mm for t ≤ 6mm; 5mm for t ≤ 12mm; 6mm for t ≤ 20mm; 8mm for t ≤ 38mm; 10mm for t > 38mm.
+Maximum fillet along edge of material = thickness minus 1-2mm for thicker material, or equal to thickness for t < 6mm.
+</Callout>
+
+### Examples
+
+- `6△` — 6mm fillet, continuous, arrow side
+- `△150` — fillet weld, 150mm long (size in separate note or both sides)
+- `8△ 8▲` — 8mm fillet both sides (other side is mirror)
+- `6△200-400` — 6mm intermittent fillet, 200mm long every 400mm staggered or chain
+
+## Groove Welds
+
+Groove welds fill a prepared joint between two pieces:
+
+| Type | Symbol | Preparation |
+|---|---|---|
+| Square | □ | No bevel, gap only; for t ≤ 6mm |
+| V-groove | V | Both sides beveled; common for pipe |
+| Bevel groove | √ (slant) | One side beveled; arrow points to beveled piece |
+| U-groove | U | Both sides concave (J preparation) |
+| J-groove | J | One side concave |
+
+### Groove Weld Dimensions
+
+- **Depth of bevel** (left of symbol): how deep the bevel is cut
+- **Groove weld size** (in parenthesis): required throat (usually = material thickness)
+- **Root opening**: gap between parts; shown inside symbol or note
+- **Groove angle**: angle of bevel; shown above/below symbol
+
+Example: `20° V ¾` means V-groove with 20° angle, ¾" groove weld size, arrow side.
+
+<Callout type="warning" title="Arrow Points to Beveled Member">
+For bevel and J-grooves, the arrow has a BREAK (zigzag) pointing to the member that must be beveled. This tells the fabricator which side to prepare.
+</Callout>
+
+## Supplementary Symbols
+
+| Symbol | Location | Meaning |
+|---|---|---|
+| Solid circle at junction | At arrow/reference junction | Weld all around the joint |
+| Flag (triangle) at angle | At junction | Field weld (site, not shop) |
+| Concave curve over symbol | Above/below weld symbol | Concave finish |
+| Convex curve over symbol | | Convex finish |
+| Flush/flat bar | | Finished flat (machined/ground) |
+| Melt-through (filled-in back) | | Complete joint penetration from other side |
+| Backing bar symbol | Rectangle behind groove | Backing strip used |
+
+## Tail Reference — Process and Specification
+
+The tail at the end of the reference line notes:
+- **Welding process**: SMAW (stick), GMAW (MIG), GTAW (TIG), FCAW, SAW
+- **Specification**: e.g., "WPS-P1" = Welding Procedure Specification P1
+- **Acceptance criteria**: e.g., "UT per AWS D1.1"
+
+Example: `6△ / SMAW WPS-101` = 6mm fillet using SMAW per WPS 101.
+
+## Common Joint Types
+
+| Joint | Weld Type | Typical Symbol |
+|---|---|---|
+| Butt joint | V- or bevel-groove CJP | V with CJP note |
+| T-joint | Fillet both sides | Double fillet triangle |
+| Lap joint | Fillet weld ends | Fillet each end |
+| Corner joint | Fillet or partial groove | |
+| Edge joint | Edge weld (parallel lines) | |
+
+## Common Welding Abbreviations
+
+| Abbreviation | Meaning |
+|---|---|
+| CJP | Complete Joint Penetration (full penetration groove weld) |
+| PJP | Partial Joint Penetration |
+| GMAW | Gas Metal Arc Welding (MIG) |
+| GTAW | Gas Tungsten Arc Welding (TIG) |
+| SMAW | Shielded Metal Arc Welding (stick) |
+| FCAW | Flux-Cored Arc Welding |
+| SAW | Submerged Arc Welding |
+| WPS | Welding Procedure Specification |
+| PQR | Procedure Qualification Record |
+| WPQ | Welder Performance Qualification |
+| NDE | Non-Destructive Examination |
+| UT | Ultrasonic Testing |
+| RT | Radiographic Testing |
+| MT | Magnetic Particle Testing |
+| PT | Penetrant Testing |
+
+## Weld Size vs Strength
+
+Fillet weld strength depends on effective throat:
+
+<Formula>Strength per unit length = 0.707 × size × allowable stress (typically 0.6 × Fy for fillet welds)</Formula>
+
+For E70 electrodes (most common for structural steel), allowable shear ≈ 140 MPa (20 ksi).
+
+### Worked Example
+
+A 6mm fillet weld 100mm long can carry:
+- Throat = 6 × 0.707 = 4.24 mm
+- Shear area = 4.24 × 100 = 424 mm²
+- Allowable force = 424 × 140 = 59,400 N ≈ **60 kN per 100mm**
+
+<Calculator id="bolt-torque-calculator" label="Compare with Bolt Strength" />
+
+## Pipe Welding Symbols
+
+For pipe butt welds (circumferential joints):
+- V-groove or U-groove symbol with "all around" circle
+- Often specifies root pass (TIG hot pass), fill, cap processes
+- "100% RT" means full radiographic examination required
+- Typical for process piping: GTAW root + SMAW fill/cap
+
+## Summary
+
+Welding symbols follow AWS A2.4 or ISO 2553 standards. Reference line with symbols above/below identifies weld type and which side. Fillet welds (triangle) are most common — size to the left, length to the right. Groove welds specify bevel depth, angle, and CJP/PJP. Supplementary symbols denote field weld, all-around, finish, and backing. Always consult the project welding legend and WPS for process and electrode requirements. Incorrectly read symbols lead to welds on wrong side or wrong size — double-check arrow-side/other-side convention.

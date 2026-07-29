@@ -1,0 +1,156 @@
+---
+title: "Positive Displacement Pumps"
+description: "Guide to positive displacement pump types — gear, screw, diaphragm, peristaltic, progressive cavity — with selection and application guidance."
+category: "Pump Engineering"
+keywords: ["positive displacement pump", "gear pump", "screw pump", "diaphragm pump", "progressive cavity"]
+updated: "2026-07-29"
+related:
+  - pump-power-calculator
+  - pump-flow-calculator
+  - "/guides/centrifugal-pump-fundamentals"
+  - "/guides/pump-selection-guide"
+---
+
+## PD vs Centrifugal Pumps
+
+Positive Displacement (PD) pumps move fluid by trapping a fixed volume and mechanically forcing it into the discharge pipe. Unlike centrifugal pumps, PD pumps produce flow directly proportional to speed and relatively independent of discharge pressure.
+
+| Characteristic | Centrifugal | Positive Displacement |
+|---|---|---|
+| Flow vs pressure | Flow drops as head increases | Flow constant regardless of pressure |
+| Suitable viscosity | Low (&lt;500 cP) | High (up to 1,000,000 cP) |
+| Shear | High shear | Low shear (many types) |
+| Self-priming | Poor | Excellent |
+| Dry running | Will damage seals | Some types tolerate it |
+| NPSH requirement | Increases with flow | Relatively constant |
+| Max pressure | Lower (typically &lt;40 bar) | Can be very high (to 700+ bar) |
+
+<Callout type="danger" title="Never Dead-Head a PD Pump!">
+Unlike centrifugal pumps where head limits at shut-off, PD pumps keep producing flow against closed discharge. Pressure builds until something breaks — pipe, pump, motor, or relief valve. ALWAYS install a pressure relief valve on PD pump discharge.
+</Callout>
+
+## Gear Pumps
+
+Two meshing gears create voids that fill with liquid and carry it from suction to discharge around the casing.
+
+- **Types**: External gear (two identical gears), internal gear (gerotor, gear within gear)
+- **Flow**: Smooth, low-pulsation
+- **Pressure**: Up to ~250 bar (external gear)
+- **Viscosity**: 1 to 1,000,000 cSt
+- **Best for**: Oils, polymers, fuels, hydraulic systems, high-pressure metering
+- **Not for**: Solids/abrasives (close clearances wear quickly)
+
+## Progressive Cavity Pumps (Moyno)
+
+A single helix rotor turns inside a double-helix elastomeric stator, forming cavities that progress from suction to discharge.
+
+- **Flow**: Very smooth, non-pulsating
+- **Pressure**: Up to 60+ bar (multiple stages)
+- **Viscosity**: 1 to 1,000,000+ cSt
+- **Best for**: Sludge, slurry, high solids, shear-sensitive polymers, food products
+- **Advantages**: Gentle on product, handles large solids, self-priming
+- **Cannot run dry** — stator elastomer burns out instantly without liquid lubrication
+
+## Screw Pumps
+
+One, two, or three helical screws move fluid axially along the screw axis.
+
+- **Types**: Three-screw (most common, for clean lube oil), twin-screw (handles some entrained gas), single-screw
+- **Flow**: Very smooth, extremely quiet
+- **Pressure**: Up to 300+ bar
+- **Best for**: High-viscosity oils, fuel oil transfer, multi-phase (oil/gas/water)
+- **Advantages**: Low noise, high reliability, handles gas entrainment
+
+## Diaphragm Pumps
+
+Flexible diaphragm reciprocates to draw in and expel fluid; check valves control direction.
+
+- **Air-Operated Double Diaphragm (AODD)**: Compressed air drives two diaphragms; stall under pressure; intrinsically safe
+- **Mechanically actuated**: For metering/dosing
+
+| Attribute | Value |
+|---|---|
+| Flow | To 100+ m³/h |
+| Pressure | To 20 bar (air limited) |
+| Viscosity | To 50,000 cSt |
+| Best for | Chemicals, slurries, abrasives, hazardous areas, shear-sensitive fluids |
+| Advantages | Can run dry, self-priming, sealless, handles solids, air-operated = explosion-proof |
+
+<Callout type="tip" title="AODD for Versatility">
+Air-operated diaphragm pumps are the "workhorse of tough applications" — they pump almost anything from clean water to abrasive slurry, run dry without damage, are intrinsically safe for flammable fluids, and require no electricity.
+</Callout>
+
+## Peristaltic (Hose) Pumps
+
+A rotating shoe/roller compresses a flexible tube, pushing fluid along. Liquid only touches the inside of the hose.
+
+- **Flow**: Pulsating (multiple rollers reduce this)
+- **Pressure**: Up to 15 bar
+- **Best for**: Corrosive chemicals, food/pharmaceutical, abrasive slurry, metering
+- **Advantages**: Complete fluid isolation (no seals), self-priming, reversible, can run dry
+- **Limitations**: Hose life is the maintenance item; flow pulsation; not for high flow rates
+
+## Piston/Plunger Pumps
+
+Reciprocating piston or plunger displaces fluid through check valves.
+
+- **Flow**: Pulsating (triplex designs smooth this with three cylinders)
+- **Pressure**: Up to 700+ bar (high-pressure water blasting, hydrotesting)
+- **Best for**: High-pressure cleaning, water jetting, high-pressure injection, metering
+- **Advantages**: Highest pressure capability, very high efficiency, accurate metering
+- **Limitations**: Pulsation requires dampeners; check valves wear in dirty service
+
+## Metering/Dosing Pumps
+
+Small, precise PD pumps for accurate chemical addition:
+
+- **Diaphragm metering**: Most common; adjustable stroke length/frequency; to ~1000 L/h
+- **Plunger metering**: Higher pressure; to 500+ bar
+- **Peristaltic metering**: Simple, for low-pressure dosing
+
+Typical applications: Chlorine injection, pH adjustment, corrosion inhibitors, polymer dosing.
+
+## PD Pump Selection Guide
+
+| Need | Best PD Pump Type |
+|---|---|
+| High-viscosity oil | Gear or screw pump |
+| Slurry with solids | Progressive cavity or diaphragm |
+| Shear-sensitive fluids | Progressive cavity or peristaltic |
+| Hazardous/explosive area | AODD (air-operated diaphragm) |
+| High pressure (>100 bar) | Plunger or gear pump |
+| Metering/dosing | Diaphragm metering |
+| Completely leak-free/sealless | Diaphragm, peristaltic, mag-drive gear |
+| Abrasive slurry | Peristaltic or heavy-duty diaphragm |
+
+## Key Sizing Considerations for PD Pumps
+
+1. **Slip factor**: Internal leakage (clearances) reduces net flow as pressure increases — more significant at low viscosity
+2. **Viscosity correction**: At very high viscosity, flow decreases and power increases; must derate speed
+3. **NPSH**: PD pumps generally have lower NPSHr than centrifugal, but suction line losses still matter
+4. **Pulsation dampening**: Most PD pumps produce flow pulsations that require dampeners on both suction and discharge
+5. **Relief valve**: Mandatory on discharge to protect against overpressure
+6. **Speed reduction**: For high viscosity, run slower (consult viscosity vs speed curves)
+
+## Power Calculation for PD Pumps
+
+<Calculator id="pump-power-calculator" label="Pump Power Calculator" />
+
+Hydraulic power is similar to centrifugal:
+
+<Formula>P<sub>hydraulic</sub> = Q (m³/s) × ΔP (Pa) / 1000  (kW)</Formula>
+
+Brake power = hydraulic power / efficiency. PD pump efficiencies:
+- Gear pumps: 70-90%
+- Progressive cavity: 60-75%
+- Screw pumps: 70-85%
+- Diaphragm (AODD): 50-70% (and they consume compressed air!)
+- Plunger/piston: 80-95%
+
+<Callout type="warning" title="Air Consumption of AODD Pumps">
+AODD pumps are inefficient in energy terms — they consume significant compressed air, which is expensive to generate. Use them where their unique capabilities are needed, not for general transfer duty.
+</Callout>
+
+## Summary
+
+Positive displacement pumps excel at high viscosity, high pressure, solids handling, and metering where centrifugal pumps cannot operate. Gear pumps for clean oils, progressive cavity for slurries, AODD for versatility/safety, peristaltic for chemical isolation, plunger for ultra-high pressure. Always include a pressure relief valve on PD pump discharge — this is not optional.

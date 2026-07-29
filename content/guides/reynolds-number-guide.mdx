@@ -1,0 +1,155 @@
+---
+title: "Reynolds Number and Flow Regimes"
+description: "Understand Reynolds number, laminar vs turbulent flow, transition criteria, and how Reynolds number affects friction factor, pressure drop, and heat transfer."
+category: "Fluid Mechanics"
+keywords: ["Reynolds number", "laminar flow", "turbulent flow", "flow regime", "critical Reynolds number"]
+updated: "2026-07-29"
+related:
+  - pressure-drop-calculator
+  - darcy-weisbach-calculator
+  - pipe-velocity-calculator
+  - "/guides/pressure-drop-pipes"
+---
+
+## What is Reynolds Number?
+
+The Reynolds number (Re) is a dimensionless quantity that describes the ratio of inertial forces to viscous forces in a flowing fluid. It predicts whether flow will be laminar or turbulent — the single most important parameter in fluid mechanics.
+
+<Formula>Re = ρ × v × D / μ = v × D / ν</Formula>
+
+Where:
+- ρ = fluid density (kg/m³)
+- v = flow velocity (m/s)
+- D = pipe inner diameter (m)
+- μ = dynamic viscosity (Pa·s or kg/m·s)
+- ν = kinematic viscosity, ν = μ/ρ (m²/s)
+
+## Flow Regimes
+
+| Regime | Reynolds Number (Pipe Flow) | Characteristics |
+|---|---|---|
+| Laminar | Re < 2,300 | Smooth, layered flow; parabolic velocity profile; predictable; mixing only by molecular diffusion |
+| Critical/transition | 2,300 < Re < 4,000 | Unstable; intermittent turbulence; design should avoid this range |
+| Turbulent | Re > 4,000 | Chaotic eddies; flat velocity profile; good mixing; predictable statistically |
+| Fully turbulent rough | Re > 10,000 with ε/D significant | Friction factor depends only on roughness |
+
+<Callout type="info" title="Reynolds Number for Non-Circular Ducts">
+For non-circular channels, use hydraulic diameter: D<sub>h</sub> = 4A/P where A = cross-sectional area and P = wetted perimeter. For annuli: D<sub>h</sub> = D<sub>outer</sub> − D<sub>inner</sub>.
+</Callout>
+
+## Laminar Flow (Re < 2,300)
+
+In laminar flow, fluid moves in smooth parallel layers (laminae). There is no cross-flow mixing between layers.
+
+Key characteristics:
+- **Velocity profile**: Perfect parabola, with v<sub>max</sub> = 2 × v<sub>average</sub> at centerline
+- **Friction factor**: f = 64/Re (exact, no iteration needed)
+- **Pressure drop**: Directly proportional to velocity (not v²!) — Hagen-Poiseuille equation
+- **Entrance length**: ~0.05 × Re × D to reach fully developed profile
+
+<Formula>ΔP<sub>laminar</sub> = 32 × μ × v × L / D² (Hagen-Poiseuille)</Formula>
+
+Applications where laminar flow matters:
+- Very viscous fluids (heavy oils, polymers, honey)
+- Microfluidic channels
+- Flow around small particles (settling)
+- Lubrication films in bearings
+
+## Turbulent Flow (Re > 4,000)
+
+In turbulent flow, chaotic eddies and vortices cause rapid mixing across the pipe cross-section.
+
+Key characteristics:
+- **Velocity profile**: Flat (power-law profile, ~1/7 power), v<sub>max</sub> ≈ 1.2 × v<sub>average</sub>
+- **Friction factor**: Depends on both Re and relative roughness (ε/D) — use Colebrook-White or Moody chart
+- **Pressure drop**: Proportional to v² (Darcy-Weisbach)
+- **Entrance length**: ~30-50 × D (shorter than laminar, mixing speeds development)
+
+### Velocity Profiles Compared
+
+| Feature | Laminar | Turbulent |
+|---|---|---|
+| Shape | Parabolic | Flat (log law) |
+| v<sub>max</sub>/v<sub>avg</sub> | 2.0 | ~1.2 |
+| Mixing | None (molecular only) | Vigorous (turbulent eddies) |
+| Wall shear | 8μv/D | ½ρv² × f/4 |
+
+<Callout type="tip" title="Why Turbulence Matters for Engineers">
+Turbulent flow dramatically increases: (1) pressure drop/pumping power (bad), (2) heat transfer coefficients (good for exchangers), (3) mixing (good for reactors), (4) pipe erosion (bad). In most industrial pipe flow (v = 1-3 m/s, D = 50-300mm, water), Re ≈ 50,000-900,000 — firmly turbulent.
+</Callout>
+
+## Reynolds Number Calculator
+
+<Calculator id="reynolds-number-calculator" label="Calculate Reynolds Number" />
+
+### Worked Example
+
+Water at 20°C flows through a 100mm ID pipe at 2 m/s.
+- ρ = 1000 kg/m³, μ = 0.001 Pa·s, D = 0.1m, v = 2 m/s
+- Re = 1000 × 2 × 0.1 / 0.001 = **200,000** → turbulent regime.
+
+Heavy fuel oil at 20°C in same pipe at same velocity:
+- μ = 1.0 Pa·s (1000× more viscous)
+- Re = 1000 × 2 × 0.1 / 1.0 = **200** → laminar!
+
+## How to Interpret Reynolds Number for Design
+
+| Re Range | Design Implication |
+|---|---|
+| < 500 | Very viscous; laminar; pressure drop linear with flow; may need PD pumps |
+| 500-2,300 | Laminar; ensure Re-based friction calculations |
+| 2,300-10,000 | Transition zone; unstable; avoid designing in this range |
+| 10,000-100,000 | Fully turbulent; friction depends on Re and roughness |
+| > 100,000 | High turbulence; friction mostly depends on pipe roughness (fully rough) |
+
+<Callout type="warning" title="The Critical Reynolds Number Isn't Universal">
+For pipe flow, Re = 2,300 is the classical upper limit for laminar flow, but with careful flow straightening laminar flow can persist to Re = 10,000+. For flow around flat plates, transition occurs at Re ≈ 500,000. For flow around spheres, Re ≈ 2,000-300,000 (drag crisis). The 2,300 number is specific to pipe flow.
+</Callout>
+
+## Reynolds Number in Other Flow Geometries
+
+| Geometry | Characteristic Length | Critical Re |
+|---|---|---|
+| Circular pipe | Diameter | 2,300 |
+| Flow over flat plate | Distance from leading edge | 500,000 |
+| Flow around sphere | Sphere diameter | ~2,000 (upper 300,000) |
+| Flow around cylinder | Cylinder diameter | ~2,000 |
+| Open channel | Hydraulic radius (A/P) | 500 |
+| Annulus | D<sub>outer</sub> − D<sub>inner</sub> | ~2,000 |
+| stirred tank | Impeller diameter | 10,000 (for mixing) |
+
+## Practical Design Implications
+
+### 1. Pumping Power
+In turbulent flow, power ∝ Q³ (double flow → 8× power). In laminar flow, power ∝ Q² (double flow → 4× power). Increasing pipe diameter reduces power much more in turbulent systems.
+
+### 2. Heat Transfer
+Turbulent flow gives much higher heat transfer coefficients (5-10× laminar). For heat exchangers, turbulent flow is desirable — design for Re > 10,000 on both sides when possible.
+
+### 3. Flow Measurement
+Orifice plates, venturis, and most DP meters require turbulent flow (Re > 10,000) for rated accuracy. At low Re, discharge coefficient changes unpredictably.
+
+### 4. Mixing
+In stirred tanks, Reynolds number based on impeller diameter determines mixing regime:
+- Re < 10: Laminar blending
+- 10 < Re < 10,000: Transitional
+- Re > 10,000: Turbulent mixing
+
+### 5. Drag Reduction
+Adding small amounts of polymers can reduce turbulent drag by 50-70% by suppressing turbulent eddies. This is used in pipelines (Trans-Alaska pipeline uses this).
+
+## Reynolds Number and Friction Factor (Moody Chart)
+
+The Moody chart plots f vs Re for various ε/D:
+
+- **Laminar region**: f = 64/Re (straight line on log-log, independent of roughness)
+- **Transition (2,300-4,000)**: Not well-defined
+- **Turbulent smooth**: f depends on Re only (Blasius: f = 0.316/Re<sup>0.25</sup> for Re < 100,000)
+- **Transition (turbulent)**: f depends on both Re and ε/D (Colebrook-White)
+- **Fully rough**: f depends on ε/D only (horizontal lines on Moody chart)
+
+<Calculator id="darcy-weisbach-calculator" label="Calculate Friction Factor" />
+
+## Summary
+
+Reynolds number determines whether flow is laminar or turbulent. For pipe flow, Re < 2,300 = laminar (f = 64/Re, parabolic profile, linear pressure drop), Re > 4,000 = turbulent (f depends on Re and roughness, flat profile, v² pressure drop). Most industrial flows are turbulent. Higher Reynolds number increases mixing, heat transfer, and pressure drop. Calculate Re early in any pipe flow problem — it tells you which equations and correlations apply.

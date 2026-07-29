@@ -1,0 +1,186 @@
+---
+title: "HVAC Pump Sizing"
+description: "Step-by-step guide to sizing HVAC chilled water, hot water, and condenser water pumps including head calculation, pump selection, and control strategies."
+category: "HVAC Engineering"
+keywords: ["HVAC pump sizing", "chilled water pump", "hot water pump", "condenser water", "hydronic system"]
+updated: "2026-07-29"
+related:
+  - pump-head-calculator
+  - pump-power-calculator
+  - pipe-velocity-calculator
+  - "/guides/pipe-sizing-fundamentals"
+---
+
+## HVAC Hydronic Systems
+
+Hydronic (water-based) heating and cooling systems use pumps to circulate hot or chilled water through coils, heat exchangers, and terminal units. Proper pump sizing ensures comfort, energy efficiency, and equipment longevity.
+
+Three main hydronic circuits:
+- **Chilled water (CHW)**: Chiller → AHU coils / fan coils (typically 6-12°C supply)
+- **Hot water heating (HHW)**: Boiler → heating coils / radiators (typically 60-82°C supply)
+- **Condenser water (CW)**: Chiller condenser → cooling tower (typically 29-35°C)
+
+## Step 1: Determine Water Flow Rate
+
+Flow rate is determined by the cooling or heating load:
+
+<Formula>Q (m³/h) = Load (kW) × 3600 / (ρ × c<sub>p</sub> × ΔT)</Formula>
+
+For water (ρ = 1000 kg/m³, c<sub>p</sub> = 4.186 kJ/kg·K):
+
+<Formula>Q (L/s) = Load (kW) / (4.186 × ΔT)  × 1000</Formula>
+
+<Formula>Q (m³/h) = Load (kW) × 0.86 / ΔT</Formula>
+
+### Design Temperature Differences
+
+| System | Typical ΔT |
+|---|---|
+| Chilled water | 5-6°C (6° supply / 12° return or 7°/13° common) |
+| Heating hot water (low temp) | 11-20°C (82°/60° old standard; 50°/40° for condensing boilers) |
+| Condenser water | 5-6°C (32° supply / 37° return typical) |
+
+### Worked Example
+Chiller plant cooling load = 1,000 kW, chilled water ΔT = 6°C:
+
+Q = 1000 × 0.86 / 6 = **143 m³/h** (≈ 630 gpm)
+
+<Calculator id="pump-flow-calculator" label="Calculate Pump Flow Rate" />
+
+## Step 2: Calculate System Head Loss
+
+### Pipe Friction Loss
+
+Size pipes for 1-2 m/s velocity (CHW/HHW), 1.5-2.5 m/s (condenser water):
+- Target friction loss: 200-400 Pa/m (2-4 ft H₂O per 100 ft)
+- Higher velocities save pipe cost but increase pump energy
+
+### Component Losses (in order of flow path)
+
+| Component | Typical Head Loss |
+|---|---|
+| Chiller/boiler evaporator/condenser | 3-8 m (per manufacturer) |
+| Cooling coil (AHU) | 2-5 m |
+| Control valves (2-way, at design) | 2-5 m |
+| Strainer | 1-3 m |
+| Pipe fittings (elbows, tees) | 20-50% of pipe loss |
+| Check valve, isolation valves | 0.5-2 m |
+
+<Callout type="info" title="Control Valve Authority">
+Size the control valve to have 25-50% of total system head at design flow (valve authority = 0.25-0.5). Authority too low → poor control; too high → excess pump head. A 3-5m head across control valves is typical.
+</Callout>
+
+### Closed vs Open Systems
+
+**Closed systems** (CHW, HHW): No static lift; pump only overcomes friction. Static pressure changes with elevation but cancels around the loop. Pressurized to ~1-2 bar at the pump suction.
+
+**Open systems** (condenser water, cooling tower): Must lift water to tower distribution height + overcome friction on both supply AND return. Static lift is a one-time elevation head (pump must lift water from basin to top of tower).
+
+<Formula>TDH<sub>open</sub> = elevation lift + friction<sub>supply</sub> + friction<sub>return</sub> + component losses</Formula>
+<Formula>TDH<sub>closed</sub> = friction<sub>loop</sub> + component losses (no elevation lift)</Formula>
+
+<Calculator id="pump-head-calculator" label="Calculate Pump Total Dynamic Head" />
+
+## Step 3: Select Pump
+
+Common HVAC pump types:
+
+| Pump Type | Application |
+|---|---|
+| End-suction (base-mounted) | Most common; 5-500 m³/h; 10-60 m head |
+| Vertical in-line | Small systems; space saving; 5-100 m³/h |
+| Split-case (double-suction) | Large systems (>200 m³/h); high efficiency |
+| Vertical multi-stage | High-rise buildings; high head requirements |
+
+### Oversizing Rule
+Add **10-20% safety margin** on flow and head:
+- Flow: Add 10% for load uncertainty and future
+- Head: Add 10-15% for fouling (scaling increases resistance over time)
+
+Do NOT oversize by more than 20% — oversized pumps run left of BEP, short-cycle, waste energy.
+
+<Callout type="warning" title="The #1 HVAC Pump Mistake">
+Adding 50% safety margin "just to be safe" is the classic error. This moves the operating point far left of BEP, wastes 30-50% more energy, causes premature seal/bearing failure, and control valves must throttle heavily.
+</Callout>
+
+## Step 4: Variable Flow and VFDs
+
+Modern HVAC systems use 2-way control valves and VFDs for major energy savings.
+
+### Constant vs Variable Flow
+
+| System | Pump Control | Energy at Low Load |
+|---|---|---|
+| Constant volume, 3-way valves | Constant speed, full flow always | 100% power regardless of load |
+| Variable volume, 2-way valves | VFD, pressure control | ~30-50% power at 50% flow (cube law) |
+
+### VFD Control Strategy
+Install differential pressure (DP) sensor across the system or at the most remote/farthest coil:
+- **DP at pump**: Simple but over-pressurizes near coils
+- **DP at end-of-line (critical zone)**: Best energy savings; resets to minimum needed
+- **DP reset** by most-open valve (best): adjusts setpoint so one valve is 90% open
+
+<Callout type="success" title="VFD Savings Are Real">
+HVAC systems average 40-60% of peak flow over a year. At 50% flow, power ≈ 12.5% (0.5³) with VFD vs 100% constant flow. A 30 kW pump saves $8,000-$12,000/year at $0.12/kWh. VFDs pay back in 1-3 years.
+</Callout>
+
+## Primary-Secondary vs Variable Primary
+
+For large chiller plants:
+- **Primary-secondary**: Constant low-head primary pumps through chillers; variable secondary pumps to building. Simple, decoupled, but uses more pumps.
+- **Variable primary flow (VPF)**: One set of variable-speed pumps through chillers and building. Fewer pumps, lower energy, but requires careful chiller flow control and minimum-flow bypass.
+
+VPF is modern standard for new plants.
+
+## Pipe Sizing for HVAC
+
+Use these velocity guidelines:
+
+| Pipe Size | Max Velocity (CHW/HHW) | Max Velocity (CW) |
+|---|---|---|
+| DN50 (2") | 1.0 m/s | 1.2 m/s |
+| DN100 (4") | 1.5 m/s | 2.0 m/s |
+| DN200 (8") | 2.0 m/s | 2.5 m/s |
+| >DN300 (>12") | 2.5 m/s | 3.0 m/s |
+
+<Calculator id="pipe-velocity-calculator" label="Verify Pipe Velocity" />
+
+## Expansion Tanks and Pressurization
+
+Closed hydronic systems require expansion tanks because water expands ~4% when heated from 10°C to 80°C:
+
+1. **Diaphragm/bladder tank**: Most common; pre-charged with air
+2. **Compression tank**: Open or closed; older systems
+3. **Pump suction pressurization**: Must have positive NPSH; minimum ~1 bar at highest point + vapor pressure
+
+Size expansion tank for ~6% system volume, set fill pressure for ~1 bar above static head at pump suction.
+
+## Air Elimination
+
+Air causes noise, corrosion, and flow problems:
+- Install **air separators** (microbubble) at the hottest point in the system (boiler discharge or chiller return)
+- Automatic air vents at all high points
+- Run pumps during fill/purge cycle to push air to vents
+- Use glycol for outdoor/freezing applications (reduces heat capacity; must derate pumps)
+
+## Condenser Water System Special Notes
+
+- Open cooling tower systems: pump from tower basin to condenser to tower top
+- Add strainers and side-stream filtration (towers collect dirt)
+- Water treatment essential (scale, corrosion, biological control)
+- Freeze protection in cold climates (tower basin heaters, drain-down)
+- Size for 0.05-0.07 l/s per kW of chiller capacity (per ton of refrigeration: ~3 gpm)
+
+## Parallel Pump Operation
+
+For redundancy and turn-down, install multiple pumps in parallel:
+- 2 × 50% pumps (one standby) most common
+- 3 × 33% pumps allow better turn-down
+- Pumps operating in parallel each deliver less than rated (system curve intersection shifts)
+- Staging pumps on/off based on load; VFD on lead pump
+
+<Calculator id="pump-power-calculator" label="Calculate Pump Power" />
+
+## Summary
+
+Size HVAC pumps from actual load and system resistance — flow from kW/(4.186×ΔT) and TDH from pipe friction plus equipment losses (chillers 3-8m, coils 2-5m, valves 3-5m). Use VFDs with 2-way control valves for 40-60% energy savings vs constant flow. Don't add more than 10-20% margin. Install air elimination at the high point and expansion tanks in closed systems. Condenser water systems are open — add elevation lift and specify robust water treatment.

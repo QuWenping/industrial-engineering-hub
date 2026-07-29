@@ -1,0 +1,150 @@
+---
+title: "Steel Material Properties Guide"
+description: "Reference guide to common structural and pressure-vessel steels including A36, A53, A106, A516, and stainless 304/316 — properties, applications, and selection."
+category: "Materials"
+keywords: ["steel grades", "A36", "A106", "stainless steel", "material properties", "yield strength"]
+updated: "2026-07-29"
+related:
+  - steel-weight-calculator
+  - metal-weight-calculator
+  - "/tools/beam-deflection-calculator"
+---
+
+## Overview
+
+Steel is the workhorse of industrial construction. Selecting the correct grade means matching mechanical properties, weldability, temperature limits, corrosion resistance, and cost to the application. This guide summarizes the most common carbon and stainless steel grades encountered in piping, structural, and pressure-vessel work.
+
+<Callout type="info" title="ASTM specifications">
+Steel grade specifications are published by ASTM International. Each specification defines chemistry, mechanical property minimums, permissible product forms, and test requirements. Never specify only a grade name — always include the ASTM standard (e.g., "ASTM A106 Grade B").
+</Callout>
+
+## Common Carbon Steels
+
+### ASTM A36 — Structural
+
+A36 is the default hot-rolled structural steel — used for beams, plates, angles, and gussets. It welds well and machines readily, but is not suitable for pressure-containing service.
+
+- Yield strength: **250 MPa (36 ksi) minimum**
+- Tensile strength: **400 – 550 MPa (58 – 80 ksi)**
+- Elongation: 20% in 200 mm
+- Carbon: ≤ 0.26%
+
+### ASTM A53 — Pipe (Structural / Low-Pressure)
+
+Welded or seamless steel pipe used for water, gas, and structural pipe. Grade B is the most common.
+
+- Yield: **240 MPa (35 ksi) min**
+- Tensile: **415 MPa (60 ksi) min**
+- Made in ERW (electric-resistance welded) or seamless
+
+### ASTM A106 — Seamless Pipe for High-Temperature Service
+
+The standard pipe for steam, hydrocarbon, and high-temperature process services. Grade B is the workhorse.
+
+- Yield: **240 MPa (35 ksi) min** (Grade B)
+- Tensile: **415 MPa (60 ksi) min**
+- Max service temperature: **~427°C (800°F)** before creep dominates
+
+### ASTM A516 — Pressure Vessel Plate
+
+Fine-grain carbon steel for pressure vessels, particularly at moderate and low temperatures.
+
+- Grade 70 yield: **260 MPa (38 ksi) min**
+- Grade 70 tensile: **485 – 620 MPa (70 – 90 ksi)**
+- Good low-temp toughness when normalized
+
+## Property Comparison Table
+
+| Grade | Yield (MPa) | Tensile (MPa) | Typical Use | Max Temp |
+|---|---|---|---|---|
+| A36 | 250 | 400 – 550 | Structural | 400°C |
+| A53 Gr B | 240 | 415 | Pipe, low-P | 400°C |
+| A106 Gr B | 240 | 415 | Pipe, HP steam | 427°C |
+| A516 Gr 70 | 260 | 485 – 620 | Pressure vessels | 400°C |
+| API 5L X52 | 360 | 460 | Pipelines | 200°C |
+| A387 Gr 11 (Cr-Mo) | 310 | 515 | Refinery HT | 540°C |
+
+## Density and Weight
+
+<Formula>W (kg/m) = ρ × A</Formula>
+
+Steel density is **7850 kg/m³** (0.283 lb/in³) for almost all carbon and low-alloy grades. For quick estimation of pipe weight:
+
+<Formula>W<sub>pipe</sub> = 0.02466 × t × (OD − t)</Formula>
+
+With W in kg/m, and t and OD in mm.
+
+<Calculator id="steel-weight-calculator" label="Try the Steel Weight Calculator" />
+
+## Stainless Steels
+
+### Type 304 / 304L
+
+The most widely used austenitic stainless — 18% Cr, 8% Ni. Excellent general-purpose corrosion resistance in food, chemical, water, and mild atmospheric service.
+
+- Yield: **205 MPa (30 ksi) min**
+- Tensile: **515 MPa (75 ksi) min**
+- 304L has ≤ 0.03% C — avoids sensitization when welded
+- Density: **8000 kg/m³**
+
+### Type 316 / 316L
+
+304 with 2-3% molybdenum added — dramatically improves resistance to chlorides and pitting. Standard for marine, pharmaceutical, and many chemical duties.
+
+- Yield: **205 MPa (30 ksi) min**
+- Tensile: **515 MPa (75 ksi) min**
+- Density: **8000 kg/m³**
+- Pitting resistance equivalent (PREN) ≈ 25
+
+### Duplex 2205
+
+Dual austenite-ferrite microstructure. Combines high strength (twice that of 304) with excellent chloride resistance.
+
+- Yield: **450 MPa (65 ksi)**
+- Tensile: **620 MPa (90 ksi)**
+- PREN ≈ 35
+
+<Callout type="warning" title="Chloride stress cracking">
+Standard 304/316 austenitic stainless can crack under tensile stress in hot chloride environments (e.g., cooling water, seawater vapor spaces) above ~60°C. Duplex 2205 or higher-Mo alloys should be considered for such services.
+</Callout>
+
+## Design Allowable Stress
+
+For pressure design, use the ASME BPVC allowable stress table. Allowables are lower than yield to include safety factors for creep, cyclic fatigue, and material variability.
+
+| Grade | Allowable at 40°C (MPa) | Allowable at 400°C (MPa) |
+|---|---|---|
+| A106 Gr B | 138 | 90 |
+| A516 Gr 70 | 138 | 96 |
+| A312 TP304 | 138 | 92 |
+| A312 TP316 | 138 | 106 |
+
+## Worked Example: Pipe Weight
+
+**Question:** Calculate the weight of 100 m of NPS 6 (168.3 mm OD) Schedule 40 A106 Gr B pipe.
+
+- Wall thickness Sch 40 = 7.11 mm
+- Weight per meter: 0.02466 × 7.11 × (168.3 − 7.11) = 0.02466 × 7.11 × 161.19 = **28.26 kg/m**
+- 100 m × 28.26 = **2,826 kg**
+
+<Calculator id="metal-weight-calculator" label="Try the Metal Weight Calculator" />
+
+## Selection Guide
+
+| Application | Recommended Grade |
+|---|---|
+| Structural framing | A36, A992 |
+| Low-P water lines | A53 Gr B |
+| Steam / hot oil | A106 Gr B |
+| Vessels ≥ 350°C | A516 Gr 70 |
+| Cryogenic (< −45°C) | A333 Gr 6, 304L |
+| Salt water | 316L, Duplex 2205 |
+| High-Cr acid service | Alloy 20, Hastelloy |
+
+<Callout type="tip" title="Match the whole pipe class">
+When specifying pipe, remember that fittings, flanges, and bolting must match. A106 pipe typically pairs with A105 flanges/fittings and A193 B7 bolts / A194 2H nuts. Substituting one component may compromise the whole system.
+</Callout>
+
+## Summary
+
+Choose steel by matching service temperature, pressure, corrosion, and welding requirements to the ASTM specification. Carbon steels (A36, A53, A106, A516) cover most industrial needs; austenitic stainless (304/316) handles corrosion and hygiene; duplex or high-alloy grades address chlorides and severe service. Always specify by ASTM designation and grade, and verify allowable stresses at the design temperature before finalizing wall thickness.

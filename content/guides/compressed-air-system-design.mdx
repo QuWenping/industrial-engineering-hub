@@ -1,0 +1,189 @@
+---
+title: "Compressed Air System Design"
+description: "Guide to designing industrial compressed air systems: compressor types, air treatment, distribution piping, pressure drop, leak prevention, and energy efficiency."
+category: "Mechanical Engineering"
+keywords: ["compressed air", "air compressor", "compressed air system", "air receiver", "air dryer", "pneumatic"]
+updated: "2026-07-29"
+related:
+  - pressure-drop-calculator
+  - pipe-velocity-calculator
+  - "/guides/pipe-sizing-fundamentals"
+  - "/guides/motor-efficiency-guide"
+---
+
+## Compressed Air — The Fourth Utility
+
+Compressed air is widely used in industry for power tools, pneumatic controls, instrument air, material conveying, and process operations. It is convenient and safe but expensive to produce: only about 10-15% of input electrical energy becomes useful compressed air energy.
+
+Typical industrial plant: 0.5-2.0 kW of compressed air per kW of connected load.
+
+## Compressor Types
+
+| Type | Capacity (m³/min) | Pressure (bar g) | Efficiency | Best For |
+|---|---|---|---|---|
+| Reciprocating (piston) | to 50 | to 40+ | Fair | Small users, high pressure, intermittent |
+| Rotary screw | 1-100+ | 7-15 standard | Good | Most industrial, continuous duty |
+| Rotary vane | 1-30 | 7-10 | Fair | Light industrial |
+| Centrifugal | 50-1000+ | 3-15+ | Best (large) | Very large plants, steady demand |
+
+<Callout type="info" title="Rotary Screw Dominates" severity="info">
+Oil-injected rotary screw compressors are the standard for 90% of industrial applications (7-10 bar) from 5 to 500 kW. They are reliable, quiet, and reasonable efficiency. Variable-speed drive (VSD) models match output to demand.
+</Callout>
+
+## System Pressure
+
+| Application | Pressure (barg) |
+|---|---|
+| General industrial tools | 6-7 |
+| Instrument air | 5-7 |
+| Pneumatic controls | 3-5 |
+| Packaging, conveyor | 6 |
+| Blow-off/cleaning | 4-6 |
+| Process air (aeration) | 0.5-1 |
+| High-pressure systems | 20-40 |
+
+<Callout type="warning" title="Higher Pressure = More Cost" severity="warning">
+Every 1 bar increase in discharge pressure requires ~7% more input power. If you only need 6 bar and run at 8 bar, you're wasting ~14% energy. Set compressor discharge pressure to the minimum needed plus distribution losses (typically 0.5-1 bar).
+</Callout>
+
+## Air Treatment
+
+Compressed air from the compressor is hot, wet, and dirty. It requires treatment:
+
+### Contaminants Removed
+- **Water**: 10,000+ ppm in warm compressed air; causes corrosion, freezes, damages tools
+- **Oil**: Oil-flooded compressors carry 2-5 ppm oil vapor/aerosol
+- **Particulates**: Dirt, pipe scale, rust
+- **Oil vapor**: Hydrocarbon vapors
+
+### Treatment Components (in order after compressor)
+
+1. **Aftercooler**: Cools air to 30-40°C, condenses 70% of water
+2. **Moisture separator**: Removes bulk liquid water after aftercooler
+3. **Receiver tank**: Provides storage, reduces cycling, allows water dropout
+4. **Air dryer**: Removes remaining water vapor
+   - Refrigerated dryer: +3°C PDP (pressure dew point); general purpose; cheap
+   - Desiccant dryer: -40°C PDP; for instrument air, cold climates, critical applications
+   - Membrane dryer: For small flows; no power required
+5. **Filters**:
+   - Particulate filter (1 µm): general purpose
+   - Coalescing filter (0.01 µm): removes oil aerosols
+   - Activated carbon: removes oil vapor/odor
+<Callout type="tip" title="ISO 8573 Air Quality Classes">
+Define air quality: Class 1 (instrument air, no water, dust, oil), Class 4 (general purpose), Class 1.-.-.4 (most common for plant air). Always specify air quality class to match the most demanding end use.
+</Callout>
+
+## Distribution System Design
+
+### Pipe Sizing
+Size distribution piping for pressure drop < 0.1 bar per 100m, with total system drop < 0.5 bar:
+- Header/main velocity: 6-10 m/s
+- Branch/drop velocity: < 15 m/s max
+- Loop systems better than dead-end (more uniform pressure)
+
+### System Layout
+- Use a **ring main** (loop) around the plant for uniform pressure
+- Drop legs from top of main (not bottom, to avoid carrying condensate)
+- Pitch mains 1:100 toward drain points
+- Install drain traps at all low points
+- Provide isolation valves for maintenance without shutdown
+- Use aluminum, copper, or stainless steel pipe (no rust/scale); galvanized for lower budget
+- FRL (Filter-Regulator-Lubricator) at each tool/point of use
+
+<Calculator id="pipe-velocity-calculator" label="Check Compressed Air Velocity" />
+
+<Callout type="danger" title="Never Use PVC for Compressed Air!">
+PVC can shatter under pressure cycling and release sharp fragments. Use aluminum, copper, galvanized steel, black iron, or HDPE rated for compressed air. OSHA warns against PVC air piping.
+</Callout>
+
+## Receiver (Air Storage Tank)
+
+The receiver smooths demand spikes and reduces compressor cycling.
+
+<Formula>V<sub>receiver</sub> (m³) = C × Q × (P<sub>max</sub>/P<sub>min</sub> − 1) / (ΔP<sub>allowed</sub>)</Formula>
+
+Sizing rule of thumb: **10-15 liters per liter per second (L/s) of compressor capacity**. For example, a 3 m³/min (50 L/s) compressor → 500-750 liter receiver.
+
+Benefits:
+- Reduces compressor starts/stops
+- Handles sudden peak demands
+- Allows water condensation and settling
+- Provides reserve if compressor trips
+
+## Compressor Control Methods
+
+| Control | How It Works | Efficiency at Part Load |
+|---|---|---|
+| On/off | Starts/stops motor; for small units | Poor at variable load |
+| Load/unload | Intake valve modulates; runs at 15-35% power unloaded | Fair (with large receiver) |
+| Inlet modulation | Throttles intake; 40-100% capacity | Poor below 70% load |
+| Variable speed (VSD) | Motor speed varies with demand | Excellent (20-100% range) |
+
+<Callout type="success" title="VSD Saves 20-35% Energy">
+For plants with variable demand, variable-speed drive compressors save 20-35% energy over fixed-speed load/unload. They maintain tight pressure control (±0.1 bar) and reduce cycling.
+</Callout>
+
+## Leaks — The Silent Waste
+
+Compressed air leaks are the #1 energy waste in compressed air systems:
+- Typical plant loses 20-30% of produced air to leaks
+- A single 3mm hole at 7 bar leaks ~0.25 m³/min = ~2 kW wasted 24/7 = $2,000+/year
+- 1mm leak wastes ~$300/year
+
+### Leak Detection
+1. **Ultrasonic leak detector** — best method, hears turbulence
+2. **Soap solution** — for finding suspected leaks
+3. **Off-hours pressure decay test** — close all points of use, measure pressure drop
+4. **Compressor run-time analysis** — air use when production stopped = leak rate
+
+### Leak Reduction Program
+- Survey quarterly with ultrasonic detector
+- Tag and repair leaks; track cost savings
+- Use high-quality fittings, push-to-connect instead of compression
+- Install isolation valves at unused equipment
+- Replace worn hoses and couplings
+- Target < 5% leakage in well-maintained systems
+
+## Compressed Air Cost Calculation
+
+<Formula>Annual cost = (P<sub>motor</sub> × hours × rate) / η<sub>motor</sub> × (1 / η<sub>compressor,iso</sub>)</Formula>
+
+### Worked Example
+55 kW screw compressor, 8 bar, 6,000 hours/year, $0.10/kWh, full flow:
+
+Annual cost ≈ 55 × 6000 × 0.10 / (0.93 × 0.90) ≈ **$39,500/year**
+
+A 30% leak rate = ~$12,000/year wasted.
+
+<Calculator id="pump-energy-calculator" label="Energy Cost Calculator (same formula)" />
+
+## Heat Recovery
+
+Compressors reject ~80-90% of input energy as waste heat. Recover it for:
+- Space heating (ducted from compressor room)
+- Preheating boiler makeup water
+- Process water heating
+- Space heating warehouse areas
+
+Well-designed heat recovery can capture 50-80% of input energy as useful heat — effectively free heating.
+
+## Best Practices Summary
+
+1. Size for lowest possible pressure; don't over-pressure
+2. Use VSD compressors for variable demand
+3. Install adequately sized receiver (10-15 L per L/s)
+4. Dry air to appropriate dew point (refrigerated for general, desiccant for outdoor/ instruments)
+5. Use loop distribution with aluminum pipe
+6. Keep pressure drop < 0.5 bar total
+7. Implement quarterly leak detection and repair
+8. Recover waste heat for space/water heating
+9. Use pressure regulators at each workstation
+10. Shut off air to unused areas with solenoid valves
+
+<Callout type="warning" title="Overlooked: Artificial Demand">
+When system pressure is higher than needed, every unregulated point of use consumes more air than designed. A tool rated at 6 bar running at 8 bar uses ~25% more air. Reducing and regulating pressure at point of use saves this "artificial demand."
+</Callout>
+
+## Summary
+
+Compressed air is expensive — produce it at the lowest pressure that works, treat it to the right quality class, distribute it with minimal pressure drop, and fix leaks aggressively. Rotary screw VSD compressors are the standard for most industrial uses. Loop distribution piping with aluminum provides reliable service with low pressure drop. Leaks waste 20-30% of air in most plants — ultrasonic leak detection pays for itself in weeks. Heat recovery can offset compressor energy cost by 50-80%.

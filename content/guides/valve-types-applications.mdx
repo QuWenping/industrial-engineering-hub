@@ -1,0 +1,137 @@
+---
+title: "Valve Types and Applications"
+description: "Comprehensive guide to industrial valve types: gate, globe, ball, butterfly, check, diaphragm, and control valves — with selection criteria and applications."
+category: "Process Equipment"
+keywords: ["valve types", "gate valve", "ball valve", "butterfly valve", "control valve", "check valve"]
+updated: "2026-07-29"
+related:
+  - pressure-loss-calculator
+  - "/guides/understanding-pid-diagrams"
+  - "/guides/flange-rating-standards"
+---
+
+## Introduction to Industrial Valves
+
+Valves control flow in piping systems — they start, stop, throttle, regulate pressure, prevent backflow, or redirect flow. Selecting the correct valve type is critical for reliable system operation. This guide covers the major valve types used in industrial engineering.
+
+## Gate Valve
+
+**Function**: On/off isolation, not for throttling.
+
+- **Design**: Sliding wedge/disc moves perpendicular to flow
+- **Pressure drop**: Very low when fully open (full-bore design)
+- **Operation**: Multi-turn handwheel or actuator
+- **Applications**: Isolation of pump suction/discharge, process lines
+
+<Callout type="warning" title="Never Throttle Gate Valves">
+Using a gate valve partially open causes severe vibration, chattering, and erosion damage. They are for isolation only — use globe or ball valves for throttling.
+</Callout>
+
+## Globe Valve
+
+**Function**: Throttling/flow regulation.
+
+- **Design**: Disc moves against seat, flow changes direction through body
+- **Pressure drop**: High (flow path forces two 90° turns)
+- **Operation**: Multi-turn, provides precise flow control
+- **Applications**: Flow control, pressure regulation, bypass lines
+
+<Formula>C<sub>v</sub> = Q × √(G/ΔP) — sizing basis for control/globe valves</Formula>
+
+## Ball Valve
+
+**Function**: On/off isolation; limited throttling.
+
+- **Design**: Rotating ball with bore through center
+- **Pressure drop**: Very low (full port) or moderate (reduced port)
+- **Operation**: Quarter-turn (90°), fast acting
+- **Applications**: Clean fluids, gas, quick isolation; fire-safe designs available
+
+<Callout type="tip" title="Ball Valve Port Sizes">
+Full-port balls have bore equal to pipe ID — minimal pressure drop, used for pigging. Standard/reduced port is 1 size smaller — cheaper, acceptable for most applications.
+</Callout>
+
+## Butterfly Valve
+
+**Function**: Isolation and moderate throttling.
+
+- **Design**: Disc rotates on shaft in center of pipe
+- **Pressure drop**: Low to moderate (disc always in flow stream)
+- **Operation**: Quarter-turn, lightweight, compact
+- **Applications**: Large-diameter water lines, HVAC, low-pressure gas; wafer or lug style
+- **Limitations**: Not for high pressure/temperature; throttling near closure can cause cavitation
+
+## Check Valve (Non-Return)
+
+**Function**: Prevents reverse flow automatically.
+
+| Type | Mechanism | Best For |
+|---|---|---|
+| Swing check | Disc swings on hinge | Low velocity, horizontal lines |
+| Lift check | Piston/disc lifts with flow | High pressure, vertical up-flow |
+| Dual-plate (wafer) | Two plates on center spring | Compact, high velocity |
+| Ball check | Ball unseats with flow | Viscous/slurry fluids |
+
+<Callout type="danger" title="Check Valve Slamming">
+Swing checks can slam shut on flow reversal, causing water hammer. Use spring-loaded or damped designs in systems with rapid flow changes (pump discharge lines).
+</Callout>
+
+## Diaphragm Valve
+
+**Function**: On/off and throttling for corrosive/slurry service.
+
+- **Design**: Flexible diaphragm seals flow path; no packing
+- **Applications**: Corrosive chemicals, slurries, food/pharma (sanitary)
+- **Limitations**: Temperature limited by elastomer (typically &lt;150°C)
+
+## Control Valve
+
+**Function**: Automatic flow/pressure/level/temperature regulation.
+
+Components:
+1. **Valve body** (globe, ball, butterfly, or angle)
+2. **Actuator** (pneumatic spring-diaphragm, electric, or hydraulic)
+3. **Positioner** (ensures valve matches controller signal)
+4. **Accessories** (I/P converter, solenoid, limit switches)
+
+<Calculator id="pressure-loss-calculator" label="Calculate Valve Pressure Drop" />
+
+### Valve Flow Characteristics
+
+| Characteristic | Flow vs Lift | Best Application |
+|---|---|---|
+| Linear | Proportional | Level control, linear systems |
+| Equal percentage | Exponential | Pressure control, varying ΔP |
+| Quick opening | Most flow early | On/off, relief |
+
+## Pressure Relief / Safety Valves
+
+- **PSV (Pressure Safety Valve)**: Spring-loaded, opens at set pressure — for gases/steam
+- **PRV (Pressure Relief Valve)**: Opens proportionally — for liquids
+- **Rupture disc**: One-time burst device for overpressure protection
+
+## Valve Selection Decision Guide
+
+| Need | Best Valve |
+|---|---|
+| Isolation only (low ΔP) | Gate or ball valve |
+| Isolation (quick, 1/4 turn) | Ball valve |
+| Flow throttling | Globe or control valve |
+| Large diameter (>300mm), low pressure | Butterfly |
+| Prevent reverse flow | Check valve |
+| Corrosive/slurry/solids | Diaphragm or pinch valve |
+| High pressure (>100 bar) | Gate, globe, or needle |
+| Sanitary/food | Diaphragm or ball (tri-clamp) |
+
+## Materials of Construction
+
+| Component | Common Materials |
+|---|---|
+| Body | Cast iron, cast steel (WCB), 316SS, bronze, Alloy 20, Hastelloy |
+| Trim (disc/seat) | 316SS, 410SS, Stellite (for erosive service) |
+| Seals/gaskets | Buna-N, EPDM, Viton, PTFE, graphite |
+| Stem | 316SS, 17-4PH, Monel |
+
+## Summary
+
+Gate for isolation, globe for throttling, ball for quick quarter-turn isolation, butterfly for large low-pressure lines, check for backflow prevention, control valves for automatic regulation. Match valve type to function, not just pipe size. Always verify pressure class, material compatibility, and end connections against the piping specification.

@@ -1,0 +1,210 @@
+---
+title: "Corrosion Prevention in Industrial Systems"
+description: "Comprehensive guide to corrosion types, prevention methods, material selection, coatings, cathodic protection, and corrosion monitoring in industrial plants."
+category: "Materials"
+keywords: ["corrosion prevention", "cathodic protection", "corrosion types", "rust prevention", "corrosion allowance", "CUI"]
+updated: "2026-07-29"
+related:
+  - "/guides/pipe-material-selection"
+  - "/guides/steel-material-properties"
+  - "/guides/insulation-selection-guide"
+---
+
+## The Cost of Corrosion
+
+Corrosion costs the global economy an estimated **3-4% of GDP annually** — over $2.5 trillion worldwide. In industrial plants, corrosion causes leaks, equipment failure, unplanned shutdowns, safety incidents, and product contamination. The good news: 25-30% of corrosion is preventable with proper design and materials selection.
+
+## Types of Corrosion
+
+### Uniform (General) Corrosion
+Even, predictable metal loss across a surface (rusting of steel). Predictable and manageable with corrosion allowance. Rate expressed in mm/year or mils/year (mpy).
+
+Typical rates:
+- Steel in atmosphere: 0.05-0.2 mm/year
+- Steel in seawater: 0.1-0.3 mm/year
+- Steel in soil: 0.02-0.1 mm/year
+- Stainless steel in water: &lt;0.002 mm/year
+
+### Galvanic Corrosion
+Occurs when two dissimilar metals are in electrical contact in an electrolyte (water). The more active metal (anode) corrodes faster; the more noble metal (cathode) is protected.
+
+Galvanic series in seawater (most active first → noble):
+1. Magnesium
+2. Zinc
+3. Aluminum
+4. Carbon steel
+5. Cast iron
+6. Lead
+7. Tin
+8. Copper, brass, bronze
+9. Stainless steel (passive)
+10. Silver
+11. Gold/platinum
+
+<Formula>Prevent galvanic corrosion by: (1) choosing close metals in series; (2) insulating dissimilar metals; (3) using area ratio favorable (small anode, large cathode = worst case)</Formula>
+
+<Callout type="warning" title="Worst Galvanic Couple">
+Never connect a small anodic component to a large cathodic one (e.g., steel bolts on a stainless steel tank). The steel bolts corrode rapidly (high current density on small anode). Instead use stainless bolts on steel (large steel anode, small stainless cathode is safe).
+</Callout>
+
+### Pitting Corrosion
+Localized attack producing deep pits, most common on passive metals (stainless steel, aluminum) in chloride environments. Pits penetrate rapidly while overall corrosion is minimal. Very dangerous — can cause perforation with minimal metal loss.
+
+Chloride ions break down passive films. Common sources: seawater, brine, bleach, deicing salts.
+
+Prevention: use higher-alloy materials (316L < duplex < 6Mo < titanium), keep chloride levels low, maintain flow.
+
+### Crevice Corrosion
+Occurs in shielded areas (gaskets, bolt holes, under deposits, lap joints) where oxygen is depleted and chemistry becomes aggressive. Similar mechanism to pitting but in stagnant gaps.
+
+Prevention: seal crevices, use welded joints instead of bolted, avoid horizontal surfaces with debris buildup, design for drainage.
+
+### Stress Corrosion Cracking (SCC)
+Cracking from combined tensile stress and corrosive environment. Specific combinations are dangerous:
+
+| Alloy / Environment | SCC Type |
+|---|---|
+| Carbon steel / caustic | Caustic embrittlement |
+| Carbon steel / nitrates | Nitrate cracking |
+| 304/316 SS / chlorides | Chloride SCC (above 60°C) |
+| Stainless / high-purity water | (Less common at low temp) |
+| Brass / ammonia | Season cracking |
+| Carbon steel / H₂S | Sulfide stress cracking (SSC) — sour service |
+
+Prevention: reduce stress (PWHT, design), use resistant materials, control environment.
+
+<Callout type="danger" title="Chloride SCC on Stainless Steel" severity="high">
+304/316 stainless steel fails by chloride SCC above ~60°C even with ppm-level chlorides. Thermal insulation that gets wet with chlorides (rainwater leaching from insulation, coastal areas) causes CUI cracking. Use 316L only below 60°C; above that use duplex or coated carbon steel.
+</Callout>
+
+### Intergranular Corrosion
+Attack at grain boundaries — occurs in unstabilized stainless steel after 425-870°C exposure (welding heat-affected zone). Chromium carbide precipitation depletes chromium at grain boundaries.
+
+Prevention: use low-carbon grades (304L, 316L) or stabilized grades (321 with Ti, 347 with Nb).
+
+### Erosion-Corrosion
+Accelerated attack from high fluid velocity, turbulence, or entrained particles wearing away protective films. Common at elbows, tees, pump impellers, and downstream of constrictions.
+
+Prevention: reduce velocity, use larger-radius bends, use harder materials, limit solids.
+
+### Microbially Influenced Corrosion (MIC)
+Bacteria accelerate corrosion by creating local chemistry:
+- **SRB (sulfate-reducing bacteria)**: produce H₂S → pitting, sulfide stress cracking
+- **Iron-oxidizing bacteria**: create tubercles → under-deposit corrosion
+- Common in stagnant water, dead legs, cooling towers
+
+Prevention: biocides, drainage, avoid stagnant zones, pig pipelines.
+
+### Corrosion Under Insulation (CUI)
+Water trapped between insulation and pipe causes hidden corrosion. The #1 maintenance issue in refineries/petrochemical plants:
+- Temperature range 50-150°C (condensation cycling) is worst
+- Mineral wool absorbs and holds water
+- Inspection is difficult (must remove cladding)
+
+Prevention:
+1. Use non-absorptive insulation (cellular glass) for high-risk services
+2. Seal jacket seams thoroughly
+3. Apply protective coating before insulating
+4. Design insulation systems to shed water
+5. Implement inspection program (thermography, profile thickness testing)
+
+<Callout type="tip" title="CUI Inspection Intervals">
+API 581 RBI (Risk-Based Inspection) recommends inspection every 5-10 years depending on temperature, insulation type, and environment. High-risk areas: carbon steel at 60-120°C operating temperature outdoors in coastal/rainy environments.
+</Callout>
+
+## Prevention Methods
+
+### 1. Material Selection
+
+| Environment | Recommended Material |
+|---|---|
+| Fresh water, ambient | Carbon steel + coating |
+| Seawater | 90/10 CuNi, 2205 duplex, FRP, titanium |
+| Acids (dilute) | 316L, Alloy 20, rubber lining |
+| Strong acids | Hastelloy, PTFE-lined |
+| Caustic (NaOH) | Carbon steel (low temp), nickel (high temp) |
+| Chloride, high temp | 2205 duplex, 254 SMO, titanium |
+| H₂S/sour service | HIC-resistant carbon steel, duplex |
+| High temperature | Chrome-moly, Incoloy, 316H |
+
+### 2. Corrosion Allowance
+
+Add extra wall thickness beyond design stress requirements:
+
+| Service | Typical Corrosion Allowance (mm) |
+|---|---|
+| Clean process (steam, air, oil) | 1.0-1.5 |
+| Cooling water (treated) | 1.5-2.0 |
+| Raw/untreated water | 2.0-3.0 |
+| Seawater | 3.0+ |
+| Aggressive chemicals | 3.0-6.0 |
+| High-temperature oxidation | 1.0-3.0 |
+
+### 3. Protective Coatings
+
+| Coating | Best For | Life Expectancy |
+|---|---|---|
+| Epoxy (polyamine) | Steel immersed, buried | 10-20 years |
+| Polyurethane | Atmospheric/UV exposure | 10-15 years |
+| Zinc-rich primer + topcoat | Structural steel | 10-15 years |
+| Fusion-bonded epoxy (FBE) | Buried pipe external | 30-50 years |
+| Coal tar epoxy | Buried, immersed | 20-40 years |
+| Glass flake epoxy | Marine, severe immersion | 15-25 years |
+| Hot-dip galvanizing | Structural, outdoor | 20-50 years |
+
+Surface preparation is 80% of coating performance — abrasive blast to Sa 2.5 (near-white metal) for immersion service.
+
+### 4. Cathodic Protection (CP)
+
+CP makes the structure the cathode of an electrochemical cell:
+
+**Galvanic (sacrificial anode) CP**:
+- Attach zinc, magnesium, or aluminum anodes to steel
+- Anode corrodes instead of steel (no external power)
+- Best for small structures, short pipelines, localized protection
+- Anode life: 5-20 years depending on anode size/current
+
+**Impressed Current CP (ICCP)**:
+- External DC power supply drives current from inert anodes (mixed metal oxide, graphite)
+- For large pipelines, tank bottoms, marine structures
+- Requires monitoring and power
+
+Typical CP current requirements:
+- Bare steel in soil: 10-30 mA/m²
+- Coated steel in soil: 0.05-0.5 mA/m² (coatings reduce current 100×)
+- Steel in seawater: 50-150 mA/m²
+
+### 5. Chemical Treatment (Inhibitors)
+
+Add chemicals to process fluids to reduce corrosion:
+- **Oxygen scavengers** (sulfite, hydrazine) for boilers
+- **Passivators** (chromate, nitrite, molybdate) — form protective films
+- **Vapor corrosion inhibitors** (VCI) for closed spaces during storage
+- **Biocides** (chlorine, bromine) for cooling water MIC
+- **Neutralizing amines** in steam condensate systems
+
+### 6. Design Practices
+
+1. **Avoid crevices**: use continuous welds, seal lap joints
+2. **Provide drainage**: no horizontal surfaces that hold liquid
+3. **Avoid dissimilar metal contacts**: use insulating gaskets
+4. **Allow for thermal expansion**: reduce stress SCC
+5. **Avoid dead legs**: ensure continuous flow, drain during shutdown
+6. **Access for inspection/coating**: don't box in members
+7. **Specify coatings by performance standard**: NACE/SSPC specs
+
+## Corrosion Monitoring
+
+| Method | Measures |
+|---|---|
+| **Coupons** (weight loss) | Average corrosion rate over 30-90 days |
+| **Electrical resistance (ER) probes** | Real-time metal loss |
+| **Linear polarization resistance (LPR)** | Instantaneous rate in conductive fluids |
+| **Ultrasonic thickness (UT)** | Remaining wall at specific points |
+| **Intelligent pigging** | Full pipeline wall thickness mapping |
+| **Hydrogen probes** | H₂ permeation (sour service corrosion) |
+| **Corrosion potential measurement** | CP system effectiveness |
+
+## Summary
+
+Corrosion prevention starts at design: select compatible materials, add corrosion allowance, specify protective coatings, and design for drainage and accessibility. Galvanic, pitting, SCC, and CUI cause the most industrial failures. Cathodic protection (sacrificial or impressed current) protects buried and submerged structures. Coatings protect atmospheric and immersed surfaces. For high-temperature chloride service, avoid standard 304/316 stainless — use duplex or nickel alloys. Implement a corrosion monitoring program using coupons, UT, and electrical resistance probes to track rates and extend equipment life.

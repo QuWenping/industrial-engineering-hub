@@ -1,0 +1,103 @@
+---
+title: "Pump Selection Guide for Industrial Systems"
+description: "Step-by-step pump selection guide covering centrifugal vs positive displacement, system curves, BEP, NPSH margin, and sizing procedures for industrial applications."
+category: "Pump Engineering"
+keywords: ["pump selection", "centrifugal pump", "positive displacement", "npsh", "bep", "system curve"]
+updated: "2026-07-29"
+related:
+  - pump-power-calculator
+  - npsh-calculator
+  - pump-sizing-calculator
+  - "/tools/pump-efficiency-calculator"
+---
+
+## Introduction
+
+Correct pump selection is the difference between a system that runs reliably for 20 years and one that cavitates, wears seals, and burns kilowatts. This guide walks through the practical steps engineers use to select a pump for an industrial service — from defining the duty point to verifying NPSH margin and Best Efficiency Point (BEP) operation.
+
+<Callout type="info" title="The three questions">
+Before selecting any pump, answer three questions: (1) What is the fluid (density, viscosity, temperature, solids, corrosivity)? (2) What is the duty (flow, head, and how they vary)? (3) What is the available NPSH at the pump inlet?
+</Callout>
+
+## Centrifugal vs Positive Displacement
+
+The first decision is pump family. The table below summarizes typical application zones.
+
+| Attribute | Centrifugal | Positive Displacement |
+|---|---|---|
+| Flow characteristic | Varies with head | Nearly constant with head |
+| Best flow range | 5 – 100,000 GPM | 0.1 – 1,000 GPM |
+| Best head range | 10 – 1,000 ft | Up to 50,000 psi |
+| Viscosity limit | ~500 cP practical | Handles 1,000,000+ cP |
+| Shear on fluid | High | Low (gentle) |
+| Capital cost | Lower | Higher |
+| Efficiency | 40 – 85% | 70 – 90% |
+
+Rule of thumb: **centrifugal for low-viscosity, high-flow, moderate-head** duties (water, hydrocarbons, chemicals). **PD for high viscosity, metering, or high pressure** (oils, polymers, dosing, hydraulics).
+
+## The System Curve
+
+Any pump must be matched to the system it feeds. The system curve is the head the piping requires as a function of flow:
+
+<Formula>H<sub>sys</sub> = H<sub>static</sub> + K × Q²</Formula>
+
+Where H<sub>static</sub> is the elevation plus pressure difference between suction and discharge vessels, and K × Q² captures friction losses (pipe, fittings, exchangers, control valves). The pump operating point is the intersection of the pump curve and system curve.
+
+<Callout type="warning" title="Avoid running off-curve">
+Running a centrifugal pump far from BEP causes recirculation, high radial loads, shortened bearing life, and vibration. Design so the duty point falls between 80% and 110% of BEP flow.
+</Callout>
+
+## Best Efficiency Point (BEP)
+
+Every centrifugal pump curve has a peak efficiency at one flow — the BEP. Select the impeller size so the design duty is at 90-100% of BEP. Common preferred operating region (POR) is 70-120% of BEP; allowable operating region (AOR) is defined by the manufacturer, typically 40-125%.
+
+<Calculator id="pump-power-calculator" label="Try the Pump Power Calculator" />
+
+## Sizing Steps
+
+1. **Define worst-case duty.** Determine peak flow and maximum head, plus the normal duty. Do not oversize based on peak only — that pushes normal operation far left of BEP.
+2. **Draw the system curve.** Compute static head plus friction losses at several flows.
+3. **Add margin.** Add 5-10% flow margin and 5-10% head margin — not more, or the pump will operate below BEP.
+4. **Compute hydraulic power:**
+   <Formula>P<sub>hyd</sub> (kW) = ρ × g × Q × H / 1000</Formula>
+   With ρ in kg/m³, Q in m³/s, H in m.
+5. **Divide by efficiency** to get shaft power: P<sub>shaft</sub> = P<sub>hyd</sub> / η.
+6. **Verify NPSH margin.** NPSHa must exceed NPSHr by at least 1 m (3 ft), more for critical or hydrocarbon services.
+7. **Check motor sizing.** Select motor at ≥ 110% of shaft power at the end-of-curve condition (runout).
+
+## NPSH — The Silent Killer
+
+Cavitation destroys impellers when the local pressure drops below vapor pressure. Available NPSH is:
+
+<Formula>NPSH<sub>a</sub> = (P<sub>s</sub> − P<sub>v</sub>)/(ρg) + z<sub>s</sub> − h<sub>f,s</sub></Formula>
+
+Where P<sub>s</sub> is suction vessel pressure, P<sub>v</sub> is vapor pressure at pumping temperature, z<sub>s</sub> is the static suction head (positive if flooded), and h<sub>f,s</sub> is the friction loss in suction piping.
+
+<Calculator id="npsh-calculator" label="Try the NPSH Calculator" />
+
+## Worked Example
+
+**Duty:** 200 m³/h of cooling water at 25°C, from an open tank (atmospheric) 3 m above the pump, through 20 m of DN150 steel pipe with 6 elbows, to a heat exchanger at 4 bar gauge, then back to the tank. Discharge line friction: 5 m water column.
+
+1. Static head: 40 m (4 bar) between suction and discharge sides.
+2. Friction: assume 8 m of water total.
+3. Design head: 40 + 8 = 48 m; add 10% margin → 53 m.
+4. Design flow: 200 × 1.05 = 210 m³/h.
+5. Hydraulic power: 1000 × 9.81 × (210/3600) × 53 / 1000 = 30.3 kW.
+6. Assume η = 75% → shaft power ≈ 40 kW. Choose a 45 kW motor.
+7. NPSHa: 10.3 (atm) − 0.32 (P<sub>v</sub> at 25°C) + 3 (flooded) − 1.0 (suction friction) = **12.0 m**. Verify pump NPSHr < 11 m at duty flow.
+
+<Calculator id="pump-sizing-calculator" label="Try the Pump Sizing Calculator" />
+
+## Common Selection Mistakes
+
+<Callout type="danger" title="Watch for these">
+- Sizing for maximum flow without a VFD — pumps end up running throttled far below BEP.
+- Ignoring end-of-curve motor loading — motors trip on trip-out flow conditions.
+- Under-margining NPSH — pumps cavitate on hot service or startup transients.
+- Using water performance curves for viscous fluids — apply the Hydraulic Institute viscosity correction.
+</Callout>
+
+## Summary
+
+Good pump selection begins with a clear duty definition, a validated system curve, and a pump that operates near its BEP with adequate NPSH margin. Follow the six sizing steps, always cross-check with the manufacturer's certified curve, and specify a motor that will not trip under end-of-curve conditions. Use the linked calculators to verify each stage of your calculation.

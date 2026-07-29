@@ -1,0 +1,174 @@
+---
+title: "Bolt Torque Calculation Guide"
+description: "Calculate bolt tightening torque, preload, and clamping force using standard formulas including friction coefficients, torque-tension relationships, and bolt grades."
+category: "Mechanical Engineering"
+keywords: ["bolt torque", "bolt preload", "torque calculation", "bolt tightening", "clamping force"]
+updated: "2026-07-29"
+related:
+  - bolt-torque-calculator
+  - "/guides/welding-symbols-basics"
+  - "/guides/flange-rating-standards"
+---
+
+## Why Torque Matters
+
+Proper bolt tightening creates sufficient preload (clamping force) to hold joints together under operating loads. Too little torque — joint leaks or separates. Too much torque — bolt yields, strips threads, or fractures.
+
+The relationship between torque and preload depends on thread friction, under-head friction, thread pitch, and bolt diameter.
+
+## Torque-Tension Relationship
+
+The standard short-form equation:
+
+<Formula>T = K × D × F</Formula>
+
+Where:
+- T = torque (N·m)
+- K = nut factor (dimensionless, accounts for friction)
+- D = nominal bolt diameter (m or mm — use consistent units)
+- F = preload/bolt tension (N or kN)
+
+<Callout type="info" title="The Nut Factor K" severity="info">
+The nut factor K is the key variable. It lumps together thread friction, collar friction, and the pitch torque component. Typical values:
+- K = 0.20 for lubricated or coated bolts
+- K = 0.30 for dry steel-on-steel (most common reference value)
+- K = 0.15-0.18 for PTFE-coated or moly-lubed
+- K = 0.35-0.45 for hot-dip galvanized (high friction)
+Always use K consistent with actual lubrication conditions.
+</Callout>
+
+## Detailed Torque Formula (Long Form)
+
+For more accuracy, break torque into three components:
+
+<Formula>T = T<sub>pitch</sub> + T<sub>thread</sub> + T<sub>collar</sub></Formula>
+
+<Formula>T = F × [P/(2π) + (µ<sub>t</sub> × r<sub>t</sub>)/cos(α/2) + µ<sub>c</sub> × r<sub>c</sub>]</Formula>
+
+Where:
+- P = thread pitch (mm/rev)
+- µ<sub>t</sub> = thread coefficient of friction (0.10-0.20 for lubricated; 0.15-0.25 dry)
+- r<sub>t</sub> = effective thread radius ≈ (D − P/2)/2
+- α/2 = half thread angle (30° for standard 60° threads)
+- µ<sub>c</sub> = collar/nut face friction coefficient
+- r<sub>c</sub> = mean collar radius ≈ 1.25 × D/2 for standard hex nuts
+
+For 60° threads (UNC/UNF/ISO metric):
+cos(30°) = 0.866
+
+<Calculator id="bolt-torque-calculator" label="Bolt Torque Calculator" />
+
+## Bolt Grades and Strength
+
+| Metric Grade | Property Class | Proof Strength (MPa) | Ultimate (MPa) | SAE/Imperial |
+|---|---|---|---|---|
+| Low carbon | 4.6 | 225 | 400 | Grade 2 |
+| Medium carbon | 5.8 | 420 | 520 | Grade 2 (higher) |
+| High strength | 8.8 | 600 | 800 | Grade 5 |
+| Alloy steel | 10.9 | 900 | 1000 | Grade 8 |
+| High alloy | 12.9 | 1080 | 1200 | Grade 8 (higher) |
+
+## Preload Target
+
+Typical preload is **75% of bolt proof load** for permanent connections:
+
+<Formula>F<sub>preload</sub> = 0.75 × S<sub>proof</sub> × A<sub>tensile</sub></Formula>
+
+Tensile stress area for metric bolts (ISO 898-1):
+
+| Diameter | Pitch | Stress Area (mm²) |
+|---|---|---|
+| M8 | 1.25 | 39.7 |
+| M10 | 1.5 | 64.1 |
+| M12 | 1.75 | 92.1 |
+| M16 | 2.0 | 167 |
+| M20 | 2.5 | 258 |
+| M24 | 3.0 | 369 |
+| M30 | 3.5 | 580 |
+| M36 | 4.0 | 840 |
+
+## Standard Torque Values (Metric, K=0.20 Lubricated)
+
+| Bolt | 8.8 (N·m) | 10.9 (N·m) | 12.9 (N·m) |
+|---|---|---|---|
+| M8 | 25 | 37 | 44 |
+| M10 | 49 | 73 | 88 |
+| M12 | 85 | 127 | 152 |
+| M16 | 210 | 315 | 378 |
+| M20 | 425 | 630 | 755 |
+| M24 | 725 | 1100 | 1320 |
+| M30 | 1450 | 2100 | 2520 |
+| M36 | 2530 | 3780 | 4540 |
+
+<Callout type="warning" title="Lubrication Drastically Changes Torque">
+The same bolt torqued to 300 N·m with K=0.20 (lubricated) produces ~50% MORE preload than with K=0.30 (dry). If you use lubricated torque values on dry bolts, you'll UNDER-tighten. If you use dry torque on lubricated bolts, you'll OVER-tighten and may break bolts. ALWAYS specify and control lubrication condition.
+</Callout>
+
+## Worked Example — M20 Grade 8.8
+
+- M20 bolt, stress area A<sub>s</sub> = 258 mm²
+- 8.8 grade proof strength = 600 MPa
+- Target F = 0.75 × 600 × 258 = 116,100 N = 116 kN
+- Lubricated (K = 0.20): T = 0.20 × 0.020 × 116,000 = **464 N·m**
+- Dry (K = 0.30): T = 0.30 × 0.020 × 116,000 = **696 N·m**
+
+Same bolt, same preload, different torque values depending on K.
+
+## Tightening Methods
+
+| Method | Accuracy | Cost | Applications |
+|---|---|---|---|
+| Torque wrench | ±25-35% | Low | General purpose |
+| Calibrated torque wrench | ±15-25% | Medium | Most industrial |
+| Turn-of-nut (angle) | ±10-15% | Low | Structural bolts |
+| Hydraulic tensioner | ±5-10% | High | Critical flanges, large bolts |
+| Bolt elongation (ultrasonic) | ±1-5% | Very high | Turbines, pressure vessels |
+| Direct tension indicator (DTI) | ±10% | Medium | Structural steel |
+
+<Callout type="tip" title="Why Such Poor Accuracy?">
+Simple torque control has ±25-35% scatter because friction accounts for 80-90% of the torque applied. Only 10-20% actually stretches the bolt. Small changes in friction (rust, lubrication, surface finish) cause large preload variations. Critical joints use hydraulic tensioning or ultrasonic measurement.
+</Callout>
+
+## Tightening Sequence (Flanges)
+
+For flange joints, tighten bolts in a crisscross (star) pattern in at least three passes:
+1. First pass: 30% of target torque
+2. Second pass: 60% of target torque
+3. Third pass: 100% of target torque
+4. Optional final pass: clockwise around flange at 100%
+
+This ensures even gasket compression and prevents flange bowing or leaks. Follow ASME PCC-1 guidelines.
+
+## Bolt Torque for Pressure Vessels and Flanges
+
+For ASME B16.5 flange joints per ASME PCC-1:
+1. Calculate required gasket seating stress (from gasket manufacturer)
+2. Determine total bolt load to seat gasket and resist internal pressure
+3. Select torque that achieves target bolt stress
+4. Apply in crisscross pattern per PCC-1
+
+For spiral-wound gaskets: target gasket stress ≈ 50-70 MPa (7-10 ksi), which sets the bolt load.
+
+## Bolt Relaxation and Re-Torquing
+
+- **Embedding**: Bolts and gaskets relax in the first 24 hours; re-torque hot bolts after heat cycle
+- **Gasket creep**: Spiral wound and compressed fiber gaskets relax; some specs require re-torquing
+- **Thermal effects**: Different thermal expansion between bolt and flange changes preload
+
+<Callout type="info" title="Hot Bolting">
+For high-temperature flanges (steam, process), it is common practice to: torque at ambient, heat to operating temperature, shut down and re-torque after cooling to address relaxation. Some specs require this re-torque cycle.
+</Callout>
+
+## Common Mistakes
+
+1. Using same torque value regardless of lubrication
+2. Not calibrating torque wrenches (should be calibrated annually)
+3. Tightening in a circle instead of crisscross pattern
+4. Using impact wrenches for final torque (no control, causes overload)
+5. Ignoring bolt material differences (Grade 5 vs Grade 8 torque values differ)
+6. Overlooking thread condition (dirty/rusty threads = high friction = low preload)
+7. Mixing bolt grades in same joint (uneven load sharing)
+
+## Summary
+
+Use T = K × D × F for bolt torque, with K = 0.20 lubricated or K = 0.30 dry. Target preload at 75% of proof load. Standard metric torque tables assume K = 0.20 — adjust for actual lubrication. Friction dominates (80-90% of torque), so control surface condition and lubrication. Always tighten in crisscross pattern per ASME PCC-1 for flanges. For critical joints (pressure vessels, large flanges), use hydraulic tensioners or ultrasonic measurement instead of torque-only control.

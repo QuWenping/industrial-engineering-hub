@@ -1,0 +1,144 @@
+---
+title: "Flange Rating Standards"
+description: "Understand ANSI/ASME B16.5 flange classes, pressure-temperature ratings, facing types, and gasket selection for industrial piping."
+category: "Mechanical Engineering"
+keywords: ["flange rating", "ASME B16.5", "flange class", "ANSI flange", "gasket", "flange facing"]
+updated: "2026-07-29"
+related:
+  - pressure-loss-calculator
+  - "/guides/pipe-material-selection"
+  - "/guides/understanding-pid-diagrams"
+---
+
+## Flange Standards Overview
+
+Pipe flanges provide a removable, pressure-tight joint between piping components. The primary standard is **ASME B16.5** (formerly ANSI B16.5) for NPS ½" through 24", and **ASME B16.47** for larger diameters (26"–60").
+
+This guide covers B16.5, the most common standard in oil/gas, chemical, and power industries worldwide.
+
+## Pressure Classes
+
+Flanges are designated by "class" (formerly called "pound rating"):
+
+| Class | Approximate Working Pressure (psi) at Ambient Temp |
+|---|---|
+| 150# | 290 psi (~20 bar) |
+| 300# | 740 psi (~50 bar) |
+| 400# | 1000 psi (~69 bar) |
+| 600# | 1480 psi (~100 bar) |
+| 900# | 2220 psi (~153 bar) |
+| 1500# | 3705 psi (~255 bar) |
+| 2500# | 6170 psi (~425 bar) |
+
+<Callout type="warning" title="Ratings Are Temperature-Dependent">
+These are NOT "pressure at temperature" values! Ratings decrease significantly as temperature increases. A Class 150 A105 flange is rated 290 psi at 38°C but only 100 psi at 425°C. Always consult the B16.5 pressure-temperature tables for your design conditions.
+</Callout>
+
+### Pressure-Temperature Ratings for A-105 (Carbon Steel) Flanges
+
+| Temp (°C) | Class 150 (bar) | Class 300 (bar) | Class 600 (bar) | Class 900 (bar) |
+|---|---|---|---|---|
+| 38 | 19.6 | 51.1 | 102.1 | 153.2 |
+| 100 | 17.7 | 46.6 | 93.2 | 139.8 |
+| 200 | 13.8 | 43.8 | 87.6 | 131.3 |
+| 300 | 9.3 | 40.2 | 80.3 | 120.5 |
+| 400 | 6.9 | 33.9 | 67.7 | 101.6 |
+| 425 | 5.9 | 27.7 | 55.5 | 83.2 |
+
+Note how Class 150 drops to just 6.9 bar at 400°C — this surprises many engineers.
+
+<Callout type="info" title="Material Groups">
+Ratings vary by material (Group 1.1 through 1.18). Carbon steel (A-105) is Group 1.1; stainless (304/316) is Group 2.2; chrome-moly is different groups. Each material group has its own pressure-temperature table.
+</Callout>
+
+## Flange Facing Types
+
+The flange face determines gasket type and sealing reliability.
+
+| Facing Type | Description | Application |
+|---|---|---|
+| **Raised Face (RF)** | 1.6mm (150-300#) or 6.4mm (400-2500#) raised lip; serrated finish | Most common; general process service |
+| **Flat Face (FF)** | Full face flat; no raised lip | Cast iron flanges, low-pressure; matches CI valves |
+| **Ring Type Joint (RTJ)** | Groove cut into face holds metal ring gasket | High pressure/temperature; critical service |
+| **Male-Female / Tongue-Groove** | Interlocking faces; gasket confined | Heat exchangers, special applications |
+
+<Callout type="danger" title="Never Mix RF and FF Flanges!">
+Connecting a raised-face flange to a flat-face flange concentrates the bolt load on the raised ring area and can crack cast iron or create leaks. Use matching facing types on both sides.
+</Callout>
+
+## Flange Face Finishes
+
+The surface roughness affects gasket sealing:
+- **Serrated (phonographic)**: Standard; 125-500 µin Ra; holds soft gaskets
+- **Smooth (cold water)**: 63-125 µin Ra; for spiral-wound and RTJ gaskets
+- **RTJ groove**: Machined to very fine finish for metal ring gasket
+
+## Common Flange Types
+
+| Type | Description |
+|---|---|
+| **Weld Neck (WN)** | Long tapered hub, butt-welded to pipe; best for high pressure, cyclic service; full penetration weld |
+| **Slip-On (SO)** | Slips over pipe, fillet-welded inside and out; cheaper; two welds |
+| **Socket Weld (SW)** | Pipe inserts into socket, fillet-welded; small sizes only (&lt;4"); high pressure |
+| **Threaded (NPT)** | Screws onto pipe; no welding; for small sizes, low pressure, galvanized |
+| **Blind (BL)** | Blank flange for closing ends; no bore |
+| **Lap Joint (LJ)** | Loose flange with stub end; for easy alignment; expensive alloys (use carbon steel flange) |
+| **Orifice** | WN or SO with extra tappings for flow measurement |
+
+## Gasket Selection
+
+The gasket fills flange face imperfections to create a seal. Selection depends on facing type, pressure, temperature, and fluid.
+
+### Gasket Types
+
+| Gasket Type | Face Type | Pressure Class | Temp Range | Best For |
+|---|---|---|---|---|
+| Compressed non-asbestos (CNA) | RF | 150-300# | -50 to 400°C | General water/oil service |
+| Spiral-wound (SWG) | RF | All classes | -200 to 600°C | Process piping, steam, chemical |
+| Ring Type Joint (RTJ) | RTJ | 600#+ | to 700°C+ | High pressure/temp, critical service |
+| Double-jacketed (DJ) | RF | All classes | to 650°C | Heat exchangers |
+| PTFE envelope | RF/FF | Low-moderate | to 200°C | Chemical, food/pharma |
+| Rubber (EPDM, Buna-N) | FF | 150# only | -40 to 120°C | Water, low temp |
+
+<Callout type="warning" title="Asbestos Gaskets Are Banned">
+Compressed asbestos gaskets were standard for decades but are now banned in most countries due to health hazards. Use compressed non-asbestos (CNA) with aramid fiber or other modern substitutes.
+</Callout>
+
+### Spiral-Wound Gasket Details
+
+Most common in process piping (300# and above):
+- V-shaped metal strip wound with filler (graphite, PTFE, or mica)
+- Color-coded outer ring: grey (CS), yellow (304), green (316)
+- Inner ring required on RTJ and for high vacuum
+- Requires controlled bolt torque
+
+## Bolt Torque
+
+Proper bolt tightening is critical for leak-free flange joints:
+
+1. Use correct bolt material (B7 studs most common; B8 for stainless, B16 for high temp)
+2. Use lubricant (anti-seize) on bolt threads
+3. Tighten in crisscross (star) pattern in 3 passes: 30%, 60%, 100% of target torque
+4. Target gasket stress depends on gasket type (see ASME PCC-1 guidelines)
+5. Consider hot-bolting for high-temperature services after heat-up
+
+<Formula>T = K × D × F / 1000 (N·m) — where K=nut factor (~0.2), D=bolt diameter (mm), F=bolt force (kN)</Formula>
+
+<Callout type="tip" title="ASME PCC-1 is the Standard">
+ASME PCC-1 "Guidelines for Pressure Boundary Bolted Flange Joint Assembly" provides comprehensive procedures for flange assembly, bolt torque, and quality. It is the industry standard for achieving leak-free joints.
+</Callout>
+
+## Flange Standards Worldwide
+
+| Standard | Region | Equivalent Class |
+|---|---|---|
+| ASME B16.5 | US/international | 150#, 300#, 600#, etc. |
+| EN 1092-1 (PN) | Europe | PN16, PN40, PN64, PN100 |
+| JIS B2220 | Japan | 10K, 20K, 30K |
+| BS 1560 | UK (now withdrawn) | Same as ASME |
+
+PN ratings are in bar at ambient temperature: PN16 = 16 bar, PN40 = 40 bar.
+
+## Summary
+
+ASME B16.5 flange classes (150# through 2500#) define pressure-temperature ratings that decrease significantly at elevated temperature. Raised face with spiral-wound gaskets is the most common process piping configuration for 300# and above. RTJ gaskets are used for 600# and high-temperature service. Proper bolt torque following ASME PCC-1 crisscross patterns is essential for leak-free service. Always verify pressure-temperature ratings from B16.5 tables at your actual design temperature.

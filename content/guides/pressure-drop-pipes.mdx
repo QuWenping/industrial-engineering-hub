@@ -1,0 +1,141 @@
+---
+title: "How to Calculate Pressure Drop in Pipes"
+description: "Learn how to calculate pressure drop in pipes using the Darcy-Weisbach and Hazen-Williams equations, with practical examples and friction factor guidance."
+category: "Fluid Mechanics"
+keywords: ["pressure drop", "darcy weisbach", "pipe friction", "hazen williams"]
+updated: "2026-07-29"
+related:
+  - pressure-drop-calculator
+  - darcy-weisbach-calculator
+  - friction-loss-calculator
+  - "/tools/reynolds-number-calculator"
+---
+
+## Introduction to Pressure Drop
+
+Pressure drop (ΔP) is the reduction in fluid pressure that occurs as fluid moves through a pipe due to friction and elevation changes. Accurate pressure drop calculation is essential for sizing pumps, selecting pipe diameters, and ensuring adequate flow throughout a piping system.
+
+There are two primary methods for calculating pressure drop in pipes:
+
+1. **Darcy-Weisbach equation** — applicable to all fluids and flow regimes
+2. **Hazen-Williams formula** — simpler, empirical method for water only
+
+<Callout type="info" title="When to use which">
+The Darcy-Weisbach equation is the most universally accurate method and works for all Newtonian fluids. The Hazen-Williams formula is restricted to water at typical ambient temperatures (40-75°F / 5-25°C) but is simpler for water distribution and fire protection design.
+</Callout>
+
+## The Darcy-Weisbach Equation
+
+The fundamental equation for pressure drop in a straight pipe is:
+
+<Formula>ΔP = f × (L/D) × (ρv²/2)</Formula>
+
+Where:
+- **ΔP** = pressure drop (Pa)
+- **f** = Darcy friction factor (dimensionless)
+- **L** = pipe length (m)
+- **D** = pipe inner diameter (m)
+- **ρ** = fluid density (kg/m³)
+- **v** = flow velocity (m/s)
+
+The term **ρv²/2** is the velocity pressure, and **L/D** is the pipe length-to-diameter ratio. The friction factor **f** accounts for pipe roughness and Reynolds number.
+
+### The Friction Factor
+
+For laminar flow (Re < 2300), f = 64/Re — straightforward and exact.
+
+For turbulent flow (Re > 4000), the friction factor is determined by the **Colebrook-White equation**:
+
+<Formula>1/√f = -2 log₁₀(ε/(3.7D) + 2.51/(Re√f))</Formula>
+
+This is implicit in f and requires iterative solution. The Moody chart provides graphical solutions.
+
+<Calculator id="pressure-drop-calculator" label="Try the Pressure Drop Calculator" />
+
+## Typical Friction Factors
+
+| Pipe Material | Roughness ε (mm) | Typical f (Re=10⁵) |
+|---|---|---|
+| Drawn tubing (copper, brass) | 0.0015 | 0.016 |
+| Commercial steel (new) | 0.045 | 0.019 |
+| Galvanized iron | 0.15 | 0.023 |
+| Cast iron | 0.26 | 0.025 |
+| Concrete | 0.3-3.0 | 0.028-0.045 |
+| Riveted steel | 1-10 | 0.035-0.06 |
+
+## Worked Example
+
+**Problem:** Water at 20°C flows at 2 m/s through 100 m of 100 mm ID new commercial steel pipe. Calculate pressure drop.
+
+1. Calculate Reynolds number:
+   - ρ = 1000 kg/m³, μ = 0.001 Pa·s
+   - Re = ρvD/μ = 1000 × 2 × 0.1 / 0.001 = 200,000 (turbulent)
+
+2. Find friction factor (using Colebrook or Moody):
+   - ε/D = 0.00045, Re = 200,000 → f ≈ 0.019
+
+3. Apply Darcy-Weisbach:
+   - ΔP = 0.019 × (100/0.1) × (1000 × 4/2) = 0.019 × 1000 × 2000 = 38,000 Pa = **38 kPa**
+
+<Callout type="tip" title="Rule of Thumb">
+For preliminary estimates with water in commercial steel pipe, use f ≈ 0.02. This gives good results for typical pipe sizes at velocities of 1-3 m/s.
+</Callout>
+
+## Minor Losses from Fittings
+
+Straight pipe friction is only part of total pressure loss. Fittings and valves add "minor losses" expressed as:
+
+<Formula>ΔP<sub>minor</sub> = ΣK × (ρv²/2)</Formula>
+
+Typical K-factors (resistance coefficients):
+
+| Fitting | K-factor |
+|---|---|
+| 90° elbow, standard | 0.9 |
+| 45° elbow | 0.4 |
+| Gate valve (open) | 0.17 |
+| Globe valve (open) | 6.0 |
+| Ball valve (open) | 0.05 |
+| Tee through-flow | 0.9 |
+| Tee branch | 1.8 |
+| Sharp entrance | 0.5 |
+| Sudden expansion (D₁/D₂) | (1 - (D₁/D₂)²)² |
+
+## Hazen-Williams for Water
+
+For water systems at ambient temperature, many engineers use the simpler Hazen-Williams formula:
+
+<Formula>Q = 0.435 × C × D<sup>2.63</sup> × S<sup>0.54</sup></Formula>
+
+Where:
+- **Q** = flow (m³/s)
+- **C** = Hazen-Williams roughness coefficient
+- **D** = diameter (m)
+- **S** = hydraulic gradient (m/m, head loss per unit length)
+
+<Callout type="warning" title="Limitations of Hazen-Williams">
+Hazen-Williams is only valid for water at roughly room temperature. It is not dimensionally consistent and cannot be used for other fluids, hot water, or for extreme velocities. For precise engineering, use Darcy-Weisbach.
+</Callout>
+
+### Typical C-Factors
+
+| Pipe Material | C-factor |
+|---|---|
+| PVC, HDPE (new) | 150 |
+| Copper, brass | 140 |
+| New steel (lined) | 120-130 |
+| 20-year-old steel | 100 |
+| Old cast iron | 80 |
+| Riveted steel | 60-80 |
+
+## Best Practices
+
+1. **Use conservative friction factors** — add a safety margin of 10-20% for aging, fouling, and future corrosion
+2. **Size for 1-3 m/s velocity** in liquid lines to balance capital cost and operating cost
+3. **Include all fittings** in minor loss calculations — a long run with many elbows can exceed the straight-pipe loss
+4. **Consider suction piping separately** — keep suction velocities under 1.5 m/s and minimize fittings to protect NPSH
+5. **Use the right equation** — Darcy-Weisbach for general engineering; Hazen-Williams only for water distribution where specified
+
+## Summary
+
+Pressure drop calculation is fundamental to piping system design. The Darcy-Weisbach equation with an appropriate friction factor provides the most accurate results for any fluid. Always include both straight-pipe losses and minor losses from fittings, and verify your results with online calculators or pipe flow software for complex systems.

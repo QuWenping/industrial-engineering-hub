@@ -1,0 +1,143 @@
+---
+title: "Insulation Selection Guide"
+description: "How to select thermal insulation for industrial piping and equipment — mineral wool, calcium silicate, fiberglass, cellular glass, PIR, and aerogel comparison."
+category: "Thermal Engineering"
+keywords: ["pipe insulation", "thermal insulation", "insulation thickness", "mineral wool", "heat loss"]
+updated: "2026-07-29"
+related:
+  - heat-loss-calculator
+  - thermal-resistance-calculator
+  - heat-transfer-calculator
+---
+
+## Why Insulate?
+
+Industrial piping and equipment insulation serves multiple purposes:
+
+1. **Energy conservation** — reduce heat loss/gain (saves $ and reduces emissions)
+2. **Personnel protection** — prevent burns by keeping surface temp below 60°C
+3. **Process control** — maintain temperature, prevent condensation, avoid freezing
+4. **Condensation prevention** — keep surface above dew point on cold lines
+5. **Noise reduction** — acoustic insulation reduces pipe noise
+6. **Fire protection** — fire-resistant insulation delays structural failure
+
+<Calculator id="heat-loss-calculator" label="Calculate Heat Loss Through Insulation" />
+
+## Insulation Types and Properties
+
+| Material | Temp Range (°C) | Thermal K (W/mK) | Density (kg/m³) | Key Use |
+|---|---|---|---|---|
+| Mineral wool (rock/slag) | -50 to 750 | 0.035-0.045 | 80-150 | Hot pipes, general purpose |
+| Fiberglass | -30 to 540 | 0.033-0.040 | 24-120 | HVAC, low-temp hot pipes |
+| Calcium silicate | 40 to 1000 | 0.055-0.070 | 200-300 | High temp steam, power plant |
+| Cellular glass | -270 to 480 | 0.040-0.055 | 120-150 | Cold lines, below-ambient, chemical |
+| PIR (polyisocyanurate) | -180 to 150 | 0.023-0.028 | 32-48 | Refrigeration, cold piping |
+| PUR (polyurethane) | -200 to 120 | 0.022-0.026 | 32-64 | Cold storage, chilled water |
+| Ceramic fiber | 400 to 1400 | 0.060-0.120 | 64-200 | Furnaces, boiler linings |
+| Aerogel (blanket) | -200 to 650 | 0.013-0.018 | 100-160 | Premium thin-profile, space-limited |
+| Perlite | -200 to 650 | 0.045-0.060 | 80-160 | Cryogenic, dual-temp |
+
+## Heat Transfer Through Insulation
+
+For cylindrical insulation, radial heat loss per meter of pipe is:
+
+<Formula>q/L = (T<sub>i</sub> − T<sub>o</sub>) / [ln(r<sub>o</sub>/r<sub>i</sub>)/(2πk) + 1/(2πr<sub>o</sub>h)]</Formula>
+
+Where:
+- T<sub>i</sub> = process temperature, T<sub>o</sub> = ambient temperature
+- r<sub>i</sub>, r<sub>o</sub> = inner/outer radius (with insulation)
+- k = insulation thermal conductivity (W/mK)
+- h = outside surface convection coefficient (~8-12 W/m²K for ambient air)
+
+<Callout type="warning" title="Critical Radius for Cylinders">
+Adding insulation to small pipes (&lt;30mm OD) can sometimes INCREASE heat loss because increasing radius increases outer surface area faster than conduction resistance. Above the critical radius (r<sub>cr</sub> = k/h), adding insulation always reduces heat loss. This is rarely an issue for pipes > 2" nominal.
+</Callout>
+
+## Insulation Thickness Selection
+
+Three methods determine required thickness:
+
+### 1. Economic Thickness
+Minimizes total cost: installed insulation cost + present value of energy lost over service life.
+
+### 2. Personnel Protection (Burn Protection)
+Required for surfaces accessible to personnel: outer surface temperature must stay below ~60°C (140°F). For high-temperature steam lines, this often dictates thickness.
+
+<Formula>T<sub>surface</sub> = T<sub>ambient</sub> + q/(h × 2πr<sub>o</sub>) < 60°C</Formula>
+
+### 3. Condensation Prevention (Cold Service)
+Surface temperature must stay above dew point (typically ~2-5°C above to allow safety margin). Thicker insulation needed in high-humidity climates.
+
+<Calculator id="thermal-resistance-calculator" label="Thermal Resistance (R-Value) Calculator" />
+
+<Callout type="info" title="Vapor Barriers on Cold Lines">
+For refrigeration, chilled water, and cryogenic service, insulation must have a continuous vapor barrier (aluminum/kraft laminate, mastic) on the warm side. Water vapor migrating through insulation condenses and destroys insulating value (water K ≈ 0.6 W/mK, 15× worse than air). Breaks in vapor barrier are the #1 failure mode of cold insulation.
+</Callout>
+
+## Insulation Selection by Temperature Range
+
+| Service Temperature | Recommended Insulation |
+|---|---|
+| Cryogenic (-200 to -50°C) | Cellular glass, PIR, perlite with vapor barrier |
+| Cold/chilled water (-50 to +15°C) | PIR/PUR, fiberglass, cellular glass |
+| Ambient/hot water (15-95°C) | Fiberglass, mineral wool |
+| Low-pressure steam (100-200°C) | Mineral wool, fiberglass |
+| Medium-pressure steam (200-400°C) | Mineral wool (high density), calcium silicate |
+| High-temp steam/process (400-650°C) | Calcium silicate, mineral wool (high temp grade) |
+| Furnace/exhaust (>650°C) | Ceramic fiber |
+
+## Jacketing/Cladding
+
+The outer protective covering is as important as the insulation itself:
+
+| Jacket Material | Best For |
+|---|---|
+| Aluminum (0.4-0.7mm) | Most indoor/outdoor applications; standard |
+| Stainless steel (304/316) | Chemical plants, food/pharma washdown, coastal |
+| PVC/vinyl | Indoor, clean environments (not UV-resistant) |
+| Aluminum-zinc coated steel | High mechanical abuse areas |
+| Canvas/lagging cloth | Indoor decorative (older practice) |
+| Mastic coating | Irregular shapes, fittings |
+
+<Callout type="tip" title="Weatherproofing Outdoor Insulation">
+Outdoor jackets must be sealed with caulking at overlaps and fitted with metal bands (stainless bands, ~300mm spacing). Use S-cleat and drive-cleat joints for sheet metal. Water penetration destroys insulation performance and causes CUI (corrosion under insulation).
+</Callout>
+
+## Corrosion Under Insulation (CUI)
+
+A major industry problem: water trapped between insulation and pipe causes hidden corrosion. Most common:
+- Temperature range 50-150°C (condensation cycle)
+- Damaged or missing jacketing
+- Absorbent insulation types (mineral wool holds water)
+- Stainless steel in chloride-containing environments
+
+Mitigation:
+1. Use non-absorptive insulation (cellular glass) for high-risk services
+2. Properly seal all jacket seams
+3. Specify appropriate coatings (primer) on pipe before insulating
+4. Inspect regularly (thermography, jacketing removal programs)
+
+## Typical Thickness Guide (Hot Pipe Service, Mineral Wool)
+
+| Pipe Size | 50°C | 150°C | 250°C | 350°C |
+|---|---|---|---|---|
+| DN50 | 25mm | 40mm | 60mm | 80mm |
+| DN100 | 25mm | 50mm | 75mm | 100mm |
+| DN200 | 25mm | 50mm | 75mm | 100mm |
+| DN300 | 30mm | 50mm | 80mm | 110mm |
+| DN500 | 30mm | 60mm | 80mm | 120mm |
+
+## Installation Best Practices
+
+1. Insulation must be fully installed before plant startup
+2. Pipe must be dry and coated before insulating
+3. All longitudinal/circumferential joints must be tightly butted (no gaps)
+4. Wire or band insulation every 300mm
+5. Fit vapor barriers carefully on cold service (seal all penetrations)
+6. Install jacket over insulation with overlap facing down (shingle fashion)
+7. Support insulation at pipe supports (don't let metal support compress insulation)
+8. Insulate fittings and valves (use removable/ reusable blankets for valves needing maintenance)
+
+## Summary
+
+Insulation selection depends on temperature range, environment, and purpose (energy conservation vs personnel protection vs condensation prevention). Mineral wool covers most hot service; PIR/cellular glass for cold; calcium silicate for high-temperature; aerogel where space is constrained. Jacketing and vapor barriers are as critical as the insulation material. Always calculate required thickness for your specific conditions — standard thickness tables may over-insulate or under-insulate depending on climate and economics.

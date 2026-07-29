@@ -1,0 +1,193 @@
+---
+title: "Pressure Vessel Design Basics"
+description: "Introduction to ASME Section VIII pressure vessel design: shell thickness, head selection, nozzle reinforcement, MAWP calculation, and inspection requirements."
+category: "Mechanical Engineering"
+keywords: ["pressure vessel", "ASME VIII", "shell thickness", "MAWP", "nozzle reinforcement", "hydrotest"]
+updated: "2026-07-29"
+related:
+  - pressure-vessel-volume-calculator
+  - tank-weight-calculator
+  - "/guides/tank-design-basics"
+---
+
+## Codes and Standards
+
+Pressure vessel design is governed by legally required codes in most jurisdictions:
+
+| Code | Region | Application |
+|---|---|---|
+| ASME BPVC Section VIII Div 1 | USA, worldwide | General process vessels, most common |
+| ASME Section VIII Div 2 | USA | Higher allowable stress (design-by-analysis), thinner vessels |
+| ASME Section VIII Div 3 | USA | Ultra-high pressure (>10,000 psi) |
+| EN 13445 | Europe | European pressure vessel standard |
+| PD 5500 (BS 5500) | UK | British standard (now replaced by EN 13445) |
+| GB 150 | China | Chinese pressure vessel standard |
+
+<Callout type="danger" title="This Is Conceptual Only">
+Pressure vessel design is a regulated engineering activity requiring professional certification (PE license) and code-stamp certification (ASME U-stamp). This guide provides conceptual understanding only — never design or modify a pressure vessel without qualified engineering.
+</Callout>
+
+## Design Pressure and Temperature
+
+- **Design pressure**: Maximum pressure at the top of the vessel, typically the highest expected operating pressure + margin. Common practice: set ≥ max operating pressure + 1.8 bar or 10%, whichever is greater.
+- **MAWP (Maximum Allowable Working Pressure)**: The pressure at which the vessel is actually rated, determined by the weakest component.
+- **Design temperature**: Maximum (or minimum) metal temperature expected. Affects material allowable stress.
+- **Minimum design metal temperature (MDMT)**: Governs brittle fracture; Charpy impact testing may be required.
+
+## Cylindrical Shell Design — Internal Pressure
+
+From ASME VIII Div 1 UG-27, required thickness for a cylindrical shell under internal pressure:
+
+<Formula>t = (P × R) / (S × E − 0.6 × P) + CA</Formula>
+
+Where:
+- t = minimum required wall thickness (mm)
+- P = internal design pressure (MPa)
+- R = inside radius of shell (mm)
+- S = maximum allowable stress at design temperature (MPa)
+- E = joint efficiency (from weld radiography)
+- CA = corrosion allowance (typically 1.5-3 mm)
+
+<Callout type="info" title="Joint Efficiency E">
+Joint efficiency depends on weld joint category and extent of radiographic examination (RT):
+- 1.00: Type 1 butt weld, full RT
+- 0.85: Type 1 butt weld, spot RT
+- 0.70: Type 1 butt weld, no RT
+- 0.65-0.80: For other joint categories
+</Callout>
+
+### Worked Example
+
+A 2m diameter vessel operating at 15 bar (1.5 MPa) at 250°C, SA-516-70 material, spot RT, 3mm CA.
+
+- S at 250°C for SA-516-70 = 138 MPa (consult ASME II-D tables)
+- E = 0.85
+- R = 1000 mm
+- P = 1.5 MPa
+
+t = (1.5 × 1000) / (138 × 0.85 − 0.6 × 1.5) + 3
+= 1500 / (117.3 − 0.9) + 3
+= 1500 / 116.4 + 3
+= 12.9 + 3 = 15.9 mm
+
+Use 16 mm plate. At standard 16mm nominal plate, MAWP = (S × E × t<sub>nom</sub>) / (R + 0.6 × t<sub>nom</sub>).
+
+## Head Design
+
+### 2:1 Ellipsoidal Head (Most Common)
+
+<Formula>t = (P × D) / (2 × S × E − 0.2 × P)</Formula>
+
+(Thinner than cylindrical shell for same conditions — heads are inherently stronger shape.)
+
+### Hemispherical Head
+
+<Formula>t = (P × R) / (2 × S × E − 0.2 × P)</Formula>
+
+Thinnest option (half the cylinder thickness), strongest geometry, but deepest forming and most expensive.
+
+### Flanged and Dished (F&D)
+
+Shallow head for low-pressure service. Higher stress, thicker than 2:1 elliptical.
+
+### Flat Head
+
+<Formula>t = D × √(C × P / (S × E))</Formula>
+
+C = attachment factor (0.2-0.5). Thickest option; only for small openings or blind flanges.
+
+<Calculator id="pressure-vessel-volume-calculator" label="Vessel Volume Calculator" />
+
+## Nozzle Reinforcement (UG-37)
+
+When you cut a hole in a pressure vessel shell for a nozzle, you remove material that was carrying stress. You must replace it with reinforcing:
+
+Reinforcement can come from:
+1. **Excess shell thickness** beyond minimum required
+2. **Nozzle neck thickness** beyond its own minimum
+3. **Repad (reinforcing pad)**: Extra plate welded around the nozzle
+4. **Weld metal**
+
+The "area replacement method" checks that available reinforcement area ≥ required reinforcement area.
+
+<Callout type="tip" title="Repad Shapes">
+Reinforcing pads are typically circular or oblong round plates with the same curvature as the shell, welded to the outside. Large nozzles or high-pressure nozzles may use integrally reinforced (thick-forged) nozzles instead of repads.
+</Callout>
+
+## External Pressure (Vacuum) Design
+
+Under external pressure, vessels fail by buckling (instability) rather than yielding. Calculation is more complex and depends on:
+- Shell thickness-to-diameter ratio (t/D)
+- Length-to-diameter ratio (L/D)
+- Material modulus of elasticity at design temperature
+- Stiffening rings reduce effective L and allow thinner shells
+
+A 2m diameter vessel under full vacuum with no stiffeners may need 12-16mm wall, but with stiffeners every 2m can use 6-8mm.
+
+## Nozzle Loads
+
+In addition to internal pressure, vessel nozzles see forces from:
+- Pipe thermal expansion
+- Dead weight of connected piping
+- Wind/seismic motion
+
+WRC 107/537 (now WRC 297/328) bulletins provide methods to calculate local shell stresses at nozzle connections. These are typically more limiting than pressure alone.
+
+## Materials
+
+### Common Pressure Vessel Steels
+
+| Material | Specification | Min Temperature | Typical Use |
+|---|---|---|---|
+| Carbon steel | SA-516-70 | -46°C (normalized) | General PV plate |
+| Carbon steel | SA-105 | -29°C | Forged flanges/nozzles |
+| LTCS | SA-516-60 (normalized) | -50°C | Low temperature |
+| C-Mo steel | SA-204-B | to 480°C | Elevated temp |
+| 1¼Cr-½Mo | SA-387-11 | to 650°C | High temp, hydrogen |
+| 2¼Cr-1Mo | SA-387-22 | to 650°C | Higher temp, hydrogen |
+| 304 SS | SA-240-304 | -254°C (solution treated) | Cryogenic, corrosion |
+| 316 SS | SA-240-316 | -254°C | Corrosion, marine |
+
+## Testing Requirements
+
+### Hydrostatic Test
+
+- Fill vessel completely with water (vent all air)
+- Pressurize to **1.3 × MAWP** (Div 1) or 1.5 × MAWP (Div 2)
+- Hold for 30 minutes minimum
+- Inspect all welds and joints for leaks
+- Water temperature must be above MDMT + 17°C to avoid brittle fracture
+- Large vessels sometimes need site hydrotest due to transport weight
+
+### Pneumatic Test
+
+- Used where water is impractical (vessels that can't support weight, must be dry)
+- Test pressure: **1.1 × MAWP** (lower than hydro due to stored energy hazard)
+- Higher risk of failure — strict safety precautions required
+
+### NDE (Non-Destructive Examination)
+
+- **Radiography (RT)**: Full or spot per joint efficiency
+- **Ultrasonic (UT)**: Weld examination, thickness testing
+- **Magnetic Particle (MT)**: Surface cracks in ferromagnetic materials
+- **Liquid Penetrant (PT)**: Surface cracks in non-magnetic materials
+- **PWHT (Post-Weld Heat Treatment)**: Stress relief required for thicker sections, certain materials, and lethal service
+
+## Vessel Supports
+
+- **Saddles**: For horizontal vessels (2 saddles standard)
+- **Legs**: Small vertical vessels (&lt;3m diameter)
+- **Skirts**: Large vertical columns (transmits load through full circumference to foundation)
+- **Lugs**: For supported by structural steel
+
+## In-Service Inspection (API 510)
+
+After installation, pressure vessels must be inspected periodically per API 510 (or NBIC):
+- Internal/external visual inspection
+- Thickness testing (UT) at known corrosion points
+- Risk-Based Inspection (RBI) programs can extend intervals
+- Typical interval: 5 years internal, 5 years external (varies by jurisdiction)
+
+## Summary
+
+ASME Section VIII governs pressure vessel design. Key formulas give minimum shell and head thickness based on pressure, radius, allowable stress, joint efficiency, and corrosion allowance. Nozzles require reinforcement per UG-37. External pressure requires buckling analysis. Hydrostatic testing at 1.3× MAWP verifies integrity before service. Always engage a qualified pressure vessel engineer and obtain ASME U-stamp certification for new vessel fabrication.

@@ -1,0 +1,196 @@
+---
+title: "Material Strength Basics"
+description: "Fundamental material properties for engineering design: yield strength, tensile strength, hardness, toughness, fatigue, and stress-strain behavior."
+category: "Materials"
+keywords: ["material strength", "yield strength", "tensile strength", "stress strain", "Young's modulus", "fatigue", "hardness"]
+updated: "2026-07-29"
+related:
+  - "/guides/steel-material-properties"
+  - bolt-torque-calculator
+  - steel-weight-calculator
+---
+
+## The Tensile Test
+
+The standard material test pulls a specimen to failure while recording load and elongation. The resulting stress-strain curve reveals all key mechanical properties:
+
+<Formula>σ = F/A (Stress, MPa or psi)</Formula>
+<Formula>ε = ΔL/L₀ (Strain, dimensionless)</Formula>
+
+Where:
+- σ (sigma) = engineering stress (force / original area)
+- ε (epsilon) = engineering strain (change in length / original length)
+
+## Key Material Properties
+
+### Elastic Modulus (Young's Modulus, E)
+
+The slope of the initial linear portion of the stress-strain curve:
+
+<Formula>E = σ/ε (in elastic region)</Formula>
+
+This is a measure of stiffness — how much material deflects under load. Values are essentially constant within a material class, regardless of strength grade:
+
+| Material | E (GPa) |
+|---|---|
+| Steel (all grades) | 200 |
+| Stainless steel | 193 |
+| Cast iron | 120-180 |
+| Aluminum alloys | 69-79 |
+| Copper/brass | 110-120 |
+| Titanium | 110 |
+
+<Callout type="info" title="Steel is Steel When It Comes to Stiffness">
+A36 carbon steel and 4140 high-strength alloy both have E = 200 GPa. Using higher-strength steel does NOT make the part stiffer (deflection the same) — it just allows higher load before yielding. For stiffness-critical designs, change geometry, not material.
+</Callout>
+
+### Yield Strength (σ<sub>y</sub> or F<sub>y</sub>)
+
+The stress at which plastic (permanent) deformation begins. For materials with a distinct yield point (most carbon steels), it is the stress at the upper yield point. For materials without (stainless, aluminum), use **0.2% offset yield strength**: stress where a line parallel to E at 0.002 strain intersects the curve.
+
+Design stresses are typically 40-66% of yield for static loading, lower for dynamic.
+
+| Material | Yield (MPa) |
+|---|---|
+| A36 carbon steel | 250 |
+| A572-50 | 345 |
+| 4140 (annealed) | 415 |
+| 304 stainless | 205 |
+| 6061-T6 aluminum | 276 |
+| Gray cast iron | — (no yield; brittle) |
+
+### Ultimate Tensile Strength (σ<sub>u</sub> or F<sub>u</sub>)
+
+Maximum stress the material withstands before fracture:
+
+| Material | UTS (MPa) |
+|---|---|
+| A36 | 400-550 |
+| A572-50 | 450 |
+| 4140 (QT) | 800-1800 |
+| 304 stainless | 515 |
+| 6061-T6 aluminum | 310 |
+
+Yield is the design limit for ductile materials; ultimate is the design limit for brittle materials (cast iron, ceramics).
+
+### Ductility (% Elongation)
+
+How much plastic deformation before fracture:
+- **Ductile materials** (>10% elongation): steel, aluminum, copper — give warning before failure
+- **Brittle materials** (&lt;5%): cast iron, glass, ceramics — fail suddenly without warning
+
+## Hardness
+
+Resistance to indentation/penetration. Several scales:
+
+| Scale | Used For | Typical Values |
+|---|---|---|
+| Brinell (BHN) | Steel, cast iron | 120-600 BHN |
+| Rockwell B | Soft metals, copper | 60-100 HRB |
+| Rockwell C | Hardened steel | 20-65 HRC |
+| Vickers (HV) | All materials, thin sections | 100-1000 HV |
+
+<Callout type="tip" title="Approximate Hardness-to-Tensile Conversion for Steel">
+UTS (MPa) ≈ 3.45 × BHN (for steel < 400 BHN). A steel at 200 BHN ≈ 690 MPa UTS. This approximation is widely used for quick estimates.
+</Callout>
+
+## Toughness
+
+Toughness = energy absorbed before fracture (area under stress-strain curve). Two common measures:
+
+- **Charpy V-notch (CVN)**: Pendulum strikes notched specimen; energy absorbed measured in joules (ft-lb). Measures notch toughness at temperature.
+- **Izod**: Similar test, different specimen orientation (UK standard).
+
+Materials transition from ductile (high CVN energy) to brittle (low energy) at a ductile-to-brittle transition temperature (DBTT):
+
+| Material | DBTT |
+|---|---|
+| BCC metals (carbon steel) | Around -20 to +20°C (depends on grade/thickness) |
+| FCC metals (stainless, aluminum, copper) | No DBTT — tough at cryogenic temperatures |
+| HCP metals (titanium, zinc) | Brittle at low temperature |
+
+<Callout type="danger" title="DBTT in Carbon Steel Causes Catastrophic Failure">
+Carbon steel becomes brittle at low temperatures — ships, tanks, and pressure vessels have failed catastrophically in winter. This is why pressure vessel codes require Charpy impact testing for design temperatures below -29°C (-20°F). Use killed, fine-grain, normalized steel or 300-series stainless for cryogenic service.
+</Callout>
+
+## Fatigue Strength
+
+Materials fail at stress levels well below yield strength under repeated/cyclic loading. This is fatigue — responsible for ~80-90% of mechanical failures.
+
+The **S-N curve** plots stress amplitude (S) vs cycles to failure (N):
+
+- **Endurance limit** (ferrous metals only): stress below which failure never occurs (≈ 0.5 × UTS for steel)
+- **Fatigue strength** at N cycles: stress for failure at specific life
+
+### Factors Affecting Fatigue Life
+
+| Factor | Effect |
+|---|---|
+| Surface finish | Polished > machined > as-forged > corroded (can halve fatigue life) |
+| Stress concentrations | Notches, holes, keyways reduce fatigue strength dramatically |
+| Size effect | Larger sections have lower fatigue strength |
+| Corrosion | Corrosion fatigue drastically reduces life |
+| Mean stress | Tensile mean stress reduces allowable alternating stress (Goodman diagram) |
+| Residual stress | Compressive residual stress (shot peening) improves fatigue life |
+
+<Formula>σ<sub>endurance,steel</sub> ≈ 0.5 × σ<sub>uts</sub> (for smooth polished specimens; derate for surface/size)</Formula>
+
+<Callout type="warning" title="Fatigue Failures Are Insidious">
+Fatigue failure occurs without warning — no gross plastic deformation, sudden fracture, even at loads well below yield. Always consider fatigue for rotating parts (shafts), pressure cycling, vibration, and thermal cycling.
+</Callout>
+
+## Creep
+
+At temperatures above ~0.4 × T<sub>melt</sub> (absolute), materials slowly deform under constant stress over time — this is creep:
+- Carbon steel: significant above ~400°C
+- Stainless steel: above ~550°C
+- Aluminum alloys: above ~200°C
+
+Creep has three stages: primary (decreasing rate), secondary (steady-state — design basis), tertiary (accelerating — failure imminent).
+
+Design for creep:
+- Use allowable creep stress at temperature (ASME II-D tables)
+- Consider stress rupture (time to failure at stress/temp)
+- Chrome-moly steels (1¼Cr-½Mo, 2¼Cr-1Mo) and stainless for high temperature
+
+## Allowable Stress Design
+
+Design codes specify allowable stresses as fractions of material strengths:
+
+| Code | Basis for Allowable Stress |
+|---|---|
+| ASME VIII (PV) | min(σ<sub>y</sub>/1.5, σ<sub>u</sub>/3.5, creep limit) at temperature |
+| AISC (structural) | σ<sub>y</sub>/1.5 = 0.66F<sub>y</sub> for LRFD; 0.6F<sub>y</sub> ASD |
+| ASME B31.3 (piping) | min(σ<sub>y</sub>/1.5, σ<sub>u</sub>/3.0) |
+
+<Callout type="info" title="Factor of Safety">
+The factor of safety (1.5 on yield, 3.5 on ultimate for vessels) accounts for uncertainty in material properties, loads, analysis methods, and workmanship. Don't use higher factors without reason — it makes structures unnecessarily heavy/expensive.
+</Callout>
+
+## Common Material Property Tables
+
+### Steel (Room Temperature Reference)
+
+| Grade | Yield (MPa) | UTS (MPa) | Elongation (%) | Hardness (BHN) | E (GPa) |
+|---|---|---|---|---|---|
+| A36 | 250 | 400-550 | 20 | 120-150 | 200 |
+| A572-50 | 345 | 450 | 21 | 150 | 200 |
+| A516-70 | 260 | 485-620 | 21 | 150 | 200 |
+| 4140 (annealed) | 415 | 655 | 26 | 197 | 200 |
+| 4140 (Q&T) | 900+ | 1100+ | 15 | 320 | 200 |
+| 304 stainless | 205 | 515 | 40 | 180 | 193 |
+| 316 stainless | 205 | 515 | 40 | 180 | 193 |
+
+### Aluminum Alloys
+
+| Grade | Yield (MPa) | UTS (MPa) | E (GPa) |
+|---|---|---|---|
+| 1100-H14 (pure) | 117 | 124 | 69 |
+| 3003-H14 | 145 | 150 | 69 |
+| 6061-T6 | 276 | 310 | 69 |
+| 5052-H32 | 193 | 228 | 70 |
+| 7075-T6 | 503 | 572 | 71 |
+
+## Summary
+
+Yield strength determines design load for static applications; ultimate strength for brittle fracture. Young's modulus is stiffness and is constant within material classes (E = 200 GPa for all steels). Fatigue causes 80-90% of mechanical failures — avoid stress concentrations and consider surface finish. Toughness (Charpy) matters for low-temperature service. Creep limits service life above 0.4 T<sub>melt</sub>. Design codes apply factors of safety (typically 1.5 on yield, 3.5 on ultimate) to establish allowable stresses. Higher strength steel does NOT mean stiffer steel — stiffness comes from geometry (moment of inertia) and E.

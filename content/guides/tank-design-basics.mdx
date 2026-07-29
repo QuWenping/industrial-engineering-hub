@@ -1,0 +1,139 @@
+---
+title: "Tank and Vessel Design Basics"
+description: "Introduction to storage tank and pressure vessel design including codes, volume calculation, wall thickness, materials, and key design considerations."
+category: "Mechanical Engineering"
+keywords: ["tank design", "pressure vessel", "storage tank", "ASME VIII", "API 650", "tank volume"]
+updated: "2026-07-29"
+related:
+  - cylinder-volume-calculator
+  - tank-capacity-calculator
+  - tank-weight-calculator
+  - storage-capacity-calculator
+---
+
+## Tank vs Vessel Classification
+
+In industrial engineering, tanks and vessels are distinguished by their design pressure:
+
+- **Atmospheric tanks** (API 650/620, EN 14015): Design pressure < 15 psig (1 bar)
+- **Low-pressure vessels**: 15 psig to 150 psig
+- **Pressure vessels** (ASME VIII, EN 13445): > 15 psig
+- **High-pressure vessels**: > 1000 psig (special codes)
+
+<Calculator id="cylinder-volume-calculator" label="Calculate Cylinder Volume" />
+
+## Atmospheric Storage Tanks (API 650)
+
+Used for bulk storage of water, oil, chemicals at near-atmospheric pressure.
+
+### Types
+
+| Type | Description | Typical Sizes |
+|---|---|---|
+| Fixed cone roof | Simplest, cheapest; for low-volatility liquids | Up to 100,000 m³ |
+| External floating roof | Roof floats on liquid; minimal vapor space; for crude/gasoline | Up to 150,000 m³ |
+| Internal floating roof | Fixed roof with internal pan; for clean products | Up to 50,000 m³ |
+| Horizontal bullet | Cylindrical, for LPG/NGL (higher pressure) | 50-500 m³ |
+
+### Design Considerations
+
+- **Hydrostatic pressure**: At tank bottom, P = ρgh (e.g., 10m water = ~1 bar)
+- **Wind loads**: Must resist overturning; taller tanks need thicker shells or stiffening rings
+- **Seismic design**: API 650 Annex E for earthquake zones
+- **Foundation settlement**: Differential settlement causes shell distortion
+- **Corrosion allowance**: Typically 1-3 mm added to calculated thickness
+
+<Formula>t<sub>shell</sub> = (ρgH × D) / (2S × E) + CA</Formula>
+
+Where: t = thickness, ρ = liquid density, g = 9.81, H = liquid height, D = tank diameter, S = allowable stress, E = joint efficiency, CA = corrosion allowance.
+
+## Pressure Vessels (ASME Section VIII)
+
+For process vessels operating above atmospheric pressure — reactors, separators, columns, heat exchanger shells.
+
+### Basic Design Formula — Internal Pressure
+
+<Formula>t = (P × R) / (S × E − 0.6 × P) + CA</Formula>
+
+| Parameter | Meaning |
+|---|---|
+| t | Minimum required wall thickness |
+| P | Design pressure (Pa or psi) |
+| R | Inside radius of shell |
+| S | Maximum allowable stress (material-dependent) |
+| E | Joint efficiency (1.0 for full RT, 0.85 for spot RT, 0.7 for no RT) |
+
+<Calculator id="pressure-vessel-volume-calculator" label="Pressure Vessel Volume Calculator" />
+
+<Callout type="warning" title="Don't Design Pressure Vessels Yourself">
+ASME Section VIII design is a specialized engineering discipline requiring certification. This guide provides only conceptual understanding — actual vessel design requires a Professional Engineer and ASME/U-stamp certification.
+</Callout>
+
+### Common Vessel Configurations
+
+| Type | Application |
+|---|---|
+| Vertical cylindrical | Process columns, separators, reactors |
+| Horizontal cylindrical | Drum separators, heat exchangers, storage bullets |
+| Spherical | High-pressure gas storage (LPG, NGL) |
+
+### Head Types
+
+| Head Type | Description | Volume | Cost |
+|---|---|---|---|
+| Hemispherical | Strongest (half of sphere) | Highest | Most expensive |
+| 2:1 Semi-elliptical | Most common for process vessels | Good | Moderate |
+| Flanged & dished (F&D) | Shallow, low pressure | Lower | Cheapest |
+| Flat head | Rectangular openings | Lowest | High stress — thick steel required |
+
+## Materials Selection
+
+| Service | Material | Allowable Stress (100°C) |
+|---|---|---|
+| General carbon steel | SA-516-70 | 138 MPa |
+| Low-temp carbon steel | SA-516-60 (normalized) | 118 MPa |
+| High temp / hydrogen | SA-387-11 (1¼Cr-½Mo) | 118 MPa |
+| Stainless steel | SA-240-304/316 | 138/115 MPa |
+| Duplex | 2205 | 260 MPa |
+
+## Nozzles and Openings
+
+Vessel shells require reinforcement at nozzle openings (per ASME UG-37). Typical nozzles:
+- Process inlets/outlets
+- Manways (for internal access, typically 20" minimum)
+- Instrument connections (level, pressure, temperature)
+- Relief valve connections
+- Drain and vent connections
+
+## External Loads
+
+Vessel design must consider:
+- **Weight**: Shell + internals + liquid + insulation + ladders/platforms
+- **Wind**: Tall columns act as vertical beams in wind
+- **Seismic**: Horizontal force at center of gravity
+- **Piping loads**: Nozzle loads from thermal expansion
+- **Vacuum**: External pressure can collapse vessels (buckling analysis needed)
+
+## Tank Volume and Head
+
+For a vertical cylinder with 2:1 elliptical heads:
+
+<Formula>V<sub>total</sub> = π × (D/2)² × L<sub>shell</sub> + (π × D³)/6</Formula>
+
+<Calculator id="sphere-volume-calculator" label="Sphere Volume Calculator" />
+<Calculator id="cone-volume-calculator" label="Cone Volume Calculator" />
+
+<Callout type="tip" title="Quick Capacity Check">
+For a vertical cylindrical tank: capacity per meter of height = 0.785 × D² (m³/m). A 10m diameter tank holds 78.5 m³ (78,500 liters) per meter of liquid level.
+</Callout>
+
+## Inspection and Testing
+
+- **Hydrostatic test**: Fill with water at 1.3-1.5 × design pressure
+- **Pneumatic test**: For vessels too large for hydrotest; uses air at lower pressure due to stored energy hazard
+- **Radiography**: Weld inspection; full or spot per design joint efficiency
+- **In-service inspection**: API 510 (pressure vessels), API 653 (tanks); periodic thickness testing
+
+## Summary
+
+Atmospheric tanks follow API 650 and are designed primarily for hydrostatic load. Pressure vessels follow ASME VIII Div 1 or Div 2 and require certified design. Key design parameters: design pressure/temperature, material stress, joint efficiency, and corrosion allowance. Always engage qualified pressure vessel engineers — errors can have catastrophic consequences.

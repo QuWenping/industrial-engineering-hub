@@ -1,0 +1,279 @@
+---
+title: "Engineering Unit Conversion Reference"
+description: "Complete reference for converting between engineering units: length, pressure, temperature, flow, power, energy, mass, and volume with quick-reference tables."
+category: "Engineering Fundamentals"
+keywords: ["unit conversion", "engineering units", "metric imperial conversion", "SI units", "pressure conversion", "temperature conversion"]
+updated: "2026-07-29"
+related:
+  - pressure-unit-converter
+  - flow-conversion-calculator
+  - "/guides/reynolds-number-guide"
+---
+
+## SI Base Units
+
+The International System of Units (SI) is the standard for engineering worldwide:
+
+| Quantity | SI Unit | Symbol |
+|---|---|---|
+| Length | meter | m |
+| Mass | kilogram | kg |
+| Time | second | s |
+| Temperature | Kelvin | K |
+| Amount of substance | mole | mol |
+| Electric current | Ampere | A |
+| Luminous intensity | candela | cd |
+
+US customary (Imperial) units are still widely used in US industries, oil/gas, and some manufacturing. Engineers must be fluent in both systems.
+
+<Calculator id="pressure-unit-converter" label="Pressure Unit Converter" />
+
+## Length
+
+| From | To | Multiply by |
+|---|---|---|
+| inches to mm | mm | 25.4 |
+| feet to meters | m | 0.3048 |
+| yards to meters | m | 0.9144 |
+| miles to km | km | 1.6093 |
+| mils (0.001 in) to mm | mm | 0.0254 |
+| Angstrom to m | m | 10⁻¹⁰ |
+
+<Callout type="info" title="Pipe Size Naming" severity="info">
+NPS (Nominal Pipe Size, inches) and DN (Diameter Nominal, metric) are approximate designations: NPS 2" = DN50, NPS 4" = DN100, NPS 8" = DN200, NPS 12" = DN300, NPS 24" = DN600. Note: NPS 12" OD = 323.9mm ≠ 300mm — they're nominal, not exact conversions.
+</Callout>
+
+## Area and Volume
+
+| From | To | Multiply by |
+|---|---|---|
+| square inches to mm² | mm² | 645.16 |
+| square feet to m² | m² | 0.0929 |
+| acres to m² | m² | 4046.9 |
+| hectares to m² | m² | 10,000 |
+| cubic inches to cm³ | cm³ | 16.387 |
+| cubic feet to m³ | m³ | 0.0283 |
+| gallons (US) to L | L | 3.785 |
+| gallons (Imperial) to L | L | 4.546 |
+| barrels (oil, bbl) to m³ | m³ | 0.159 |
+| barrels (oil) to gallons US | gal | 42 |
+
+<Formula>1 m³ = 1000 L = 264.2 US gallons = 6.29 barrels (oil)</Formula>
+
+## Mass and Weight
+
+| From | To | Multiply by |
+|---|---|---|
+| pounds (lbm) to kg | kg | 0.4536 |
+| ounces (oz) to g | g | 28.35 |
+| tons (short, 2000 lb) to kg | kg | 907.2 |
+| tonnes (metric, 1000 kg) to kg | kg | 1000 |
+| long tons (2240 lb) to kg | kg | 1016 |
+
+Note: In engineering, weight = force = mass × gravity. A mass of 1 kg weighs 9.81 N (Newtons) on Earth. A 1-pound mass exerts 1 pound-force (lbf) under standard gravity.
+
+## Pressure
+
+Pressure = force per area. SI unit = Pascal (Pa = N/m²).
+
+| Unit | SI Equivalent | Common Use |
+|---|---|---|
+| 1 Pascal | 1 N/m² | Very small; use kPa or MPa |
+| 1 bar | 100,000 Pa (100 kPa) | Standard industrial |
+| 1 atm | 101,325 Pa | Standard atmospheric |
+| 1 psi | 6,894.8 Pa | US customary |
+| 1 kgf/cm² (at) | 98,067 Pa | Metric technical atm |
+| 1 torr (mmHg) | 133.3 Pa | Vacuum measurements |
+| 1 in H₂O | 248.8 Pa | Low pressure/drafts |
+| 1 in Hg | 3,386 Pa | Barometric pressure |
+| 1 mm Hg | 133.3 Pa | Medical/lab |
+
+<Formula>1 bar = 14.50 psi = 0.987 atm = 29.53 in Hg = 10.2 m H₂O = 750 torr</Formula>
+
+<Calculator id="flow-conversion-calculator" label="Flow Rate Unit Converter" />
+
+## Temperature
+
+| Scale | Freezing Water | Boiling Water | Absolute Zero |
+|---|---|---|---|
+| Celsius (°C) | 0 | 100 | -273.15 |
+| Fahrenheit (°F) | 32 | 212 | -459.67 |
+| Kelvin (K) | 273.15 | 373.15 | 0 |
+| Rankine (°R) | 491.67 | 671.67 | 0 |
+
+### Conversions
+
+<Formula>°C = (°F − 32) × 5/9</Formula>
+<Formula>°F = °C × 9/5 + 32</Formula>
+<Formula>K = °C + 273.15</Formula>
+<Formula>°R = °F + 459.67</Formula>
+
+<Callout type="warning" title="Temperature Differences" severity="warning">
+Temperature DIFFERENCE: ΔT of 1°C = ΔT of 1 K = ΔT of 1.8°F = ΔT of 1.8°R. When converting heat transfer coefficients or temperature differences, don't add/subtract 32 — only apply the scaling factor (5/9 or 9/5).
+</Callout>
+
+## Flow Rate
+
+| From | To | Multiply by |
+|---|---|---|
+| US gallons/min (gpm) to m³/h | m³/h | 0.227 |
+| US gpm to L/s | L/s | 0.0631 |
+| barrels/day to m³/h | m³/h | 0.00662 |
+| barrels/hour to m³/h | m³/h | 0.159 |
+| ft³/min (cfm) to m³/h | m³/h | 1.699 |
+| ft³/min (cfm) to L/s | L/s | 0.472 |
+| million gpd (MGD) to m³/h | m³/h | 157.7 |
+| L/min to m³/h | m³/h | 0.06 |
+
+### Standard/Gas Flows
+
+Gas flows are often referenced to standard conditions (1 atm, specified temperature):
+- **Nm³/h**: Normal cubic meters per hour (0°C, 1.013 bar abs)
+- **SCFM**: Standard cubic feet per minute (60°F, 14.7 psia)
+
+1 Nm³/h = 0.622 SCFM (approximately — depends on gas composition)
+
+Convert actual flow to standard:
+<Formula>Q<sub>std</sub> = Q<sub>actual</sub> × (P<sub>actual</sub>/P<sub>std</sub>) × (T<sub>std</sub>/T<sub>actual</sub>)</Formula>
+
+## Velocity
+
+| From | To | Multiply by |
+|---|---|---|
+| ft/s to m/s | m/s | 0.3048 |
+| ft/min to m/s | m/s | 0.00508 |
+| mph to km/h | km/h | 1.609 |
+| knots to m/s | m/s | 0.514 |
+| km/h to m/s | m/s | 0.2778 |
+
+## Force and Torque
+
+| Quantity | Unit | SI Equivalent |
+|---|---|---|
+| Force | 1 lbf | 4.448 N |
+| Force | 1 kgf (kilopond) | 9.807 N |
+| Force | 1 dyne | 10⁻⁵ N |
+| Torque | 1 ft-lbf | 1.356 N·m |
+| Torque | 1 in-lbf | 0.113 N·m |
+| Torque | 1 kgf·m | 9.807 N·m |
+
+## Power
+
+| Unit | SI Equivalent | Common Use |
+|---|---|---|
+| 1 Watt | 1 J/s | SI standard |
+| 1 kilowatt (kW) | 1000 W | Electrical/mechanical |
+| 1 horsepower (hp) | 745.7 W | US mechanical power |
+| 1 metric hp (PS, CV) | 735.5 W | European metric hp |
+| 1 ft-lbf/s | 1.356 W | US customary |
+| 1 Btu/h | 0.293 W | Thermal (US) |
+| 1 ton of refrigeration | 3,517 W (12,000 Btu/h) | HVAC cooling |
+| 1 boiler hp | 9,809 W | Steam boilers |
+
+<Formula>1 hp = 0.746 kW = 550 ft-lb/s = 2,545 Btu/h</Formula>
+
+## Energy
+
+| Unit | SI Equivalent | Common Use |
+|---|---|---|
+| 1 Joule | 1 N·m | SI standard |
+| 1 kilojoule (kJ) | 1000 J | |
+| 1 kilowatt-hour (kWh) | 3.6 × 10⁶ J = 3.6 MJ | Electrical billing |
+| 1 Btu | 1055 J | Thermal (US) |
+| 1 calorie (IT) | 4.187 J | Heat |
+| 1 food Calorie | 4187 J = 4.187 kJ | Nutrition (kilocalorie) |
+| 1 therm | 105.5 MJ | Natural gas billing |
+| 1 ft-lbf | 1.356 J | Mechanical work |
+| 1 kcal | 4.187 kJ | Thermal energy |
+
+<Formula>1 kWh = 3,412 Btu = 860 kcal = 3.6 MJ</Formula>
+
+## Density and Viscosity
+
+### Density
+| From | To | Multiply by |
+|---|---|---|
+| lb/ft³ to kg/m³ | kg/m³ | 16.018 |
+| g/cm³ to kg/m³ | kg/m³ | 1000 |
+| lb/gal (US) to kg/m³ | kg/m³ | 119.8 |
+
+Water density = 1000 kg/m³ = 62.4 lb/ft³ = 8.34 lb/gal
+
+### Dynamic Viscosity
+
+| From | To | Multiply by |
+|---|---|---|
+| centipoise (cP) to Pa·s | Pa·s | 0.001 |
+| poise to Pa·s | Pa·s | 0.1 |
+| lb/(ft·s) to Pa·s | Pa·s | 1.488 |
+
+Water at 20°C = 1 cP = 0.001 Pa·s
+
+### Kinematic Viscosity (ν = μ/ρ)
+
+| From | To | Multiply by |
+|---|---|---|
+| centistoke (cSt) to m²/s | m²/s | 10⁻⁶ |
+| ft²/s to m²/s | m²/s | 0.0929 |
+| Saybolt Seconds Universal (SSU) to cSt | cSt | ~0.216×SSU − 135 (for SSU > 100) |
+
+Water at 20°C = 1 cSt = 10⁻⁶ m²/s
+
+## Thermal Conductivity and Heat Transfer
+
+| Property | Units | Conversion |
+|---|---|---|
+| Thermal conductivity | Btu/(h·ft·°F) → W/(m·K) | ×1.731 |
+| Heat transfer coefficient | Btu/(h·ft²·°F) → W/(m²·K) | ×5.678 |
+| Heat flux | Btu/(h·ft²) → W/m² | ×3.155 |
+| Specific heat | Btu/(lb·°F) → kJ/(kg·K) | ×4.187 |
+
+<Calculator id="heat-transfer-calculator" label="Heat Transfer Calculator" />
+
+## Gas Constants and Standard Conditions
+
+### Gas Constant R Values
+
+| Units | R |
+|---|---|
+| J/(mol·K) | 8.314 |
+| kJ/(kmol·K) | 8.314 |
+| ft-lbf/(lbmol·°R) | 1545 |
+| Btu/(lbmol·°R) | 1.986 |
+| m³·Pa/(mol·K) | 8.314 |
+| L·atm/(mol·K) | 0.08206 |
+
+### Specific Gas Constants (R<sub>specific</sub> = R<sub>universal</sub>/M)
+
+| Gas | MW (kg/kmol) | R (J/kg·K) |
+|---|---|---|
+| Air | 28.97 | 287 |
+| Nitrogen | 28.0 | 297 |
+| Oxygen | 32.0 | 260 |
+| Methane | 16.04 | 518 |
+| CO₂ | 44.0 | 189 |
+| Hydrogen | 2.02 | 4124 |
+| Steam | 18.02 | 462 |
+
+## Quick Conversion Cheat Sheet
+
+### To Convert US to SI (Memorize These)
+
+1. **psi → bar**: ÷ 14.5
+2. **bar → psi**: × 14.5
+3. **°F → °C**: (°F−32) × 5/9
+4. **gpm → m³/h**: × 0.227
+5. **ft → m**: × 0.305
+6. **lb → kg**: × 0.454
+7. **hp → kW**: × 0.746
+8. **Btu → kJ**: × 1.055
+9. **in → mm**: × 25.4
+10. **mile → km**: × 1.61
+
+<Callout type="tip" title="Quick Mental Math" severity="info">
+For rough estimates: bar ≈ psi / 15 (close enough for site work). m ≈ ft / 3 + 5% (10 ft ≈ 3m). kg ≈ lb / 2 + 10% (100 lb ≈ 45 kg). °C ≈ (°F − 30)/2 for ambient temps (70°F ≈ 21°C, actual is 21°C — very close!).
+</Callout>
+
+## Summary
+
+Engineering calculations require consistent units — always convert to SI (or one consistent system) before plugging into formulas. The SI system uses meters, kilograms, seconds, Kelvin, and Pascals. Critical conversion factors: 1 bar = 14.5 psi = 100 kPa, 1 m³ = 264 US gallons, °C = (°F − 32) × 5/9, 1 hp = 0.746 kW. Temperature differences use the 9/5 or 5/9 factor without offset. Always check units in formulas — unit errors cause some of the most expensive engineering mistakes.

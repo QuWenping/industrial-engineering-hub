@@ -1,0 +1,138 @@
+---
+title: "Water Properties (20°C)"
+description: "Water physical properties including density, viscosity, specific heat, thermal conductivity, and vapor pressure at various temperatures for engineering calculations."
+category: "Fluid"
+keywords: ["water properties", "water density", "water viscosity", "specific heat water", "vapor pressure water"]
+updated: "2026-07-29"
+related:
+  - pressure-drop-calculator
+  - reynolds-number-calculator
+  - pipe-velocity-calculator
+  - "/guides/pressure-drop-pipes"
+---
+
+## Overview
+
+Water is the most common process fluid in engineering — used for cooling, heating, steam generation, cleaning, and as a process material. Its physical properties are essential inputs for pump sizing, pipe flow, heat transfer, and hydraulic calculations. Properties vary significantly with temperature, especially viscosity and vapor pressure.
+
+<Formula>ρ<sub>water at 4°C</sub> = 999.97 kg/m³ ≈ 1000 kg/m³ (reference)</Formula>
+
+## Properties at Standard Temperature
+
+### Density vs Temperature
+
+| Temperature (°C) | Density (kg/m³) | Notes |
+|---|---|---|
+| 0 (ice) | 917 | Solid — less dense than liquid (floats) |
+| 4 | 1000 | Maximum density |
+| 10 | 999.7 | |
+| 20 | 998.2 | Room temperature reference |
+| 30 | 995.7 | |
+| 50 | 988.0 | |
+| 80 | 971.8 | |
+| 100 | 958.4 | Boiling at 1 atm |
+| 200 (16 bar) | 864.7 | Saturated liquid |
+| 300 (86 bar) | 712.5 | Approaching critical point |
+
+<Callout type="info" title="Water Is Nearly Incompressible" severity="info">
+Water density changes less than 0.005% per bar of pressure — for all practical engineering purposes, water is incompressible. Only temperature has significant effect on density. Use 1000 kg/m³ for rough calculations, 998 kg/m³ for precise work at 20°C.
+</Callout>
+
+## Dynamic Viscosity
+
+| Temperature (°C) | μ (mPa·s or cP) |
+|---|---|
+| 0 | 1.79 |
+| 10 | 1.31 |
+| 20 | 1.00 |
+| 30 | 0.798 |
+| 40 | 0.653 |
+| 50 | 0.547 |
+| 60 | 0.467 |
+| 80 | 0.355 |
+| 100 | 0.282 |
+
+<Formula>μ<sub>20°C</sub> = 1.002 × 10⁻³ Pa·s ≈ 0.001 Pa·s = 1 cP</Formula>
+
+<Calculator id="reynolds-number-calculator" label="Reynolds Number Calculator" />
+
+Viscosity drops by ~70% from 0°C to 100°C — this strongly affects pressure drop calculations in hot water systems.
+
+## Thermal Properties
+
+| Property | Value (20°C) |
+|---|---|
+| Specific Heat (c<sub>p</sub>) | 4.186 kJ/kg·K |
+| Thermal Conductivity | 0.60 W/m·K |
+| Latent Heat (vaporization at 100°C) | 2,257 kJ/kg |
+| Latent Heat (fusion at 0°C) | 334 kJ/kg |
+| Prandtl Number (20°C) | 7.0 |
+| Prandtl Number (100°C) | 1.75 |
+
+<Calculator id="heat-transfer-calculator" label="Heat Transfer Calculator" />
+
+## Vapor Pressure
+
+Vapor pressure is critical for NPSH calculations, boiling analysis, and cavitation:
+
+| Temperature (°C) | Vapor Pressure (kPa abs) | Equivalent Head (m of water) |
+|---|---|---|
+| 0 | 0.61 | 0.06 |
+| 10 | 1.23 | 0.13 |
+| 20 | 2.34 | 0.24 |
+| 30 | 4.24 | 0.43 |
+| 40 | 7.38 | 0.75 |
+| 50 | 12.3 | 1.26 |
+| 60 | 19.9 | 2.03 |
+| 70 | 31.2 | 3.18 |
+| 80 | 47.3 | 4.83 |
+| 90 | 70.1 | 7.16 |
+| 100 | 101.3 | 10.33 (boiling!) |
+| 120 (2 bar) | 199 | 20.3 |
+| 150 (4.8 bar) | 476 | 48.5 |
+
+<Callout type="warning" title="Hot Water Kills NPSH" severity="warning">
+At 100°C, vapor pressure equals atmospheric pressure — open systems boil. For condensate at 90°C, vapor pressure head is 7.2m, subtracting directly from NPSH. See [[npsh-calculation-explained]] for details.
+</Callout>
+
+## Speed of Sound
+
+| Temperature (°C) | Speed (m/s) |
+|---|---|
+| 0 | 1,402 |
+| 20 | 1,482 |
+| 50 | 1,542 |
+| 100 | 1,543 |
+
+Relevant for water hammer calculations (see [[water-hammer-analysis]]).
+
+## Common Calculations with Water
+
+### Heating/Cooling Duty
+<Formula>Q = m × c<sub>p</sub> × ΔT (kW) — for 1 kg/s flow with 1°C change, Q = 4.186 kW</Formula>
+
+### Pressure Loss at 20°C
+For 100mm pipe at 2 m/s: Re ≈ 1000 × 2 × 0.1 / 0.001 = 200,000 (turbulent)
+
+### Pump Power for Water
+<Formula>P(kW) = Q(m³/s) × ΔP(Pa) / 1000 / η = Q(m³/h) × head(m) × 9.81 / (3600 × η)</Formula>
+
+<Calculator id="pump-power-calculator" label="Pump Power Calculator" />
+
+## Seawater vs Fresh Water
+
+| Property | Fresh Water (20°C) | Seawater (3.5% salinity) |
+|---|---|---|
+| Density | 998 kg/m³ | 1,025 kg/m³ |
+| Viscosity | 1.00 cP | 1.08 cP |
+| Vapor pressure | 2.34 kPa | 2.20 kPa |
+| pH | ~7 | ~8.1 |
+| Corrosivity | Low | Significant (chlorides) |
+
+<Callout type="danger" title="Seawater Corrosion" severity="danger">
+Seawater is highly corrosive to carbon steel and causes pitting/SCC in 304/316 stainless above ~40°C. Use 90/10 copper-nickel, 2205 duplex, FRP, or titanium for seawater piping and equipment.
+</Callout>
+
+## Summary
+
+Water at 20°C has density 998 kg/m³, dynamic viscosity 0.001 Pa·s, specific heat 4.186 kJ/kg·K, and thermal conductivity 0.60 W/m·K. Density changes modestly with temperature; viscosity decreases significantly (important for hot water pressure drop); vapor pressure rises exponentially — critical for NPSH at temperatures above 50°C. Use 1000 kg/m³ and 0.001 Pa·s as defaults for preliminary calculations; use precise values from steam tables for design work.

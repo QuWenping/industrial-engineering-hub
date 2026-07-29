@@ -1,0 +1,155 @@
+---
+title: "NPSH Calculation Explained"
+description: "Complete guide to Net Positive Suction Head (NPSH) in pump systems — understand NPSHa, NPSHr, cavitation causes, calculation methods, and solutions."
+category: "Pump Engineering"
+keywords: ["NPSH", "NPSHa", "NPSHr", "cavitation", "pump suction", "net positive suction head"]
+updated: "2026-07-29"
+related:
+  - npsh-calculator
+  - pump-head-calculator
+  - pump-power-calculator
+  - "/guides/pump-selection-guide"
+---
+
+## What is NPSH?
+
+Net Positive Suction Head (NPSH) is the total suction head in a pump system above the vapor pressure of the liquid. It determines whether the liquid will remain liquid or vaporize (boil) at the pump suction — which causes cavitation.
+
+There are two critical values:
+- **NPSHa** (Available): What your system provides
+- **NPSHr** (Required): What the pump needs (from manufacturer)
+
+The fundamental rule: **NPSHa > NPSHr by a safety margin of 0.5-1.0 m (2-3 ft)**.
+
+<Calculator id="npsh-calculator" label="Calculate NPSH Available" />
+
+## Why NPSH Matters — Cavitation
+
+When pressure at the pump impeller eye drops below the liquid's vapor pressure, vapor bubbles form. As these bubbles travel to higher-pressure regions in the impeller, they collapse violently — this is cavitation. It causes:
+
+- Pitting damage to impeller (looks like it was hit with a hammer)
+- Loud noise (gravel or marbles being pumped)
+- Reduced flow and head
+- Severe vibration leading to bearing/seal failure
+- Catastrophic pump failure in extreme cases
+
+<Callout type="danger" title="Cavitation is Destructive" severity="high">
+Severe cavitation can destroy an impeller in hours. Even mild cavitation reduces seal and bearing life from years to months. NPSH violations are the #1 cause of premature pump failure.
+</Callout>
+
+## NPSHa Calculation Formula
+
+The NPSH available is calculated from system conditions:
+
+<Formula>NPSHa = P<sub>surface</sub>/(ρg) ± H<sub>static</sub> − P<sub>vapor</sub>/(ρg) − h<sub>f,suction</sub></Formula>
+
+| Term | Meaning |
+|---|---|
+| P<sub>surface</sub> | Pressure on liquid surface at suction source (Pa) — atmospheric for open tanks |
+| H<sub>static</sub> | Vertical distance from liquid level to pump centerline; + for flooded suction (level above pump), − for suction lift |
+| P<sub>vapor</sub> | Vapor pressure of liquid at operating temperature (Pa) |
+| h<sub>f,suction</sub> | All friction losses in suction piping (pipe + fittings + entrance + filters) |
+
+## Understanding Each Component
+
+### Pressure Head — P<sub>surface</sub>/(ρg)
+
+- Open tank to atmosphere: ~10.3 m (33.9 ft) of water at sea level
+- Pressurized vessel: vessel operating pressure converted to head
+- Vacuum vessel: can be very low (risk!)
+
+### Static Head — H<sub>static</sub>
+
+- **Flooded suction** (tank above pump): adds to NPSHa (good!)
+- **Suction lift** (pump drawing from below): subtracts from NPSHa (bad — increases risk)
+- Always design for flooded suction when possible
+
+<Callout type="tip" title="The #1 Rule for NPSH">
+Mount the pump BELOW the liquid level in the suction tank. A suction head of 1-2 m above the pump is the cheapest insurance against cavitation.
+</Callout>
+
+### Vapor Pressure Head — P<sub>vapor</sub>/(ρg)
+
+Vapor pressure increases dramatically with temperature:
+
+| Temperature | Water Vapor Pressure | Equivalent Head |
+|---|---|---|
+| 20°C | 2.3 kPa | 0.24 m |
+| 50°C | 12.3 kPa | 1.26 m |
+| 80°C | 47.3 kPa | 4.83 m |
+| 100°C | 101.3 kPa | 10.33 m (atmospheric = boiling!) |
+
+<Callout type="warning" title="Hot Liquids Kill NPSH">
+For boiling water (100°C), P<sub>vapor</sub> = atmospheric pressure. NPSHa = 0 ± H<sub>static</sub> − h<sub>f</sub>. You MUST provide flooded suction and minimize friction — pumps handling condensate or boiler feed water need special attention.
+</Callout>
+
+### Friction Losses in Suction — h<sub>f,suction</sub>
+
+Every fitting in the suction line subtracts from NPSHa:
+- Pipe friction (use larger than discharge pipe)
+- Strainers and foot valves (can lose 0.5-2 m)
+- Elbows (long-radius preferred)
+- Entrance losses
+- Isolation valves (full-port gate or ball only — never globe valves in suction)
+
+## NPSHr — What the Pump Requires
+
+NPSHr is a pump characteristic determined by the manufacturer during testing per HI/ISO standards. It increases with flow rate and is shown on the pump curve.
+
+Key points about NPSHr:
+- It rises with flow (more flow = more required NPSH)
+- It's based on a 3% head drop criterion (incipient cavitation already occurring at published NPSHr!)
+- For reliable operation, add a margin: NPSHa ≥ NPSHr + 0.5 to 1.0 m
+- Higher-speed pumps have higher NPSHr
+- Larger impellers generally have lower NPSHr
+
+## Worked Example — Open Tank Flooded Suction
+
+**Problem**: Water at 40°C from an open tank. Liquid level is 3m above pump centerline. Suction piping losses are 0.8m. Atmospheric pressure is 101.3 kPa.
+
+**Solution**:
+1. P<sub>atm</sub>/(ρg) = 101,300 / (1000 × 9.81) = 10.33 m
+2. H<sub>static</sub> = +3.0 m (flooded suction)
+3. P<sub>vapor</sub> at 40°C = 7.4 kPa → head = 7,400 / (1000 × 9.81) = 0.75 m
+4. h<sub>f</sub> = 0.8 m
+
+NPSHa = 10.33 + 3.0 − 0.75 − 0.8 = **11.78 m**
+
+If NPSHr at operating flow is 5 m: margin = 6.78 m ✓ Excellent.
+
+## Worked Example — Suction Lift Scenario
+
+**Same pump, but tank is 3m BELOW pump centerline**:
+
+NPSHa = 10.33 + (−3.0) − 0.75 − 0.8 = **5.78 m**
+
+Margin = 5.78 − 5.0 = 0.78 m (acceptable but tight). At 80°C water:
+- P<sub>vapor</sub> = 47.3 kPa → 4.83 m head
+- NPSHa = 10.33 − 3.0 − 4.83 − 0.8 = **1.70 m** — **CAVITATION!**
+
+## How to Improve NPSHa
+
+1. **Raise suction tank level** (cheapest, most effective)
+2. **Lower pump elevation** (below tank level)
+3. **Pressurize suction vessel** (add blanketing gas)
+4. **Reduce suction friction** — larger pipe, fewer fittings, remove strainers
+5. **Reduce liquid temperature** (often not possible)
+6. **Use a low-NPSHr pump** — larger size, slower speed, or special inducer design
+7. **Install a booster pump** (vertical can pump) in the suction line
+
+<Calculator id="pump-flow-calculator" label="Check Pump at Operating Flow" />
+
+## Common NPSH Mistakes
+
+| Mistake | Consequence |
+|---|---|
+| Using globe valve in suction line | High friction kills NPSHa |
+| Forgetting strainer clogging | Losses increase 2-3× as strainer blocks |
+| Operating at end-of-curve (high flow) | NPSHr spikes, cavitation begins |
+| Ignoring altitude | P<sub>atm</sub> drops 3% per 300m elevation |
+| Not accounting for minimum tank level | NPSHa drops when tank is nearly empty |
+| Sizing suction pipe same as discharge | Velocity too high, friction too high |
+
+## Summary
+
+NPSHa is calculated from system conditions; NPSHr comes from the pump manufacturer. Keep NPSHa > NPSHr by 0.5-1.0 m minimum. Design for flooded suction, minimize suction-side friction, and be especially careful with hot liquids (high vapor pressure) or suction lift applications. NPSH problems are far cheaper to prevent at the design stage than to fix after installation.

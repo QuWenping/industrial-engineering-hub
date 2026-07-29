@@ -1,0 +1,153 @@
+---
+title: "Compressible Flow Basics"
+description: "Introduction to compressible gas flow in pipes: Mach number, choked flow, isothermal and adiabatic flow, pressure drop for gases, and sonic velocity."
+category: "Fluid Mechanics"
+keywords: ["compressible flow", "Mach number", "choked flow", "gas pipeline", "sonic velocity", "isentropic flow"]
+updated: "2026-07-29"
+related:
+  - pressure-drop-calculator
+  - flow-rate-calculator
+  - pipe-velocity-calculator
+---
+
+## Incompressible vs Compressible Flow
+
+For liquids, density is essentially constant regardless of pressure — flow is incompressible and Darcy-Weisbach with constant density works. For gases and vapors, density changes significantly with pressure, so the analysis changes.
+
+**Rule of thumb**: If pressure drop < 10% of absolute inlet pressure, incompressible methods (using average density) give acceptable accuracy. Above 10%, use compressible flow equations. Above ~40% of absolute pressure, the flow can choke.
+
+<Callout type="info" title="Where Compressible Flow Matters">
+Natural gas pipelines, compressed air systems, steam lines, vent/flare systems, safety relief valve discharge, pneumatic conveying, and high-velocity gas vents.
+</Callout>
+
+## Key Gas Flow Concepts
+
+### Mach Number
+
+<Formula>Ma = v / c = v / √(γ × R × T)</Formula>
+
+Where:
+- v = gas velocity (m/s)
+- c = speed of sound (m/s) in the gas
+- γ = ratio of specific heats (1.4 for air, 1.3 for natural gas, 1.33 for steam)
+- R = specific gas constant (J/kg·K)
+- T = absolute temperature (K)
+
+- **Subsonic**: Ma < 1
+- **Sonic**: Ma = 1 (choked flow)
+- **Supersonic**: Ma > 1 (converging-diverging nozzles)
+
+### Speed of Sound in Common Gases
+
+| Gas | Speed of Sound at 20°C (m/s) | γ |
+|---|---|---|
+| Air | 343 | 1.40 |
+| Natural gas (methane) | 446 | 1.32 |
+| Hydrogen | 1303 | 1.41 |
+| Steam (100°C) | 472 | 1.33 |
+| Nitrogen | 349 | 1.40 |
+| CO₂ | 267 | 1.30 |
+
+<Callout type="warning" title="Velocity Limits in Gas Pipes">
+Typical design practice limits gas velocity to 20 m/s in plant piping to control noise and erosion. Long-distance gas pipelines run at 5-10 m/s. High-pressure steam can go to 60 m/s. Vacuum systems often operate near sonic (Ma = 0.5-0.9).
+</Callout>
+
+## Choked Flow
+
+When gas velocity reaches the speed of sound (Ma = 1) at some point in the system (typically at a restriction or pipe exit), flow becomes "choked" — reducing downstream pressure further does NOT increase flow rate. The mass flow is limited by upstream conditions only.
+
+For an orifice/nozzle at choked conditions:
+
+<Formula>m<sub>max</sub> = C<sub>d</sub> × A × P<sub>0</sub> × √(γ / (R × T<sub>0</sub>) × (2/(γ+1))<sup>(γ+1)/(γ−1)</sup>)</Formula>
+
+Choked flow is common in:
+- Safety/relief valves discharging to atmosphere
+- Control valves at high pressure drop
+- Leaks from high-pressure gas systems
+- Blowdown/vent systems
+
+<Callout type="danger" title="Relief Valves Must Be Sized for Choked Flow">
+When a safety valve discharges to atmosphere, choked flow typically occurs. API 520 provides formulas for relief valve sizing at choked conditions. Using incompressible formulas drastically underestimates required orifice area.
+</Callout>
+
+## Isothermal Gas Flow in Long Pipes
+
+For long pipelines at roughly constant temperature (isothermal), compressible pressure drop uses the Weymouth or Panhandle equations, or the general flow equation:
+
+<Formula>m = √[(P<sub>1</sub>² − P<sub>2</sub>²) × (π²D<sup>5</sup>) / (16 × R × T × L × f)]</Formula>
+
+In terms of volumetric flow at standard conditions (e.g., Nm³/h), this is the basis for natural gas pipeline hydraulic calculations.
+
+<Callout type="tip" title="Weymouth vs Panhandle">
+The Weymouth formula is used for high-pressure gas transmission. The Panhandle A/B equations are preferred for large-diameter, high-flow lines. Both are empirical and apply within specific Reynolds number ranges.
+</Callout>
+
+## Adiabatic Flow (Fanno Flow)
+
+For insulated pipes with no heat transfer, flow follows Fanno-line relationships. Key features:
+- For subsonic flow (Ma < 1): friction accelerates the flow toward Ma = 1, pressure decreases
+- For supersonic flow: friction decelerates toward Ma = 1
+- Maximum pipe length exists before choking occurs (L<sub>max</sub> for given inlet Ma)
+
+## Simplified Approach — General Gas Pressure Drop
+
+For approximate gas line sizing with less than ~30% pressure drop, use the Darcy equation with average density:
+
+1. Calculate density at average pressure: ρ = P<sub>avg</sub>/(R × T)
+2. Calculate velocity at average conditions: v = m/(ρ × A)
+3. Apply Darcy-Weisbach: ΔP = f × (L/D) × (ρ<sub>avg</sub> × v²/2)
+
+For more accurate results when ΔP > 10%, iterate since density changes along the pipe.
+
+<Calculator id="pressure-loss-calculator" label="Pressure Drop Calculator" />
+
+### Worked Example: Compressed Air Line
+
+200 m of 100mm steel pipe, 1000 Nm³/h of air at 7 barg inlet, 20°C.
+
+1. Inlet P = 8 bar abs; estimate outlet P ≈ 7.5 bar abs; P<sub>avg</sub> = 7.75 bar
+2. ρ<sub>avg</sub> = 775,000 / (287 × 293) = 9.22 kg/m³
+3. Q<sub>actual</sub> = (1000/3600) × (1.013/7.75) × (293/273) = 0.0386 m³/s
+4. v = Q/A = 0.0386 / (π × 0.102²/4) = 4.7 m/s
+5. Re = ρvD/μ = 9.22 × 4.7 × 0.102 / (1.8×10⁻⁵) = 246,000 → turbulent
+6. f ≈ 0.019 (for ε/D = 0.00045)
+7. ΔP = 0.019 × (200/0.102) × (9.22 × 4.7²/2) = 0.019 × 1961 × 102 = ~38 kPa ≈ 0.38 bar
+
+Final: outlet pressure ≈ 7.0 - 0.38 = 6.6 barg. Since ΔP is 0.4 bar / 8.0 bar = 5%, incompressible approximation is reasonable.
+
+## Practical Design Guidelines for Gas Piping
+
+| Gas Service | Typical Velocity | Max ΔP Guideline |
+|---|---|---|
+| Compressed air (plant) | 6-10 m/s | 0.1-0.3 bar per 100m |
+| Natural gas (high-pressure transmission) | 5-10 m/s | 0.05-0.2 bar/km |
+| Natural gas (distribution, low pressure) | 10-20 m/s | &lt;10% of line pressure |
+| Saturated steam | 15-40 m/s | 0.1-0.5 bar per 100m |
+| Superheated steam | 30-60 m/s | Varies with pressure |
+| Relief/flare headers | 50-100% of Mach | Choked flow at outlet |
+| Vacuum lines | up to 150 m/s | Near sonic at pump inlet |
+
+<Callout type="warning" title="Steam Line Sizing">
+For steam lines, pressure drop reduces saturation temperature. Design steam lines so that end-of-line pressure meets process requirements. Typical target: 0.1-0.5 bar pressure drop per 100m. Steam velocity should be kept below 40 m/s (saturated) to avoid water hammer from entrained condensate.
+</Callout>
+
+## Density and Flow at Standard Conditions
+
+Gas flow rates are usually stated at standard/reference conditions:
+- **Nm³/h**: Normal cubic meters per hour at 0°C, 1.013 bar abs
+- **SCFM**: Standard cubic feet per minute at 60°F, 14.7 psia
+
+Convert between actual and standard flow:
+
+<Formula>Q<sub>actual</sub> = Q<sub>std</sub> × (P<sub>std</sub>/P<sub>actual</sub>) × (T<sub>actual</sub>/T<sub>std</sub>)</Formula>
+
+## Pressure Ratings for Gas vs Liquid Piping
+
+Gas piping has stricter requirements than liquid piping due to:
+- Higher stored energy (compressible fluid releases energy on failure)
+- ASME B31.3 requires more NDE for gas service above certain pressures
+- Safety factors are higher for "Category D" vs "Category M" (toxic) services
+
+## Summary
+
+For gases, density changes with pressure — use compressible flow equations when pressure drop exceeds 10% of absolute pressure. Mach number relates velocity to speed of sound. Choked flow (Ma = 1) limits maximum flow through restrictions regardless of downstream pressure. For long pipelines, isothermal equations (Weymouth, Panhandle) apply. For plant piping with moderate ΔP, Darcy-Weisbach with average density provides good results. Keep gas velocities below 20 m/s to limit noise and erosion.
