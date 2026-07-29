@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion, useInView } from "framer-motion";
 import {
   ArrowRight,
@@ -17,18 +18,19 @@ import {
   Zap,
   Box,
   ChevronRight,
+  Search,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const popularTools = [
   { name: "Steel Weight Calculator", href: "/tools/steel-weight-calculator", icon: Weight, category: "Material" },
-  { name: "Pipe Flow Calculator", href: "/tools/pipe-flow-calculator", icon: Droplets, category: "Mechanical" },
-  { name: "Pump Power Calculator", href: "/tools/pump-power-calculator", icon: Cog, category: "Mechanical" },
-  { name: "Pressure Drop Calculator", href: "/tools/pressure-drop-calculator", icon: Gauge, category: "Chemical" },
+  { name: "Pressure Drop Calculator", href: "/tools/pressure-drop-calculator", icon: Gauge, category: "Fluid" },
+  { name: "Pump Power Calculator", href: "/tools/pump-power-calculator", icon: Cog, category: "Pump" },
+  { name: "Pipe Velocity Calculator", href: "/tools/pipe-velocity-calculator", icon: Droplets, category: "Fluid" },
   { name: "Heat Exchanger Calculator", href: "/tools/heat-exchanger-calculator", icon: Flame, category: "Thermal" },
-  { name: "Tank Volume Calculator", href: "/tools/tank-volume-calculator", icon: Box, category: "Mechanical" },
-  { name: "Pipe Weight Calculator", href: "/tools/pipe-weight-calculator", icon: Weight, category: "Material" },
+  { name: "Tank Volume Calculator", href: "/tools/tank-volume-calculator", icon: Box, category: "Vessel" },
+  { name: "Orifice Flow Calculator", href: "/tools/orifice-flow-calculator", icon: Gauge, category: "Flow" },
   { name: "Motor Power Calculator", href: "/tools/motor-power-calculator", icon: Zap, category: "Electrical" },
 ];
 
@@ -48,8 +50,8 @@ const featuredGuides = [
   {
     title: "Steel Material Properties Reference",
     description: "Comprehensive reference for carbon steel, stainless steel, and alloy steel properties and applications.",
-    href: "/guides/steel-properties",
-    readTime: "6 min read",
+    href: "/guides/steel-material-properties",
+    readTime: "7 min read",
   },
 ];
 
@@ -86,6 +88,52 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
   );
 }
 
+function HeroSearch() {
+  const [query, setQuery] = useState("");
+  const router = useRouter();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (query.trim()) {
+      router.push(`/tools?search=${encodeURIComponent(query.trim())}`);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSearch} className="max-w-2xl mx-auto mb-10">
+      <div className="relative">
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search calculators: pressure drop, pump power, steel weight..."
+          className="w-full h-14 pl-12 pr-28 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-400 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-engineering-blue/50 focus:border-engineering-blue/50 text-base"
+        />
+        <button
+          type="submit"
+          className="absolute right-2 top-1/2 -translate-y-1/2 h-10 px-5 bg-engineering-blue hover:bg-engineering-blue/90 text-white rounded-lg font-medium text-sm transition-colors"
+        >
+          Search
+        </button>
+      </div>
+      <div className="flex flex-wrap justify-center gap-2 mt-3 text-xs text-slate-400">
+        <span>Popular:</span>
+        {["pipe velocity", "pump head", "NPSH", "heat transfer", "tank volume"].map((term) => (
+          <button
+            key={term}
+            type="button"
+            onClick={() => router.push(`/tools?search=${encodeURIComponent(term)}`)}
+            className="hover:text-ai-glow transition-colors underline underline-offset-2"
+          >
+            {term}
+          </button>
+        ))}
+      </div>
+    </form>
+  );
+}
+
 function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-dark-bg text-white">
@@ -94,7 +142,7 @@ function HeroSection() {
       <div className="absolute top-20 -left-32 w-96 h-96 bg-engineering-blue/20 rounded-full blur-3xl" />
       <div className="absolute top-40 -right-32 w-96 h-96 bg-ai-glow/10 rounded-full blur-3xl" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -106,22 +154,25 @@ function HeroSection() {
           </Badge>
 
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">
-            <span className="text-gradient-hero">Engineering Intelligence</span>
+            <span className="text-gradient-hero">Engineering Calculators</span>
             <br />
-            <span className="text-white/90">for Modern Industry</span>
+            <span className="text-white/90">& Technical Guides</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-slate-300/80 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Professional engineering calculators, in-depth technical guides, material databases and AI-powered tools — built for engineers, by engineers.
+          <p className="text-lg sm:text-xl text-slate-300/80 max-w-2xl mx-auto mb-8 leading-relaxed">
+            Free, professional engineering calculators and in-depth technical guides for fluid mechanics,
+            pump sizing, structural design, thermal engineering, and more.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <HeroSearch />
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link
               href="/tools"
               className="btn-primary-gradient text-white text-base font-medium px-8 h-12 rounded-lg shadow-2xl shadow-engineering-blue/25 inline-flex items-center justify-center"
             >
               <Calculator className="mr-2 h-5 w-5" />
-              Explore Engineering Tools
+              Browse All Calculators
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
             <Link
@@ -129,15 +180,15 @@ function HeroSection() {
               className="border border-white/20 text-white hover:bg-white/5 text-base font-medium px-8 h-12 rounded-lg inline-flex items-center justify-center"
             >
               <BookOpen className="mr-2 h-5 w-5" />
-              Discover Knowledge
+              Read Engineering Guides
             </Link>
           </div>
 
           <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
             {[
-              { value: 50, suffix: "+", label: "Engineering Tools" },
-              { value: 50, suffix: "+", label: "Technical References" },
-              { value: 0, suffix: "", label: "AI Assistant" },
+              { value: 53, suffix: "+", label: "Calculators" },
+              { value: 30, suffix: "+", label: "Guides" },
+              { value: 26, suffix: "", label: "Materials" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-3xl sm:text-4xl font-bold text-gradient">
@@ -153,7 +204,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-20 max-w-3xl mx-auto"
+          className="mt-16 max-w-3xl mx-auto"
         >
           <Link
             href="/enterprise"
@@ -315,9 +366,9 @@ function FeaturedGuidesSection() {
 
 function DatabaseSection() {
   const databases = [
-    { name: "Material Properties", href: "/materials", icon: Weight, count: "20+ materials" },
-    { name: "Pipe Specifications", href: "/reference/pipe-specs", icon: Droplets, count: "Schedule & sizes" },
-    { name: "Engineering Standards", href: "/reference/standards", icon: BookOpen, count: "ASTM, ASME, API" },
+    { name: "Material Properties", href: "/materials", icon: Weight, count: "26 materials" },
+    { name: "Pipe Specifications", href: "/reference", icon: Droplets, count: "Schedule & sizes" },
+    { name: "Engineering Standards", href: "/reference", icon: BookOpen, count: "ASTM, ASME, API" },
   ];
 
   return (

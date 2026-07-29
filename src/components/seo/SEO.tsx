@@ -125,6 +125,10 @@ export function schemaArticle(data: {
     publisher: {
       "@type": "Organization",
       name: "Industrial Engineering Hub",
+      logo: {
+        "@type": "ImageObject",
+        url: `${BASE_URL}/logo.png`,
+      },
     },
     datePublished: data.publishedTime,
     dateModified: data.modifiedTime,
