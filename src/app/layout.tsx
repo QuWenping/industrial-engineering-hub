@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { constructMetadata } from "@/components/seo/SEO";
+import { constructMetadata, schemaOrganization, schemaWebsiteSearch } from "@/components/seo/SEO";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -18,10 +20,12 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+
 export const metadata: Metadata = constructMetadata({
   title: "Industrial Engineering Hub",
   description:
-    "Professional engineering calculators, knowledge resources and AI tools for engineers worldwide. Material weight, pipe flow, pump power, heat transfer, and more.",
+    "53 free engineering calculators, 30+ technical guides, and 26 material property references. Professional calculators for pipe flow, pump power, steel weight, heat transfer, pressure drop, and more.",
   path: "/",
   keywords: [
     "engineering calculator",
@@ -57,6 +61,19 @@ export default function RootLayout({
           <main className="flex-1 pt-16">{children}</main>
           <Footer />
         </TooltipProvider>
+        <Script
+          id="schema-org-organization"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrganization()) }}
+        />
+        <Script
+          id="schema-org-website"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebsiteSearch()) }}
+        />
+        {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
       </body>
     </html>
   );

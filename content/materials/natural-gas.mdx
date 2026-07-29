@@ -1,0 +1,114 @@
+---
+title: "Natural Gas (Methane)"
+description: "Natural gas properties, density (~0.8 kg/m³ at standard conditions), methane composition, energy content, compressibility, and engineering for pipelines, combustion, and storage."
+category: "Gas"
+keywords: ["natural gas density", "methane density", "natural gas properties", "gas pipeline", "methane properties"]
+updated: "2026-07-29"
+related:
+  - density-calculator
+  - compressible-flow-calculator
+  - pressure-drop-calculator
+  - pump-power-calculator
+---
+
+## Overview
+
+Natural gas is a naturally occurring hydrocarbon gas mixture consisting primarily of methane (typically 75-98%), with smaller amounts of ethane, propane, butanes, nitrogen, carbon dioxide, and trace gases. It is one of the world's primary energy sources for power generation, heating, industrial processes, and transportation. Its low density, high energy content, and clean combustion make it the cleanest burning fossil fuel.
+
+<Formula>ρ = 0.7-0.9 kg/m³ at standard conditions (1 atm, 15°C) for typical pipeline-quality gas; pure methane (CH₄) is 0.678 kg/m³ — lighter than air (1.225 kg/m³)</Formula>
+
+## Composition (Typical Pipeline Natural Gas)
+
+| Component | Mole % |
+|---|---|
+| Methane (CH₄) | 85-96% |
+| Ethane (C₂H₆) | 2-8% |
+| Propane (C₃H₈) | 0.5-3% |
+| Butanes (C₄H₁₀) | 0.1-1% |
+| Nitrogen (N₂) | 0.5-3% |
+| Carbon dioxide (CO₂) | 0.1-2% |
+| Trace (H₂S, He, etc.) | &lt;0.5% |
+
+Associated gas from oil wells may have heavier hydrocarbon content; non-associated gas from gas fields is drier (more methane).
+
+## Physical Properties (Methane / Typical Natural Gas at 1 atm, 15°C)
+
+| Property | Methane (CH₄) | Typical Natural Gas |
+|---|---|---|
+| Density (std) | 0.678 kg/m³ | 0.7-0.9 kg/m³ |
+| Relative Density (to air=1) | 0.554 | 0.6-0.7 |
+| Molecular Weight | 16.04 g/mol | 17-19 g/mol |
+| Dynamic Viscosity | 1.1 × 10⁻⁵ Pa·s | 1.1 × 10⁻⁵ Pa·s |
+| Boiling Point (1 atm) | -161°C | -162 to -160°C |
+| Critical Temperature | -82.6°C | -80 to -60°C |
+| Critical Pressure | 4.60 MPa | 4.6-4.8 MPa |
+| Lower Heating Value | 33.4 MJ/m³ (std) | 34-38 MJ/m³ |
+| Higher Heating Value | 37.1 MJ/m³ | 38-42 MJ/m³ |
+| Wobbe Index | ~50 MJ/m³ | 47-52 MJ/m³ |
+| Flammability Limits (in air) | 5-15% vol | 4-15% vol |
+| Autoignition Temp | 537°C | 500-600°C |
+| Flame Speed | ~34 cm/s | ~35 cm/s |
+
+<Callout type="info" title="Natural Gas Rises and Dissipates" severity="info">
+At 0.7-0.9 kg/m³ vs air at 1.225 kg/m³, natural gas is lighter than air and will rise and dissipate in well-ventilated areas — unlike propane (1.8 kg/m³) and gasoline vapor which are heavier and pool at floor level. However, in enclosed spaces methane can still form explosive mixtures.
+</Callout>
+
+## Gas Density Calculation
+
+Using the ideal gas law corrected for compressibility: ρ = (P × M) / (Z × R × T)
+- P: absolute pressure (Pa)
+- M: molar mass (~0.017 kg/mol)
+- Z: compressibility factor (1.0 at std conditions; ~0.8-0.9 at high pipeline pressures)
+- R: universal gas constant = 8.314 J/mol·K
+- T: absolute temperature (K)
+
+### Pipeline Density Examples
+
+| Condition | Pressure | Density |
+|---|---|---|
+| Standard | 1 atm | 0.8 kg/m³ |
+| Distribution | 4 bar gauge | ~4 kg/m³ |
+| Transmission | 70 bar gauge | ~55 kg/m³ |
+| High-pressure transmission | 100 bar gauge | ~80 kg/m³ |
+
+At 70-100 bar, natural gas is still much less dense than gasoline (~750 kg/m³), but compressibility effects (Z factor) become significant — do not use ideal gas law for high-pressure pipeline calculations.
+
+## Engineering Applications
+
+### Pipeline Transmission
+- Transmission pipelines operate at 50-100 bar (700-1500 psi); distribution lines at 1-7 bar
+- Pressure drop per Weymouth/Panhandle equations (standard for gas pipelines)
+- Compressor stations every 50-100 miles maintain line pressure
+- Gas velocity typically 10-20 m/s in transmission lines
+- Line pack (gas stored in pipeline under pressure) is significant operational storage
+- Hydrate formation at high pressure/low temperature requires methanol/glycol injection
+
+### Combustion
+- Stoichiometric air/gas ratio: ~9.5:1 by volume for methane-air
+- Burners and furnaces sized by gas flow rate × heating value
+- Gas flow measured in standard cubic meters (SCM) or standard cubic feet (SCF) — volume referenced to standard conditions
+- 1 SCM methane releases ~33 MJ (LHV) — about 9 kWh of energy
+- Flame temperature: ~1950°C adiabatic
+
+### Storage
+- Underground storage: depleted gas reservoirs, salt caverns, aquifers (large-scale seasonal storage)
+- CNG (compressed natural gas): 200-250 bar cylinders for vehicles
+- LNG (liquefied natural gas): -162°C at atmospheric pressure; density ~420 kg/m³ (1/600 of gas volume)
+- LPG (propane/butane): separate product, liquid at modest pressure
+
+<Callout type="warning" title="Gas Volume is Always Reference to Standard Conditions" severity="warning">
+Natural gas is bought and sold by energy content (MJ or BTU), not volume. Actual volume at pipeline pressure is 50-100x less than standard volume. Always convert using P/T/Z from operating to standard conditions (1.01325 bar, 15°C) when calculating flows, energy content, or billing.
+</Callout>
+
+### Safety Considerations
+- Methane is odorless — mercaptan odorant added at distribution level for leak detection
+- Flammable range in air: 5-15% volume (wider than most gases)
+- Explosion risk in enclosed spaces
+- Greenhouse gas: methane has 28x global warming potential of CO₂ over 100 years — minimize fugitive emissions
+- Asphyxiant at high concentrations (displaces oxygen)
+
+<Calculator id="compressible-flow-calculator" label="Compressible Gas Flow Calculator" />
+
+## Summary
+
+Natural gas (predominantly methane) has a standard density of ~0.8 kg/m³ — significantly lighter than air (1.225 kg/m³). It is the cleanest fossil fuel with a high heating value (~36 MJ/m³). Pipeline transmission uses high pressures (50-100 bar) where gas density increases to 50-80 kg/m³ and compressibility (Z factor) must be accounted for. Volume measurements always reference standard conditions; billing is by energy content. Natural gas's buoyancy (rises in air) aids leak dissipation but requires proper ventilation.

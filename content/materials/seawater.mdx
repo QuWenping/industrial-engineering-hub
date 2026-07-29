@@ -1,0 +1,79 @@
+---
+title: "Seawater"
+description: "Seawater properties, density (1025 kg/m³), salinity effects on density and viscosity, freezing point depression, and engineering implications for marine pipelines, desalination, and offshore structures."
+category: "Fluid"
+keywords: ["seawater density", "seawater properties", "salt water density", "ocean water", "seawater viscosity"]
+updated: "2026-07-29"
+related:
+  - fluid-density-calculator
+  - pipe-flow-calculator
+  - pressure-drop-calculator
+---
+
+## Overview
+
+Seawater is an aqueous solution of dissolved salts (primarily sodium chloride) with an average salinity of 3.5% by mass (35 g/kg or 35 PSU — Practical Salinity Units). Its density, viscosity, and other physical properties differ from pure water due to dissolved salts, with significant engineering implications for marine piping, desalination, offshore structures, and ocean thermal systems.
+
+<Formula>ρ = 1025 kg/m³ at 20°C and 35 PSU salinity (2.5% denser than pure water's 1000 kg/m³)</Formula>
+
+## Density Variation with Salinity and Temperature
+
+| Temperature (°C) | Fresh Water (kg/m³) | Seawater 35 PSU (kg/m³) |
+|---|---|---|
+| 0 | 999.8 | 1028.1 |
+| 10 | 999.7 | 1026.9 |
+| 20 | 998.2 | 1024.8 |
+| 30 | 995.7 | 1021.8 |
+| 40 | 992.2 | 1018.1 |
+
+Seawater density increases with salinity (~0.7 kg/m³ per PSU) and decreases with temperature. At typical ocean temperatures of 0-15°C (deep water), density is ~1027-1028 kg/m³.
+
+## Physical Properties (20°C, 35 PSU)
+
+| Property | Value | Pure Water Comparison |
+|---|---|---|
+| Density | 1,025 kg/m³ | +2.5% (1000 kg/m³) |
+| Dynamic Viscosity | 1.07 × 10⁻³ Pa·s | +7% (1.00 × 10⁻³) |
+| Kinematic Viscosity | 1.04 × 10⁻⁶ m²/s | +4% (1.00 × 10⁻⁶) |
+| Freezing Point | -1.9°C | 0°C (depressed by salt) |
+| Boiling Point | ~100.6°C | 100°C (slightly elevated) |
+| Specific Heat | 3990 J/kg·K | 4182 J/kg·K (slightly lower) |
+| Vapor Pressure | 2.3 kPa | 2.34 kPa (negligible) |
+| Electrical Conductivity | ~5 S/m | ~0.0001 S/m (huge difference) |
+| pH | 7.8-8.3 | 7.0 (buffered by carbonate) |
+
+<Callout type="info" title="The Ocean is Density-Stratified" severity="info">
+Warm surface seawater can be ~1023 kg/m³, while cold deep water is ~1028 kg/m³. This density difference drives thermohaline circulation (the global ocean conveyor belt). Engineering systems drawing seawater must consider depth and temperature effects on density and viscosity.
+</Callout>
+
+## Engineering Implications
+
+### Marine Piping & Pumping
+- Use 1025 kg/m³ density for pump head/power calculations (not 1000)
+- Pressure drop ~2-3% higher than fresh water (higher density × slightly higher viscosity)
+- Seawater service requires corrosion-resistant materials: Cu-Ni 90/10, 70/30, titanium, duplex stainless steel, or FRP
+- Avoid carbon steel without coating/lining — rapid corrosion in aerated seawater
+
+### Desalination
+- Reverse osmosis operating pressure: 55-65 bar for seawater (vs 10-15 bar for brackish water)
+- Osmotic pressure of 35 PSU seawater: ~25 bar
+- Distillation (MSF/MED) exploits boiling point elevation
+
+### Offshore Structures
+- Buoyancy calculations use seawater density (1025 kg/m³) — Archimedes' principle with salt water
+- Wave loading and hydrostatic pressure based on saltwater density
+- Marine growth on submerged surfaces adds weight and increases hydrodynamic loading
+
+### Corrosion Considerations
+- Seawater is highly conductive (5 S/m) — galvanic corrosion between dissimilar metals is aggressive
+- Severe for steel (~0.1-0.3 mm/yr corrosion rate; up to 1 mm/yr in splash zone)
+- Biofouling increases weight and reduces heat transfer in exchangers and piping
+- Materials selection critical: 316 stainless only for moderate service; duplex SS, Cu-Ni, titanium for long-term
+
+<Callout type="warning" title="Chloride Attack on Stainless Steel" severity="warning">
+Standard 304 stainless steel suffers pitting and crevice corrosion in seawater within months. 316 is better but not immune for permanent immersion. For critical seawater service use 2205 duplex stainless, Cu-Ni 90/10, or titanium.
+</Callout>
+
+## Summary
+
+Seawater (average density 1025 kg/m³ at 20°C/35 PSU) is 2.5% denser than fresh water with slightly higher viscosity and significantly different thermal/electrical properties. Marine engineering requires these corrected values for pump sizing, pressure drop, buoyancy, and materials selection. Dissolved salts and biological activity make seawater one of the most corrosive natural environments — material selection is critical for long-term reliability.

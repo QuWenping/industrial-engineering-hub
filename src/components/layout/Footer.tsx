@@ -19,11 +19,12 @@ const footerLinks = {
     { href: "/contact", label: "Contact" },
     { href: "/editorial-process", label: "Editorial Process" },
     { href: "/data-sources", label: "Data Sources" },
+    { href: "/methodology", label: "Methodology" },
   ],
   Legal: [
     { href: "/privacy", label: "Privacy Policy" },
     { href: "/terms", label: "Terms of Service" },
-    { href: "/disclaimer", label: "Disclaimer" },
+    { href: "/sitemap", label: "Sitemap" },
   ],
 };
 

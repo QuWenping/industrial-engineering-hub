@@ -1,0 +1,95 @@
+---
+title: "Crude Oil"
+description: "Crude oil properties, density (~870 kg/m³), API gravity classification, viscosity variation with temperature, and engineering implications for pipelines, storage tanks, and pumping systems."
+category: "Fluid"
+keywords: ["crude oil density", "crude oil properties", "API gravity", "crude oil viscosity", "petroleum properties"]
+updated: "2026-07-29"
+related:
+  - fluid-density-calculator
+  - pipe-flow-calculator
+  - pump-power-calculator
+  - tank-volume-calculator
+---
+
+## Overview
+
+Crude oil is a naturally occurring hydrocarbon mixture extracted from underground reservoirs. Its physical properties vary significantly by source, depending on the distribution of hydrocarbon chain lengths (C₁ to C₆₀+), sulfur content, and dissolved gases. The most common classification is by API gravity (an inverse density scale). Density and viscosity are the two properties that most affect pipeline transport, storage, and pumping.
+
+<Formula>ρ ≈ 870 kg/m³ for typical medium crude (API ~31°). Light crude can be 800 kg/m³; heavy crude 920-980 kg/m³.</Formula>
+
+## API Gravity Classification
+
+| Classification | API Gravity | Density (kg/m³) | Typical Source |
+|---|---|---|---|
+| Extra heavy oil | &lt;10° | &gt;1000 | Bitumen, oil sands (Venezuela, Canada) |
+| Heavy oil | 10-22° | 920-1000 | Heavy sour (Venezuela, Mexico) |
+| Medium oil | 22-31° | 870-920 | Standard crude (most world production) |
+| Light oil | 31-40° | 825-870 | West Texas Intermediate, Brent |
+| Condensate | &gt;40° | &lt;825 | NGL, associated gas liquids |
+
+API gravity = (141.5 / specific gravity at 60°F) − 131.5. Higher API = lighter oil = more valuable (yields more gasoline/diesel).
+
+## Physical Properties (typical medium crude, 20°C)
+
+| Property | Value | Notes |
+|---|---|---|
+| Density | 870 kg/m³ | (API 31°) — ranges 800-950 by grade |
+| Dynamic Viscosity | ~7 × 10⁻³ Pa·s (7 cP) | Light: ~2 cP; Heavy: 50-500 cP |
+| Kinematic Viscosity | ~8 cSt | Strongly temperature dependent |
+| Specific Heat | 2000 J/kg·K | |
+| Thermal Conductivity | 0.14 W/m·K | Low — insulator |
+| Flash Point | -7 to 65°C | Light crude is flammable; heavy is combustible |
+| Pour Point | -30 to +15°C | Wax content dependent |
+| Sulphur content | 0.1-3.0% | Sweet &lt;0.5%; Sour &gt;0.5% |
+| Boiling range | 30-550°C | Multi-component mixture |
+
+## Viscosity vs Temperature
+
+Crude oil viscosity drops dramatically with temperature, which is critical for pipeline transport of heavy crudes:
+
+| Temperature | Light Crude (cSt) | Medium Crude (cSt) | Heavy Crude (cSt) |
+|---|---|---|---|
+| 10°C | 2 | 20 | 500 |
+| 20°C | 1.5 | 8 | 200 |
+| 50°C | 0.9 | 3 | 40 |
+| 80°C | 0.6 | 1.8 | 15 |
+
+<Callout type="info" title="Heavy Oil Pipeline Strategy" severity="info">
+Heavy crude oil is too viscous to pipeline at ambient temperature. Solutions include heating the pipeline, blending with condensate/diluent (diluted bitumen/"dilbit"), or forming an oil-water annular emulsion. For example, Canadian oil sands crude is typically transported as dilbit at ~920 kg/m³.
+</Callout>
+
+## Engineering Applications
+
+### Pipeline Transport
+- Pressure drop calculations use actual crude density (NOT 1000 kg/m³)
+- Reynolds number depends on kinematic viscosity — heavy crude often laminar
+- Design for batch operations between different crudes in multi-product pipelines
+- Pressure surge (water hammer) slower in crude than water (lower acoustic velocity)
+
+### Storage Tanks
+- Tank capacity tables reference observed density; gross/net (volume/mass) calculations
+- Thermal expansion: crude expands ~0.07% per °C — tank ullage design accounts for this
+- Vapor recovery for light crude tanks (VOC emissions, environmental compliance)
+- Stratification: heavy crudes can settle; light ends rise
+
+### Pumping
+- Centrifugal pump power ∝ density × head × flow — use actual crude density
+- NPSH requirements higher for light/hot crudes (higher vapor pressure)
+- Positive displacement pumps for high-viscosity heavy crude service
+- Viscosity corrections for pump performance curves above ~10 cSt
+
+### Safety Considerations
+- Classified hazardous areas (API/IP zoning) around tanks and loading
+- Hydrogen sulfide (H₂S) hazard in sour crude — toxic and corrosive
+- Wax deposition in cold pipelines requires pigging programs
+- Flammability varies: light crude is Class 1B (highly flammable)
+
+<Callout type="warning" title="Do Not Use Water Density for Oil Calculations" severity="warning">
+Using 1000 kg/m³ instead of 870 kg/m³ for crude oil overestimates pump power by 15%. Conversely, heavy crude at 950 kg/m³ requires 9% more power than water density would suggest. Always use the actual measured density from the crude assay or API gravity.
+</Callout>
+
+<Calculator id="pump-power-calculator" label="Calculate Pump Power for Crude Oil" />
+
+## Summary
+
+Crude oil density (~870 kg/m³ for typical medium crude) and viscosity vary widely by grade and temperature — classified by API gravity from heavy (high density, viscous) to light (low density, fluid). Pipeline and pump design must use actual assay values rather than assuming water density. Heavy crude requires heating, diluent, or emulsion transport. Viscosity is highly temperature-sensitive and the key design parameter for heavy oil systems.

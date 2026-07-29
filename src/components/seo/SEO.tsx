@@ -182,3 +182,35 @@ export function schemaDataset(data: {
     license: "https://creativecommons.org/licenses/by/4.0/",
   };
 }
+
+export function schemaOrganization() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Industrial Engineering Hub",
+    url: BASE_URL,
+    logo: `${BASE_URL}/logo.png`,
+    description:
+      "Professional engineering calculators and technical guides for fluid mechanics, pump sizing, structural design, thermal engineering, and material selection.",
+    sameAs: [],
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "support@industrialengineeringhub.com",
+      contactType: "customer support",
+    },
+  };
+}
+
+export function schemaWebsiteSearch() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Industrial Engineering Hub",
+    url: BASE_URL,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${BASE_URL}/tools?search={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+}

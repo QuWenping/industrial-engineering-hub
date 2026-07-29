@@ -1,0 +1,93 @@
+---
+title: "Gasoline (Petrol)"
+description: "Gasoline properties, density (~750 kg/m³), octane rating, volatility characteristics, Reid vapor pressure, and engineering considerations for storage, fuel systems, and transport."
+category: "Fluid"
+keywords: ["gasoline density", "petrol density", "gasoline properties", "gasoline specific gravity", "fuel density"]
+updated: "2026-07-29"
+related:
+  - fluid-density-calculator
+  - tank-volume-calculator
+  - pump-power-calculator
+---
+
+## Overview
+
+Gasoline (petrol) is a refined petroleum product consisting of a mixture of hydrocarbons (predominantly C₄-C₁₂, boiling range ~30-200°C) optimized for spark-ignition internal combustion engines. It is one of the most widely handled flammable liquids in the world. Density, volatility (Reid vapor pressure), and octane rating are the primary engineering properties.
+
+<Formula>ρ = 720-780 kg/m³; typical average ~750 kg/m³ (specific gravity ~0.75 — floats on water)</Formula>
+
+## Physical Properties
+
+| Property | Value (typical, 20°C) |
+|---|---|
+| Density | 720-780 kg/m³ (average 750 kg/m³) |
+| Density (summer blend) | ~760 kg/m³ (heavier components) |
+| Density (winter blend) | ~740 kg/m³ (more volatile for cold starts) |
+| Dynamic Viscosity | ~0.6 × 10⁻³ Pa·s (0.6 cP — less viscous than water) |
+| Kinematic Viscosity | ~0.8 cSt |
+| Specific Heat | 2200 J/kg·K |
+| Thermal Conductivity | 0.13 W/m·K |
+| Boiling Range | 30-200°C |
+| Flash Point | -43°C (-45°F) — extremely flammable |
+| Autoignition Temperature | ~280°C |
+| Reid Vapor Pressure (RVP) | 7-15 psi (seasonal) |
+| Octane Rating (AKI/RON) | 87-93 AKI (91-98 RON) |
+| Lower Heating Value | 44 MJ/kg |
+
+<Callout type="info" title="Gasoline Floats on Water" severity="info">
+With a specific gravity of ~0.75, gasoline is less dense than water and will float on top of any free water in storage tanks. This is important for tank sump management: water collects at the bottom and must be drained to prevent corrosion and fuel quality issues.
+</Callout>
+
+## Volatility Classes (Reid Vapor Pressure)
+
+RVP is a key specification controlling gasoline volatility, regulated seasonally and geographically:
+
+| Class | RVP (psi) | Season | Purpose |
+|---|---|---|---|
+| Summer blend | 7.0-9.0 | Hot months | Minimize evaporative emissions, prevent vapor lock |
+| Transition | 9.0-11.5 | Spring/fall | Moderate conditions |
+| Winter blend | 11.5-15.0 | Cold months | Good cold start, easy vaporization |
+
+## Octane Rating
+
+Octane rating measures resistance to engine knock (auto-ignition under compression):
+- **AKI (Anti-Knock Index)**: U.S. pump rating, (RON+MON)/2 — typically 87 regular, 89 mid, 93 premium
+- **RON (Research Octane Number)**: Europe/Asia rating — typically 91, 95, 98
+- Higher octane allows higher compression ratios (more power/efficiency) but does not contain more energy per liter
+
+### Energy Content
+Gasoline energy is ~44 MJ/kg, which is ~34 MJ/liter due to density of 750 kg/m³. Diesel has similar energy per kilogram but ~12% more per liter due to higher density.
+
+## Engineering Applications
+
+### Storage & Handling
+- Underground/above-ground storage tanks (UST/AST) at gasoline stations — typically double-wall fiberglass/steel
+- Vapor recovery systems mandatory in most jurisdictions (Stage I/II) to capture VOC emissions
+- Hydrostatic pressure in tanks: ~7.5 kPa per meter depth (vs 10 kPa/m for water)
+- Tank material compatibility: steel, HDPE, fiberglass (NOT natural rubber, certain plastics)
+
+### Fuel Dispensing
+- Submersible turbine pumps or suction pumps dispense at ~0.2-0.5 MPa
+- Metered delivery to 0.5% accuracy (legal metrology requirements)
+- Vapor recovery nozzles for emissions control
+
+### Pipeline & Transport
+- Batched in multi-product pipelines (between diesel and jet fuel, separated by interface)
+- Lower density means pump power is 25% less than water for equivalent flow
+- Centrifugal pump performance unaffected by gasoline viscosity (much less viscous than crude oil)
+- Pipeline leak detection: gasoline floats and spreads rapidly
+
+<Callout type="warning" title="Flammability Hazard — Class IA" severity="warning">
+Gasoline is one of the most flammable common liquids. With a flash point of -43°C, it forms ignitable vapor mixtures at any normal ambient temperature. Even cold weather produces enough vapor to create an explosive atmosphere. All electrical equipment in gasoline handling areas must be explosion-proof (Class I, Division 1 rated).
+</Callout>
+
+### Environmental Considerations
+- LUST (Leaking Underground Storage Tanks) historically major groundwater contamination source
+- MTBE phased out as oxygenate; replaced by ethanol (E10, E85)
+- Ethanol-blended gasoline behaves differently — phase separation with water, different material compatibility
+
+<Calculator id="tank-volume-calculator" label="Calculate Gasoline Tank Volume" />
+
+## Summary
+
+Gasoline (density ~750 kg/m³) is the lightest common refined fuel, highly volatile and flammable. Its low density reduces pump power requirements compared to water or diesel, but its extreme flammability (flash point -43°C) governs all storage, dispensing, and transport design. Seasonal RVP and density variations (winter/summer blends) affect both engine performance and storage tank design.

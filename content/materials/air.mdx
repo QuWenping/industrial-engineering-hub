@@ -1,0 +1,117 @@
+---
+title: "Air (20°C, 1 atm)"
+description: "Dry air properties at standard conditions, density (1.204 kg/m³), ideal gas behavior, viscosity, humidity effects, and engineering applications in HVAC, pneumatics, and aerodynamics."
+category: "Gas"
+keywords: ["air density", "air properties", "standard air", "dry air density", "air viscosity", "ideal gas air"]
+updated: "2026-07-29"
+related:
+  - density-calculator
+  - flow-rate-calculator
+  - pressure-drop-calculator
+  - compressible-flow-calculator
+---
+
+## Overview
+
+Air is the most commonly handled gas in engineering — used in HVAC, pneumatics, compressed air systems, combustion, cooling, and aerodynamics. Dry air is approximately 78% nitrogen, 21% oxygen, and 1% argon by volume, with trace amounts of other gases. It behaves as an ideal gas at standard temperatures and pressures.
+
+<Formula>ρ = 1.204 kg/m³ at 20°C and 1 atm (101.325 kPa) — standard reference condition for engineering calculations</Formula>
+
+## Standard Air Conditions
+
+| Standard | Temperature | Pressure | Density | Use |
+|---|---|---|---|---|
+| ISO (standard) | 15°C / 288.15 K | 101.325 kPa | 1.225 kg/m³ | Aerospace, aerodynamics |
+| NTP (normal) | 20°C / 293.15 K | 101.325 kPa | 1.204 kg/m³ | HVAC, general engineering |
+| STP (chemistry) | 0°C / 273.15 K | 101.325 kPa | 1.293 kg/m³ | Gas chemistry, physics |
+| SATP | 25°C / 298.15 K | 100.000 kPa | 1.184 kg/m³ | Thermodynamics |
+
+## Physical Properties (Dry Air at 20°C, 1 atm)
+
+| Property | Value |
+|---|---|
+| Density | 1.204 kg/m³ (0.0752 lb/ft³) |
+| Dynamic Viscosity | 1.81 × 10⁻⁵ Pa·s (0.018 cP) |
+| Kinematic Viscosity | 1.51 × 10⁻⁵ m²/s (15.1 cSt) |
+| Specific Heat (c_p) | 1005 J/kg·K |
+| Specific Heat (c_v) | 718 J/kg·K |
+| Ratio of Specific Heats (γ) | 1.40 |
+| Gas Constant (R) | 287 J/kg·K |
+| Thermal Conductivity | 0.026 W/m·K (good insulator) |
+| Speed of Sound | 343 m/s |
+| Molecular Weight | 28.97 g/mol |
+| Prandtl Number | 0.71 |
+
+<Callout type="info" title="Air is Much Less Dense Than Water" severity="info">
+At standard conditions, air (1.2 kg/m³) is approximately 830 times less dense than water (1000 kg/m³). This enormous density difference is why buoyancy, pressure drop, and heat transfer equations all behave very differently in air systems vs liquid systems. Always use compressible flow equations for air moving at significant velocity or across pressure changes &gt;~10%.
+</Callout>
+
+## Density Variation with Conditions
+
+Ideal gas law: ρ = P / (R·T) where P is absolute pressure (Pa), R = 287 J/kg·K, T is absolute temperature (K).
+
+### Temperature Effect (at 1 atm)
+
+| Temperature (°C) | Density (kg/m³) |
+|---|---|
+| -20 | 1.395 |
+| 0 | 1.293 |
+| 20 | 1.204 |
+| 40 | 1.127 |
+| 100 | 0.946 |
+| 200 | 0.746 |
+
+### Pressure Effect (at 20°C)
+
+| Gauge Pressure | Absolute Pressure | Density (kg/m³) |
+|---|---|---|
+| 0 (atmospheric) | 101.3 kPa | 1.204 |
+| 1 bar (15 psig) | 202.6 kPa | 2.41 |
+| 7 bar (100 psig) | 800 kPa | 9.5 |
+| 10 bar (150 psig) | 1100 kPa | 13.0 |
+
+## Humidity Effect
+
+Water vapor is less dense than air (molecular weight 18 vs 29), so moist air is less dense than dry air at same P/T:
+
+| Relative Humidity | 20°C Density (kg/m³) | Change from dry |
+|---|---|---|
+| 0% (dry) | 1.204 | — |
+| 50% | 1.198 | -0.5% |
+| 100% (saturated) | 1.194 | -0.8% |
+
+Humidity effect is small for most engineering calculations but matters for precision aerodynamics, engine tuning, and HVAC psychrometrics.
+
+## Engineering Applications
+
+### HVAC Systems
+- Standard air for AC/heating design: 1.204 kg/m³, specific heat 1.005 kJ/kg·K
+- Air flow measured in CFM, L/s, or m³/s; heating/cooling load = ṁ × c_p × ΔT
+- Typical duct velocities: 3-10 m/s (residential), 8-15 m/s (commercial)
+- Pressure drops in ducts are small (100-500 Pa) due to low density
+
+### Pneumatic/Compressed Air
+- Compressed air at 7-10 bar gauge is ~10x denser than atmospheric
+- Storage receiver size based on pressure × volume / temperature
+- Compressor power: ~0.1 kW per CFM at 7 bar for rotary screw
+- Compressed air velocity: keep &lt;6 m/s in piping to minimize pressure drop
+
+### Aerodynamics
+- Dynamic pressure q = ½ρv² — air density directly affects lift and drag
+- At altitude, lower density requires longer runways and higher true airspeed
+- Wind loads on structures: q = 0.613 × v² (at sea level, in Pa with v in m/s)
+
+### Combustion
+- Stoichiometric air-fuel ratio: ~14.7:1 for gasoline, ~14.5:1 for diesel by mass
+- Combustion air requirements scale with fuel heating value
+- Flue gas density differs from ambient (temperature, composition)
+
+<Callout type="warning" title="Compressibility in Air Calculations" severity="warning">
+For HVAC ductwork and low-pressure pneumatics (pressure changes &lt;~10%), air can be treated as incompressible with the constant density value. For velocities above 100 m/s, fans with significant pressure rise, or compressed air at high pressure, use compressible flow (isothermal or isentropic) equations.
+</Callout>
+
+<Calculator id="compressible-flow-calculator" label="Compressible Flow Calculator" />
+
+## Summary
+
+Dry air at standard conditions has a density of 1.204 kg/m³ (NTP) or 1.225 kg/m³ (ISA). As an ideal gas, its density varies with P/RT — increasing with pressure and decreasing with temperature. This value is fundamental to HVAC load calculations, pneumatic system design, aerodynamic forces, and fan/pump sizing. Humidity effects are small for most engineering purposes except precision psychrometric calculations.

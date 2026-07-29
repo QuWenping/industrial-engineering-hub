@@ -1,0 +1,93 @@
+---
+title: "Diesel Fuel"
+description: "Diesel fuel properties, density (~840 kg/m³), cetane number, viscosity characteristics, energy content, and engineering considerations for engines, storage, and fuel systems."
+category: "Fluid"
+keywords: ["diesel density", "diesel properties", "diesel fuel", "diesel viscosity", "diesel specific gravity"]
+updated: "2026-07-29"
+related:
+  - fluid-density-calculator
+  - pump-power-calculator
+  - motor-power-calculator
+---
+
+## Overview
+
+Diesel fuel is a middle-distillate petroleum product (boiling range ~180-360°C, C₁₀-C₂₅ hydrocarbons) used in compression-ignition (diesel) engines and as heating oil. It is denser, more viscous, and contains more energy per liter than gasoline, and ignites by compression heat rather than spark. Diesel engines are dominant in trucks, ships, rail, construction equipment, and stationary power generation.
+
+<Formula>ρ ≈ 840 kg/m³ (varies 820-860 kg/m³ by grade and temperature; EN590 spec: 820-845 kg/m³ at 15°C)</Formula>
+
+## Grades & Classifications
+
+| Grade | Description | Use |
+|---|---|---|
+| #2 Diesel (No. 2-D) | Standard highway diesel | Automotive, trucks (most common) |
+| #1 Diesel (No. 1-D) | Lighter, lower viscosity, lower cloud point | Arctic/winter blend, blending with #2 |
+| Heating oil (#2 fuel oil) | Similar to #2 diesel, slightly broader spec | Building heating, boilers |
+| B5/B20/B100 | Biodiesel blends (5/20/100%) | Renewable diesel (with elastomer compatibility caveats) |
+| Marine diesel (MDO) | Marine distillate | Ships (not residual bunker fuel) |
+
+## Physical Properties (#2 Diesel, 15°C)
+
+| Property | Value | Notes |
+|---|---|---|
+| Density at 15°C | 820-845 kg/m³ (EN590) | Lower than water |
+| Density at 20°C | ~840 kg/m³ | |
+| Dynamic Viscosity (40°C) | 2.0-4.5 × 10⁻³ Pa·s (2-4.5 cSt) | Must flow at low temperatures |
+| Cetane Number (CN) | 40-55 (min 40 US; min 51 EU) | Higher = easier ignition |
+| Flash Point | &gt;52°C (typical 60-80°C) | Combustible (not flammable like gasoline) |
+| Cloud Point | -10 to -34°C | Wax crystals start forming |
+| Pour Point | -20 to -40°C | Will no longer pour |
+| Lower Heating Value | 43 MJ/kg ≈ 36 MJ/L | ~12% more energy/liter than gasoline |
+| Sulfur Content (ULSD) | &lt;15 ppm (US/EU ultra-low sulfur) | Was up to 5000 ppm before ULSD |
+| Lubricity | Important for fuel injection pumps | ULSD requires additives |
+
+<Callout type="info" title="More Energy Per Liter Than Gasoline" severity="info">
+Diesel's higher density (~840 vs ~750 kg/m³) gives it about 12% more energy per liter than gasoline despite similar energy per kilogram (~43 vs 44 MJ/kg). Combined with diesel engine higher thermal efficiency (40-45% vs 25-30% for gasoline), diesel vehicles achieve 25-40% better fuel economy.
+</Callout>
+
+## Cold Weather Behavior
+
+Diesel contains paraffin wax that crystallizes at low temperatures — the dominant winter operability issue:
+
+| Temperature | Problem |
+|---|---|
+| Cloud Point (CP) | Wax crystals begin to form; fuel clouds; can clog filters |
+| Cold Filter Plugging Point (CFPP) | Fuel will not pass through standard filters |
+| Pour Point (PP) | Fuel ceases to flow entirely |
+
+Winter solutions: blend #1 diesel (lower wax), add cold-flow improvers, use fuel heaters, store tanks indoors.
+
+## Engineering Applications
+
+### Engine Performance
+- Fuel injection pressure: modern common rail at 2000-3000 bar (very high — requires fuel lubricity)
+- Viscosity critical for fuel injection spray pattern; too viscous = poor atomization, too thin = injector leakage
+- Cetane number controls ignition delay; higher CN = quieter, cleaner combustion, better cold start
+- Fuel consumption calculations use density to convert volume to mass
+
+### Pumping & Pipeline
+- Density 840 kg/m³ means centrifugal pump power is 16% less than for water at same head/flow
+- Higher viscosity (2-4 cSt) requires viscosity corrections for pump performance (minor at this level)
+- Diesel oil pipelines use same infrastructure as gasoline/jet fuel in batching
+
+### Storage
+- Above-ground and underground tanks similar to gasoline but lower fire risk
+- Flash point &gt;52°C means diesel is classified as combustible (not flammable) — less stringent area classification
+- Water accumulation at tank bottom (diesel can hold dissolved water; free water causes microbial growth)
+- Algae/bacteria at water-fuel interface ("diesel bug") requires biocides and tank maintenance
+
+<Callout type="warning" title="Flash Point Difference From Gasoline" severity="warning">
+Diesel's flash point above 52°C (vs -43°C for gasoline) means diesel does not form ignitable vapor at normal room temperature. You cannot ignite diesel with a match in open air at 20°C — it requires a wick, high temperature (compression ignition), or atomization. This is why diesel is much safer to store and handle, though leaks should still be addressed promptly.
+</Callout>
+
+### Emissions & Environment
+- ULSD required since 2006-2010 globally for on-road use
+- Diesel particulate filters (DPF) capture soot (post-2007 engines)
+- SCR (Selective Catalytic Reduction) uses DEF (AdBlue, urea solution) to reduce NOx
+- Biodiesel (B20 and below) generally compatible with existing infrastructure; B100 requires special materials
+
+<Calculator id="pump-power-calculator" label="Calculate Diesel Pump Power" />
+
+## Summary
+
+Diesel fuel (density ~840 kg/m³, #2 grade) is the primary fuel for heavy transportation and power generation due to high energy density and engine efficiency. Its higher viscosity compared to gasoline is essential for fuel injection lubrication and spray patterns, while its flash point above 52°C makes it significantly safer to handle than gasoline. Cold-flow properties (cloud point, CFPP) are critical engineering parameters in winter operation. Ultra-low sulfur diesel (ULSD, &lt;15 ppm) is now the global standard.
