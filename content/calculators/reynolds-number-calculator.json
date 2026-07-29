@@ -1,0 +1,41 @@
+{
+  "id": "reynolds-number-calculator",
+  "name": "Reynolds Number Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P0",
+  "description": "Calculate Reynolds number to determine flow regime (laminar, transitional, turbulent) in pipes.",
+  "seo": {
+    "title": "Reynolds Number Calculator - Pipe Flow",
+    "description": "Calculate Reynolds number for pipe flow to determine laminar, transitional, or turbulent flow regime.",
+    "keyword": "reynolds number calculator"
+  },
+  "formula": {
+    "expression": "density * velocity * diameter / viscosity",
+    "unit": "dimensionless",
+    "explanation": "Re = ρ × v × D / μ. Density (kg/m³), velocity (m/s), diameter (m), dynamic viscosity (Pa·s). Re < 2300 laminar, 2300-4000 transitional, >4000 turbulent."
+  },
+  "inputs": [
+    {"id": "density", "label": "Fluid Density", "type": "number", "unit": "kg/m³", "required": true, "default": 1000, "min": 0},
+    {"id": "velocity", "label": "Flow Velocity", "type": "number", "unit": "m/s", "required": true, "default": 2, "min": 0},
+    {"id": "diameter", "label": "Pipe Inner Diameter", "type": "number", "unit": "mm", "required": true, "default": 100, "min": 0},
+    {"id": "viscosity", "label": "Dynamic Viscosity", "type": "number", "unit": "Pa·s", "required": true, "default": 0.001, "min": 0, "step": 0.0001, "hint": "Water at 20°C ≈ 0.001 Pa·s"}
+  ],
+  "result": {"label": "Reynolds Number (Re)", "unit": "", "decimals": 0},
+  "content": {
+    "introduction": "Reynolds number is the dimensionless ratio of inertial to viscous forces in a fluid. It determines whether flow is laminar (Re < 2300), transitional (2300-4000), or turbulent (Re > 4000). Essential for friction factor selection and pressure drop calculations.",
+    "example": {
+      "inputs": {"density": 1000, "velocity": 2, "diameter": 100, "viscosity": 0.001},
+      "result": 200000,
+      "description": "Water at 2 m/s in 100mm pipe: Re = 200,000 → turbulent flow"
+    },
+    "faq": [
+      {"q": "What is a good Reynolds number for pipe flow?", "a": "For most industrial applications, turbulent flow with Re > 10,000 is desirable for good mixing and heat transfer. Laminar flow (Re < 2300) is common in very viscous fluids or small pipes."},
+      {"q": "Why does Reynolds number matter?", "a": "Re determines which pressure drop equation to use and is required to find the friction factor in the Darcy-Weisbach equation."}
+    ],
+    "related": ["pressure-drop-calculator", "pipe-flow-calculator", "friction-loss-calculator"],
+    "applications": ["Flow regime determination", "Friction factor calculation", "Pressure drop estimation", "Heat transfer design"]
+  },
+  "tests": [
+    {"inputs": {"density": 1000, "velocity": 2, "diameter": 100, "viscosity": 0.001}, "expected": 200000, "tolerance": 100}
+  ]
+}

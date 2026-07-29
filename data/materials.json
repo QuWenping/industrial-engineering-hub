@@ -1,0 +1,258 @@
+[
+  {
+    "id": "carbon-steel",
+    "name": "Carbon Steel",
+    "density": 7850,
+    "category": "metal",
+    "description": "Standard carbon steel (A36, A53, A106)",
+    "yieldStrength": 250,
+    "tensileStrength": 400,
+    "thermalConductivity": 50,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "stainless-steel-304",
+    "name": "Stainless Steel 304",
+    "density": 7930,
+    "category": "metal",
+    "description": "Austenitic stainless steel 304/304L",
+    "yieldStrength": 215,
+    "tensileStrength": 505,
+    "thermalConductivity": 16,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "stainless-steel-316",
+    "name": "Stainless Steel 316",
+    "density": 8000,
+    "category": "metal",
+    "description": "Molybdenum-bearing austenitic stainless steel 316/316L",
+    "yieldStrength": 205,
+    "tensileStrength": 515,
+    "thermalConductivity": 16,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "aluminum",
+    "name": "Aluminum (6061-T6)",
+    "density": 2700,
+    "category": "metal",
+    "description": "Aluminum alloy 6061-T6",
+    "yieldStrength": 276,
+    "tensileStrength": 310,
+    "thermalConductivity": 167,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "copper",
+    "name": "Copper",
+    "density": 8960,
+    "category": "metal",
+    "description": "Pure copper",
+    "yieldStrength": 70,
+    "tensileStrength": 220,
+    "thermalConductivity": 401,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "brass",
+    "name": "Brass",
+    "density": 8500,
+    "category": "metal",
+    "description": "Yellow brass (70/30)",
+    "yieldStrength": 100,
+    "tensileStrength": 320,
+    "thermalConductivity": 109,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "bronze",
+    "name": "Bronze",
+    "density": 8800,
+    "category": "metal",
+    "description": "Phosphor bronze",
+    "yieldStrength": 150,
+    "tensileStrength": 350,
+    "thermalConductivity": 60,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "titanium",
+    "name": "Titanium",
+    "density": 4510,
+    "category": "metal",
+    "description": "Titanium Grade 2 (commercially pure)",
+    "yieldStrength": 275,
+    "tensileStrength": 345,
+    "thermalConductivity": 22,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "cast-iron",
+    "name": "Cast Iron",
+    "density": 7200,
+    "category": "metal",
+    "description": "Gray cast iron",
+    "yieldStrength": 150,
+    "tensileStrength": 200,
+    "thermalConductivity": 50,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "nickel",
+    "name": "Nickel",
+    "density": 8900,
+    "category": "metal",
+    "description": "Pure nickel",
+    "yieldStrength": 150,
+    "tensileStrength": 400,
+    "thermalConductivity": 91,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "concrete",
+    "name": "Concrete (Normal Weight)",
+    "density": 2400,
+    "category": "construction",
+    "description": "Normal weight reinforced concrete",
+    "compressiveStrength": 30,
+    "thermalConductivity": 1.5,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "concrete-lightweight",
+    "name": "Concrete (Lightweight)",
+    "density": 1800,
+    "category": "construction",
+    "description": "Lightweight concrete",
+    "compressiveStrength": 20,
+    "thermalConductivity": 0.7,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "water",
+    "name": "Water (20°C)",
+    "density": 1000,
+    "category": "fluid",
+    "description": "Pure water at 20°C",
+    "viscosity": 0.001,
+    "units": { "density": "kg/m3", "viscosity": "Pa·s" }
+  },
+  {
+    "id": "seawater",
+    "name": "Seawater",
+    "density": 1025,
+    "category": "fluid",
+    "description": "Average seawater density",
+    "viscosity": 0.00107,
+    "units": { "density": "kg/m3", "viscosity": "Pa·s" }
+  },
+  {
+    "id": "oil-crude",
+    "name": "Crude Oil",
+    "density": 870,
+    "category": "fluid",
+    "description": "Typical crude oil",
+    "viscosity": 0.007,
+    "units": { "density": "kg/m3", "viscosity": "Pa·s" }
+  },
+  {
+    "id": "gasoline",
+    "name": "Gasoline",
+    "density": 750,
+    "category": "fluid",
+    "description": "Automotive gasoline",
+    "viscosity": 0.0006,
+    "units": { "density": "kg/m3", "viscosity": "Pa·s" }
+  },
+  {
+    "id": "diesel",
+    "name": "Diesel",
+    "density": 840,
+    "category": "fluid",
+    "description": "Diesel fuel",
+    "viscosity": 0.0025,
+    "units": { "density": "kg/m3", "viscosity": "Pa·s" }
+  },
+  {
+    "id": "air",
+    "name": "Air (20°C, 1atm)",
+    "density": 1.204,
+    "category": "gas",
+    "description": "Dry air at standard conditions",
+    "viscosity": 0.000018,
+    "units": { "density": "kg/m3", "viscosity": "Pa·s" }
+  },
+  {
+    "id": "natural-gas",
+    "name": "Natural Gas",
+    "density": 0.8,
+    "category": "gas",
+    "description": "Natural gas (methane) at standard conditions",
+    "viscosity": 0.000011,
+    "units": { "density": "kg/m3", "viscosity": "Pa·s" }
+  },
+  {
+    "id": "hdpe",
+    "name": "HDPE Plastic",
+    "density": 960,
+    "category": "polymer",
+    "description": "High-density polyethylene",
+    "tensileStrength": 25,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "pvc",
+    "name": "PVC",
+    "density": 1400,
+    "category": "polymer",
+    "description": "Polyvinyl chloride (rigid)",
+    "tensileStrength": 50,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "glass",
+    "name": "Glass (soda-lime)",
+    "density": 2500,
+    "category": "ceramic",
+    "description": "Soda-lime glass",
+    "tensileStrength": 40,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "wood-oak",
+    "name": "Oak Wood",
+    "density": 750,
+    "category": "wood",
+    "description": "Oak (dry)",
+    "units": { "density": "kg/m3" }
+  },
+  {
+    "id": "wood-pine",
+    "name": "Pine Wood",
+    "density": 500,
+    "category": "wood",
+    "description": "Pine (dry)",
+    "units": { "density": "kg/m3" }
+  },
+  {
+    "id": "lead",
+    "name": "Lead",
+    "density": 11340,
+    "category": "metal",
+    "description": "Pure lead",
+    "yieldStrength": 5,
+    "tensileStrength": 15,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  },
+  {
+    "id": "zinc",
+    "name": "Zinc",
+    "density": 7140,
+    "category": "metal",
+    "description": "Pure zinc",
+    "yieldStrength": 20,
+    "tensileStrength": 110,
+    "units": { "density": "kg/m3", "strength": "MPa" }
+  }
+]

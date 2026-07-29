@@ -1,0 +1,40 @@
+{
+  "id": "concrete-volume-calculator",
+  "name": "Concrete Volume Calculator",
+  "category": "Construction Engineering",
+  "priority": "P0",
+  "description": "Calculate concrete volume needed for slabs, footings, or columns from dimensions.",
+  "seo": {
+    "title": "Concrete Volume Calculator - Free Online",
+    "description": "Calculate concrete volume in cubic meters for slabs, footings, and columns. Enter length, width, and thickness.",
+    "keyword": "concrete volume calculator"
+  },
+  "formula": {
+    "expression": "length * width * thickness",
+    "unit": "m³",
+    "explanation": "Volume = Length × Width × Thickness. All dimensions converted to meters, result in m³."
+  },
+  "inputs": [
+    {"id": "length", "label": "Length", "type": "number", "unit": "m", "required": true, "default": 10, "min": 0},
+    {"id": "width", "label": "Width", "type": "number", "unit": "m", "required": true, "default": 5, "min": 0},
+    {"id": "thickness", "label": "Thickness", "type": "number", "unit": "mm", "required": true, "default": 150, "min": 0}
+  ],
+  "result": {"label": "Concrete Volume", "unit": "m³", "decimals": 2},
+  "content": {
+    "introduction": "Calculate the volume of concrete needed for a slab, footing, or rectangular structural element. Add 5-10% extra for waste and uneven subgrade.",
+    "example": {
+      "inputs": {"length": 10, "width": 5, "thickness": 150},
+      "result": 7.5,
+      "description": "A 10m × 5m × 150mm thick slab requires 7.5 m³ of concrete."
+    },
+    "faq": [
+      {"q": "How much extra concrete should I order?", "a": "Add 5-10% to account for waste, over-excavation, and uneven subgrade. For large flatwork, 5% is usually sufficient."},
+      {"q": "What does 1 m³ of concrete weigh?", "a": "Normal weight concrete weighs approximately 2400 kg/m³."}
+    ],
+    "related": [],
+    "applications": ["Foundation design", "Slab construction", "Concrete ordering", "Cost estimation"]
+  },
+  "tests": [
+    {"inputs": {"length": 10, "width": 5, "thickness": 150}, "expected": 7.5, "tolerance": 0.01}
+  ]
+}

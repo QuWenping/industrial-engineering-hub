@@ -56,10 +56,13 @@ const featuredGuides = [
 function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView) {
+      setCount(0);
+      return;
+    }
     let start = 0;
     const duration = 2000;
     const step = duration / 60;
@@ -230,7 +233,7 @@ function PopularToolsSection() {
               key={tool.href}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
             >
               <Link href={tool.href} className="block h-full">
@@ -282,7 +285,7 @@ function FeaturedGuidesSection() {
               key={guide.href}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               <Link href={guide.href} className="block h-full">
@@ -334,7 +337,7 @@ function DatabaseSection() {
               key={db.href}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               <Link href={db.href} className="block h-full">

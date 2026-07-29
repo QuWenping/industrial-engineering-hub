@@ -1,0 +1,40 @@
+{
+  "id": "motor-power-calculator",
+  "name": "Motor Power Calculator",
+  "category": "Electrical Engineering",
+  "priority": "P0",
+  "description": "Calculate electric motor shaft power from electrical power input and motor efficiency, or convert between kW and HP.",
+  "seo": {
+    "title": "Motor Power Calculator - kW to HP Converter",
+    "description": "Calculate electric motor power output from input power and efficiency, or convert between kilowatts and horsepower.",
+    "keyword": "motor power calculator"
+  },
+  "formula": {
+    "expression": "power_input * efficiency / 1000",
+    "unit": "kW",
+    "explanation": "Shaft power output P_out = P_in × η. P_in converted from kW to W by engine; /1000 returns result in kW. η is efficiency as decimal (0-1)."
+  },
+  "inputs": [
+    {"id": "power_input", "label": "Input Power", "type": "number", "unit": "kW", "required": true, "default": 22, "min": 0},
+    {"id": "efficiency", "label": "Motor Efficiency", "type": "number", "required": true, "default": 0.9, "min": 0.01, "max": 1, "step": 0.01, "hint": "Enter as decimal (0.9 = 90%)"}
+  ],
+  "result": {"label": "Shaft Power Output", "unit": "kW", "decimals": 2},
+  "content": {
+    "introduction": "Calculate the actual mechanical shaft power delivered by an electric motor given its electrical input power and efficiency. Essential for motor sizing and pump/fan drive calculations.",
+    "example": {
+      "inputs": {"power_input": 22, "efficiency": 0.9},
+      "result": 19.8,
+      "description": "A 22 kW motor operating at 90% efficiency delivers 19.8 kW of shaft power."
+    },
+    "faq": [
+      {"q": "What is typical motor efficiency?", "a": "IE3 premium efficiency motors typically achieve 88-96% depending on size. Smaller motors are less efficient than larger ones."},
+      {"q": "How do I convert kW to HP?", "a": "1 HP = 0.7457 kW. Divide kW by 0.7457 to get HP."}
+    ],
+    "related": ["pump-power-calculator", "pump-efficiency-calculator", "pump-energy-calculator"],
+    "applications": ["Motor sizing", "Pump drive selection", "Energy consumption estimation", "Electrical design"]
+  },
+  "tests": [
+    {"inputs": {"power_input": 22, "efficiency": 0.9}, "expected": 19.8, "tolerance": 0.01},
+    {"inputs": {"power_input": 75, "efficiency": 0.95}, "expected": 71.25, "tolerance": 0.01}
+  ]
+}
