@@ -1,0 +1,59 @@
+{
+  "id": "pressure-unit-converter",
+  "name": "Pressure Unit Converter",
+  "category": "General Engineering",
+  "priority": "P1",
+  "description": "Convert between pressure units: Pa, kPa, MPa, bar, psi, atm, kg/cm², and mmH₂O.",
+  "seo": {
+    "title": "Pressure Unit Converter - kPa psi bar MPa",
+    "description": "Convert between pressure units: Pascals, kPa, MPa, bar, psi, atm, kg/cm², inches of water, and mm of mercury.",
+    "keyword": "pressure unit converter"
+  },
+  "formula": {
+    "expression": "input * fromFactor / toFactor",
+    "unit": "",
+    "explanation": "Converts pressure via Pascal reference: result = input × (Pa_per_fromUnit / Pa_per_toUnit). Factors are Pa per unit: Pa=1, kPa=1000, bar=100000, psi=6895, atm=101325."
+  },
+  "inputs": [
+    {"id": "input", "label": "Pressure Value", "type": "number", "required": true, "default": 100, "min": 0},
+    {"id": "fromFactor", "label": "From Unit", "type": "select", "required": true, "default": "1",
+      "options": [
+        {"value": "1", "label": "Pa (Pascal)"},
+        {"value": "1000", "label": "kPa (kilopascal)"},
+        {"value": "1000000", "label": "MPa (megapascal)"},
+        {"value": "100000", "label": "bar"},
+        {"value": "6894.76", "label": "psi (lbf/in²)"},
+        {"value": "101325", "label": "atm (atmosphere)"}
+      ]
+    },
+    {"id": "toFactor", "label": "To Unit", "type": "select", "required": true, "default": "6894.76",
+      "options": [
+        {"value": "1", "label": "Pa (Pascal)"},
+        {"value": "1000", "label": "kPa (kilopascal)"},
+        {"value": "1000000", "label": "MPa (megapascal)"},
+        {"value": "100000", "label": "bar"},
+        {"value": "6894.76", "label": "psi (lbf/in²)"},
+        {"value": "101325", "label": "atm (atmosphere)"}
+      ]
+    }
+  ],
+  "result": {"label": "Converted Pressure", "unit": "", "decimals": 3},
+  "content": {
+    "introduction": "Convert between common engineering pressure units. Standard pressure unit conversions for hydraulic, pneumatic, process, and mechanical engineering.",
+    "example": {
+      "inputs": {"input": 100, "fromFactor": "1000", "toFactor": "6894.76"},
+      "result": 14.5,
+      "description": "100 kPa = 14.5 psi (approximately 1 atmosphere)."
+    },
+    "faq": [
+      {"q": "What is the exact conversion from bar to psi?", "a": "1 bar = 14.5038 psi = 100 kPa = 0.9869 atm. 1 bar is slightly less than 1 atmosphere (1 atm = 1.01325 bar)."},
+      {"q": "What is the difference between gauge and absolute pressure?", "a": "P_abs = P_gauge + P_atm. 100 kPa gauge = ~201.3 kPa absolute. This converter works with both, just be consistent."}
+    ],
+    "related": ["head-loss-calculator", "pump-head-calculator"],
+    "applications": ["Hydraulic system design", "Process instrumentation", "Pneumatic systems", "International standards"]
+  },
+  "tests": [
+    {"inputs": {"input": 100, "fromFactor": "1000", "toFactor": "6894.76"}, "expected": 14.5, "tolerance": 0.1},
+    {"inputs": {"input": 1, "fromFactor": "100000", "toFactor": "1000"}, "expected": 100, "tolerance": 0.1}
+  ]
+}

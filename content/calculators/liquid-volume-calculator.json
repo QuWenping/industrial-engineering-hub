@@ -1,0 +1,41 @@
+{
+  "id": "liquid-volume-calculator",
+  "name": "Partially Filled Horizontal Tank Volume Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P0",
+  "description": "Calculate liquid volume in a partially-filled horizontal cylindrical tank from fill level.",
+  "seo": {
+    "title": "Horizontal Tank Liquid Volume Calculator",
+    "description": "Calculate liquid volume in a partially-filled horizontal cylindrical tank from fill level using the circular segment formula.",
+    "keyword": "horizontal tank volume calculator"
+  },
+  "formula": {
+    "expression": "(r^2 * acos((r-h)/r) - (r-h) * sqrt(2*r*h - h^2)) * length * 1000",
+    "unit": "L",
+    "explanation": "Liquid volume = Cross-sectional area × Length. Cross-section = r²·arccos((r−h)/r) − (r−h)·√(2rh−h²) (circular segment formula). ×1000 converts m³ to liters. Where r = radius, h = fill height."
+  },
+  "inputs": [
+    {"id": "r", "label": "Tank Radius", "type": "number", "unit": "m", "required": true, "default": 1.5, "min": 0},
+    {"id": "length", "label": "Tank Length (straight shell)", "type": "number", "unit": "m", "required": true, "default": 6, "min": 0},
+    {"id": "h", "label": "Liquid Fill Height", "type": "number", "unit": "m", "required": true, "default": 1, "min": 0, "hint": "From tank bottom, not exceeding diameter"}
+  ],
+  "result": {"label": "Liquid Volume", "unit": "L", "decimals": 0},
+  "content": {
+    "introduction": "Calculate the liquid volume in a partially filled horizontal cylinder using the circular segment area formula. This is the standard method for dipstick-to-volume conversion for horizontal fuel tanks, water trucks, and bulk storage.",
+    "example": {
+      "inputs": {"r": 1.5, "length": 6, "h": 1},
+      "result": 12395,
+      "description": "3m diameter × 6m horizontal tank filled to 1m height holds ~12,395 liters (out of 42,412 total at 100%)."
+    },
+    "faq": [
+      {"q": "How accurate is this?", "a": "This gives a theoretical result for a perfect cylindrical shell with flat ends. Real tanks with dished heads or internal baffles require a strapping table calibration."},
+      {"q": "What volume is at 50% fill?", "a": "At h = r (half full), the volume is exactly half the total volume. Due to the circular geometry, fill height is not linear with volume: at 30% height you have ~25% volume, at 50% height you have exactly 50% volume."}
+    ],
+    "related": ["tank-volume-calculator", "cylinder-volume-calculator", "storage-capacity-calculator"],
+    "applications": ["Fuel tank gauging", "Truck tank dipstick calibration", "Bulk storage inventory", "Process vessel level measurement"]
+  },
+  "tests": [
+    {"inputs": {"r": 1.5, "length": 6, "h": 1}, "expected": 12395, "tolerance": 100},
+    {"inputs": {"r": 1.5, "length": 6, "h": 1.5}, "expected": 21206, "tolerance": 100}
+  ]
+}

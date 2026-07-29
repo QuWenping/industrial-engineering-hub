@@ -1,0 +1,39 @@
+{
+  "id": "density-calculator",
+  "name": "Density Calculator",
+  "category": "Material Engineering",
+  "priority": "P0",
+  "description": "Calculate density from mass and volume, or find mass/volume from density.",
+  "seo": {
+    "title": "Density Calculator - Mass Volume",
+    "description": "Calculate density (ρ = m/V), mass, or volume. Supports kg/m³, g/cm³, lb/ft³ units.",
+    "keyword": "density calculator"
+  },
+  "formula": {
+    "expression": "mass / volume",
+    "unit": "kg/m³",
+    "explanation": "Density ρ = Mass / Volume. Mass in kg after engine conversion (no change), volume in m³ (L × 0.001). Result directly in kg/m³."
+  },
+  "inputs": [
+    {"id": "mass", "label": "Mass", "type": "number", "unit": "kg", "required": true, "default": 10, "min": 0},
+    {"id": "volume", "label": "Volume", "type": "number", "unit": "L", "required": true, "default": 10, "min": 0, "hint": "1 L = 0.001 m³"}
+  ],
+  "result": {"label": "Density", "unit": "kg/m³", "decimals": 1},
+  "content": {
+    "introduction": "Calculate density (mass per unit volume) using ρ = m/V. Density is a fundamental material property used in buoyancy, fluid mechanics, and material identification.",
+    "example": {
+      "inputs": {"mass": 10, "volume": 10},
+      "result": 1000,
+      "description": "10 kg of water occupying 10 liters has density 1000 kg/m³."
+    },
+    "faq": [
+      {"q": "What is the formula for density?", "a": "Density = Mass / Volume (ρ = m/V). SI units: kg/m³. Common alternative: g/cm³ (1 g/cm³ = 1000 kg/m³)."},
+      {"q": "What is the density of water?", "a": "Water density is 1000 kg/m³ at 4°C. At room temperature it is approximately 998 kg/m³."}
+    ],
+    "related": ["material-volume-calculator", "metal-weight-calculator"],
+    "applications": ["Material identification", "Buoyancy calculation", "Fluid mechanics", "Quality control"]
+  },
+  "tests": [
+    {"inputs": {"mass": 10, "volume": 10}, "expected": 1000, "tolerance": 1}
+  ]
+}

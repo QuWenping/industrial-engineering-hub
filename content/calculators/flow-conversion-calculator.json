@@ -1,0 +1,57 @@
+{
+  "id": "flow-conversion-calculator",
+  "name": "Flow Unit Conversion Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P0",
+  "description": "Convert between flow rate units: m³/h, m³/s, L/min, L/s, and GPM (US gallons per minute).",
+  "seo": {
+    "title": "Flow Unit Converter - m³/h GPM L/min",
+    "description": "Convert between volumetric flow rate units: m³/h, L/min, L/s, GPM, m³/s for engineering calculations.",
+    "keyword": "flow unit converter"
+  },
+  "formula": {
+    "expression": "input_flow / from_factor * to_factor",
+    "unit": "",
+    "explanation": "Converts via SI base (m³/s): result = value × (factor_from / factor_to). Factors are units per m³/s: m³/s=1, m³/h=3600, L/min=60000, L/s=1000, GPM=15850."
+  },
+  "inputs": [
+    {"id": "input_flow", "label": "Flow Value", "type": "number", "required": true, "default": 100, "min": 0},
+    {"id": "from_factor", "label": "From Unit", "type": "select", "required": true, "default": "3600",
+      "options": [
+        {"value": "1", "label": "m³/s"},
+        {"value": "3600", "label": "m³/h"},
+        {"value": "60000", "label": "L/min"},
+        {"value": "1000", "label": "L/s"},
+        {"value": "15850", "label": "GPM (US gal/min)"}
+      ]
+    },
+    {"id": "to_factor", "label": "To Unit", "type": "select", "required": true, "default": "15850",
+      "options": [
+        {"value": "1", "label": "m³/s"},
+        {"value": "3600", "label": "m³/h"},
+        {"value": "60000", "label": "L/min"},
+        {"value": "1000", "label": "L/s"},
+        {"value": "15850", "label": "GPM (US gal/min)"}
+      ]
+    }
+  ],
+  "result": {"label": "Converted Flow", "unit": "", "decimals": 2},
+  "content": {
+    "introduction": "Convert between common volumetric flow rate units used in engineering: cubic meters per hour/second, liters per minute/second, and US gallons per minute.",
+    "example": {
+      "inputs": {"input_flow": 100, "from_factor": "3600", "to_factor": "15850"},
+      "result": 440.3,
+      "description": "100 m³/h = 440.3 GPM (US gallons per minute)."
+    },
+    "faq": [
+      {"q": "What is the conversion from m³/h to GPM?", "a": "1 m³/h = 4.403 US GPM. 1 m³/h = 3.666 UK (imperial) GPM."},
+      {"q": "How do I convert mass flow to volumetric flow?", "a": "Volumetric flow (m³/s) = mass flow (kg/s) / density (kg/m³). For water, 1 kg/s ≈ 3.6 m³/h."}
+    ],
+    "related": ["flow-rate-calculator", "pipe-flow-calculator"],
+    "applications": ["Unit conversion", "Equipment comparison", "Specification checking", "International projects"]
+  },
+  "tests": [
+    {"inputs": {"input_flow": 100, "from_factor": "3600", "to_factor": "15850"}, "expected": 440.3, "tolerance": 2},
+    {"inputs": {"input_flow": 1, "from_factor": "1", "to_factor": "3600"}, "expected": 3600, "tolerance": 1}
+  ]
+}

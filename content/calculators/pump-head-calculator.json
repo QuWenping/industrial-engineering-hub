@@ -1,0 +1,41 @@
+{
+  "id": "pump-head-calculator",
+  "name": "Pump Head Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P0",
+  "description": "Calculate pump total dynamic head from elevation, pressure, and friction losses.",
+  "seo": {
+    "title": "Pump Head Calculator - Total Dynamic Head",
+    "description": "Calculate pump total dynamic head (TDH) from static elevation, pressure difference, and friction losses.",
+    "keyword": "pump head calculator"
+  },
+  "formula": {
+    "expression": "elevation + pressure / (density * 9.81) + friction",
+    "unit": "m",
+    "explanation": "TDH = H_static + ΔP/(ρg) + h_friction. Engine converts kPa→Pa for the pressure term automatically."
+  },
+  "inputs": [
+    {"id": "elevation", "label": "Static Elevation Lift", "type": "number", "unit": "m", "required": true, "default": 20, "min": 0},
+    {"id": "pressure", "label": "Discharge Pressure Rise", "type": "number", "unit": "kPa", "required": true, "default": 100, "min": 0},
+    {"id": "density", "label": "Fluid Density", "type": "number", "unit": "kg/m³", "required": true, "default": 1000, "min": 0},
+    {"id": "friction", "label": "System Friction Loss", "type": "number", "unit": "m", "required": true, "default": 5, "min": 0}
+  ],
+  "result": {"label": "Total Dynamic Head (TDH)", "unit": "m", "decimals": 1},
+  "content": {
+    "introduction": "Total Dynamic Head (TDH) is the total equivalent head a pump must provide to overcome elevation, system pressure, and friction losses. This is the primary parameter for selecting a pump from manufacturer curves.",
+    "example": {
+      "inputs": {"elevation": 20, "pressure": 100, "density": 1000, "friction": 5},
+      "result": 35.2,
+      "description": "20m lift + 100 kPa pressure (10.2m) + 5m friction = 35.2m TDH."
+    },
+    "faq": [
+      {"q": "What is the difference between static head and dynamic head?", "a": "Static head is elevation difference only. Dynamic head includes all losses: elevation + pressure + friction + velocity head."},
+      {"q": "Do I need to add velocity head?", "a": "Velocity head (v²/2g) is usually negligible (0.1-0.5m) compared to other heads and is omitted in most practical calculations."}
+    ],
+    "related": ["pump-power-calculator", "npsh-calculator", "head-loss-calculator"],
+    "applications": ["Pump selection", "Hydronic system design", "Booster pump sizing", "Irrigation design"]
+  },
+  "tests": [
+    {"inputs": {"elevation": 20, "pressure": 100, "density": 1000, "friction": 5}, "expected": 35.2, "tolerance": 0.5}
+  ]
+}

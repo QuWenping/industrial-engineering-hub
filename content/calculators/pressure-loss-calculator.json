@@ -1,0 +1,43 @@
+{
+  "id": "pressure-loss-calculator",
+  "name": "Pressure Loss Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P0",
+  "description": "Calculate total pressure loss in a pipeline including friction losses and fittings (K-factor method).",
+  "seo": {
+    "title": "Pressure Loss Calculator - Pipe Fittings",
+    "description": "Calculate total pipeline pressure loss including pipe friction and fittings/valves using resistance K-factors.",
+    "keyword": "pressure loss calculator"
+  },
+  "formula": {
+    "expression": "(friction * length / diameter + k_total) * density * velocity^2 / 2 / 1000",
+    "unit": "kPa",
+    "explanation": "ΔP = (fL/D + ΣK) × ρv²/2. K-factor method sums minor losses from fittings: elbow≈0.9, gate valve≈0.17, globe valve≈6, tee≈1.8."
+  },
+  "inputs": [
+    {"id": "friction", "label": "Friction Factor (f)", "type": "number", "required": true, "default": 0.02, "min": 0.001, "max": 0.1, "step": 0.001},
+    {"id": "length", "label": "Pipe Length", "type": "number", "unit": "m", "required": true, "default": 50, "min": 0},
+    {"id": "diameter", "label": "Pipe Inner Diameter", "type": "number", "unit": "mm", "required": true, "default": 100, "min": 0},
+    {"id": "k_total", "label": "Total K-Factor (Fittings)", "type": "number", "required": true, "default": 5, "min": 0, "hint": "Sum K for all fittings: elbow≈0.9, globe valve≈6"},
+    {"id": "density", "label": "Fluid Density", "type": "number", "unit": "kg/m³", "required": true, "default": 1000, "min": 0},
+    {"id": "velocity", "label": "Flow Velocity", "type": "number", "unit": "m/s", "required": true, "default": 2, "min": 0}
+  ],
+  "result": {"label": "Total Pressure Loss", "unit": "kPa", "decimals": 2},
+  "content": {
+    "introduction": "Calculate total pressure loss including both straight-pipe friction and minor losses from fittings, valves, elbows, and entrances/exits using the K-factor (resistance coefficient) method.",
+    "example": {
+      "inputs": {"friction": 0.02, "length": 50, "diameter": 100, "k_total": 5, "density": 1000, "velocity": 2},
+      "result": 30,
+      "description": "50m pipe with K=5 fittings, water at 2m/s: 30 kPa total loss."
+    },
+    "faq": [
+      {"q": "What are typical K-factors?", "a": "90° elbow: 0.9, 45° elbow: 0.4, gate valve (full open): 0.17, globe valve (full open): 6, ball valve: 0.05, tee (through flow): 0.9, tee (branch): 1.8."},
+      {"q": "What is the difference between K-factor and L/D?", "a": "Equivalent length (L/D) methods convert fittings to equivalent pipe length. K-factor method uses velocity head directly: h_loss = K × v²/2g. Both give same result."}
+    ],
+    "related": ["pressure-drop-calculator", "darcy-weisbach-calculator", "friction-loss-calculator"],
+    "applications": ["Pump head estimation", "Piping system design", "Fire protection systems", "HVAC hydronic design"]
+  },
+  "tests": [
+    {"inputs": {"friction": 0.02, "length": 50, "diameter": 100, "k_total": 5, "density": 1000, "velocity": 2}, "expected": 30, "tolerance": 1}
+  ]
+}

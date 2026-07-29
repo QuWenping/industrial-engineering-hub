@@ -1,0 +1,44 @@
+{
+  "id": "thermal-resistance-calculator",
+  "name": "Thermal Resistance Calculator - R-Value",
+  "category": "Thermal Engineering",
+  "priority": "P0",
+  "description": "Calculate thermal resistance (R-value and U-value) for composite walls with multiple layers.",
+  "seo": {
+    "title": "Thermal Resistance Calculator - R-Value U-Value",
+    "description": "Calculate thermal resistance (R-value) and overall U-value for composite wall, roof, or floor assemblies with multiple material layers.",
+    "keyword": "thermal resistance calculator"
+  },
+  "formula": {
+    "expression": "1 / (1/h_in + l1/k1 + l2/k2 + l3/k3 + 1/h_out)",
+    "unit": "W/(m²·K)",
+    "explanation": "U = 1/R_total. R_total = R_inside + Σ(L_i/k_i) + R_outside. Three material layers provided: L in m, k in W/mK. h in W/m²K."
+  },
+  "inputs": [
+    {"id": "l1", "label": "Layer 1 Thickness", "type": "number", "unit": "mm", "required": true, "default": 100, "min": 0, "hint": "Brick 100mm"},
+    {"id": "k1", "label": "Layer 1 Conductivity (k1)", "type": "number", "required": true, "default": 0.8, "min": 0, "step": 0.01, "hint": "Brick ≈ 0.8 W/mK"},
+    {"id": "l2", "label": "Layer 2 Thickness", "type": "number", "unit": "mm", "required": true, "default": 50, "min": 0, "hint": "Insulation 50mm"},
+    {"id": "k2", "label": "Layer 2 Conductivity (k2)", "type": "number", "required": true, "default": 0.04, "min": 0, "step": 0.01, "hint": "Mineral wool ≈ 0.04 W/mK"},
+    {"id": "l3", "label": "Layer 3 Thickness", "type": "number", "unit": "mm", "required": true, "default": 10, "min": 0, "hint": "Plasterboard 10mm"},
+    {"id": "k3", "label": "Layer 3 Conductivity (k3)", "type": "number", "required": true, "default": 0.16, "min": 0, "step": 0.01, "hint": "Plasterboard ≈ 0.16 W/mK"},
+    {"id": "h_in", "label": "Inside Convection (h_in)", "type": "number", "required": true, "default": 8, "min": 0, "hint": "8 W/m²K for indoor still air"},
+    {"id": "h_out", "label": "Outside Convection (h_out)", "type": "number", "required": true, "default": 25, "min": 0, "hint": "25 W/m²K for outdoor"}
+  ],
+  "result": {"label": "Overall U-Value", "unit": "W/(m²·K)", "decimals": 3},
+  "content": {
+    "introduction": "Calculate the overall heat transfer coefficient (U-value) for a composite wall assembly with up to 3 material layers plus convection resistances on both sides. U-value is the reciprocal of total R-value.",
+    "example": {
+      "inputs": {"l1": 100, "k1": 0.8, "l2": 50, "k2": 0.04, "l3": 10, "k3": 0.16, "h_in": 8, "h_out": 25},
+      "result": 0.624,
+      "description": "100mm brick + 50mm insulation + 10mm plasterboard: U ≈ 0.62 W/m²K (well-insulated wall)."
+    },
+    "faq": [
+      {"q": "What is the difference between R-value and U-value?", "a": "R is thermal resistance (m²K/W) — higher is better insulation. U is heat transfer coefficient (W/m²K) — lower is better. U = 1/R_total.", "q": "What are typical building U-values?", "a": "Modern insulated walls: 0.2-0.4 W/m²K; roofs: 0.15-0.25; windows: 1.5-3.0; uninsulated solid brick: 2.0-3.0."}
+    ],
+    "related": ["heat-transfer-calculator", "heat-loss-calculator"],
+    "applications": ["Building insulation design", "HVAC load calculation", "Energy code compliance", "Wall/roof assembly rating"]
+  },
+  "tests": [
+    {"inputs": {"l1": 100, "k1": 0.8, "l2": 50, "k2": 0.04, "l3": 10, "k3": 0.16, "h_in": 8, "h_out": 25}, "expected": 0.624, "tolerance": 0.02}
+  ]
+}

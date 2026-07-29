@@ -1,0 +1,39 @@
+{
+  "id": "storage-capacity-calculator",
+  "name": "Storage Capacity Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P0",
+  "description": "Calculate liquid storage capacity for multiple tanks or vessels, with days-of-supply estimation.",
+  "seo": {
+    "title": "Storage Capacity Calculator - Days of Supply",
+    "description": "Calculate total storage volume and days of supply based on consumption rate for tank farms and process storage.",
+    "keyword": "storage capacity calculator"
+  },
+  "formula": {
+    "expression": "volume * fill / (consumption * 3600 * 24)",
+    "unit": "days",
+    "explanation": "Days = (Volume × FillFactor) / (Consumption × 86400). Volume in m³, consumption in m³/s (×3600×24 to m³/day)."
+  },
+  "inputs": [
+    {"id": "volume", "label": "Total Tank Volume", "type": "number", "unit": "L", "required": true, "default": 100000, "min": 0},
+    {"id": "fill", "label": "Fill Factor (usable fraction)", "type": "number", "required": true, "default": 0.9, "min": 0, "max": 1, "step": 0.05, "hint": "0.85-0.95 typical (allow ullage)"},
+    {"id": "consumption", "label": "Consumption Rate", "type": "number", "unit": "m3/h", "required": true, "default": 0.1, "min": 0, "hint": "100m³ tank ÷ 0.1m³/h×24h = ~37 days"}
+  ],
+  "result": {"label": "Days of Supply", "unit": "days", "decimals": 1},
+  "content": {
+    "introduction": "Calculate how many days of supply a tank farm provides given total storage volume, a fill factor (ullage), and process consumption rate. API standards typically recommend 7-30 days buffer for raw materials.",
+    "example": {
+      "inputs": {"volume": 100000, "fill": 0.9, "consumption": 0.1},
+      "result": 37.5,
+      "description": "100,000 L at 90% fill = 90 m³ usable. At 0.375 m³/h consumption (9 m³/day): 37.5 days of supply."
+    },
+    "faq": [
+      {"q": "What is a good fill factor?", "a": "For fixed-roof tanks: 0.85-0.90 (allow 10-15% ullage for thermal expansion). For floating roof: 0.92-0.95.", "a": "How much storage do I need for 7 days?", "a": "Storage (m³) = daily consumption × 7 / fill factor. For 10 m³/h = 240 m³/day × 7 / 0.9 = 1,867 m³ needed."}
+    ],
+    "related": ["tank-volume-calculator", "cylinder-volume-calculator"],
+    "applications": ["Tank farm sizing", "Supply chain planning", "Buffer stock calculation", "Process plant design"]
+  },
+  "tests": [
+    {"inputs": {"volume": 100000, "fill": 0.9, "consumption": 0.1}, "expected": 37.5, "tolerance": 0.5}
+  ]
+}

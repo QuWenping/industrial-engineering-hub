@@ -1,0 +1,39 @@
+{
+  "id": "pipe-velocity-calculator",
+  "name": "Pipe Velocity Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P0",
+  "description": "Calculate fluid velocity in a pipe from flow rate and pipe diameter.",
+  "seo": {
+    "title": "Pipe Velocity Calculator - Fluid Flow",
+    "description": "Calculate fluid velocity in pipes from flow rate and diameter. Recommends optimal velocity ranges for liquids and gases.",
+    "keyword": "pipe velocity calculator"
+  },
+  "formula": {
+    "expression": "flow / (pi * (diameter/2)^2)",
+    "unit": "m/s",
+    "explanation": "v = Q / A where A = π(D/2)². Flow rate in m³/s, diameter in m, result in m/s. Typical liquid velocity: 1-3 m/s."
+  },
+  "inputs": [
+    {"id": "flow", "label": "Flow Rate", "type": "number", "unit": "m3/h", "required": true, "default": 100, "min": 0},
+    {"id": "diameter", "label": "Pipe Inner Diameter", "type": "number", "unit": "mm", "required": true, "default": 150, "min": 0}
+  ],
+  "result": {"label": "Flow Velocity", "unit": "m/s", "decimals": 2},
+  "content": {
+    "introduction": "Calculate fluid velocity inside a pipe. For liquid lines, recommended velocity is 1-3 m/s; for gas lines, 10-30 m/s; for suction lines, under 1.5 m/s to avoid cavitation.",
+    "example": {
+      "inputs": {"flow": 100, "diameter": 150},
+      "result": 1.57,
+      "description": "100 m³/h through 150mm pipe gives 1.57 m/s velocity."
+    },
+    "faq": [
+      {"q": "What is a good pipe velocity for water?", "a": "1-2 m/s for general water service, 0.5-1.5 m/s for pump suction, and up to 3 m/s for short discharge runs."},
+      {"q": "Why does velocity matter?", "a": "Too high causes erosion, noise, and high pressure drop. Too low means oversized pipe and higher cost, plus sediment deposition in slurry service."}
+    ],
+    "related": ["pipe-flow-calculator", "reynolds-number-calculator", "pressure-drop-calculator"],
+    "applications": ["Pipe sizing", "Pump system design", "Hydraulic calculations", "Flow measurement"]
+  },
+  "tests": [
+    {"inputs": {"flow": 100, "diameter": 150}, "expected": 1.57, "tolerance": 0.05}
+  ]
+}

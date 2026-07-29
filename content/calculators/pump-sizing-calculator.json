@@ -1,0 +1,42 @@
+{
+  "id": "pump-sizing-calculator",
+  "name": "Pump Sizing Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P0",
+  "description": "Size a centrifugal pump by calculating required power from design flow, head, efficiency, and safety margin.",
+  "seo": {
+    "title": "Pump Sizing Calculator - Required Power",
+    "description": "Calculate required pump motor size from design flow rate, total head, efficiency, and safety factor.",
+    "keyword": "pump sizing calculator"
+  },
+  "formula": {
+    "expression": "density * flow * 9.81 * head / efficiency * safety / 1000",
+    "unit": "kW",
+    "explanation": "Required Power = ρQgh/(η) × safety. /1000 converts W to kW for the final answer. Safety factor typically 1.1-1.25."
+  },
+  "inputs": [
+    {"id": "flow", "label": "Design Flow Rate", "type": "number", "unit": "m3/h", "required": true, "default": 100, "min": 0},
+    {"id": "head", "label": "Total Dynamic Head", "type": "number", "unit": "m", "required": true, "default": 50, "min": 0},
+    {"id": "density", "label": "Fluid Density", "type": "number", "unit": "kg/m³", "required": true, "default": 1000, "min": 0},
+    {"id": "efficiency", "label": "Pump Efficiency", "type": "number", "required": true, "default": 0.75, "min": 0.1, "max": 1, "step": 0.01, "hint": "0.75 = 75% at BEP"},
+    {"id": "safety", "label": "Safety Factor", "type": "number", "required": true, "default": 1.15, "min": 1, "max": 1.5, "step": 0.05, "hint": "1.1-1.25 typical"}
+  ],
+  "result": {"label": "Required Motor Power", "unit": "kW", "decimals": 1},
+  "content": {
+    "introduction": "Calculate the required motor power for a centrifugal pump given design flow, total head, efficiency, and a safety margin. Round up to the nearest standard motor size (5.5, 7.5, 11, 15, 18.5, 22, 30, 37, 45, 55, 75 kW).",
+    "example": {
+      "inputs": {"flow": 100, "head": 50, "density": 1000, "efficiency": 0.75, "safety": 1.15},
+      "result": 20.9,
+      "description": "100 m³/h × 50m at 75% efficiency with 15% safety: 20.9 kW. Select a 22 kW standard motor."
+    },
+    "faq": [
+      {"q": "What safety factor should I use?", "a": "1.1-1.15 for well-defined systems with accurate pressure drop calcs; 1.2 for conservative estimates; 1.25+ for high-viscosity or uncertain conditions."},
+      {"q": "How do I select standard motor size?", "a": "IEC standard sizes: 0.75, 1.1, 1.5, 2.2, 3, 4, 5.5, 7.5, 11, 15, 18.5, 22, 30, 37, 45, 55, 75, 90, 110 kW. Round up to nearest size."}
+    ],
+    "related": ["pump-power-calculator", "pump-head-calculator", "pump-selection-calculator"],
+    "applications": ["Pump motor sizing", "Equipment specification", "Capital cost estimating", "Procurement"]
+  },
+  "tests": [
+    {"inputs": {"flow": 100, "head": 50, "density": 1000, "efficiency": 0.75, "safety": 1.15}, "expected": 20.9, "tolerance": 0.5}
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "friction-loss-calculator",
+  "name": "Friction Loss Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P0",
+  "description": "Calculate friction head loss in pipes per 100m using Hazen-Williams C-factor for water systems.",
+  "seo": {
+    "title": "Friction Loss Calculator - Pipe Head Loss",
+    "description": "Calculate pipe friction head loss using Hazen-Williams formula for water distribution systems.",
+    "keyword": "friction loss calculator"
+  },
+  "formula": {
+    "expression": "10.67 * flow^1.852 / (c^1.852 * diameter^4.8704) * length",
+    "unit": "m",
+    "explanation": "Hazen-Williams (SI): hf = 10.67 × Q^1.852 / (C^1.852 × D^4.8704) × L. Q in m³/s, D in m, L in m; result in meters of water head loss."
+  },
+  "inputs": [
+    {"id": "flow", "label": "Flow Rate", "type": "number", "unit": "m3/h", "required": true, "default": 50, "min": 0},
+    {"id": "c", "label": "Hazen-Williams C-Factor", "type": "number", "required": true, "default": 120, "min": 60, "max": 160, "hint": "New steel: 120, PVC: 150, Old cast iron: 80-100"},
+    {"id": "diameter", "label": "Pipe Inner Diameter", "type": "number", "unit": "mm", "required": true, "default": 100, "min": 0},
+    {"id": "length", "label": "Pipe Length", "type": "number", "unit": "m", "required": true, "default": 100, "min": 0}
+  ],
+  "result": {"label": "Friction Head Loss", "unit": "m (of water)", "decimals": 2},
+  "content": {
+    "introduction": "Calculate friction head loss in water pipes using the Hazen-Williams formula, commonly used in water distribution and fire sprinkler system design. C-factors: new steel=120, PVC/HDPE=150, copper=140, old cast iron=80-100.",
+    "example": {
+      "inputs": {"flow": 50, "c": 120, "diameter": 100, "length": 100},
+      "result": 4.05,
+      "description": "50 m³/h through 100mm C=120 steel pipe: ~4m head loss per 100m."
+    },
+    "faq": [
+      {"q": "What C-factor should I use?", "a": "New steel pipe: 120; PVC/HDPE: 150; copper: 140; 20-year-old steel: 100; old cast iron: 80. Conservative design uses lower values."},
+      {"q": "When is Hazen-Williams applicable?", "a": "Only for water at 40-75°F (5-25°C) in turbulent flow. Use Darcy-Weisbach for other fluids or higher accuracy."}
+    ],
+    "related": ["pressure-drop-calculator", "darcy-weisbach-calculator", "head-loss-calculator"],
+    "applications": ["Water distribution", "Fire sprinkler design", "Irrigation systems", "Plumbing design"]
+  },
+  "tests": [
+    {"inputs": {"flow": 50, "c": 120, "diameter": 100, "length": 100}, "expected": 4.05, "tolerance": 0.5}
+  ]
+}

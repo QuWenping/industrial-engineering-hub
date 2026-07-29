@@ -1,0 +1,44 @@
+{
+  "id": "heat-loss-calculator",
+  "name": "Heat Loss Calculator - Pipe & Tank Insulation",
+  "category": "Thermal Engineering",
+  "priority": "P0",
+  "description": "Calculate heat loss from insulated or uninsulated pipes and tanks to ambient air, with economic insulation thickness.",
+  "seo": {
+    "title": "Pipe Heat Loss Calculator - Insulation",
+    "description": "Calculate heat loss from pipes, tanks, and vessels with or without insulation. Estimate energy savings from adding insulation.",
+    "keyword": "pipe heat loss calculator"
+  },
+  "formula": {
+    "expression": "(t_surface - t_ambient) / (1/(h * pi * diameter) + log((diameter+2*thickness)/diameter)/(2*pi*k)) * length",
+    "unit": "W",
+    "explanation": "Cylindrical heat loss with insulation. R_total = R_outside + R_insulation. R_outside = 1/(hπD), R_insulation = ln((D+2t)/D)/(2πk). h = outside convection coefficient."
+  },
+  "inputs": [
+    {"id": "t_surface", "label": "Process Temperature", "type": "number", "unit": "C", "required": true, "default": 150, "min": 0},
+    {"id": "t_ambient", "label": "Ambient Temperature", "type": "number", "unit": "C", "required": true, "default": 20},
+    {"id": "diameter", "label": "Pipe Outer Diameter", "type": "number", "unit": "mm", "required": true, "default": 114, "min": 0},
+    {"id": "thickness", "label": "Insulation Thickness", "type": "number", "unit": "mm", "required": true, "default": 50, "min": 0},
+    {"id": "k", "label": "Insulation Thermal Conductivity (k)", "type": "number", "required": true, "default": 0.04, "min": 0, "step": 0.01, "hint": "Mineral wool ≈ 0.04 W/mK, foam ≈ 0.025 W/mK"},
+    {"id": "h", "label": "Outside Convection Coeff (h)", "type": "number", "required": true, "default": 10, "min": 0, "hint": "Still air ≈ 10, windy outside ≈ 25 W/m²K"},
+    {"id": "length", "label": "Pipe Length", "type": "number", "unit": "m", "required": true, "default": 100, "min": 0}
+  ],
+  "result": {"label": "Heat Loss", "unit": "W", "decimals": 0},
+  "content": {
+    "introduction": "Calculate conductive and convective heat loss from insulated or bare pipes and cylindrical equipment. Essential for energy audits, insulation specification, and tracing/heat-up calculations.",
+    "example": {
+      "inputs": {"t_surface": 150, "t_ambient": 20, "diameter": 114, "thickness": 50, "k": 0.04, "h": 10, "length": 100},
+      "result": 4668,
+      "description": "114mm pipe at 150°C with 50mm mineral wool insulation, 100m long: ~4.7 kW heat loss."
+    },
+    "faq": [
+      {"q": "What is a typical insulation k-value?", "a": "Mineral wool: 0.035-0.045; polyurethane foam: 0.022-0.030; calcium silicate: 0.055-0.070; fiberglass: 0.034-0.045 W/mK."},
+      {"q": "How much energy does insulation save?", "a": "Uninsulated 150°C pipes lose ~20x more heat than well-insulated ones. Insulation typically pays back in under a year on hot pipes."}
+    ],
+    "related": ["heat-transfer-calculator", "thermal-resistance-calculator"],
+    "applications": ["Energy audits", "Insulation specification", "Steam tracing design", "Heat-up calculations"]
+  },
+  "tests": [
+    {"inputs": {"t_surface": 150, "t_ambient": 20, "diameter": 114, "thickness": 50, "k": 0.04, "h": 10, "length": 100}, "expected": 4668, "tolerance": 200}
+  ]
+}

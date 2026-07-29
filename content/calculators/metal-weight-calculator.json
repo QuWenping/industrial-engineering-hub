@@ -1,0 +1,41 @@
+{
+  "id": "metal-weight-calculator",
+  "name": "Metal Weight Calculator",
+  "category": "Material Engineering",
+  "priority": "P0",
+  "description": "Universal metal weight calculator supporting steel, stainless, aluminum, copper, brass, bronze, titanium, and more.",
+  "seo": {
+    "title": "Metal Weight Calculator - All Metals",
+    "description": "Calculate metal weight for any shape and material including steel, stainless steel, aluminum, copper, brass, titanium, and nickel alloys.",
+    "keyword": "metal weight calculator"
+  },
+  "formula": {
+    "expression": "length * width * thickness * density",
+    "unit": "kg",
+    "explanation": "Universal formula: Weight = Volume × Density. Select from 15+ metals with pre-loaded density values."
+  },
+  "inputs": [
+    {"id": "length", "label": "Length", "type": "number", "unit": "mm", "required": true, "default": 1000, "min": 0},
+    {"id": "width", "label": "Width", "type": "number", "unit": "mm", "required": true, "default": 500, "min": 0},
+    {"id": "thickness", "label": "Thickness", "type": "number", "unit": "mm", "required": true, "default": 10, "min": 0},
+    {"id": "density", "label": "Material", "type": "material", "required": true, "default": "carbon-steel"}
+  ],
+  "result": {"label": "Weight", "unit": "kg", "decimals": 2},
+  "content": {
+    "introduction": "Universal metal weight calculator supporting 25+ metals and alloys. Select your material from the dropdown and enter dimensions to get weight.",
+    "example": {
+      "inputs": {"length": 1000, "width": 500, "thickness": 10, "density": 7850},
+      "result": 39.25,
+      "description": "A 1000×500×10mm carbon steel plate weighs 39.25 kg."
+    },
+    "faq": [
+      {"q": "Which metals are supported?", "a": "Carbon steel, stainless 304/316, aluminum, copper, brass, bronze, titanium, cast iron, nickel, lead, zinc, HDPE, PVC, glass, and various woods."},
+      {"q": "How accurate is the calculation?", "a": "The calculator uses standard published density values. Actual weights may vary slightly due to alloy composition and manufacturing tolerances."}
+    ],
+    "related": ["steel-weight-calculator", "aluminum-weight-calculator", "copper-weight-calculator"],
+    "applications": ["Material estimating", "Shipping calculation", "Cost estimation", "Inventory management"]
+  },
+  "tests": [
+    {"inputs": {"length": 1000, "width": 500, "thickness": 10, "density": 7850}, "expected": 39.25, "tolerance": 0.1}
+  ]
+}

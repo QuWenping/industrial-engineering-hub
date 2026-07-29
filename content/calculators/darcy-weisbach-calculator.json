@@ -1,0 +1,42 @@
+{
+  "id": "darcy-weisbach-calculator",
+  "name": "Darcy-Weisbach Pressure Drop Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P0",
+  "description": "Calculate pressure drop in pipes using the Darcy-Weisbach equation with full parameter control.",
+  "seo": {
+    "title": "Darcy-Weisbach Calculator - Pipe Pressure Drop",
+    "description": "Calculate pipe pressure loss using Darcy-Weisbach equation. Enter friction factor, pipe length, diameter, velocity, and fluid density.",
+    "keyword": "darcy weisbach calculator"
+  },
+  "formula": {
+    "expression": "friction * length / diameter * density * velocity^2 / 2 / 1000",
+    "unit": "kPa",
+    "explanation": "ΔP = f × (L/D) × (ρv²/2). Friction factor f (dimensionless), L/D in m, ρ in kg/m³, v in m/s; /1000 for kPa."
+  },
+  "inputs": [
+    {"id": "friction", "label": "Darcy Friction Factor (f)", "type": "number", "required": true, "default": 0.02, "min": 0.001, "max": 0.1, "step": 0.001, "hint": "0.015-0.03 typical for turbulent flow"},
+    {"id": "length", "label": "Pipe Length", "type": "number", "unit": "m", "required": true, "default": 100, "min": 0},
+    {"id": "diameter", "label": "Pipe Inner Diameter", "type": "number", "unit": "mm", "required": true, "default": 100, "min": 0},
+    {"id": "density", "label": "Fluid Density", "type": "number", "unit": "kg/m³", "required": true, "default": 1000, "min": 0, "hint": "Water = 1000, Air = 1.2"},
+    {"id": "velocity", "label": "Flow Velocity", "type": "number", "unit": "m/s", "required": true, "default": 2, "min": 0}
+  ],
+  "result": {"label": "Pressure Drop", "unit": "kPa", "decimals": 2},
+  "content": {
+    "introduction": "The Darcy-Weisbach equation is the most accurate method for calculating pressure drop in pipes for all flow regimes. Requires an estimated Darcy friction factor (Moody chart or Colebrook equation).",
+    "example": {
+      "inputs": {"friction": 0.02, "length": 100, "diameter": 100, "density": 1000, "velocity": 2},
+      "result": 40,
+      "description": "100m of 100mm pipe, f=0.02, water at 2m/s: ΔP = 40 kPa."
+    },
+    "faq": [
+      {"q": "How do I find the friction factor?", "a": "Use the Moody chart or solve the Colebrook-White equation. For fully turbulent flow in commercial steel pipe, f ≈ 0.015-0.022."},
+      {"q": "When should I use Darcy-Weisbach vs Hazen-Williams?", "a": "Darcy-Weisbach works for all fluids and flow regimes. Hazen-Williams is only for water at typical temperatures and is simpler but less accurate."}
+    ],
+    "related": ["pressure-drop-calculator", "friction-loss-calculator", "reynolds-number-calculator"],
+    "applications": ["Pipeline design", "Pump head calculation", "HVAC hydronic design", "Process piping"]
+  },
+  "tests": [
+    {"inputs": {"friction": 0.02, "length": 100, "diameter": 100, "density": 1000, "velocity": 2}, "expected": 40, "tolerance": 1}
+  ]
+}

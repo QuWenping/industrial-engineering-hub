@@ -1,0 +1,40 @@
+{
+  "id": "heat-transfer-calculator",
+  "name": "Heat Transfer Calculator",
+  "category": "Thermal Engineering",
+  "priority": "P0",
+  "description": "Calculate heat transfer rate Q through a wall or surface using the conductive/convective heat transfer equation.",
+  "seo": {
+    "title": "Heat Transfer Calculator - Conduction Convection",
+    "description": "Calculate heat transfer rate through conduction, convection, or combined U-value method for walls, pipes, and heat exchangers.",
+    "keyword": "heat transfer calculator"
+  },
+  "formula": {
+    "expression": "u * area * delta_t",
+    "unit": "W",
+    "explanation": "Q = U × A × ΔT. Heat transfer rate equals overall heat transfer coefficient × area × temperature difference. U in W/(m²·K), A in m², ΔT in K."
+  },
+  "inputs": [
+    {"id": "u", "label": "Heat Transfer Coefficient (U)", "type": "number", "unit": "W/(m²·K)", "required": true, "default": 25, "min": 0, "hint": "Air free convection: 5-25; forced air: 25-250; liquid: 100-1000"},
+    {"id": "area", "label": "Surface Area", "type": "number", "unit": "m2", "required": true, "default": 10, "min": 0},
+    {"id": "delta_t", "label": "Temperature Difference (ΔT)", "type": "number", "unit": "C", "required": true, "default": 20, "min": 0}
+  ],
+  "result": {"label": "Heat Transfer Rate", "unit": "W", "decimals": 0},
+  "content": {
+    "introduction": "The fundamental heat transfer equation Q = U·A·ΔT calculates heat flow across a surface or through a composite wall. U (overall heat transfer coefficient) combines convection on both sides and conduction through the material.",
+    "example": {
+      "inputs": {"u": 25, "area": 10, "delta_t": 20},
+      "result": 5000,
+      "description": "A 10 m² wall with U=25 W/m²K across 20°C ΔT loses 5,000 W (5 kW)."
+    },
+    "faq": [
+      {"q": "What is a typical U-value?", "a": "Insulated building wall: 0.2-0.5 W/m²K; uninsulated brick wall: 2-3; window single pane: ~5; forced-air heat exchanger: 25-100; shell-and-tube liquid-liquid: 300-1000."},
+      {"q": "How do I calculate U from k (conductivity)?", "a": "For a flat wall: U = k/L (conductivity/thickness). For composite walls: U = 1/Σ(L_i/k_i) including convection resistances on each side."}
+    ],
+    "related": ["heat-exchanger-calculator", "lmtd-calculator", "heat-loss-calculator"],
+    "applications": ["Building heat loss", "Heat exchanger rating", "Insulation design", "HVAC load calc"]
+  },
+  "tests": [
+    {"inputs": {"u": 25, "area": 10, "delta_t": 20}, "expected": 5000, "tolerance": 50}
+  ]
+}

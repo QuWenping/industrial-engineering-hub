@@ -1,0 +1,39 @@
+{
+  "id": "pipe-volume-calculator",
+  "name": "Pipe Volume Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P0",
+  "description": "Calculate pipe internal volume and liquid capacity for filling, flushing, and hydrotesting.",
+  "seo": {
+    "title": "Pipe Volume Calculator - Fluid Capacity",
+    "description": "Calculate the volume of liquid inside a pipe. Useful for pipe filling, hydrotesting, and fluid inventory calculations.",
+    "keyword": "pipe volume calculator"
+  },
+  "formula": {
+    "expression": "pi * (diameter/2)^2 * length * 1000",
+    "unit": "L",
+    "explanation": "V = π(D/2)² × L. Diameter in m, length in m; ×1000 converts m³ to liters."
+  },
+  "inputs": [
+    {"id": "diameter", "label": "Pipe Inner Diameter", "type": "number", "unit": "mm", "required": true, "default": 100, "min": 0},
+    {"id": "length", "label": "Pipe Length", "type": "number", "unit": "m", "required": true, "default": 100, "min": 0}
+  ],
+  "result": {"label": "Pipe Volume", "unit": "L", "decimals": 1},
+  "content": {
+    "introduction": "Calculate the total internal volume of a pipe section. Essential for hydrotesting (water required), chemical treatment dosing, and fluid inventory management.",
+    "example": {
+      "inputs": {"diameter": 100, "length": 100},
+      "result": 785.4,
+      "description": "100m of 100mm ID pipe holds 785 liters."
+    },
+    "faq": [
+      {"q": "How much water for hydrotest?", "a": "Calculate pipe volume and add 10-20% for filling losses and venting. Also calculate for the test pump capacity needs."},
+      {"q": "What about pipe wall thickness?", "a": "Use inner diameter (ID), not outer diameter (OD). Schedule 40 4-inch pipe has ~102mm ID vs 114.3mm OD."}
+    ],
+    "related": ["tank-volume-calculator", "flow-rate-calculator"],
+    "applications": ["Hydrotesting", "Pipeline filling", "Chemical dosing", "Fluid inventory"]
+  },
+  "tests": [
+    {"inputs": {"diameter": 100, "length": 100}, "expected": 785, "tolerance": 2}
+  ]
+}

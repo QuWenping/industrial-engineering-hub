@@ -1,0 +1,42 @@
+{
+  "id": "orifice-flow-calculator",
+  "name": "Orifice Plate Flow Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P1",
+  "description": "Calculate flow rate through an orifice plate using ISO 5167 differential pressure method.",
+  "seo": {
+    "title": "Orifice Plate Flow Calculator - ISO 5167",
+    "description": "Calculate flow rate through a sharp-edged orifice plate using differential pressure and discharge coefficient for pipe flow measurement.",
+    "keyword": "orifice flow calculator"
+  },
+  "formula": {
+    "expression": "c * (pi * orifice_d^2 / 4) * sqrt(2 * dp / (density * (1 - (orifice_d/pipe_d)^4))) * 3600",
+    "unit": "m³/h",
+    "explanation": "Q = Cd × A_orifice × √(2ΔP/(ρ(1−β⁴))) where β = d/D. Engine converts mm→m and kPa→Pa. ×3600 to m³/h."
+  },
+  "inputs": [
+    {"id": "c", "label": "Discharge Coefficient (Cd)", "type": "number", "required": true, "default": 0.6, "min": 0.1, "max": 1, "step": 0.01, "hint": "0.6 typical for sharp-edged orifice"},
+    {"id": "orifice_d", "label": "Orifice Bore Diameter", "type": "number", "unit": "mm", "required": true, "default": 50, "min": 0},
+    {"id": "pipe_d", "label": "Pipe Inner Diameter", "type": "number", "unit": "mm", "required": true, "default": 100, "min": 0},
+    {"id": "dp", "label": "Differential Pressure", "type": "number", "unit": "kPa", "required": true, "default": 10, "min": 0},
+    {"id": "density", "label": "Fluid Density", "type": "number", "unit": "kg/m³", "required": true, "default": 1000, "min": 0}
+  ],
+  "result": {"label": "Flow Rate", "unit": "m³/h", "decimals": 1},
+  "content": {
+    "introduction": "Calculate flow through a sharp-edged orifice plate per ISO 5167. Uses the discharge coefficient method where β = d/D and Cd ≈ 0.6 for thin-plate sharp-edged orifices at Reynolds numbers above 10,000.",
+    "example": {
+      "inputs": {"c": 0.6, "orifice_d": 50, "pipe_d": 100, "dp": 10, "density": 1000},
+      "result": 19.6,
+      "description": "50mm orifice in 100mm pipe (β=0.5) at 10 kPa ΔP, Cd=0.6: ~20 m³/h water flow."
+    },
+    "faq": [
+      {"q": "What beta ratio is recommended?", "a": "ISO 5167 recommends β = 0.2-0.75. β = 0.4-0.6 gives best accuracy with acceptable pressure loss."},
+      {"q": "What permanent pressure loss does an orifice cause?", "a": "Permanent loss ≈ (1−β²) × ΔP ≈ 60-90% of measured differential. This is the main drawback vs venturi (10-20% loss)."}
+    ],
+    "related": ["flow-rate-calculator", "pipe-flow-calculator", "pressure-drop-calculator"],
+    "applications": ["Flow measurement", "Process control", "Custody transfer", "Pump performance testing"]
+  },
+  "tests": [
+    {"inputs": {"c": 0.6, "orifice_d": 50, "pipe_d": 100, "dp": 10, "density": 1000}, "expected": 19.6, "tolerance": 1}
+  ]
+}

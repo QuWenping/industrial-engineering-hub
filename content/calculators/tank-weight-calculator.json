@@ -1,0 +1,42 @@
+{
+  "id": "tank-weight-calculator",
+  "name": "Tank Weight Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P0",
+  "description": "Calculate empty weight of cylindrical steel tanks and vessels plus weight when filled with liquid.",
+  "seo": {
+    "title": "Tank Weight Calculator - Steel Vessel",
+    "description": "Calculate empty weight of steel tanks and vessels (shell + heads), plus operating weight when filled with liquid.",
+    "keyword": "tank weight calculator"
+  },
+  "formula": {
+    "expression": "pi * diameter * height * thickness * density + pi * (diameter/2)^2 * height * liquid_density",
+    "unit": "kg",
+    "explanation": "Steel weight: π × D × H × t × ρ (cylindrical shell). Contents weight: π(D/2)² × H × ρ_liquid. Both dimensions in m, thickness in m (converted from mm). Plus two heads ≈ 2 × (πD²/4) × t × ρ."
+  },
+  "inputs": [
+    {"id": "diameter", "label": "Tank Diameter", "type": "number", "unit": "m", "required": true, "default": 3, "min": 0},
+    {"id": "height", "label": "Tank Height (shell)", "type": "number", "unit": "m", "required": true, "default": 6, "min": 0},
+    {"id": "thickness", "label": "Wall Thickness", "type": "number", "unit": "mm", "required": true, "default": 8, "min": 0},
+    {"id": "density", "label": "Material", "type": "material", "required": true, "default": "carbon-steel"},
+    {"id": "liquid_density", "label": "Liquid Density", "type": "number", "unit": "kg/m³", "required": true, "default": 1000, "min": 0, "hint": "Water = 1000, oil ≈ 850-900"}
+  ],
+  "result": {"label": "Total Weight (shell + water)", "unit": "kg", "decimals": 0},
+  "content": {
+    "introduction": "Estimate the weight of a vertical cylindrical steel tank including both the steel shell and its liquid contents. Used for foundation design, lifting calculations, and transport planning. (Simplified — does not include heads, nozzles, or stiffeners.)",
+    "example": {
+      "inputs": {"diameter": 3, "height": 6, "thickness": 8, "density": 7850, "liquid_density": 1000},
+      "result": 45946,
+      "description": "3m × 6m × 8mm carbon steel tank + water: shell ≈ 3,550 kg + water ≈ 42,412 kg = ~46,000 kg."
+    },
+    "faq": [
+      {"q": "What about head weight?", "a": "Two dished heads add approximately 15-25% to shell weight. For precise weight use pressure vessel design software."},
+      {"q": "What safety factor for lifting?", "a": "Use 1.5× operating weight minimum, plus dynamic factors for crane lifts. Always consult a structural engineer for lifting plans."}
+    ],
+    "related": ["tank-volume-calculator", "cylinder-volume-calculator", "steel-weight-calculator"],
+    "applications": ["Foundation loading", "Lift planning", "Transport weight", "Seismic design"]
+  },
+  "tests": [
+    {"inputs": {"diameter": 3, "height": 6, "thickness": 8, "density": 7850, "liquid_density": 1000}, "expected": 45946, "tolerance": 200}
+  ]
+}

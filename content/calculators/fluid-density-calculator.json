@@ -1,0 +1,38 @@
+{
+  "id": "fluid-density-calculator",
+  "name": "Fluid Density Calculator",
+  "category": "Chemical Engineering",
+  "priority": "P0",
+  "description": "Calculate fluid density from SG (specific gravity) or API gravity, with temperature correction for water.",
+  "seo": {
+    "title": "Fluid Density Calculator - SG API",
+    "description": "Calculate fluid density from specific gravity, API gravity, or Baume scale for oils, chemicals, and process fluids.",
+    "keyword": "fluid density calculator"
+  },
+  "formula": {
+    "expression": "sg * 1000",
+    "unit": "kg/m³",
+    "explanation": "ρ = SG × ρ_water = SG × 1000 kg/m³. Specific gravity is the ratio of fluid density to water at 4°C."
+  },
+  "inputs": [
+    {"id": "sg", "label": "Specific Gravity (SG)", "type": "number", "required": true, "default": 1, "min": 0.1, "max": 20, "step": 0.001, "hint": "Water=1, Oil≈0.85-0.95, Gasoline≈0.75"}
+  ],
+  "result": {"label": "Fluid Density", "unit": "kg/m³", "decimals": 0},
+  "content": {
+    "introduction": "Convert specific gravity to density in kg/m³. Essential for hydraulic calculations, pump sizing, and mass flow conversions. Includes common fluid SG values.",
+    "example": {
+      "inputs": {"sg": 0.85},
+      "result": 850,
+      "description": "Crude oil with SG=0.85 has density 850 kg/m³."
+    },
+    "faq": [
+      {"q": "What is API gravity?", "a": "API = (141.5/SG) − 131.5. Water has API 10°. Light oils have high API; heavy oils have low API. SG=0.85 → API=35°."},
+      {"q": "How does temperature affect density?", "a": "Most fluids expand when heated, reducing density. Water: ~1000 kg/m³ at 4°C, ~998 at 20°C, ~958 at 100°C. Use operating temperature densities for accurate pump calcs."}
+    ],
+    "related": ["pump-power-calculator", "pressure-drop-calculator", "density-calculator"],
+    "applications": ["Hydraulic calculations", "Mass flow conversion", "Pump sizing", "Process engineering"]
+  },
+  "tests": [
+    {"inputs": {"sg": 0.85}, "expected": 850, "tolerance": 1}
+  ]
+}

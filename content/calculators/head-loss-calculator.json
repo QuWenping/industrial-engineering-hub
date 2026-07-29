@@ -1,0 +1,39 @@
+{
+  "id": "head-loss-calculator",
+  "name": "Head Loss Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P0",
+  "description": "Convert pressure drop to head loss in meters or feet of fluid column for pump sizing.",
+  "seo": {
+    "title": "Head Loss Calculator - Pressure to Head",
+    "description": "Convert pressure drop to head loss (meters of fluid) for pump system head calculations.",
+    "keyword": "head loss calculator"
+  },
+  "formula": {
+    "expression": "pressure / (density * 9.81)",
+    "unit": "m",
+    "explanation": "h = P/(ρg). Pressure in Pa (engine converts kPa→Pa), density in kg/m³, g=9.81 m/s². Result in meters of fluid."
+  },
+  "inputs": [
+    {"id": "pressure", "label": "Pressure Drop", "type": "number", "unit": "kPa", "required": true, "default": 50, "min": 0},
+    {"id": "density", "label": "Fluid Density", "type": "number", "unit": "kg/m³", "required": true, "default": 1000, "min": 0, "hint": "Water = 1000 kg/m³"}
+  ],
+  "result": {"label": "Head Loss", "unit": "m", "decimals": 2},
+  "content": {
+    "introduction": "Convert pressure loss to equivalent head (meters of fluid column), essential for pump total head calculations and reading pump curves.",
+    "example": {
+      "inputs": {"pressure": 50, "density": 1000},
+      "result": 5.1,
+      "description": "50 kPa pressure drop in water = 5.1 m head loss."
+    },
+    "faq": [
+      {"q": "What is the difference between head and pressure?", "a": "Head is energy per unit weight (m of fluid), independent of fluid density. Pressure depends on density: P = ρgh. Pump curves use head, not pressure."},
+      {"q": "How do I convert head to pressure for other fluids?", "a": "P(kPa) = h(m) × ρ(kg/m³) × 9.81 / 1000. 10m of water = 98.1 kPa; 10m of gasoline (750 kg/m³) = 73.6 kPa."}
+    ],
+    "related": ["pump-power-calculator", "pressure-drop-calculator", "npsh-calculator"],
+    "applications": ["Pump system head curves", "Hydronic design", "NPSH calculations", "Pipeline analysis"]
+  },
+  "tests": [
+    {"inputs": {"pressure": 50, "density": 1000}, "expected": 5.1, "tolerance": 0.1}
+  ]
+}

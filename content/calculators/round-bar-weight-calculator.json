@@ -1,0 +1,40 @@
+{
+  "id": "round-bar-weight-calculator",
+  "name": "Round Bar Weight Calculator",
+  "category": "Material Engineering",
+  "priority": "P0",
+  "description": "Calculate the weight of round steel bars and rods from diameter and length.",
+  "seo": {
+    "title": "Round Bar Weight Calculator - Steel Rod",
+    "description": "Calculate round bar weight in kg per meter or total. Enter diameter and length for steel, stainless, aluminum, or copper.",
+    "keyword": "round bar weight calculator"
+  },
+  "formula": {
+    "expression": "pi * (diameter/2)^2 * length * density",
+    "unit": "kg",
+    "explanation": "Weight = π × (D/2)² × L × ρ. Cylinder volume times density. Diameter and length in meters after conversion."
+  },
+  "inputs": [
+    {"id": "diameter", "label": "Bar Diameter", "type": "number", "unit": "mm", "required": true, "default": 50, "min": 0},
+    {"id": "length", "label": "Bar Length", "type": "number", "unit": "m", "required": true, "default": 6, "min": 0},
+    {"id": "density", "label": "Material", "type": "material", "required": true, "default": "carbon-steel"}
+  ],
+  "result": {"label": "Bar Weight", "unit": "kg", "decimals": 2},
+  "content": {
+    "introduction": "Calculate the weight of a round bar or solid rod from its diameter and length. Used for steel reinforcing bars, shaft stock, and raw material ordering.",
+    "example": {
+      "inputs": {"diameter": 50, "length": 6, "density": 7850},
+      "result": 92.53,
+      "description": "A 50mm diameter × 6m long carbon steel round bar weighs approximately 92.5 kg."
+    },
+    "faq": [
+      {"q": "What is the weight per meter of steel round bar?", "a": "Weight per meter (kg/m) = π × (D/2)² × ρ. For 50mm steel: π × 0.000625 × 7850 ≈ 15.4 kg/m."},
+      {"q": "Does this work for rebar?", "a": "Yes, for plain round bars. Deformed rebar is typically 1-2% heavier due to ribs."}
+    ],
+    "related": ["steel-weight-calculator", "pipe-weight-calculator"],
+    "applications": ["Rebar estimating", "Shaft stock ordering", "Machining material calculation", "Steel fabrication"]
+  },
+  "tests": [
+    {"inputs": {"diameter": 50, "length": 6, "density": 7850}, "expected": 92.53, "tolerance": 0.1}
+  ]
+}

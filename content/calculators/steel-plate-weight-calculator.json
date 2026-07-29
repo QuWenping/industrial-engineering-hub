@@ -1,0 +1,41 @@
+{
+  "id": "steel-plate-weight-calculator",
+  "name": "Steel Plate Weight Calculator",
+  "category": "Material Engineering",
+  "priority": "P0",
+  "description": "Calculate steel plate weight from length, width, and thickness with various steel grades.",
+  "seo": {
+    "title": "Steel Plate Weight Calculator - Free Online",
+    "description": "Calculate the weight of steel plates in kg or lb. Enter length, width, thickness, and select steel grade.",
+    "keyword": "steel plate weight calculator"
+  },
+  "formula": {
+    "expression": "length * width * thickness * density",
+    "unit": "kg",
+    "explanation": "Weight = L × W × T × ρ. All dimensions converted to meters, density in kg/m³, result in kg."
+  },
+  "inputs": [
+    {"id": "length", "label": "Plate Length", "type": "number", "unit": "mm", "required": true, "default": 2000, "min": 0},
+    {"id": "width", "label": "Plate Width", "type": "number", "unit": "mm", "required": true, "default": 1000, "min": 0},
+    {"id": "thickness", "label": "Plate Thickness", "type": "number", "unit": "mm", "required": true, "default": 10, "min": 0},
+    {"id": "density", "label": "Material", "type": "material", "required": true, "default": "carbon-steel"}
+  ],
+  "result": {"label": "Plate Weight", "unit": "kg", "decimals": 2},
+  "content": {
+    "introduction": "Calculate the weight of a flat steel plate from its dimensions and material density. Essential for structural steel estimating, shipping weight calculations, and material ordering.",
+    "example": {
+      "inputs": {"length": 2000, "width": 1000, "thickness": 10, "density": 7850},
+      "result": 157,
+      "description": "A 2000mm × 1000mm × 10mm carbon steel plate weighs 157 kg."
+    },
+    "faq": [
+      {"q": "What density does carbon steel use?", "a": "Carbon steel density is approximately 7850 kg/m³ (7.85 g/cm³). Stainless steel 304 is slightly higher at 7930 kg/m³."},
+      {"q": "How do I calculate weight per square meter?", "a": "Weight per m² = thickness (m) × density (kg/m³). For 10mm steel: 0.01 × 7850 = 78.5 kg/m²."}
+    ],
+    "related": ["steel-weight-calculator", "metal-weight-calculator"],
+    "applications": ["Structural steel estimating", "Shipping weight calculation", "Material ordering", "Load estimation"]
+  },
+  "tests": [
+    {"inputs": {"length": 2000, "width": 1000, "thickness": 10, "density": 7850}, "expected": 157, "tolerance": 0.1}
+  ]
+}

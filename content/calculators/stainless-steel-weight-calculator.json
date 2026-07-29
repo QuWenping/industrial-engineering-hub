@@ -1,0 +1,41 @@
+{
+  "id": "stainless-steel-weight-calculator",
+  "name": "Stainless Steel Weight Calculator",
+  "category": "Material Engineering",
+  "priority": "P0",
+  "description": "Calculate stainless steel 304/316 weight for sheets, plates, and structural shapes.",
+  "seo": {
+    "title": "Stainless Steel Weight Calculator - 304/316",
+    "description": "Calculate weight of stainless steel sheets, plates, and bars. Supports 304 and 316 grades.",
+    "keyword": "stainless steel weight calculator"
+  },
+  "formula": {
+    "expression": "length * width * thickness * density",
+    "unit": "kg",
+    "explanation": "Weight = L × W × T × ρ. SS304 = 7930 kg/m³, SS316 = 8000 kg/m³ (slightly heavier due to molybdenum)."
+  },
+  "inputs": [
+    {"id": "length", "label": "Length", "type": "number", "unit": "mm", "required": true, "default": 1000, "min": 0},
+    {"id": "width", "label": "Width", "type": "number", "unit": "mm", "required": true, "default": 500, "min": 0},
+    {"id": "thickness", "label": "Thickness", "type": "number", "unit": "mm", "required": true, "default": 3, "min": 0},
+    {"id": "density", "label": "Material", "type": "material", "required": true, "default": "stainless-steel-304"}
+  ],
+  "result": {"label": "Weight", "unit": "kg", "decimals": 2},
+  "content": {
+    "introduction": "Calculate the weight of stainless steel sheets and plates. SS304 density is 7930 kg/m³; SS316 is 8000 kg/m³ due to molybdenum alloying. Stainless is about 1% heavier than carbon steel.",
+    "example": {
+      "inputs": {"length": 1000, "width": 500, "thickness": 3, "density": 7930},
+      "result": 11.9,
+      "description": "A 1000mm × 500mm × 3mm 304 stainless steel sheet weighs 11.9 kg."
+    },
+    "faq": [
+      {"q": "What is the density difference between 304 and 316?", "a": "SS304: 7930 kg/m³. SS316: 8000 kg/m³. The difference (~0.9%) is due to molybdenum in 316."},
+      {"q": "Is stainless heavier than carbon steel?", "a": "Yes, slightly. Carbon steel = 7850 kg/m³ vs 7930 for 304 (about 1% heavier)."}
+    ],
+    "related": ["steel-weight-calculator", "steel-plate-weight-calculator"],
+    "applications": ["Food processing equipment", "Chemical tanks", "Architectural finishes", "Medical devices"]
+  },
+  "tests": [
+    {"inputs": {"length": 1000, "width": 500, "thickness": 3, "density": 7930}, "expected": 11.9, "tolerance": 0.1}
+  ]
+}

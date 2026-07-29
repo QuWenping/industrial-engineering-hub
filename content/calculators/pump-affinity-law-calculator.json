@@ -1,0 +1,42 @@
+{
+  "id": "pump-affinity-law-calculator",
+  "name": "Pump Affinity Law Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P0",
+  "description": "Calculate pump performance changes with speed or impeller diameter using affinity laws.",
+  "seo": {
+    "title": "Pump Affinity Law Calculator - Speed/Impeller Change",
+    "description": "Calculate how pump flow, head, and power change when changing speed (RPM) or impeller diameter using affinity laws.",
+    "keyword": "pump affinity laws calculator"
+  },
+  "formula": {
+    "expression": "p1 * (n2/n1)^3 / 1000",
+    "unit": "kW",
+    "explanation": "P₂ = P₁ × (N₂/N₁)³ for variable speed. p1 in kW is converted to W by engine; /1000 returns kW. Power is proportional to speed cubed."
+  },
+  "inputs": [
+    {"id": "q1", "label": "Original Flow (Q1)", "type": "number", "unit": "m3/h", "required": true, "default": 100, "min": 0},
+    {"id": "h1", "label": "Original Head (H1)", "type": "number", "unit": "m", "required": true, "default": 50, "min": 0},
+    {"id": "p1", "label": "Original Power (P1)", "type": "number", "unit": "kW", "required": true, "default": 22, "min": 0},
+    {"id": "n1", "label": "Original Speed (N1)", "type": "number", "unit": "RPM", "required": true, "default": 1450, "min": 0},
+    {"id": "n2", "label": "New Speed (N2)", "type": "number", "unit": "RPM", "required": true, "default": 1750, "min": 0}
+  ],
+  "result": {"label": "New Power P2 (kW)", "unit": "kW", "decimals": 2},
+  "content": {
+    "introduction": "Pump affinity laws predict how changing pump speed or impeller diameter affects flow rate (Q), head (H), and power (P). For variable speed drives (VSD), Q∝N, H∝N², P∝N³ — power reduction is cubic with speed.",
+    "example": {
+      "inputs": {"q1": 100, "h1": 50, "p1": 22, "n1": 1450, "n2": 1750},
+      "result": 38.7,
+      "description": "Speed increase 1450→1750 RPM (20.7%): Q=120.7, H=72.7m, P=38.7 kW (cubic relationship)."
+    },
+    "faq": [
+      {"q": "What is the power savings from reducing pump speed?", "a": "Power is proportional to N³. Reducing speed 20% reduces power by ~49%. This is why VSDs are so effective for energy savings."},
+      {"q": "How accurate are affinity laws?", "a": "Within ±5% for speed changes up to 20-30%. For larger changes or diameter trimming, efficiency changes and accuracy decreases."}
+    ],
+    "related": ["pump-power-calculator", "pump-flow-calculator"],
+    "applications": ["VFD energy savings estimation", "Pump speed selection", "Impeller trimming", "Retrofit evaluation"]
+  },
+  "tests": [
+    {"inputs": {"q1": 100, "h1": 50, "p1": 22, "n1": 1450, "n2": 1750}, "expected": 38.7, "tolerance": 1}
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "tank-capacity-calculator",
+  "name": "Tank Capacity Calculator",
+  "category": "Mechanical Engineering",
+  "priority": "P0",
+  "description": "Calculate tank capacity in liters, gallons, barrels, and convert dimensions to standard volume units.",
+  "seo": {
+    "title": "Tank Capacity Calculator - Liters Gallons",
+    "description": "Calculate tank capacity in liters, US gallons, UK gallons, or barrels (oil). Quick multi-unit conversion for storage tanks.",
+    "keyword": "tank capacity calculator"
+  },
+  "formula": {
+    "expression": "pi * (diameter/2)^2 * height * 1000",
+    "unit": "L",
+    "explanation": "V = π(D/2)² × H. ×1000 converts m³ to liters. For US gallons, divide by 3.785; for barrels divide by 159."
+  },
+  "inputs": [
+    {"id": "diameter", "label": "Tank Diameter", "type": "number", "unit": "m", "required": true, "default": 3, "min": 0},
+    {"id": "height", "label": "Tank Height", "type": "number", "unit": "m", "required": true, "default": 6, "min": 0}
+  ],
+  "result": {"label": "Tank Capacity", "unit": "L", "decimals": 0},
+  "content": {
+    "introduction": "Calculate tank capacity in liters and convert to US gallons (÷3.785), imperial gallons (÷4.546), and oil barrels (÷159). Supports any cylindrical tank.",
+    "example": {
+      "inputs": {"diameter": 3, "height": 6},
+      "result": 42412,
+      "description": "3m × 6m tank = 42,412 L = 11,205 US gal = 9,329 imperial gal = 267 barrels."
+    },
+    "faq": [
+      {"q": "How do I convert to barrels of oil?", "a": "1 barrel = 159 liters = 42 US gallons. Divide liters by 159."},
+      {"q": "What is the difference between US and imperial gallons?", "a": "1 US gallon = 3.785 L; 1 imperial (UK) gallon = 4.546 L. US gallons are ~20% smaller."}
+    ],
+    "related": ["tank-volume-calculator", "cylinder-volume-calculator", "storage-capacity-calculator"],
+    "applications": ["Tank farm design", "Oil storage", "Bulk liquid handling", "Shipping volume calculation"]
+  },
+  "tests": [
+    {"inputs": {"diameter": 3, "height": 6}, "expected": 42412, "tolerance": 50}
+  ]
+}
