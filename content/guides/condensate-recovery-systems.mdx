@@ -1,0 +1,168 @@
+---
+title: "Condensate Recovery Systems"
+description: "Design and optimization of condensate return systems: flash steam recovery, pump traps, pressurized vs vented returns, condensate pipe sizing, and energy savings calculation."
+category: "Thermal"
+keywords: ["condensate recovery", "flash steam", "condensate return", "condensate pump", "steam condensate system", "condensate recovery value"]
+updated: "2026-07-29"
+related:
+  - steam-flow-rate
+  - pump-power-calculator
+  - tank-volume-calculator
+  - "/guides/steam-trap-selection"
+  - "/guides/steam-system-design"
+---
+
+## Overview
+
+Condensate is distilled water at high temperature returned from steam users to the boiler. Returning it recovers: (1) sensible heat (water at 100-180°C has 100-180 kcal/kg heat vs 25°C makeup water — 15-25% of boiler fuel), (2) treated water value (avoids makeup water + chemical treatment cost), and (3) reduces blowdown losses. A good condensate recovery system returns 70-90% of condensate and recovers flash steam. Poor design causes water hammer, pump cavitation, corrosion, and massive energy waste.
+
+<Formula>Flash steam % = (h_f_high - h_f_low) / h_fg_low × 100 — percentage of condensate that flashes when dropping from high pressure P1 to lower P2 (e.g., 10 bar condensate flashing to 0 bar = 16% flash steam by mass)</Formula>
+
+## Why Recover Condensate
+
+### Energy Value
+When condensate from a 10 bar steam system (h_f = 763 kJ/kg) is returned to an atmospheric deaerator (105°C, h_f = 440 kJ/kg), 17% of mass flashes to steam at the lower pressure, and the remaining liquid carries 440 kJ/kg. The total energy returned is ~70% of the original steam energy.
+
+### Water and Treatment Value
+- Condensate is essentially pure distilled water — TDS near zero
+- Makeup water requires treatment (softening, RO, demineralization) + heat (deaerator steam)
+- Each m³ of condensate saves ~$1-5 in water + treatment + sewer costs depending on location
+- Less makeup = less boiler blowdown (which wastes heat and treated water)
+
+### Boiler Efficiency Improvement
+Lowering blowdown rate (less TDS accumulation from returned condensate) directly reduces energy loss. Typical blowdown drops from 10% (no condensate return) to 2-3% (high return).
+
+## System Configurations
+
+### Vented (Atmospheric) Condensate Return
+- Condensate drains to vented receiver at atmospheric pressure
+- Condensate cools to ~100°C; flash steam is vented to atmosphere (LOST)
+- Pump transfers hot condensate from receiver to boiler feed tank
+- **Advantages**: simple, low cost, easy to maintain
+- **Disadvantages**: all flash steam wasted; condensate cooled to 100°C loses sensible heat; vent emissions
+- **Best for**: small systems; old systems where pressurized return is impractical; &lt;5 bar steam
+
+### Pressurized (High-Pressure) Condensate Return
+- Condensate returns under pressure to a pressurized flash tank or high-pressure receiver
+- Flash steam is recovered from flash tank and used in lower-pressure steam header (e.g., 10 bar condensate → 3 bar flash steam to LP header)
+- Condensate remains at high temperature (&gt;130°C) — no sensible heat lost
+- **Advantages**: maximum energy recovery; no flash steam loss; less makeup water; less corrosion (closed system, minimal oxygen ingress)
+- **Disadvantages**: higher cost; requires pressure-rated piping/tanks; pumps must handle hot condensate (NPSH critical)
+- **Best for**: large systems; multi-pressure steam systems; process plants; energy-intensive facilities
+
+### Pumped Condensate (Mechanical/Condensate Pumps)
+Electric or steam-powered centrifugal/multistage pumps move condensate from user back to boiler house. Critical issue: **NPSH (Net Positive Suction Head)** — hot condensate at near-saturation easily flashes in the pump suction, causing cavitation. Solutions:
+- Pressurized receiver to provide static head above pump (2-3 m minimum above pump for 100°C condensate)
+- Sub-cool condensate below saturation before pump suction
+- Use canned/multistage pumps designed for hot condensate
+- Use motive-pressure-powered pumps (no electric motor, uses steam pressure to pump condensate)
+
+### Pressure-Powered Pumps (Motive Pumps)
+- No electric power — uses steam or compressed air as motive pressure to push condensate
+- Handles very hot condensate at saturation without cavitation (no impeller to cavitate)
+- Excellent for remote locations, hazardous areas, or where electricity is unavailable
+- Limited by motive steam pressure available
+
+<Callout type="warning" title="NPSH Is Kill-or-Cure for Condensate Pumps" severity="warning">
+A condensate pump handling 150°C (4.7 bar saturation) must have sufficient suction head to prevent boiling at the impeller eye. If the receiver is vented (0 bar, 100°C) but condensate is 150°C, it flashes immediately and the pump vapor-locks. Solutions: (1) design pressurized receivers with 2-3 m static head above pump suction; (2) sub-cool condensate in a vented receiver; (3) use motive-powered pumps. Cavitation is the #1 failure mode of condensate pumps.
+</Callout>
+
+## Flash Steam Recovery
+
+Flash steam is the most under-utilized resource in steam systems: 10-20% of condensate mass flashes when dropping to a lower pressure.
+
+Flash steam is recovered in a **flash vessel** (flash tank) where:
+1. High-pressure condensate enters tangentially and depressurizes
+2. Flash steam separates from liquid and flows to a low-pressure steam header for use (e.g., heating, boiler feedwater deaeration)
+3. Remaining liquid condensate goes through a trap to lower-pressure return or pump
+
+Typical savings:
+- Flash from 10 bar to 1 bar: ~15% of condensate mass = recoverable LP steam
+- In a 20 t/h steam system, that's 3 t/h of LP steam recovered = ~$100-300k/year fuel savings
+
+<Calculator id="steam-flow-rate" label="Steam Flow Rate Calculator" />
+
+## Condensate Pipe Sizing
+
+Condensate lines carry TWO-PHASE flow (liquid + flash steam), so sizing is different from water or steam lines:
+
+- After a steam trap, condensate flashes — must size piping for two-phase velocity
+- Typical velocity: 10-20 m/s for two-phase flow (lower than steam-only lines)
+- Use two-phase pressure drop calculations (Lockhart-Martinelli method)
+- Pitch pipes downward toward receiver (slope 1:40 minimum)
+- Avoid undulating lines that collect water (slug flow / water hammer)
+- For pumped pressurized condensate (liquid only, sub-cooled below flash point): size as water pipe at 1-2 m/s
+
+| Line Type | Velocity (m/s) | Notes |
+|---|---|---|
+| Gravity flooded (wet) return | &lt;0.5 | Below trap, condensate flows full pipe |
+| Two-phase (flash + liquid) | 10-20 | After trap, flash steam + liquid |
+| Pumped discharge (sub-cooled) | 1-2 | Liquid condensate, no flash |
+| Pressurized return line | 0.5-2 | Above saturation pressure — no flash if pressurized |
+
+## Water Hammer Prevention
+
+Water hammer in condensate systems is the leading cause of piping and equipment failure:
+
+**Causes**:
+1. Steam reaching cold condensate (rapid condensation → vacuum → slug impact)
+2. Slugs of condensate picked up by high-velocity steam in poorly sloped lines
+3. Rapid valve opening (lifting slugs of water against a closed valve/elbow)
+4. Flash steam collapsing in sub-cooled liquid
+
+**Prevention**:
+- Drip legs at all low points and every 30-50 m on steam mains
+- Proper line sizing (not oversized, not undersized)
+- Pitch all horizontal lines downward in flow direction
+- Use swing check valves, not gate, in areas with intermittent flow
+- Slowly warm up steam lines before operation (open bypass valves, crack main valve)
+- Install steam traps at proper locations — never allow condensate to accumulate
+- Avoid mixing hot condensate and cold pipes without warm-up
+
+## Condensate Quality Issues
+
+### Corrosion (Carbonic Acid)
+CO₂ from bicarbonate breakdown in boiler forms carbonic acid in condensate:
+- CO₂ + H₂O → H₂CO₃ → pH drops to 5-6 → steel corrosion
+- **Mitigation**: amine dosing (neutralizing or filming amines), condensate polishing (demineralized), stainless steel piping for high-value systems, vent non-condensables
+
+### Oxygen Corrosion
+Oxygen enters with makeup water and through leaking pump seals/open receivers:
+- O₂ causes rapid pitting corrosion
+- **Mitigation**: closed (pressurized) system, proper deaeration, oxygen scavenger chemicals
+- Even 0.05 ppm O₂ causes significant corrosion; target &lt;0.01 ppm
+
+### Iron/Copper Transport
+Corrosion products return to boiler, depositing on tubes → overheating + tube failure
+- Monitor condensate iron (&lt;0.05 ppm) and copper (if copper alloys in system)
+- Condensate polishing (ion exchange) used in high-pressure power boilers
+
+## Components Checklist
+
+| Component | Function |
+|---|---|
+| Steam trap | Discharges condensate from steam space, retains steam |
+| Strainer | Traps debris before trap/pump (install before every trap) |
+| Flash tank | Separates flash steam from liquid condensate at pressure reduction |
+| Condensate receiver | Collects and stores condensate for pumping |
+| Condensate pump | Moves condensate to deaerator/boiler feed tank |
+| Check valve | Prevents backflow during pump shutdown |
+| Deaerator | Removes dissolved O₂/CO₂; preheats feedwater to 105°C (atmospheric) or higher |
+| Condensate polisher | Ion exchange to remove iron, hardness, impurities (high-pressure boilers) |
+| Sight glass / test connection | Visual/ultrasonic trap testing |
+
+## Energy Savings Calculation
+
+A plant generating 20,000 kg/h steam at 10 bar, currently returning 40% of condensate to atmosphere, upgrading to 80% pressurized return with flash recovery:
+
+1. Additional condensate returned: 8,000 kg/h
+2. Heat in condensate vs makeup (ΔT = 130°C - 25°C = 105°C): 8,000 × 4.18 × 105 = 3.5 GJ/h
+3. Flash steam recovered (15% of additional condensate): 1,200 kg/h to LP steam @ 3 bar
+4. Annual savings at 8,000 h/year, 85% boiler efficiency, $8/GJ fuel: ≈ $250,000/year
+5. Water savings (8,000 kg/h × 8,000 h = 64,000 m³/year at $2/m³ = $128,000/year)
+6. Chemical treatment savings: ~$20,000/year
+7. Payback on system upgrade: typically 1-2 years
+
+## Summary
+
+Condensate recovery is one of the highest-return energy investments in steam systems, recovering 15-25% of boiler fuel plus water and treatment savings. Pressurized condensate return with flash steam recovery captures the most value but requires NPSH-safe pump design (2-3 m static head, motive pumps, or sub-cooling). Vented return is simpler but wastes all flash steam. Condensate lines carry two-phase flow after steam traps — size for 10-20 m/s velocity and pitch downward. Corrosion control (amine dosing, closed systems, oxygen removal) and water hammer prevention are essential for reliability. Typical upgrade payback: 1-3 years.

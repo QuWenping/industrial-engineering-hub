@@ -1,0 +1,168 @@
+---
+title: "Gear Motor Selection Guide"
+description: "How to select gear motors for industrial applications: gear types (helical, worm, bevel, planetary), torque and speed calculations, service factors, efficiency, and mounting considerations."
+category: "Mechanical"
+keywords: ["gear motor selection", "gearbox sizing", "helical gear", "worm gear", "gear motor torque", "planetary gear"]
+updated: "2026-07-29"
+related:
+  - motor-power-calculator
+  - torque-calculator
+  - pump-power-calculator
+---
+
+## Overview
+
+Gear motors integrate an electric motor with a gear reducer to deliver high torque at low output speed. They are used in conveyors, mixers, agitators, winches, elevators, rotary valves, and thousands of other industrial drives. Selection requires matching output torque, speed, overhung load, and gear type to the application while applying an appropriate service factor for shock, starts/stops, and duty cycle.
+
+<Formula>Output torque T (N·m) = 9550 × P_motor × η_gearbox / n_output — power in kW, speed in rpm, η = gearbox efficiency</Formula>
+
+## Gear Types and Trade-offs
+
+### Helical Gear Motors (Inline)
+- Helical-cut cylindrical gears running on parallel shafts
+- 1-4 stages; ratios up to ~400:1
+- **Efficiency**: 95-98% per stage (high — best energy efficiency)
+- Noise: low (helical gears mesh gradually)
+- Best for: conveyors, general industrial, continuous duty, high runtime
+- Configurations: inline (B3/B5 mount), or right-angle with bevel-helical
+
+### Worm Gear Motors (Right-Angle)
+- Worm (screw) drives a worm wheel; output shaft at 90°
+- Single-stage ratios 5:1 to 100:1
+- **Efficiency**: 50-90% (lower, especially at high ratio and low input speed; self-locking possible at ratios &gt;40:1)
+- Noise: very quiet
+- Best for: conveyors, packaging, food equipment, intermittent duty, low-cost applications
+- Caveat: low efficiency → more heat; self-locking is NOT a substitute for a brake (can back-drive under shock)
+
+### Bevel Gear Motors (Right-Angle)
+- Spiral or straight bevel gears provide 90° output
+- Often combined with helical stages (bevel-helical) for high ratio
+- Efficiency: 94-97% per stage
+- Best for: heavy-duty right-angle drives (agitators, large conveyors, mining, cranes)
+- Higher cost; high overhung load capacity
+
+### Planetary Gear Motors
+- Sun gear, planet gears, internal ring gear — coaxial inline
+- Very high torque density (multiple planets share load)
+- Ratios up to 1000:1 (multi-stage)
+- Efficiency: 95-98% per stage
+- Best for: high-torque compact drives, servo applications, track drives, mixers, winches
+- Higher cost; very rigid
+
+<Callout type="info" title="Helical vs Worm — Efficiency Matters Most" severity="info">
+For continuous-duty applications running &gt;8 hours/day, helical gear motors pay back their higher purchase cost in energy savings. A 1.5 kW worm drive at 70% efficiency uses ~0.6 kW more than a helical unit at 95% efficiency — over 8,000 hours/year that is ~4,800 kWh. At $0.10/kWh, that is $480/year — often more than the cost premium in the first year. Worm gears are best for intermittent duty or where space/cost is the primary constraint.
+</Callout>
+
+## Core Sizing Parameters
+
+### Required Output Torque
+
+```
+T_out (N·m) = 9550 × P (kW) / n_out (rpm)
+```
+
+For a driven machine, calculate torque from the load:
+- Conveyor: T = r × (m × g × sinθ + μ × m × g × cosθ)
+- Agitator: from fluid shear (use mixer torque tables; depends on impeller type and fluid viscosity)
+- Winch/hoist: T = r × (load × g) / mechanical advantage
+- Rotary valve: from material friction coefficient
+
+**Always add the service factor!**
+
+### Service Factor (SF)
+
+Multiply calculated torque by SF before selecting gearbox:
+
+| Duty | Example | SF |
+|---|---|---|
+| Uniform load, ≤8 hr/day | Centrifugal pump, fan, light conveyor | 1.0-1.25 |
+| Moderate shock, 8-24 hr/day | Conveyor, agitator, mixer, hoist | 1.25-1.50 |
+| Heavy shock, reversing, frequent starts | Crusher, hammer mill, reversing mill, winch | 1.50-2.00 |
+| Extreme shock, peak loads | Rock crusher, punch press, heavy winch | 2.00-3.00+ |
+
+Use the higher end of the range for:
+- &gt;10 starts/stops per hour
+- Brake motor applications
+- Reversing duty
+- High ambient temperature (&gt;40°C)
+- High altitude (&gt;1000 m) — derate motor power
+
+### Output Speed
+
+Required output speed is driven by the process (conveyor belt speed, agitator tip speed, etc.). Gearbox ratio i = n_motor / n_output. Standard 4-pole motor: ~1450 rpm at 50 Hz, ~1750 rpm at 60 Hz; 6-pole: ~960/1180 rpm.
+
+<Formula>n_output = n_motor / i — for 50 Hz 4-pole motor at 1450 rpm, a 20:1 gearbox gives ~72.5 rpm output</Formula>
+
+### Overhung Load (OHL) and Thrust Load
+
+Radial and axial loads applied to the output shaft from sprockets, pulleys, or couplings. Gear motor catalogs list maximum allowable OHL. If the drive uses a chain or belt, the chain/belt tension adds to OHL — use the smallest practical sprocket/pulley to minimize radial load.
+
+OHL from sprocket: F = 2 × T / D_pitch × K_tension (1.5 for roller chain). If this exceeds gearbox rating, select a larger gearbox, use a larger sprocket, or add an outboard bearing.
+
+<Calculator id="torque-calculator" label="Torque Calculator" />
+
+### Thermal Rating
+
+The gearbox must dissipate heat generated by mesh friction. At high ambient temperature, low speed (poor fan cooling), or continuous duty, the catalog mechanical rating may exceed the thermal rating. De-rate or specify forced lubrication / external cooling.
+
+## Motor Selection
+
+- Standard 3-phase AC induction motor (IE3/IE4 efficiency) — default for industrial
+- Brake motor: for loads that must hold when stopped (hoists, inclined conveyors)
+- VFD-compatible: when speed adjustment is required (inverter-duty rated winding, insulated bearings)
+- Single-phase: only where 3-phase is unavailable (limited to small sizes)
+- Enclosure: TEFC (Totally Enclosed Fan Cooled) standard; washdown (food/pharma); explosion-proof (hazardous area)
+- Voltage: match plant supply (460V/60Hz, 400V/50Hz typical)
+
+## Mounting Configurations
+
+| Mount | Code | Description |
+|---|---|---|
+| Foot-mounted | B3 | Feet on baseplate — most common, allows alignment flexibility |
+| Flange-mounted | B5 | Large flange for face-mounting (pumps, mixers) |
+| Face/foot | B3/B5 | Combined |
+| Hollow shaft | B14 | Hollow output shaft mounts directly on driven shaft — no coupling needed |
+
+Hollow shaft mount saves space and alignment work — very common for conveyors and shaft-mounted drives. Use torque arm to prevent rotation of the gearbox housing.
+
+## Selection Workflow
+
+1. Define the load: required output torque (N·m) and output speed (rpm)
+2. Calculate required power: P = T × n / 9550 / η × SF (kW)
+3. Select motor power (next standard size up: 0.18, 0.25, 0.37, 0.55, 0.75, 1.1, 1.5, 2.2, 3, 4, 5.5, 7.5, 11, 15 kW)
+4. Select gear ratio: i = n_motor / n_output
+5. Choose gear type: helical (inline, high efficiency), worm (right-angle, cheap), bevel-helical (right-angle heavy-duty), planetary (high torque, compact)
+6. Select mounting (foot, flange, hollow shaft)
+7. Check overhung load and thrust load
+8. Check thermal rating for ambient/duty
+9. Verify service factor meets shock/start condition
+10. Select options: brake, encoder, VFD-rated, washdown paint, etc.
+
+## Common Mistakes
+
+| Mistake | Consequence |
+|---|---|
+| Under-sizing service factor | Premature gear tooth failure, broken shafts |
+| Over-sizing (too much SF) | Wasted energy; higher cost; motor runs below rated efficiency |
+| Ignoring OHL on chain/belt drives | Output shaft bearing failure; shaft breakage |
+| Using worm gear for continuous high power | Overheating, high energy cost, short life |
+| Selecting based on motor HP alone | Wrong torque/speed; gearbox under-specified |
+| VFD application without inverter-duty motor | Bearing damage from shaft voltage; winding insulation failure |
+| Self-locking worm gear used as safety brake | Can back-drive under shock or vibration — fatal hoist accidents |
+
+## Worked Example — Belt Conveyor
+
+- Belt tension: 2000 N
+- Belt speed: 1.0 m/s
+- Drive pulley diameter: 300 mm → 63.7 rpm (v / π / D = 1/(π×0.15))
+- Required torque: T = F × r = 2000 × 0.15 = 300 N·m
+- Service factor = 1.5 (moderate shock conveyor)
+- Design torque = 450 N·m
+- At 63.7 rpm, power = 450 × 63.7 / 9550 / 0.95 = 3.16 kW
+- Select 4 kW motor (nearest standard size up)
+- Gear ratio: 1450 / 63.7 ≈ 22.8 → select 22.6:1 standard ratio → output speed ~64 rpm
+- Helical gearbox, foot-mounted, TEFC motor, check OHL for pulley → select 50 mm hollow shaft model rated ≥ 450 N·m
+
+## Summary
+
+Gear motor selection matches output torque and speed to the driven load after applying a service factor (1.0-3.0 depending on duty). Helical gears are the default for continuous duty due to high efficiency (95-98%/stage); worm gears are cheap and right-angle but inefficient (best for intermittent duty); bevel-helical and planetary serve high-torque right-angle or compact inline applications. Always check overhung load from sprockets/pulleys, thermal rating for hot environments, and use inverter-duty motors for VFD operation. The largest avoidable cost is using a worm gear on continuous duty — the energy waste exceeds the cost premium for helical within a year.

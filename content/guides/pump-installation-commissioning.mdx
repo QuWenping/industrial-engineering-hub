@@ -1,0 +1,219 @@
+---
+title: "Pump Installation and Commissioning"
+description: "Complete pump installation guide: foundation, alignment, grouting, piping loads, priming, startup procedure, performance testing, and troubleshooting common issues."
+category: "Pump"
+keywords: ["pump installation", "pump commissioning", "pump alignment", "pump startup", "pump foundation"]
+updated: "2026-07-29"
+related:
+  - pump-power-calculator
+  - pump-npsh-calculator
+  - pump-efficiency-calculator
+  - "/guides/centrifugal-pump-basics"
+  - "/guides/npsh-guide"
+---
+
+## Overview
+
+A correctly selected pump can still fail prematurely if installed improperly. Pump installation covers foundation design, baseplate grouting, shaft alignment, piping configuration, priming, and a structured commissioning sequence. Errors during installation — particularly misalignment, excessive piping loads, and dry running — cause over 50% of premature pump failures (bearing failure, mechanical seal failure, shaft breakage).
+
+<Formula>Nozzle loads must stay within API 610 (centrifugal) or API 674 (reciprocating) limits — typically &lt;2000 N force and &lt;1000 N·m moment for NPS 4 pumps.</Formula>
+
+## Pre-Installation Preparation
+
+### Foundation Design
+- Reinforced concrete foundation, mass 3-5 × the pump + driver + baseplate mass to damp vibration
+- Foundation depth ≥ 1.5 × the width; extend below the frost line
+- Anchor bolts with sleeves (allowing final positioning adjustment)
+- Top surface roughened for grout bonding; leave 25-50 mm for grout layer
+
+### Site Inspection
+- Verify the pump received matches purchase specification (model, material, impeller diameter, mechanical seal plan)
+- Inspect for shipping damage, rust, or water entry; rotate shaft by hand to ensure free movement
+- Store in clean, dry location until installation; rotate shaft monthly during storage
+- Verify electrical area classification matches motor nameplate
+
+## Baseplate Installation and Grouting
+
+### Baseplate Setup
+1. Set baseplate on shims or leveling screws; level within 0.05 mm/m
+2. Mount pump and driver on baseplate (if not pre-mounted); hand-tighten hold-down bolts
+3. Preliminary alignment (see below) before grouting
+4. Install anchor bolts with 25 mm of thread projection for adjustment
+
+### Grouting
+- After alignment confirmation, grout the baseplate to the foundation
+- **Purpose**: rigidly bonds baseplate to foundation, prevents resonant vibration, distributes loads
+- **Types**:
+  - Epoxy grout (preferred): high strength, chemical resistance, no shrinkage; for critical process pumps
+  - Cementitious grout: general industrial service; use non-shrink precision grout
+- Pour grout from one side to avoid air entrapment; vent properly
+- Allow cure time: 24-48 hours for epoxy; 7 days for cementitious
+- Tighten anchor bolts after full cure; re-check alignment
+
+<Callout type="warning" title="Do Not Soft-Foot the Baseplate" severity="warning">
+A common error: the baseplate sits on the foundation with only partial contact, creating soft-foot conditions when anchor bolts are tightened. This warps the baseplate, misaligns the pump-driver shaft, and causes vibration. Always verify baseplate is level and supported across its full area before and after grouting. Use 0.05 mm feeler gauge to confirm no gap between baseplate and foundation.
+</Callout>
+
+## Shaft Alignment
+
+The pump and driver shafts must be coaxial within tight tolerances across operating temperatures. Misalignment causes:
+- Premature bearing failure
+- Mechanical seal leakage and failure
+- High vibration
+- Coupling wear
+- Shaft fatigue breakage
+
+### Types of Misalignment
+- **Parallel (offset)**: shafts are parallel but displaced
+- **Angular**: shafts meet at an angle
+- **Combined**: most common in practice — both offset and angular
+- **Thermal growth**: hot pumps grow vertically (and some horizontally) by thermal expansion; cold alignment must compensate
+
+### Alignment Methods
+
+| Method | Accuracy | Best For |
+|---|---|---|
+| Straight edge / feeler | 0.2-0.5 mm | Quick check, small pumps |
+| Dial indicator (rim-face) | 0.05 mm | Standard maintenance |
+| Laser alignment | 0.01 mm | Critical pumps, high speed, API services |
+
+### Acceptable Tolerances (per API 610 / pump manufacturer)
+
+| Speed (rpm) | Parallel Offset | Angular Gap |
+|---|---|---|
+| &lt;1800 | ≤ 0.13 mm | ≤ 0.10 mm/100 mm |
+| 1800-3600 | ≤ 0.08 mm | ≤ 0.05 mm/100 mm |
+| &gt;3600 | ≤ 0.05 mm | ≤ 0.03 mm/100 mm |
+
+### Thermal Growth Compensation
+- Hot pumps expand upward 0.2-1.0 mm when operating (depends on frame size and temperature)
+- **Cold offset method**: Set motor shaft LOW by the estimated thermal growth so it grows into perfect alignment at operating temperature
+- After 24-48 hours at operating temperature, perform a hot alignment check — adjust if needed
+
+## Piping Installation
+
+### Piping Loads on Pump Nozzles (Critical!)
+Piping thermal expansion can impose enormous forces on pump nozzles. Excessive nozzle loads cause:
+- Casing distortion and seal/bearing failure
+- Shaft misalignment
+- Cracked castings
+
+- Support piping independently — the pump must NOT support the weight of the pipe
+- Use pipe supports and spring hangers near the pump
+- Align piping to the pump — do not spring-pipe or pull piping into place with flange bolts
+- Final flange alignment: parallel within 0.25 mm, gap matches gasket thickness without forcing
+
+### Suction Piping (Most Critical for Pump Performance)
+- Keep suction piping short, direct, and at least one size larger than pump suction nozzle
+- Minimum 5-10 pipe diameters of straight pipe before suction inlet (elbows directly at suction cause turbulence and impeller damage)
+- No air pockets: eccentric reducer at suction with flat side on top (prevents gas accumulation)
+- Suction velocity: 1-3 m/s for most services
+- Install suction strainer for commissioning (remove after piping is clean — permanent strainers cause pressure drop)
+
+<Callout type="info" title="Eccentric Reducer Orientation" severity="info">
+On horizontal pump suction lines, install eccentric reducers with the flat side UP (to prevent air entrapment that causes cavitation). On vertical suction lines, concentric reducers are acceptable. The common mistake is installing flat-side-down in horizontal service, which traps air at the reducer top.
+</Callout>
+
+### Discharge Piping
+- Install check valve (non-slam type) after pump discharge to prevent reverse flow on trip
+- Install gate/butterfly isolation valve after check valve
+- Discharge piping sized for 2-4 m/s velocity
+- Provide pressure gauge at discharge; pressure gauge at suction (for NPSH verification)
+- Pressure relief or minimum-flow bypass for positive-displacement pumps
+
+### Seal Piping (API 682 Plans)
+- Verify seal flush plan (Plan 11, 13, 21, 23, 32, 53, etc.) piped correctly
+- Barrier fluid reservoirs (Plan 52/53) filled with correct fluid and vented
+- Plan 53 barrier pressure set 1-2 bar above seal chamber pressure
+
+## Pre-Startup Checks
+
+### Mechanical
+- Rotate shaft by hand — must turn freely with no rubbing or binding
+- Lubrication: oil level correct (midpoint of sight glass); grease-lubricated bearings packed correctly (do NOT over-grease — blows seals)
+- Coupling guard installed (no exposed rotating parts)
+- Seal system valves in correct position; cooling water connected and flowing
+- Baseplate anchor bolts tight
+
+### Piping
+- Suction valve fully open
+- Discharge valve: closed for centrifugal pumps (start against closed valve); open for PD pumps (never start PD pump against closed valve — overpressurizes)
+- Vent high points in suction; drain low points
+- System primed; all air bled from pump casing and seal chamber
+
+<Calculator id="pump-power-calculator" label="Pump Power Calculator" />
+
+### Electrical
+- Motor rotation verified (bump test before coupling connection — arrow on pump casing)
+- Voltage matches nameplate; insulation resistance tested
+- Motor space heaters energized during shutdown
+- Overload protection set correctly (to motor FLA × 1.15)
+- Vibration monitoring sensors installed and calibrated (if provided)
+
+### Instrumentation & Safety
+- Pressure gauges at suction and discharge installed
+- Temperature sensors in bearings (if provided)
+- Low-flow protection / minimum-flow bypass verified functional
+- Emergency stop tested
+- Lockout/tagout (LOTO) procedures in place
+
+## Startup Procedure
+
+1. Re-verify: suction open, discharge closed (centrifugal), casing vented, lubrication OK, seal flush flowing
+2. Start motor; monitor for unusual noise, vibration, or leaks
+3. As pump comes up to speed, slowly open discharge valve (over 30-60 seconds — sudden valve opening causes water hammer and motor overload)
+4. Check discharge pressure (should approach or exceed design head)
+5. Check motor current (should not exceed FLA; if it does, throttle discharge)
+6. Verify seal is not leaking (single seal: a few drops per minute is normal for break-in; double seal: barrier pressure stable)
+7. Check bearing temperatures — should stabilize at 40-70°C (alarm at 85°C; trip at 95°C)
+8. Walk down pump for first hour: check vibration, temperatures, leaks
+
+### If Problems During Startup
+- No discharge pressure: pump not primed; suction strainer blocked; wrong rotation
+- High motor current: too much flow (open discharge too fast); binding; voltage imbalance
+- Excessive vibration: misalignment; unbalance; cavitation; bearing failure
+- Seal leak: dry running; misalignment; seal faces damaged
+
+## Performance Test (Commissioning)
+
+After stable operation at design conditions, record:
+- Flow rate
+- Suction pressure
+- Discharge pressure → calculate TDH (Total Dynamic Head)
+- Motor amperage and voltage → calculate power draw
+- Vibration at bearing housings (velocity, mm/s RMS)
+- Bearing temperatures
+
+Compare to manufacturer performance curve: point should fall on the curve. If flow is below rated, check:
+- NPSH available &gt; NPSH required
+- Impeller clearance correct
+- Suction line air entrainment
+- Internal wear (if re-commissioning existing pump)
+
+Vibration limits per API 610:
+- &lt;2.8 mm/s RMS: good
+- 2.8-4.5 mm/s: acceptable
+- &gt;4.5 mm/s: investigate immediately
+
+## First 200 Hours (Run-In Period)
+
+- Monitor daily; vibration and bearing temperatures
+- Check lubricant condition (contamination, oxidation)
+- Torque anchor bolts again if needed
+- After 200 hours: change oil on oil-lubricated pumps (removes break-in particles); re-torque coupling bolts
+- Schedule first vibration analysis (baseline)
+
+## Common Installation Failures
+
+| Problem | Root Cause |
+|---|---|
+| Bearing failure within 6 months | Misalignment; over-greasing; soft-foot |
+| Mechanical seal failure | Pipe strain; dry start; misalignment |
+| Excessive vibration | Piping loads; unbalanced impeller; soft-foot |
+| Cavitation noise | Insufficient NPSH; suction air entrainment; eccentric reducer wrong orientation |
+| Motor overload | Operating far right on curve; discharge fully open; voltage imbalance |
+| Cracking of cast iron casing | Excessive piping thermal forces; frozen water in casing |
+
+## Summary
+
+Pump installation success depends on: a rigid concrete foundation (3-5× equipment mass), proper baseplate grouting, precise cold alignment (laser preferred), independent pipe support with no nozzle loads exceeding API limits, eccentric reducer correctly oriented (flat up), seal flush plans properly piped, and a systematic startup sequence (vent casing, start against closed valve, open discharge slowly). Common failure causes are preventable: 50% of premature pump failures trace to alignment errors, piping loads, or dry running during initial startup.

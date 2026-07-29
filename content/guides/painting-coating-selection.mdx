@@ -1,0 +1,166 @@
+---
+title: "Industrial Coating and Painting Selection"
+description: "How to select protective coatings for steel: surface preparation (SSPC/NACE), coating types (epoxy, polyurethane, zinc-rich, alkyd), systems by environment, and application quality control."
+category: "Mechanical"
+keywords: ["industrial painting", "coating selection", "epoxy coating", "zinc rich primer", "surface preparation", "SSPC NACE coating"]
+updated: "2026-07-29"
+related:
+  - pipe-weight-calculator
+  - corrosion-allowance-calculator
+  - "/guides/cathodic-protection-basics"
+---
+
+## Overview
+
+Protective coatings (paint and lining systems) are the primary defense against corrosion for steel structures, piping, tanks, and equipment in industrial environments. A coating system is only as good as its surface preparation and application — a correctly specified coating fails prematurely if applied over poor surface prep. Selection depends on the exposure environment (atmospheric, immersion, buried, chemical), required service life, and substrate.
+
+<Formula>Coating life is approximately proportional to (surface preparation quality)² — a 2× improvement in surface prep gives ~4× service life extension; this dominates over coating material selection.</Formula>
+
+## Corrosion Environments (ISO 12944)
+
+ISO 12944 classifies atmospheric corrosivity categories:
+
+| Category | Environment | Typical Steel Loss (μm/yr) |
+|---|---|---|
+| C1 (very low) | Heated clean interiors (offices) | &lt;1.3 |
+| C2 (low) | Rural, dry interiors | 1.3-25 |
+| C3 (medium) | Urban/industrial, moderate SO₂; coastal low salt | 25-50 |
+| C4 (high) | Industrial, coastal moderate salt | 50-80 |
+| C5-I/M (very high) | High industrial (C5-I) / marine high salt (C5-M) | 80-200 |
+
+Immersion categories (Im1: fresh water; Im2: seawater; Im3: soil), and chemical exposure categories guide coating selection.
+
+## Surface Preparation (Most Critical Factor)
+
+SSPC/NACE joint surface preparation standards:
+
+| Standard | Method | Profile | Cleanliness |
+|---|---|---|---|
+| SSPC-SP1 | Solvent cleaning (grease/oil removal BEFORE any abrasive cleaning) | None | Removes visible oil/grease only |
+| SSPC-SP2 / SP3 | Hand/power tool cleaning (wire brush, grinder) | Minimal | Loose rust/mill scale |
+| SSPC-SP5 (NACE 1) | White-metal blast cleaning | 25-100 μm angular profile | 100% removal of all visible rust, mill scale, paint, foreign matter |
+| SSPC-SP10 (NACE 2) | Near-white blast cleaning | 25-100 μm | At least 95% free of visible residues |
+| SSPC-SP6 (NACE 3) | Commercial blast cleaning | 25-75 μm | At least 67% free of residues |
+| SSPC-SP7 (NACE 4) | Brush-off blast cleaning | Light | Tight residues allowed; loose removed |
+| SSPC-SP11 | Power tool cleaning to bare metal | 25-75 μm profile | Bare metal with profile |
+
+Profile (anchor pattern) is critical: too smooth → poor adhesion; too deep → peaks can protrude thin coatings causing rust spots ("pinpoint rusting"). Profile depth = ~25-30% of total coating system thickness.
+
+<Callout type="warning" title="Clean BEFORE You Blast" severity="warning">
+The single most common surface prep error: blasting a surface that still has oil/grease. The abrasive drives oil into the steel profile, where subsequent coating cannot adhere. Always solvent-clean (SSPC-SP1) to remove oil, grease, and salt BEFORE abrasive blasting. For salt-contaminated marine surfaces, test for soluble salts (Bresle test) — chloride levels above 30 mg/m² cause premature coating blistering even under perfect coating.
+</Callout>
+
+## Coating Types and Uses
+
+### Alkyd (Oil-Based) Enamel
+- Traditional single-pack air-dry paint
+- Cheap, easy application, good gloss/color retention
+- **Limitations**: poor chemical resistance; poor water resistance; cannot be used in immersion; slow cure at low temperature
+- **Best for**: C1-C2 environments, structural steel in interior/dry locations, general equipment finishing
+- Primer/finish in one or two coats
+
+### Epoxy
+- Two-pack polyamide or amine-cured; excellent adhesion, chemical/water resistance, good abrasion resistance
+- **Limitations**: chalks and fades in UV (must topcoat with polyurethane for exterior); cure slows below 10°C
+- **Best for**: the workhorse industrial coating — C3-C5 environments; immersion in water; chemical tanks (with appropriate grade); bridges; structural steel; tank exteriors
+- Usually primer + build coats + polyurethane topcoat for exterior
+
+### Polyurethane
+- Two-pack; excellent UV stability and color/gloss retention; good chemical and abrasion resistance
+- **Best for**: topcoat over epoxy for exterior exposure (the finish coat) — provides UV protection and weathering gloss
+- Aliphatic polyurethane for exterior (UV stable); aromatic polyurethane for interior/immersion (cheaper, chalks in UV)
+- High-performance versions (polyaspartic) cure very fast
+
+### Inorganic Zinc-Rich Primer (IOZ)
+- Zinc dust in inorganic silicate binder; zinc sacrificially protects steel (galvanic protection like hot-dip galvanizing)
+- Excellent corrosion resistance even when damaged; high heat resistance (to 400°C)
+- **Best for**: high-performance primer in C3-C5 environments; bridges, offshore, marine; can be used as single-coat system (shop primer) or with epoxy/polyurethane topcoats
+- **Requirement**: blast cleaning to SSPC-SP6 or better (to white metal for best performance); proper topcoat "mist coat" to prevent bubbling through porous zinc
+
+### Organic Zinc-Rich (Epoxy Zinc)
+- Zinc in epoxy binder; easier to topcoat than IOZ; less surface prep tolerance
+- Good for touch-up and repair of IOZ or galvanizing
+
+### Hot-Dip Galvanizing (HDG)
+- Zinc coating applied by dipping steel in molten zinc (ASTM A123)
+- Metallurgical bond; 50-100 μm thickness; 20-50 year life in C3 environments
+- Can be duplex-coated (galvanize + paint) for synergistic life extension (1.5-2× the sum of individual lives)
+- Best for: structural steel, transmission towers, fencing, fasteners
+
+### Specialty Coatings
+
+| Coating | Application |
+|---|---|
+| Coal tar epoxy | Buried pipes, marine immersion (dark, low UV; health concerns now limiting use) |
+| Fluoropolymer (FEVE, PVDF) | Long-life gloss/color retention; architectural; 20+ year finish |
+| Polysiloxane | Epoxy-polyurethane hybrid; high performance, UV resistant, low VOC |
+| Vinyl ester | Chemical tank linings; strong acid/alkali immersion |
+| Glass-flake epoxy | Offshore splash zone; very low water permeation |
+| Rubber lining (natural/neoprene/butyl) | Severe chemical tanks (HCl, acid, slurry) |
+| Thermal spray aluminum/zinc (TSA/TSZ) | Long-term offshore, bridges, LNG; 30-50 year life |
+
+## Generic Coating Systems by Environment
+
+| Environment | Primer | Intermediate | Finish | Total DFT | Typical Life |
+|---|---|---|---|---|---|
+| C1-C2 interior (dry) | Alkyd | — | Alkyd enamel | 100 μm | 5-10 yr |
+| C3 urban/industrial | Epoxy zinc-rich | Epoxy MIO | Polyurethane | 200-250 μm | 10-15 yr |
+| C4 coastal/heavy industrial | IOZ or epoxy zinc | Epoxy MIO × 2 | Polyurethane | 280-350 μm | 15-20 yr |
+| C5-I/M offshore/severe | IOZ or TSA | Epoxy glass-flake | Polyurethane/polysiloxane | 350-500 μm | 20+ yr |
+| Fresh water immersion | Epoxy polyamide | Epoxy (×2) | — (no UV) | 300-400 μm | 10-15 yr |
+| Seawater immersion | Coal tar epoxy / glassflake epoxy | — | — | 500 μm | 10-20 yr |
+| Buried pipeline | Fusion-bonded epoxy (FBE) | 3-layer PE/PP | — | 300-3000 μm | 30-50 yr |
+| Chemical tank (acid) | Vinyl ester or rubber lining | Multicoat | — | 1000+ μm | 5-20 yr |
+
+DFT = Dry Film Thickness, measured with magnetic gauge.
+
+<Callout type="info" title="MIO = Micaceous Iron Oxide" severity="info">
+Micaceous iron oxide (lamellar iron oxide pigment) in intermediate coats forms overlapping plates that drastically reduce water/oxygen permeation through the coating film. Always specify MIO in intermediate coats for C4/C5 environments — it doubles or triples the life of the coating system at modest additional cost.
+</Callout>
+
+## Application Requirements
+
+### Environmental Conditions
+- Surface temperature: 10-50°C (follow coating manufacturer's minimum cure temperature; 5°C for many epoxies)
+- Surface temperature must be ≥3°C above dew point (prevents condensation on steel during application)
+- Relative humidity ≤85% (some coatings allow up to 95%)
+- No application in rain, fog, high wind (blows dust, overspray)
+
+### Coating Application
+- **Spray** (airless): fastest, most uniform; standard for shop and field
+- **Brush/roller**: small areas, touch-ups, stripe coating edges (required for welds/edges)
+- **Stripe coat**: extra brush-applied coat on welds, edges, corners, bolt heads before/after spray to cover thin spots (critical for long-life systems)
+- Mix two-pack components thoroughly; observe induction time (time between mixing and application) and pot life (time after which coating must be discarded)
+
+### Quality Control Tests
+- **Surface profile**: replica tape or digital profile gauge before coating
+- **Cleanliness**: visual comparison to SSPC standards; Bresle salt test if required
+- **DFT (dry film thickness)**: magnetic gauge on 10 m² spot readings per SSPC-PA2
+- **Adhesion**: pull-off test (ASTM D4541) — minimum 3-5 MPa (400-700 psi) for good coating
+- **Holiday detection**: low-voltage pinhole detector for thin coatings; high-voltage spark tester for thick linings
+- **Cure check**: solvent rub (MEK double rub) for inorganics; hardness pencil test; DFT vs WFT (wet film thickness)
+
+## Maintenance Painting
+
+For existing structures:
+- Inspect condition per ISO 4628 (rust, blistering, cracking, flaking rating scales 0-5)
+- Spot repair for localized breakdown; full overcoat for widespread
+- Surface prep: power tool clean (SP11 or SP3) for spot repairs; abrasive blast for full re-coat
+- Inter-coat adhesion: check compatibility (new coating over aged coating — test patch first)
+- Surface-tolerant epoxies allow application over tight old coatings with minimal prep (marginal performance but cost-effective for maintenance)
+
+## Typical Failures
+
+| Failure | Cause |
+|---|---|
+| Blistering | Osmosis from soluble salts under coating; moisture vapor transmission |
+| Delamination over blast | Oil/salt contamination; overcoating cured zinc; moisture during cure |
+| Rust spots (pinpoint) | Profile too deep for coating thickness; thin spots on edges/welds |
+| UV chalking | Epoxy topcoat exposed to sun (epoxy chalks — always topcoat with PU) |
+| Early corrosion at welds | No stripe coat; weld spatter; different surface profile on weld metal |
+| Cathodic disbondment | CP + coating defect: alkaline environment causes loss of adhesion at holiday |
+| Mud cracking | Coating applied too thickly; topcoat applied over partially cured primer |
+
+## Summary
+
+Coating selection must match corrosivity environment per ISO 12944 and use a complete primer/intermediate/finish system, not a single paint. The dominant factor in coating life is surface preparation — white-metal or near-white blast (SSPC-SP5/SP10) with proper angular profile is non-negotiable for long-life systems. The standard high-performance system is inorganic zinc-rich primer + MIO epoxy intermediate + aliphatic polyurethane finish (250-500 μm total DFT), giving 15-25 year life in C4/C5 environments. Epoxy is the workhorse for general use; polyurethane is mandatory as a UV-stable topcoat for exterior; alkyds are only for dry interior use. Quality control — DFT, adhesion, holiday detection, and stripe coating of edges/welds — separates 2-year failures from 20-year service.

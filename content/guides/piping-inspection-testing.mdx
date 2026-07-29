@@ -1,0 +1,162 @@
+---
+title: "Piping Inspection and Testing"
+description: "Piping inspection, NDT methods, hydrostatic/pneumatic testing, PMI, weld inspection per ASME B31.3, API 570, and in-service inspection requirements for industrial piping systems."
+category: "Mechanical"
+keywords: ["piping inspection", "hydrostatic test", "piping NDT", "API 570", "weld inspection", "pneumatic test"]
+updated: "2026-07-29"
+related:
+  - pipe-weight-calculator
+  - pressure-vessel-design-check
+  - "/guides/pipe-stress-analysis-basics"
+---
+
+## Overview
+
+Piping systems require inspection during construction (new construction) and throughout operating life (in-service inspection) to ensure integrity, prevent failures, and meet code requirements. This covers material verification, weld examination, pressure testing (hydrostatic/pneumatic), and periodic in-service inspection per API 570 (Piping Inspection Code). Proper inspection is a regulatory requirement for pressure piping and is the primary defense against loss-of-containment incidents.
+
+<Formula>Hydrostatic test pressure = 1.5 × MAWP × (S_test / S_design) per ASME B31.3 para. 345.4 — S are allowable stresses at test and design temperatures</Formula>
+
+## Construction Inspection (New Piping)
+
+### Material Verification
+- **PMI (Positive Material Identification)**: XRF (X-ray fluorescence) or OES (optical emission spectroscopy) portable guns verify alloy grade (316 SS, P11, P22, P91) on each alloy pipe, fitting, and weld. Required for all alloy materials (carbon steel is verified by stamp/certs).
+- **Mill test reports (MTR / EN 10204 3.1)**: verify material grade, heat number, chemistry, mechanical properties against purchase spec; trace heat numbers on each piece.
+- **Visual**: check pipe dimensions, wall thickness, surface defects (laminations, cracks, corrosion).
+
+### Weld Inspection
+All pressure-containing welds must be examined:
+- **Visual inspection (VT)**: 100% of all welds. Check profile, undercut, overlap, porosity, reinforcement. Per ASME B31.3 Table 341.3.2.
+- **Radiographic testing (RT)**: X-ray or gamma ray through weld; detects volumetric defects (porosity, slag inclusions, incomplete penetration). Full RT for severe cyclic conditions, 5% random for normal service.
+- **Ultrasonic testing (UT)**: sound waves detect planar defects (cracks, lack of fusion). Superior to RT for cracks and thick-wall. Phased array UT (PAUT) modern standard.
+- **Magnetic particle (MT/MPI)**: detects surface and near-surface defects in ferromagnetic materials (carbon steel, chrome-moly). Used for fillet welds, socket welds.
+- **Liquid penetrant (PT/DPI)**: detects surface-only defects in any material (stainless, non-ferrous). Used for non-magnetic alloys.
+- **Hardness testing**: verifies post-weld heat treatment (PWHT) of hardenable alloys (P91, carbon steel over 19 mm thick, sour service).
+
+### Weld Examination Extent per ASME B31.3
+
+| Fluid Service | Required Examination |
+|---|---|
+| Category D (water, low harm) | Visual only; RT optional |
+| Normal (Category M not) | Visual 100%; 5% random RT |
+| Severe cyclic | Visual 100%; 100% RT/UT |
+| Category M (toxic lethal) | Visual 100%; 100% RT/UT |
+| High pressure (&gt;Class 900) | Visual 100%; 100% RT/UT |
+
+<Callout type="warning" title="Socket Weld and Branch Joints Need Special Attention" severity="warning">
+Socket welds have a known crevice corrosion susceptibility in corrosive service, and small bore branch connections are the #1 source of process piping failures (vibration fatigue). Specify 100% MT/PT on all socket welds and branch welds, plus fatigue protection (sweepolets, welded supports, vibration control) on small-bore piping in high-vibration service.
+</Callout>
+
+## Pressure Testing (Leak Test)
+
+After construction, every piping system must be pressure tested before service:
+
+### Hydrostatic Test (Default — Safest)
+
+```
+P_test = 1.5 × MAWP × (S_test / S_design)
+```
+
+- Test medium: clean water (corrosion inhibitors added if needed; potable water for stainless to avoid chloride contamination)
+- Test pressure held for at least 10 minutes at pressure, then reduced to MAWP for visual inspection
+- Temperature: minimum metal temperature ≥ ductile-brittle transition temperature + 17°C (typically ≥15-20°C for carbon steel) to avoid brittle fracture
+- Drain completely after test and blow dry for lines that cannot see water (cryogenic, hot service)
+- Vent all high points (trapped air explodes if pressure fails catastrophically)
+- Hydro is safe because water is nearly incompressible; stored energy = P × V × compressibility ≈ low.
+
+### Pneumatic Test (When Water Not Permitted)
+
+Used when water would damage the system (refrigeration, air distribution, cryogenic, gas lines that cannot be dried):
+
+```
+P_test = 1.1 × MAWP × (S_test / S_design)
+```
+
+- Test medium: dry air, nitrogen, or inert gas
+- **Much more dangerous**: stored energy of compressed gas is enormous (P × V / (γ-1))
+- Requires special safety precautions: all personnel cleared from area during pressure rise; gradual step-up (50% test pressure, then 10% increments); exclusion zone
+- Preliminary test at low pressure (25 psig) before raising to test pressure
+- Use only when hydro is impractical.
+
+<Calculator id="pressure-vessel-design-check" label="Pressure Vessel Design Check" />
+
+### Alternative Tests
+- **Initial service leak test**: for Category D water/air/steam only; test under operating pressure with process fluid
+- **Sensitive leak test (helium, bubble test)**: for Category M/toxic service, vacuum jacketing, or where very tight seals are required
+- **In-service weld testing**: hot tapping, tie-ins — validated per API 2201
+
+### Test Documentation
+- Test procedure approved before start
+- Pressure recorder chart (circular chart or digital) showing pressure vs time for duration
+- Inspector sign-off on test report
+- Weld map with radiograph identification numbers retained in project file
+
+## Pre-Commissioning Cleaning
+
+Before introducing process fluid:
+- **Flushing**: water flush to remove construction debris, welding rods, dirt
+- **Chemical cleaning (pickling + passivation)**: for stainless steel and critical systems (boilers, oxygen service); removes scale and passive corrosion
+- **Blowing with air/steam**: for steam lines to remove mill scale, debris (target plates show when clean)
+- **Nitrogen purge**: for hydrocarbons, flammable, moisture-sensitive service — purge oxygen to &lt;0.5% before introduction of flammable fluid
+- **Pressure decay test**: after purge, monitor pressure to verify tightness
+
+## In-Service Inspection (API 570)
+
+After commissioning, piping is inspected periodically under API 570 (Piping Inspection Code) for refinery/chemical process service. Inspection intervals based on:
+- Corrosion rate (measured or estimated)
+- Remaining life = (t_actual - t_min) / corrosion_rate
+- API 570 class: Class 1 (highest risk — >Class 300, hazardous), Class 2, Class 3 (low risk)
+
+### Inspection Methods In-Service
+
+| Method | What it finds |
+|---|---|
+| Visual inspection (external) | External corrosion, leaks, support damage, insulation damage, misalignment |
+| UT thickness (UTT) | Wall loss from corrosion/erosion — primary in-service tool |
+| Radiography profile | Wall loss under insulation (CUI — corrosion under insulation) |
+| Profile RT | Localized corrosion |
+| PAUT/TOFD | Crack detection in welds for fatigue-prone piping |
+| Long-range UT (guided wave) | Screen long segments for wall loss from a single access point |
+| Acoustic emission | Active crack growth or leak location during pressurization |
+| IR thermography | Hot spots (lines plugging, refractory failure, leaks through insulation) |
+
+### Corrosion Under Insulation (CUI) — Major Failure Mode
+- Carbon steel: 0°C to 175°C operating range; wet insulation causes hidden corrosion
+- Austenitic stainless: chloride-induced SCC (chlorides from wet insulation) at 60-175°C
+- Detection: remove insulation plugs, profile RT, flash radiography, pulsed eddy current
+- Prevention: correct insulation material (non-chloride for SS), weatherproof jacketing, seal joints, inspect every 5-10 years
+
+### RBI (Risk-Based Inspection)
+
+Modern practice (API 580/581): base inspection intervals on risk = probability of failure × consequence of failure. High-risk piping gets inspected more often, low-risk piping less frequently. Factors: fluid hazard, pressure, temperature, corrosion rate, past failures, age.
+
+## Common Failures Found in Service
+
+| Failure Mode | Typical Location |
+|---|---|
+| External corrosion (CUI) | Under damaged insulation; 60-180°C carbon steel |
+| Internal corrosion/erosion | Elbows downstream of control valves, tees, reducers |
+| Fatigue cracking | Small bore connections; points of high vibration; welds |
+| Weld decay (sensitization) | Stainless steel weld HAZ in certain temperature ranges |
+| Creep cracking | High-temperature (chrome-moly) piping in reformers/boilers |
+| Sulfide stress cracking | Sour (H₂S) service; hardness &gt;22 HRC |
+| Thermal fatigue | Mixing tees (hot/cold junction), desuperheaters |
+| Gasket failure | Flanged joints at thermal cycle locations |
+
+## Inspection Records
+
+For each piping circuit, maintain:
+- Piping isometric drawing with weld numbers and thickness locations
+- Initial thickness data (baseline)
+- Subsequent thickness measurements (every inspection)
+- Corrosion rate calculations
+- Repair history
+- Next inspection date (based on remaining life)
+- P&ID mark; process data (fluid, P, T)
+
+<Callout type="info" title="Don't Inspect Blindly — TML Strategically" severity="info">
+Thickness Measurement Locations (TMLs) should be placed at locations most likely to corrode: downstream of control valves (erosion), low points (water collection/CUI), dead legs (under-deposit corrosion), and mix points (high velocity/turbulence). Uniform grid TMLs waste time and miss the real damage. Targeted TMLs based on corrosion circuit analysis give more reliable life assessment.
+</Callout>
+
+## Summary
+
+Piping inspection begins at construction with PMI verification, 100% visual + proportional RT/UT/MT/PT weld examination per ASME B31.3 based on service category, and hydrostatic testing at 1.5 × MAWP (pneumatic at 1.1 × MAWP only when water cannot be used). In-service inspection per API 570 uses UT thickness monitoring, visual inspection, and specialized methods (guided wave, PAUT) to track corrosion and detect cracking. RBI methods optimize inspection intervals based on risk. The #1 in-service failure is corrosion under insulation (CUI) and small-bore fatigue — both require targeted inspection beyond routine UT thickness.

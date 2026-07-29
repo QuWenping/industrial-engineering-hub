@@ -1,0 +1,190 @@
+---
+title: "Cooling Tower Basics"
+description: "How cooling towers work: evaporative cooling principles, types (induced/forced draft, counterflow/crossflow), selection, sizing, water treatment, and performance optimization."
+category: "HVAC"
+keywords: ["cooling tower", "evaporative cooling", "cooling tower selection", "induced draft", "crossflow cooling tower", "cooling tower sizing"]
+updated: "2026-07-29"
+related:
+  - heat-exchanger-calculator
+  - pump-power-calculator
+  - fan-curve-selection
+  - "/guides/chiller-selection-guide"
+---
+
+## Overview
+
+Cooling towers reject waste heat from process cooling water, refrigeration condensers, power plant condensers, and HVAC systems to the atmosphere by evaporating a small portion of the water. They are the dominant heat rejection method for industrial cooling and large HVAC. Sizing and selection depend on the required heat rejection, range, approach, wet-bulb temperature, and water quality considerations.
+
+<Formula>Heat rejected Q = 500 × gpm × range (°F) in BTU/h; Range = T_hot_in - T_cold_out; Approach = T_cold_out - T_wet_bulb (key performance indicator — smaller approach = larger tower)</Formula>
+
+## Evaporative Cooling Principle
+
+Cooling relies on latent heat of vaporization of water: when water evaporates, it absorbs ~2,260 kJ/kg (970 BTU/lb) from the remaining water, cooling it.
+
+In a cooling tower:
+- Hot water is distributed at the top over fill media (large surface area for air-water contact)
+- Air is drawn upward (induced draft) or blown upward (forced draft) through the falling water
+- A small fraction (~1-2% of flow) evaporates into the air stream, cooling the remaining water
+- Cooled water collects in cold water basin at bottom, pumped back to process
+- Warm moist air exits at top (visible plume in cool weather)
+
+The theoretical limit to cooling is the **wet-bulb temperature (WBT)** — the lowest temperature achievable by evaporative cooling. This is the temperature air would reach if cooled to saturation (100% RH) by evaporating water into it.
+
+## Key Performance Terms
+
+| Term | Definition |
+|---|---|
+| **Range** | T_hot in - T_cold out (°C or °F) — typically 5-15°C (10-27°F); represents heat load |
+| **Approach** | T_cold out - Wet Bulb Temperature (°C) — typically 3-8°C (5-15°F); represents tower size/efficiency |
+| **Wet Bulb Temperature (WBT)** | Design ambient WBT — site-specific; design values 21-28°C depending on location (26°C typical for US summer) |
+| **Flow (gpm or m³/h)** | Circulating water flow rate |
+| **Heat load (tons / kW)** | Tons of refrigeration or kW of heat to reject |
+| **Drift loss** | Water droplets entrained and carried out with air (0.001-0.2% of flow) |
+| **Blowdown** | Intentionally drained water to limit dissolved solids concentration |
+| **Makeup water** | Water to replace evaporation + drift + blowdown |
+
+<Callout type="info" title="Approach Defines Tower Size" severity="info">
+The single most important selection parameter is approach: the difference between cold water temperature and wet-bulb. Approach is determined by tower fill volume and air flow. A 3°C approach requires about twice the tower of a 7°C approach. Standard design point: 5°C (10°F) approach to design wet-bulb (often 26°C WBT = 32°C hot, 27°C cold for a 5°C range). Going below 3°C approach gives diminishing returns and exponentially larger towers.
+</Callout>
+
+## Tower Types
+
+### By Air Flow Generation
+
+**Induced Draft (ID)** (most common):
+- Fan at top of tower draws air up through the fill
+- Air velocity more uniform through fill
+- Recirculation of discharged moist air is less than forced draft
+- Fan handles moist warm air (more corrosion)
+- Lower horsepower per ton than forced draft
+- Used for most industrial and HVAC towers
+
+**Forced Draft (FD)**:
+- Blower fan at air inlet pushes air into tower
+- Fan handles ambient (dry, cool) air — less corrosion, can be simpler
+- Poor air distribution (high velocity at fan, low at far end)
+- Higher noise at ground level (fan at low elevation)
+- Higher exit velocity reduces recirculation but uneven fill velocity
+- Used where fan access/maintenance at low level is preferred
+
+### By Air-to-Water Flow Arrangement
+
+**Counterflow**:
+- Air flows upward, water falls downward — opposite directions
+- Better heat transfer (greatest temperature differential at top, where air is coolest and water hottest)
+- Taller tower; pressurized spray distribution system
+- Smaller footprint per ton
+- More difficult to maintain nozzles and fill
+
+**Crossflow**:
+- Air flows horizontally across falling water
+- Fill is accessible from side; gravity water distribution (no pressurized nozzles)
+- Lower pumping head; easier maintenance
+- Larger footprint per ton
+- Slightly less thermal performance at equivalent size
+- Popular for large industrial and power plant towers
+
+### By Construction
+
+| Type | Description | Application |
+|---|---|---|
+| Field-erected (FEP) | Large, site-built concrete/wood/FRP structures | Power plants, refineries, large process (&gt;10,000 gpm) |
+| Factory-assembled (package) | Built in factory, shipped as complete unit | HVAC, small to medium process (up to ~5,000 gpm) |
+| FRP (fiberglass) | Corrosion-resistant, lightweight | Coastal, chemical, water treatment facilities |
+| Concrete | Long life (30+ years), durable | Power generation, heavy industry |
+| Wood | Traditional, low cost | Older industrial sites; less common now |
+
+<Calculator id="heat-exchanger-calculator" label="Heat Exchanger Calculator" />
+
+## Sizing Calculation
+
+### Heat Load
+```
+Q (kW) = m_dot × Cp × range = m_dot × 4.18 × (T_hot - T_cold)
+Q (BTU/h) = 500 × gpm × range (°F)
+Q (tons_refrigeration) = gpm × range / 25 (for chiller condenser service, 1 ton = 15,000 BTU/h heat rejection)
+```
+
+For a typical chiller condenser: 1 ton of refrigeration rejects ~15,000 BTU/h + compressor heat (~3,000 BTU/h) = 18,000 BTU/h in cooling tower = 3 gpm at 10°F range.
+
+### Water Losses
+- Evaporation: ~1% of flow per 10°F (5.6°C) range = 1.8 m³/h per 1000 gpm per 10°F
+- Drift: 0.005-0.02% of flow (modern drift eliminators achieve 0.001% — very low)
+- Blowdown: calculated based on cycles of concentration
+
+### Cycles of Concentration (COC)
+As water evaporates, dissolved solids stay behind — concentration increases. Blowdown limits concentration ratio:
+
+```
+COC = dissolved solids in recirculating water / dissolved solids in makeup water
+COC = makeup conductivity / blowdown conductivity
+
+Blowdown = evaporation / (COC - 1)
+Makeup = evaporation + blowdown + drift
+```
+
+Typical COC targets:
+- 3-5 cycles: good water quality, easy treatment
+- 5-7 cycles: excellent treatment, significant water savings
+- 7-10 cycles: high-efficiency; requires very good water treatment, may need acid or softening
+- Higher COC = less makeup water + less blowdown + less chemical cost, but higher scaling risk
+
+## Water Treatment
+
+Untreated cooling water causes:
+- **Scale formation** (calcium carbonate, calcium sulfate): insulates heat transfer surfaces, reduces tower/chiller efficiency, blocks piping
+- **Corrosion**: electrochemical attack on steel/copper components, leading to leaks
+- **Biological growth** (algae, bacteria, Legionella): health hazard, slime formation, fouling
+- **Fouling**: suspended solids depositing on surfaces
+
+### Treatment Program
+- Scale inhibition: phosphonates, polyacrylates, sulfuric acid for pH control
+- Corrosion inhibition: zinc, molybdate, orthophosphate, filming inhibitors
+- Biocides: chlorine/bromine oxidizing biocides; isothiazolin or glutaraldehyde non-oxidizing for Legionella
+- Filtration: side-stream filtration (1-5% of flow) to remove suspended solids
+- Blowdown control: conductivity-based automated blowdown valve
+- Regular testing: daily pH/conductivity, weekly bacteria counts, monthly corrosion coupons
+
+<Callout type="warning" title="Legionella Is a Safety Issue" severity="warning">
+Cooling towers are a known source of Legionnaires' disease outbreaks (Legionella pneumophila bacteria grow in 25-50°C water, aerosolized in drift). Most jurisdictions legally require: regular biocide treatment, periodic Legionella testing, drift eliminators, system cleaning, and record-keeping. OSHA guidelines and local health codes specify maintenance protocols. Neglect can result in large fines and public health incidents.
+</Callout>
+
+## Fan and Drive Selection
+
+- **Propeller fans** (axial): large diameter, low pressure, high volume, efficient — standard for induced draft
+- Tip speed &lt; 60 m/s for noise control; &lt; 50 m/s for residential areas
+- Drive: gear reduction (long life, industrial) or belt (lower cost, HVAC)
+- Variable frequency drives (VFDs): vary fan speed with load/wet bulb — save 30-50% energy vs constant speed (fan laws: power ∝ rpm³ — half speed uses 1/8 power)
+- Motors: totally enclosed air-over (TEAO); severe-duty for outdoor/coastal
+
+## Cold Water Basin and Distribution
+
+- Basin sized to contain system volume when pump shuts down (water drains down) plus operating level
+- Basin level control: makeup valve (float or electronic) with overflow drain
+- Basin sweepers / debris screens to prevent clogging
+- Hot water distribution: spray nozzles (counterflow) or gravity distribution deck (crossflow) — must be kept clean
+
+## Performance Optimization
+
+- VFDs on fans modulate capacity — huge energy savings at part load
+- Proper water treatment maintains heat transfer efficiency (scale adds 30% to energy use)
+- Clean fill regularly (fouled fill can reduce cooling by 20-40%)
+- Maintain proper drift eliminators (saves water, prevents Legionella)
+- Operate at highest possible COC safely achievable (water savings)
+- Use free cooling: when wet bulb is very low, water may be cooled enough without chiller (plate heat exchanger bypass)
+
+## Common Problems
+
+| Problem | Cause | Solution |
+|---|---|---|
+| High cold water temp | Fan off; fill fouled; high approach vs design; under-sized | Check fan; clean fill; check WBT vs design |
+| Scale deposition | Hard makeup water; high COC; no treatment | Soften makeup; acid feed; scale inhibitor |
+| Corrosion of steel | Low pH; oxygen; galvanic; treatment inadequate | pH control; corrosion inhibitor; material upgrade |
+| Algae/biofilm | Sunlight on open basin; no biocide; poor housekeeping | Biocide shock + maintenance; cover basin |
+| Legionella | Stagnant water; temperatures 25-50°C; no biocide | Regular biocide; cleaning; periodic testing; record-keeping |
+| Excessive drift | Damaged/missing drift eliminators; high air velocity | Repair/replace drift eliminators |
+| White rust (galvanized steel) | New galvanized steel exposed to high pH water (&gt;8.3) | Passivate new towers (controlled pH 7-8 for first 6 weeks) |
+
+## Summary
+
+Cooling towers reject heat by evaporating water; performance is defined by range (heat load) and approach (tower efficiency relative to wet-bulb temperature). The standard design is induced-draft counterflow or crossflow with axial fans. Approach is the key sizing parameter — a 5°C (10°F) approach to design wet-bulb is the standard. Water treatment (scale, corrosion, biological control) is essential for both efficiency and Legionella safety. Cycles of concentration (target 4-6) minimize makeup water and blowdown. VFDs on fans deliver dramatic energy savings at part load. Cooling towers are selected on heat load (tons), flow, range, and approach to design wet-bulb — not just tonnage.

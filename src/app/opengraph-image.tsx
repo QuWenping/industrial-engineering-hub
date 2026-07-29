@@ -65,7 +65,7 @@ export default async function OGImage() {
         <div style={{ display: "flex", gap: "20px" }}>
           {[
             { value: "53+", label: "Calculators", color: "#1677FF" },
-            { value: "30+", label: "Guides", color: "#00D4FF" },
+            { value: "50+", label: "Guides", color: "#00D4FF" },
             { value: "100%", label: "Free", color: "#00B578" },
           ].map((s) => (
             <div

@@ -1,0 +1,149 @@
+---
+title: "Flange Installation Best Practices"
+description: "Step-by-step flange assembly: bolt torque, gasket selection, alignment, bolt-up procedures, ASME PCC-1 joint assembly guidelines, and common leakage causes."
+category: "Mechanical"
+keywords: ["flange installation", "flange torque", "gasket installation", "ASME PCC-1", "flange bolt torque", "flange leak"]
+updated: "2026-07-29"
+related:
+  - flange-bolt-torque
+  - flange-rating-calculator
+  - pressure-vessel-design-check
+  - "/guides/gasket-selection-guide"
+---
+
+## Overview
+
+Flanged joints are the most common potential leak point in industrial piping. Even with correctly selected flanges and gaskets, poor installation is responsible for over 70% of flange leaks. Proper procedure — alignment, gasket placement, controlled torque, and sequential tightening per ASME PCC-1 — is critical for reliable service. Leaking flanges cause product loss, emissions, safety hazards, and unplanned shutdowns.
+
+<Formula>Bolt preload F_p = 0.75 × A_s × S_y (target bolt stress at 75% of bolt yield strength for torque calculation)</Formula>
+
+## ASME PCC-1 Framework
+
+ASME PCC-1 (Post-Construction Committee Standard 1: "Guidelines for Pressure Boundary Bolted Flange Joint Assembly") is the global best-practice standard for flange assembly. Key requirements:
+
+- Personnel must be trained and qualified in bolted joint assembly
+- Tools must be calibrated (torque wrenches within ±5% accuracy, re-calibrated annually)
+- Bolts must be lubricated consistently (nut factor K determined per lot)
+- Flange alignment must be verified before gasket placement
+- Bolt-up must follow the controlled cross-pattern sequence in multiple passes
+
+## Pre-Job Preparation
+
+### Inspection
+
+1. **Flange faces**: check for rust, pitting, nicks, radial scratches across the serrations. Any scratch crossing the gasket seating area deeper than 0.1 mm requires machining or replacement.
+2. **Flange flatness**: use a straight edge across the flange face. Maximum out-of-flat: 0.2 mm per 100 mm diameter (ASME B16.5).
+3. **Bolt holes**: aligned within 1.5 mm; bolts must pass through freely without forcing.
+4. **Gasket**: verify material matches spec; check for physical damage, shelf-life expiry.
+
+### Flange Alignment
+
+Per ASME PCC-1:
+- Maximum offset between two flange faces: **1.5 mm** (1/16")
+- Maximum angular misalignment: **1 mm per 200 mm** (1/8" per foot) flange diameter
+- Maximum pipe stress applied during alignment: do not use bolts to pull misaligned flanges together — use external rigging, jacks, or adjust supports.
+
+<Callout type="warning" title="Never Use Bolts to Pull Flanges Together" severity="warning">
+Forcing misaligned flanges with bolts induces permanent bending stress in the joint. When pressure and temperature are applied, the uneven load distribution causes uneven gasket crush and almost guarantees a leak. Use external alignment tools (come-alongs, jacks) to bring flanges into parallel alignment before any bolts are inserted.
+</Callout>
+
+### Bolt and Lubrication
+
+- Inspect bolts for thread damage, rust, and cracks. Replace any suspect bolts.
+- Lubricate all bolt threads, nut faces, and washer faces with specified lubricant (moly paste, nickel anti-seize, PTFE-based — per project spec).
+- **Nut factor K**: Without lubrication, K = 0.20-0.25 for rusty steel; with proper lubrication, K = 0.10-0.14. Lower K = more accurate preload for a given torque.
+- Use hardened washers under the nut and bolt head to distribute load and prevent embedment.
+
+<Calculator id="flange-bolt-torque" label="Flange Bolt Torque Calculator" />
+
+## Gasket Installation
+
+1. Ensure both flange faces are clean and dry — no old gasket material, grease, oil, or dirt.
+2. Use a new gasket every time a joint is broken — reusing compressed gaskets is never acceptable.
+3. Do not apply gasket sealant, grease, or anti-seize to the gasket itself unless specified (spiral-wound and RTJ gaskets are installed dry; some compressed fiber gaskets use light oil per instructions).
+4. Center the gasket on the flange face. Use alignment pins or dowels if available. For spiral-wound gaskets, confirm the inner ring is centered and the outer guide ring sits evenly on the flange face.
+5. Never use a gasket that has been dropped or damaged.
+
+## Bolt-Up Procedure
+
+### The Star Pattern (Cruciform Tightening)
+
+Tighten bolts in numbered cross-sequence (1, n/2+1, 2, n/2+2, ...) for all circular flanges. This pulls the flange faces together evenly without pinching the gasket to one side.
+
+### Number of Passes
+
+ASME PCC-1 mandates at minimum three passes at increasing torque:
+
+| Pass | Target Torque |
+|---|---|
+| Pass 1 | 30% of final torque |
+| Pass 2 | 60% of final torque |
+| Pass 3 | 100% of final torque |
+| Pass 4 (optional) | 100% in circular sequence to equalize |
+
+- Apply torque smoothly; do not use impact wrenches (except for hand-tight pass on very large joints)
+- Hold the torque wrench at the very end; apply force perpendicular to the wrench
+- After final pass, go around the flange in a circular pattern once more to verify each bolt is at final torque
+
+<Callout type="info" title="Hot Torquing and Re-Torquing" severity="info">
+For high-temperature service, many facilities require re-torquing after 24 hours at operating temperature (hot torque). This compensates for gasket relaxation and differential thermal expansion. Gasket types like spiral-wound benefit significantly from this. Follow the gasket manufacturer's recommendation: compressed fiber, PTFE, and flexible graphite gaskets relax more than RTJ or metal-jacketed types.
+</Callout>
+
+## Torque Calculation Inputs
+
+Target bolt stress is typically 30,000-45,000 psi (200-310 MPa) for low-alloy steel bolts, giving:
+
+| Bolt Material | Target Stress |
+|---|---|
+| B7 carbon steel (ASTM A193-B7) | 45,000 psi (310 MPa) |
+| B8 stainless (A193-B8 Cl.2) | 25,000-30,000 psi (strain-hardened) |
+| L7 low-temp (A320-L7) | 45,000 psi |
+| 2H heavy hex nuts (A194-2H) | Match bolt grade |
+
+Torque formula T = K × D × F:
+- T: torque (ft-lb or N·m)
+- K: nut factor (0.10-0.20 per lubrication)
+- D: bolt nominal diameter (in or m)
+- F: bolt preload (lb or N)
+
+## Common Leakage Causes
+
+| Symptom | Likely Cause |
+|---|---|
+| Leak immediately on pressurization | Gasket not centered; inadequate torque; wrong gasket material |
+| Leak after heat-up | Differential thermal expansion; bolt relaxation; gasket creep |
+| Leak after weeks/months | Vibration loosening; bolt relaxation; gasket aging; corrosion |
+| Leak under the nut/bolt head | Washer missing; insufficient nut embedment; flange back-face damage |
+| Leak only on one side | Misalignment; uneven flange gap; warped flange |
+| Small weeping leak | Over-torqued/gasket crushed; radial scratch across flange face |
+
+## Special Cases
+
+### RTJ (Ring Type Joint) Gaskets
+- Inspect ring groove for damage; measure groove dimensions per API 6A/ASME B16.5
+- The ring deforms plastically to seal — replace ring every time
+- Light lubrication of the ring groove sides (never the sealing surfaces)
+- Torque slightly higher than flat-faced gaskets; RTJ is metal-to-metal.
+
+### Heat Exchanger Flanges
+- Use sequential torque per TEMA recommendations
+- Often require hot re-torque due to large diameter and thermal gradients
+- Consider hydraulic tensioning for large bolts (&gt;2" diameter) for more accurate preload.
+
+### High-Temperature Steam
+- B16.5 Class 600+ flanges
+- Use spiral-wound graphite-filled gaskets with inner/outer rings
+- Consider bolt material (B16 for &gt;540°C)
+- Hot torque after 24 hours mandatory
+
+## Post-Assembly Verification
+
+1. Walk around the joint; visually confirm even gasket compression (spiral-wound outer ring must contact flange face uniformly with no gaps)
+2. Mark all bolts with torque-seal paint across the nut and flange for post-confirmation of loosening
+3. After hydrotest/pressurization, inspect for weeping
+4. After reaching operating temperature, check for leaks during first 72 hours
+5. Record torque values, bolt/gasket lot numbers, and installer name in the joint log
+
+## Summary
+
+Flange joint reliability depends on disciplined procedure following ASME PCC-1: correct alignment (no bolt pulling), new gasket on every assembly, proper bolt lubrication (K factor known and documented), three-pass cross-pattern bolt-up with calibrated torque wrenches, and hot re-torquing for high-temperature service. Torque alone is only a proxy for bolt preload — critical joints (high pressure, hazardous service) should use hydraulic tensioning or ultrasonic bolt measurement to verify actual bolt elongation. More flange failures are caused by poor installation than by incorrect selection.

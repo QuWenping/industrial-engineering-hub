@@ -1,0 +1,192 @@
+---
+title: "Chiller Selection Guide"
+description: "How to select chillers for industrial and HVAC applications: centrifugal, screw, scroll, reciprocating, absorption types; efficiency metrics (COP, IPLV, kW/ton), refrigerants, and selection by capacity."
+category: "HVAC"
+keywords: ["chiller selection", "centrifugal chiller", "screw chiller", "chiller COP", "chiller efficiency", "absorption chiller"]
+updated: "2026-07-29"
+related:
+  - heat-exchanger-calculator
+  - pump-power-calculator
+  - pressure-drop-calculator
+  - "/guides/cooling-tower-basics"
+---
+
+## Overview
+
+Chillers produce chilled water (typically 6-7°C supply) for air conditioning, process cooling, and industrial refrigeration. They are the largest single energy consumer in most facilities — often 30-50% of total electrical load. Selecting the right type, size, and efficiency level has enormous energy and cost consequences over the 20-30 year life. Major types: centrifugal, screw, scroll, reciprocating, and absorption.
+
+<Formula>Cooling capacity in tons = gpm × ΔT / 24; where ΔT is chilled water temperature difference (typically 5°C / 10°F); 1 refrigeration ton = 12,000 BTU/h = 3.517 kW of cooling</Formula>
+
+## Chiller Types and Applications
+
+### Centrifugal Chillers (Dynamic Compression)
+- Uses centrifugal compressor with one or more impellers (one-stage, two-stage, or magnetic-bearing)
+- Capacity range: 150 to 5,000+ tons (500 kW to 18 MW)
+- Efficiency: 0.50-0.65 kW/ton (COP 5.4-7.0) at full load; excellent at large sizes
+- Best for: large commercial buildings (offices, hospitals, malls), campus cooling, large process loads
+- Capacity control: inlet guide vanes + variable speed drive (VSD); turndown to 10-20% load
+- Magnetic-bearing models: oil-free, very low maintenance, high part-load efficiency; premium cost
+- Drives: direct-drive (high speed) or geared (lower speed)
+- Refrigerants: R-134a, R-1234ze, R-514A (low-GWP replacements)
+
+### Screw Chillers (Positive Displacement — Helical Rotary)
+- Twin helical screws compress refrigerant between meshing rotors
+- Capacity range: 50 to 1,000 tons (175 kW to 3.5 MW)
+- Efficiency: 0.60-0.80 kW/ton (COP 4.4-5.9)
+- Best for: medium to large process loads, industrial cooling, district cooling, buildings with variable loads
+- Fewer moving parts than reciprocating; reliable; smooth operation
+- Capacity control: slide valve, variable speed, or both; turndown to ~10%
+- Refrigerants: R-134a, R-1234ze, R-513A; ammonia for industrial
+
+### Scroll Chillers
+- Spiral scroll compressor (one fixed, one orbiting) — positive displacement
+- Capacity range: 10 to 200 tons (35 kW to 700 kW); often modular (multi-scroll)
+- Efficiency: 0.75-1.0 kW/ton (COP 3.5-4.7)
+- Best for: small to medium commercial, light industrial, process cooling, modular plants
+- Very reliable (few moving parts); low vibration; quiet
+- Capacity control: multiple fixed stages (e.g., 4 compressors = 4 steps) or variable-speed scroll
+- Refrigerants: R-410A, R-32, R-454B (low-GWP trend)
+
+### Reciprocating Chillers (Piston Compressor)
+- Piston-cylinder compression — old but robust
+- Capacity range: 5 to 200 tons (17-700 kW)
+- Efficiency: 0.90-1.2 kW/ton (COP 2.9-3.9) — lower than modern types
+- Best for: small industrial, high-temperature process applications, low-temperature brine
+- Tolerant of high pressure ratios and varied refrigerants
+- More maintenance (valves, rings); higher noise/vibration
+- Declining market share in favor of scroll/screw
+
+### Absorption Chillers (Heat-Driven)
+- Uses heat (steam, hot water, natural gas, waste heat) instead of mechanical compression — lithium bromide/water cycle (water = refrigerant, LiBr = absorbent)
+- Capacity range: 10 to 2,000+ tons
+- Electric input minimal (pumps only): COP ≈ 0.7-1.2 single-effect; 1.2-1.4 double-effect
+- Best for: facilities with waste steam (cogeneration, power plants, industrial), low-cost gas, or where electricity is unavailable/expensive
+- No compressor, no refrigerants (water is refrigerant); very low electrical load
+- Higher capital cost; lower electrical efficiency but fuel/heat-driven
+- Types: single-effect (low-pressure steam/hot water); double-effect (higher pressure steam or direct-fired gas)
+
+<Callout type="info" title="Chiller Type by Capacity" severity="info">
+Quick selection guidance by cooling load: under 50 tons → scroll; 50-200 tons → scroll or small screw; 200-800 tons → screw; 800+ tons → centrifugal or large screw; waste heat available → absorption. Magnetic-bearing centrifugal dominates 500-2000 ton high-efficiency applications; screw is the workhorse for industrial; scroll for commercial.
+</Callout>
+
+## Efficiency Metrics
+
+### Full Load: COP and kW/Ton
+- **COP (Coefficient of Performance)** = kW_cooling / kW_electricity input. Higher is better.
+- **kW/ton** = kW electricity per ton of cooling. Lower is better (1.0 kW/ton = COP 3.5; 0.5 kW/ton = COP 7.0).
+
+### Part Load: IPLV / NPLV
+Chillers operate at part load 90%+ of the time. IPLV (Integrated Part Load Value) weights efficiency at 25/50/75/100% load:
+```
+IPLV = 0.01 × A + 0.42 × B + 0.45 × C + 0.12 × D
+```
+(A = 100%, B = 75%, C = 50%, D = 25% efficiency in kW/ton or COP)
+
+IPLV reflects typical building operation better than full-load COP. For variable-load operation, select for lowest IPLV/NPLV rather than lowest full-load kW/ton.
+
+### Typical Efficiency by Type (AHRI conditions)
+
+| Chiller Type | Full Load kW/ton | IPLV kW/ton | Full Load COP |
+|---|---|---|---|
+| Magnetic-bearing centrifugal | 0.48-0.55 | 0.30-0.40 | 6.4-7.3 |
+| Standard centrifugal | 0.55-0.65 | 0.35-0.50 | 5.4-6.4 |
+| High-efficiency screw | 0.60-0.70 | 0.40-0.55 | 5.0-5.9 |
+| Standard screw | 0.70-0.85 | 0.50-0.70 | 4.1-5.0 |
+| Scroll (modulating) | 0.70-0.85 | 0.55-0.75 | 4.1-5.0 |
+| Scroll (staged) | 0.80-1.0 | 0.65-0.90 | 3.5-4.4 |
+| Reciprocating | 0.90-1.2 | 0.75-1.0 | 2.9-3.9 |
+| Absorption (double-effect steam) | 0.05 (pump only) | 0.05 | COP 1.2 (thermal) |
+
+## Condenser Type
+
+### Water-Cooled
+- Cooling tower rejects condenser heat
+- Lower condensing temperature → higher efficiency (chiller runs at lower head pressure)
+- Requires cooling tower + condenser water pumps + piping
+- Most efficient option overall for large systems
+- Standard for centrifugal, screw, absorption chillers &gt;100 tons
+
+### Air-Cooled
+- Ambient air blown over condenser coils
+- No cooling tower, no water consumption, simpler installation
+- Higher condensing temperature (higher than wet bulb, at dry bulb) → higher kW/ton (typically 1.1-1.4 kW/ton)
+- Best for small systems, water-scarce areas, locations where towers are impractical
+- Common for scroll and screw chillers to ~200 tons
+
+### Evaporative-Condenser
+- Hybrid: condenser coil in a tower-like unit, water sprayed on coil + air drawn through
+- Between water-cooled and air-cooled in efficiency
+- Used in some industrial and refrigeration applications
+
+<Calculator id="heat-exchanger-calculator" label="Heat Exchanger Calculator" />
+
+## Refrigerant Landscape (2026+)
+
+Refrigerants are rapidly transitioning to low-GWP (global warming potential) due to regulatory phase-downs (Kigali Amendment, US AIM Act, EU F-Gas):
+
+| Refrigerant | GWP | Status |
+|---|---|---|
+| R-134a | 1430 | Phase-down; still common in existing centrifugal |
+| R-410A | 2088 | Phase-down; used in scroll/screw |
+| R-1234ze | 1 | Low-GWP replacement for R-134a (centrifugal); mildly flammable (A2L) |
+| R-1234yf | 1 | Low-GWP for automotive/small systems |
+| R-514A | 2 | Low-GWP for centrifugal |
+| R-454B | 466 | Low-GWP R-410A replacement (scroll/screw) |
+| R-32 | 675 | Lower GWP alternative; A2L flammable |
+| Ammonia (R-717) | 0 | Industrial refrigeration; toxic, efficient |
+| Propane (R-290) | 3 | Very efficient, hydrocarbon; flammable, charge limits |
+| Water (R-718) | 0 | Absorption systems |
+
+New installations should specify low-GWP refrigerants. Check local codes for A2L (mildly flammable) refrigerant handling requirements.
+
+## Selection Workflow
+
+1. **Determine cooling load** (peak tons, minimum load, diversity)
+2. **Select chiller type** by capacity (see table above)
+3. **Choose condenser type** (water-cooled for &gt;100 tons unless water-limited)
+4. **Define chilled water temperatures**:
+   - Standard: 44°F supply / 56°F return (6.7°C / 13.3°C) = 12°F ΔT
+   - Low-temperature: 20-40°F (brine/chilled water for process)
+   - Higher chilled water temperature = higher chiller efficiency (each 1°F higher supply improves efficiency by ~1.5-2%)
+5. **Specify efficiency**: compare full-load kW/ton AND IPLV; premium efficiency often pays back in 2-3 years
+6. **Redundancy**: N+1 (one standby for facilities requiring continuous cooling); N-1 (one failure tolerated)
+7. **Controls**: BMS interface; VFD for capacity modulation; remote monitoring
+8. **Acoustics**: specify sound requirements (urban sites may require low-noise variants)
+9. **Vibration**: vibration isolation pads, flexible connections
+
+## Plant Configuration
+
+### Single Chiller
+Simplest; appropriate for small loads; zero redundancy.
+
+### Multiple Chillers (Series or Parallel)
+- **Parallel** (most common): chillers share load; each can run independently; provides redundancy; staging matches part load efficiency
+- **Series counterflow**: for very high ΔT (15-20°F) or low temps; higher efficiency at part load; more complex
+- Use unequal sizes where load profile is skewed (e.g., 200 ton + 400 ton = better staging than two 300 ton)
+
+### Variable Primary Flow (VPF)
+Chilled water pumps vary flow through chiller evaporator with VFD — saves pumping energy (most modern plants). Requires careful chiller minimum-flow protection.
+
+### Free Cooling
+In cold weather (low wet bulb), plate heat exchanger bypasses chiller to cool water directly via cooling tower (water-side economizer). Saves 100% of chiller energy in winter — major savings in cold climates.
+
+## Chilled Water System Design
+
+- Chilled water ΔT: 5-8°C (10-15°F) standard; higher ΔT reduces pumping power
+- Chilled water flow: typically 2.4 gpm/ton at 10°F ΔT (or 2.0 gpm/ton at 12°F ΔT)
+- Variable primary flow with VFD pumps for energy efficiency
+- Buffer tank for small systems (prevents short cycling)
+- Expansion tank, air separator, makeup water
+
+## Maintenance Considerations
+
+- Annual efficiency loss without maintenance: 5-15%
+- Tube cleaning: fouled condenser tubes increase kW/ton by 10-30%
+- Refrigerant charge: low charge reduces capacity and efficiency
+- Oil analysis (for non-magnetic-bearing units): detects compressor wear
+- Water treatment: fouled tubes are #1 energy waster
+- 20+ year life with proper maintenance
+
+## Summary
+
+Chillers are the largest energy consumer in most facilities. Select by capacity: scroll for &lt;50 tons, screw for 50-800 tons, centrifugal (especially magnetic-bearing) for 800+ tons, and absorption when waste heat is available. Efficiency matters most over the 20-year life — prioritize IPLV (part-load) over full-load COP as chillers run at part load most of the time. Water-cooled chillers are most efficient; air-cooled simpler for small systems. Specify low-GWP refrigerants (R-1234ze, R-454B, R-513A) for new installations. Premium efficiency models pay back in 2-3 years; fouled tubes can negate that premium — maintain the chiller and cooling tower.

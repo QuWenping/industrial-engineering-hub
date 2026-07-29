@@ -9,7 +9,7 @@ import { SearchableCatalog } from "@/components/search/SearchableCatalog";
 export const metadata: Metadata = constructMetadata({
   title: "Engineering Calculators, Guides & Materials",
   description:
-    "Browse 53+ free engineering calculators, 30+ technical guides, and material property references for fluid mechanics, pump sizing, structural design, thermal engineering, and more.",
+    "Browse 53+ free engineering calculators, 50+ technical guides, and material property references for fluid mechanics, pump sizing, structural design, thermal engineering, and more.",
   path: "/tools",
   keywords: [
     "engineering calculators",

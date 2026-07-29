@@ -1,0 +1,156 @@
+---
+title: "Pipe Stress Analysis Basics"
+description: "Introduction to pipe stress analysis: thermal expansion, flexibility analysis, support spacing, code requirements (ASME B31.3), and when to use Caepipe/AutoPIPE or simplified methods."
+category: "Mechanical"
+keywords: ["pipe stress analysis", "thermal expansion pipe", "ASME B31.3", "pipe flexibility", "pipe support design"]
+updated: "2026-07-29"
+related:
+  - pipe-support-spacing
+  - pipe-weight-calculator
+  - pressure-drop-calculator
+  - "/guides/pipe-sizing-fundamentals"
+---
+
+## Overview
+
+Pipe stress analysis ensures piping systems can withstand thermal expansion, weight, pressure, wind, seismic, and dynamic loads without exceeding allowable stress limits, failing, or overloading connected equipment (pumps, turbines, exchangers). It is required by ASME B31 codes for process, power, and gas piping. Simple systems can be analyzed by hand; complex systems require specialized software (CAESAR II, AutoPIPE, Caepipe).
+
+<Formula>Expansion ΔL = L × α × ΔT (thermal growth in mm; α = thermal expansion coefficient, ~11.7×10⁻⁶/°C for carbon steel)</Formula>
+
+## When Stress Analysis Is Required
+
+Per ASME B31.3, formal stress analysis is required when any of the following apply:
+
+- Design temperature > 150°C or &lt; -45°C
+- Pipe size ≥ NPS 8 with temperature difference > 100°C
+- Piping connected to rotating equipment (pumps, compressors, turbines)
+- Piping connected to pressure vessels or heat exchangers with load limits
+- Piping containing hazardous fluids (Category M)
+- Tall/long vertical runs
+- Systems with large reactions at equipment nozzles
+- Seismic/wind loads apply (outdoor/elevated)
+
+<Callout type="info" title="Quick Rule of Thumb for Flexibility" severity="info">
+A piping system between two anchors is adequately flexible if the length between anchors divided by the pipe diameter is sufficient to absorb the thermal expansion. A typical guidance is L/D > 20-30 for a single bend; complex runs require formal analysis. When in doubt, add an expansion loop.
+</Callout>
+
+## Loads Considered
+
+### Sustained Loads (primary)
+- Internal/external pressure (hoop stress: S = PD/2t)
+- Weight of pipe, fluid, insulation, valves
+- These are present throughout operation; must satisfy B31 sustained stress limits
+
+### Thermal Expansion Loads (secondary)
+- Thermal growth from ambient to operating temperature
+- Displacement from equipment movement
+- Friction at supports
+- These are self-limiting — if a small amount of yielding occurs, the load redistributes. Allowable stress is higher (1.25 S_c + 0.25 S_h or 1.25 S_h)
+
+### Occasional Loads
+- Wind, earthquake (seismic)
+- Water hammer, relief valve discharge reaction forces
+- Snow/ice for outdoor piping
+- Allowable stress: 1.33 × allowable for brief events
+
+### Dynamic Loads
+- Acoustic vibration (high pressure drop, let-down stations)
+- Machinery-induced vibration (pump/compressor pulsation)
+- Relief valve opening transient forces
+- Fatigue cycling from repeated thermal or pressure cycles
+
+## Expansion Calculation
+
+The fundamental thermal expansion of a straight pipe:
+
+```
+ΔL = L × α × ΔT
+```
+
+- L: pipe length between anchors (m)
+- α: coefficient of thermal expansion (m/m·°C)
+- ΔT: temperature change from installed to operating (°C)
+
+Typical α values (×10⁻⁶ /°C):
+
+| Material | α | 100m pipe, 100°C ΔT |
+|---|---|---|
+| Carbon steel | 11.7 | 117 mm |
+| 304/316 stainless | 16-17 | 170 mm |
+| Copper | 16.5 | 165 mm |
+| Aluminum | 23 | 230 mm |
+| FRP/HDPE | 50-150 | 500-1500 mm |
+
+Without flexibility, the force required to restrain this expansion in carbon steel:
+
+<Formula>F = E × A × α × ΔT (force in Newtons; E = 200 GPa for steel; A = metal area in m²)</Formula>
+
+This force is enormous (thousands of kN for even NPS 12 pipe) — always provide flexibility; never fully anchor both ends of a straight hot pipe.
+
+## Providing Flexibility
+
+### Expansion Loops (most common)
+U-shaped or L-shaped bends in the piping route absorb thermal growth by bending. A full U-loop requires no maintenance, no bellows to fail, and works for all temperatures. Typical design: loop width = 3-5 × D, height 4-6 m for NPS 12 at 200°C.
+
+### Expansion Joints (bellows)
+Where space is tight or pressure/temperature is moderate: axial, lateral, or hinged bellows absorb movement. Weaknesses: fatigue life, failure risk, corrosion, need for careful anchor design.
+
+### Changes of Direction
+Natural flexibility from elbows, offsets, and vertical runs. A Z-shape or L-shape in the route is often enough.
+
+### Cold Spring (Prespring)
+Pipe sprung 50% of expected expansion during installation — reduces initial reaction on equipment nozzles at commissioning. Code treats this conservatively.
+
+## ASME B31.3 Stress Limits
+
+| Load Case | Allowable Stress |
+|---|---|
+| Sustained (SUS) | S_h (hot allowable from code tables) |
+| Expansion (EXP) | S_A = f (1.25 S_c + 0.25 S_h) — stress range factor f = 1.0-1.2 |
+| Occasional (OCC) | 1.33 × S_h (wind/seismic) |
+| Operating (OPE) | Check nozzle loads and support loads (not code-stress-limited) |
+
+<Calculator id="pipe-support-spacing" label="Pipe Support Spacing Calculator" />
+
+## Equipment Nozzle Loads
+
+The most critical real-world constraint: every pump, turbine, exchanger, and vessel has allowable nozzle loads published by the manufacturer or API standards (API 610 for pumps, API 617 for compressors, NEMA SM23 for turbines). Exceeding these:
+- Damages pump seals and bearings
+- Misaligns rotating equipment
+- Causes gasket leaks at flanges
+- Cracks vessel welds
+
+Piping must be supported and flexibly routed so that thermal loads on equipment nozzles stay within these limits.
+
+## Support Types
+
+| Type | Purpose |
+|---|---|
+| Anchor | Fixes all translation/rotation; at equipment, building penetrations |
+| Rigid hanger | Carries weight, allows lateral movement |
+| Spring hanger | Carries weight while allowing vertical thermal movement |
+| Constant-spring | For large vertical displacement; maintains load through travel |
+| Guide | Restrains lateral movement, allows axial travel |
+| Stop/limit | Restrains displacement in one direction |
+| Snubber/shock | Free for slow movement, locks for dynamic (water hammer, seismic) |
+
+## Computer Analysis Workflow
+
+For anything beyond simple straight pipe:
+
+1. Build the piping model in software (geometry, materials, sizes, wall thickness)
+2. Input operating conditions (T, P, fluid density, insulation weight)
+3. Define boundary conditions (anchors, restraints, equipment nozzle stiffness)
+4. Apply loads (pressure, weight, temperature, wind/seismic)
+5. Define load cases (SUS, EXP, OCC, OPE, FAT)
+6. Run analysis
+7. Evaluate: code stresses, nozzle loads, support loads, displacements
+8. Revise supports/routing and iterate until all pass
+
+<Callout type="warning" title="Spring Hangers Are Not Optional on Hot Lines" severity="warning">
+Piping operating above ~150°C will lift off rigid supports as it thermally expands, transferring weight to other supports and equipment nozzles. Spring hangers are required where vertical movement exceeds ~10 mm. Omitting them is the most common field piping failure mode.
+</Callout>
+
+## Summary
+
+Pipe stress analysis protects both piping integrity and connected equipment from thermal expansion forces. ASME B31.3 governs allowable stresses: sustained loads must not exceed hot allowable stress; expansion stress ranges are allowed higher limits. Key practices: never anchor both ends of a straight hot pipe, use expansion loops or bellows for flexibility, respect equipment nozzle loads, specify spring hangers where vertical movement exceeds 10 mm. Formal computer analysis (CAESAR II, AutoPIPE) is required for high-temperature, large-bore, or rotating-equipment piping.

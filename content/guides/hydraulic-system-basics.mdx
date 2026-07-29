@@ -1,0 +1,209 @@
+---
+title: "Hydraulic System Basics"
+description: "How industrial hydraulic systems work: pumps, cylinders, motors, valves, pressure/flow, circuit design, fluid selection, filtration, and troubleshooting common hydraulic problems."
+category: "Mechanical"
+keywords: ["hydraulic system", "hydraulic pump", "hydraulic cylinder", "hydraulic valve", "hydraulic fluid", "hydraulic circuit design"]
+updated: "2026-07-29"
+related:
+  - pump-power-calculator
+  - pressure-drop-calculator
+  - torque-calculator
+---
+
+## Overview
+
+Industrial hydraulic systems transmit power via pressurized fluid (typically mineral oil) to produce linear or rotary motion with high force density (10-100× force-to-weight ratio compared to electric motors). Used in presses, injection molding, construction equipment, actuators, machine tools, material handling, and aerospace. Core principle: Pascal's law — pressure applied to a confined fluid is transmitted undiminished to all points.
+
+<Formula>Force = Pressure × Area (F = P × A); cylinder extension force = P × π × bore²/4; pump hydraulic power (kW) = P(bar) × Q(lpm) / 600</Formula>
+
+## Basic Components
+
+### Prime Mover
+Electric motor (standard TEFC) or diesel engine — provides input power to the pump. Typical speeds: 1500/1800 rpm (50/60 Hz).
+
+### Hydraulic Pump
+Converts mechanical power to hydraulic power.
+
+| Type | Pressure Range | Characteristics | Best For |
+|---|---|---|---|
+| Gear pump (external) | up to 250 bar | Fixed displacement; simple; low cost; noisy | Low/medium pressure, simple circuits, mobile equipment |
+| Vane pump | up to 210 bar | Fixed or variable; quieter; moderate cost | Machine tools, industrial |
+| Axial piston pump (swashplate) | up to 350-450 bar | Variable displacement; high efficiency; high pressure | Industrial high pressure, mobile, precision control |
+| Bent-axis piston | up to 400-500 bar | Highest efficiency; most expensive | Heavy industry, high performance |
+| Radial piston | up to 700+ bar | Very high pressure; low speed | Presses, very high force |
+
+Fixed displacement pumps deliver constant flow; variable displacement pumps adjust flow to demand (load-sensing/pressure-compensated), saving energy.
+
+### Hydraulic Fluid
+Primarily mineral oil with additive packages (anti-wear, anti-foam, anti-rust, anti-oxidant, viscosity index improvers).
+
+Key properties:
+- **Viscosity**: ISO VG 32, 46, 68 are standard (ISO VG 46 = medium industrial). Operating viscosity 10-100 cSt (target 20-50 cSt for pumps)
+- **Viscosity index (VI)**: high VI for wide temperature ranges (multi-grade)
+- **Fire-resistant fluids**: water-glycol, phosphate ester, synthetic — for high-temperature/safety-critical (near furnaces, aviation)
+- **Environmentally friendly**: biodegradable esters (mobile/offshore)
+
+Fluid selection depends on temperature range, pump type, fire risk, and environmental requirements. Change every 2,000-5,000 hours with proper filtration.
+
+### Hydraulic Cylinders (Linear Actuators)
+Convert hydraulic pressure and flow to linear force and motion.
+
+- Bore diameter: determines force output at a given pressure (F = P × π × D² / 4)
+- Rod diameter: determines retraction force and rod column strength
+- Stroke length: travel distance
+- Mounting: clevis, flange, trunnion, foot — affects rod buckling and side loading
+- Single-acting (spring/gravity return) vs double-acting (power in both directions)
+- Cushioning at end of stroke to decelerate load (prevents impact damage)
+
+### Hydraulic Motors (Rotary Actuators)
+Convert hydraulic flow back to rotary motion and torque. Same basic types as pumps (gear, vane, piston) but run in reverse.
+
+<Formula>Torque T = D × ΔP / (20π) (N·m per bar for displacement D in cc/rev); Speed n = Q/D (rpm for flow Q in lpm)</Formula>
+
+### Control Valves
+- **Directional control valves (DCV)**: 2/2, 3/2, 4/3 spool valves (positions/ways) — direct flow to extend/retract cylinders or forward/reverse motors. Spool center configurations: open center (all ports connected — for fixed pump idle), closed center (all blocked — for variable pumps), tandem, float, etc.
+- **Pressure control valves**: relief valves (limit max pressure, safety), pressure reducing, sequence, counterbalance, unloading
+- **Flow control valves**: throttle flow to control speed (meter-in, meter-out, bleed-off)
+- **Check valves**: one-way flow; pilot-operated check (lock cylinder position)
+- **Proportional / servo valves**: continuously variable control for precision position/speed/force (closed-loop control)
+
+### Pressure vs Flow Control
+- **Pressure** is determined by the RESISTANCE to flow (the load). Pump does NOT "produce pressure" — pressure rises to overcome the load, up to relief valve setting.
+- **Flow** determines speed of actuator (v_cylinder = Q / A; n_motor = Q / D).
+- No flow = no motion (even at high pressure); flow without resistance = no pressure (unloaded pump circulates oil with minimal pressure).
+
+### Filtration
+Contamination is the #1 cause of hydraulic failures. Target cleanliness per ISO 4406:
+- General industrial: 18/16/13
+- Servo/proportional valves: 15/13/10
+- High-pressure piston pumps: 16/14/11
+
+Filter locations:
+- **Suction strainer** at reservoir (coarse, protects pump)
+- **Pressure filter** after pump (protects valves)
+- **Return filter** before reservoir (catches wear debris from system)
+- **Kidney loop** (offline filtration cart): continuous polishing
+
+<Callout type="warning" title="Fluid Contamination Destroys Components" severity="warning">
+Up to 80% of hydraulic system failures are caused by fluid contamination — particles wear pump/valve clearances, water degrades additives and causes corrosion, air causes spongy control and cavitation. Establish a contamination control program: proper filters, regular oil analysis, sealed reservoirs (desiccant breathers), and clean component handling during maintenance.
+</Callout>
+
+### Reservoir (Tank)
+- Holds fluid (typically 2-5× pump flow per minute)
+- Allows deaeration (air bubbles rise) and contamination settling
+- Cools fluid (if not actively cooled)
+- Baffles separate return from suction to prevent air entrainment
+- Level gauge, fill cap with breather (dessicant), drain, cleanout cover, temperature sensor
+
+### Heat Exchanger / Cooler
+Hydraulic systems generate heat (15-30% of input power is lost as heat due to inefficiency, pressure drops across relief valves, throttling losses). If the natural cooling from the reservoir is insufficient, an oil cooler (water-cooled or air-cooled) is required.
+
+Heat generation: P_loss (kW) = P_in × (1 - η) for continuous operation; or P_relief = P_relief_valve × Q_overflow / 600 for oil passing over relief valve.
+
+Maintain oil temperature 40-60°C; avoid continuous operation above 80°C (degrades oil rapidly).
+
+### Accumulators
+Pressurized vessels storing hydraulic energy:
+- Bladder, piston, or diaphragm type with nitrogen pre-charge
+- Applications: emergency power, shock absorption, pulsation dampening, supplementing pump flow during peak demand, leakage compensation
+- MUST have pressure relief, isolation, and bleed per hydraulic safety codes
+
+<Calculator id="pump-power-calculator" label="Pump Power Calculator" />
+
+## Basic Circuit Concepts
+
+### Open Center Circuit (Fixed Pump)
+- Fixed-displacement pump; directional valve has open center (P connected to T in neutral)
+- Pump flow returns to tank at low pressure when no actuator is moving — idles without heat
+- When valve shifts, flow goes to actuator, pressure rises to match load
+- Simple; low cost; good for single actuator
+- One actuator at a time; multiple actuators require parallel valves
+
+### Closed Center Circuit (Variable Pump)
+- Variable-displacement pressure-compensated pump; directional valve has closed center (P blocked)
+- Pump standby at zero flow at high pressure (compensator cuts stroke to maintain pressure)
+- Multiple actuators can work simultaneously; pump supplies only the flow demanded
+- Higher efficiency; more complex and expensive; standard for modern industrial systems
+
+### Load-Sensing (LS) Circuit
+- Variable pump senses the highest load pressure and supplies only the flow needed at just above that pressure
+- Most energy-efficient system (no wasted flow over relief; minimal pressure margin)
+- Used widely in mobile and modern industrial hydraulics
+
+## Power Calculation
+
+### Hydraulic Power
+```
+P_hydraulic (kW) = P(bar) × Q(lpm) / 600
+P_hydraulic (hp) = P(psi) × Q(gpm) / 1714
+```
+
+### Cylinder Force
+```
+F_extend (N) = P(bar) × 100000 × π × (bore(m))² / 4
+F_retract (N) = P(bar) × 100000 × π × (bore² - rod²)(m²) / 4
+```
+
+### Cylinder Speed
+```
+v_extend (m/s) = Q(lpm) × 10^-3 / 60 / (π × bore²(m²) / 4)
+v_retract = same but with (bore² - rod²) area
+```
+
+### Motor Torque and Speed
+```
+T (N·m) = V_displacement (cc/rev) × ΔP (bar) / (20π)
+N (rpm) = Q(lpm) × 1000 / V (cc/rev)
+```
+
+### Example: 100 Ton Press
+- Required force: 100 ton = ~1 MN
+- Cylinder bore: 250 mm
+- Required pressure: P = F/A = 1e6 / (π × 0.25²/4) = ~204 bar
+- Pump flow to extend at 50 mm/s: Q = A × v = π × (0.25)²/4 × 0.05 = 0.00245 m³/s = ~147 lpm
+- Pump hydraulic power: P×Q/600 = 204 × 147 / 600 = ~50 kW
+- Motor power (with 85% pump efficiency): ~60 kW
+
+## System Design Workflow
+
+1. Define actuator requirements: force, speed, stroke, duty cycle
+2. Select operating pressure (higher pressure → smaller components, but higher cost per component)
+   - Mobile: 200-400 bar
+   - Industrial: 100-250 bar
+   - Heavy press: 250-700 bar
+3. Size cylinders/motors for force/torque at chosen pressure
+4. Calculate flow requirements for desired speed
+5. Select pump type and displacement (fixed or variable)
+6. Size electric motor (pump power + efficiency margin)
+7. Size reservoir (3-5× pump flow), cooler (heat balance), filtration
+8. Select valves (pressure, directional, flow) for circuit
+9. Size piping/hoses for &lt;3-5 m/s pressure lines, &lt;1-2 m/s suction, &lt;2-3 m/s return
+10. Build circuit schematic (ISO 1219 symbols)
+11. Safety: relief valves, over-center/counterbalance for hanging loads, emergency stop, lockout
+
+## Common Problems and Troubleshooting
+
+| Symptom | Likely Cause |
+|---|---|
+| No pressure / no motion | Pump not turning; low oil level; relief valve stuck open; pump failed |
+| Slow/low force | Internal leakage (worn pump/cylinder/valve); low oil level; incorrect viscosity; filter clogged |
+| Excessive noise | Cavitation (suction leak/clogged filter); air in system; worn pump; loose components |
+| Overheating oil | Continuous relief valve flow; excessive throttling; cooler undersized/failed; high ambient; wrong viscosity |
+| Erratic/spongy operation | Air entrainment (foamy oil); cylinder seal leakage; improper bleed |
+| Leaking cylinders | Seal wear; scored rod; rod contamination; side load damage |
+| Premature pump failure | Contamination; cavitation; over-pressure; wrong fluid |
+| Valve sticking | Contamination; varnish from degraded oil; solenoid failure; spool damage |
+
+## Safety
+
+Hydraulic systems operate at extreme pressures (up to 700 bar) and can cause severe injury:
+- Hydraulic injection injuries (pinhole leaks at high pressure penetrate skin — medical emergency)
+- Stored energy in accumulators and cylinders (locking loads before maintenance)
+- Never work under a hydraulically-supported load without mechanical lockout/blocks
+- Relieve pressure before breaking any connection
+- Lockout/tagout before maintenance
+- Proper pressure relief protection on every circuit
+
+## Summary
+
+Hydraulic systems provide extremely high force density using Pascal's law: F = P × A. The core components are pump (pressure source), actuator (cylinder/motor), control valves (direction/pressure/flow), fluid, filtration, reservoir, and cooling. Pressure is determined by the load; flow determines speed. Fixed-displacement open-center circuits are simple and low-cost; variable-displacement pressure-compensated and load-sensing circuits are efficient and modern. Contamination is the #1 failure cause — target ISO 4406 16/14/11 cleanliness with proper filtration. Hydraulic power (kW) = P(bar) × Q(lpm) / 600. Safety is paramount: stored energy, injection hazards, and falling loads require lockout and relief protection.

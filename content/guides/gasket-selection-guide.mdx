@@ -1,0 +1,177 @@
+---
+title: "Gasket Selection Guide"
+description: "How to select the right gasket material and type for industrial flange joints: compressed fiber, spiral-wound, RTJ, PTFE, graphite, temperature and pressure limits, and chemical compatibility."
+category: "Mechanical"
+keywords: ["gasket selection", "spiral wound gasket", "RTJ gasket", "gasket material", "flange gasket types"]
+updated: "2026-07-29"
+related:
+  - flange-bolt-torque
+  - flange-rating-calculator
+  - "/guides/flange-installation-best-practices"
+---
+
+## Overview
+
+Gaskets create a seal between two flange faces by deforming under bolt load to fill microscopic imperfections on the flange surface. The correct gasket must be compatible with the fluid, pressure, and temperature; resilient enough to maintain seal during thermal cycling; and strong enough to resist blowout under operating pressure. Selection involves matching gasket type, material, and dimensions to the service conditions and flange standard.
+
+<Formula>Required gasket seating stress y and m-factor (from ASME BPVC Section VIII Div. 1 Appendix 2) govern minimum bolt load for seating and operating conditions.</Formula>
+
+## Gasket Types
+
+### Non-Metallic (Soft) Gaskets
+
+#### Compressed Fiber (CAF / CNAF)
+The historical standard (formerly asbestos, now aramid/glass/mineral fiber in nitrile or EPDM binder).
+
+- Temperature range: -40 to +400°C (depending on fiber/binder)
+- Pressure: up to Class 300 (occasionally Class 600)
+- Fluid compatibility: wide range with appropriate binder (nitrile for oil, EPDM for water/steam, neoprene for mild chemicals)
+- Good for general water, oil, low-pressure steam
+- **Caveat**: aging; sensitive to bolt over-load; requires flat flange faces
+
+#### PTFE (Teflon)
+Universal chemical resistance, but cold flows (creeps) under load.
+
+- Temperature: -200 to +260°C
+- Pressure: Class 150-300 (filled PTFE up to Class 600)
+- Excellent for strong acids, chlorine, pharmaceutical, food
+- Types: virgin PTFE (creeps badly); filled PTFE (glass, carbon, silica-filled to reduce creep); expanded PTFE (ePTFE, softer, lower seating stress)
+- **Caveat**: requires lower bolt stress; re-torque after initial relaxation
+
+#### Flexible Graphite
+Excellent high-temperature performance.
+
+- Temperature: -200 to +550°C (oxidizing); up to 3000°C inert
+- Pressure: Class 150-2500 (with metal reinforcement)
+- Fire-safe, zero creep under load, resistant to most chemicals (NOT for strong oxidizers: nitric acid, hot concentrated sulfuric)
+- Available as plain sheet, laminated with tanged stainless steel core, or as filler in spiral-wound gaskets
+- **Preferred for high-temperature steam and refinery service**
+
+#### Rubber / Elastomer
+Very low seating stress; used for low-pressure flat-face and raised-face flanges.
+
+- Nitrile (NBR): oil/grease, -40 to 120°C
+- EPDM: water/steam/chemical, -50 to 150°C
+- Viton (FKM): chemicals/high temp, -20 to 200°C
+- Pressure: Class 150 max
+
+### Semi-Metallic (Composite)
+
+#### Spiral-Wound (Most Common for Process Industry)
+Alternating V-shaped metal windings (provides resilience/springback) and soft filler (seals against flange faces).
+
+- Metal windings: 304 SS, 316 SS, 321 SS, Inconel, Hastelloy, Monel
+- Filler: flexible graphite (most common), PTFE, mica (for very high T)
+- **Inner ring**: prevents inward buckling, required for Class 900+, vacuum service, high velocity
+- **Outer (guide) ring**: centers gasket in flange, prevents over-compression
+- Temperature: -200 to +870°C (metal dependent)
+- Pressure: Class 150 through Class 2500
+- Excellent resilience for thermal cycling
+- **Standard for raised-face (RF) flanges in chemical, oil & gas, power**
+
+<Callout type="warning" title="Inner Ring Requirement" severity="warning">
+ASME B16.20 requires inner rings for spiral-wound gaskets in Class 900 and above, for all vacuum service, and for services where high fluid velocity could cause winding erosion (e.g., steam, compressor discharge). Omitting the inner ring causes spiral-wound gaskets to buckle inward under load, resulting in leaks or catastrophic blowout.
+</Callout>
+
+#### Kammprofile (Grooved Metal with Soft Layer)
+Solid metal core with concentric grooves, faced with soft material (graphite or PTFE).
+
+- Excellent for heat exchangers, large vessel flanges
+- Good recovery; easy to remove and re-face (replace the soft facing)
+- Temperature to 1000°C; pressure to Class 2500
+- Lower seating stress than solid metal gaskets
+
+### Metallic Gaskets
+
+#### Ring Type Joint (RTJ)
+Solid metal rings (oval or octagonal cross-section) for RTJ-flanged joints (B16.5 RJ facing). The ring deforms plastically under bolt load to seal the groove.
+
+- Materials: soft iron, low-carbon steel, 304/316 SS, Alloy 825, Inconel, Hastelloy
+- Temperature to 1000°C; pressure to Class 2500+
+- Extremely reliable for high pressure/temperature (wellheads, subsea, refinery high-pressure)
+- **Single use**: deforms plastically; never reuse
+- Groove must be clean and undamaged
+
+#### Metal Jacketed
+Soft core (graphite, ceramic) inside a metal jacket. Mostly for heat exchanger gaskets and valve bonnets.
+
+## ASME Gasket Design Factors
+
+ASME BPVC Section VIII Div.1 Appendix 2 defines two design parameters for each gasket type:
+
+| Gasket | y (seating stress, psi) | m (operating factor) |
+|---|---|---|
+| Compressed fiber | 3,700-6,500 | 2.00-2.75 |
+| Rubber (elastomer) &lt;75 Shore A | 0-1,000 | 0.50-1.00 |
+| PTFE (virgin) | 2,500-5,000 | 2.00-3.00 |
+| Flexible graphite sheet | 2,500-4,500 | 1.50-2.50 |
+| Spiral-wound w/ graphite filler | 3,000-10,000 | 2.50-3.50 |
+| RTJ (soft iron) | 20,000+ | 5.50 |
+| Solid metal flat | 20,000-40,000 | 3.50-6.50 |
+
+- `y` is the minimum stress to "seat" the gasket (deform it into flange imperfections) at assembly
+- `m` is the factor for minimum gasket stress during operation (must hold against hydrostatic end force + m × pressure)
+- These govern required bolt load per ASME flange calculation
+
+<Calculator id="flange-rating-calculator" label="Flange Rating Calculator" />
+
+## Selection by Service
+
+### Water / Low-Pressure Steam
+- Class 150-300
+- Compressed fiber with EPDM/nitrile binder OR rubber
+- Cost-effective; forgiving installation
+
+### High-Temperature Steam (&gt;200°C)
+- Class 300-2500
+- Spiral-wound 316 SS / graphite filler with inner/outer rings (ASME B16.20)
+- Hot re-torque after 24 hours
+
+### Hydrocarbon / Oil & Gas
+- Class 150-2500
+- Spiral-wound (316 SS/graphite) for RF flanges
+- RTJ for Class 600+ on wellheads and manifold
+- Fire-safe certification (API 6FB) required for flammable service
+
+### Chemical / Corrosive
+- Match gasket material to fluid chemistry (use manufacturer compatibility chart)
+- PTFE or ePTFE for acids, chlorine, pharmaceuticals
+- Alloy windings (Hastelloy C-276, Alloy 20) for severe service
+- Check gasket binder compatibility (not just facing)
+
+### High Pressure (&gt;Class 900)
+- RTJ or Kammprofile
+- Verify flange groove condition
+- Hydraulic bolt tensioning often required for accurate preload
+
+### Vacuum Service
+- Spiral-wound with inner ring mandatory
+- PTFE envelope or Kammprofile for low leak rate
+- Avoid rubber (permeates at high vacuum)
+
+### Food / Pharmaceutical / Sanitary
+- PTFE, EPDM (FDA-compliant)
+- Tri-clamp fittings with molded gaskets, not bolted flanges
+
+## Compatibility Matrix Highlights
+
+| Fluid | Recommended Gasket | Avoid |
+|---|---|---|
+| Strong acids (HCl, H₂SO₄) | PTFE, Viton | Fiber, graphite |
+| Caustics (NaOH) | EPDM, PTFE (at high T) | Buna-N |
+| Hydrocarbons | Nitrile, Viton, spiral-wound/graphite | Natural rubber, EPDM |
+| Steam (&gt;200°C) | Graphite spiral-wound | Rubber, PTFE (limited T) |
+| Chlorine, oxygen | Alloy C-276 spiral, Monel RTJ, copper | Graphite, any organic |
+| Refrigerants | Neoprene, nitrile | Butyl |
+
+## Installation Best Practice Reminders
+
+1. New gasket every time — compressed gaskets do not re-seal reliably
+2. No gasket cement/sealant on spiral-wound or RTJ
+3. Check flange face finish: RA 125-250 µin (3.2-6.3 µm) for soft gaskets; RA 63-125 µin for spiral-wound; RTJ groove per API
+4. Store gaskets flat, dry, away from heat/oil/UV
+5. Verify gasket dimensions against flange size and class (use B16.21/B16.20 tables)
+
+## Summary
+
+Select gaskets by matching material chemistry, temperature, and pressure to the service conditions. Spiral-wound (316 SS with graphite filler, inner and outer rings) is the default choice for most process piping (Class 150-2500 raised-face flanges). RTJ gaskets are standard for high-pressure and subsea service. PTFE is the universal chemical-resistant option but requires lower bolt stress due to creep. Compressed fiber is economical for water/low-pressure steam but is aging-sensitive. Always follow ASME PCC-1 installation and use a new gasket on every joint break — 70% of flange leaks trace to poor selection or installation, not design.

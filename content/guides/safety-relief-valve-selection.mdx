@@ -1,0 +1,155 @@
+---
+title: "Safety Relief Valve Selection and Sizing"
+description: "How to size pressure safety valves (PSV) and relief valves using API 520/521 standards for gas, liquid, steam, and two-phase service, including set pressure, overpressure, and installation rules."
+category: "Process"
+keywords: ["relief valve sizing", "safety valve PSV", "pressure relief valve", "API 520", "safety valve calculation"]
+updated: "2026-07-29"
+related:
+  - relief-valve-sizing
+  - pressure-drop-calculator
+  - "/guides/pressure-vessel-design"
+---
+
+## Overview
+
+Pressure relief valves (PRV, PSV, safety valve) are the last line of defense against overpressure in process equipment. They must be sized to pass the worst-case relieving scenario at an overpressure that does not exceed code-allowed accumulation (typically 10% above MAWP). Sizing follows API RP 520 (sizing equations) and API RP 521 (relief scenario identification).
+
+<Formula>A = W / (C × K_d × P × K_b × K_c) for gas/vapor service; orifice area A in mm² (API 520)</Formula>
+
+## When is a Relief Valve Required?
+
+A pressure relief device is required wherever a vessel, pipe, or system can be isolated and overpressured beyond its MAWP by any scenario:
+
+- Blocked discharge (pump deadheading, valve closed against pressure source)
+- External fire (vessel in a fire zone)
+- Thermal expansion (liquid trapped between closed valves)
+- Control valve failure (full open to high-pressure source)
+- Utility failure (cooling water, power loss, instrument air)
+- Chemical reaction (runaway exotherm, decomposition)
+- Thermal expansion of liquid-filled lines and equipment
+
+API 521 requires systematically evaluating each credible scenario and sizing for the maximum required flow.
+
+## Key Definitions
+
+| Term | Definition |
+|---|---|
+| MAWP | Maximum Allowable Working Pressure (vessel design pressure) |
+| Set Pressure | Pressure at which valve starts to open (≤ MAWP) |
+| Overpressure | Pressure rise above set pressure during relief (10% typical) |
+| Accumulation | Pressure rise above MAWP (10% for single valve, 16% for fire case, 21% for multiple) |
+| Blowdown | Pressure drop below set at which valve re-seats (typically 7-10%) |
+| Built-up backpressure | Pressure at valve outlet during flow (≤ 10% of set for conventional; balanced bellows for higher) |
+
+## Sizing Equations (API 520)
+
+### Gas/Vapor (critical flow — most common)
+
+When P_backpressure &lt; P1 × 0.5 (critical flow regime):
+
+```
+A = W / (C × K_d × P1 × K_b × K_c)      (mass flow, lb/h, A in²)
+A = Q / (C_g × K_d × P1 × K_b × K_c)    (volumetric, scfm)
+```
+
+Where:
+- W: required relieving capacity (lb/h)
+- C: gas constant function of k (specific heat ratio) — tabulated in API 520
+- K_d: discharge coefficient (0.975 for most nozzle-type PSVs)
+- P1: upstream relieving pressure (psia) = set pressure × 1.1 + atmospheric
+- K_b: backpressure correction (1.0 for conventional valves)
+- K_c: combination correction (rupture disc + PSV)
+
+### Liquid Service
+
+```
+A = Q / (38 × K_d × K_w × K_v × √(ΔP / G))
+```
+
+- Q: required flow (gpm)
+- ΔP: overpressure (psi, 110% MAWP)
+- K_w: backpressure correction (bellows valves)
+- K_v: viscosity correction
+
+<Callout type="warning" title="Fire Case Requires Separate Calculation" severity="warning">
+Vessels exposed to external fire generate vapor by heat input: Q_heat = 21,000 × A_wet^0.82 Btu/h (API 521 equation for unwetted vessels). This vapor must be relieved and often governs PSV size for storage tanks. Include fireproofing and drainage as credit if justified.
+</Callout>
+
+### Steam Service
+
+```
+A = W / (51.5 × K_d × P1 × K_b × K_c × K_N × K_SH)
+```
+
+Where K_N is a dry-saturated steam correction (≈ 1.0 at P &lt; 1500 psig); K_SH corrects for superheat.
+
+## Orifice Sizes (API 526)
+
+API 526 standardizes orifice sizes (D through T), each with standard letter designation:
+
+| Orifice | Area (in²) | Common Application |
+|---|---|---|
+| D | 0.110 | Small thermal expansion |
+| E/F | 0.196 / 0.307 | General process |
+| G/H/J | 0.503 / 0.785 / 1.287 | Larger process / small tanks |
+| K/L/M/N | 1.838 / 2.853 / 3.60 / 4.34 | Storage tanks, large vessels |
+| P/Q/R/T | 6.38 / 11.05 / 16.0 / 26.0 | Very large tanks/fire case |
+
+<Calculator id="relief-valve-sizing" label="Relief Valve Sizing Calculator" />
+
+## Valve Type Selection
+
+| Type | Best For |
+|---|---|
+| Conventional spring | Backpressure &lt; 10% of set; standard process |
+| Balanced bellows | Backpressure 10-50% of set; corrosive/flare header systems |
+| Pilot-operated | Large sizes, tight shutoff, high backpressure, high set pressure |
+| Rupture disc | Corrosive, polymer, sanitary, zero leakage (upstream of PSV or standalone) |
+
+## Material Selection
+
+| Service | Body/Bonnet | Nozzle/Disc |
+|---|---|---|
+| Air/water/steam | Cast steel (WCB) | 316 SS |
+| Hydrocarbon process | Cast carbon steel (WCB) | 316 SS |
+| Corrosive | 316 SS, Alloy 20 | 316 SS, Hastelloy |
+| High temperature | Chrome-moly (C5, WC9) | 316 SS, Stellite |
+| Cryogenic | 304/316 SS (LCB) | 316 SS |
+
+## Installation Requirements (API 520 Part II)
+
+### Inlet Piping
+- Maximum 3% pressure drop from vessel to PSV inlet at rated flow
+- No elbows or tees within 8 pipe diameters of inlet
+- Dedicated nozzle (no shared connections)
+- Inlet piping nominal size ≥ valve inlet size
+- Install vertical with spindle upright
+
+### Discharge Piping
+- Sized to limit backpressure within valve rating
+- Must drain (no liquid traps that could freeze/corrode)
+- Discharge to safe location (flare, vent stack, safe elevation)
+- Support tailpipes independently — do not load valve
+- If discharging to atmosphere, angle rain cap, not blind
+
+### Operational
+- Never install an isolation valve between protected equipment and PSV without a car-seal-open interlock
+- Lever test PSVs periodically (quarterly for steam, annually for process)
+- Provide spares for critical service
+
+<Callout type="info" title="Thermal Relief for Liquid Lines" severity="info">
+Liquid-filled piping trapped between closed valves can generate enormous pressure from thermal expansion (~7 bar per °C for water). Small thermal relief valves (3/4" × 1", D orifice) are installed at the high point of every long trapped liquid line. These are not sized for fire case — only thermal expansion.
+</Callout>
+
+## Documentation
+
+Every PSV requires:
+- Calculation sheet per API 520 with scenario and sizing
+- P&ID mark
+- Specification sheet (set pressure, orifice, material, connection size)
+- Test and calibration record before commissioning
+- Registry in plant relief valve management system
+
+## Summary
+
+Pressure relief valve sizing uses API 520 equations with required relief flow calculated per API 521 overpressure scenarios. Gas (critical flow), liquid, and steam each have their own sizing equation. Fire case (external heat) often governs tank sizing. Select orifice letter per API 526, valve type based on backpressure conditions, and comply with installation requirements (inlet 3% max ΔP, vertical mounting, no isolation without CSO). PSVs are coded items — calculations must be stamped by a registered Professional Engineer for jurisdictional compliance.

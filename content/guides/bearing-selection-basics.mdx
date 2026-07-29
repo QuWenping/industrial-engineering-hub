@@ -1,0 +1,190 @@
+---
+title: "Bearing Selection Basics"
+description: "How to select rolling element bearings: ball vs roller bearing types, load ratings (C and C0), L10 life calculation, lubrication, mounting, and common failure modes."
+category: "Mechanical"
+keywords: ["bearing selection", "ball bearing", "roller bearing", "L10 bearing life", "bearing load rating", "SKF bearing"]
+updated: "2026-07-29"
+related:
+  - motor-power-calculator
+  - shaft-deflection
+  - torque-calculator
+---
+
+## Overview
+
+Bearings support rotating shafts while minimizing friction and wear. Rolling element bearings (ball and roller) are the dominant type in industrial machinery — motors, pumps, gearboxes, fans, compressors. Selection depends on load magnitude/direction, rotational speed, required life, mounting constraints, lubrication, and environmental conditions. The ISO 281 (ANSI/ABMA) L10 life rating is the fundamental basis.
+
+<Formula>L10 = (C/P)^p million revolutions — basic rating life; p = 3 for ball bearings, p = 10/3 for roller bearings (ISO 281)</Formula>
+
+## Bearing Types and When to Use
+
+### Ball Bearings (Point Contact — Lower Friction, Lower Load)
+
+| Type | Load Capacity | Best For |
+|---|---|---|
+| Deep groove ball (6000, 6200, 6300 series) | Radial + moderate axial both directions | Motors, pumps, fans, general machinery — most common |
+| Angular contact ball (7200, 7300 series) | Radial + high unidirectional axial | Pumps, compressors, machine tools (mount in pairs: back-to-back or face-to-face) |
+| Self-aligning ball (1200, 2200 series) | Radial, some axial; tolerates misalignment | Shaft deflection, long shafts, difficult alignment |
+| Thrust ball (51000, 53000 series) | Pure axial only | Low-speed thrust loads, crane hooks, vertical shafts |
+
+### Roller Bearings (Line Contact — Higher Load Capacity)
+
+| Type | Load Capacity | Best For |
+|---|---|---|
+| Cylindrical roller (NU, NJ, NUP series) | Very high radial; no axial (NU/N) or limited (NJ/NUP) | Gearboxes, large motors, traction motors |
+| Tapered roller (30000 series — Timken) | High combined radial + axial | Wheels, heavy gearboxes, conveyor drives, differential |
+| Spherical roller (22000, 23000 series) | Very high radial + moderate axial; self-aligning | Paper machines, mining, vibrating screens, large fans |
+| Needle roller | Very high radial in small radial space | Gearboxes, linkages, universal joints |
+| Thrust roller (29000 series) | High axial + some radial | Heavy vertical shafts, crane hooks, extruders |
+
+### Plain/Sleeve Bearings (Non-Rolling)
+- Hydrodynamic (oil film): very high speed, turbines, large motors, compressors (long life, quiet)
+- Bushed: slow pivots, oscillating motion
+- Not covered here — separate design discipline
+
+## Load Rating Basics
+
+### Dynamic Load Rating C
+The load at which a bearing can survive 1,000,000 revolutions (L10 life = 1) with 90% reliability. Published in manufacturer catalogs; depends on bearing size, type, and material.
+
+### Static Load Rating C₀
+The load that produces a total permanent deformation of 0.0001 × rolling element diameter at the most heavily loaded contact (for stationary or slow-rotating bearings). Applications with shock loads or low speed should be checked against C₀.
+
+### Equivalent Dynamic Load P
+
+For bearings under combined radial and axial load:
+
+```
+P = X × F_r + Y × F_a
+```
+
+Where X and Y are factors from bearing tables based on the ratio F_a / F_r and contact angle. For pure radial load (F_a = 0), P = F_r. For pure axial on thrust bearings, P = F_a.
+
+<Callout type="info" title="Load Ratio Rule of Thumb" severity="info">
+For deep groove ball bearings, axial load up to 0.2 × radial load is well tolerated. If axial load exceeds ~0.5 × radial load, consider angular contact bearings. If axial dominates, use a dedicated thrust bearing. For combined heavy radial + axial, tapered roller or spherical roller is usually the right choice.
+</Callout>
+
+## L10 Rating Life (ISO 281)
+
+### Basic Life Formula
+
+```
+L10 = (C / P)^p     [million revolutions]
+L10h = (10^6 / (60 × n)) × (C / P)^p   [operating hours]
+```
+
+Where:
+- C: basic dynamic load rating (N or lbf, from catalog)
+- P: equivalent dynamic load (N or lbf)
+- n: rotational speed (rpm)
+- p: life exponent — p = 3 for ball bearings, p = 10/3 for roller bearings
+
+### Adjusted Life (ISO 281 Modified)
+
+The basic L10 assumes 90% reliability, standard material, normal operating conditions. Real life is adjusted:
+
+<Formula>L10mh = a1 × a2 × a3 × L10h — a1 = reliability factor (1.0 for 90%, 0.62 for 95%, 0.21 for 99%); a2 = material factor; a3 = operating condition factor (lubrication, contamination)</Formula>
+
+Modern catalogs (SKF, FAG, Timken) also provide SKF Life Equation or Timken Syber Bearing System Analysis accounting for lubrication film thickness, contamination, and fatigue load limit.
+
+## Required Life Targets
+
+| Application | Design L10h (hours) |
+|---|---|
+| Instruments, infrequent use | 500-2,000 |
+| General industrial machines, short duty | 8,000-15,000 |
+| Process pumps, fans, motors (continuous duty) | 20,000-40,000 (3-5 years) |
+| Critical continuous process (refinery, paper) | 40,000-100,000+ |
+| Large turbo-machinery (power generation) | 100,000+ |
+| Automotive wheel bearings | 1,000-3,000 hours (equivalent to 150-300k km) |
+
+## Speed Limits
+
+Manufacturers publish two speed limits:
+- **Thermal speed limit**: where heat generated cannot be dissipated (depends on lubrication and cooling)
+- **Kinematic speed limit**: where rolling element centrifugal forces or cage speed becomes limiting
+
+Grease-lubricated bearings run slower than oil-lubricated. Contact seals reduce speed limit by ~30%.
+
+| Bearing Type | Approximate Speed (DN value = bore mm × rpm) |
+|---|---|
+| Deep groove ball, oil lubrication | up to 1,000,000 DN |
+| Angular contact, precision | up to 1,500,000 DN |
+| Cylindrical roller | up to 1,000,000 DN |
+| Spherical roller | up to 300,000-500,000 DN |
+| Tapered roller | up to 300,000-500,000 DN |
+| Thrust ball | up to 200,000 DN |
+
+## Lubrication
+
+### Grease (Most Common)
+- Pre-lubricated sealed bearings (2Z, 2RS): no maintenance for life; best for small motors, light-to-moderate loads
+- Re-greasable bearings with fittings: replenish every 6-12 months for continuous duty
+- **Re-greasing interval (hours)**: approximate formula — for speed n rpm and bore d mm: T ≈ k × (14e6 / (n × √d)) — use bearing manufacturer tables
+- **Do NOT over-grease**: excess grease churns, generates heat, blows seals, and can rupture the bearing cage. Typically fill 30-50% of free space.
+- Grease selection: lithium complex general purpose; polyurea for electric motors; high-temperature for &gt;120°C; food-grade for food/pharma.
+
+### Oil
+- Higher speed or temperature where grease fails
+- Bath, splash, circulating oil, oil mist, or oil jet systems
+- ISO VG 32, 46, 68 are common grades (ISO VG 68 for industrial gearboxes)
+- Oil provides cooling as well as lubrication
+- Requires seals, sumps, pumps for circulating systems
+
+### Solid Lubrication
+Graphite or MoS₂ (molybdenum disulfide) for very high temperature or vacuum where oil/grease degrade.
+
+## Bearing Selection Workflow
+
+1. Determine shaft loads: radial (F_r) and axial (F_a) components; account for shock loads (application factor K_a = 1.0-2.0 — higher for impact/vibration)
+2. Calculate equivalent dynamic load P = X × F_r + Y × F_a × K_a
+3. Select required L10h life (e.g., 40,000 hours for continuous process)
+4. Calculate required C rating: C = P × (L10h × 60 × n / 10^6)^(1/p)
+5. Select bearing from catalog with C ≥ required C, fitting the shaft bore and housing
+6. Check static load: C₀ ≥ static load × static factor (typically 1.5-2.0)
+7. Verify speed rating exceeds operating speed
+8. Determine lubrication and sealing
+9. Verify axial location: one bearing fixed (locates shaft), one floating (allows thermal expansion), or paired angular contact set
+
+<Callout type="warning" title="Locating vs Floating Bearing" severity="warning">
+On long horizontal shafts (typical in pumps, motors, gearboxes), you must accommodate thermal expansion: one bearing (usually drive-end) locates the shaft axially, while the other (non-drive-end) is free to float axially in the housing (typically a cylindrical roller NU type or a ball bearing with a loose housing fit). Without this, thermal growth applies enormous thrust load and the bearing fails rapidly.
+</Callout>
+
+## Mounting and Fits
+
+### Shaft Fits (Inner Ring Rotating)
+- Rotating inner ring: interference fit (k5, m5, j5 for light/medium/heavy) — prevents creep on shaft
+- Stationary outer ring: transition or clearance fit (H7, J7) in housing to allow some axial float
+- If outer ring rotates (e.g., planet gears, sheaves): reverse the interference
+
+### Common Fit Classes (ISO)
+
+| Condition | Shaft | Housing |
+|---|---|---|
+| Light/variable load, rotating inner ring | j5/k5 | H7/J7 |
+| Normal load, standard motor/pump | k5/m5 | H7/K7 |
+| Heavy/shock load | m5/n5/p6 | K7/M7/N7 |
+| Floating bearing (outer ring free) | k5 | H7 (loose, slides axially) |
+
+### Mounting Methods
+- Cold press: press-fit with arbor press (small bearings)
+- Heat mounting: induction heater to expand inner ring (medium/large bearings) — never use open flame
+- Hydraulic mounting: oil injection for tapered-bore or large bearings
+- Always apply mounting force to the press-fitted ring (e.g., press on inner ring for shaft fit; never through the rolling elements)
+
+## Common Failure Modes
+
+| Failure | Appearance | Cause |
+|---|---|---|
+| Spalling (flaking) | Pits on raceway, spalled metal out | Normal fatigue end of life or overload |
+| Brinelling | Dents at rolling element spacing | Static overload/impact while stationary |
+| False brinelling | Wear marks at element spacing (not dents) | Vibration while stationary (transport) |
+| Smearing | Metal smearing on surface | Insufficient lubrication; skidding under light load |
+| Cage failure | Cage broken or deformed | Excessive speed, misalignment, lubrication failure |
+| Electric fluting (motors) | Washboard pattern on raceway | VFD-induced shaft current passing through bearing — use insulated bearings or shaft grounding |
+| Heat discoloration | Blue/brown colors | Lubrication failure; over-temperature |
+| Corrosion | Rust, water marks | Moisture ingress; wrong seals; storage |
+
+## Summary
+
+Bearing selection starts with load type: deep groove ball for general radial + light axial; angular contact for combined radial/axial; tapered or spherical roller for heavy combined loads; cylindrical roller for high radial-only. Use the ISO 281 L10 life formula: L10 = (C/P)^p million revolutions, targeting 20,000-40,000 hours for continuous-duty process machinery. Ensure one locating bearing and one floating bearing on long shafts to accommodate thermal growth. Grease lubrication is standard; use oil for high speed or high temperature. Most premature bearing failures are caused by poor mounting fits, contamination, electric fluting in VFD motors, or inadequate lubrication — not under-sizing.

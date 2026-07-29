@@ -1,0 +1,150 @@
+---
+title: "Control Valve Sizing Guide"
+description: "How to size control valves using the Cv method, cavitation and flashing considerations, actuator selection, and industrial best practices for liquid, gas, and steam service."
+category: "Process"
+keywords: ["control valve sizing", "valve Cv", "control valve selection", "valve sizing calculation", "cavitation control valve"]
+updated: "2026-07-29"
+related:
+  - control-valve-cv-calculator
+  - pressure-drop-calculator
+  - orifice-flow-calculator
+  - "/guides/valve-types-applications"
+---
+
+## Overview
+
+Proper control valve sizing ensures stable process control, minimizes energy waste, and prevents damaging cavitation or flashing. The valve flow coefficient (Cv) is the universal sizing parameter defined as the flow rate of water in US gallons per minute at 60°F that passes through the fully open valve with a 1 psi pressure drop. Sizing uses the Cv equation with correction factors for choked flow, high pressure recovery, and fluid properties.
+
+<Formula>Cv = Q × √(G / ΔP) for liquids (Q in gpm, G = specific gravity, ΔP in psi)</Formula>
+
+## The Valve Flow Coefficient (Cv)
+
+Cv is the standard comparison metric across all valve manufacturers. The definition is:
+
+> Cv = flow rate (US gpm) of 60°F water at 1 psi pressure drop across the valve.
+
+Metric units use Kv (m³/h of water at 1 bar drop): Cv = 1.16 × Kv.
+
+## Sizing Equations
+
+### Liquids (non-choked)
+
+When ΔP &lt; ΔP_choked (pressure drop below vapor pressure point):
+
+```
+Cv = Q × √(G / (ΔP × P1))  (volumetric flow version)
+Cv = (W / 500) × √(1 / (ΔP × γ))  (mass flow version, W in lb/h)
+```
+
+Where:
+- Q: volumetric flow (gpm)
+- W: mass flow (lb/h)
+- G: specific gravity (water = 1.0)
+- γ: specific weight (lb/ft³)
+- ΔP: pressure drop across valve (psi)
+- P1: inlet absolute pressure (psia)
+
+### Choked Liquid Flow
+
+When pressure drop exceeds the choked pressure drop (ΔP ≥ ΔP_choked), the valve operates in cavitation/flash regime:
+
+<Formula>ΔP_choked = F_L² × (P1 - F_F × Pv)</Formula>
+
+- F_L: liquid pressure recovery factor (globe valve ~0.9, ball ~0.6, butterfly ~0.7)
+- F_F: critical pressure ratio factor (~0.96 for water)
+- Pv: vapor pressure at flowing temperature
+
+Use ΔP_choked in the Cv equation if ΔP_actual exceeds it — additional pressure drop produces no additional flow.
+
+### Gases and Steam
+
+For compressible flow, use the expansion factor Y and the universal gas sizing equation:
+
+```
+Cv = (Q_gas / 1360) × √(G_g × T × Z / (X × P1))  (gas in scfh)
+Cv = W / (63.3 × F_P × √(ΔP × γ))  (steam in lb/h)
+```
+
+X = ΔP / P1; choked at X = F_k × γ_T / 1.4 where γ_T is the ratio of specific heats.
+
+<Callout type="warning" title="Don't Size at 100% Open" severity="warning">
+Size valves so that maximum required Cv is 60-80% of the valve's rated Cv. This provides control authority above operating conditions and accounts for wear. A valve sized at 100% open at normal flow cannot pass more flow when the process demands it, and operates poor control at minimum flow. Minimum controllable flow is typically 5-10% of rated Cv.
+</Callout>
+
+## Valve Selection by Characteristic
+
+| Characteristic | Best For |
+|---|---|
+| Equal-percentage | Flow control, varying pressure drop (most common) |
+| Linear | Liquid level, constant ΔP systems |
+| Quick-opening | ON/OFF service, pressure relief, temperature |
+| Modified parabolic | Compromise for some specialty services |
+
+Equal-percentage is the default choice for 80% of process applications — each equal stem increment increases flow by a fixed percentage, providing stable control across a wide range.
+
+<Calculator id="control-valve-cv-calculator" label="Control Valve Cv Calculator" />
+
+## Cavitation and Flashing
+
+### Cavitation
+Occurs when fluid vaporizes at the vena contracta then collapses downstream (P_recovers > Pv). Damage appears as pitted metal, sounding like gravel passing through.
+
+Mitigation:
+- Select a valve with higher F_L (globe valve rather than ball/butterfly)
+- Use anti-cavitation trims (staged pressure drop, multiple orifices)
+- Increase downstream pressure (relocate valve to lower elevation)
+- Limit pressure drop per stage
+
+### Flashing
+Occurs when downstream pressure stays below vapor pressure (P2 &lt; Pv). Vapor stays as gas; downstream velocities are high and erosive.
+
+Mitigation: angle valves, hardened trim materials, straight downstream piping.
+
+## Actuator Selection
+
+| Actuator | Best For |
+|---|---|
+| Pneumatic spring-diaphragm | Most common; reliable; fail-safe (fail open/closed); low cost |
+| Pneumatic piston | High force, large valves, fast stroke |
+| Electric motor | No air supply available; precise positioning; slow |
+| Electro-hydraulic | Very high force/fast response (Turbine bypass) |
+
+**Fail-safe position**: select fail-open or fail-closed based on process safety (cooling water → fail open; fuel gas → fail closed).
+
+## Materials Selection
+
+| Service | Body | Trim |
+|---|---|---|
+| General water/air | Cast iron, WCB | 316 SS |
+| Chemical/corrosive | 316 SS, Alloy 20, Hastelloy | 316 SS, 17-4PH |
+| High-temperature steam | Chrome-moly (WC9, C5) | 410 SS, Stellite |
+| Abrasive slurries | Ductile iron w/ liners | Hardened 440C, tungsten carbide |
+| Chloride service | 316L SS, 2205 duplex | 2205, Alloy 20 |
+
+## Installation Best Practices
+
+- **Upstream straight pipe**: 10-20 pipe diameters upstream of valve for stable flow
+- **Downstream straight pipe**: 5 diameters minimum
+- **Size piping for 3-5 m/s liquid, 20-30 m/s gas; size valve for control (not pipe size matching)**
+- Provide block valves and bypass for maintenance
+- Mount position indicator and handwheel
+- Orient actuator vertically upward when possible
+- Provide strainer upstream (especially for rotary valves)
+
+## Typical Sizing Workflow
+
+1. Define service conditions (fluid, P1, P2, T, Q_max, Q_min, G, Pv, Pc, viscosity)
+2. Calculate Cv for maximum flow
+3. Add 20-30% margin → select valve with rated Cv at ~70% travel for max flow
+4. Check minimum flow controllability (>10% of rated Cv)
+5. Check for cavitation/flashing using F_L and pressure recovery
+6. Select characteristic (equal-% default), body style, material
+7. Verify actuator sizing against shutoff pressure
+
+<Callout type="info" title="Use Manufacturer Software" severity="info">
+While the Cv method is standardized (IEC 60534 / ISA-75), modern sizing uses manufacturer software (Emerson FirstView, Fisher Specification Manager, ValSpeQ) that incorporates their specific valve data, cavitation prediction, and noise calculations. Hand calculations get you within a ballpark; final sizing should always be confirmed against manufacturer data.
+</Callout>
+
+## Summary
+
+Control valve sizing centers on the Cv equation with corrections for choked flow, compressibility, and fluid properties. Size for 60-80% of rated Cv at maximum flow, specify equal-percentage characteristic unless there is a reason to use linear, and always evaluate cavitation potential using the F_L pressure recovery factor. Globe valves are the default for critical control; rotary valves (ball/butterfly) for low-pressure-drop utility service.

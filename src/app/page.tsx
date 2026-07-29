@@ -187,7 +187,7 @@ function HeroSection() {
           <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
             {[
               { value: 53, suffix: "+", label: "Calculators" },
-              { value: 30, suffix: "+", label: "Guides" },
+              { value: 50, suffix: "+", label: "Guides" },
               { value: 26, suffix: "", label: "Materials" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">

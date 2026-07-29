@@ -1,0 +1,198 @@
+---
+title: "Duct Sizing Basics"
+description: "How to size HVAC and industrial ductwork: equal friction method, velocity method, duct pressure drop, aspect ratio, dampers, and duct sizing for ventilation and process air systems."
+category: "HVAC"
+keywords: ["duct sizing", "HVAC duct design", "duct friction loss", "duct velocity", "equal friction method", "ductwork design"]
+updated: "2026-07-29"
+related:
+  - pressure-drop-calculator
+  - fan-curve-selection
+  - pipe-velocity-calculator
+---
+
+## Overview
+
+Duct sizing balances airflow requirements, space constraints, pressure drop (fan energy cost), noise, and capital cost. Undersized ducts have high velocity, high pressure drop, high fan horsepower, and noise; oversized ducts waste material and space. The two principal methods are equal friction (HVAC systems) and velocity (industrial/process exhaust). Standards: ASHRAE Fundamentals, SMACNA duct construction standards.
+
+<Formula>Duct pressure loss ΔP_friction = (f × L / D_h) × (ρ × v² / 2); Darcy-Weisbach for non-circular ducts using hydraulic diameter D_h = 4A/P</Formula>
+
+## Design Objectives
+
+- Deliver design airflow to each terminal (diffuser, hood, exhaust point)
+- Minimize pressure drop → minimize fan power
+- Keep velocity below noise and erosion thresholds
+- Maintain duct sizes that fit available space
+- Balance airflow between branches without excessive dampering
+- Comply with code (fire/smoke dampers, duct material gauges per SMACNA)
+
+## Key Design Parameters
+
+### Air Velocity Ranges
+
+| Application | Velocity (m/s) | Velocity (fpm) |
+|---|---|---|
+| Residential/low-velocity HVAC | 2-4 | 400-800 |
+| Commercial HVAC mains | 4-8 | 800-1,600 |
+| Commercial branches | 2-5 | 400-1,000 |
+| Industrial exhaust (general) | 8-15 | 1,500-3,000 |
+| Dust collection (particulate) | 15-25 | 3,000-5,000 |
+| High-velocity systems (high-pressure) | 15-25 | 3,000-5,000 |
+
+- High velocity: more noise (sound power ∝ v^5-6 depending on frequency), more pressure drop, larger fan
+- Low velocity: larger ducts; low noise
+- For dust/material transport: maintain minimum conveying velocity to prevent dust dropout
+
+### Friction Rate Targets
+- **Low-velocity HVAC systems**: 0.8-1.5 Pa/m (0.1-0.2 in wg per 100 ft)
+- **Medium-velocity commercial**: 1.5-4 Pa/m (0.2-0.5 in wg per 100 ft)
+- **High-velocity/industrial**: 4-10 Pa/m (0.5-1.2 in wg per 100 ft)
+
+### Duct Aspect Ratio (Rectangular Duct)
+Aspect ratio = width / depth. Higher ratios increase friction loss (less circular) and cost (more sheet metal per cross-section area) but fit flat spaces.
+
+- Target aspect ratio: ≤ 3:1
+- Maximum acceptable: 4:1 (never exceed 6:1)
+- Round ducts are most efficient (lowest pressure drop per unit area, lowest material) — use where space allows
+
+## Sizing Methods
+
+### 1. Equal Friction Method (Most Common for HVAC)
+
+1. Size the main duct first at the design friction rate (e.g., 1 Pa/m or 0.1 in/100 ft)
+2. For each branch, maintain the same friction rate per unit length (size each branch duct for its flow at the same pressure loss per meter)
+3. This balances pressure drop naturally; dampers are used for final fine-tuning
+4. Compute total system pressure loss: index run (longest run from fan to farthest terminal) friction + all fitting losses
+5. Select fan for total flow × total pressure
+
+Advantages: simple; systematic; balances branches reasonably well. Disadvantages: not self-balancing perfectly; branches must be dampered.
+
+### 2. Velocity Reduction Method
+
+- Specify velocity for the main (e.g., 8 m/s), reduce at each branch (e.g., 6 m/s at first branch, 4 m/s at last)
+- Size ducts to achieve target velocity at design flow
+- Simple but empirical; gives different friction rates per section
+- Used for exhaust and industrial systems where velocity must be maintained above a minimum (dust transport)
+
+### 3. Static Regain Method (Most Balanced, More Complex)
+
+- Size each section so that static pressure at each branch takeoff is equal
+- As flow decreases downstream, velocity decreases; the velocity pressure regained (static regain) offsets the friction loss
+- Produces nearly self-balancing systems requiring minimal dampering
+- More complex calculation (typically done with duct design software)
+- Most efficient for large high-velocity systems (office towers, hospitals)
+
+<Callout type="info" title="Which Method to Choose?" severity="info">
+For commercial comfort HVAC, use equal friction (0.8-1 Pa/m, ≤ 8 m/s mains). For industrial exhaust or dust collection, use velocity method (minimum transport velocity controls). For large complex systems with long branches, static regain minimizes dampering and energy.
+</Callout>
+
+## Duct Pressure Loss Components
+
+### Straight Duct Friction
+From Darcy-Weisbach or duct friction chart (which is plotted for standard air at 1.2 kg/m³, galvanized steel). Duct charts give friction rate per 100 ft or per meter; multiply by duct length.
+
+Friction depends on:
+- Duct material roughness (galvanized steel is standard; aluminum smoother; concrete/fiberglass rougher)
+- Velocity (quadratic)
+- Hydraulic diameter
+
+### Fitting Losses (Dynamic Losses)
+Elbows, tees, reducers, dampers, filters, coils, diffusers, hood entries — each has a loss coefficient C (from ASHRAE tables or SMACNA):
+
+<Formula>ΔP = C × P_v = C × (ρ × v² / 2)</Formula>
+
+Common C values:
+- Elbow, r/D = 1.5: 0.15-0.25
+- Elbow, mitered without vanes: 1.3 (BAD); with vanes: 0.3-0.5
+- Tee, diverging flow (branch): 0.3-1.0
+- Reducer/expansion: 0.1-0.5 depending on angle
+- Damper, open: 0.1-0.2 (blade type); closed much higher
+- Diffuser/register: 0.1-0.5 (terminal)
+- Hood entry (flanged): 0.25; plain duct opening: 0.93
+
+Fitting losses can dominate total system pressure — always include them, especially on industrial exhaust systems.
+
+### The "Index Run"
+
+To size the fan:
+1. Identify the longest/highest-loss air path from fan inlet to farthest terminal (index run)
+2. Sum all losses along this run: straight duct + all fittings + terminal devices (diffusers, hoods, filters, coils)
+3. Add 10-15% safety margin
+4. The other branches must have balancing dampers to drop their pressure to match the index run (they have shorter runs and would otherwise get too much flow)
+
+<Calculator id="pressure-drop-calculator" label="Pressure Drop Calculator" />
+
+## Duct Materials
+
+| Material | Roughness (mm) | Application |
+|---|---|---|
+| Galvanized steel (GSS) | 0.15 | Standard HVAC, general exhaust |
+| Stainless steel | 0.05-0.15 | Kitchen exhaust, laboratories, corrosive fumes |
+| Aluminum | 0.05 | Clean rooms, lightweight |
+| Flexible duct (wire helix) | 3.0 | Final connections to diffusers (use short lengths — much higher friction!) |
+| Fiberglass reinforced plastic (FRP) | 0.05-0.3 | Corrosive fume exhaust (chemical labs, scrubbers) |
+| PVC / CPVC | 0.01 | Corrosive exhaust, underground |
+| Concrete | 1-3 | Underground tunnels, large shafts |
+
+<Callout type="warning" title="Flexible Duct Is a Pressure Drop Penalty" severity="warning">
+Flexible duct has 50-100% higher friction than straight metal duct (roughness ~30× higher) and is often installed with bends/sags that add further loss. Limit flexible duct runs to ≤ 2 m and keep them fully extended and straight to avoid huge pressure drop penalties and wasted fan energy.
+</Callout>
+
+## Rectangular vs Round Ducts
+
+### Round Ducts
+- Most efficient (lowest perimeter/area ratio = lowest friction and material)
+- Preferred for industrial, dust collection, high pressure, exhaust
+- Require more vertical/horizontal clearance
+
+### Rectangular Ducts
+- Fit in shallow ceiling spaces (flat aspect ratio)
+- Easier to fabricate on-site for custom sizes
+- Higher friction and material than equivalent round duct (aspect ratio penalty)
+- To convert round diameter to rectangular: use equivalent diameter formula
+  - D_eq = (1.3 × (a×b)^0.625) / (a+b)^0.25 (Huebscher formula, equivalent friction)
+
+## Special Considerations
+
+### Dust Collection / Material Transport
+- Maintain minimum conveying velocity: horizontal 15-20 m/s, vertical 18-25 m/s (higher for heavy dusts)
+- Use smooth round ducts
+- Long-radius elbows (r/D ≥ 3) to prevent abrasion and dust buildup
+- Avoid horizontal runs with low points (dust accumulates)
+- Branch entries at 30° or 45° (never 90°) to keep material entrained
+
+### High Temperature / Fume Exhaust
+- Expansion joints for temperature changes
+- Proper slope to drain condensation
+- Material compatible with fume chemistry (FRP, SS, PVC)
+
+### Kitchen Exhaust (Grease Duct)
+- Welded steel per NFPA 96
+- Minimum velocity 7.5 m/s (1,500 fpm) to prevent grease dropout
+- Access doors for cleaning
+- Grease filters at hoods
+
+### Fire/Smoke Dampers
+- Required where ducts pass fire-rated walls/floors
+- Fire damper: closes at high temperature (fusible link) to stop fire spread
+- Smoke damper: closes on smoke detection to stop smoke migration
+- Must be accessible for inspection/maintenance
+
+## Balancing and Commissioning
+
+After installation:
+- Measure flow at each terminal (balometer, pitot tube traverse)
+- Adjust balancing dampers to achieve design flow within ±10%
+- Record positions and settings in balancing report
+- Set fan speed to deliver total design flow after dampers are set (not before)
+
+## Fan Selection Input
+
+After duct sizing, the fan sees:
+- Total volumetric flow rate (sum of all terminals + leakage allowance 5-10%)
+- Total pressure (sum of index run losses + fan inlet/outlet losses + safety margin)
+- Static or total pressure depending on fan type
+- Density correction for altitude/temperature (refer to fan curve at actual density)
+
+## Summary
+
+Duct sizing delivers required airflow with minimum friction, noise, and cost. For comfort HVAC, use the equal friction method (0.8-1.5 Pa/m, ≤ 8 m/s mains). For industrial exhaust or dust collection, size by minimum conveying velocity using the velocity method. Account for both straight duct friction AND dynamic fitting losses — the latter often dominates. Use round ducts where possible; limit rectangular duct aspect ratio to ≤3:1. Limit flexible duct to ≤2 m. Balance branches with dampers after sizing. The fan is selected for total flow and total pressure from the index run. Good duct design pays back daily in lower fan energy and quieter operation.

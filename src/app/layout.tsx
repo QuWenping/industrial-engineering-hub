@@ -25,7 +25,7 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 export const metadata: Metadata = constructMetadata({
   title: "Industrial Engineering Hub",
   description:
-    "53 free engineering calculators, 30+ technical guides, and 26 material property references. Professional calculators for pipe flow, pump power, steel weight, heat transfer, pressure drop, and more.",
+    "53 free engineering calculators, 50+ technical guides, and 26 material property references. Professional calculators for pipe flow, pump power, steel weight, heat transfer, pressure drop, and more.",
   path: "/",
   keywords: [
     "engineering calculator",

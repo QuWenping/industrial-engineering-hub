@@ -1,0 +1,171 @@
+---
+title: "Fan Selection and Fan Curve Basics"
+description: "How to select industrial fans: centrifugal vs axial, fan laws, system curves, operating point, stall/surge, efficiency, brake horsepower, and duct system effects."
+category: "HVAC"
+keywords: ["fan selection", "fan curve", "centrifugal fan", "axial fan", "fan laws", "fan brake horsepower", "fan system curve"]
+updated: "2026-07-29"
+related:
+  - pressure-drop-calculator
+  - duct-sizing-basics
+  - motor-power-calculator
+---
+
+## Overview
+
+Fans move air/gases for ventilation, HVAC, process air, dust collection, combustion air, pneumatic conveying, and cooling. The two main types are centrifugal (radial flow, high pressure) and axial (in-line flow, high volume). Selection involves matching the fan curve (pressure vs flow) to the system curve (pressure resistance vs flow) at the required operating point while maximizing efficiency and avoiding unstable regions (stall, surge).
+
+<Formula>Fan Law: Q ∝ rpm; P_static ∝ rpm²; Power ∝ rpm³ — doubling fan speed doubles flow, quadruples pressure, 8× power</Formula>
+
+## Fan Types
+
+### Centrifugal Fans
+Air enters axially and is thrown radially by a rotating impeller into a scroll housing. They generate higher pressure than axial fans and are the default for ducted systems and industrial process air.
+
+| Blade Type | Characteristic | Application |
+|---|---|---|
+| **Forward-curved (FC)** (squirrel cage) | Low pressure, high volume, low speed, quiet | HVAC air handlers, residential furnaces; peaks at left of curve (risk of motor overload as flow increases) |
+| **Backward-curved (BC) / Backward-inclined (BI)** | Higher pressure, higher efficiency (75-85%), non-overloading power | Industrial ventilation, HVAC, dust collection; most energy-efficient centrifugal type |
+| **Airfoil (AF)** | Highest efficiency (80-88%), clean air | Large HVAC systems, power plant fans, high-volume efficiency-critical; curved airfoil blades |
+| **Radial (paddle wheel)** | High pressure, rugged, handles dirty air/particulates | Material handling, dust collection, exhaust, high-temperature; low efficiency (60-70%) |
+| **Radial-tip** | Compromise between radial and BC | Some industrial processes |
+
+### Axial Fans
+Air flows parallel to shaft — like a propeller. Lower pressure, high volume, compact.
+
+| Type | Characteristic | Application |
+|---|---|---|
+| **Propeller** | Very high flow, very low pressure (&lt;1 in wg), low efficiency | Wall exhaust, roof ventilators, agricultural; no ductwork |
+| **Tubeaxial** | Moderate pressure (1-3 in wg), ducted | HVAC supply/return, ventilation, fume exhaust |
+| **Vaneaxial** | Moderate-high pressure (3-10 in wg), guide vanes improve efficiency | Process ventilation, mine ventilation, high-performance duct systems |
+| **Mixed flow** | Hybrid (axial + centrifugal features) | Compact ducted systems; lower noise than vaneaxial at same duty |
+
+<Callout type="info" title="Centrifugal vs Axial Decision" severity="info">
+- System pressure &lt; 250 Pa (1 in wg): propeller or tubeaxial
+- 250-2000 Pa (1-8 in wg): centrifugal BC/AF or vaneaxial
+- 2000 Pa (8 in wg) and above: centrifugal BC/airfoil/radial
+- Dirty air/particulates: radial centrifugal
+- Clean air, efficiency priority: airfoil centrifugal or high-efficiency vaneaxial
+- Limited space/inline: axial
+</Callout>
+
+## Pressure: Static vs Velocity vs Total
+
+- **Static pressure (SP, P_s)**: pressure that pushes against duct walls (resistance to flow); what the fan must overcome
+- **Velocity pressure (VP, P_v)**: pressure due to air motion = (ρ × v²) / 2
+- **Total pressure (TP, P_t)**: SP + VP — the total energy added by the fan
+
+Fans are rated on either total pressure (typical for industrial/process) or static pressure (HVAC convention). When reading a fan curve, confirm which pressure is plotted.
+
+<Calculator id="pressure-drop-calculator" label="Pressure Drop Calculator" />
+
+## Fan Performance Curves
+
+A fan curve plots pressure (Y) vs volumetric flow rate (Q, X) at a given speed and air density. Key features:
+
+- **Pressure curve**: peaks at some flow; drops to zero at free delivery (no backpressure, wide-open)
+- **Power curve**: BHP vs flow
+  - Forward-curved: power rises continuously with flow (overloading at high flow)
+  - Backward-curved: power peaks mid-curve, then drops — non-overloading (motor sized for peak power)
+  - Airfoil: similar to BC but higher efficiency
+- **Efficiency curve**: bell curve; peak efficiency near design point (select fan near this point)
+
+### System Curve
+
+The duct/system resistance is a quadratic: ΔP = K × Q² (square law for turbulent flow). Plotting system curve on the fan curve, the **operating point** is where they intersect. Any change to the system (dirt on filters, damper position, added duct) shifts the system curve and moves the operating point.
+
+## Fan Laws
+
+For same fan, same system, same air density — changing speed:
+
+```
+Q_2 = Q_1 × (N_2 / N_1)
+P_2 = P_1 × (N_2 / N_1)² × (ρ_2 / ρ_1)
+BHP_2 = BHP_1 × (N_2 / N_1)³ × (ρ_2 / ρ_1)
+```
+
+Fan laws apply to the same fan at different speeds OR geometrically similar fans at different sizes. They predict that changing speed has a CUBIC effect on power — reducing speed 20% cuts power by ~50% (0.8³ ≈ 0.51). This is why VFDs save so much energy.
+
+For different fan sizes (same series/geometry):
+```
+Q ∝ D³ × N
+P ∝ D² × N² × ρ
+BHP ∝ D⁵ × N³ × ρ
+```
+
+## Stall and Surge (Critical for Axial Fans)
+
+- **Stall (axial/vaneaxial)**: at low flow, airflow separates from the blades (like an aircraft wing stalling). Pressure drops abruptly, vibration, noise, potential blade damage.
+- **Surge**: complete flow reversal during unstable operation (fan pushes forward, system pressure pushes back → oscillating flow). Violent and damaging.
+- **Stall margin**: select vaneaxial fans with at least 15-20% margin above stall flow.
+- Centrifugal fans generally do not stall violently (they just operate on the left side of peak pressure less efficiently).
+
+Never operate a vaneaxial fan at flows significantly below its rated point with the system curve crossing the stall region.
+
+## Density and Altitude Corrections
+
+Fan performance is given for standard air (1.2 kg/m³, 70°F at sea level). For high altitude or high temperature:
+
+- Air density decreases with altitude and temperature
+- Same volumetric flow (m³/s) but less mass flow
+- Pressure capability drops proportionally to density: P_actual = P_rated × (ρ_actual / ρ_standard)
+- Power drops proportionally (lighter air = less power)
+- At 2000 m altitude (~80% density), a fan generates 80% of rated pressure — size accordingly
+
+```
+ρ (kg/m³) = P_atm × 100000 / (287 × T_K) — ideal gas law
+```
+
+## Brake Horsepower (BHP)
+
+```
+BHP = (Q × P_total) / (6356 × η_fan × η_drive)   (Q in cfm, P in inches wg, η in decimal)
+Shaft power (kW) = (Q × P_total) / (1000 × η_fan × η_drive)   (Q in m³/s, P in Pa)
+```
+
+- η_fan: total fan efficiency from curve (50-85%)
+- η_drive: belt drive ~0.95, direct drive ~1.0
+- Safety factor: motor sized for 1.15-1.25 × BHP at operating point (non-overloading types)
+
+<Callout type="warning" title="Forward-Curved Fans Can Overload Motors" severity="warning">
+Forward-curved (squirrel cage) fans have power curves that RISE continuously with flow. If duct resistance is lower than designed (filters missing, dampers open wider than intended), the fan moves more air and power exceeds motor rating, tripping overloads or burning out the motor. Backward-curved and airfoil fans have NON-overloading power curves (peak mid-flow) — motor sized for the peak power is safe regardless of system condition.
+</Callout>
+
+## Selection Workflow
+
+1. Calculate required flow (m³/s or cfm) based on ventilation rates, process demand, or air changes
+2. Calculate system pressure loss at design flow:
+   - Duct friction (Darcy-Weisbach or duct friction chart)
+   - Fittings, elbows, dampers, filters, coils (use loss coefficients × velocity pressure)
+   - Add 10-15% safety margin for field conditions
+3. Determine fan type (centrifugal vs axial per pressure range)
+4. Obtain fan curves from manufacturer for candidate sizes
+5. Plot system curve (ΔP = K × Q²) on fan curve; locate operating point
+6. Select fan where operating point is near peak efficiency (typically 80-90% of free-delivery flow)
+7. Verify BHP and select motor (apply service factor)
+8. Check stall margin (for axial fans)
+9. Consider speed control (VFD) for variable flow — saves significant energy
+10. Noise: check sound power level against space requirements
+
+## Installation Considerations
+
+- **Inlet/outlet conditions**: fans require uniform inlet flow. Elbows directly at fan inlet cause uneven flow, reducing capacity by 15-30%. Provide 3-5 duct diameters of straight duct at inlet, or use inlet boxes/turning vanes.
+- **Outlet duct**: discharge straight 2-5 duct diameters before any elbow/transition
+- **Rotation direction**: verify rotation (bump test before connecting ductwork)
+- **Vibration isolation**: spring or rubber isolators; flexible connections between fan and duct
+- **Access**: provide access doors for cleaning and wheel maintenance
+- **Guards**: belt guards, inlet screens for safety
+- **Drain** at fan housing low point for condensation/wash water
+
+## VFDs and Energy Savings
+
+For systems with variable load (VAV HVAC, demand-controlled ventilation, variable process flow), VFD speed control saves dramatic energy:
+- Flow proportional to speed (Q ∝ rpm)
+- Power proportional to rpm³
+- 80% speed ≈ 50% power; 60% speed ≈ 22% power
+- Much more efficient than outlet dampers (which just add resistance at full speed)
+
+VFD cost payback is typically 1-3 years on variable-duty fans, and VFDs also allow soft starting (reduces mechanical stress and inrush current).
+
+## Summary
+
+Fan selection matches the fan's pressure-flow curve to the system's quadratic resistance curve (the operating point) near peak efficiency. Centrifugal fans (backward-curved/airfoil preferred for efficiency, radial for dirty air) handle medium-to-high pressure; axial fans (vaneaxial) handle high-volume low-to-medium pressure in compact inline space. Fan laws predict cubic power reduction with speed — VFDs deliver enormous savings on variable-duty systems. Watch for stall on vaneaxial fans (select with stall margin), overloading risk on forward-curved fans, and density corrections for altitude or high temperature. Always provide adequate straight duct at fan inlet/outlet to avoid performance loss from poor airflow.

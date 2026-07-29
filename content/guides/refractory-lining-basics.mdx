@@ -1,0 +1,174 @@
+---
+title: "Refractory Lining Basics"
+description: "Selection of refractory materials for furnaces, boilers, incinerators, and kilns: brick, castable, ceramic fiber, insulating vs dense, anchor systems, and installation best practices."
+category: "Thermal"
+keywords: ["refractory lining", "castable refractory", "furnace lining", "ceramic fiber", "refractory brick", "refractory anchor"]
+updated: "2026-07-29"
+related:
+  - heat-loss-calculator
+  - insulation-thickness
+  - heat-exchanger-calculator
+---
+
+## Overview
+
+Refractory materials withstand extreme temperatures (up to 1800°C) inside furnaces, boilers, kilns, incinerators, reactors, and flue gas systems. They contain heat, resist thermal shock, chemical attack from slag/ash, and mechanical abrasion. Refractories are selected based on temperature, chemistry of the process, abrasion exposure, and insulation requirements. The three main forms are brick, monolithic (castable/gunite), and ceramic fiber.
+
+<Formula>Heat loss through refractory wall Q = (T_hot - T_cold) / (Σ t_i / k_i) — multi-layer wall heat conduction; t = thickness, k = thermal conductivity per layer.</Formula>
+
+## Refractory Classifications
+
+By chemistry:
+- **Acidic** (silica, fireclay, high-alumina): resistant to acid slags; for steel, iron, general furnaces
+- **Basic** (magnesite, dolomite, chrome-magnesia): resistant to basic slags; for cement kilns, steel converters, non-ferrous
+- **Neutral** (chrome, alumina &gt;70%, carbon, silicon carbide): for severe environments; carbon black reactors, aluminum melting
+- **Insulating** (lightweight, low k): back-up insulation behind dense refractory, low heat loss
+
+By form:
+- **Brick (shaped)**: pre-formed, fired, laid with mortar joints
+- **Monolithic (castable, plastic, ramming, gunning)**: installed in place as a single monolith (no joints)
+- **Ceramic fiber**: blanket/module/board — lightweight, excellent insulation, low heat storage
+
+## Material Types and Properties
+
+### Fireclay Brick
+- 30-45% Al₂O₃; classification by duty: low (1400°C), medium (1500°C), high (1600°C), super-duty (1700°C)
+- Good general purpose; low cost; moderate thermal shock resistance
+- Used in boilers, furnaces, kilns, chimneys
+- Thermal conductivity ~1.0-1.5 W/m·K
+
+### High-Alumina Brick
+- 50-99% Al₂O₃; higher temperature and chemical resistance
+- Better abrasion and slag resistance than fireclay
+- Used in aluminum furnaces, boiler burner throats, cement kilns, slagging applications
+- k ~1.5-2.5 W/m·K
+
+### Silica Brick
+- &gt;93% SiO₂; very high temperature (1700°C); high strength at temperature
+- Good for glass furnaces, coke ovens, acid steel processes
+- Poor thermal shock resistance (cracks on rapid heating/cooling below 600°C due to cristobalite inversion)
+
+### Magnesite (Basic) Brick
+- &gt;85% MgO; high temperature (1700°C+); resists basic slags and iron oxide
+- For steel converters, cement rotary kilns, lime kilns
+- Poor thermal shock; requires careful heating schedule
+
+### Insulating Firebrick (IFB)
+- Lightweight (0.5-1.0 g/cm³); low k (0.15-0.4 W/m·K); low heat storage
+- Hot face up to 1600°C; not for severe slag/abrasion
+- Back-up insulation behind dense brick or castable
+- Reduces wall heat loss dramatically
+
+### Castables (Monolithic)
+Conventional refractory castables:
+- **Low cement (LCC)**: &lt;2.5% CaO; high strength, low porosity; most common modern monolithic
+- **Ultra-low cement (ULCC)**: &lt;1.0% CaO; better high-temperature properties
+- **No-cement (NCC)**: colloidal silica bond; high temperature, good thermal shock
+- **Insulating castable**: lightweight aggregate (vermiculite, perlite, bubble alumina); for back-up insulation
+- Installed by casting (forms), pumping, gunning (pneumatic projection), shotcreting
+
+### Ceramic Fiber
+- Alumino-silicate fiber blanket/module; temperature classes 1000-1600°C
+- Very low k (0.05-0.2 W/m·K); extremely low heat storage (fast furnace heat-up/cool-down)
+- **Advantages**: energy savings on cyclic furnaces; light weight (no heavy structural support); easy installation
+- **Limitations**: poor abrasion resistance; cannot withstand direct flame impingement, slag contact, high velocity gas; limited to 20-40 m/s; fiber degradation in reducing atmospheres; health concerns (respirable fibers — handle with PPE)
+- Used in furnace liners, boiler liners, ducting, kiln cars, backup to dense refractory
+
+<Callout type="warning" title="Never Subject Ceramic Fiber to Direct Flame Impingement or High Velocity" severity="warning">
+Ceramic fiber modules can erode rapidly in high-velocity gas streams (&gt;30 m/s) or when directly exposed to flame impingement. They also shrink at elevated temperatures (1-3% linear shrinkage) which opens gaps. For burner quarls, high-velocity flues, or areas subject to slag, always use dense castable or brick. Fiber is ideal for box furnaces, ducting, and cyclic applications.
+</Callout>
+
+## Multi-Layer Lining Design
+
+Modern refractory systems use a multi-layer design:
+- **Hot-face layer** (100-250 mm): dense refractory (brick or castable) — resists temperature, abrasion, chemical attack
+- **Backup/insulating layer** (50-150 mm): insulating castable, IFB, or fiber — reduces heat loss and shell temperature
+- **Steel shell or casing**: structural containment
+
+Example multi-layer boiler wall:
+1. Hot face: 150 mm high-alumina low-cement castable (k = 1.8 W/m·K)
+2. Backup: 75 mm insulating castable (k = 0.3 W/m·K)
+3. Steel shell (6 mm)
+
+Heat loss through wall for T_hot = 1100°C, T_ambient = 25°C: Q ≈ 450 W/m²; shell temperature ≈ 60-70°C (safe for personnel).
+
+<Calculator id="heat-loss-calculator" label="Heat Loss Calculator" />
+
+## Anchors
+
+Refractory must be anchored to the steel shell with metallic or ceramic anchors:
+
+### Metallic Anchors (V, Y, U shapes)
+- Carbon steel: up to 400°C shell temperature
+- 304/310 stainless: up to 800-900°C
+- Inconel/Haynes alloys: up to 1100°C
+- Spacing: typically 300-600 mm grid, closer for dense/heavy refractory; staggered
+- Length: through back-up layer + 70-80% of hot-face thickness (do NOT go through to hot face — acts as heat sink/cracking point)
+- Apply plastic cap on tip to allow shrinkage (the anchor tip burns off and creates a void for thermal expansion)
+
+### Ceramic Anchors
+- For temperatures above metallic anchor limits (&gt;1100°C)
+- Alumina, mullite, silicon carbide shapes
+- Used in brick linings (brick ties) or with ceramic fiber modules
+
+## Installation Best Practices
+
+### Castable
+- Mix strictly per manufacturer instructions; correct water content (excess water destroys strength and density)
+- Use forced mixer; mix no longer than needed
+- Place within 30 minutes after mixing; vibrate during placement to eliminate voids
+- Cure: keep moist for 24 hours (cement hydration); air cure 24 hours
+- **DRYOUT is the most critical step**: controlled heating schedule to remove water without explosive spalling (typically 25°C/hr to 100°C, hold 8 hours, ramp up)
+
+### Brick
+- Use correct mortar (air-setting, heat-setting, or phosphate-bonded)
+- Brick joints: maximum 1.5-2 mm for precision brick; staggered joints in running bond
+- Expansion joints in brickwork every 2-3 m (ceramic fiber paper or board filler); 3-5 mm per meter of wall
+- Coursing: alternate header and stretcher courses for structural bond
+
+### Ceramic Fiber
+- Modules anchored to shell with center stud; compress slightly to ensure tight joints
+- Adjacent modules expand against each other (10-15% compression at installation)
+- Vapor barrier on cold face if process produces condensable gases
+- Coat with rigidizer/hardener on hot face if subject to air velocity
+
+## Dry-Out / Pre-Heat Schedule
+
+Refractory contains mix water and water of hydration in cement. If heated too fast, water flashes to steam internally and spalls the lining explosively.
+
+Typical dry-out schedule for castable lining:
+1. 20°C → 100°C at 25°C/h — free water removal
+2. Hold at 100°C for 12-24 hours (per thickness)
+3. 100°C → 300°C at 25°C/h — hydrated water removal
+4. Hold at 300°C for 8 hours
+5. 300°C → operating T at 50-75°C/h — ceramic bond formation
+
+Forced cooling after operation is equally damaging; cool-down at same rates to avoid thermal shock.
+
+## Failure Modes
+
+| Failure | Cause |
+|---|---|
+| Spalling (explosive) | Heating too fast during dry-out; moisture trapped behind dense hot face |
+| Spalling (thermal shock) | Rapid temperature changes; silica brick through inversion; wrong material for cyclic duty |
+| Slag attack/penetration | Wrong chemistry (acid brick vs basic slag); porosity too high |
+| Abrasion/erosion | High velocity gas with particulates; fiber or soft brick in high-wear zone |
+| Anchor failure | Wrong alloy (too low temperature); anchor spacing too wide; corrosion |
+| Hot spots on shell | Missing insulation; refractory thin or missing; refractory cracks from thermal cycling |
+| Roof sag/collapse | Unsupported span too wide; anchors failed; material creep at high temperature |
+
+## Refractory Selection by Application
+
+| Application | Hot Face | Back-up |
+|---|---|---|
+| Package boiler, 1000°C | Fireclay/SiC castable or brick | Insulating castable |
+| Fired heater, 900°C | High-alumina castable (LCC) | IFB or insulating castable |
+| Cement rotary kiln, 1450°C | Basic brick (magnesite-chrome) | High-strength insulating brick |
+| Aluminum melting, 1100°C | High-alumina low-cement castable, phosphate-bonded | Insulating castable |
+| Incinerator, 1200°C with slag | SiC or high-alumina brick; phosphate-bonded plastic | IFB |
+| Industrial box furnace | Ceramic fiber modules | — (single layer) |
+| Cyclone/duct, high velocity | Abrasion-resistant high-alumina castable | Insulating castable |
+
+## Summary
+
+Refractory lining selection balances temperature capability, chemical resistance (acid vs basic slag), abrasion/velocity, and insulation. Multi-layer designs (dense hot face + insulating back-up) give best service and energy efficiency. Low-cement castables (LCC) are the modern default monolithic; brick is used for rotary kilns and high-temperature processes; ceramic fiber saves energy in cyclic furnaces but cannot take abrasion or direct flame. The most common causes of refractory failure are improper dry-out (explosive spalling), wrong material chemistry for slag, and anchor failures — not material under-specification. Always follow the manufacturer's dry-out temperature schedule strictly.

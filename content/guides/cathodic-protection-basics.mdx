@@ -1,0 +1,165 @@
+---
+title: "Cathodic Protection Basics"
+description: "How cathodic protection prevents corrosion on buried pipelines, tanks, and marine structures: galvanic (sacrificial anode) and impressed current systems, design calculations, testing, and monitoring."
+category: "Process"
+keywords: ["cathodic protection", "sacrificial anode", "impressed current cathodic protection", "ICCP", "pipeline corrosion", "cathodic protection design"]
+updated: "2026-07-29"
+related:
+  - pressure-drop-calculator
+  - pipe-weight-calculator
+---
+
+## Overview
+
+Cathodic protection (CP) is an electrochemical technique that prevents corrosion of buried or submerged metal structures (pipelines, storage tanks, offshore platforms, ship hulls, marine pilings, reinforced concrete bridges). By making the metal surface the cathode of an electrochemical cell, the anodic (corrosion) reactions are suppressed. Two methods exist: galvanic (sacrificial anode) and impressed current (ICCP). Both are standardized under NACE SP0169 (pipeline CP) and NACE SP0285 (tank CP).
+
+<Formula>Corrosion is stopped when the pipe-to-soil potential is polarized to ≤ -0.85 V (vs Cu/CuSO₄ reference electrode) with CP applied, per NACE criteria.</Formula>
+
+## Corrosion Basics
+
+Corrosion is an electrochemical reaction:
+- **Anode** (oxidation): Fe → Fe²⁺ + 2e⁻ (metal dissolves — this is corrosion)
+- **Cathode** (reduction): O₂ + 2H₂O + 4e⁻ → 4OH⁻ (or 2H⁺ + 2e⁻ → H₂ in acidic/anaerobic conditions)
+- Current flows through the electrolyte (soil/water) from anode to cathode.
+
+Corrosion requires four elements: anode, cathode, metallic path, and electrolyte. CP works by making the entire structure a cathode, eliminating the anodic sites where metal is lost.
+
+## Two Methods of CP
+
+### Galvanic (Sacrificial Anode) CP
+- Connect the structure to a more active (more negative potential) metal (zinc, magnesium, aluminum alloy), which acts as the anode and corrodes sacrificially.
+- The natural potential difference (galvanic cell) drives current without external power.
+- **Advantages**: No external power; simple installation; low risk of over-protection; no interference with other structures; low maintenance.
+- **Disadvantages**: Limited driving voltage (~0.1-0.7 V); limited current output; anode must be replaced periodically (5-20 years).
+- **Best for**: small structures, well-coated pipelines in low-resistivity soil, offshore applications, heat exchangers, ship hulls, short pipelines.
+
+### Impressed Current CP (ICCP)
+- External DC power supply (rectifier) forces current from inert anodes (mixed metal oxide, graphite, high-silicon cast iron, scrap steel) through the electrolyte to the structure (cathode).
+- Rectifier converts AC to DC; voltage adjustable to deliver required current.
+- **Advantages**: High driving voltage (up to 50+ V); unlimited current output; can protect large bare or poorly coated structures; adjustable for changing conditions.
+- **Disadvantages**: Requires external power; risk of interference (stray current) with adjacent pipelines; over-protection possible (causes coating disbondment and hydrogen embrittlement); higher maintenance.
+- **Best for**: long cross-country pipelines, large storage tanks, offshore platforms, structures in high-resistivity soil.
+
+## Design Criteria
+
+### Protection Potential Criteria (NACE SP0169)
+For steel in soil/natural waters:
+- **-0.85 V** minimum (negative) relative to Cu/CuSO₄ reference electrode (CSE), with CP applied and IR drop considered
+- **-0.95 V** minimum for anaerobic sulfate-reducing bacteria (SRB) environments
+- Polarized potential minimum **-0.80 V**, minimum 100 mV polarization decay after current off (the "100 mV criterion" — most accurate because it eliminates IR drop)
+
+Do not over-protect: potentials more negative than -1.10 V can cause hydrogen evolution at the cathode, leading to hydrogen embrittlement of high-strength steels and coating disbondment.
+
+<Callout type="warning" title="IR Drop Error in CP Measurements" severity="warning">
+A pipe-to-soil potential reading includes not just the polarization potential but also the IR drop from current flowing through soil resistance (between reference electrode and pipe). This can make readings 100-500 mV too negative. The most reliable criterion is the instant-off measurement (take readings within 1 second after switching off CP current) or the 100 mV depolarization test (wait 4-24 hours after CP off and confirm decay ≥ 100 mV).
+</Callout>
+
+### Current Requirement
+
+Current density required for protection:
+
+| Environment | Current Density (mA/m²) |
+|---|---|
+| Steel in neutral soil, bare | 10-30 |
+| Steel in well-coated pipeline, good coating | 0.01-0.5 |
+| Steel in flowing seawater | 50-150 |
+| Steel in stagnant seawater | 20-50 |
+| Steel in fresh water | 10-30 |
+| Steel in concrete | 1-5 |
+| High-strength steel (sour) | Lower (hydrogen concern) |
+
+Total current required: I = current density × exposed surface area. Good coatings reduce current demand by 99% — coating + CP is the standard approach (coating is primary protection, CP backs up coating defects).
+
+### Soil Resistivity
+Key factor for anode design. Measured with Wenner 4-pin method (soil resistivity in ohm·cm).
+- &lt;1000 Ω·cm: low — galvanic anodes work well
+- 1000-10,000 Ω·cm: moderate — both methods possible
+- &gt;10,000 Ω·cm: high — ICCP preferred; galvanic anodes cannot produce enough current output
+
+### Anode Selection for Galvanic Systems
+
+| Anode | Driving Voltage | Best Environment | Consumption Rate |
+|---|---|---|---|
+| Magnesium (H-1 alloy) | ~0.7 V | High-resistivity soil (up to 10,000 Ω·cm), onshore pipelines | 7.7 kg/A·yr (high — shorter life) |
+| Zinc (MIL-A-18001) | ~0.25 V | Seawater, low-resistivity soil | 11.8 kg/A·yr but higher efficiency |
+| Aluminum alloy (Indium-activated) | ~0.25 V | Seawater, offshore (not buried — passivates in soil) | 3.5 kg/A·yr (high capacity) |
+
+Anode weight W (kg) = current required × design life × consumption rate / utilization factor (0.85 typical).
+
+### Anode Bed Design for ICCP
+- Anodes installed in a coke breeze backfill column (lowers ground resistance, extends anode life by distributing current)
+- Typical depth: 30-150 m deep vertical groundbed, or horizontal shallow bed
+- Anode spacing: 3-5 m apart
+- Total ground bed resistance must be low enough to pass required current at available rectifier voltage (Ohm's law: V = I × R_total)
+- Distributed anodes along the pipeline for long lines; deep anode groundbeds where right-of-way is limited
+
+## System Components
+
+### ICCP System
+- **Rectifier**: AC input, DC output; adjustable; typically 10-50 V, 10-100 A
+- **Anodes**: mixed metal oxide (MMO/Ti) or high-silicon iron; installed in groundbed
+- **Cables**: HMWPE or XLPE insulated, direct burial rated
+- **Reference electrodes**: permanent Cu/CuSO₄ cells embedded near structure for monitoring
+- **Test stations**: above-ground points for potential measurement and monitoring
+- **Junction boxes**: splice points with current shunts for measuring current per anode string
+
+### Galvanic System
+- **Sacrificial anodes**: pre-packaged in backfill (gypsum/bentonite) in cloth bags
+- **Lead wire** from each anode to structure connection
+- **Test station** for periodic potential measurement
+
+## Installation and Testing
+
+### Commissioning Testing
+1. Measure native (natural) pipe-to-soil potential (before CP) — typically -0.5 to -0.7 V for steel in soil
+2. Energize CP system; adjust rectifier current
+3. Measure "ON" potentials at all test points along the structure
+4. Perform instant-off measurements (interrupter on rectifier) to obtain polarized potentials
+5. Confirm criteria met (-0.85 V ON, -0.80 V off, or 100 mV polarization)
+
+### Regular Monitoring
+- Monthly: rectifier voltage/current readings
+- Annually: pipe-to-soil potentials at all test stations, insulation joint resistance, anode bed resistance
+- Every 3-5 years: close-interval survey (CIS) — walk the line taking instant-off potentials every 1-2 m to identify coating defects and areas of under/over-protection
+- For tanks: internal anodes and tank bottom surveys (per API 653)
+
+<Callout type="info" title="Close-Interval Survey (CIS) Is the Gold Standard" severity="info">
+Annual rectifier readings only verify the CP system is on. A close-interval survey (CIS) — taking potential readings every 1-2 meters along the entire pipeline with GPS location and current-interrupter synchronized data — reveals coating defects, areas of shielding, stray current interference, and under-protected zones. A CIS every 3-5 years is standard for cross-country pipelines; after third-party damage (dig-ins), an immediate CIS is mandatory.
+</Callout>
+
+## Common CP Problems
+
+| Problem | Cause | Solution |
+|---|---|---|
+| Under-protection at mid-point between anodes | Anode spacing too wide; coating deteriorated | Add anodes; boost current; repair coating |
+| Over-protection (-1.2 V or more) | Excessive current; too many anodes | Reduce rectifier output; add resistors |
+| Stray current interference | CP current from one line flowing onto and off another; DC transit systems | Install bonding; install mitigation anodes; adjust current output |
+| Shortened anode life | Contaminated backfill; dry soil; high current density | Re-bed anodes; add water; reduce current per anode |
+| Coating disbondment/holiday growth | Over-protection; hydrogen evolution | Reduce current; use potential-controlled rectifiers |
+| Shielding (pipeline near -0.85 V but actually unprotected) | Insulating materials (rock shield, tape wraps) blocking CP current | Remove shielding; use different backfill |
+
+## Applications Beyond Pipelines
+
+### Storage Tanks (Above-Ground Tank Bottoms)
+- Grid of ribbon anodes or MMO anodes under tank bottom (installed before tank construction) OR
+- Deep anodes around periphery (after construction, for existing tanks)
+- API 651 standard for tank CP
+- Protects against soil-side corrosion of tank bottoms
+
+### Offshore Platforms
+- Aluminum or zinc anodes welded to jacket legs and braces (galvanic — no power needed subsea)
+- ICCP on large platforms for supplemental current
+- Designed for 20-30 year life; cannot be replaced subsea easily
+
+### Reinforced Concrete (Bridges, Parking Garages)
+- Steel rebar corrodes when chloride (road salt) penetrates concrete
+- Mixed metal oxide anodes embedded in concrete or applied as coating; rectifier drives current to rebar
+- Extends bridge deck life 20+ years
+
+### Internal CP for Vessels
+- Magnesium/zinc anodes suspended inside water tanks, heat exchangers, water heaters
+- Protects wetted surfaces where internal coating is impractical
+
+## Summary
+
+Cathodic protection prevents corrosion by making the metal structure a cathode. Galvanic (sacrificial anode) systems use zinc/magnesium/aluminum anodes for small, well-coated, or submerged structures without external power. ICCP systems use rectifier-driven inert anodes for long pipelines, large tanks, and high-resistivity soil. The NACE criterion for steel is -0.85 V (Cu/CuSO₄) or 100 mV polarization decay. Coatings are primary protection; CP backs up coating defects (99% of current goes to coating holidays). Key to reliable operation: proper commissioning with instant-off measurements, annual monitoring, and periodic close-interval surveys to catch developing defects before leaks occur.
