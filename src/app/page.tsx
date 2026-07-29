@@ -368,7 +368,7 @@ function DatabaseSection() {
   const databases = [
     { name: "Material Properties", href: "/materials", icon: Weight, count: "26 materials" },
     { name: "Pipe Specifications", href: "/reference", icon: Droplets, count: "Schedule & sizes" },
-    { name: "Engineering Standards", href: "/reference", icon: BookOpen, count: "ASTM, ASME, API" },
+    { name: "Engineering Standards", href: "/guides", icon: BookOpen, count: "ASTM, ASME, API" },
   ];
 
   return (
