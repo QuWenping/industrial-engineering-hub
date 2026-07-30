@@ -1,0 +1,109 @@
+// Industrial Engineering Hub V0.2 — Prisma schema
+// Data source: Neon Serverless Postgres.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Keyword & AI task plumbing (Sprint 2) ───────────────────────────────────
+
+model Keyword {
+  id         String   @id @default(cuid())
+  phrase     String   @unique
+  intent     String?  // informational|transactional|navigational|commercial
+  priority   String?  // P0|P1|P2
+  volume     Int?
+  difficulty Int?
+  brief      Json?    // {headline, targetAudience, painPoints[], suggestedFormulas[], outline[]}
+  status     String   @default("new") // new|analyzed|assigned|published
+  notes      String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  AiTask     AiTask[]
+  ContentItem ContentItem[]
+  Calculator Calculator[]
+}
+
+model AiTask {
+  id         String   @id @default(cuid())
+  agent      String   // keyword|writer|reviewer|calc-writer
+  status     String   @default("pending") // pending|running|done|failed
+  input      Json
+  output     Json?
+  error      String?
+  model      String?
+  tokensIn   Int?
+  tokensOut  Int?
+  costUsd    Float?
+  keywordId  String?
+  Keyword    Keyword?     @relation(fields: [keywordId], references: [id], onDelete: SetNull)
+  contentId  String?
+  ContentItem ContentItem? @relation(fields: [contentId], references: [id], onDelete: SetNull)
+  createdAt  DateTime @default(now())
+  finishedAt DateTime?
+}
+
+// ─── Calculators (Sprint 3) ──────────────────────────────────────────────────
+
+model Calculator {
+  id          String    @id            // e.g. "pipe-flow-calculator"
+  name        String
+  category    String
+  priority    String    // P0|P1|P2
+  description String
+  schema      Json      // full Calculator object matching src/lib/calculator/types.ts
+  status      String    @default("draft") // draft|review|approved|published|archived
+  testsPass   Int       @default(0)
+  testsFail   Int       @default(0)
+  keywordId   String?
+  Keyword     Keyword?  @relation(fields: [keywordId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  publishedAt DateTime?
+}
+
+// ─── Content (guides + materials) & Reviews (Sprint 4) ───────────────────────
+
+model ContentItem {
+  id           String    @id @default(cuid())
+  slug         String
+  kind         String    // guide|material
+  title        String
+  description  String
+  category     String?
+  keywords     String[]  @default([])
+  bodyMdx      String    // MDX body (frontmatter stored separately)
+  frontmatter  Json?     // author, updated, related[], etc.
+  status       String    @default("keyword")
+  // status machine: keyword → brief_generated → ai_draft → engineering_review → seo_review → published → archived
+  keywordId    String?
+  Keyword      Keyword?  @relation(fields: [keywordId], references: [id])
+  seoScore     Int?
+  Review       Review[]
+  AiTask       AiTask[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  publishedAt  DateTime?
+
+  @@unique([kind, slug])
+}
+
+model Review {
+  id            String      @id @default(cuid())
+  contentId     String
+  ContentItem   ContentItem @relation(fields: [contentId], references: [id], onDelete: Cascade)
+  reviewer      String      // ai-engineering|ai-seo|human
+  scoreAccuracy Int?        // 40% weight
+  scoreLogic    Int?        // 30%
+  scoreSeo      Int?        // 20%
+  scoreOrig     Int?        // 10%
+  overall       Int?
+  verdict       String?     // publish|revise|rewrite
+  comments      Json?
+  createdAt     DateTime    @default(now())
+}
