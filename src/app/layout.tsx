@@ -23,25 +23,27 @@ const jetbrainsMono = JetBrains_Mono({
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = constructMetadata({
-  title: "Industrial Engineering Hub",
+  title: "Industrial Engineering Studio",
   description:
-    "53 free engineering calculators, 50+ technical guides, and 26 material property references. Professional calculators for pipe flow, pump power, steel weight, heat transfer, pressure drop, and more.",
+    "Industrial engineering services for factories, energy facilities, chemical plants and infrastructure projects. Structural, MEP, process and digital engineering, plus 50+ free engineering calculators.",
   path: "/",
   keywords: [
-    "engineering calculator",
     "industrial engineering",
+    "industrial building design",
+    "structural engineering",
+    "battery factory design",
+    "chemical plant engineering",
+    "HVAC engineering",
+    "MEP design",
+    "digital engineering",
+    "engineering calculator",
     "steel weight calculator",
     "pipe flow calculator",
-    "pump power",
-    "heat exchanger",
-    "material density",
-    "pressure drop",
-    "tank volume",
   ],
 });
 
 metadata.metadataBase = new URL(
-  process.env.NEXT_PUBLIC_SITE_URL || "https://industrialengineeringhub.com"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://industrialengineeringstudio.com"
 );
 
 export default function RootLayout({

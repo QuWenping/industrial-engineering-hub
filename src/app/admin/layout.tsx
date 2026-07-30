@@ -2,7 +2,7 @@
 // Proxy already gates access; this provides defense in depth (e.g. for static export edge cases)
 // and renders the shell (sidebar + content area).
 import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { verifySession, SESSION_COOKIE_NAME } from "@/lib/auth/session";
 import { Sidebar } from "@/components/admin/Sidebar";
 
@@ -22,8 +22,18 @@ export default async function AdminLayout({
   const cookieStore = await cookies();
   const session = verifySession(cookieStore.get(SESSION_COOKIE_NAME)?.value);
 
-  if (!session) {
+  // The login page renders its own full-screen UI; don't wrap it with the shell
+  // and don't redirect (which would cause a loop).
+  const headersList = await headers();
+  const pathname = headersList.get("x-ieh-pathname") ?? "";
+  const isLoginPage = pathname === "/admin/login";
+
+  if (!session && !isLoginPage) {
     redirect("/admin/login");
+  }
+
+  if (isLoginPage) {
+    return <div className="min-h-screen bg-slate-50">{children}</div>;
   }
 
   return (

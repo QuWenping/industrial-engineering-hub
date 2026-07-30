@@ -13,6 +13,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { CalculatorCard } from "@/components/calculator/CalculatorCard";
+import { EngineeringCTA } from "@/components/EngineeringCTA";
 import { constructMetadata, schemaBreadcrumb, schemaSoftwareApplication, schemaFAQ } from "@/components/seo/SEO";
 import { getCalculatorBySlug, getAllCalculatorSlugs } from "@/lib/calculator/loader";
 import { getMaterialOptions } from "@/lib/calculator/materials";
@@ -207,6 +208,9 @@ export default async function CalculatorPage({ params }: Props) {
               </div>
             </section>
           )}
+
+          {/* Engineering Consultation CTA */}
+          <EngineeringCTA toolName={calc.name} />
 
           {/* Disclaimer */}
           <section className="rounded-lg bg-warning/5 border border-warning/20 p-4 text-sm text-muted-foreground">

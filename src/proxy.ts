@@ -24,14 +24,18 @@ export function proxy(request: NextRequest) {
 
   // Always allow the login page and the login API endpoint.
   if (isPublicAdminPage(pathname) || pathname === "/api/admin/login") {
-    return NextResponse.next();
+    const reqHeaders = new Headers(request.headers);
+    reqHeaders.set("x-ieh-pathname", pathname);
+    return NextResponse.next({ request: { headers: reqHeaders } });
   }
 
   const cookie = request.cookies.get(SESSION_COOKIE_NAME)?.value;
   const session = verifySession(cookie);
 
   if (session) {
-    return NextResponse.next();
+    const reqHeaders = new Headers(request.headers);
+    reqHeaders.set("x-ieh-pathname", pathname);
+    return NextResponse.next({ request: { headers: reqHeaders } });
   }
 
   if (isApi) {

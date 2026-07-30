@@ -1,138 +1,99 @@
 "use client";
 
-import { useState, useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Calculator,
-  BookOpen,
-  Database,
+  Send,
   Building2,
-  Cog,
-  Droplets,
+  Factory,
   Flame,
-  Weight,
-  Gauge,
   Zap,
-  Box,
-  ChevronRight,
-  Search,
+  Cpu,
+  Briefcase,
+  HardHat,
+  Wind,
+  FlaskConical,
+  SolarPanel,
+  Cog,
+  Warehouse,
+  CheckCircle2,
+  FolderKanban,
+  BookOpen,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
+// ─── Capabilities (section 1) ─────────────────────────────────────────────────
+const capabilities = [
+  {
+    icon: Factory,
+    title: "Industrial Building Design",
+    description: "Factory layout, architecture, envelope and site planning for manufacturing and process facilities.",
+    href: "/services/industrial-building-design",
+  },
+  {
+    icon: HardHat,
+    title: "Structural Engineering",
+    description: "Steel, concrete and foundation design for industrial superstructures, equipment supports and seismic loads.",
+    href: "/services/structural-engineering",
+  },
+  {
+    icon: Wind,
+    title: "HVAC & MEP Engineering",
+    description: "Process HVAC, electrical distribution, plumbing, fire protection and industrial utility systems.",
+    href: "/services/hvac-mep-engineering",
+  },
+  {
+    icon: FlaskConical,
+    title: "Chemical Plant Engineering",
+    description: "Process, piping, safety (HAZOP/LOPA), pressure relief and utility design for chemical facilities.",
+    href: "/services/chemical-plant-engineering",
+  },
+  {
+    icon: SolarPanel,
+    title: "Energy Facility Engineering",
+    description: "Balance-of-plant, BESS, substation and SCADA for generation, storage and renewable energy projects.",
+    href: "/services/energy-facility-engineering",
+  },
+  {
+    icon: Cpu,
+    title: "Digital Engineering & AI",
+    description: "BIM coordination, digital twin, AI-assisted workflows and data-ready handover for operations.",
+    href: "/services/digital-engineering",
+  },
+];
+
+// ─── Industries (section 2) ───────────────────────────────────────────────────
+const industries = [
+  { icon: Zap, title: "Battery Manufacturing", href: "/industries/battery-factory" },
+  { icon: FlaskConical, title: "Chemical Plants", href: "/industries/chemical-plant" },
+  { icon: SolarPanel, title: "Energy Facilities", href: "/industries/energy-facility" },
+  { icon: Cog, title: "Smart Factories", href: "/industries/smart-factory" },
+  { icon: Building2, title: "Industrial Buildings", href: "/services/industrial-building-design" },
+  { icon: Warehouse, title: "Infrastructure", href: "/services/structural-engineering" },
+];
+
+// ─── Free engineering tools (section 4) ──────────────────────────────────────
 const popularTools = [
-  { name: "Steel Weight Calculator", href: "/tools/steel-weight-calculator", icon: Weight, category: "Material" },
-  { name: "Pressure Drop Calculator", href: "/tools/pressure-drop-calculator", icon: Gauge, category: "Fluid" },
-  { name: "Pump Power Calculator", href: "/tools/pump-power-calculator", icon: Cog, category: "Pump" },
-  { name: "Pipe Velocity Calculator", href: "/tools/pipe-velocity-calculator", icon: Droplets, category: "Fluid" },
-  { name: "Heat Exchanger Calculator", href: "/tools/heat-exchanger-calculator", icon: Flame, category: "Thermal" },
-  { name: "Tank Volume Calculator", href: "/tools/tank-volume-calculator", icon: Box, category: "Vessel" },
-  { name: "Orifice Flow Calculator", href: "/tools/orifice-flow-calculator", icon: Gauge, category: "Flow" },
-  { name: "Motor Power Calculator", href: "/tools/motor-power-calculator", icon: Zap, category: "Electrical" },
+  { name: "Steel Weight Calculator", href: "/tools/steel-weight-calculator", icon: HardHat },
+  { name: "Pressure Drop Calculator", href: "/tools/pressure-drop-calculator", icon: Wind },
+  { name: "Pipe Flow Calculator", href: "/tools/pipe-flow-calculator", icon: Flame },
+  { name: "Pump Power Calculator", href: "/tools/pump-power-calculator", icon: Cog },
+  { name: "Heat Exchanger Calculator", href: "/tools/heat-exchanger-calculator", icon: Zap },
+  { name: "Tank Volume Calculator", href: "/tools/tank-volume-calculator", icon: Building2 },
+  { name: "Beam Deflection Calculator", href: "/tools/beam-deflection-calculator", icon: HardHat },
+  { name: "Motor Power Calculator", href: "/tools/motor-power-calculator", icon: Zap },
 ];
 
-const featuredGuides = [
-  {
-    title: "How to Calculate Pressure Drop in Pipes",
-    description: "Complete guide to Darcy-Weisbach equation, Reynolds number, and friction factors for industrial pipe systems.",
-    href: "/guides/pressure-drop-pipes",
-    readTime: "8 min read",
-  },
-  {
-    title: "Pump Selection Guide for Industrial Systems",
-    description: "Learn how to select the right pump based on flow rate, head, fluid properties, and NPSH requirements.",
-    href: "/guides/pump-selection-guide",
-    readTime: "12 min read",
-  },
-  {
-    title: "Steel Material Properties Reference",
-    description: "Comprehensive reference for carbon steel, stainless steel, and alloy steel properties and applications.",
-    href: "/guides/steel-material-properties",
-    readTime: "7 min read",
-  },
+// ─── Why work with us (section 5) ────────────────────────────────────────────
+const whyUs = [
+  { title: "Engineering Experience", description: "Decades of industrial project delivery across Asia, Middle East, Europe and the Americas." },
+  { title: "Industrial Project Knowledge", description: "Deep domain expertise in battery, chemical, energy and manufacturing facility design." },
+  { title: "Multi-Disciplinary Team", description: "Architectural, structural, MEP, process, electrical and digital engineers under one roof." },
+  { title: "Digital Engineering Approach", description: "BIM-first delivery, digital twin handover and AI-assisted workflows from project day one." },
 ];
-
-function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: false, amount: 0.5 });
-
-  useEffect(() => {
-    if (!isInView) {
-      setCount(0);
-      return;
-    }
-    let start = 0;
-    const duration = 2000;
-    const step = duration / 60;
-    const timer = setInterval(() => {
-      start += target / (duration / step);
-      if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, step);
-    return () => clearInterval(timer);
-  }, [isInView, target]);
-
-  return (
-    <span ref={ref}>
-      {count}
-      {suffix}
-    </span>
-  );
-}
-
-function HeroSearch() {
-  const [query, setQuery] = useState("");
-  const router = useRouter();
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (query.trim()) {
-      router.push(`/tools?search=${encodeURIComponent(query.trim())}`);
-    }
-  };
-
-  return (
-    <form onSubmit={handleSearch} className="max-w-2xl mx-auto mb-10">
-      <div className="relative">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search calculators: pressure drop, pump power, steel weight..."
-          className="w-full h-14 pl-12 pr-28 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-400 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-engineering-blue/50 focus:border-engineering-blue/50 text-base"
-        />
-        <button
-          type="submit"
-          className="absolute right-2 top-1/2 -translate-y-1/2 h-10 px-5 bg-engineering-blue hover:bg-engineering-blue/90 text-white rounded-lg font-medium text-sm transition-colors"
-        >
-          Search
-        </button>
-      </div>
-      <div className="flex flex-wrap justify-center gap-2 mt-3 text-xs text-slate-400">
-        <span>Popular:</span>
-        {["pipe velocity", "pump head", "NPSH", "heat transfer", "tank volume"].map((term) => (
-          <button
-            key={term}
-            type="button"
-            onClick={() => router.push(`/tools?search=${encodeURIComponent(term)}`)}
-            className="hover:text-ai-glow transition-colors underline underline-offset-2"
-          >
-            {term}
-          </button>
-        ))}
-      </div>
-    </form>
-  );
-}
 
 function HeroSection() {
   return (
@@ -150,86 +111,43 @@ function HeroSection() {
           className="text-center max-w-4xl mx-auto"
         >
           <Badge className="mb-6 bg-engineering-blue/15 text-ai-glow border-engineering-blue/30 hover:bg-engineering-blue/20">
-            Engineering Intelligence for Modern Industry
+            Industrial Facility Design &amp; Digital Engineering Solutions
           </Badge>
 
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">
-            <span className="text-gradient-hero">Engineering Calculators</span>
+            <span className="text-gradient-hero">Industrial Engineering</span>
             <br />
-            <span className="text-white/90">& Technical Guides</span>
+            <span className="text-white/90">Studio</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-slate-300/80 max-w-2xl mx-auto mb-8 leading-relaxed">
-            Free, professional engineering calculators and in-depth technical guides for fluid mechanics,
-            pump sizing, structural design, thermal engineering, and more.
+          <p className="text-lg sm:text-xl text-slate-300/80 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Engineering solutions for factories, chemical plants, energy facilities and industrial
+            projects — structural, MEP, process and digital engineering, delivered with digital-first methods.
           </p>
 
-          <HeroSearch />
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/tools"
+              href="/contact"
               className="btn-primary-gradient text-white text-base font-medium px-8 h-12 rounded-lg shadow-2xl shadow-engineering-blue/25 inline-flex items-center justify-center"
             >
-              <Calculator className="mr-2 h-5 w-5" />
-              Browse All Calculators
+              <Send className="mr-2 h-5 w-5" />
+              Discuss Your Project
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
             <Link
-              href="/guides"
+              href="/tools"
               className="border border-white/20 text-white hover:bg-white/5 text-base font-medium px-8 h-12 rounded-lg inline-flex items-center justify-center"
             >
-              <BookOpen className="mr-2 h-5 w-5" />
-              Read Engineering Guides
+              <Calculator className="mr-2 h-5 w-5" />
+              Explore Engineering Tools
             </Link>
           </div>
 
-          <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
-            {[
-              { value: 53, suffix: "+", label: "Calculators" },
-              { value: 50, suffix: "+", label: "Guides" },
-              { value: 26, suffix: "", label: "Materials" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-gradient">
-                  <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-                </div>
-                <div className="text-sm text-slate-400 mt-1">{stat.label}</div>
-              </div>
-            ))}
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+            <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-ai-glow" /> Multi-discipline engineering</span>
+            <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-ai-glow" /> Digital-first delivery</span>
+            <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-ai-glow" /> Global project delivery</span>
           </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-16 max-w-3xl mx-auto"
-        >
-          <Link
-            href="/enterprise"
-            className="group block glass-hero-card rounded-xl p-5 sm:p-6 hover:border-engineering-blue/30 transition-all hover:shadow-xl hover:shadow-engineering-blue/5"
-          >
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-accent-green to-ai-glow">
-                  <Building2 className="h-5 w-5 text-white" />
-                </div>
-                <div className="text-left">
-                  <div className="text-sm font-semibold text-white group-hover:text-ai-glow transition-colors">
-                    For Engineering Teams
-                  </div>
-                  <div className="text-sm text-slate-400">
-                    AI Knowledge Platform — Internal standards, CAD data, and engineering intelligence
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 text-ai-glow text-sm font-medium whitespace-nowrap">
-                Request Enterprise Demo
-                <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </div>
-          </Link>
         </motion.div>
       </div>
 
@@ -238,67 +156,175 @@ function HeroSection() {
   );
 }
 
-function IntroductionSection() {
+function CapabilitySection() {
   return (
-    <section className="py-16 sm:py-20 bg-light-bg">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <Badge variant="outline" className="mb-4">About Industrial Engineering Hub</Badge>
-          <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-4">
-            Your Trusted Engineering Resource
+    <section className="py-16 sm:py-24 bg-light-bg">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <Badge variant="outline" className="mb-4">Our Capabilities</Badge>
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
+            Industrial Engineering Capability
           </h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Six integrated engineering disciplines delivered as one coordinated team — from concept to digital handover.
+          </p>
         </div>
-        <p className="text-lg text-muted-foreground leading-relaxed text-center">
-          Industrial Engineering Hub provides engineers, designers, and technical professionals with
-          accurate, peer-reviewed engineering calculators and technical references. Our calculators are
-          based on established engineering formulas and industry standards (ASTM, ASME, API), each
-          verified with real-world examples. Every calculation includes clear formulas, step-by-step
-          examples, and engineering context so you understand the numbers, not just the result.
-        </p>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {capabilities.map((cap, i) => (
+            <motion.div
+              key={cap.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+            >
+              <Link href={cap.href} className="block h-full">
+                <Card className="h-full card-hover border-slate-200 hover:border-engineering-blue/40 cursor-pointer group">
+                  <CardContent className="p-6">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-engineering-blue/10 to-ai-glow/10 text-engineering-blue mb-4 group-hover:scale-105 transition-transform">
+                      <cap.icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-navy group-hover:text-engineering-blue transition-colors mb-2">
+                      {cap.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{cap.description}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function PopularToolsSection() {
+function IndustriesSection() {
   return (
-    <section className="py-16 sm:py-20 bg-white">
+    <section className="py-16 sm:py-24 bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-3 gap-10 items-start">
+          <div className="lg:col-span-1">
+            <Badge variant="outline" className="mb-4">Industries</Badge>
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
+              Industries We Serve
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              We engineer facilities across the industrial spectrum — from gigafactories to chemical plants, energy storage to smart manufacturing.
+            </p>
+            <Link
+              href="/industries"
+              className="inline-flex items-center gap-1.5 text-sm text-engineering-blue font-medium hover:underline"
+            >
+              All industries <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="lg:col-span-2 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {industries.map((ind, i) => (
+              <motion.div
+                key={ind.title}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.3, delay: i * 0.05 }}
+              >
+                <Link href={ind.href} className="block h-full">
+                  <Card className="h-full card-hover border-slate-200 hover:border-engineering-blue/40 cursor-pointer group">
+                    <CardContent className="p-5 text-center">
+                      <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-lg bg-engineering-blue/5 text-engineering-blue mb-3 group-hover:bg-engineering-blue/10 transition-colors">
+                        <ind.icon className="h-5 w-5" />
+                      </div>
+                      <div className="text-sm font-medium text-navy group-hover:text-engineering-blue transition-colors">
+                        {ind.title}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProjectsPreviewSection() {
+  return (
+    <section className="py-16 sm:py-24 bg-light-bg">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between mb-10">
           <div>
-            <Badge variant="outline" className="mb-3">Popular Tools</Badge>
-            <h2 className="text-2xl sm:text-3xl font-bold text-navy">Most Used Calculators</h2>
+            <Badge variant="outline" className="mb-3">Case Studies</Badge>
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy">Engineering Projects</h2>
+            <p className="text-muted-foreground mt-2 max-w-xl">
+              Selected industrial facility engineering case studies — coming soon.
+            </p>
           </div>
           <Link
-            href="/tools"
-            className="text-engineering-blue hover:text-engineering-blue/80 text-sm font-medium inline-flex items-center"
+            href="/projects"
+            className="text-engineering-blue hover:text-engineering-blue/80 text-sm font-medium inline-flex items-center whitespace-nowrap"
           >
-            View All
-            <ArrowRight className="ml-1 h-4 w-4" />
+            All Projects <ArrowRight className="ml-1 h-4 w-4" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {popularTools.map((tool, index) => (
+        <Card className="border-dashed border-slate-300 bg-white/50">
+          <CardContent className="p-10 text-center">
+            <FolderKanban className="h-10 w-10 text-slate-300 mx-auto mb-3" />
+            <p className="text-sm text-muted-foreground">
+              Project case studies are currently being prepared. In the meantime, explore our{" "}
+              <Link href="/services" className="text-engineering-blue hover:underline">engineering services</Link>{" "}
+              or <Link href="/contact" className="text-engineering-blue hover:underline">discuss your project</Link>.
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}
+
+function ToolsSection() {
+  return (
+    <section className="py-16 sm:py-24 bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-3 gap-10 items-start mb-10">
+          <div className="lg:col-span-2">
+            <Badge variant="outline" className="mb-3">Engineering Tools</Badge>
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">Free Engineering Tools</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Supporting engineers with preliminary calculations and design verification across
+              structural, fluid, thermal, electrical and process engineering.
+            </p>
+          </div>
+          <div className="lg:text-right">
+            <Link
+              href="/tools"
+              className="text-engineering-blue hover:text-engineering-blue/80 text-sm font-medium inline-flex items-center"
+            >
+              All 50+ Calculators <ArrowRight className="ml-1 h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          {popularTools.map((tool, i) => (
             <motion.div
               key={tool.href}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.3, delay: i * 0.04 }}
             >
               <Link href={tool.href} className="block h-full">
-                <Card className="h-full card-hover border-border/60 cursor-pointer group">
-                  <CardContent className="p-5">
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-engineering-blue/5 group-hover:bg-engineering-blue/10 transition-colors">
-                        <tool.icon className="h-5 w-5 text-engineering-blue" />
-                      </div>
-                      <Badge variant="secondary" className="text-xs font-normal">
-                        {tool.category}
-                      </Badge>
+                <Card className="h-full card-hover border-border/60 hover:border-engineering-blue/30 cursor-pointer group">
+                  <CardContent className="p-4">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-engineering-blue/5 group-hover:bg-engineering-blue/10 transition-colors mb-3">
+                      <tool.icon className="h-4 w-4 text-engineering-blue" />
                     </div>
-                    <h3 className="font-semibold text-navy group-hover:text-engineering-blue transition-colors text-sm leading-snug">
+                    <h3 className="text-sm font-medium text-navy group-hover:text-engineering-blue transition-colors leading-snug">
                       {tool.name}
                     </h3>
                   </CardContent>
@@ -312,46 +338,87 @@ function PopularToolsSection() {
   );
 }
 
-function FeaturedGuidesSection() {
+function WhyUsSection() {
   return (
-    <section className="py-16 sm:py-20 bg-light-bg">
+    <section className="py-16 sm:py-24 bg-light-bg">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-end justify-between mb-10">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <Badge variant="outline" className="mb-4">Why Work With Us</Badge>
+          <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
+            Engineering Partners for Industrial Projects
+          </h2>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {whyUs.map((item, i) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
+            >
+              <Card className="h-full border-slate-200">
+                <CardContent className="p-6">
+                  <CheckCircle2 className="h-6 w-6 text-engineering-blue mb-3" />
+                  <h3 className="font-semibold text-navy mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function InsightsPreviewSection() {
+  return (
+    <section className="py-16 sm:py-20 bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex items-end justify-between mb-8">
           <div>
-            <Badge variant="outline" className="mb-3">Engineering Knowledge</Badge>
-            <h2 className="text-2xl sm:text-3xl font-bold text-navy">Featured Guides</h2>
+            <Badge variant="outline" className="mb-3">Insights</Badge>
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy">Engineering Insights</h2>
+            <p className="text-muted-foreground mt-2 max-w-xl">
+              Technical guides and engineering references for industrial projects.
+            </p>
           </div>
           <Link
             href="/guides"
-            className="text-engineering-blue hover:text-engineering-blue/80 text-sm font-medium inline-flex items-center"
+            className="text-engineering-blue hover:text-engineering-blue/80 text-sm font-medium inline-flex items-center whitespace-nowrap"
           >
-            All Guides
-            <ArrowRight className="ml-1 h-4 w-4" />
+            All Insights <ArrowRight className="ml-1 h-4 w-4" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {featuredGuides.map((guide, index) => (
+        <div className="grid sm:grid-cols-3 gap-5">
+          {[
+            { title: "HVAC Design Principles for Clean Manufacturing", href: "/guides", icon: Wind },
+            { title: "Structural Load Considerations for Heavy Industrial Equipment", href: "/guides", icon: HardHat },
+            { title: "AI Agent Applications in Engineering Design", href: "/guides", icon: Cpu },
+          ].map((g, i) => (
             <motion.div
-              key={guide.href}
+              key={g.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
             >
-              <Link href={guide.href} className="block h-full">
-                <Card className="h-full card-hover border-border/60 cursor-pointer group flex flex-col">
+              <Link href={g.href} className="block h-full">
+                <Card className="h-full card-hover border-border/60 cursor-pointer group">
                   <CardHeader>
-                    <Badge variant="secondary" className="w-fit text-xs mb-2">
-                      {guide.readTime}
-                    </Badge>
-                    <CardTitle className="text-navy group-hover:text-engineering-blue transition-colors text-lg leading-snug">
-                      {guide.title}
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-engineering-blue/5 mb-2">
+                      <g.icon className="h-4 w-4 text-engineering-blue" />
+                    </div>
+                    <CardTitle className="text-navy group-hover:text-engineering-blue transition-colors text-base leading-snug">
+                      {g.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="pt-0 flex-1">
-                    <CardDescription className="text-muted-foreground leading-relaxed">
-                      {guide.description}
+                  <CardContent className="pt-0">
+                    <CardDescription className="text-muted-foreground text-sm">
+                      Engineering guide — part of our Industrial Engineering Insights series.
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -364,49 +431,21 @@ function FeaturedGuidesSection() {
   );
 }
 
-function DatabaseSection() {
-  const databases = [
-    { name: "Material Properties", href: "/materials", icon: Weight, count: "26 materials" },
-    { name: "Pipe Specifications", href: "/reference", icon: Droplets, count: "Schedule & sizes" },
-    { name: "Engineering Standards", href: "/guides", icon: BookOpen, count: "ASTM, ASME, API" },
-  ];
-
+function CTASection() {
   return (
-    <section className="py-16 sm:py-20 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <Badge variant="outline" className="mb-3">Engineering Database</Badge>
-          <h2 className="text-2xl sm:text-3xl font-bold text-navy">Reference Data</h2>
-          <p className="text-muted-foreground mt-2 max-w-xl mx-auto">
-            Structured engineering data, material properties, and industry standards at your fingertips.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {databases.map((db, index) => (
-            <motion.div
-              key={db.href}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-            >
-              <Link href={db.href} className="block h-full">
-                <Card className="h-full card-hover border-border/60 cursor-pointer group text-center">
-                  <CardContent className="p-8">
-                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-navy to-engineering-blue text-white mb-4 group-hover:scale-105 transition-transform">
-                      <db.icon className="h-7 w-7" />
-                    </div>
-                    <h3 className="font-semibold text-navy text-lg mb-1 group-hover:text-engineering-blue transition-colors">
-                      {db.name}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">{db.count}</p>
-                  </CardContent>
-                </Card>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+    <section className="bg-navy text-white">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-3">Have an industrial project to discuss?</h2>
+        <p className="text-slate-300 mb-6 max-w-xl mx-auto">
+          Tell us about your facility, scope and timeline. Our engineering team will respond within one business day.
+        </p>
+        <Link
+          href="/contact"
+          className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-medium text-navy hover:bg-slate-100 transition-colors"
+        >
+          <Briefcase className="h-4 w-4" />
+          Start a Project Assessment <ArrowRight className="h-4 w-4" />
+        </Link>
       </div>
     </section>
   );
@@ -416,10 +455,13 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <IntroductionSection />
-      <PopularToolsSection />
-      <FeaturedGuidesSection />
-      <DatabaseSection />
+      <CapabilitySection />
+      <IndustriesSection />
+      <ProjectsPreviewSection />
+      <ToolsSection />
+      <WhyUsSection />
+      <InsightsPreviewSection />
+      <CTASection />
     </>
   );
 }

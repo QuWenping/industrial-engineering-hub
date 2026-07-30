@@ -132,6 +132,22 @@ function Formula({ children }: { children: React.ReactNode }) {
   );
 }
 
+function CallToAction({ label = "Discuss your project", href = "/contact" }: { label?: string; href?: string }) {
+  return (
+    <div className="my-8 rounded-lg border border-engineering-blue/20 bg-gradient-to-br from-engineering-blue/5 via-white to-ai-glow/5 p-6 text-center">
+      <p className="text-sm text-slate-600 mb-3">
+        Ready to move from concept to build-ready engineering?
+      </p>
+      <Link
+        href={href}
+        className="inline-flex items-center gap-2 rounded-lg bg-navy px-5 py-2.5 text-sm font-medium text-white hover:bg-navy/90 transition-colors"
+      >
+        {label}
+      </Link>
+    </div>
+  );
+}
+
 export const mdxComponents: MDXComponents = {
   h1: H1,
   h2: H2,
@@ -157,6 +173,7 @@ export const mdxComponents: MDXComponents = {
   Callout,
   Calculator,
   Formula,
+  CallToAction,
   Info: (props: any) => <Callout type="info" {...props} />,
   Warning: (props: any) => <Callout type="warning" {...props} />,
   Success: (props: any) => <Callout type="success" {...props} />,

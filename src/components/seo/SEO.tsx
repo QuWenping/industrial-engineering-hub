@@ -4,7 +4,7 @@ interface SEOInput {
   title: string;
   description: string;
   path?: string;
-  type?: "website" | "article" | "software-application" | "dataset";
+  type?: "website" | "article" | "software-application" | "dataset" | "service";
   image?: string;
   publishedTime?: string;
   modifiedTime?: string;
@@ -12,8 +12,13 @@ interface SEOInput {
   keywords?: string[];
 }
 
+export const SITE_NAME = "Industrial Engineering Studio";
+export const SITE_NAME_SHORT = "IE Studio";
+
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://industrialengineeringhub.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://industrialengineeringstudio.com";
+
+export { BASE_URL };
 
 export function constructMetadata({
   title,
@@ -27,11 +32,11 @@ export function constructMetadata({
   keywords,
 }: SEOInput): Metadata {
   const url = `${BASE_URL}${path}`;
-  const fullTitle = title.includes("Industrial Engineering Hub")
+  const fullTitle = title.includes(SITE_NAME)
     ? title
-    : `${title} | Industrial Engineering Hub`;
+    : `${title} | ${SITE_NAME}`;
 
-  const ogType: "article" | "website" = type === "article" ? "article" : "website";
+  const ogType: "article" | "website" | "website" = type === "article" ? "article" : "website";
 
   const ogImages = image
     ? [{ url: image, width: 1200, height: 630, alt: title }]
@@ -49,7 +54,7 @@ export function constructMetadata({
       title: fullTitle,
       description,
       url,
-      siteName: "Industrial Engineering Hub",
+      siteName: SITE_NAME,
       type: ogType,
       publishedTime,
       modifiedTime,
@@ -121,7 +126,7 @@ export function schemaArticle(data: {
     author: data.author ? { "@type": "Organization", name: data.author } : undefined,
     publisher: {
       "@type": "Organization",
-      name: "Industrial Engineering Hub",
+      name: SITE_NAME,
       logo: {
         "@type": "ImageObject",
         url: `${BASE_URL}/logo.svg`,
@@ -174,7 +179,7 @@ export function schemaDataset(data: {
     url: data.url,
     creator: {
       "@type": "Organization",
-      name: "Industrial Engineering Hub",
+      name: SITE_NAME,
     },
     license: "https://creativecommons.org/licenses/by/4.0/",
   };
@@ -183,18 +188,50 @@ export function schemaDataset(data: {
 export function schemaOrganization() {
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Industrial Engineering Hub",
+    "@type": ["Organization", "EngineeringService"],
+    name: SITE_NAME,
     url: BASE_URL,
     logo: `${BASE_URL}/logo.svg`,
     description:
-      "Professional engineering calculators and technical guides for fluid mechanics, pump sizing, structural design, thermal engineering, and material selection.",
+      "Industrial engineering services for factories, energy facilities, chemical plants and infrastructure projects — structural, MEP, process and digital engineering.",
+    areaServed: "Global",
+    serviceType: [
+      "Industrial Building Design",
+      "Structural Engineering",
+      "HVAC & MEP Engineering",
+      "Chemical Plant Engineering",
+      "Energy Facility Engineering",
+      "Digital Engineering & AI",
+    ],
     sameAs: [],
     contactPoint: {
       "@type": "ContactPoint",
-      email: "support@industrialengineeringhub.com",
-      contactType: "customer support",
+      email: "hello@industrialengineeringstudio.com",
+      contactType: "sales",
+      availableLanguage: ["English"],
     },
+  };
+}
+
+export function schemaEngineeringService(data: {
+  name: string;
+  description: string;
+  url: string;
+  serviceType?: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: data.name,
+    description: data.description,
+    url: data.url,
+    provider: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: BASE_URL,
+    },
+    serviceType: data.serviceType,
+    areaServed: "Global",
   };
 }
 
@@ -202,7 +239,7 @@ export function schemaWebsiteSearch() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Industrial Engineering Hub",
+    name: SITE_NAME,
     url: BASE_URL,
     potentialAction: {
       "@type": "SearchAction",

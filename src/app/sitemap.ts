@@ -3,24 +3,38 @@ import { getAllCalculatorSlugs } from "@/lib/calculator/loader";
 import { getAllDocSlugs } from "@/lib/mdx";
 
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://industrialengineeringhub.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://industrialengineeringstudio.com";
+
+// Priority map: commercial landing pages highest, calculators next, knowledge lower
+function priorityFor(route: string): number {
+  if (route === "/") return 1.0;
+  if (route === "/services" || route.startsWith("/services/")) return 0.85;
+  if (route === "/industries" || route.startsWith("/industries/")) return 0.85;
+  if (route === "/projects") return 0.85;
+  if (route === "/contact") return 0.8;
+  if (route === "/tools") return 0.9;
+  if (route.startsWith("/tools/")) return 0.8;
+  if (route === "/guides") return 0.75;
+  if (route.startsWith("/guides/")) return 0.7;
+  if (route === "/materials") return 0.7;
+  if (route.startsWith("/materials/")) return 0.65;
+  return 0.6;
+}
 
 const staticRoutes = [
   "/",
-  "/about",
+  "/services",
+  "/industries",
+  "/projects",
+  "/tools",
+  "/guides",
+  "/materials",
   "/contact",
+  "/about",
   "/privacy",
   "/terms",
   "/disclaimer",
-  "/editorial-process",
-  "/data-sources",
-  "/methodology",
   "/sitemap",
-  "/tools",
-  "/guides",
-  "/reference",
-  "/materials",
-  "/enterprise",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -30,7 +44,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE_URL}${route}`,
     lastModified,
     changeFrequency: "weekly" as const,
-    priority: route === "/" ? 1.0 : route.startsWith("/tools") ? 0.9 : 0.7,
+    priority: priorityFor(route),
+  }));
+
+  // Service pages (MDX)
+  const serviceSlugs = getAllDocSlugs("services");
+  const serviceUrls = serviceSlugs.map((slug) => ({
+    url: `${BASE_URL}/services/${slug}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  // Industry pages (MDX)
+  const industrySlugs = getAllDocSlugs("industries");
+  const industryUrls = industrySlugs.map((slug) => ({
+    url: `${BASE_URL}/industries/${slug}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
   }));
 
   // Calculator pages
@@ -48,7 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE_URL}/guides/${slug}`,
     lastModified,
     changeFrequency: "monthly" as const,
-    priority: 0.75,
+    priority: 0.7,
   }));
 
   // Material pages
@@ -57,8 +89,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE_URL}/materials/${slug}`,
     lastModified,
     changeFrequency: "monthly" as const,
-    priority: 0.7,
+    priority: 0.65,
   }));
 
-  return [...staticUrls, ...calculatorUrls, ...guideUrls, ...materialUrls];
+  return [
+    ...staticUrls,
+    ...serviceUrls,
+    ...industryUrls,
+    ...calculatorUrls,
+    ...guideUrls,
+    ...materialUrls,
+  ];
 }
