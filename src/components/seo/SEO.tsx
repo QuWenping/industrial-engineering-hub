@@ -20,7 +20,7 @@ export function constructMetadata({
   description,
   path = "/",
   type = "website",
-  image = "/og-default.png",
+  image,
   publishedTime,
   modifiedTime,
   authors,
@@ -32,6 +32,10 @@ export function constructMetadata({
     : `${title} | Industrial Engineering Hub`;
 
   const ogType: "article" | "website" = type === "article" ? "article" : "website";
+
+  const ogImages = image
+    ? [{ url: image, width: 1200, height: 630, alt: title }]
+    : undefined;
 
   return {
     title: fullTitle,
@@ -49,20 +53,13 @@ export function constructMetadata({
       type: ogType,
       publishedTime,
       modifiedTime,
-      images: [
-        {
-          url: image,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
+      images: ogImages,
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [image],
+      images: image ? [image] : undefined,
     },
     robots: {
       index: true,
@@ -127,7 +124,7 @@ export function schemaArticle(data: {
       name: "Industrial Engineering Hub",
       logo: {
         "@type": "ImageObject",
-        url: `${BASE_URL}/logo.png`,
+        url: `${BASE_URL}/logo.svg`,
       },
     },
     datePublished: data.publishedTime,
@@ -189,7 +186,7 @@ export function schemaOrganization() {
     "@type": "Organization",
     name: "Industrial Engineering Hub",
     url: BASE_URL,
-    logo: `${BASE_URL}/logo.png`,
+    logo: `${BASE_URL}/logo.svg`,
     description:
       "Professional engineering calculators and technical guides for fluid mechanics, pump sizing, structural design, thermal engineering, and material selection.",
     sameAs: [],

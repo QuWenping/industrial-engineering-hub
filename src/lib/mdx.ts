@@ -50,6 +50,12 @@ export function getAllDocMeta(subdir: string, urlPrefix: string): DocMeta[] {
   });
 }
 
+// Lightweight frontmatter-only read — no MDX compile (used for OG images)
+export function getDocFrontmatter(slug: string, subdir: string): DocFrontmatter | null {
+  const file = readMDXFile(slug, subdir);
+  return file ? file.frontmatter : null;
+}
+
 export async function getDocBySlug(slug: string, subdir: string, urlPrefix: string) {
   const file = readMDXFile(slug, subdir);
   if (!file) return null;

@@ -15,7 +15,7 @@ import {
 import { ChevronRight, Calendar, BookOpen } from "lucide-react";
 import { getAllDocSlugs, getDocBySlug, getAllDocMeta } from "@/lib/mdx";
 import { getMaterialById } from "@/lib/calculator/materials";
-import { constructMetadata, schemaArticle, schemaBreadcrumb } from "@/components/seo/SEO";
+import { constructMetadata, schemaArticle, schemaBreadcrumb, schemaDataset } from "@/components/seo/SEO";
 import { mdxComponents } from "@/components/mdx/MDXComponents";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -55,6 +55,11 @@ export default async function MaterialPage({ params }: Props) {
       description: frontmatter.description,
       url: pageUrl,
       modifiedTime: frontmatter.updated,
+    }),
+    schemaDataset({
+      name: frontmatter.title,
+      description: frontmatter.description,
+      url: pageUrl,
     }),
     schemaBreadcrumb([
       { name: "Home", url: baseUrl },

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1677FF"/>
+      <stop offset="1" stop-color="#00D4FF"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="32" fill="#0B1F3A"/>
+  <text x="100" y="110" text-anchor="middle" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="72" font-weight="700" fill="url(#g)">Σ</text>
+  <text x="100" y="155" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="600" fill="#94A3B8">ENGINEERING</text>
+</svg>
