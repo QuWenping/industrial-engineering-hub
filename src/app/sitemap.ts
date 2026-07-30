@@ -14,6 +14,8 @@ const staticRoutes = [
   "/disclaimer",
   "/editorial-process",
   "/data-sources",
+  "/methodology",
+  "/sitemap",
   "/tools",
   "/guides",
   "/reference",
