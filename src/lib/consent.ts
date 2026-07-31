@@ -54,3 +54,24 @@ export function hasAnalyticsConsent(): boolean {
 export function hasAdsConsent(): boolean {
   return getConsent() === "all";
 }
+
+/**
+ * Push a Google Consent Mode v2 update. Call after the visitor chooses
+ * (or on mount for returning visitors). With Consent Mode, the gtag/AdSense
+ * scripts load unconditionally (so Google can detect them), but tracking is
+ * denied by default and only enabled here after "Accept all".
+ */
+export function pushConsentUpdate(granted: boolean): void {
+  if (typeof window === "undefined") return;
+  const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+  if (typeof w.gtag !== "function") return;
+  const state = granted ? "granted" : "denied";
+  w.gtag("consent", "update", {
+    ad_storage: state,
+    analytics_storage: state,
+    ad_user_data: state,
+    ad_personalization: state,
+    functionality_storage: granted ? "granted" : "denied",
+    security_storage: "granted",
+  });
+}

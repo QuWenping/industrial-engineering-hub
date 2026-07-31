@@ -3,12 +3,13 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Cookie } from "lucide-react";
-import { CONSENT_EVENT, getConsent, setConsent } from "@/lib/consent";
+import { CONSENT_EVENT, getConsent, setConsent, pushConsentUpdate } from "@/lib/consent";
 
 /**
- * GDPR-friendly cookie consent banner. Shows until the visitor chooses, then
- * reloads the page so consent-gated scripts (analytics, AdSense) apply cleanly.
- * Reopens on the "ieh-open-consent" event (triggered by the footer "Cookie
+ * GDPR-friendly cookie consent banner. With Google Consent Mode v2 the gtag /
+ * AdSense scripts load unconditionally (denied by default); this banner pushes
+ * a 'granted' update on "Accept all" and a 'denied' update on "Reject" — no
+ * page reload needed. Reopens on the "ieh-open-consent" event (footer "Cookie
  * settings" link) so users can change their mind at any time.
  */
 export function CookieConsent() {
@@ -17,7 +18,10 @@ export function CookieConsent() {
 
   useEffect(() => {
     setMounted(true);
-    setVisible(getConsent() === null);
+    const stored = getConsent();
+    setVisible(stored === null);
+    // Replay the visitor's previous choice into Consent Mode (returning users).
+    pushConsentUpdate(stored === "all");
 
     const reopen = () => setVisible(true);
     const onChange = () => setVisible(getConsent() === null);
@@ -32,8 +36,8 @@ export function CookieConsent() {
   function choose(choice: "all" | "necessary") {
     setConsent(choice);
     setVisible(false);
-    // Reload so gated scripts load/unload per the new consent state.
-    window.location.reload();
+    // Update Google Consent Mode live (scripts already loaded; no reload needed).
+    pushConsentUpdate(choice === "all");
   }
 
   if (!mounted || !visible) return null;

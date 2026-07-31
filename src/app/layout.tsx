@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { CookieConsent } from "@/components/consent/CookieConsent";
+import { ConsentBootstrap } from "@/components/consent/ConsentBootstrap";
 import { GatedAnalytics } from "@/components/consent/GatedAnalytics";
 import { AdSenseAutoAds } from "@/components/ads/AdSense";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -79,6 +80,7 @@ export default function RootLayout({
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebsiteSearch()) }}
         />
+        <ConsentBootstrap />
         <GatedAnalytics gaId={GA_ID} />
         <AdSenseAutoAds client={ADSENSE_ID} />
         <SpeedInsights />

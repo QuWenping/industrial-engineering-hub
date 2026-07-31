@@ -1,34 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Script from "next/script";
-import { CONSENT_EVENT, hasAdsConsent } from "@/lib/consent";
-
-declare global {
-  interface Window { adsbygoogle: unknown[] }
-}
-
-function useAdsConsent() {
-  const [ok, setOk] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-    setOk(hasAdsConsent());
-    const f = () => setOk(hasAdsConsent());
-    window.addEventListener(CONSENT_EVENT, f);
-    return () => window.removeEventListener(CONSENT_EVENT, f);
-  }, []);
-  return mounted && ok;
-}
 
 /**
- * AdSense "Auto ads" loader. Injects the adsbygoogle.js script ONLY after the
- * visitor accepts "all" cookies. With Auto ads enabled in the AdSense dashboard,
- * Google places ad units automatically — no per-slot markup needed.
+ * AdSense loader + manual ad unit. With Google Consent Mode v2 (see
+ * ConsentBootstrap), the adsbygoogle.js script loads unconditionally so Google
+ * can verify the code; ad cookies/personalization are denied by default and
+ * granted only after the visitor accepts cookies (consent.ts pushConsentUpdate).
  */
 export function AdSenseAutoAds({ client }: { client?: string }) {
-  const ok = useAdsConsent();
-  if (!client || !ok) return null;
+  if (!client) return null;
   return (
     <Script
       id="adsbygoogle-init"
@@ -41,8 +23,8 @@ export function AdSenseAutoAds({ client }: { client?: string }) {
 }
 
 /**
- * Manual AdSense ad unit (for hand-placed slots). Gated by the same consent as
- * Auto ads. Usage: <AdSenseAd client="ca-pub-..." slot="1234567890" format="auto" />
+ * Manual AdSense ad unit (for hand-placed slots). Usage:
+ *   <AdSenseAd client="ca-pub-..." slot="1234567890" format="auto" />
  */
 export function AdSenseAd({
   client,
@@ -55,17 +37,18 @@ export function AdSenseAd({
   format?: string;
   style?: React.CSSProperties;
 }) {
-  const ok = useAdsConsent();
   useEffect(() => {
-    if (!client || !ok) return;
+    if (!client) return;
     try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      const w = window as unknown as { adsbygoogle?: unknown[] };
+      w.adsbygoogle = w.adsbygoogle || [];
+      w.adsbygoogle.push({});
     } catch {
       /* ignore */
     }
-  }, [client, ok]);
+  }, [client]);
 
-  if (!client || !ok) return null;
+  if (!client) return null;
   return (
     <ins
       className="adsbygoogle"
