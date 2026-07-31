@@ -7,7 +7,7 @@ import { Calculator, Beaker, BookOpen, AlertTriangle } from "lucide-react";
 export const metadata: Metadata = constructMetadata({
   title: "Calculation Methodology",
   description:
-    "How Industrial Engineering Hub calculators work: SI base-unit conversion, formula evaluation with mathjs, validation tolerance, and engineering assumptions.",
+    "How Industrial Engineering Studio calculators work: SI base-unit conversion, formula evaluation with mathjs, validation tolerance, and engineering assumptions.",
   path: "/methodology",
 });
 

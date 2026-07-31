@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Mail, ExternalLink } from "lucide-react";
+import { CookieSettingsLink } from "@/components/consent/CookieSettingsLink";
 import { Separator } from "@/components/ui/separator";
 
 const footerLinks = {
@@ -81,6 +82,7 @@ export function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
           <p>&copy; {new Date().getFullYear()} Industrial Engineering Studio. All rights reserved.</p>
           <div className="flex items-center gap-4">
+            <CookieSettingsLink />
             <Link
               href="/contact"
               className="inline-flex items-center gap-1 hover:text-ai-glow transition-colors"

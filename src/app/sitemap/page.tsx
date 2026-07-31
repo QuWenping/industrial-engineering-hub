@@ -9,7 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 export const metadata: Metadata = constructMetadata({
   title: "Sitemap",
   description:
-    "Complete sitemap of Industrial Engineering Hub: browse all calculators, engineering guides, material references, and informational pages.",
+    "Complete sitemap of Industrial Engineering Studio: browse all calculators, engineering guides, material references, and informational pages.",
   path: "/sitemap",
 });
 

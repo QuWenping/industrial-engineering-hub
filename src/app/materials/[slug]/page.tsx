@@ -46,7 +46,7 @@ export default async function MaterialPage({ params }: Props) {
 
   const { frontmatter, content } = doc;
   const materialData = getMaterialById(slug);
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://industrialengineeringhub.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.industrialengineeringstudio.com";
   const pageUrl = `${baseUrl}/materials/${slug}`;
 
   const jsonLd = [

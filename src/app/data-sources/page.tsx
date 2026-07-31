@@ -6,7 +6,7 @@ import { ExternalLink, BookOpen, FlaskConical, Gauge } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
   title: "Data Sources & References",
-  description: "Standards, references, and data sources used by Industrial Engineering Hub calculators — ASTM, ASME, API, ISO, and engineering textbooks.",
+  description: "Standards, references, and data sources used by Industrial Engineering Studio calculators — ASTM, ASME, API, ISO, and engineering textbooks.",
   path: "/data-sources",
 });
 
@@ -162,10 +162,10 @@ export default function DataSourcesPage() {
               not match the current standard, please report it.
             </p>
             <a
-              href="mailto:support@industrialengineeringhub.com"
+              href="mailto:hello@industrialengineeringstudio.com"
               className="text-ai-glow hover:underline font-medium"
             >
-              support@industrialengineeringhub.com
+              hello@industrialengineeringstudio.com
             </a>
           </CardContent>
         </Card>

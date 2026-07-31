@@ -78,8 +78,8 @@ export default function DisclaimerPage() {
             <h2 className="text-lg font-bold text-navy mb-2">Reporting Errors</h2>
             <p>
               If you find a calculation error or inaccuracy, please report it to{" "}
-              <a href="mailto:support@industrialengineeringhub.com" className="text-engineering-blue hover:underline">
-                support@industrialengineeringhub.com
+              <a href="mailto:hello@industrialengineeringstudio.com" className="text-engineering-blue hover:underline">
+                hello@industrialengineeringstudio.com
               </a>. We take accuracy seriously and will investigate and correct verified errors promptly.
             </p>
           </section>

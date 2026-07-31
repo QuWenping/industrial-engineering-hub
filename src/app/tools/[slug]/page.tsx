@@ -49,7 +49,7 @@ export default async function CalculatorPage({ params }: Props) {
   if (!calc) notFound();
 
   const materials = getMaterialOptions();
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://industrialengineeringhub.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.industrialengineeringstudio.com";
   const pageUrl = `${baseUrl}/tools/${slug}`;
 
   const jsonLd = [

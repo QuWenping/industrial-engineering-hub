@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LoginForm } from "@/components/admin/LoginForm";
 
 export const metadata: Metadata = {
-  title: "Admin Login — Industrial Engineering Hub",
+  title: "Admin Login — Industrial Engineering Studio",
   robots: { index: false, follow: false },
 };
 
@@ -15,7 +15,7 @@ export default function AdminLoginPage() {
             Σ
           </div>
           <h1 className="text-xl font-semibold text-white">
-            Industrial Engineering Hub
+            Industrial Engineering Studio
           </h1>
           <p className="text-sm text-slate-400 mt-1">Admin Sign-in</p>
         </div>

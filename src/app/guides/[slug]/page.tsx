@@ -44,7 +44,7 @@ export default async function GuidePage({ params }: Props) {
   if (!doc) notFound();
 
   const { frontmatter, content } = doc;
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://industrialengineeringhub.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.industrialengineeringstudio.com";
   const pageUrl = `${baseUrl}/guides/${slug}`;
 
   // Build FAQ schema from headings (placeholder; ideally from frontmatter.faq)

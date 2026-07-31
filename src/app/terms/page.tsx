@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 
 export const metadata: Metadata = constructMetadata({
   title: "Terms of Service",
-  description: "Industrial Engineering Hub terms of service — engineering calculation disclaimer, user responsibilities, and content usage terms.",
+  description: "Industrial Engineering Studio terms of service — engineering calculation disclaimer, user responsibilities, and content usage terms.",
   path: "/terms",
 });
 
@@ -21,7 +21,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-bold text-navy">1. Acceptance of Terms</h2>
             <p>
-              By accessing and using Industrial Engineering Hub, you accept and agree to these Terms of
+              By accessing and using Industrial Engineering Studio, you accept and agree to these Terms of
               Service. If you do not agree to these terms, please do not use the site.
             </p>
           </section>
@@ -43,7 +43,7 @@ export default function TermsPage() {
               to safety factors, material degradation, environmental conditions, and code requirements.
             </p>
             <p>
-              Industrial Engineering Hub does not guarantee the accuracy, completeness, or suitability of
+              Industrial Engineering Studio does not guarantee the accuracy, completeness, or suitability of
               any calculation for any particular purpose. Users assume full responsibility for any
               decisions made based on information from this site.
             </p>
@@ -67,7 +67,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-bold text-navy">4. Intellectual Property</h2>
             <p>
-              Content on Industrial Engineering Hub, including calculators, articles, and reference data,
+              Content on Industrial Engineering Studio, including calculators, articles, and reference data,
               is protected by copyright. Engineering formulas themselves are based on public engineering
               knowledge and industry standards. Users may reference calculations for personal and
               professional use but may not reproduce or redistribute site content without permission.
@@ -79,7 +79,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-bold text-navy">5. Limitation of Liability</h2>
             <p>
-              Industrial Engineering Hub and its contributors shall not be liable for any direct,
+              Industrial Engineering Studio and its contributors shall not be liable for any direct,
               indirect, incidental, consequential, or punitive damages arising from the use of or
               inability to use this site, including but not limited to damages from engineering
               decisions made using calculated results.
@@ -102,8 +102,8 @@ export default function TermsPage() {
             <h2 className="text-xl font-bold text-navy">7. Contact</h2>
             <p>
               Questions about these terms? Contact us at{" "}
-              <a href="mailto:support@industrialengineeringhub.com" className="text-engineering-blue hover:underline">
-                support@industrialengineeringhub.com
+              <a href="mailto:hello@industrialengineeringstudio.com" className="text-engineering-blue hover:underline">
+                hello@industrialengineeringstudio.com
               </a>.
             </p>
           </section>

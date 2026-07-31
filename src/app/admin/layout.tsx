@@ -10,7 +10,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Admin — Industrial Engineering Hub",
+  title: "Admin — Industrial Engineering Studio",
   robots: { index: false, follow: false },
 };
 
@@ -41,7 +41,7 @@ export default async function AdminLayout({
       <Sidebar />
       <div className="flex-1 flex flex-col min-w-0">
         <header className="h-14 border-b border-slate-200 bg-white px-6 flex items-center justify-between">
-          <div className="text-sm text-slate-500">Industrial Engineering Hub Admin</div>
+          <div className="text-sm text-slate-500">Industrial Engineering Studio Admin</div>
           <form action="/api/admin/logout" method="post">
             <button
               type="submit"

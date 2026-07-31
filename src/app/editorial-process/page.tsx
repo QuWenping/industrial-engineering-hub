@@ -6,7 +6,7 @@ import { CheckCircle2, Users, FileCheck, Brain, Eye, GitBranch } from "lucide-re
 
 export const metadata: Metadata = constructMetadata({
   title: "Editorial Process",
-  description: "How Industrial Engineering Hub creates, reviews, and publishes engineering content — AI assistance, human engineering review, and quality standards.",
+  description: "How Industrial Engineering Studio creates, reviews, and publishes engineering content — AI assistance, human engineering review, and quality standards.",
   path: "/editorial-process",
 });
 
@@ -144,8 +144,8 @@ export default function EditorialProcessPage() {
         <div className="mt-12 text-center text-sm text-muted-foreground">
           <p>
             Found an error? Report it to{" "}
-            <a href="mailto:support@industrialengineeringhub.com" className="text-engineering-blue hover:underline">
-              support@industrialengineeringhub.com
+            <a href="mailto:hello@industrialengineeringstudio.com" className="text-engineering-blue hover:underline">
+              hello@industrialengineeringstudio.com
             </a>
           </p>
         </div>

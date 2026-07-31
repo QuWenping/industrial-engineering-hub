@@ -55,7 +55,7 @@ export default async function AdminDashboard() {
       <div>
         <h1 className="text-2xl font-bold text-navy">Dashboard</h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Industrial Engineering Hub admin console · {now.toLocaleDateString()}
+          Industrial Engineering Studio admin console · {now.toLocaleDateString()}
         </p>
       </div>
 
