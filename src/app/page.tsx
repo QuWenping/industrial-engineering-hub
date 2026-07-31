@@ -19,7 +19,6 @@ import {
   Cog,
   Warehouse,
   CheckCircle2,
-  FolderKanban,
   BookOpen,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -257,10 +256,10 @@ function ProjectsPreviewSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between mb-10">
           <div>
-            <Badge variant="outline" className="mb-3">Case Studies</Badge>
-            <h2 className="text-2xl sm:text-3xl font-bold text-navy">Engineering Projects</h2>
+            <Badge variant="outline" className="mb-3">How We Deliver</Badge>
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy">How We Deliver Projects</h2>
             <p className="text-muted-foreground mt-2 max-w-xl">
-              Selected industrial facility engineering case studies — coming soon.
+              A phase-gated delivery model — from concept and FEED through detailed engineering, procurement support, construction and digital handover.
             </p>
           </div>
           <Link
@@ -271,16 +270,24 @@ function ProjectsPreviewSection() {
           </Link>
         </div>
 
-        <Card className="border-dashed border-slate-300 bg-white/50">
-          <CardContent className="p-10 text-center">
-            <FolderKanban className="h-10 w-10 text-slate-300 mx-auto mb-3" />
-            <p className="text-sm text-muted-foreground">
-              Project case studies are currently being prepared. In the meantime, explore our{" "}
-              <Link href="/services" className="text-engineering-blue hover:underline">engineering services</Link>{" "}
-              or <Link href="/contact" className="text-engineering-blue hover:underline">discuss your project</Link>.
-            </p>
-          </CardContent>
-        </Card>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { icon: Briefcase, title: "Concept & FEED", text: "Scope, plot plan and Class 4/5 estimate." },
+            { icon: Cog, title: "Detailed Engineering", text: "Coordinated multi-discipline design and BIM." },
+            { icon: HardHat, title: "Construction Support", text: "RFIs, ITP and commissioning readiness." },
+            { icon: Warehouse, title: "Digital Handover", text: "As-built BIM and indexed asset data." },
+          ].map((p) => (
+            <Card key={p.title} className="border-slate-200 bg-white">
+              <CardContent className="p-6">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-navy/5 text-navy mb-3">
+                  <p.icon className="h-4 w-4" />
+                </div>
+                <h3 className="font-semibold text-navy text-sm mb-1">{p.title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">{p.text}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   );
