@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -78,6 +79,7 @@ export default function RootLayout({
         />
         {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
