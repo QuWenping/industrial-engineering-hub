@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { notifyLead } from "@/lib/notify/lead";
@@ -91,8 +91,8 @@ export async function POST(request: Request) {
       },
       select: { id: true },
     });
-    // Best-effort notification (webhook and/or email). Never blocks or breaks submission.
-    await notifyLead({
+    // visitor gets an instant 200 and the webhook/email fires in the background (kept alive by Vercel).
+    after(() => notifyLead({
       id: lead.id,
       name: d.name.trim(),
       company: d.company.trim(),
@@ -108,7 +108,7 @@ export async function POST(request: Request) {
       source: d.source || "contact-form",
       sourceRef: d.sourceRef?.trim() || null,
       userAgent: request.headers.get("user-agent")?.slice(0, 400) || null,
-    });
+    }));
 
     return NextResponse.json({ ok: true, leadId: lead.id });
   } catch (err: any) {
