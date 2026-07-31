@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllCalculatorSlugs } from "@/lib/calculator/loader";
-import { getAllDocSlugs } from "@/lib/mdx";
+import { getAllDocSlugs, getAllDocMeta } from "@/lib/mdx";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://industrialengineeringstudio.com";
@@ -78,7 +78,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Project case-study pages
-  const projectSlugs = getAllDocSlugs("projects");
+  const projectMetas = getAllDocMeta("projects", "/projects").filter((m) => !((m.frontmatter as any).hidden));
+  const projectSlugs = projectMetas.map((m) => m.slug);
   const projectUrls = projectSlugs.map((slug) => ({
     url: `${BASE_URL}/projects/${slug}`,
     lastModified,

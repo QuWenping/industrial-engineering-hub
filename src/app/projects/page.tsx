@@ -25,7 +25,8 @@ const CATEGORY_ORDER = [
 ];
 
 export default function ProjectsPage() {
-  const metas = getAllDocMeta("projects", "/projects");
+  const allMetas = getAllDocMeta("projects", "/projects");
+  const metas = allMetas.filter((m) => !((m.frontmatter as any).hidden));
   const fm = (m: ReturnType<typeof getAllDocMeta>[number]) => m.frontmatter as {
     title: string; description: string; category?: string; location?: string;
     client?: string; clientType?: string; scale?: string; cover?: string; highlights?: string[];
