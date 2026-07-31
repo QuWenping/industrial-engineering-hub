@@ -102,7 +102,6 @@ export default async function CalculatorPage({ params }: Props) {
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-2">
             <Badge variant="secondary">{calc.category}</Badge>
-            <Badge variant="outline">{calc.priority}</Badge>
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-navy mb-3">{calc.name}</h1>
           <p className="text-lg text-muted-foreground leading-relaxed">{calc.description}</p>
