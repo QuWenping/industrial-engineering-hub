@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ProjectsCarousel } from "@/components/home/ProjectsCarousel";
 
 // ─── Capabilities (section 1) ─────────────────────────────────────────────────
 const capabilities = [
@@ -254,12 +255,12 @@ function ProjectsPreviewSection() {
   return (
     <section className="py-16 sm:py-24 bg-light-bg">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-end justify-between mb-10">
+        <div className="flex items-end justify-between mb-8">
           <div>
-            <Badge variant="outline" className="mb-3">How We Deliver</Badge>
-            <h2 className="text-2xl sm:text-3xl font-bold text-navy">How We Deliver Projects</h2>
+            <Badge variant="outline" className="mb-3">Case Studies</Badge>
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy">Engineering Project Case Studies</h2>
             <p className="text-muted-foreground mt-2 max-w-xl">
-              A phase-gated delivery model — from concept and FEED through detailed engineering, procurement support, construction and digital handover.
+              A selection of real projects — industrial, chemical, energy, steel-structure, public-building and cultural-tourism work, including overseas and foreign-invested clients.
             </p>
           </div>
           <Link
@@ -270,24 +271,7 @@ function ProjectsPreviewSection() {
           </Link>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { icon: Briefcase, title: "Concept & FEED", text: "Scope, plot plan and Class 4/5 estimate." },
-            { icon: Cog, title: "Detailed Engineering", text: "Coordinated multi-discipline design and BIM." },
-            { icon: HardHat, title: "Construction Support", text: "RFIs, ITP and commissioning readiness." },
-            { icon: Warehouse, title: "Digital Handover", text: "As-built BIM and indexed asset data." },
-          ].map((p) => (
-            <Card key={p.title} className="border-slate-200 bg-white">
-              <CardContent className="p-6">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-navy/5 text-navy mb-3">
-                  <p.icon className="h-4 w-4" />
-                </div>
-                <h3 className="font-semibold text-navy text-sm mb-1">{p.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{p.text}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <ProjectsCarousel />
       </div>
     </section>
   );

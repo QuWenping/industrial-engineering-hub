@@ -198,3 +198,15 @@
     transform: translateY(-1px);
   }
 }
+
+/* ─── Projects carousel marquee ──────────────────────────────────────────── */
+@keyframes ieh-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ieh-marquee-track {
+  animation: ieh-marquee 60s linear infinite;
+}
+.ieh-marquee-pause:hover .ieh-marquee-track {
+  animation-play-state: paused;
+}
