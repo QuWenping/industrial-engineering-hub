@@ -77,6 +77,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Project case-study pages
+  const projectSlugs = getAllDocSlugs("projects");
+  const projectUrls = projectSlugs.map((slug) => ({
+    url: `${BASE_URL}/projects/${slug}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   // Guide pages
   const guideSlugs = getAllDocSlugs("guides");
   const guideUrls = guideSlugs.map((slug) => ({
@@ -100,6 +109,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...serviceUrls,
     ...industryUrls,
     ...calculatorUrls,
+    ...projectUrls,
     ...guideUrls,
     ...materialUrls,
   ];
