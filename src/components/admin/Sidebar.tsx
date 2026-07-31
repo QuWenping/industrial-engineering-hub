@@ -11,11 +11,13 @@ import {
   Bot,
   Database,
   Settings,
+  Inbox,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
+  { href: "/admin/leads", label: "Leads", icon: Inbox },
   { href: "/admin/keywords", label: "Keywords", icon: Search },
   { href: "/admin/calculators", label: "Calculators", icon: Calculator },
   { href: "/admin/content", label: "Content", icon: FileText },
