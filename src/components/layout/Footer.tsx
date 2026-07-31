@@ -37,9 +37,9 @@ export function Footer() {
   return (
     <footer className="bg-navy text-slate-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8 lg:gap-10">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
+          <div className="col-span-2 md:col-span-2 min-w-0">
             <div className="flex items-center gap-2.5 mb-4">
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-engineering-blue to-ai-glow text-white font-bold text-sm">
                 IES
@@ -51,10 +51,10 @@ export function Footer() {
             </p>
             <a
               href="mailto:hello@industrialengineeringstudio.com"
-              className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-ai-glow transition-colors"
+              className="inline-flex items-start gap-1.5 text-sm text-slate-400 hover:text-ai-glow transition-colors break-all leading-snug"
             >
-              <Mail className="h-4 w-4" />
-              hello@industrialengineeringstudio.com
+              <Mail className="h-4 w-4 mt-0.5 shrink-0" />
+              <span>hello@industrialengineeringstudio.com</span>
             </a>
           </div>
 

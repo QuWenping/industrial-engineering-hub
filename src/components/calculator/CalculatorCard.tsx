@@ -118,10 +118,10 @@ export function CalculatorCard({ calculator, materials = [] }: CalculatorCardPro
                       value={String(values._materialId || materials[0]?.id || "")}
                       onValueChange={handleMaterialChange}
                     >
-                      <SelectTrigger id={input.id}>
+                      <SelectTrigger id={input.id} className="w-full">
                         <SelectValue placeholder="Select material" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="min-w-[16rem] w-max max-w-[92vw]">
                         {materials.map((mat) => (
                           <SelectItem key={mat.id} value={mat.id}>
                             {mat.name} ({mat.density} kg/m³)
@@ -143,10 +143,10 @@ export function CalculatorCard({ calculator, materials = [] }: CalculatorCardPro
                       value={String(values[input.id] || "")}
                       onValueChange={(v) => v && handleChange(input.id, v)}
                     >
-                      <SelectTrigger id={input.id}>
+                      <SelectTrigger id={input.id} className="w-full">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="min-w-[16rem] w-max max-w-[92vw]">
                         {input.options.map((opt) => (
                           <SelectItem key={opt.value} value={String(opt.value)}>
                             {opt.label}

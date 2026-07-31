@@ -59,10 +59,10 @@ export function InputField({ input, value, error, onChange }: InputFieldProps) {
           {input.required && <span className="text-danger ml-0.5">*</span>}
         </Label>
         <Select value={String(value || "")} onValueChange={(v) => v && onChange(v)}>
-          <SelectTrigger id={input.id}>
+          <SelectTrigger id={input.id} className="w-full">
             <SelectValue placeholder="Select..." />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="min-w-[16rem] w-max max-w-[92vw]">
             {input.options.map((opt) => (
               <SelectItem key={opt.value} value={String(opt.value)}>
                 {opt.label}
