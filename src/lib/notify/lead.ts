@@ -70,12 +70,18 @@ function htmlText(l: LeadSummary): string {
 async function notifyWebhook(l: LeadSummary): Promise<boolean> {
   const url = process.env.LEAD_NOTIFY_WEBHOOK;
   if (!url) return false;
+  // Send both `text` (Slack) and `content` (Discord) so the same payload works
+  // for Slack, Discord, MS Teams, and custom endpoints. Discord caps content at
+  // 2000 chars; the summary is well under that.
+  const summary = plainText(l);
   const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      text: plainText(l),
-      lead: l,
+      text: summary,          // Slack
+      content: summary,       // Discord
+      username: "IEH Leads",  // Discord/Slack display name
+      lead: l,                // structured data for custom webhooks
       site: SITE,
     }),
   });
