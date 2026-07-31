@@ -64,9 +64,9 @@ export default function AboutPage() {
             twin, AI-assisted workflows).
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            We also publish the free <Link href="/tools" className="text-engineering-blue hover:underline">
-            Industrial Engineering Tools</Link> used by tens of thousands of engineers worldwide,
-            and share engineering knowledge through our <Link href="/guides" className="text-engineering-blue hover:underline">
+            We also publish a free suite of <Link href="/tools" className="text-engineering-blue hover:underline">
+            Industrial Engineering Tools</Link> — calculators and reference data — and share engineering
+            knowledge through our <Link href="/guides" className="text-engineering-blue hover:underline">
             Engineering Insights</Link>.
           </p>
 
