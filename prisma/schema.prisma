@@ -108,3 +108,32 @@ model Review {
   comments      Json?
   createdAt     DateTime    @default(now())
 }
+
+// ─── Leads (CRM) ──────────────────────────────────────────────────────────────
+
+model Lead {
+  id          String   @id @default(cuid())
+  name        String
+  company     String
+  email       String
+  phone       String?
+  industry    String
+  projectType String
+  location    String?
+  projectSize String?
+  services    String[] @default([])
+  timeline    String?
+  message     String   @db.Text
+  source      String   @default("contact-form") // contact-form|calculator-cta|service-cta|industry-cta
+  sourceRef   String?  // e.g. tool slug, /services/<slug>
+  status      String   @default("new") // new|contacted|qualified|won|lost|spam
+  notes       String?  @db.Text
+  ipCountry   String?
+  userAgent   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  contactedAt DateTime?
+
+  @@index([status])
+  @@index([createdAt])
+}

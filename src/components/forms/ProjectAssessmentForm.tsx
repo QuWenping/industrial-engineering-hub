@@ -109,6 +109,7 @@ function ProjectAssessmentFormInner() {
       timeline: String(formData.get("timeline") || ""),
       services,
       message: String(formData.get("message") || ""),
+      website: String(formData.get("website") || ""),
       source: reason === "engineering-assessment" ? "calculator-cta" : "contact-form",
       sourceRef: toolSlug || (presetService ? `/services/${presetService}` : ""),
     };
