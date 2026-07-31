@@ -100,11 +100,8 @@ export function schemaSoftwareApplication(data: {
       price: "0",
       priceCurrency: "USD",
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      ratingCount: "127",
-    },
+    // No aggregateRating: the calculators have no real user reviews, so a
+    // fabricated rating would be schema spam (Google policy violation).
   };
 }
 

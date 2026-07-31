@@ -34,6 +34,9 @@ const staticRoutes = [
   "/privacy",
   "/terms",
   "/disclaimer",
+  "/methodology",
+  "/data-sources",
+  "/editorial-process",
   "/sitemap",
 ];
 
