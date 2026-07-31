@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { CookieConsent } from "@/components/consent/CookieConsent";
 import { GatedAnalytics } from "@/components/consent/GatedAnalytics";
+import { AdSenseAutoAds } from "@/components/ads/AdSense";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/layout/Header";
@@ -23,6 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const ADSENSE_ID = process.env.NEXT_PUBLIC_ADSENSE_ID;
 
 export const metadata: Metadata = constructMetadata({
   title: "Industrial Engineering Studio",
@@ -78,6 +80,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebsiteSearch()) }}
         />
         <GatedAnalytics gaId={GA_ID} />
+        <AdSenseAutoAds client={ADSENSE_ID} />
         <SpeedInsights />
         <CookieConsent />
       </body>
