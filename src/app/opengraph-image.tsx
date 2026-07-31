@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Industrial Engineering Hub - Free Engineering Calculators";
+export const alt = "Industrial Engineering Studio - Free Engineering Calculators & Guides";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -18,6 +18,7 @@ export default async function OGImage() {
           padding: "80px",
           fontFamily: "Inter, system-ui, sans-serif",
           color: "white",
+          position: "relative",
         }}
       >
         {/* Accent bar */}
@@ -53,7 +54,7 @@ export default async function OGImage() {
             marginBottom: "24px",
           }}
         >
-          Hub
+          Studio
         </div>
 
         {/* Subtitle */}
@@ -61,16 +62,19 @@ export default async function OGImage() {
           Free Online Engineering Calculators & Guides
         </div>
 
-        {/* Stats */}
+        {/* Stats — each card is a flex column (Satori requires explicit display
+            on any div with more than one child) */}
         <div style={{ display: "flex", gap: "20px" }}>
           {[
             { value: "53+", label: "Calculators", color: "#1677FF" },
             { value: "50+", label: "Guides", color: "#00D4FF" },
-            { value: "100%", label: "Free", color: "#00B578" },
+            { value: "26+", label: "Materials", color: "#00B578" },
           ].map((s) => (
             <div
               key={s.label}
               style={{
+                display: "flex",
+                flexDirection: "column",
                 padding: "20px 24px",
                 background: `${s.color}20`,
                 borderRadius: "12px",
@@ -83,7 +87,7 @@ export default async function OGImage() {
           ))}
         </div>
 
-        {/* URL */}
+        {/* URL footer */}
         <div
           style={{
             position: "absolute",
@@ -94,7 +98,7 @@ export default async function OGImage() {
             fontWeight: 500,
           }}
         >
-          industrialengineeringhub.com
+          www.industrialengineeringstudio.com
         </div>
       </div>
     ),

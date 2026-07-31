@@ -113,10 +113,10 @@ export function renderOG({ title, subtitle, category, accent = "#1677FF" }: OGDa
           }}
         >
           <div style={{ fontSize: "22px", fontWeight: 700, color: "white" }}>
-            Industrial Engineering Hub
+            Industrial Engineering Studio
           </div>
           <div style={{ fontSize: "20px", color: "#64748B", fontWeight: 500 }}>
-            industrialengineeringhub.com
+            www.industrialengineeringstudio.com
           </div>
         </div>
       </div>
