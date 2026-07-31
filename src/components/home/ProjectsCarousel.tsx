@@ -16,6 +16,10 @@ const PROJECTS = [
   { slug: "dalian-bear-cave-street", title: "Dalian Bear Cave Street", category: "Cultural Tourism", clientType: "Urban renewal", location: "Dalian", cover: "/projects/dalian-bear-cave-street.jpg?v=2" },
   { slug: "dalian-station-north-parking", title: "Dalian Station North Parking", category: "Steel Structure", clientType: "Municipal", location: "Dalian", cover: "/projects/dalian-station-north-parking.jpg?v=2" },
   { slug: "henan-university-longzihu-campus", title: "Henan University Longzihu Campus", category: "Public Building", clientType: "University", location: "Zhengzhou", cover: "/projects/henan-university-longzihu-campus.jpg?v=2" },
+  { slug: "smart-energy-management", title: "Smart Energy Management", category: "Energy & Environment", clientType: "Energy solution", location: "China", cover: "/projects/smart-energy-management.jpg?v=2" },
+  { slug: "bac-energy-saving-display-unit", title: "BAC Energy-Saving Display Unit", category: "Energy & Environment", clientType: "Sino-US JV", location: "Dalian", cover: "/projects/bac-energy-saving-display-unit.jpg?v=2" },
+  { slug: "hengli-petrochemical-coal-to-hydrogen", title: "Hengli Petrochemical BIM", category: "BIM & Digital", clientType: "Petrochemical", location: "Changxing Island", cover: "/projects/hengli-petrochemical-coal-to-hydrogen.jpg?v=2" },
+  { slug: "cost-consulting-portfolio", title: "Cost Consulting Portfolio", category: "Cost Consultancy", clientType: "Portfolio", location: "Multiple", cover: "/projects/cost-consulting-portfolio.jpg?v=2" },
   { slug: "beijing-tianjiayuan-plant-factory", title: "Beijing Tianjiayuan Plant Factory", category: "Public Building", clientType: "Agri-tech", location: "Beijing", cover: "/projects/beijing-tianjiayuan-plant-factory.jpg?v=2" },
 ];
 

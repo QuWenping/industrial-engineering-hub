@@ -19,6 +19,9 @@ const CATEGORY_ORDER = [
   "Steel Structure Design & Optimization",
   "Public Building",
   "Cultural Tourism Planning & Design",
+  "BIM & Digital Design",
+  "Energy & Environmental Protection",
+  "Cost Consultancy",
 ];
 
 export default function ProjectsPage() {
