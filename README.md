@@ -2,7 +2,20 @@
 
 > An SEO-focused industrial engineering calculator & reference site, with a built-in AI content factory for solo operators.
 
-**Production:** [industrialengineeringhub.com](https://industrialengineeringhub.com)
+**Production:** [industrialengineeringstudio.com](https://www.industrialengineeringstudio.com)
+## Agent 协作规则（接手本项目的 agent 必读）
+
+任何 agent 接手本项目时，**先完整读本 README**，再读 `AGENTS.md` 和 `CLAUDE.md`，了解技术栈、目录结构、部署方式与已知坑，然后按下列规则协作：
+
+1. **先读文档，再动手**：开工前通读本 README + `AGENTS.md`；涉及 Next.js 16 时按 `AGENTS.md` 要求查阅 `node_modules/next/dist/docs/`，不要凭训练数据假设 API。
+2. **按计划推进**：以 Obsidian 中的 [[ieh-plan]] / Sprint 规划为优先级来源；每开始一项任务先确认它在计划里的位置，做完一项再取下一项，不跳跃。
+3. **完成的任务及时标记**：任务完成立即在 Obsidian `03-Projects/industrial-engineering-hub/ieh-progress.md` 勾选/标 ✅，并补 commit 记录；不要积攒到最后才更新。
+4. **每个节点写经验总结**：完成一个功能节点或修完一个 bug，把「问题 → 原因 → 解决 → 经验」写到 Obsidian `ieh-sprints.md`（Sprint 日志）或单独的 postmortem 笔记（命名 `ieh-fix-*-postmortem.md`），并在 `industrial-engineering-hub.md` 索引里登记。
+5. **小步提交，描述清楚**：每个独立修复/功能一个 commit，commit message 写明根因和解决方式；推送后确认 Vercel 构建通过。
+6. **不破坏生产**：改数据库 schema 先本地 `npm run db:push` 验证；改构建/部署相关配置后必须本地 `npm run build` 通过再推送；环境变量改动同步到 Vercel（本地 .env 不会自动同步）。
+
+Obsidian 项目笔记目录：`C:\Users\QuQu\Documents\ObsidianVault\03-Projects\industrial-engineering-hub\`
+
 
 ## Stack
 
