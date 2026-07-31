@@ -11,6 +11,7 @@
     "db:studio": "prisma studio",
     "db:seed": "tsx prisma/seed.ts",
     "test:calculators": "tsx scripts/test-calculators.ts",
+    "indexnow:submit": "tsx scripts/indexnow-submit.ts",
     "postinstall": "prisma generate"
   },
   "dependencies": {

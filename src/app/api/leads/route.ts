@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
+import { notifyLead } from "@/lib/notify/lead";
 
 // ─── Rate limit: per-IP, 5 submissions per hour (rolling window) ─────────────
 const RATE_LIMIT_MAX = 5;
@@ -90,6 +91,25 @@ export async function POST(request: Request) {
       },
       select: { id: true },
     });
+    // Best-effort notification (webhook and/or email). Never blocks or breaks submission.
+    await notifyLead({
+      id: lead.id,
+      name: d.name.trim(),
+      company: d.company.trim(),
+      email: d.email.trim().toLowerCase(),
+      phone: d.phone?.trim() || null,
+      industry: d.industry,
+      projectType: d.projectType,
+      location: d.location?.trim() || null,
+      projectSize: d.projectSize || null,
+      services: d.services,
+      timeline: d.timeline || null,
+      message: d.message.trim(),
+      source: d.source || "contact-form",
+      sourceRef: d.sourceRef?.trim() || null,
+      userAgent: request.headers.get("user-agent")?.slice(0, 400) || null,
+    });
+
     return NextResponse.json({ ok: true, leadId: lead.id });
   } catch (err: any) {
     console.error("Lead create failed:", err);
