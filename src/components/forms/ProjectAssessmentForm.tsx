@@ -98,9 +98,9 @@ function ProjectAssessmentFormInner() {
     }
 
     const payload = {
-      name: String(formData.get("name") || ""),
-      company: String(formData.get("company") || ""),
-      email: String(formData.get("email") || ""),
+      name: String(formData.get("name") || "").trim(),
+      company: String(formData.get("company") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
       phone: String(formData.get("phone") || ""),
       industry: String(formData.get("industry") || ""),
       projectType: String(formData.get("projectType") || ""),
@@ -108,11 +108,29 @@ function ProjectAssessmentFormInner() {
       projectSize: String(formData.get("projectSize") || ""),
       timeline: String(formData.get("timeline") || ""),
       services,
-      message: String(formData.get("message") || ""),
+      message: String(formData.get("message") || "").trim(),
       website: String(formData.get("website") || ""),
       source: reason === "engineering-assessment" ? "calculator-cta" : "contact-form",
       sourceRef: toolSlug || (presetService ? `/services/${presetService}` : ""),
     };
+
+    // ─── Client-side validation (mirrors server Zod schema) ───────────────────
+    // Prevents 400 round-trips and gives clear, field-specific feedback.
+    const fieldErrors: string[] = [];
+    if (!payload.name) fieldErrors.push("Full Name is required");
+    if (!payload.company) fieldErrors.push("Company is required");
+    if (!payload.email) fieldErrors.push("Email is required");
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email))
+      fieldErrors.push("Please enter a valid email address");
+    if (!payload.industry) fieldErrors.push("Please select an Industry");
+    if (!payload.projectType) fieldErrors.push("Please select a Project Type");
+    if (payload.message.length < 10)
+      fieldErrors.push("Project Description must be at least 10 characters");
+    if (fieldErrors.length > 0) {
+      setStatus("error");
+      setErrorMsg(fieldErrors.join(" • "));
+      return;
+    }
 
     try {
       const res = await fetch("/api/leads", {
@@ -120,7 +138,15 @@ function ProjectAssessmentFormInner() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error(`Server returned ${res.status}`);
+      if (!res.ok) {
+        // Surface the server's actual validation/error message when available.
+        let serverMsg = `Server returned ${res.status}`;
+        try {
+          const data = await res.json();
+          if (data?.error) serverMsg = data.error;
+        } catch {}
+        throw new Error(serverMsg);
+      }
       setStatus("success");
       form.reset();
     } catch (err: any) {
