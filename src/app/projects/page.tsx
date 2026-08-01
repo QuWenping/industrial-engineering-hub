@@ -51,7 +51,7 @@ export default function ProjectsPage() {
             work and projects for international and foreign-invested clients.
           </p>
           <p className="mt-4 text-sm text-slate-400 max-w-2xl">
-            Our team has delivered 700+ projects over two decades. The {metas.filter((m) => !((m.frontmatter as any).hidden)).length} case studies below are a representative selection — contact us for more examples in your industry.
+            Our team brings experience from 700+ projects delivered by our parent group over two decades. The {metas.filter((m) => !((m.frontmatter as any).hidden)).length} case studies below are a representative selection — contact us for more examples in your industry.
           </p>
         </div>
       </section>

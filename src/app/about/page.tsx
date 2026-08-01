@@ -8,7 +8,7 @@ import { Target, Users, Cpu, Globe, ArrowRight, Mail } from "lucide-react";
 export const metadata: Metadata = constructMetadata({
   title: "About Industrial Engineering Studio",
   description:
-    "Industrial Engineering Studio is the international brand of Muqian (Dalian) Engineering Technology Co., Ltd. — a real Chinese engineering firm with Class-A group qualifications, ~150 engineers and overseas project experience, serving global clients.",
+    "Industrial Engineering Studio is the international brand of Muqian (Dalian) Engineering Technology Co., Ltd. — a real Chinese engineering firm with Class-B qualifications in building, chemical, environmental and landscape engineering, ~50 engineers in Dalian, and overseas project experience, serving global clients.",
   path: "/about",
 });
 
