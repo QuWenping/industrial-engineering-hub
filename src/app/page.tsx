@@ -142,10 +142,10 @@ function HeroSection() {
     <section className="relative overflow-hidden min-h-screen flex items-center justify-center bg-gradient-to-b from-[#0B1F3A] via-[#102B50] to-[#06080E] text-white">
       {/* z1: Background image with Ken Burns slow zoom */}
       <div className="absolute inset-0 overflow-hidden">
-        <img src="/hero-bg.png" alt="" className="ieh-kenburns h-full w-full object-cover opacity-20" />
+        <img src="/hero-bg.png" alt="" className="ieh-kenburns h-full w-full object-cover opacity-35" />
       </div>
       {/* z2: Overlay layers for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3A]/85 via-[#102B50]/75 to-[#06080E]/95" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0B1F3A]/90 via-[#0B1F3A]/55 to-[#06080E]/20" />
       <div className="absolute inset-0 hero-grid-bg opacity-15" />
       <div className="absolute inset-0 hero-radial-glow" />
       <div className="absolute top-16 -left-40 w-[28rem] h-[28rem] bg-engineering-blue/10 rounded-full blur-3xl" />
@@ -156,7 +156,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-4xl mx-auto"
+          className="max-w-2xl"
         >
           <Badge className="mb-6 bg-engineering-blue/15 text-ai-glow border-engineering-blue/30 hover:bg-engineering-blue/20">
             Industrial Facility Design &amp; Digital Engineering Solutions
@@ -173,7 +173,7 @@ function HeroSection() {
             projects — structural, MEP, process and digital engineering, delivered with digital-first methods.
           </p>
 
-          <div className="grid grid-cols-3 gap-6 sm:gap-12 max-w-2xl mx-auto mb-10">
+          <div className="grid grid-cols-3 gap-6 sm:gap-12 max-w-md mb-10">
             {[
               { value: 54, suffix: "+", label: "Engineering Tools" },
               { value: 50, suffix: "+", label: "Technical Guides" },
@@ -188,7 +188,7 @@ function HeroSection() {
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-start justify-start gap-4">
             <Link
               href="/contact"
               className="btn-primary-gradient text-white text-base font-medium px-8 h-12 rounded-lg shadow-2xl shadow-engineering-blue/25 inline-flex items-center justify-center transition-all duration-300 active:scale-95 focus:ring-2 focus:ring-white/50 focus:outline-none"
@@ -206,7 +206,7 @@ function HeroSection() {
             </Link>
           </div>
 
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <div className="mt-12 flex flex-wrap items-center justify-start gap-6 text-sm text-slate-400">
             <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-ai-glow" /> Multi-discipline engineering</span>
             <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-ai-glow" /> Digital-first delivery</span>
             <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-ai-glow" /> Global project delivery</span>
