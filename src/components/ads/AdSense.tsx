@@ -10,7 +10,11 @@ import Script from "next/script";
  * granted only after the visitor accepts cookies (consent.ts pushConsentUpdate).
  */
 export function AdSenseAutoAds({ client }: { client?: string }) {
-  if (!client) return null;
+  // AdSense policy: no ad code on error/404 pages. The not-found page sets
+  // window.__noAds=true via an inline script during HTML parsing (before
+  // hydration), so this check runs before the afterInteractive script loads.
+  const noAds = typeof window !== "undefined" && (window as unknown as { __noAds?: boolean }).__noAds === true;
+  if (!client || noAds) return null;
   return (
     <Script
       id="adsbygoogle-init"
