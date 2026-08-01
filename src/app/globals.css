@@ -212,3 +212,19 @@
 .ieh-marquee-pause:hover .ieh-marquee-track {
   animation-play-state: paused;
 }
+
+/* --- Hero fullscreen animations (StyleKit-style) --- */
+@keyframes ieh-kenburns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+@keyframes ieh-scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+.ieh-kenburns {
+  animation: ieh-kenburns 25s ease-out forwards;
+}
+.ieh-scroll-bounce {
+  animation: ieh-scroll-bounce 2s ease-in-out infinite;
+}

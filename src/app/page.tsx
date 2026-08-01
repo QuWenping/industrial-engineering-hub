@@ -129,19 +129,19 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#0B1F3A] via-[#102B50] to-[#06080E] text-white">
-      {/* Hero background image (subtle, behind gradient) */}
-      <div className="absolute inset-0">
-        <img src="/hero-bg.png" alt="" className="h-full w-full object-cover opacity-15" />
+    <section className="relative overflow-hidden min-h-screen flex items-center justify-center bg-gradient-to-b from-[#0B1F3A] via-[#102B50] to-[#06080E] text-white">
+      {/* z1: Background image with Ken Burns slow zoom */}
+      <div className="absolute inset-0 overflow-hidden">
+        <img src="/hero-bg.png" alt="" className="ieh-kenburns h-full w-full object-cover opacity-20" />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3A]/80 via-[#102B50]/70 to-[#06080E]/90" />
-      <div className="absolute inset-0 hero-grid-bg opacity-20" />
+      {/* z2: Overlay layers for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3A]/85 via-[#102B50]/75 to-[#06080E]/95" />
+      <div className="absolute inset-0 hero-grid-bg opacity-15" />
       <div className="absolute inset-0 hero-radial-glow" />
-      <div className="absolute top-16 -left-40 w-[28rem] h-[28rem] bg-engineering-blue/12 rounded-full blur-3xl" />
-      <div className="absolute top-32 -right-40 w-[28rem] h-[28rem] bg-ai-glow/8 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-b from-transparent to-black/30" />
+      <div className="absolute top-16 -left-40 w-[28rem] h-[28rem] bg-engineering-blue/10 rounded-full blur-3xl" />
+      <div className="absolute top-32 -right-40 w-[28rem] h-[28rem] bg-ai-glow/6 rounded-full blur-3xl" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-32">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -204,7 +204,13 @@ function HeroSection() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-light-bg to-transparent" />
+      {/* z5: Scroll indicator */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 text-white/50">
+        <span className="text-xs tracking-widest uppercase">Scroll</span>
+        <svg className="ieh-scroll-bounce h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
     </section>
   );
 }
