@@ -97,11 +97,12 @@ const whyUs = [
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-dark-bg text-white">
-      <div className="absolute inset-0 hero-grid-bg opacity-40" />
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#0B1F3A] via-[#102B50] to-[#06080E] text-white">
+      <div className="absolute inset-0 hero-grid-bg opacity-25" />
       <div className="absolute inset-0 hero-radial-glow" />
-      <div className="absolute top-20 -left-32 w-96 h-96 bg-engineering-blue/20 rounded-full blur-3xl" />
-      <div className="absolute top-40 -right-32 w-96 h-96 bg-ai-glow/10 rounded-full blur-3xl" />
+      <div className="absolute top-16 -left-40 w-[28rem] h-[28rem] bg-engineering-blue/12 rounded-full blur-3xl" />
+      <div className="absolute top-32 -right-40 w-[28rem] h-[28rem] bg-ai-glow/8 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-b from-transparent to-black/30" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-32">
         <motion.div
@@ -120,7 +121,7 @@ function HeroSection() {
             <span className="text-white/90">Studio</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-slate-300/80 max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-lg sm:text-xl text-slate-200/85 max-w-2xl mx-auto mb-10 leading-relaxed">
             Engineering solutions for factories, chemical plants, energy facilities and industrial
             projects — structural, MEP, process and digital engineering, delivered with digital-first methods.
           </p>
