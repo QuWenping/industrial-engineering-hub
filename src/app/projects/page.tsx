@@ -50,6 +50,9 @@ export default function ProjectsPage() {
             facilities, steel structures, public buildings and cultural-tourism redevelopments — including overseas
             work and projects for international and foreign-invested clients.
           </p>
+          <p className="mt-4 text-sm text-slate-400 max-w-2xl">
+            Our team has delivered 700+ projects over two decades. The {metas.filter((m) => !((m.frontmatter as any).hidden)).length} case studies below are a representative selection — contact us for more examples in your industry.
+          </p>
         </div>
       </section>
 

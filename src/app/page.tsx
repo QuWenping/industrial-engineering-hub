@@ -162,7 +162,7 @@ function HeroSection() {
             {[
               { value: 54, suffix: "+", label: "Engineering Tools" },
               { value: 50, suffix: "+", label: "Technical Guides" },
-              { value: 700, suffix: "+", label: "Projects Delivered" },
+              { value: 14, suffix: "", label: "Featured Projects" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-3xl sm:text-4xl font-bold text-gradient-hero">
