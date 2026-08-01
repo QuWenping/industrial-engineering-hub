@@ -130,7 +130,12 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
 function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#0B1F3A] via-[#102B50] to-[#06080E] text-white">
-      <div className="absolute inset-0 hero-grid-bg opacity-25" />
+      {/* Hero background image (subtle, behind gradient) */}
+      <div className="absolute inset-0">
+        <img src="/hero-bg.png" alt="" className="h-full w-full object-cover opacity-15" />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3A]/80 via-[#102B50]/70 to-[#06080E]/90" />
+      <div className="absolute inset-0 hero-grid-bg opacity-20" />
       <div className="absolute inset-0 hero-radial-glow" />
       <div className="absolute top-16 -left-40 w-[28rem] h-[28rem] bg-engineering-blue/12 rounded-full blur-3xl" />
       <div className="absolute top-32 -right-40 w-[28rem] h-[28rem] bg-ai-glow/8 rounded-full blur-3xl" />
