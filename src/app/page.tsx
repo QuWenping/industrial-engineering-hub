@@ -139,7 +139,7 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden min-h-screen flex items-center justify-center bg-gradient-to-b from-[#0B1F3A] via-[#102B50] to-[#06080E] text-white">
+    <section className="relative overflow-hidden min-h-screen flex items-center bg-gradient-to-b from-[#0B1F3A] via-[#102B50] to-[#06080E] text-white">
       {/* z1: Background image with Ken Burns slow zoom */}
       <div className="absolute inset-0 overflow-hidden">
         <img src="/hero-bg.png" alt="" className="ieh-kenburns h-full w-full object-cover opacity-35" />
@@ -151,7 +151,7 @@ function HeroSection() {
       <div className="absolute top-16 -left-40 w-[28rem] h-[28rem] bg-engineering-blue/10 rounded-full blur-3xl" />
       <div className="absolute top-32 -right-40 w-[28rem] h-[28rem] bg-ai-glow/6 rounded-full blur-3xl" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
