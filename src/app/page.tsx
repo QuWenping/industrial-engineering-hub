@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import {
   ArrowRight,
   Calculator,
@@ -95,6 +96,37 @@ const whyUs = [
   { title: "Digital Engineering Approach", description: "BIM-first delivery, digital twin handover and AI-assisted workflows from project day one." },
 ];
 
+
+function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!isInView) return;
+    let start = 0;
+    const duration = 2000;
+    const step = duration / 60;
+    const timer = setInterval(() => {
+      start += target / (duration / step);
+      if (start >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, step);
+    return () => clearInterval(timer);
+  }, [isInView, target]);
+
+  return (
+    <span ref={ref}>
+      {count}
+      {suffix}
+    </span>
+  );
+}
+
 function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#0B1F3A] via-[#102B50] to-[#06080E] text-white">
@@ -125,6 +157,21 @@ function HeroSection() {
             Engineering solutions for factories, chemical plants, energy facilities and industrial
             projects — structural, MEP, process and digital engineering, delivered with digital-first methods.
           </p>
+
+          <div className="grid grid-cols-3 gap-6 sm:gap-12 max-w-2xl mx-auto mb-10">
+            {[
+              { value: 54, suffix: "+", label: "Engineering Tools" },
+              { value: 50, suffix: "+", label: "Technical Guides" },
+              { value: 700, suffix: "+", label: "Projects Delivered" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-3xl sm:text-4xl font-bold text-gradient-hero">
+                  <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                </div>
+                <div className="text-xs sm:text-sm text-slate-400 mt-1">{stat.label}</div>
+              </div>
+            ))}
+          </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
