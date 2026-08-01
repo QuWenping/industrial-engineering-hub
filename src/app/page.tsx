@@ -181,7 +181,7 @@ function HeroSection() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="btn-primary-gradient text-white text-base font-medium px-8 h-12 rounded-lg shadow-2xl shadow-engineering-blue/25 inline-flex items-center justify-center"
+              className="btn-primary-gradient text-white text-base font-medium px-8 h-12 rounded-lg shadow-2xl shadow-engineering-blue/25 inline-flex items-center justify-center transition-all duration-300 active:scale-95 focus:ring-2 focus:ring-white/50 focus:outline-none"
             >
               <Send className="mr-2 h-5 w-5" />
               Discuss Your Project
@@ -189,7 +189,7 @@ function HeroSection() {
             </Link>
             <Link
               href="/tools"
-              className="border border-white/20 text-white hover:bg-white/5 text-base font-medium px-8 h-12 rounded-lg inline-flex items-center justify-center"
+              className="border border-white/20 text-white hover:bg-white/5 text-base font-medium px-8 h-12 rounded-lg inline-flex items-center justify-center transition-all duration-300 active:scale-95 focus:ring-2 focus:ring-white/50 focus:outline-none"
             >
               <Calculator className="mr-2 h-5 w-5" />
               Explore Engineering Tools
