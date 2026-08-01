@@ -30,36 +30,42 @@ import { ProjectsCarousel } from "@/components/home/ProjectsCarousel";
 const capabilities = [
   {
     icon: Factory,
+    iconFile: "/icons/custom/icon-01.png",
     title: "Industrial Building Design",
     description: "Factory layout, architecture, envelope and site planning for manufacturing and process facilities.",
     href: "/services/industrial-building-design",
   },
   {
     icon: HardHat,
+    iconFile: "/icons/custom/icon-02.png",
     title: "Structural Engineering",
     description: "Steel, concrete and foundation design for industrial superstructures, equipment supports and seismic loads.",
     href: "/services/structural-engineering",
   },
   {
     icon: Wind,
+    iconFile: "/icons/custom/icon-03.png",
     title: "HVAC & MEP Engineering",
     description: "Process HVAC, electrical distribution, plumbing, fire protection and industrial utility systems.",
     href: "/services/hvac-mep-engineering",
   },
   {
     icon: FlaskConical,
+    iconFile: "/icons/custom/icon-04.png",
     title: "Chemical Plant Engineering",
     description: "Process, piping, safety (HAZOP/LOPA), pressure relief and utility design for chemical facilities.",
     href: "/services/chemical-plant-engineering",
   },
   {
     icon: SolarPanel,
+    iconFile: "/icons/custom/icon-05.png",
     title: "Energy Facility Engineering",
     description: "Balance-of-plant, BESS, substation and SCADA for generation, storage and renewable energy projects.",
     href: "/services/energy-facility-engineering",
   },
   {
     icon: Cpu,
+    iconFile: "/icons/custom/icon-06.png",
     title: "Digital Engineering & AI",
     description: "BIM coordination, digital twin, AI-assisted workflows and data-ready handover for operations.",
     href: "/services/digital-engineering",
@@ -68,12 +74,16 @@ const capabilities = [
 
 // ─── Industries (section 2) ───────────────────────────────────────────────────
 const industries = [
-  { icon: Zap, title: "Battery Manufacturing", href: "/industries/battery-factory" },
+  { icon: Zap,
+    iconFile: "/icons/custom/icon-07.png", title: "Battery Manufacturing", href: "/industries/battery-factory" },
   { icon: FlaskConical, title: "Chemical Plants", href: "/industries/chemical-plant" },
-  { icon: SolarPanel, title: "Energy Facilities", href: "/industries/energy-facility" },
-  { icon: Cog, title: "Smart Factories", href: "/industries/smart-factory" },
-  { icon: Building2, title: "Industrial Buildings", href: "/services/industrial-building-design" },
-  { icon: Warehouse, title: "Infrastructure", href: "/services/structural-engineering" },
+  { icon: SolarPanel, title: "Energy Facilities", href: "/industries/energy-facility", iconFile: "/icons/custom/icon-09.png" },
+  { icon: Cog,
+    iconFile: "/icons/custom/icon-10.png", title: "Smart Factories", href: "/industries/smart-factory" },
+  { icon: Building2,
+    iconFile: "/icons/custom/icon-11.png", title: "Industrial Buildings", href: "/services/industrial-building-design" },
+  { icon: Warehouse,
+    iconFile: "/icons/custom/icon-12.png", title: "Infrastructure", href: "/services/structural-engineering" },
 ];
 
 // ─── Free engineering tools (section 4) ──────────────────────────────────────
@@ -242,7 +252,11 @@ function CapabilitySection() {
                 <Card className="h-full card-hover border-slate-200 hover:border-engineering-blue/40 cursor-pointer group">
                   <CardContent className="p-6">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-engineering-blue/10 to-ai-glow/10 text-engineering-blue mb-4 group-hover:scale-105 transition-transform">
-                      <cap.icon className="h-6 w-6" />
+                      {cap.iconFile ? (
+                        <img src={cap.iconFile} alt={cap.title} className="h-8 w-8 object-contain" />
+                      ) : (
+                        <cap.icon className="h-6 w-6" />
+                      )}
                     </div>
                     <h3 className="text-lg font-semibold text-navy group-hover:text-engineering-blue transition-colors mb-2">
                       {cap.title}
@@ -293,7 +307,11 @@ function IndustriesSection() {
                   <Card className="h-full card-hover border-slate-200 hover:border-engineering-blue/40 cursor-pointer group">
                     <CardContent className="p-5 text-center">
                       <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-lg bg-engineering-blue/5 text-engineering-blue mb-3 group-hover:bg-engineering-blue/10 transition-colors">
-                        <ind.icon className="h-5 w-5" />
+                        {ind.iconFile ? (
+                          <img src={ind.iconFile} alt={ind.title} className="h-7 w-7 object-contain" />
+                        ) : (
+                          <ind.icon className="h-5 w-5" />
+                        )}
                       </div>
                       <div className="text-sm font-medium text-navy group-hover:text-engineering-blue transition-colors">
                         {ind.title}
