@@ -142,10 +142,10 @@ function HeroSection() {
     <section className="relative overflow-hidden min-h-screen flex items-center bg-gradient-to-b from-[#0B1F3A] via-[#102B50] to-[#06080E] text-white">
       {/* z1: Background image with Ken Burns slow zoom */}
       <div className="absolute inset-0 overflow-hidden">
-        <img src="/hero-bg.png" alt="" className="ieh-kenburns h-full w-full object-cover opacity-35" />
+        <img src="/hero-bg.png" alt="" className="ieh-kenburns h-full w-full object-cover opacity-70" />
       </div>
       {/* z2: Overlay layers for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0B1F3A]/90 via-[#0B1F3A]/55 to-[#06080E]/20" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0B1F3A]/95 via-[#0B1F3A]/30 to-transparent" />
       <div className="absolute inset-0 hero-grid-bg opacity-15" />
       <div className="absolute inset-0 hero-radial-glow" />
       <div className="absolute top-16 -left-40 w-[28rem] h-[28rem] bg-engineering-blue/10 rounded-full blur-3xl" />
