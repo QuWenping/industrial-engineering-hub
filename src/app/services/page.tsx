@@ -68,7 +68,7 @@ export default function ServicesPage() {
               <Link key={svc.slug} href={svc.urlPath}>
                 <Card className="h-full card-hover border-slate-200 hover:border-engineering-blue/40 transition-all">
                   <CardContent className="p-6">
-                    <div className="text-3xl mb-3">{fm.icon || "⚙️"}</div>
+                    <div className="mb-3">{fm.iconFile ? (<img src={fm.iconFile} alt={fm.title} className="h-12 w-12 object-contain" />) : (<span className="text-3xl">{fm.icon}</span>)}</div>
                     <h3 className="text-lg font-semibold text-navy mb-2 group-hover:text-engineering-blue">
                       {fm.title}
                     </h3>
