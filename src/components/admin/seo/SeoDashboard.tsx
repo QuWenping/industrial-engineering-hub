@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Upload, TrendingUp, MousePointerClick, Eye, Target, Loader2 } from "lucide-react";
+import { Upload, TrendingUp, MousePointerClick, Eye, Target, Loader2, Brain, FileText } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -24,6 +24,26 @@ export function SeoDashboard({ summary, topQueries, topPages, opportunities }: P
   const [importResult, setImportResult] = useState<string>("");
   const [importType, setImportType] = useState<"query" | "page">("query");
   const fileRef = useRef<HTMLInputElement>(null);
+  const [analyzing, setAnalyzing] = useState(false);
+  const [analysisResult, setAnalysisResult] = useState("");
+
+  async function handleAnalyze() {
+    setAnalyzing(true);
+    setAnalysisResult("");
+    try {
+      const res = await fetch("/api/admin/seo/analyze", { method: "POST" });
+      const data = await res.json();
+      if (data.ok) {
+        setAnalysisResult("Analysis complete: " + (data.opportunities?.length || 0) + " opportunities found");
+        setTimeout(() => window.location.reload(), 2000);
+      } else {
+        setAnalysisResult("Error: " + (data.error || "Unknown"));
+      }
+    } catch (e: any) {
+      setAnalysisResult("Error: " + e.message);
+    }
+    setAnalyzing(false);
+  }
 
   async function handleImport() {
     const file = fileRef.current?.files?.[0];
@@ -105,6 +125,25 @@ export function SeoDashboard({ summary, topQueries, topPages, opportunities }: P
             </button>
           </div>
           {importResult && <p className="text-sm text-slate-600">{importResult}</p>}
+          <p className="text-xs text-slate-400">Download CSV from Google Search Console, Performance, Export.</p>
+        </CardContent>
+      </Card>
+
+      {/* AI Analysis */}
+      <Card>
+        <CardHeader><CardTitle className="text-base flex items-center gap-2"><Brain className="h-4 w-4 text-engineering-blue" /> AI SEO Analysis</CardTitle></CardHeader>
+        <CardContent className="space-y-3">
+          <p className="text-sm text-slate-500">Run Claude AI to analyze GSC data and generate ranked SEO opportunities.</p>
+          <div className="flex items-center gap-3">
+            <button onClick={handleAnalyze} disabled={analyzing} className="inline-flex items-center gap-1.5 bg-engineering-blue text-white px-4 py-1.5 rounded-md text-sm font-medium hover:opacity-90 disabled:opacity-50">
+              {analyzing ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Brain className="h-3.5 w-3.5" />} Run AI Analysis
+            </button>
+            <a href="/admin/seo/tasks" className="inline-flex items-center gap-1.5 border border-slate-300 text-slate-700 px-4 py-1.5 rounded-md text-sm font-medium hover:bg-slate-50">
+              <FileText className="h-3.5 w-3.5" /> View Decisions
+            </a>
+          </div>
+          {analysisResult && <p className="text-sm text-slate-600">{analysisResult}</p>}
+          {analyzing && <p className="text-xs text-slate-400">Analyzing... this takes 15-30 seconds.</p>}
           <p className="text-xs text-slate-400">
             Download CSV from Google Search Console → Performance → Export. Upload the CSV file here.
             Data is stored per-date; re-importing the same date overwrites.
