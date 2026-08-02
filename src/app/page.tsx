@@ -7,65 +7,48 @@ import {
   ArrowRight,
   Calculator,
   Send,
-  Building2,
-  Factory,
-  Flame,
-  Zap,
-  Cpu,
   Briefcase,
-  HardHat,
-  Wind,
-  FlaskConical,
-  SolarPanel,
-  Cog,
-  Warehouse,
   CheckCircle2,
-  BookOpen,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ProjectsCarousel } from "@/components/home/ProjectsCarousel";
+import { UnifiedIcon } from "@/components/icons/UnifiedIcon";
 
 // ─── Capabilities (section 1) ─────────────────────────────────────────────────
 const capabilities = [
   {
-    icon: Factory,
-    iconFile: "/icons/custom/icon-01.png",
+    icon: 'industrial-building' as const,
     title: "Industrial Building Design",
     description: "Factory layout, architecture, envelope and site planning for manufacturing and process facilities.",
     href: "/services/industrial-building-design",
   },
   {
-    icon: HardHat,
-    iconFile: "/icons/custom/icon-02.png",
+    icon: 'structural' as const,
     title: "Structural Engineering",
     description: "Steel, concrete and foundation design for industrial superstructures, equipment supports and seismic loads.",
     href: "/services/structural-engineering",
   },
   {
-    icon: Wind,
-    iconFile: "/icons/custom/icon-03.png",
+    icon: 'hvac' as const,
     title: "HVAC & MEP Engineering",
     description: "Process HVAC, electrical distribution, plumbing, fire protection and industrial utility systems.",
     href: "/services/hvac-mep-engineering",
   },
   {
-    icon: FlaskConical,
-    iconFile: "/icons/custom/icon-04.png",
+    icon: 'chemical' as const,
     title: "Chemical Plant Engineering",
     description: "Process, piping, safety (HAZOP/LOPA), pressure relief and utility design for chemical facilities.",
     href: "/services/chemical-plant-engineering",
   },
   {
-    icon: SolarPanel,
-    iconFile: "/icons/custom/icon-05.png",
+    icon: 'energy' as const,
     title: "Energy Facility Engineering",
     description: "Balance-of-plant, BESS, substation and SCADA for generation, storage and renewable energy projects.",
     href: "/services/energy-facility-engineering",
   },
   {
-    icon: Cpu,
-    iconFile: "/icons/custom/icon-06.png",
+    icon: 'digital' as const,
     title: "Digital Engineering & AI",
     description: "BIM coordination, digital twin, AI-assisted workflows and data-ready handover for operations.",
     href: "/services/digital-engineering",
@@ -74,28 +57,24 @@ const capabilities = [
 
 // ─── Industries (section 2) ───────────────────────────────────────────────────
 const industries = [
-  { icon: Zap,
-    iconFile: "/icons/custom/icon-07.png", title: "Battery Manufacturing", href: "/industries/battery-factory" },
-  { icon: FlaskConical, title: "Chemical Plants", href: "/industries/chemical-plant" },
-  { icon: SolarPanel, title: "Energy Facilities", href: "/industries/energy-facility", iconFile: "/icons/custom/icon-09.png" },
-  { icon: Cog,
-    iconFile: "/icons/custom/icon-10.png", title: "Smart Factories", href: "/industries/smart-factory" },
-  { icon: Building2,
-    iconFile: "/icons/custom/icon-11.png", title: "Industrial Buildings", href: "/services/industrial-building-design" },
-  { icon: Warehouse,
-    iconFile: "/icons/custom/icon-12.png", title: "Infrastructure", href: "/services/structural-engineering" },
+  { icon: 'battery' as const, title: "Battery Manufacturing", href: "/industries/battery-factory" },
+  { icon: 'chemical-plant' as const, title: "Chemical Plants", href: "/industries/chemical-plant" },
+  { icon: 'energy-facility' as const, title: "Energy Facilities", href: "/industries/energy-facility" },
+  { icon: 'smart-factory' as const, title: "Smart Factories", href: "/industries/smart-factory" },
+  { icon: 'building' as const, title: "Industrial Buildings", href: "/services/industrial-building-design" },
+  { icon: 'infrastructure' as const, title: "Infrastructure", href: "/services/structural-engineering" },
 ];
 
 // ─── Free engineering tools (section 4) ──────────────────────────────────────
 const popularTools = [
-  { name: "Steel Weight Calculator", href: "/tools/steel-weight-calculator", icon: HardHat },
-  { name: "Pressure Drop Calculator", href: "/tools/pressure-drop-calculator", icon: Wind },
-  { name: "Pipe Flow Calculator", href: "/tools/pipe-flow-calculator", icon: Flame },
-  { name: "Pump Power Calculator", href: "/tools/pump-power-calculator", icon: Cog },
-  { name: "Heat Exchanger Calculator", href: "/tools/heat-exchanger-calculator", icon: Zap },
-  { name: "Tank Volume Calculator", href: "/tools/tank-volume-calculator", icon: Building2 },
-  { name: "Beam Deflection Calculator", href: "/tools/beam-deflection-calculator", icon: HardHat },
-  { name: "Motor Power Calculator", href: "/tools/motor-power-calculator", icon: Zap },
+  { name: "Steel Weight Calculator", href: "/tools/steel-weight-calculator", icon: "structural" as const },
+  { name: "Pressure Drop Calculator", href: "/tools/pressure-drop-calculator", icon: "hvac" as const },
+  { name: "Pipe Flow Calculator", href: "/tools/pipe-flow-calculator", icon: "energy" as const },
+  { name: "Pump Power Calculator", href: "/tools/pump-power-calculator", icon: "digital" as const },
+  { name: "Heat Exchanger Calculator", href: "/tools/heat-exchanger-calculator", icon: "energy" as const },
+  { name: "Tank Volume Calculator", href: "/tools/tank-volume-calculator", icon: "building" as const },
+  { name: "Beam Deflection Calculator", href: "/tools/beam-deflection-calculator", icon: "structural" as const },
+  { name: "Motor Power Calculator", href: "/tools/motor-power-calculator", icon: "digital" as const },
 ];
 
 // ─── Why work with us (section 5) ────────────────────────────────────────────
@@ -252,11 +231,7 @@ function CapabilitySection() {
                 <Card className="h-full card-hover border-slate-200 hover:border-engineering-blue/40 cursor-pointer group">
                   <CardContent className="p-6">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-engineering-blue/10 to-ai-glow/10 text-engineering-blue mb-4 group-hover:scale-105 transition-transform">
-                      {cap.iconFile ? (
-                        <img src={cap.iconFile} alt={cap.title} className="h-8 w-8 object-contain" />
-                      ) : (
-                        <cap.icon className="h-6 w-6" />
-                      )}
+                      <UnifiedIcon name={cap.icon} size={24} />
                     </div>
                     <h3 className="text-lg font-semibold text-navy group-hover:text-engineering-blue transition-colors mb-2">
                       {cap.title}
@@ -307,11 +282,7 @@ function IndustriesSection() {
                   <Card className="h-full card-hover border-slate-200 hover:border-engineering-blue/40 cursor-pointer group">
                     <CardContent className="p-5 text-center">
                       <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-lg bg-engineering-blue/5 text-engineering-blue mb-3 group-hover:bg-engineering-blue/10 transition-colors">
-                        {ind.iconFile ? (
-                          <img src={ind.iconFile} alt={ind.title} className="h-7 w-7 object-contain" />
-                        ) : (
-                          <ind.icon className="h-5 w-5" />
-                        )}
+                        <UnifiedIcon name={ind.icon} size={20} />
                       </div>
                       <div className="text-sm font-medium text-navy group-hover:text-engineering-blue transition-colors">
                         {ind.title}
@@ -389,8 +360,8 @@ function ToolsSection() {
               <Link href={tool.href} className="block h-full">
                 <Card className="h-full card-hover border-border/60 hover:border-engineering-blue/30 cursor-pointer group">
                   <CardContent className="p-4">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-engineering-blue/5 group-hover:bg-engineering-blue/10 transition-colors mb-3">
-                      <tool.icon className="h-4 w-4 text-engineering-blue" />
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-engineering-blue/5 group-hover:bg-engineering-blue/10 transition-colors mb-3 text-engineering-blue">
+                      <UnifiedIcon name={tool.icon} size={16} />
                     </div>
                     <h3 className="text-sm font-medium text-navy group-hover:text-engineering-blue transition-colors leading-snug">
                       {tool.name}
@@ -463,9 +434,9 @@ function InsightsPreviewSection() {
 
         <div className="grid sm:grid-cols-3 gap-5">
           {[
-            { title: "HVAC Design Principles for Clean Manufacturing", href: "/guides", icon: Wind },
-            { title: "Structural Load Considerations for Heavy Industrial Equipment", href: "/guides", icon: HardHat },
-            { title: "AI Agent Applications in Engineering Design", href: "/guides", icon: Cpu },
+            { title: "HVAC Design Principles for Clean Manufacturing", href: "/guides", icon: 'hvac' as const },
+            { title: "Structural Load Considerations for Heavy Industrial Equipment", href: "/guides", icon: 'structural' as const },
+            { title: "AI Agent Applications in Engineering Design", href: "/guides", icon: 'digital' as const },
           ].map((g, i) => (
             <motion.div
               key={g.title}
@@ -477,8 +448,8 @@ function InsightsPreviewSection() {
               <Link href={g.href} className="block h-full">
                 <Card className="h-full card-hover border-border/60 cursor-pointer group">
                   <CardHeader>
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-engineering-blue/5 mb-2">
-                      <g.icon className="h-4 w-4 text-engineering-blue" />
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-engineering-blue/5 mb-2 text-engineering-blue">
+                      <UnifiedIcon name={g.icon} size={18} />
                     </div>
                     <CardTitle className="text-navy group-hover:text-engineering-blue transition-colors text-base leading-snug">
                       {g.title}
