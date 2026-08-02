@@ -6,7 +6,7 @@
   "description": "Calculate available NPSH (NPSHa) to prevent pump cavitation. Essential for pump suction design.",
   "seo": {
     "title": "NPSH Calculator - Cavitation Prevention",
-    "description": "Calculate Net Positive Suction Head Available (NPSHa) for pump suction design. Compares against NPSH Required to prevent cavitation.",
+    "description": "Calculate available NPSH to prevent pump cavitation — Essential for pump reliability and longevity",
     "keyword": "npsh calculator"
   },
   "formula": {
@@ -15,28 +15,104 @@
     "explanation": "NPSHa = P_atm/(ρg) ± H_static − P_vapor/(ρg) − h_friction. Engine converts bar→Pa and kPa→Pa automatically."
   },
   "inputs": [
-    {"id": "p_atm", "label": "Atmospheric Pressure", "type": "number", "unit": "bar", "required": true, "default": 1.013, "min": 0, "hint": "1.013 bar at sea level"},
-    {"id": "static_head", "label": "Static Suction Head", "type": "number", "unit": "m", "required": true, "default": 2, "hint": "Positive = flooded; Negative = lift"},
-    {"id": "vapor", "label": "Fluid Vapor Pressure", "type": "number", "unit": "kPa", "required": true, "default": 2.34, "min": 0, "hint": "Water at 20°C ≈ 2.34 kPa; at 100°C = 101 kPa"},
-    {"id": "density", "label": "Fluid Density", "type": "number", "unit": "kg/m³", "required": true, "default": 1000, "min": 0},
-    {"id": "friction_loss", "label": "Suction Line Friction Loss", "type": "number", "unit": "m", "required": true, "default": 0.5, "min": 0}
+    {
+      "id": "p_atm",
+      "label": "Atmospheric Pressure",
+      "type": "number",
+      "unit": "bar",
+      "required": true,
+      "default": 1.013,
+      "min": 0,
+      "hint": "1.013 bar at sea level"
+    },
+    {
+      "id": "static_head",
+      "label": "Static Suction Head",
+      "type": "number",
+      "unit": "m",
+      "required": true,
+      "default": 2,
+      "hint": "Positive = flooded; Negative = lift"
+    },
+    {
+      "id": "vapor",
+      "label": "Fluid Vapor Pressure",
+      "type": "number",
+      "unit": "kPa",
+      "required": true,
+      "default": 2.34,
+      "min": 0,
+      "hint": "Water at 20°C ≈ 2.34 kPa; at 100°C = 101 kPa"
+    },
+    {
+      "id": "density",
+      "label": "Fluid Density",
+      "type": "number",
+      "unit": "kg/m³",
+      "required": true,
+      "default": 1000,
+      "min": 0
+    },
+    {
+      "id": "friction_loss",
+      "label": "Suction Line Friction Loss",
+      "type": "number",
+      "unit": "m",
+      "required": true,
+      "default": 0.5,
+      "min": 0
+    }
   ],
-  "result": {"label": "NPSH Available (NPSHa)", "unit": "m", "decimals": 2},
+  "result": {
+    "label": "NPSH Available (NPSHa)",
+    "unit": "m",
+    "decimals": 2
+  },
   "content": {
     "introduction": "Net Positive Suction Head Available (NPSHa) must exceed the pump manufacturer's NPSH Required (NPSHr) by a safety margin (typically 0.5-1m) to prevent cavitation. Cavitation causes noise, vibration, and impeller damage.",
     "example": {
-      "inputs": {"p_atm": 1.013, "static_head": 2, "vapor": 2.34, "density": 1000, "friction_loss": 0.5},
+      "inputs": {
+        "p_atm": 1.013,
+        "static_head": 2,
+        "vapor": 2.34,
+        "density": 1000,
+        "friction_loss": 0.5
+      },
       "result": 11.59,
       "description": "Sea level, 2m flooded suction, 20°C water: NPSHa ≈ 11.6m. Most centrifugal pumps require 2-6m NPSHr."
     },
     "faq": [
-      {"q": "What is the safety margin for NPSH?", "a": "API 610 and Hydraulic Institute recommend NPSHa ≥ NPSHr + 0.5m minimum. For hot water or hydrocarbons, +1.0m or more is advisable."},
-      {"q": "How do I improve NPSHa?", "a": "Increase static head (raise tank), reduce suction friction (larger pipe, shorter runs, fewer fittings), pressurize the suction tank, or reduce fluid temperature."}
+      {
+        "q": "What is the safety margin for NPSH?",
+        "a": "API 610 and Hydraulic Institute recommend NPSHa ≥ NPSHr + 0.5m minimum. For hot water or hydrocarbons, +1.0m or more is advisable."
+      },
+      {
+        "q": "How do I improve NPSHa?",
+        "a": "Increase static head (raise tank), reduce suction friction (larger pipe, shorter runs, fewer fittings), pressurize the suction tank, or reduce fluid temperature."
+      }
     ],
-    "related": ["pump-head-calculator", "pump-power-calculator"],
-    "applications": ["Pump suction design", "Cavitation prevention", "Boiler feed pump sizing", "Hot well pump design"]
+    "related": [
+      "pump-head-calculator",
+      "pump-power-calculator"
+    ],
+    "applications": [
+      "Pump suction design",
+      "Cavitation prevention",
+      "Boiler feed pump sizing",
+      "Hot well pump design"
+    ]
   },
   "tests": [
-    {"inputs": {"p_atm": 1.013, "static_head": 2, "vapor": 2.34, "density": 1000, "friction_loss": 0.5}, "expected": 11.59, "tolerance": 0.2}
+    {
+      "inputs": {
+        "p_atm": 1.013,
+        "static_head": 2,
+        "vapor": 2.34,
+        "density": 1000,
+        "friction_loss": 0.5
+      },
+      "expected": 11.59,
+      "tolerance": 0.2
+    }
   ]
 }

@@ -6,7 +6,7 @@
   "description": "Calculate internal volume of horizontal/vertical pressure vessels including cylindrical shell and 2:1 elliptical heads.",
   "seo": {
     "title": "Pressure Vessel Volume Calculator - ASME Heads",
-    "description": "Calculate total internal volume of pressure vessels with cylindrical shell and 2:1 elliptical, hemispherical, or flat heads.",
+    "description": "Pressure Vessel Volume Calculator — Calculate internal volume of horizontal/vertical pressure vessels including cylindrical shell and 2:1 elliptical heads with instant results & multiple unit support.",
     "keyword": "pressure vessel volume calculator"
   },
   "formula": {
@@ -15,25 +15,69 @@
     "explanation": "Shell volume = π(D/2)² × L. Two 2:1 elliptical heads ≈ 2 × (πD³/24) = πD³/12. ×1000 converts m³ to liters."
   },
   "inputs": [
-    {"id": "diameter", "label": "Vessel Diameter", "type": "number", "unit": "m", "required": true, "default": 2, "min": 0},
-    {"id": "height", "label": "Shell Length (T/T)", "type": "number", "unit": "m", "required": true, "default": 5, "min": 0}
+    {
+      "id": "diameter",
+      "label": "Vessel Diameter",
+      "type": "number",
+      "unit": "m",
+      "required": true,
+      "default": 2,
+      "min": 0
+    },
+    {
+      "id": "height",
+      "label": "Shell Length (T/T)",
+      "type": "number",
+      "unit": "m",
+      "required": true,
+      "default": 5,
+      "min": 0
+    }
   ],
-  "result": {"label": "Total Vessel Volume", "unit": "L", "decimals": 0},
+  "result": {
+    "label": "Total Vessel Volume",
+    "unit": "L",
+    "decimals": 0
+  },
   "content": {
     "introduction": "Calculate total internal volume of a pressure vessel with cylindrical shell and two 2:1 elliptical heads (standard ASME dish). For other head types: hemispherical heads use πD³/6 each; flat heads use 0 additional volume.",
     "example": {
-      "inputs": {"diameter": 2, "height": 5},
+      "inputs": {
+        "diameter": 2,
+        "height": 5
+      },
       "result": 17802,
       "description": "2m × 5m shell (15,708 L) + two heads (~2,094 L) = ~17,800 liters total."
     },
     "faq": [
-      {"q": "What about different head types?", "a": "Hemispherical: each head = πD³/12; 2:1 Elliptical (standard ASME): each head ≈ πD³/24; Flat: ~0. This calculator uses 2:1 elliptical heads × 2."},
-      {"q": "How much volume is in the heads vs shell?", "a": "For a 2:1 vessel (L = 2.5D), heads are about 15-20% of total volume. For tall columns, head volume is negligible."}
+      {
+        "q": "What about different head types?",
+        "a": "Hemispherical: each head = πD³/12; 2:1 Elliptical (standard ASME): each head ≈ πD³/24; Flat: ~0. This calculator uses 2:1 elliptical heads × 2."
+      },
+      {
+        "q": "How much volume is in the heads vs shell?",
+        "a": "For a 2:1 vessel (L = 2.5D), heads are about 15-20% of total volume. For tall columns, head volume is negligible."
+      }
     ],
-    "related": ["cylinder-volume-calculator", "tank-volume-calculator"],
-    "applications": ["ASME vessel design", "Chemical reactor sizing", "Compressed gas storage", "Bladder tank sizing"]
+    "related": [
+      "cylinder-volume-calculator",
+      "tank-volume-calculator"
+    ],
+    "applications": [
+      "ASME vessel design",
+      "Chemical reactor sizing",
+      "Compressed gas storage",
+      "Bladder tank sizing"
+    ]
   },
   "tests": [
-    {"inputs": {"diameter": 2, "height": 5}, "expected": 17802, "tolerance": 100}
+    {
+      "inputs": {
+        "diameter": 2,
+        "height": 5
+      },
+      "expected": 17802,
+      "tolerance": 100
+    }
   ]
 }

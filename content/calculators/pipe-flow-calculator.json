@@ -6,7 +6,7 @@
   "description": "Calculate volumetric flow rate in a pipe from pipe diameter and fluid velocity using Q = A × v.",
   "seo": {
     "title": "Pipe Flow Calculator - Free Online Engineering Tool",
-    "description": "Calculate pipe flow rate from diameter and velocity using Q = πd²/4 × v. Supports multiple units.",
+    "description": "Calculate pipe flow rate from diameter and velocity — Continuity equation Q = πd²/4 × v with unit conversion",
     "keyword": "pipe flow calculator"
   },
   "formula": {
@@ -15,25 +15,70 @@
     "explanation": "Continuity equation: Q = A × v × 3600 where A = πd²/4. With d in meters and v in m/s, Q is in m³/h (×3600 converts seconds to hours)."
   },
   "inputs": [
-    {"id": "diameter", "label": "Pipe Inner Diameter", "type": "number", "unit": "mm", "required": true, "default": 100, "min": 0},
-    {"id": "velocity", "label": "Fluid Velocity", "type": "number", "unit": "m/s", "required": true, "default": 2, "min": 0}
+    {
+      "id": "diameter",
+      "label": "Pipe Inner Diameter",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 100,
+      "min": 0
+    },
+    {
+      "id": "velocity",
+      "label": "Fluid Velocity",
+      "type": "number",
+      "unit": "m/s",
+      "required": true,
+      "default": 2,
+      "min": 0
+    }
   ],
-  "result": {"label": "Flow Rate", "unit": "m³/h", "decimals": 2},
+  "result": {
+    "label": "Flow Rate",
+    "unit": "m³/h",
+    "decimals": 2
+  },
   "content": {
     "introduction": "Calculate volumetric flow rate through a pipe given its inner diameter and the fluid velocity. This is the fundamental continuity equation used in pipe sizing and hydraulic design.",
     "example": {
-      "inputs": {"diameter": 100, "velocity": 2},
+      "inputs": {
+        "diameter": 100,
+        "velocity": 2
+      },
       "result": 56.55,
       "description": "A 100mm ID pipe with water flowing at 2 m/s carries approximately 56.55 m³/h."
     },
     "faq": [
-      {"q": "What is a typical pipe velocity for water?", "a": "Typical water velocity in pipes is 1-3 m/s. Values above 3 m/s may cause erosion and high pressure drop."},
-      {"q": "What formula does this use?", "a": "Q = π × d² / 4 × v × 3600 (continuity equation, converted to m³/h). This assumes the pipe is flowing full."}
+      {
+        "q": "What is a typical pipe velocity for water?",
+        "a": "Typical water velocity in pipes is 1-3 m/s. Values above 3 m/s may cause erosion and high pressure drop."
+      },
+      {
+        "q": "What formula does this use?",
+        "a": "Q = π × d² / 4 × v × 3600 (continuity equation, converted to m³/h). This assumes the pipe is flowing full."
+      }
     ],
-    "related": ["pressure-drop-calculator", "pipe-velocity-calculator", "reynolds-number-calculator"],
-    "applications": ["Pipe sizing", "Pump system design", "Hydraulic calculations", "Flow measurement"]
+    "related": [
+      "pressure-drop-calculator",
+      "pipe-velocity-calculator",
+      "reynolds-number-calculator"
+    ],
+    "applications": [
+      "Pipe sizing",
+      "Pump system design",
+      "Hydraulic calculations",
+      "Flow measurement"
+    ]
   },
   "tests": [
-    {"inputs": {"diameter": 100, "velocity": 2}, "expected": 56.55, "tolerance": 0.01}
+    {
+      "inputs": {
+        "diameter": 100,
+        "velocity": 2
+      },
+      "expected": 56.55,
+      "tolerance": 0.01
+    }
   ]
 }

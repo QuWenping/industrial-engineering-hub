@@ -6,7 +6,7 @@
   "description": "Calculate pump hydraulic efficiency, wire-to-water efficiency, and energy losses.",
   "seo": {
     "title": "Pump Efficiency Calculator - Wire to Water",
-    "description": "Calculate pump hydraulic efficiency, wire-to-water efficiency, and energy loss from flow, head, and power input.",
+    "description": "Pump Efficiency Calculator — Calculate pump hydraulic efficiency, wire-to-water efficiency, and energy losses with instant results & multiple unit support.",
     "keyword": "pump efficiency calculator"
   },
   "formula": {
@@ -15,27 +15,92 @@
     "explanation": "Efficiency η = Hydraulic Power / Shaft Power × 100%. Hydraulic = ρQgh (W); power_input converted to W by engine. Result in percent."
   },
   "inputs": [
-    {"id": "flow", "label": "Flow Rate", "type": "number", "unit": "m3/h", "required": true, "default": 100, "min": 0},
-    {"id": "head", "label": "Total Head", "type": "number", "unit": "m", "required": true, "default": 50, "min": 0},
-    {"id": "power_input", "label": "Input Power (shaft or motor)", "type": "number", "unit": "kW", "required": true, "default": 22, "min": 0},
-    {"id": "density", "label": "Fluid Density", "type": "number", "unit": "kg/m³", "required": true, "default": 1000, "min": 0}
+    {
+      "id": "flow",
+      "label": "Flow Rate",
+      "type": "number",
+      "unit": "m3/h",
+      "required": true,
+      "default": 100,
+      "min": 0
+    },
+    {
+      "id": "head",
+      "label": "Total Head",
+      "type": "number",
+      "unit": "m",
+      "required": true,
+      "default": 50,
+      "min": 0
+    },
+    {
+      "id": "power_input",
+      "label": "Input Power (shaft or motor)",
+      "type": "number",
+      "unit": "kW",
+      "required": true,
+      "default": 22,
+      "min": 0
+    },
+    {
+      "id": "density",
+      "label": "Fluid Density",
+      "type": "number",
+      "unit": "kg/m³",
+      "required": true,
+      "default": 1000,
+      "min": 0
+    }
   ],
-  "result": {"label": "Pump Efficiency", "unit": "%", "decimals": 1},
+  "result": {
+    "label": "Pump Efficiency",
+    "unit": "%",
+    "decimals": 1
+  },
   "content": {
     "introduction": "Calculate pump efficiency from hydraulic output power and input shaft power. Typical centrifugal pump best efficiency point (BEP) is 70-85%. Wire-to-water efficiency also accounts for motor efficiency.",
     "example": {
-      "inputs": {"flow": 100, "head": 50, "power_input": 22, "density": 1000},
+      "inputs": {
+        "flow": 100,
+        "head": 50,
+        "power_input": 22,
+        "density": 1000
+      },
       "result": 62.1,
       "description": "100 m³/h × 50m head, 22 kW shaft input: 62.1% efficiency. Hydraulic power = 13.65 kW."
     },
     "faq": [
-      {"q": "What is good pump efficiency?", "a": "Centrifugal pumps: 70-85% at BEP for medium/large pumps; 50-70% for small pumps. Positive displacement: 65-80%."},
-      {"q": "What is wire-to-water efficiency?", "a": "It includes motor efficiency: η_total = η_pump × η_motor. Typical motor efficiency is 85-95%, so wire-to-water is 60-75%."}
+      {
+        "q": "What is good pump efficiency?",
+        "a": "Centrifugal pumps: 70-85% at BEP for medium/large pumps; 50-70% for small pumps. Positive displacement: 65-80%."
+      },
+      {
+        "q": "What is wire-to-water efficiency?",
+        "a": "It includes motor efficiency: η_total = η_pump × η_motor. Typical motor efficiency is 85-95%, so wire-to-water is 60-75%."
+      }
     ],
-    "related": ["pump-power-calculator", "pump-energy-calculator", "motor-power-calculator"],
-    "applications": ["Pump performance evaluation", "Energy audits", "Pump replacement decisions", "Operating cost estimation"]
+    "related": [
+      "pump-power-calculator",
+      "pump-energy-calculator",
+      "motor-power-calculator"
+    ],
+    "applications": [
+      "Pump performance evaluation",
+      "Energy audits",
+      "Pump replacement decisions",
+      "Operating cost estimation"
+    ]
   },
   "tests": [
-    {"inputs": {"flow": 100, "head": 50, "power_input": 22, "density": 1000}, "expected": 62.1, "tolerance": 1}
+    {
+      "inputs": {
+        "flow": 100,
+        "head": 50,
+        "power_input": 22,
+        "density": 1000
+      },
+      "expected": 62.1,
+      "tolerance": 1
+    }
   ]
 }

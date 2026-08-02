@@ -6,7 +6,7 @@
   "description": "Calculate the maximum deflection of a beam under a point load. Supports simply supported beams with a center load and cantilever beams with an end load, using delta = P*L^3 / (k*E*I).",
   "seo": {
     "title": "Beam Deflection Calculator - Free Online Structural Tool",
-    "description": "Free beam deflection calculator. Enter load, length, modulus of elasticity and moment of inertia to compute max deflection (simply supported or cantilever) in mm.",
+    "description": "Calculate beam deflection under load — Simply supported & cantilever beams using standard formulas",
     "keyword": "beam deflection calculator"
   },
   "formula": {
@@ -15,35 +15,148 @@
     "explanation": "Maximum deflection delta = P * L^3 / (k * E * I), where k = 48 for a simply supported beam with a central point load and k = 3 for a cantilever with an end point load. The engine converts length to meters (m) and modulus to pascals (Pa); moment of inertia is entered in mm^4 and converted to m^4 (1 mm^4 = 1e-12 m^4). The result is multiplied by 1000 to express deflection in millimeters."
   },
   "inputs": [
-    {"id": "supportType", "label": "Beam support condition", "type": "select", "required": true, "default": "48", "options": [
-      {"value": "48", "label": "Simply supported - point load at center (k=48)"},
-      {"value": "3", "label": "Cantilever - point load at free end (k=3)"}
-    ]},
-    {"id": "P", "label": "Point load", "type": "number", "unit": "N", "required": true, "default": 10000, "min": 0},
-    {"id": "L", "label": "Beam length", "type": "number", "unit": "mm", "required": true, "default": 3000, "min": 0},
-    {"id": "E", "label": "Modulus of elasticity", "type": "number", "unit": "MPa", "required": true, "default": 200000, "min": 0, "hint": "Steel ~200,000 MPa; aluminum ~70,000 MPa"},
-    {"id": "I", "label": "Moment of inertia", "type": "number", "unit": "mm4", "required": true, "default": 1000000, "min": 0, "hint": "Second moment of area of the cross-section"}
+    {
+      "id": "supportType",
+      "label": "Beam support condition",
+      "type": "select",
+      "required": true,
+      "default": "48",
+      "options": [
+        {
+          "value": "48",
+          "label": "Simply supported - point load at center (k=48)"
+        },
+        {
+          "value": "3",
+          "label": "Cantilever - point load at free end (k=3)"
+        }
+      ]
+    },
+    {
+      "id": "P",
+      "label": "Point load",
+      "type": "number",
+      "unit": "N",
+      "required": true,
+      "default": 10000,
+      "min": 0
+    },
+    {
+      "id": "L",
+      "label": "Beam length",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 3000,
+      "min": 0
+    },
+    {
+      "id": "E",
+      "label": "Modulus of elasticity",
+      "type": "number",
+      "unit": "MPa",
+      "required": true,
+      "default": 200000,
+      "min": 0,
+      "hint": "Steel ~200,000 MPa; aluminum ~70,000 MPa"
+    },
+    {
+      "id": "I",
+      "label": "Moment of inertia",
+      "type": "number",
+      "unit": "mm4",
+      "required": true,
+      "default": 1000000,
+      "min": 0,
+      "hint": "Second moment of area of the cross-section"
+    }
   ],
-  "result": {"label": "Maximum deflection", "unit": "mm", "decimals": 3},
+  "result": {
+    "label": "Maximum deflection",
+    "unit": "mm",
+    "decimals": 3
+  },
   "content": {
     "introduction": "Calculate the maximum deflection of a beam under a point load for two common support conditions: a simply supported beam with the load at midspan, and a cantilever beam with the load at the free end. The calculator uses the classic elastic flexure formula delta = P*L^3 / (k*E*I), where E is the modulus of elasticity and I is the second moment of area of the cross-section. Results are in millimeters and assume linear-elastic, small-deflection behavior with a prismatic beam.",
     "example": {
-      "inputs": {"supportType": "48", "P": 10000, "L": 3000, "E": 200000, "I": 1000000},
+      "inputs": {
+        "supportType": "48",
+        "P": 10000,
+        "L": 3000,
+        "E": 200000,
+        "I": 1000000
+      },
       "result": 28.125,
       "description": "A 3 m simply supported steel beam (E=200,000 MPa, I=1e6 mm^4) under a 10 kN center load deflects 28.125 mm at midspan."
     },
     "faq": [
-      {"q": "What is the modulus of elasticity of steel?", "a": "Carbon structural steel has a modulus of elasticity of approximately 200,000 MPa (200 GPa). Stainless steel is similar, around 193,000 MPa."},
-      {"q": "How do I find the moment of inertia I?", "a": "The second moment of area depends on the cross-section shape. For a rectangular section b wide and h deep, I = b*h^3/12. For standard steel sections, use published section properties (e.g. I-beam, W-shape tables)."},
-      {"q": "What are the limits of this calculator?", "a": "It assumes linear-elastic material behavior, small deflections, a prismatic beam, and a single point load. It does not account for self-weight, shear deformation, or partial fixity; for complex loading use a full frame or FEA analysis."},
-      {"q": "What deflection limit should I check against?", "a": "Common serviceability limits are span/360 for total load or span/240 for live load, but always verify against the governing code (e.g. AISC, ACI, Eurocode) and project specification."}
+      {
+        "q": "What is the modulus of elasticity of steel?",
+        "a": "Carbon structural steel has a modulus of elasticity of approximately 200,000 MPa (200 GPa). Stainless steel is similar, around 193,000 MPa."
+      },
+      {
+        "q": "How do I find the moment of inertia I?",
+        "a": "The second moment of area depends on the cross-section shape. For a rectangular section b wide and h deep, I = b*h^3/12. For standard steel sections, use published section properties (e.g. I-beam, W-shape tables)."
+      },
+      {
+        "q": "What are the limits of this calculator?",
+        "a": "It assumes linear-elastic material behavior, small deflections, a prismatic beam, and a single point load. It does not account for self-weight, shear deformation, or partial fixity; for complex loading use a full frame or FEA analysis."
+      },
+      {
+        "q": "What deflection limit should I check against?",
+        "a": "Common serviceability limits are span/360 for total load or span/240 for live load, but always verify against the governing code (e.g. AISC, ACI, Eurocode) and project specification."
+      }
     ],
-    "related": ["steel-weight-calculator", "steel-plate-weight-calculator", "pipe-weight-calculator", "stainless-steel-weight-calculator"],
-    "applications": ["Beam and girder sizing checks", "Serviceability (deflection) verification", "Preliminary structural design", "Educational engineering analysis"]
+    "related": [
+      "steel-weight-calculator",
+      "steel-plate-weight-calculator",
+      "pipe-weight-calculator",
+      "stainless-steel-weight-calculator",
+      "pressure-vessel-volume-calculator"
+    ],
+    "applications": [
+      "Beam and girder sizing checks",
+      "Serviceability (deflection) verification",
+      "Preliminary structural design",
+      "Educational engineering analysis"
+    ]
   },
   "tests": [
-    {"inputs": {"supportType": "48", "P": 10000, "L": 3000, "E": 200000, "I": 1000000}, "expected": 28.125, "tolerance": 0.001, "description": "Simply supported, 10kN center load, 3m steel beam"},
-    {"inputs": {"supportType": "3", "P": 1000, "L": 1000, "E": 200000, "I": 1000000}, "expected": 1.667, "tolerance": 0.001, "description": "Cantilever, 1kN end load, 1m steel beam"},
-    {"inputs": {"supportType": "48", "P": 5000, "L": 2000, "E": 210000, "I": 800000}, "expected": 4.96, "tolerance": 0.01, "description": "Simply supported, 5kN, 2m, E=210000 MPa, I=8e5 mm4"}
+    {
+      "inputs": {
+        "supportType": "48",
+        "P": 10000,
+        "L": 3000,
+        "E": 200000,
+        "I": 1000000
+      },
+      "expected": 28.125,
+      "tolerance": 0.001,
+      "description": "Simply supported, 10kN center load, 3m steel beam"
+    },
+    {
+      "inputs": {
+        "supportType": "3",
+        "P": 1000,
+        "L": 1000,
+        "E": 200000,
+        "I": 1000000
+      },
+      "expected": 1.667,
+      "tolerance": 0.001,
+      "description": "Cantilever, 1kN end load, 1m steel beam"
+    },
+    {
+      "inputs": {
+        "supportType": "48",
+        "P": 5000,
+        "L": 2000,
+        "E": 210000,
+        "I": 800000
+      },
+      "expected": 4.96,
+      "tolerance": 0.01,
+      "description": "Simply supported, 5kN, 2m, E=210000 MPa, I=8e5 mm4"
+    }
   ]
 }

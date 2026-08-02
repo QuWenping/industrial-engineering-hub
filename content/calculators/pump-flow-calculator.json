@@ -6,7 +6,7 @@
   "description": "Calculate pump flow rate from power, head, and efficiency using the hydraulic power formula.",
   "seo": {
     "title": "Pump Flow Calculator - Q from Power",
-    "description": "Calculate pump flow rate Q from shaft power, total head, and efficiency. Rearranged hydraulic power formula.",
+    "description": "Pump Flow Calculator — Calculate pump flow rate from power, head, and efficiency using the hydraulic power formula with instant results & multiple unit support.",
     "keyword": "pump flow calculator"
   },
   "formula": {
@@ -15,27 +15,93 @@
     "explanation": "Q = P_shaft × η / (ρgH). P_shaft in W (engine converts kW→W); ×3600 converts m³/s to m³/h."
   },
   "inputs": [
-    {"id": "power_input", "label": "Shaft Power Input", "type": "number", "unit": "kW", "required": true, "default": 15, "min": 0},
-    {"id": "efficiency", "label": "Pump Efficiency", "type": "number", "required": true, "default": 0.75, "min": 0.01, "max": 1, "step": 0.01, "hint": "0.75 = 75%"},
-    {"id": "head", "label": "Total Head", "type": "number", "unit": "m", "required": true, "default": 40, "min": 0},
-    {"id": "density", "label": "Fluid Density", "type": "number", "unit": "kg/m³", "required": true, "default": 1000, "min": 0}
+    {
+      "id": "power_input",
+      "label": "Shaft Power Input",
+      "type": "number",
+      "unit": "kW",
+      "required": true,
+      "default": 15,
+      "min": 0
+    },
+    {
+      "id": "efficiency",
+      "label": "Pump Efficiency",
+      "type": "number",
+      "required": true,
+      "default": 0.75,
+      "min": 0.01,
+      "max": 1,
+      "step": 0.01,
+      "hint": "0.75 = 75%"
+    },
+    {
+      "id": "head",
+      "label": "Total Head",
+      "type": "number",
+      "unit": "m",
+      "required": true,
+      "default": 40,
+      "min": 0
+    },
+    {
+      "id": "density",
+      "label": "Fluid Density",
+      "type": "number",
+      "unit": "kg/m³",
+      "required": true,
+      "default": 1000,
+      "min": 0
+    }
   ],
-  "result": {"label": "Flow Rate", "unit": "m³/h", "decimals": 1},
+  "result": {
+    "label": "Flow Rate",
+    "unit": "m³/h",
+    "decimals": 1
+  },
   "content": {
     "introduction": "Calculate the flow rate a pump will deliver given its shaft power, efficiency, and the system head. This inverts the standard hydraulic power equation to solve for Q.",
     "example": {
-      "inputs": {"power_input": 15, "efficiency": 0.75, "head": 40, "density": 1000},
+      "inputs": {
+        "power_input": 15,
+        "efficiency": 0.75,
+        "head": 40,
+        "density": 1000
+      },
       "result": 103.2,
       "description": "15 kW pump at 75% efficiency pumping water to 40m head delivers ~103 m³/h."
     },
     "faq": [
-      {"q": "How accurate is this calculation?", "a": "It gives rated flow at a specific operating point. Actual flow depends on where the pump curve intersects the system curve."},
-      {"q": "Why does flow decrease as head increases?", "a": "Centrifugal pumps have a falling head-flow curve. At higher system resistance (more head), less flow can be produced for the same power."}
+      {
+        "q": "How accurate is this calculation?",
+        "a": "It gives rated flow at a specific operating point. Actual flow depends on where the pump curve intersects the system curve."
+      },
+      {
+        "q": "Why does flow decrease as head increases?",
+        "a": "Centrifugal pumps have a falling head-flow curve. At higher system resistance (more head), less flow can be produced for the same power."
+      }
     ],
-    "related": ["pump-power-calculator", "pump-head-calculator"],
-    "applications": ["Pump performance estimation", "System curve analysis", "Flow verification", "Retrofit planning"]
+    "related": [
+      "pump-power-calculator",
+      "pump-head-calculator"
+    ],
+    "applications": [
+      "Pump performance estimation",
+      "System curve analysis",
+      "Flow verification",
+      "Retrofit planning"
+    ]
   },
   "tests": [
-    {"inputs": {"power_input": 15, "efficiency": 0.75, "head": 40, "density": 1000}, "expected": 103.2, "tolerance": 2}
+    {
+      "inputs": {
+        "power_input": 15,
+        "efficiency": 0.75,
+        "head": 40,
+        "density": 1000
+      },
+      "expected": 103.2,
+      "tolerance": 2
+    }
   ]
 }

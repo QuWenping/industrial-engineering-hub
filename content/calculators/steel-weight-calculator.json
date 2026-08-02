@@ -6,7 +6,7 @@
   "description": "Calculate the weight of steel plates based on dimensions and material density. Used in structural design, fabrication, and cost estimation.",
   "seo": {
     "title": "Steel Weight Calculator - Free Online Engineering Tool",
-    "description": "Free steel plate weight calculator. Enter length, width, thickness and material to calculate steel weight in kg.",
+    "description": "Calculate steel weight instantly — Beams, plates, rounds & sections with metric + imperial unit support",
     "keyword": "steel weight calculator"
   },
   "formula": {
@@ -15,30 +15,115 @@
     "explanation": "Weight = Length × Width × Thickness × Density. The engine converts all dimensions to SI base units (meters). Result is in kilograms."
   },
   "inputs": [
-    {"id": "length", "label": "Length", "type": "number", "unit": "mm", "required": true, "default": 1000, "min": 0},
-    {"id": "width", "label": "Width", "type": "number", "unit": "mm", "required": true, "default": 1000, "min": 0},
-    {"id": "thickness", "label": "Thickness", "type": "number", "unit": "mm", "required": true, "default": 10, "min": 0},
-    {"id": "density", "label": "Material", "type": "material", "default": "carbon-steel"}
+    {
+      "id": "length",
+      "label": "Length",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 1000,
+      "min": 0
+    },
+    {
+      "id": "width",
+      "label": "Width",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 1000,
+      "min": 0
+    },
+    {
+      "id": "thickness",
+      "label": "Thickness",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 10,
+      "min": 0
+    },
+    {
+      "id": "density",
+      "label": "Material",
+      "type": "material",
+      "default": "carbon-steel"
+    }
   ],
-  "result": {"label": "Weight", "unit": "kg", "decimals": 2},
+  "result": {
+    "label": "Weight",
+    "unit": "kg",
+    "decimals": 2
+  },
   "content": {
     "introduction": "Calculate steel plate weight from dimensions and material density. This calculator supports carbon steel, stainless steel, aluminum and other common engineering materials.",
     "example": {
-      "inputs": {"length": 1000, "width": 1000, "thickness": 10, "density": 7850},
+      "inputs": {
+        "length": 1000,
+        "width": 1000,
+        "thickness": 10,
+        "density": 7850
+      },
       "result": 78.5,
       "description": "A 1000×1000×10mm carbon steel plate weighs 78.5 kg"
     },
     "faq": [
-      {"q": "What is the density of carbon steel?", "a": "Carbon steel density is approximately 7850 kg/m³."},
-      {"q": "What is the density of stainless steel 304?", "a": "Stainless steel 304 has a density of approximately 7930 kg/m³."},
-      {"q": "How accurate is this calculator?", "a": "This calculator gives theoretical weight based on nominal dimensions. Actual weight may vary slightly due to manufacturing tolerances."}
+      {
+        "q": "What is the density of carbon steel?",
+        "a": "Carbon steel density is approximately 7850 kg/m³."
+      },
+      {
+        "q": "What is the density of stainless steel 304?",
+        "a": "Stainless steel 304 has a density of approximately 7930 kg/m³."
+      },
+      {
+        "q": "How accurate is this calculator?",
+        "a": "This calculator gives theoretical weight based on nominal dimensions. Actual weight may vary slightly due to manufacturing tolerances."
+      }
     ],
-    "related": ["pipe-weight-calculator", "metal-weight-calculator", "aluminum-weight-calculator"],
-    "applications": ["Structural steel fabrication", "Equipment manufacturing", "Transportation planning", "Cost estimation"]
+    "related": [
+      "pipe-weight-calculator",
+      "metal-weight-calculator",
+      "aluminum-weight-calculator",
+      "copper-weight-calculator",
+      "material-volume-calculator"
+    ],
+    "applications": [
+      "Structural steel fabrication",
+      "Equipment manufacturing",
+      "Transportation planning",
+      "Cost estimation"
+    ]
   },
   "tests": [
-    {"inputs": {"length": 1000, "width": 1000, "thickness": 10, "density": 7850}, "expected": 78.5, "tolerance": 0.001},
-    {"inputs": {"length": 2000, "width": 1000, "thickness": 20, "density": 7850}, "expected": 314, "tolerance": 0.001},
-    {"inputs": {"length": 1000, "width": 1000, "thickness": 10, "density": 2700}, "expected": 27, "tolerance": 0.001}
+    {
+      "inputs": {
+        "length": 1000,
+        "width": 1000,
+        "thickness": 10,
+        "density": 7850
+      },
+      "expected": 78.5,
+      "tolerance": 0.001
+    },
+    {
+      "inputs": {
+        "length": 2000,
+        "width": 1000,
+        "thickness": 20,
+        "density": 7850
+      },
+      "expected": 314,
+      "tolerance": 0.001
+    },
+    {
+      "inputs": {
+        "length": 1000,
+        "width": 1000,
+        "thickness": 10,
+        "density": 2700
+      },
+      "expected": 27,
+      "tolerance": 0.001
+    }
   ]
 }

@@ -6,7 +6,7 @@
   "description": "Calculate pump hydraulic power and shaft power from flow rate, head, fluid density and pump efficiency.",
   "seo": {
     "title": "Pump Power Calculator - Free Online Engineering Tool",
-    "description": "Calculate hydraulic and shaft power for centrifugal pumps. Enter flow rate, head, density, and efficiency.",
+    "description": "Calculate hydraulic and shaft power for centrifugal pumps — Enter flow rate, head, density & efficiency for instant results",
     "keyword": "pump power calculator"
   },
   "formula": {
@@ -15,27 +15,95 @@
     "explanation": "Hydraulic Power P_h = ρgQH. Shaft Power P_shaft = P_h / η. Flow Q in m³/s, head H in m, ρ in kg/m³, g=9.81 m/s². /1000 converts W to kW."
   },
   "inputs": [
-    {"id": "flow", "label": "Flow Rate", "type": "number", "unit": "m3/h", "required": true, "default": 100, "min": 0},
-    {"id": "head", "label": "Total Head", "type": "number", "unit": "m", "required": true, "default": 50, "min": 0},
-    {"id": "density", "label": "Fluid Density", "type": "number", "unit": "kg/m³", "required": true, "default": 1000, "min": 0},
-    {"id": "efficiency", "label": "Pump Efficiency", "type": "number", "required": true, "default": 0.7, "min": 0.01, "max": 1, "step": 0.01, "hint": "Enter as decimal (0.7 = 70%)"}
+    {
+      "id": "flow",
+      "label": "Flow Rate",
+      "type": "number",
+      "unit": "m3/h",
+      "required": true,
+      "default": 100,
+      "min": 0
+    },
+    {
+      "id": "head",
+      "label": "Total Head",
+      "type": "number",
+      "unit": "m",
+      "required": true,
+      "default": 50,
+      "min": 0
+    },
+    {
+      "id": "density",
+      "label": "Fluid Density",
+      "type": "number",
+      "unit": "kg/m³",
+      "required": true,
+      "default": 1000,
+      "min": 0
+    },
+    {
+      "id": "efficiency",
+      "label": "Pump Efficiency",
+      "type": "number",
+      "required": true,
+      "default": 0.7,
+      "min": 0.01,
+      "max": 1,
+      "step": 0.01,
+      "hint": "Enter as decimal (0.7 = 70%)"
+    }
   ],
-  "result": {"label": "Shaft Power", "unit": "kW", "decimals": 2},
+  "result": {
+    "label": "Shaft Power",
+    "unit": "kW",
+    "decimals": 2
+  },
   "content": {
     "introduction": "Calculate the shaft power required for a centrifugal pump using flow rate, total head, fluid density and pump efficiency. This is the fundamental pump selection calculation.",
     "example": {
-      "inputs": {"flow": 100, "head": 50, "density": 1000, "efficiency": 0.7},
+      "inputs": {
+        "flow": 100,
+        "head": 50,
+        "density": 1000,
+        "efficiency": 0.7
+      },
       "result": 19.46,
       "description": "Pumping 100 m³/h water at 50m head with 70% efficiency requires ~19.5 kW shaft power."
     },
     "faq": [
-      {"q": "What is total head?", "a": "Total head is the sum of static head, pressure head, velocity head and friction losses — the total energy the pump must add to the fluid."},
-      {"q": "What is typical pump efficiency?", "a": "Centrifugal pump efficiency is typically 60-85% depending on size and specific speed. Large pumps can exceed 90%."}
+      {
+        "q": "What is total head?",
+        "a": "Total head is the sum of static head, pressure head, velocity head and friction losses — the total energy the pump must add to the fluid."
+      },
+      {
+        "q": "What is typical pump efficiency?",
+        "a": "Centrifugal pump efficiency is typically 60-85% depending on size and specific speed. Large pumps can exceed 90%."
+      }
     ],
-    "related": ["pump-head-calculator", "npsh-calculator", "motor-power-calculator"],
-    "applications": ["Pump selection", "Motor sizing", "Energy estimation", "Process design"]
+    "related": [
+      "pump-head-calculator",
+      "npsh-calculator",
+      "motor-power-calculator",
+      "pump-efficiency-calculator"
+    ],
+    "applications": [
+      "Pump selection",
+      "Motor sizing",
+      "Energy estimation",
+      "Process design"
+    ]
   },
   "tests": [
-    {"inputs": {"flow": 100, "head": 50, "density": 1000, "efficiency": 0.7}, "expected": 19.46, "tolerance": 0.05}
+    {
+      "inputs": {
+        "flow": 100,
+        "head": 50,
+        "density": 1000,
+        "efficiency": 0.7
+      },
+      "expected": 19.46,
+      "tolerance": 0.05
+    }
   ]
 }

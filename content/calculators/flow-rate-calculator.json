@@ -6,7 +6,7 @@
   "description": "Calculate volumetric flow rate from pipe diameter and velocity, with unit conversions.",
   "seo": {
     "title": "Flow Rate Calculator - Pipe Flow",
-    "description": "Calculate volumetric flow rate Q from pipe diameter and fluid velocity. Supports m³/h, L/min, GPM.",
+    "description": "Flow rate calculator for volumetric fluid calculations — Multiple unit conversions for engineering precision",
     "keyword": "flow rate calculator"
   },
   "formula": {
@@ -15,25 +15,70 @@
     "explanation": "Q = A × v = π(D/2)² × v. Diameter in m, velocity in m/s; ×3600 converts m³/s to m³/h."
   },
   "inputs": [
-    {"id": "diameter", "label": "Pipe Inner Diameter", "type": "number", "unit": "mm", "required": true, "default": 100, "min": 0},
-    {"id": "velocity", "label": "Flow Velocity", "type": "number", "unit": "m/s", "required": true, "default": 2, "min": 0}
+    {
+      "id": "diameter",
+      "label": "Pipe Inner Diameter",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 100,
+      "min": 0
+    },
+    {
+      "id": "velocity",
+      "label": "Flow Velocity",
+      "type": "number",
+      "unit": "m/s",
+      "required": true,
+      "default": 2,
+      "min": 0
+    }
   ],
-  "result": {"label": "Flow Rate", "unit": "m³/h", "decimals": 1},
+  "result": {
+    "label": "Flow Rate",
+    "unit": "m³/h",
+    "decimals": 1
+  },
   "content": {
     "introduction": "Calculate the volumetric flow rate through a pipe given its diameter and the fluid velocity. This is the fundamental Q = A × v relationship used in all fluid mechanics.",
     "example": {
-      "inputs": {"diameter": 100, "velocity": 2},
+      "inputs": {
+        "diameter": 100,
+        "velocity": 2
+      },
       "result": 56.5,
       "description": "100mm pipe at 2 m/s carries 56.5 m³/h."
     },
     "faq": [
-      {"q": "How do I convert to GPM?", "a": "1 m³/h = 4.403 GPM. Multiply the result by 4.403 for US gallons per minute."},
-      {"q": "What is typical flow for a 4-inch pipe?", "a": "A 4-inch (100mm) pipe at 2 m/s carries about 56 m³/h or 247 GPM."}
+      {
+        "q": "How do I convert to GPM?",
+        "a": "1 m³/h = 4.403 GPM. Multiply the result by 4.403 for US gallons per minute."
+      },
+      {
+        "q": "What is typical flow for a 4-inch pipe?",
+        "a": "A 4-inch (100mm) pipe at 2 m/s carries about 56 m³/h or 247 GPM."
+      }
     ],
-    "related": ["pipe-flow-calculator", "pipe-velocity-calculator", "flow-conversion-calculator"],
-    "applications": ["Flow measurement", "Pump sizing", "Pipeline capacity", "Process control"]
+    "related": [
+      "pipe-flow-calculator",
+      "pipe-velocity-calculator",
+      "flow-conversion-calculator"
+    ],
+    "applications": [
+      "Flow measurement",
+      "Pump sizing",
+      "Pipeline capacity",
+      "Process control"
+    ]
   },
   "tests": [
-    {"inputs": {"diameter": 100, "velocity": 2}, "expected": 56.5, "tolerance": 1}
+    {
+      "inputs": {
+        "diameter": 100,
+        "velocity": 2
+      },
+      "expected": 56.5,
+      "tolerance": 1
+    }
   ]
 }

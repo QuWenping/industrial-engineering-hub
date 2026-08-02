@@ -6,7 +6,7 @@
   "description": "Calculate Log Mean Temperature Difference (LMTD) for heat exchanger design and analysis.",
   "seo": {
     "title": "LMTD Calculator - Heat Exchanger Design",
-    "description": "Calculate Log Mean Temperature Difference for counter-current and co-current (parallel) heat exchangers.",
+    "description": "Log mean temperature difference (LMTD) calculator — Counter-flow & co-flow heat exchanger analysis",
     "keyword": "lmtd calculator"
   },
   "formula": {
@@ -15,25 +15,69 @@
     "explanation": "LMTD = (ΔT1 − ΔT2) / ln(ΔT1/ΔT2). For counter-current: ΔT1 = Th_in − Tc_out, ΔT2 = Th_out − Tc_in. For equal ΔT at both ends, LMTD = ΔT."
   },
   "inputs": [
-    {"id": "dt1", "label": "Temperature Difference at End 1 (ΔT1)", "type": "number", "unit": "C", "required": true, "default": 60, "min": 0},
-    {"id": "dt2", "label": "Temperature Difference at End 2 (ΔT2)", "type": "number", "unit": "C", "required": true, "default": 40, "min": 0}
+    {
+      "id": "dt1",
+      "label": "Temperature Difference at End 1 (ΔT1)",
+      "type": "number",
+      "unit": "C",
+      "required": true,
+      "default": 60,
+      "min": 0
+    },
+    {
+      "id": "dt2",
+      "label": "Temperature Difference at End 2 (ΔT2)",
+      "type": "number",
+      "unit": "C",
+      "required": true,
+      "default": 40,
+      "min": 0
+    }
   ],
-  "result": {"label": "LMTD", "unit": "K", "decimals": 1},
+  "result": {
+    "label": "LMTD",
+    "unit": "K",
+    "decimals": 1
+  },
   "content": {
     "introduction": "LMTD represents the effective average temperature driving force in a heat exchanger. Used in Q = U·A·LMTD. For counter-current flow (preferred), ΔT is taken at each end. For parallel flow, both streams enter at the same end.",
     "example": {
-      "inputs": {"dt1": 60, "dt2": 40},
+      "inputs": {
+        "dt1": 60,
+        "dt2": 40
+      },
       "result": 49.3,
       "description": "ΔT1 = 60°C, ΔT2 = 40°C → LMTD = 49.3 K (the arithmetic mean would be 50, very close when ΔT ratio < 2)."
     },
     "faq": [
-      {"q": "When is LMTD correction factor F needed?", "a": "For multi-pass shell-and-tube exchangers (1-2, 2-4 pass) or cross-flow, multiply LMTD by correction factor F (0.5-1.0) from TEMA charts based on P and R parameters."},
-      {"q": "What if ΔT1 = ΔT2?", "a": "The formula gives 0/0, but as ΔT1→ΔT2, LMTD→ΔT (the arithmetic mean). The calculator will handle this case by using ΔT directly."}
+      {
+        "q": "When is LMTD correction factor F needed?",
+        "a": "For multi-pass shell-and-tube exchangers (1-2, 2-4 pass) or cross-flow, multiply LMTD by correction factor F (0.5-1.0) from TEMA charts based on P and R parameters."
+      },
+      {
+        "q": "What if ΔT1 = ΔT2?",
+        "a": "The formula gives 0/0, but as ΔT1→ΔT2, LMTD→ΔT (the arithmetic mean). The calculator will handle this case by using ΔT directly."
+      }
     ],
-    "related": ["heat-exchanger-calculator", "heat-transfer-calculator"],
-    "applications": ["Heat exchanger design", "Process thermal rating", "Boiler/condenser design", "HVAC coil selection"]
+    "related": [
+      "heat-exchanger-calculator",
+      "heat-transfer-calculator"
+    ],
+    "applications": [
+      "Heat exchanger design",
+      "Process thermal rating",
+      "Boiler/condenser design",
+      "HVAC coil selection"
+    ]
   },
   "tests": [
-    {"inputs": {"dt1": 60, "dt2": 40}, "expected": 49.3, "tolerance": 0.5}
+    {
+      "inputs": {
+        "dt1": 60,
+        "dt2": 40
+      },
+      "expected": 49.3,
+      "tolerance": 0.5
+    }
   ]
 }

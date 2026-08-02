@@ -6,7 +6,7 @@
   "description": "Calculate copper and brass weight for sheets, bars, and electrical conductors.",
   "seo": {
     "title": "Copper Weight Calculator - Busbar & Sheet",
-    "description": "Calculate copper busbar, sheet, and bar weight. Copper density is 8960 kg/m³.",
+    "description": "Copper Weight Calculator — Calculate copper and brass weight for sheets, bars, and electrical conductors with instant results & multiple unit support.",
     "keyword": "copper weight calculator"
   },
   "formula": {
@@ -15,27 +15,89 @@
     "explanation": "Weight = L × W × T × ρ. Copper density = 8960 kg/m³. For busbars and electrical conductors."
   },
   "inputs": [
-    {"id": "length", "label": "Length", "type": "number", "unit": "mm", "required": true, "default": 1000, "min": 0},
-    {"id": "width", "label": "Width", "type": "number", "unit": "mm", "required": true, "default": 100, "min": 0},
-    {"id": "thickness", "label": "Thickness", "type": "number", "unit": "mm", "required": true, "default": 10, "min": 0},
-    {"id": "density", "label": "Material", "type": "material", "required": true, "default": "copper"}
+    {
+      "id": "length",
+      "label": "Length",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 1000,
+      "min": 0
+    },
+    {
+      "id": "width",
+      "label": "Width",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 100,
+      "min": 0
+    },
+    {
+      "id": "thickness",
+      "label": "Thickness",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 10,
+      "min": 0
+    },
+    {
+      "id": "density",
+      "label": "Material",
+      "type": "material",
+      "required": true,
+      "default": "copper"
+    }
   ],
-  "result": {"label": "Weight", "unit": "kg", "decimals": 2},
+  "result": {
+    "label": "Weight",
+    "unit": "kg",
+    "decimals": 2
+  },
   "content": {
     "introduction": "Calculate copper weight for busbars, electrical conductors, sheets, and copper parts. Copper density is 8960 kg/m³ — heavier than steel but with superior electrical conductivity.",
     "example": {
-      "inputs": {"length": 1000, "width": 100, "thickness": 10, "density": 8960},
+      "inputs": {
+        "length": 1000,
+        "width": 100,
+        "thickness": 10,
+        "density": 8960
+      },
       "result": 8.96,
       "description": "A 1000mm × 100mm × 10mm copper busbar weighs 8.96 kg."
     },
     "faq": [
-      {"q": "What is copper density?", "a": "Pure copper is 8960 kg/m³. Brass is 8500 kg/m³, bronze is 8800 kg/m³."},
-      {"q": "How do I size a copper busbar?", "a": "Busbar sizing depends on current carrying capacity (amps). As a rule of thumb, 1A per mm² of cross-section is conservative for continuous duty."}
+      {
+        "q": "What is copper density?",
+        "a": "Pure copper is 8960 kg/m³. Brass is 8500 kg/m³, bronze is 8800 kg/m³."
+      },
+      {
+        "q": "How do I size a copper busbar?",
+        "a": "Busbar sizing depends on current carrying capacity (amps). As a rule of thumb, 1A per mm² of cross-section is conservative for continuous duty."
+      }
     ],
-    "related": ["aluminum-weight-calculator", "metal-weight-calculator"],
-    "applications": ["Electrical busbars", "Transformer windings", "Plumbing components", "Heat exchangers"]
+    "related": [
+      "aluminum-weight-calculator",
+      "metal-weight-calculator"
+    ],
+    "applications": [
+      "Electrical busbars",
+      "Transformer windings",
+      "Plumbing components",
+      "Heat exchangers"
+    ]
   },
   "tests": [
-    {"inputs": {"length": 1000, "width": 100, "thickness": 10, "density": 8960}, "expected": 8.96, "tolerance": 0.01}
+    {
+      "inputs": {
+        "length": 1000,
+        "width": 100,
+        "thickness": 10,
+        "density": 8960
+      },
+      "expected": 8.96,
+      "tolerance": 0.01
+    }
   ]
 }

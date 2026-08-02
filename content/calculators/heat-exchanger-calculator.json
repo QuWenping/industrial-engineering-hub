@@ -6,7 +6,7 @@
   "description": "Calculate heat transfer rate using the LMTD (Log Mean Temperature Difference) method: Q = U × A × LMTD.",
   "seo": {
     "title": "Heat Exchanger Calculator - LMTD Method",
-    "description": "Calculate heat transfer rate for shell-and-tube heat exchangers using LMTD method.",
+    "description": "Heat exchanger calculations — Q = U × A × LMTD for thermal design and sizing",
     "keyword": "heat exchanger calculator"
   },
   "formula": {
@@ -15,29 +15,111 @@
     "explanation": "Q = U × A × LMTD where LMTD = (ΔT1 − ΔT2) / ln(ΔT1/ΔT2). Counter-current flow assumed. ΔT1 = T_hot_in − T_cold_out, ΔT2 = T_hot_out − T_cold_in."
   },
   "inputs": [
-    {"id": "u", "label": "Heat Transfer Coefficient (U)", "type": "number", "unit": "W/(m²·K)", "required": true, "default": 500, "min": 0},
-    {"id": "area", "label": "Heat Transfer Area", "type": "number", "unit": "m2", "required": true, "default": 50, "min": 0},
-    {"id": "t1_hot", "label": "Hot Fluid Inlet Temperature", "type": "number", "unit": "C", "required": true, "default": 100},
-    {"id": "t2_hot", "label": "Hot Fluid Outlet Temperature", "type": "number", "unit": "C", "required": true, "default": 60},
-    {"id": "t1_cold", "label": "Cold Fluid Inlet Temperature", "type": "number", "unit": "C", "required": true, "default": 20},
-    {"id": "t2_cold", "label": "Cold Fluid Outlet Temperature", "type": "number", "unit": "C", "required": true, "default": 50}
+    {
+      "id": "u",
+      "label": "Heat Transfer Coefficient (U)",
+      "type": "number",
+      "unit": "W/(m²·K)",
+      "required": true,
+      "default": 500,
+      "min": 0
+    },
+    {
+      "id": "area",
+      "label": "Heat Transfer Area",
+      "type": "number",
+      "unit": "m2",
+      "required": true,
+      "default": 50,
+      "min": 0
+    },
+    {
+      "id": "t1_hot",
+      "label": "Hot Fluid Inlet Temperature",
+      "type": "number",
+      "unit": "C",
+      "required": true,
+      "default": 100
+    },
+    {
+      "id": "t2_hot",
+      "label": "Hot Fluid Outlet Temperature",
+      "type": "number",
+      "unit": "C",
+      "required": true,
+      "default": 60
+    },
+    {
+      "id": "t1_cold",
+      "label": "Cold Fluid Inlet Temperature",
+      "type": "number",
+      "unit": "C",
+      "required": true,
+      "default": 20
+    },
+    {
+      "id": "t2_cold",
+      "label": "Cold Fluid Outlet Temperature",
+      "type": "number",
+      "unit": "C",
+      "required": true,
+      "default": 50
+    }
   ],
-  "result": {"label": "Heat Transfer Rate", "unit": "kW", "decimals": 1},
+  "result": {
+    "label": "Heat Transfer Rate",
+    "unit": "kW",
+    "decimals": 1
+  },
   "content": {
     "introduction": "Calculate heat transfer rate for a heat exchanger using the Log Mean Temperature Difference (LMTD) method. This calculator assumes counter-current flow and uses the standard Q = U·A·LMTD formula.",
     "example": {
-      "inputs": {"u": 500, "area": 50, "t1_hot": 100, "t2_hot": 60, "t1_cold": 20, "t2_cold": 50},
+      "inputs": {
+        "u": 500,
+        "area": 50,
+        "t1_hot": 100,
+        "t2_hot": 60,
+        "t1_cold": 20,
+        "t2_cold": 50
+      },
       "result": 1120,
       "description": "50m² exchanger, U=500 W/m²K, ΔT1=50°C (hot in−cold out), ΔT2=40°C (hot out−cold in), LMTD=44.8 → Q ≈ 1120 kW"
     },
     "faq": [
-      {"q": "What is LMTD?", "a": "Log Mean Temperature Difference accounts for the varying temperature driving force along the heat exchanger. It is the logarithmic average of the temperature differences at each end."},
-      {"q": "What is a typical U value?", "a": "For liquid-liquid exchangers: 300-1000 W/m²K. For gas-liquid: 50-300 W/m²K. For condensing/boiling: 1000-5000 W/m²K."}
+      {
+        "q": "What is LMTD?",
+        "a": "Log Mean Temperature Difference accounts for the varying temperature driving force along the heat exchanger. It is the logarithmic average of the temperature differences at each end."
+      },
+      {
+        "q": "What is a typical U value?",
+        "a": "For liquid-liquid exchangers: 300-1000 W/m²K. For gas-liquid: 50-300 W/m²K. For condensing/boiling: 1000-5000 W/m²K."
+      }
     ],
-    "related": ["lmtd-calculator", "heat-transfer-calculator", "heat-loss-calculator"],
-    "applications": ["Heat exchanger sizing", "Process thermal design", "HVAC design", "Energy recovery"]
+    "related": [
+      "lmtd-calculator",
+      "heat-transfer-calculator",
+      "heat-loss-calculator",
+      "thermal-resistance-calculator"
+    ],
+    "applications": [
+      "Heat exchanger sizing",
+      "Process thermal design",
+      "HVAC design",
+      "Energy recovery"
+    ]
   },
   "tests": [
-    {"inputs": {"u": 500, "area": 50, "t1_hot": 100, "t2_hot": 60, "t1_cold": 20, "t2_cold": 50}, "expected": 1120, "tolerance": 10}
+    {
+      "inputs": {
+        "u": 500,
+        "area": 50,
+        "t1_hot": 100,
+        "t2_hot": 60,
+        "t1_cold": 20,
+        "t2_cold": 50
+      },
+      "expected": 1120,
+      "tolerance": 10
+    }
   ]
 }

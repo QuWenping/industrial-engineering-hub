@@ -14,9 +14,11 @@ import {
 } from "@/components/ui/breadcrumb";
 import { CalculatorCard } from "@/components/calculator/CalculatorCard";
 import { EngineeringCTA } from "@/components/EngineeringCTA";
+import { RelatedGuides } from "@/components/calculator/RelatedGuides";
 import { constructMetadata, schemaBreadcrumb, schemaSoftwareApplication, schemaFAQ } from "@/components/seo/SEO";
 import { getCalculatorBySlug, getAllCalculatorSlugs } from "@/lib/calculator/loader";
 import { getMaterialOptions } from "@/lib/calculator/materials";
+import { getRelatedGuidesForCalculator } from "@/lib/seo/calculator-guide-relationships";
 import { ChevronRight } from "lucide-react";
 
 // Next.js 16: params is a Promise
@@ -207,6 +209,9 @@ export default async function CalculatorPage({ params }: Props) {
               </div>
             </section>
           )}
+
+          {/* Related Guides (Internal Linking - SEO) */}
+          <RelatedGuides guides={getRelatedGuidesForCalculator(slug)} />
 
           {/* Engineering Consultation CTA */}
           <EngineeringCTA toolName={calc.name} />

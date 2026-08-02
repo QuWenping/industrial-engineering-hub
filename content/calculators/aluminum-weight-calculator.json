@@ -6,7 +6,7 @@
   "description": "Calculate the weight of aluminum parts including sheets, plates, and extrusions.",
   "seo": {
     "title": "Aluminum Weight Calculator - Sheet & Plate",
-    "description": "Calculate aluminum sheet, plate, and extrusion weight. Uses standard aluminum density of 2700 kg/m³.",
+    "description": "Aluminum Weight Calculator — Calculate the weight of aluminum parts including sheets, plates, and extrusions with instant results & multiple unit support.",
     "keyword": "aluminum weight calculator"
   },
   "formula": {
@@ -15,27 +15,89 @@
     "explanation": "Weight = L × W × T × ρ. Aluminum density = 2700 kg/m³ (about 1/3 the weight of steel)."
   },
   "inputs": [
-    {"id": "length", "label": "Length", "type": "number", "unit": "mm", "required": true, "default": 1000, "min": 0},
-    {"id": "width", "label": "Width", "type": "number", "unit": "mm", "required": true, "default": 500, "min": 0},
-    {"id": "thickness", "label": "Thickness", "type": "number", "unit": "mm", "required": true, "default": 5, "min": 0},
-    {"id": "density", "label": "Material", "type": "material", "required": true, "default": "aluminum"}
+    {
+      "id": "length",
+      "label": "Length",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 1000,
+      "min": 0
+    },
+    {
+      "id": "width",
+      "label": "Width",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 500,
+      "min": 0
+    },
+    {
+      "id": "thickness",
+      "label": "Thickness",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 5,
+      "min": 0
+    },
+    {
+      "id": "density",
+      "label": "Material",
+      "type": "material",
+      "required": true,
+      "default": "aluminum"
+    }
   ],
-  "result": {"label": "Weight", "unit": "kg", "decimals": 2},
+  "result": {
+    "label": "Weight",
+    "unit": "kg",
+    "decimals": 2
+  },
   "content": {
     "introduction": "Calculate the weight of aluminum sheets, plates, and flat parts. Aluminum density is 2700 kg/m³ — roughly one-third of steel, making it ideal for lightweight structures.",
     "example": {
-      "inputs": {"length": 1000, "width": 500, "thickness": 5, "density": 2700},
+      "inputs": {
+        "length": 1000,
+        "width": 500,
+        "thickness": 5,
+        "density": 2700
+      },
       "result": 6.75,
       "description": "A 1000mm × 500mm × 5mm aluminum sheet weighs 6.75 kg."
     },
     "faq": [
-      {"q": "What is aluminum density?", "a": "Pure aluminum is 2700 kg/m³. Aluminum alloys range from 2640 to 2850 kg/m³ depending on alloying elements."},
-      {"q": "How much lighter is aluminum than steel?", "a": "Aluminum is about 65% lighter than carbon steel for the same volume (2700 vs 7850 kg/m³)."}
+      {
+        "q": "What is aluminum density?",
+        "a": "Pure aluminum is 2700 kg/m³. Aluminum alloys range from 2640 to 2850 kg/m³ depending on alloying elements."
+      },
+      {
+        "q": "How much lighter is aluminum than steel?",
+        "a": "Aluminum is about 65% lighter than carbon steel for the same volume (2700 vs 7850 kg/m³)."
+      }
     ],
-    "related": ["steel-weight-calculator", "copper-weight-calculator"],
-    "applications": ["Aerospace parts", "Automotive lightweighting", "Sheet metal fabrication", "Structural framing"]
+    "related": [
+      "steel-weight-calculator",
+      "copper-weight-calculator"
+    ],
+    "applications": [
+      "Aerospace parts",
+      "Automotive lightweighting",
+      "Sheet metal fabrication",
+      "Structural framing"
+    ]
   },
   "tests": [
-    {"inputs": {"length": 1000, "width": 500, "thickness": 5, "density": 2700}, "expected": 6.75, "tolerance": 0.01}
+    {
+      "inputs": {
+        "length": 1000,
+        "width": 500,
+        "thickness": 5,
+        "density": 2700
+      },
+      "expected": 6.75,
+      "tolerance": 0.01
+    }
   ]
 }

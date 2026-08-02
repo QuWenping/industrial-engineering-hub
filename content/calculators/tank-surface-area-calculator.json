@@ -6,7 +6,7 @@
   "description": "Calculate surface area of cylindrical tanks for painting, insulation, and heat transfer estimates.",
   "seo": {
     "title": "Tank Surface Area Calculator - Insulation Painting",
-    "description": "Calculate external surface area of cylindrical tanks for paint, insulation, and heat loss estimation.",
+    "description": "Tank Surface Area Calculator — Calculate surface area of cylindrical tanks for painting, insulation, and heat transfer estimates with instant results & multiple unit support.",
     "keyword": "tank surface area calculator"
   },
   "formula": {
@@ -15,25 +15,69 @@
     "explanation": "Surface area = 2πr² (top+bottom) + πD×L (shell). For open-top tanks, subtract one circular end."
   },
   "inputs": [
-    {"id": "diameter", "label": "Tank Diameter", "type": "number", "unit": "m", "required": true, "default": 3, "min": 0},
-    {"id": "height", "label": "Tank Height", "type": "number", "unit": "m", "required": true, "default": 6, "min": 0}
+    {
+      "id": "diameter",
+      "label": "Tank Diameter",
+      "type": "number",
+      "unit": "m",
+      "required": true,
+      "default": 3,
+      "min": 0
+    },
+    {
+      "id": "height",
+      "label": "Tank Height",
+      "type": "number",
+      "unit": "m",
+      "required": true,
+      "default": 6,
+      "min": 0
+    }
   ],
-  "result": {"label": "Total Surface Area", "unit": "m²", "decimals": 1},
+  "result": {
+    "label": "Total Surface Area",
+    "unit": "m²",
+    "decimals": 1
+  },
   "content": {
     "introduction": "Calculate the total external surface area of a closed-top vertical cylindrical tank (including roof and floor). Used for estimating paint quantities, insulation area, and external heat transfer.",
     "example": {
-      "inputs": {"diameter": 3, "height": 6},
+      "inputs": {
+        "diameter": 3,
+        "height": 6
+      },
       "result": 70.7,
       "description": "3m × 6m tank: shell 56.5 m² + roof/floor 14.1 m² = 70.7 m² total."
     },
     "faq": [
-      {"q": "How much paint do I need?", "a": "Industrial epoxy covers 6-8 m² per liter at standard dry film thickness. For 70.7 m² with 2 coats: ~18-24 liters."},
-      {"q": "What about insulation thickness?", "a": "Surface area increases with insulation O.D. — add 2× insulation thickness to diameter for exterior surface. For 50mm insulation on 3m tank, use 3.1m effective diameter."}
+      {
+        "q": "How much paint do I need?",
+        "a": "Industrial epoxy covers 6-8 m² per liter at standard dry film thickness. For 70.7 m² with 2 coats: ~18-24 liters."
+      },
+      {
+        "q": "What about insulation thickness?",
+        "a": "Surface area increases with insulation O.D. — add 2× insulation thickness to diameter for exterior surface. For 50mm insulation on 3m tank, use 3.1m effective diameter."
+      }
     ],
-    "related": ["tank-weight-calculator", "heat-loss-calculator"],
-    "applications": ["Paint estimating", "Insulation takeoff", "Heat loss calc", "Coating inspection"]
+    "related": [
+      "tank-weight-calculator",
+      "heat-loss-calculator"
+    ],
+    "applications": [
+      "Paint estimating",
+      "Insulation takeoff",
+      "Heat loss calc",
+      "Coating inspection"
+    ]
   },
   "tests": [
-    {"inputs": {"diameter": 3, "height": 6}, "expected": 70.7, "tolerance": 1}
+    {
+      "inputs": {
+        "diameter": 3,
+        "height": 6
+      },
+      "expected": 70.7,
+      "tolerance": 1
+    }
   ]
 }

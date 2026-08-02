@@ -6,7 +6,7 @@
   "description": "Calculate pressure drop in a pipe using the Darcy-Weisbach equation: ΔP = f × L/D × ρv²/2.",
   "seo": {
     "title": "Pressure Drop Calculator - Darcy-Weisbach - Free Online",
-    "description": "Calculate pipe pressure drop using Darcy-Weisbach equation. Enter friction factor, pipe length, diameter, velocity and fluid density.",
+    "description": "Calculate pressure drop in pipes using Darcy-Weisbach equation — Accounts for friction factor, length, diameter & fluid properties",
     "keyword": "pressure drop calculator"
   },
   "formula": {
@@ -15,28 +15,106 @@
     "explanation": "Darcy-Weisbach equation: ΔP = f × (L/D) × (ρv²/2). The /1000 converts Pa to kPa. L and D are in meters (auto-converted), v in m/s, ρ in kg/m³."
   },
   "inputs": [
-    {"id": "friction", "label": "Friction Factor (f)", "type": "number", "required": true, "default": 0.02, "min": 0.001, "max": 0.1, "step": 0.001, "hint": "Darcy friction factor (typically 0.01-0.05 for industrial pipes)"},
-    {"id": "length", "label": "Pipe Length", "type": "number", "unit": "m", "required": true, "default": 100, "min": 0},
-    {"id": "diameter", "label": "Inner Diameter", "type": "number", "unit": "mm", "required": true, "default": 100, "min": 0},
-    {"id": "velocity", "label": "Flow Velocity", "type": "number", "unit": "m/s", "required": true, "default": 2, "min": 0},
-    {"id": "density", "label": "Fluid Density", "type": "number", "unit": "kg/m³", "required": true, "default": 1000, "min": 0}
+    {
+      "id": "friction",
+      "label": "Friction Factor (f)",
+      "type": "number",
+      "required": true,
+      "default": 0.02,
+      "min": 0.001,
+      "max": 0.1,
+      "step": 0.001,
+      "hint": "Darcy friction factor (typically 0.01-0.05 for industrial pipes)"
+    },
+    {
+      "id": "length",
+      "label": "Pipe Length",
+      "type": "number",
+      "unit": "m",
+      "required": true,
+      "default": 100,
+      "min": 0
+    },
+    {
+      "id": "diameter",
+      "label": "Inner Diameter",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 100,
+      "min": 0
+    },
+    {
+      "id": "velocity",
+      "label": "Flow Velocity",
+      "type": "number",
+      "unit": "m/s",
+      "required": true,
+      "default": 2,
+      "min": 0
+    },
+    {
+      "id": "density",
+      "label": "Fluid Density",
+      "type": "number",
+      "unit": "kg/m³",
+      "required": true,
+      "default": 1000,
+      "min": 0
+    }
   ],
-  "result": {"label": "Pressure Drop", "unit": "kPa", "decimals": 2},
+  "result": {
+    "label": "Pressure Drop",
+    "unit": "kPa",
+    "decimals": 2
+  },
   "content": {
     "introduction": "Calculate pressure drop (head loss) in a straight pipe using the Darcy-Weisbach equation. This is the most accurate method for single-phase incompressible flow in pipes.",
     "example": {
-      "inputs": {"friction": 0.02, "length": 100, "diameter": 100, "velocity": 2, "density": 1000},
+      "inputs": {
+        "friction": 0.02,
+        "length": 100,
+        "diameter": 100,
+        "velocity": 2,
+        "density": 1000
+      },
       "result": 40,
       "description": "100m of 100mm pipe, water at 2 m/s, f=0.02 → ~40 kPa pressure drop"
     },
     "faq": [
-      {"q": "What is the Darcy friction factor?", "a": "The Darcy friction factor f depends on Reynolds number and pipe roughness. For turbulent flow it typically ranges from 0.01 to 0.05."},
-      {"q": "How accurate is Darcy-Weisbach?", "a": "It is the most accurate general equation for pressure drop in pipes, valid for all flow regimes when the correct friction factor is used."}
+      {
+        "q": "What is the Darcy friction factor?",
+        "a": "The Darcy friction factor f depends on Reynolds number and pipe roughness. For turbulent flow it typically ranges from 0.01 to 0.05."
+      },
+      {
+        "q": "How accurate is Darcy-Weisbach?",
+        "a": "It is the most accurate general equation for pressure drop in pipes, valid for all flow regimes when the correct friction factor is used."
+      }
     ],
-    "related": ["pipe-flow-calculator", "reynolds-number-calculator", "darcy-weisbach-calculator"],
-    "applications": ["Piping system design", "Pump head calculation", "Hydraulic analysis", "Process piping"]
+    "related": [
+      "pipe-flow-calculator",
+      "reynolds-number-calculator",
+      "darcy-weisbach-calculator",
+      "pipe-velocity-calculator"
+    ],
+    "applications": [
+      "Piping system design",
+      "Pump head calculation",
+      "Hydraulic analysis",
+      "Process piping"
+    ]
   },
   "tests": [
-    {"inputs": {"friction": 0.02, "length": 100, "diameter": 100, "velocity": 2, "density": 1000}, "expected": 40, "tolerance": 0.05}
+    {
+      "inputs": {
+        "friction": 0.02,
+        "length": 100,
+        "diameter": 100,
+        "velocity": 2,
+        "density": 1000
+      },
+      "expected": 40,
+      "tolerance": 0.05
+    }
   ]
 }

@@ -6,7 +6,7 @@
   "description": "Calculate pump energy consumption and operating cost based on power, run hours, and electricity rate.",
   "seo": {
     "title": "Pump Energy Cost Calculator - kWh & Operating Cost",
-    "description": "Calculate annual pump energy consumption in kWh and electricity operating cost. Optimize for energy efficiency.",
+    "description": "Pump Energy Cost Calculator — Calculate pump energy consumption and operating cost based on power, run hours, and electricity rate with instant results & multiple unit support.",
     "keyword": "pump energy cost calculator"
   },
   "formula": {
@@ -15,26 +15,82 @@
     "explanation": "Annual cost = P(kW) × h × rate($/kWh). Engine converts kW→W, so /1000 converts back to kW."
   },
   "inputs": [
-    {"id": "power_input", "label": "Motor Power Input", "type": "number", "unit": "kW", "required": true, "default": 22, "min": 0},
-    {"id": "hours", "label": "Annual Operating Hours", "type": "number", "unit": "h", "required": true, "default": 8000, "min": 0, "hint": "Continuous ≈ 8760 h/year"},
-    {"id": "rate", "label": "Electricity Rate", "type": "number", "required": true, "default": 0.12, "min": 0, "step": 0.01, "hint": "$/kWh — typical industrial 0.08-0.15"}
+    {
+      "id": "power_input",
+      "label": "Motor Power Input",
+      "type": "number",
+      "unit": "kW",
+      "required": true,
+      "default": 22,
+      "min": 0
+    },
+    {
+      "id": "hours",
+      "label": "Annual Operating Hours",
+      "type": "number",
+      "unit": "h",
+      "required": true,
+      "default": 8000,
+      "min": 0,
+      "hint": "Continuous ≈ 8760 h/year"
+    },
+    {
+      "id": "rate",
+      "label": "Electricity Rate",
+      "type": "number",
+      "required": true,
+      "default": 0.12,
+      "min": 0,
+      "step": 0.01,
+      "hint": "$/kWh — typical industrial 0.08-0.15"
+    }
   ],
-  "result": {"label": "Annual Energy Cost", "unit": "$/year", "decimals": 0},
+  "result": {
+    "label": "Annual Energy Cost",
+    "unit": "$/year",
+    "decimals": 0
+  },
   "content": {
     "introduction": "Estimate annual pump operating energy cost. For a continuously-running pump, electricity typically costs 5-10× the pump purchase price over its lifetime, making energy efficiency the dominant cost factor.",
     "example": {
-      "inputs": {"power_input": 22, "hours": 8000, "rate": 0.12},
+      "inputs": {
+        "power_input": 22,
+        "hours": 8000,
+        "rate": 0.12
+      },
       "result": 21120,
       "description": "22 kW pump running 8000 h/year at $0.12/kWh costs $21,120/year."
     },
     "faq": [
-      {"q": "How much can a high-efficiency pump save?", "a": "Improving pump+motor efficiency from 60% to 80% saves 25% energy — $5,000+/year on a 22 kW continuous-duty pump."},
-      {"q": "How much does pump operation cost vs purchase?", "a": "Over a 15-year life, energy cost is typically 50-90% of total lifecycle cost. Purchase price is often <10%."}
+      {
+        "q": "How much can a high-efficiency pump save?",
+        "a": "Improving pump+motor efficiency from 60% to 80% saves 25% energy — $5,000+/year on a 22 kW continuous-duty pump."
+      },
+      {
+        "q": "How much does pump operation cost vs purchase?",
+        "a": "Over a 15-year life, energy cost is typically 50-90% of total lifecycle cost. Purchase price is often <10%."
+      }
     ],
-    "related": ["pump-power-calculator", "pump-efficiency-calculator"],
-    "applications": ["Operating cost budgeting", "Energy audits", "Pump replacement ROI", "VFD savings analysis"]
+    "related": [
+      "pump-power-calculator",
+      "pump-efficiency-calculator"
+    ],
+    "applications": [
+      "Operating cost budgeting",
+      "Energy audits",
+      "Pump replacement ROI",
+      "VFD savings analysis"
+    ]
   },
   "tests": [
-    {"inputs": {"power_input": 22, "hours": 8000, "rate": 0.12}, "expected": 21120, "tolerance": 100}
+    {
+      "inputs": {
+        "power_input": 22,
+        "hours": 8000,
+        "rate": 0.12
+      },
+      "expected": 21120,
+      "tolerance": 100
+    }
   ]
 }

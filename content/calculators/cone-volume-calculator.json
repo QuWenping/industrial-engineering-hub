@@ -6,7 +6,7 @@
   "description": "Calculate volume of a cone or hopper from diameter and height, for silos, hoppers, and conical tank bottoms.",
   "seo": {
     "title": "Cone Volume Calculator - Hopper Silo",
-    "description": "Calculate cone, hopper, or conical tank bottom volume from base diameter and height. For silos and material handling.",
+    "description": "Cone Volume Calculator — Calculate volume of a cone or hopper from diameter and height, for silos, hoppers, and conical tank bottoms with instant results & multiple unit support.",
     "keyword": "cone volume calculator"
   },
   "formula": {
@@ -15,25 +15,69 @@
     "explanation": "V_cone = (1/3)πr²h. ×1000 converts m³ to liters."
   },
   "inputs": [
-    {"id": "diameter", "label": "Cone Base Diameter", "type": "number", "unit": "m", "required": true, "default": 4, "min": 0},
-    {"id": "height", "label": "Cone Height", "type": "number", "unit": "m", "required": true, "default": 3, "min": 0}
+    {
+      "id": "diameter",
+      "label": "Cone Base Diameter",
+      "type": "number",
+      "unit": "m",
+      "required": true,
+      "default": 4,
+      "min": 0
+    },
+    {
+      "id": "height",
+      "label": "Cone Height",
+      "type": "number",
+      "unit": "m",
+      "required": true,
+      "default": 3,
+      "min": 0
+    }
   ],
-  "result": {"label": "Cone Volume", "unit": "L", "decimals": 0},
+  "result": {
+    "label": "Cone Volume",
+    "unit": "L",
+    "decimals": 0
+  },
   "content": {
     "introduction": "Calculate the volume of a right circular cone — used for silo bottoms, hopper design, conical tank sections, and material flow calculations. A cone holds exactly 1/3 of the equivalent cylinder.",
     "example": {
-      "inputs": {"diameter": 4, "height": 3},
+      "inputs": {
+        "diameter": 4,
+        "height": 3
+      },
       "result": 12566,
       "description": "4m diameter × 3m high cone = 12,566 liters."
     },
     "faq": [
-      {"q": "What about a truncated cone (frustum)?", "a": "Frustum volume = (πh/3)(R² + Rr + r²) where R and r are the two radii. This calculator handles full cones only."},
-      {"q": "How much angle for mass flow in a hopper?", "a": "For most bulk solids, a hopper half-angle of 15-20° from vertical ensures mass flow. Steeper for sticky materials."}
+      {
+        "q": "What about a truncated cone (frustum)?",
+        "a": "Frustum volume = (πh/3)(R² + Rr + r²) where R and r are the two radii. This calculator handles full cones only."
+      },
+      {
+        "q": "How much angle for mass flow in a hopper?",
+        "a": "For most bulk solids, a hopper half-angle of 15-20° from vertical ensures mass flow. Steeper for sticky materials."
+      }
     ],
-    "related": ["cylinder-volume-calculator", "sphere-volume-calculator"],
-    "applications": ["Silo design", "Hopper volume", "Cone bottom tanks", "Material handling"]
+    "related": [
+      "cylinder-volume-calculator",
+      "sphere-volume-calculator"
+    ],
+    "applications": [
+      "Silo design",
+      "Hopper volume",
+      "Cone bottom tanks",
+      "Material handling"
+    ]
   },
   "tests": [
-    {"inputs": {"diameter": 4, "height": 3}, "expected": 12566, "tolerance": 50}
+    {
+      "inputs": {
+        "diameter": 4,
+        "height": 3
+      },
+      "expected": 12566,
+      "tolerance": 50
+    }
   ]
 }

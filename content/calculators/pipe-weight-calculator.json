@@ -6,7 +6,7 @@
   "description": "Calculate the weight of steel pipes per unit length or total length based on outer diameter, wall thickness and material density.",
   "seo": {
     "title": "Pipe Weight Calculator - Free Online Engineering Tool",
-    "description": "Calculate steel pipe weight per meter or total length using OD and wall thickness. Supports carbon steel, stainless steel, and alloy pipes.",
+    "description": "Pipe Weight Calculator — Calculate the weight of steel pipes per unit length or total length based on outer diameter, wall thickness and material density with instant results & multiple unit support.",
     "keyword": "pipe weight calculator"
   },
   "formula": {
@@ -15,28 +15,99 @@
     "explanation": "Pipe weight = π × (OD − WT) × WT × ρ × L. The engine converts all dimensions to SI base units (meters). Density in kg/m³, length in meters, result in kg."
   },
   "inputs": [
-    {"id": "od", "label": "Outer Diameter (OD)", "type": "number", "unit": "mm", "required": true, "default": 114.3, "min": 0},
-    {"id": "wt", "label": "Wall Thickness", "type": "number", "unit": "mm", "required": true, "default": 6.02, "min": 0},
-    {"id": "length", "label": "Length", "type": "number", "unit": "m", "required": true, "default": 1, "min": 0},
-    {"id": "density", "label": "Material", "type": "material", "default": "carbon-steel"}
+    {
+      "id": "od",
+      "label": "Outer Diameter (OD)",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 114.3,
+      "min": 0
+    },
+    {
+      "id": "wt",
+      "label": "Wall Thickness",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 6.02,
+      "min": 0
+    },
+    {
+      "id": "length",
+      "label": "Length",
+      "type": "number",
+      "unit": "m",
+      "required": true,
+      "default": 1,
+      "min": 0
+    },
+    {
+      "id": "density",
+      "label": "Material",
+      "type": "material",
+      "default": "carbon-steel"
+    }
   ],
-  "result": {"label": "Total Weight", "unit": "kg", "decimals": 2},
+  "result": {
+    "label": "Total Weight",
+    "unit": "kg",
+    "decimals": 2
+  },
   "content": {
     "introduction": "Calculate pipe weight for steel, stainless steel, and alloy pipes. Uses the standard hollow cylinder formula: W = π × (OD − WT) × WT × ρ × L.",
     "example": {
-      "inputs": {"od": 114.3, "wt": 6.02, "length": 1, "density": 7850},
+      "inputs": {
+        "od": 114.3,
+        "wt": 6.02,
+        "length": 1,
+        "density": 7850
+      },
       "result": 16.07,
       "description": "A 4-inch Schedule 40 steel pipe (114.3mm OD, 6.02mm wall) weighs approximately 16.07 kg per meter."
     },
     "faq": [
-      {"q": "What formula is used for pipe weight?", "a": "Weight = π × (OD − WT) × WT × ρ × L. This is the standard hollow cylinder formula with all dimensions in meters."},
-      {"q": "How much does 4 inch Schedule 40 pipe weigh?", "a": "A 4 inch (114.3mm OD) Schedule 40 pipe with 6.02mm wall weighs about 16.07 kg/m for carbon steel."}
+      {
+        "q": "What formula is used for pipe weight?",
+        "a": "Weight = π × (OD − WT) × WT × ρ × L. This is the standard hollow cylinder formula with all dimensions in meters."
+      },
+      {
+        "q": "How much does 4 inch Schedule 40 pipe weigh?",
+        "a": "A 4 inch (114.3mm OD) Schedule 40 pipe with 6.02mm wall weighs about 16.07 kg/m for carbon steel."
+      }
     ],
-    "related": ["steel-weight-calculator", "pipe-flow-calculator", "pressure-drop-calculator"],
-    "applications": ["Piping design", "Structural support calculation", "Transportation and rigging", "Cost estimation"]
+    "related": [
+      "steel-weight-calculator",
+      "pipe-flow-calculator",
+      "pressure-drop-calculator"
+    ],
+    "applications": [
+      "Piping design",
+      "Structural support calculation",
+      "Transportation and rigging",
+      "Cost estimation"
+    ]
   },
   "tests": [
-    {"inputs": {"od": 114.3, "wt": 6.02, "length": 1, "density": 7850}, "expected": 16.07, "tolerance": 0.01},
-    {"inputs": {"od": 219.1, "wt": 8.18, "length": 1, "density": 7850}, "expected": 42.5, "tolerance": 0.05}
+    {
+      "inputs": {
+        "od": 114.3,
+        "wt": 6.02,
+        "length": 1,
+        "density": 7850
+      },
+      "expected": 16.07,
+      "tolerance": 0.01
+    },
+    {
+      "inputs": {
+        "od": 219.1,
+        "wt": 8.18,
+        "length": 1,
+        "density": 7850
+      },
+      "expected": 42.5,
+      "tolerance": 0.05
+    }
   ]
 }

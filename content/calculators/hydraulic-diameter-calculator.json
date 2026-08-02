@@ -6,7 +6,7 @@
   "description": "Calculate hydraulic diameter for non-circular ducts and pipes used in Reynolds number and pressure drop.",
   "seo": {
     "title": "Hydraulic Diameter Calculator - Duct Flow",
-    "description": "Calculate hydraulic diameter for rectangular ducts, annuli, and other non-circular flow channels.",
+    "description": "Hydraulic Diameter Calculator — Calculate hydraulic diameter for non-circular ducts and pipes used in Reynolds number and pressure drop with instant results & multiple unit support.",
     "keyword": "hydraulic diameter calculator"
   },
   "formula": {
@@ -15,25 +15,69 @@
     "explanation": "Dh = 4A/P. For rectangular duct: A = W×H, P = 2(W+H). ×1000 converts m to mm."
   },
   "inputs": [
-    {"id": "width", "label": "Duct Width", "type": "number", "unit": "mm", "required": true, "default": 400, "min": 0},
-    {"id": "height", "label": "Duct Height", "type": "number", "unit": "mm", "required": true, "default": 200, "min": 0}
+    {
+      "id": "width",
+      "label": "Duct Width",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 400,
+      "min": 0
+    },
+    {
+      "id": "height",
+      "label": "Duct Height",
+      "type": "number",
+      "unit": "mm",
+      "required": true,
+      "default": 200,
+      "min": 0
+    }
   ],
-  "result": {"label": "Hydraulic Diameter", "unit": "mm", "decimals": 1},
+  "result": {
+    "label": "Hydraulic Diameter",
+    "unit": "mm",
+    "decimals": 1
+  },
   "content": {
     "introduction": "Hydraulic diameter (Dh = 4A/P) allows using pipe flow equations (Reynolds number, Darcy-Weisbach) for non-circular ducts. For a circular pipe, Dh equals the actual inner diameter.",
     "example": {
-      "inputs": {"width": 400, "height": 200},
+      "inputs": {
+        "width": 400,
+        "height": 200
+      },
       "result": 266.7,
       "description": "400×200mm rectangular duct: Dh = 267mm, allowing pipe flow equations to be used."
     },
     "faq": [
-      {"q": "Why use hydraulic diameter?", "a": "Dh lets engineers apply circular pipe correlations (Re, f, Nu) to non-circular geometries like rectangular ducts and annuli."},
-      {"q": "What about annular flow?", "a": "For an annulus between outer diameter D_o and inner D_i: Dh = D_o − D_i. This calculator handles rectangular ducts."}
+      {
+        "q": "Why use hydraulic diameter?",
+        "a": "Dh lets engineers apply circular pipe correlations (Re, f, Nu) to non-circular geometries like rectangular ducts and annuli."
+      },
+      {
+        "q": "What about annular flow?",
+        "a": "For an annulus between outer diameter D_o and inner D_i: Dh = D_o − D_i. This calculator handles rectangular ducts."
+      }
     ],
-    "related": ["reynolds-number-calculator", "darcy-weisbach-calculator"],
-    "applications": ["HVAC duct design", "Shell-and-tube exchangers", "Rectangular channels", "Annular flow"]
+    "related": [
+      "reynolds-number-calculator",
+      "darcy-weisbach-calculator"
+    ],
+    "applications": [
+      "HVAC duct design",
+      "Shell-and-tube exchangers",
+      "Rectangular channels",
+      "Annular flow"
+    ]
   },
   "tests": [
-    {"inputs": {"width": 400, "height": 200}, "expected": 266.7, "tolerance": 2}
+    {
+      "inputs": {
+        "width": 400,
+        "height": 200
+      },
+      "expected": 266.7,
+      "tolerance": 2
+    }
   ]
 }
