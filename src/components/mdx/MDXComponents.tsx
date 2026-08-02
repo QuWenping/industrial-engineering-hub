@@ -3,6 +3,8 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertCircle, CheckCircle2, Info, AlertTriangle, Lightbulb } from "lucide-react";
+import { CentrifugalPumpDiagram } from "@/components/diagrams/CentrifugalPumpDiagram";
+import { FanDiagram } from "@/components/diagrams/FanDiagram";
 
 function H1({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   return <h1 className={cn("text-3xl font-bold text-navy mt-8 mb-4 scroll-mt-24", className)} {...props} />;
@@ -179,4 +181,6 @@ export const mdxComponents: MDXComponents = {
   Success: (props: any) => <Callout type="success" {...props} />,
   Danger: (props: any) => <Callout type="danger" {...props} />,
   Tip: (props: any) => <Callout type="tip" {...props} />,
+  CentrifugalPumpDiagram,
+  FanDiagram,
 };

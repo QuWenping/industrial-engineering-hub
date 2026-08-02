@@ -228,3 +228,22 @@
 .ieh-scroll-bounce {
   animation: ieh-scroll-bounce 2s ease-in-out infinite;
 }
+
+/* --- Engineering diagram animations --- */
+@keyframes ieh-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes ieh-flow {
+  from { stroke-dashoffset: 13; }
+  to { stroke-dashoffset: 0; }
+}
+.ieh-spin {
+  animation: ieh-spin 2s linear infinite;
+}
+.ieh-flow-line {
+  animation: ieh-flow 0.8s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ieh-spin, .ieh-flow-line { animation: none; }
+}
