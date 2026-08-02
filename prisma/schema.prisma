@@ -137,3 +137,53 @@ model Lead {
   @@index([status])
   @@index([createdAt])
 }
+
+// ─── SEO Growth Engine (V0.4) ────────────────────────────────────────────────
+
+model SeoMetric {
+  id           String   @id @default(cuid())
+  date         DateTime
+  query        String
+  page         String
+  impressions  Int      @default(0)
+  clicks       Int      @default(0)
+  ctr          Float    @default(0)
+  position     Float    @default(0)
+  country      String?  // e.g. "usa", "chn", "global"
+  device       String?  // "desktop"|"mobile"|"tablet"
+  createdAt    DateTime @default(now())
+
+  @@unique([date, query, page])
+  @@index([date])
+  @@index([query])
+  @@index([page])
+  @@index([position])
+}
+
+model PageSeoMeta {
+  id           String   @id @default(cuid())
+  url          String   @unique
+  title        String?
+  h1           String?
+  wordCount    Int      @default(0)
+  hasFaq       Boolean  @default(false)
+  hasSchema    Boolean  @default(false)
+  internalLinks Int     @default(0)
+  cluster      String?  // topic cluster name e.g. "steel-engineering"
+  lastAudited  DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model SeoAiDecision {
+  id            String   @id @default(cuid())
+  type          String   // "opportunity"|"optimization"|"cluster"|"keyword-research"
+  inputData     Json     // GSC data / page data that was analyzed
+  analysis      Json?    // LLM analysis output
+  recommendation String?
+  actions       Json?    // [{ action, target, priority }]
+  confidence    Float?
+  model         String?  // e.g. "claude-sonnet"
+  status        String   @default("pending") // pending|approved|rejected|executed
+  createdAt     DateTime @default(now())
+}

@@ -12,12 +12,14 @@ import {
   Database,
   Settings,
   Inbox,
+  TrendingUp,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { href: "/admin/leads", label: "Leads", icon: Inbox },
+  { href: "/admin/seo", label: "SEO", icon: TrendingUp },
   { href: "/admin/keywords", label: "Keywords", icon: Search },
   { href: "/admin/calculators", label: "Calculators", icon: Calculator },
   { href: "/admin/content", label: "Content", icon: FileText },
@@ -35,7 +37,7 @@ export function Sidebar() {
       <div className="h-14 flex items-center px-5 border-b border-white/10">
         <div className="flex items-center gap-2">
           <div className="h-7 w-7 rounded-md bg-gradient-to-br from-engineering-blue to-ai-glow flex items-center justify-center text-xs font-bold font-mono">
-            Σ
+            &Sigma;
           </div>
           <span className="text-sm font-semibold tracking-tight">IEH Admin</span>
         </div>
@@ -64,7 +66,7 @@ export function Sidebar() {
         })}
       </nav>
       <div className="p-4 border-t border-white/10 text-[11px] text-slate-400">
-        V0.2 · {process.env.NODE_ENV === "development" ? "Local" : "Production"}
+        V0.4 &middot; {process.env.NODE_ENV === "development" ? "Local" : "Production"}
       </div>
     </aside>
   );
