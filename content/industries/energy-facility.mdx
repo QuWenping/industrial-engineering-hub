@@ -4,7 +4,7 @@ description: Engineering for power generation, renewable energy, battery storage
 slug: energy-facility
 icon: "⚡"
 tagline: Balance-of-plant, electrical and control engineering for generation, storage and renewable energy.
-challieves:
+challenges:
   - Grid code compliance (IEEE, IEC)
   - MV/HV substation and protection design
   - Balance-of-plant for thermal generation
@@ -22,6 +22,10 @@ relatedServices:
   - hvac-mep-engineering
   - structural-engineering
 relatedProjects: []
+relatedCalculators:
+  - motor-power-calculator
+  - thermal-resistance-calculator
+  - heat-exchanger-calculator
 ---
 
 # Energy Facility Engineering
@@ -32,8 +36,194 @@ We deliver multi-discipline engineering for thermal generation, renewable energy
 
 Energy projects combine MV/HV electrical work, strict grid compliance, protection coordination and multi-vendor equipment integration — with safety and reliability as the primary design constraints.
 
+### Key Technical Requirements
+
+**Grid Integration & Compliance**
+- IEEE/IEC grid code requirements (frequency response, voltage support, fault ride-through)
+- Interconnection studies and network modeling
+- Protection and control coordination with utility
+- Black start and island-mode operation capability
+- Cybersecurity and NERC standards (North America)
+
+**Electrical Systems (MV/HV)**
+- Substation design (step-up transformer, switchgear, protection relays)
+- Medium voltage (10–35 kV) collection systems
+- High voltage (115–765 kV) transmission interconnection
+- Cable sizing and thermal analysis
+- Grounding system design and transient overvoltage control
+- Harmonic filtering and power quality analysis
+
+**Generation/Storage Systems**
+- **Thermal**: Cooling water systems, steam turbines, condenser duty
+- **Solar PV**: String inverters, combiner boxes, tracking systems (if applicable)
+- **Wind**: Foundation design, tower integration, hub height HVAC
+- **BESS**: Battery container integration, DC collection, inverter design
+- **Hybrid**: Multi-source coordination and load-sharing logic
+
+**Controls & SCADA**
+- Programmable Logic Controller (PLC) for device coordination
+- Distributed Control System (DCS) for large thermal plants
+- SCADA for remote monitoring and dispatcher communication
+- Phasor Measurement Units (PMU) for grid stability monitoring
+- Cybersecurity: Firewalls, intrusion detection, encrypted communications
+
+**Mechanical & Civil**
+- Cooling tower design and water treatment for thermal plants
+- Solar panel support structures and snow/wind load design
+- Wind turbine foundations and nacelle integration
+- BESS container ventilation, thermal management
+- Access roads, drainage, site grading
+
+**Environmental & Safety**
+- Noise control and vibration isolation
+- Emissions monitoring (thermal plants)
+- Environmental permits and water discharge compliance
+- Electrical safety and arc flash hazard analysis
+- Emergency shutdown procedures and operator training
+
 ## Our Engineering Approach
 
 Our electrical, civil/structural and I&C teams coordinate closely with utilities and equipment vendors to deliver designs that meet grid code requirements, pass utility review and commission on schedule.
+
+### Project Development Phases
+
+**Phase 1: Feasibility & Interconnection Studies**
+- Site assessment and resource evaluation
+- Preliminary electrical and interconnection studies
+- Environmental impact screening
+- Utility approval pathway and timelines
+
+**Phase 2: FEED / Design Development**
+- Equipment selection (turbines, inverters, transformers)
+- Preliminary electrical one-line and network model
+- SCADA functional specifications
+- Cost estimation and schedule
+
+**Phase 3: Detailed Engineering**
+- Complete electrical design (MV/HV networks, protection, control)
+- Civil/structural design (foundations, support structures)
+- DCS/SCADA logic and specifications
+- Mechanical design (cooling, ventilation, integration)
+- Grid interconnection drawings per utility requirements
+
+**Phase 4: Construction & Commissioning**
+- Factory acceptance testing (FAT) coordination
+- Site acceptance testing (SAT) supervision
+- Relay coordination verification and protective testing
+- Operator and technician training
+- Performance validation and grid code compliance verification
+
+## Technology Stack
+
+- **Electrical Design**: ETAP (load flow, short-circuit, transient stability, protection coordination)
+- **SCADA/Controls**: FactoryTalk, Ignition, Wonderware for real-time monitoring and control
+- **Protection Relays**: Siemens DIGSI, ABB RET, Schweitzer engineering tools
+- **Network Modeling**: PowerWorld Simulator for grid impact studies
+- **Structural/Civil**: STAAD, SAP2000, RISA for foundations and support structures
+- **BIM Integration**: Revit + MEP coordination for large thermal or hybrid facilities
+
+## Typical Project Scope
+
+**Generation Types**:
+- **Thermal**: Coal, natural gas, biomass (10–500 MW)
+- **Solar PV**: Utility-scale (1–500 MW), fixed or tracking systems
+- **Wind**: On-shore or off-shore (1–15 MW per turbine)
+- **Battery Energy Storage Systems (BESS)**: 1–500 MWh, 4–8 hour discharge
+- **Hybrid**: Solar + BESS, Wind + BESS, Thermal + Solar
+
+**Typical Capacity**: 1–1,000 MW generating capacity
+
+**Investment Range**: $50M–$2,000M+ depending on technology and scale
+
+**Timeline**: 12–18 months development + 12–36 months construction/commissioning
+
+## Grid Code & Compliance Standards
+
+**North America**:
+- **NERC Standards**: Reliability standards for generation and transmission
+- **IEEE 1547**: Interconnection of distributed energy with electric power systems
+- **FERC Orders**: Interconnection rules and network operations
+
+**Europe**:
+- **EN 50160**: Voltage characteristics in public distribution systems
+- **EN 50438**: Requirements for equipment interconnection with low-voltage distribution systems
+- **IEC 61000-3**: EMC limits and compatibility levels
+
+**Thermal Generation**:
+- **ASME**: Boiler and pressure vessel design
+- **IEEE 1010**: Guideline for the thermal limits of electric machinery
+
+**Renewable & Energy Storage**:
+- **IEC 61400** (wind turbines), **IEC 61730** (solar PV modules)
+- **UL 1973/9100** (battery energy storage safety)
+
+## Common Applications
+
+**Thermal Power Plants**
+- Combined cycle natural gas (CCNG)
+- Coal or biomass steam generation
+- Geothermal energy (where geographically available)
+- Distributed generation and backup power
+
+**Utility-Scale Solar**
+- Fixed-tilt ground-mounted arrays
+- Single-axis or dual-axis tracking systems
+- Solar + energy storage (AC or DC-coupled)
+
+**Wind Energy**
+- On-shore wind farms (10–100 MW capacity)
+- Off-shore wind (100–500 MW capacity, larger turbines)
+- Distributed wind on industrial sites
+
+**Battery Energy Storage**
+- Peak-shaving and arbitrage (4–8 hour discharge)
+- Frequency regulation and ancillary services
+- Islanding and microgrid support
+- Behind-the-meter (BTM) or utility-scale deployment
+
+**Hybrid Systems**
+- Solar + BESS for dispatchable renewable generation
+- Wind + solar + storage for stable power supply
+- Microgrids serving industrial or remote loads
+
+## Protection & Reliability
+
+**Redundancy**:
+- N+1 transformer configuration for critical substations
+- Dual independent SCADA networks with automatic failover
+- Uninterruptible Power Supply (UPS) for control systems
+
+**Protective Relay Coordination**:
+- Time-overcurrent, distance, and differential protection zones
+- Coordination curves ensuring primary/backup operation
+- Transient overvoltage studies for cable and equipment protection
+
+**Black Start Capability**:
+- Emergency procedures to restore grid without external power
+- Pre-positioning of generation units and load shedding
+
+## Related Engineering Services
+
+**Structural Engineering**: Foundations for turbines, towers, equipment supports
+**HVAC & Utilities**: Cooling systems, compressed air, ventilation
+**Digital Engineering**: SCADA integration, digital twins, IoT monitoring
+
+## Quick Calculations
+
+Use our tools to size critical components:
+
+- **Motor power for pumps and auxiliary loads**: [Motor Power Calculator](/tools/motor-power-calculator)
+- **Heat rejection from cooling systems**: [Heat Exchanger Calculator](/tools/heat-exchanger-calculator)
+- **Thermal resistance for insulation**: [Thermal Resistance Calculator](/tools/thermal-resistance-calculator)
+
+## Project Examples
+
+We have engineered utility-scale generation and storage projects across thermal, solar, wind and hybrid technologies — from interconnection studies through full facility handover. Our experience spans 10 MW to 500+ MW installations with independent power producers, utilities and government agencies.
+
+---
+
+## Next Steps
+
+Planning a power generation or energy storage project? Our multidisciplinary team brings 20+ years of experience in grid-connected facilities, compliance and reliable operation.
 
 <CallToAction />

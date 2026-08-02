@@ -4,7 +4,7 @@ description: Engineering design for lithium-ion battery manufacturing plants —
 slug: battery-factory
 icon: "🔋"
 tagline: Gigafactory-scale engineering for lithium-ion, LFP and advanced battery cell and pack manufacturing.
-challieves:
+challenges:
   - Ultra-low humidity dry rooms (-40°C to -70°C dew point)
   - Cleanroom classification per ISO 14644 (Class 1000-10000)
   - Heavy structural loads for coating/roll-press equipment
@@ -22,6 +22,10 @@ relatedServices:
   - hvac-mep-engineering
   - digital-engineering
 relatedProjects: []
+relatedCalculators:
+  - tank-volume-calculator
+  - heat-transfer-calculator
+  - pump-power-calculator
 ---
 
 # Battery Manufacturing Plant Design
@@ -32,8 +36,116 @@ Lithium-ion and advanced battery plants demand the strictest environmental contr
 
 Battery facilities combine extreme dry-room conditions, solvent processing, high power demand and Li-ion fire hazard — all inside a structure that must support multi-tonne coating, roll-press and formation equipment with super-flat floor requirements.
 
+### Key Technical Requirements
+
+**Environmental Control**
+- Ultra-low humidity dew points (-40°C to -70°C) for electrode coating
+- ISO 14644 cleanroom classification (Class 1000-10000)
+- Particle filtration down to 0.5 microns
+- Electrostatic discharge (ESD) flooring
+- Personnel and material airlocks with interlocking systems
+
+**Structural & Mechanical**
+- Super-flat floors (±5mm over 100m) for precision coating/pressing
+- Design loads: 50-100 kPa for formation/test equipment
+- Vibration isolation for sensitive manufacturing zones
+- Corrosion resistance in NMP/DMF solvent environments
+- Emergency egress and fire compartmentation
+
+**Electrical & Process Utilities**
+- Redundant power feeds (N+1 minimum for dry rooms)
+- 3-5 MW+ demand for large-scale cell production
+- Chilled water loops for cooling NMP, electrode wash, formation heat
+- Process water (DI/RO) for electrode slurry prep
+- NMP solvent recovery with 90%+ recycle rate
+- Compressed air (ISO 8573-1 Class 1) for pneumatic equipment
+
+**Safety & Fire Protection**
+- Li-ion thermal runaway detection (formation/test areas)
+- Halon-alternative fire suppression in dry rooms
+- Water spray systems with non-conductive nozzles
+- Separation distances per NFPA 70B
+- Emergency shut-down procedures for solvent atmosphere
+
 ## Our Engineering Approach
 
 We lead with production throughput as the primary design driver. Architecture, structural, MEP and process utilities are co-designed around material flow, equipment vendor requirements and the phased ramp-up characteristic of battery gigafactories.
+
+### Design Workflow
+
+1. **Pre-FEED**: Capacity planning, site evaluation, utility headroom analysis
+2. **FEED**: Process flow sheets, equipment selection, preliminary layouts
+3. **Detailed Design**: 
+   - 3D BIM with clash-free coordination
+   - Structural FEA for floor flatness and vibration
+   - HVAC simulation for dew point control
+   - Electrical load flow and transient studies
+4. **Construction Support**: Commissioning coordination, dry-room qualification
+5. **Ramp-Up Support**: Digital twin monitoring for throughput optimization
+
+### Technology Stack
+
+- **BIM**: Revit with Plant 3D for coordinated MEP/structural
+- **HVAC Simulation**: Computational Fluid Dynamics (CFD) for humidity control
+- **Structural Analysis**: STAAD, SAP2000 for super-flat floor design
+- **Electrical**: ETAP for load flow, short-circuit and protection
+- **Digital Twin**: IIoT sensors + real-time dashboards for ops monitoring
+
+## Typical Project Scope
+
+**Facility Size**: 50,000–500,000 m² (cell + module/pack manufacturing)
+
+**Production Capacity**: 50–500 GWh/year (lithium-ion cells)
+
+**Key Areas**:
+- Electrode preparation (mixing, coating, drying)
+- Cell assembly (stacking, case filling, tab welding)
+- Formation & testing (cycling, performance grading)
+- Module & pack assembly (thermal management, BMS)
+- Recycling/scrap processing
+- Utilities & support services
+
+**Timeline**: 18–36 months from FEED to production ramp
+
+## Related Engineering Services
+
+**Structural Engineering**: Floor design, equipment foundations, seismic/wind analysis
+**HVAC & MEP**: Dry-room HVAC, solvent recovery, power distribution, chilled water loops
+**Digital Engineering**: BIM coordination, digital twin, IoT sensor integration, real-time dashboards
+
+## Common Applications
+
+- **Lithium-ion cell manufacturing** (NCM, NCA, LFP chemistries)
+- **Solid-state battery pilot lines** (lower dew point requirements)
+- **Battery module & pack assembly** (thermal management integration)
+- **Second-life battery processing** (recycling and remanufacturing)
+
+## Industry Standards & Compliance
+
+- **ISO 14644**: Cleanroom classification and monitoring
+- **IEC 61340**: Electrostatic discharge control
+- **NFPA 70**: National Electrical Code
+- **NFPA 654**: Standard on the Prevention of Fire and Dust Explosions
+- **API, ASME**: Pressure vessel and piping standards (where applicable)
+
+---
+
+## Quick Calculations
+
+Use our engineering tools to size key components:
+
+- **Heat load estimation**: [Heat Exchanger Calculator](/tools/heat-exchanger-calculator)
+- **Chilled water sizing**: [Pump Power Calculator](/tools/pump-power-calculator)
+- **Tank volume for NMP recovery**: [Tank Volume Calculator](/tools/tank-volume-calculator)
+
+## Project Examples
+
+We have engineered battery manufacturing facilities for leading OEMs and contract manufacturers, delivering from initial feasibility through full-scale production ramp-up. Our expertise spans lithium-ion cell chemistry, module/pack assembly, and next-generation solid-state battery pilot lines.
+
+---
+
+## Next Steps
+
+Ready to discuss your battery manufacturing facility? Our team brings 20+ years of experience in gigafactory-scale engineering across Asia, Europe and the Americas.
 
 <CallToAction />
