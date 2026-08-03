@@ -5,6 +5,7 @@ import { ConsentBootstrap } from "@/components/consent/ConsentBootstrap";
 import { GatedAnalytics } from "@/components/consent/GatedAnalytics";
 import { AdSenseAutoAds } from "@/components/ads/AdSense";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -84,6 +85,7 @@ export default function RootLayout({
         <GatedAnalytics gaId={GA_ID} />
         <AdSenseAutoAds client={ADSENSE_ID} />
         <SpeedInsights />
+        <Analytics />
         <CookieConsent />
       </body>
     </html>
