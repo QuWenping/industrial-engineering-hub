@@ -47,7 +47,7 @@ export function SeoDashboard({ summary, topQueries, topPages, opportunities }: P
 
   async function handleImport() {
     const file = fileRef.current?.files?.[0];
-    if (!file) return;
+    if (!file) { setImportResult("Please select a CSV file first."); return; }
     setImporting(true);
     setImportResult("");
     try {
