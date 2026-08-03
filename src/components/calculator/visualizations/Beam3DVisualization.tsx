@@ -286,7 +286,7 @@ function Scene(props: Props) {
 
 export default function Beam3DVisualization(props: Props) {
   return (
-    <div className="p-2 bg-gradient-to-br from-slate-50 to-blue-50" style={{ minHeight: "400px" }}>
+    <div className="p-2 bg-gradient-to-br from-slate-50 to-blue-50" style={{ aspectRatio: "16 / 9" }}>
       <Canvas
         shadows
         camera={{ position: [4, 3, 5], fov: 45 }}
@@ -312,3 +312,4 @@ export default function Beam3DVisualization(props: Props) {
     </div>
   );
 }
+
