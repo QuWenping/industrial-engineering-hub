@@ -187,3 +187,19 @@ model SeoAiDecision {
   status        String   @default("pending") // pending|approved|rejected|executed
   createdAt     DateTime @default(now())
 }
+
+// ─── Share Results (Calculator Viral Loop) ────────────────────────────────────
+
+model ShareResult {
+  id           String   @id @default(cuid())
+  calculator   String   // calculator slug
+  calculatorName String // display name
+  inputData    Json     // { length: 2000, width: 1000, ... }
+  resultData   Json     // { value: 157, unit: "kg", label: "Weight" }
+  formula      String?  // formula expression
+  views        Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  @@index([calculator])
+  @@index([createdAt])
+}

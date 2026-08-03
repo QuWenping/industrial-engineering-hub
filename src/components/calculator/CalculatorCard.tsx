@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/select";
 import { Calculator, RotateCcw } from "lucide-react";
 import { FormulaBox } from "./FormulaBox";
+import { ShareResultButton } from "./ShareResultButton";
 import { ResultDisplay } from "./ResultDisplay";
 import { InputField } from "./InputField";
 import { calculate } from "@/lib/calculator/engine";
