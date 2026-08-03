@@ -1,7 +1,7 @@
 // SEO Brain Agent
 import { prisma } from "@/lib/db";
-import { callClaude } from "@/lib/ai/client";
-import { MODELS } from "@/lib/ai/models";
+import { callLLM } from "@/lib/ai/deepseek-client";
+
 
 interface GscRow { query:string; impressions:number; clicks:number; ctr:number; avgPosition:number; }
 interface SeoTask { action:string; target:string; reason:string; priority:number; type:string; }
@@ -40,7 +40,7 @@ export async function runSeoBrain(): Promise<SeoAnalysis> {
   const qLines = queries.map((q) => q.query+" | imp:"+q.impressions+" | clk:"+q.clicks+" | ctr:"+q.ctr.toFixed(1)+"% | pos:"+q.avgPosition.toFixed(1)).join("\n");
   const pLines = pages.map((p) => p.page+" | imp:"+p.impressions+" | pos:"+p.avgPosition.toFixed(1)).join("\n");
   const userPrompt = "Analyze GSC data (30d).\n\n## Queries\n"+qLines+"\n\n## Pages\n"+pLines+"\n\nReturn JSON.";
-  const result = await callClaude({ model: MODELS.strong, system: SYSTEM_PROMPT, user: userPrompt, maxTokens: 4096, temperature: 0.3 });
+  const result = await callLLM({ system: SYSTEM_PROMPT, user: userPrompt, maxTokens: 4096, temperature: 0.3 });
   let analysis: SeoAnalysis;
   try {
     const m = result.content.match(/\{[\s\S]*\}/);
@@ -49,7 +49,7 @@ export async function runSeoBrain(): Promise<SeoAnalysis> {
   await prisma.seoAiDecision.create({ data: {
     type: "opportunity", inputData: { queries, pages, period: "30d" } as any,
     analysis: analysis as any, recommendation: analysis.summary,
-    actions: analysis.opportunities as any, confidence: 0.8, model: MODELS.strong, status: "pending",
+    actions: analysis.opportunities as any, confidence: 0.8,  status: "pending",
   } });
   return analysis;
 }

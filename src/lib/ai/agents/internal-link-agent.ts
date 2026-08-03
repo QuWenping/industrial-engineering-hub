@@ -1,8 +1,8 @@
 // Internal Link Agent — recommends internal links between related pages.
 // Uses Claude to analyze page content and suggest 3-5 relevant links.
 import { prisma } from "@/lib/db";
-import { callClaude } from "@/lib/ai/client";
-import { MODELS } from "@/lib/ai/models";
+import { callLLM } from "@/lib/ai/deepseek-client";
+
 import { getAllCalculators } from "@/lib/calculator/loader";
 import { getAllDocMeta } from "@/lib/mdx";
 
@@ -36,7 +36,7 @@ export async function recommendInternalLinks(pageSlug: string, pageType: string)
 
   const userPrompt = "Current page: " + pageSlug + " (type: " + pageType + ")\n\nAvailable pages to link to:\n" + pageList + "\n\nRecommend 3-5 internal links. Return JSON.";
 
-  const result = await callClaude({ model: MODELS.cheap, system: SYSTEM_PROMPT, user: userPrompt, maxTokens: 2048, temperature: 0.2 });
+  const result = await callLLM({ system: SYSTEM_PROMPT, user: userPrompt, maxTokens: 2048, temperature: 0.2 });
 
   let recs: LinkRecommendation[];
   try {
@@ -56,7 +56,7 @@ export async function recommendInternalLinks(pageSlug: string, pageType: string)
       recommendation: "Internal links for " + pageSlug,
       actions: recs as any,
       confidence: 0.7,
-      model: MODELS.cheap,
+      model: result.model,
       status: "pending",
     } as any,
   });

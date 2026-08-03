@@ -1,8 +1,8 @@
 // Content Optimizer — analyzes a page and suggests SEO improvements
 // based on content quality + GSC performance data.
 import { prisma } from "@/lib/db";
-import { callClaude } from "@/lib/ai/client";
-import { MODELS } from "@/lib/ai/models";
+import { callLLM } from "@/lib/ai/deepseek-client";
+
 import { getCalculatorBySlug } from "@/lib/calculator/loader";
 import { getDocFrontmatter } from "@/lib/mdx";
 
@@ -110,13 +110,7 @@ export async function optimizeContent(
     "Analyze and suggest optimizations. Return JSON.",
   ].join("\n");
 
-  const result = await callClaude({
-    model: MODELS.strong,
-    system: SYSTEM_PROMPT,
-    user: userPrompt,
-    maxTokens: 4096,
-    temperature: 0.3,
-  });
+  const result = await callLLM({ system: SYSTEM_PROMPT, user: userPrompt, maxTokens: 4096, temperature: 0.3 });
 
   let suggestions: OptimizationSuggestion[];
   try {
@@ -139,7 +133,7 @@ export async function optimizeContent(
       recommendation: "Optimize " + pageUrl,
       actions: suggestions as any,
       confidence: 0.8,
-      model: MODELS.strong,
+      model: result.model,
       status: "pending",
     } as any,
   });
