@@ -198,6 +198,17 @@ export function CalculatorCard({ calculator, materials = [] }: CalculatorCardPro
         </Card>
       </div>
 
+      {/* Share Result */}
+      {result && (
+        <ShareResultButton
+          calculator={calculator.id}
+          calculatorName={calculator.name}
+          inputData={values}
+          resultData={{ value: result.value, unit: result.unit, label: calculator.result.label }}
+          formula={calculator.formula.expression}
+        />
+      )}
+
       {/* Formula Box */}
       {calculator.formula.explanation && (
         <FormulaBox
