@@ -36,6 +36,7 @@ export default function ToolsPage() {
       category: c.category,
       tags: c.seo?.keyword ? [c.seo.keyword] : [],
       type: "calculator" as const,
+      vizType: c.visualization?.type?.startsWith("three-") ? "3D" : c.visualization ? "2D" : undefined,
     })),
     ...guides.map((g) => ({
       title: g.frontmatter.title,
@@ -75,3 +76,4 @@ export default function ToolsPage() {
     </div>
   );
 }
+

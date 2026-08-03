@@ -104,6 +104,11 @@ export default async function CalculatorPage({ params }: Props) {
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-2">
             <Badge variant="secondary">{calc.category}</Badge>
+            {calc.visualization?.type?.startsWith("three-") ? (
+              <Badge className="bg-engineering-blue text-white font-bold">3D</Badge>
+            ) : calc.visualization ? (
+              <Badge className="bg-ai-glow/20 text-engineering-blue border border-ai-glow/40 font-bold">2D</Badge>
+            ) : null}
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-navy mb-3">{calc.name}</h1>
           <p className="text-lg text-muted-foreground leading-relaxed">{calc.description}</p>
@@ -227,3 +232,4 @@ export default async function CalculatorPage({ params }: Props) {
     </div>
   );
 }
+

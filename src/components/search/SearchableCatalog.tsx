@@ -16,6 +16,7 @@ interface SearchItem {
   category: string;
   tags?: string[];
   type: "calculator" | "guide" | "material";
+  vizType?: string;
 }
 
 interface SearchableCatalogProps {
@@ -127,7 +128,12 @@ export function SearchableCatalog({ items }: SearchableCatalogProps) {
                       <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-engineering-blue/5 group-hover:bg-engineering-blue/10 transition-colors">
                         <Calculator className="h-4 w-4 text-engineering-blue" />
                       </div>
-                      <div className="flex gap-1.5">
+                      <div className="flex flex-wrap gap-1.5 justify-end">
+                        {item.vizType && (
+                          <Badge className={`text-xs font-bold ${item.vizType === "3D" ? "bg-engineering-blue text-white" : "bg-ai-glow/20 text-engineering-blue border border-ai-glow/40"}`}>
+                            {item.vizType}
+                          </Badge>
+                        )}
                         <Badge variant="secondary" className="text-xs font-normal capitalize">
                           {item.type}
                         </Badge>
@@ -152,3 +158,4 @@ export function SearchableCatalog({ items }: SearchableCatalogProps) {
     </div>
   );
 }
+
