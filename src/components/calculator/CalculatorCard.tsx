@@ -16,6 +16,7 @@ import {
 import { Calculator, RotateCcw } from "lucide-react";
 import { FormulaBox } from "./FormulaBox";
 import { ShareResultButton } from "./ShareResultButton";
+import { VisualizationRenderer } from "./visualizations/VisualizationRenderer";
 import { ResultDisplay } from "./ResultDisplay";
 import { InputField } from "./InputField";
 import { calculate } from "@/lib/calculator/engine";
@@ -209,6 +210,16 @@ export function CalculatorCard({ calculator, materials = [] }: CalculatorCardPro
         />
       )}
 
+
+      {/* Interactive Visualization */}
+      {calculator.visualization && (
+        <VisualizationRenderer
+          visualization={calculator.visualization}
+          result={result}
+          values={values}
+        />
+      )}
+
       {/* Formula Box */}
       {calculator.formula.explanation && (
         <FormulaBox
@@ -220,3 +231,5 @@ export function CalculatorCard({ calculator, materials = [] }: CalculatorCardPro
     </div>
   );
 }
+
+

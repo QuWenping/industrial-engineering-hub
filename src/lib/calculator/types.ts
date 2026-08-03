@@ -63,6 +63,27 @@ export interface CalculatorTestCase {
   description?: string;
 }
 
+// === Visualization System (V0.5) ===
+
+export type VisualizationType =
+  | "svg-section"   // SVG cross-section diagrams (zero dependency)
+  | "canvas-flow"   // Canvas 2D particle/flow simulation (zero dependency)
+  | "three-beam"    // Three.js 3D beam deflection (lazy loaded)
+  | "three-tank"    // Three.js 3D tank liquid level (lazy loaded)
+  | "svg-curve";    // SVG performance curve / chart (zero dependency)
+
+/** Maps calculator input IDs to visualization parameters */
+export interface VisualizationProps {
+  [key: string]: string; // inputId -> viz param name
+}
+
+export interface CalculatorVisualization {
+  type: VisualizationType;
+  component: string;  // file name under src/components/calculator/visualizations/
+  title?: string;
+  props?: VisualizationProps;
+}
+
 export interface Calculator {
   id: string;
   name: string;
@@ -75,6 +96,7 @@ export interface Calculator {
   result: CalculatorResult;
   content: CalculatorContent;
   tests?: CalculatorTestCase[];
+  visualization?: CalculatorVisualization;
 }
 
 export interface CalculationResult {
@@ -88,3 +110,4 @@ export interface CalculationError {
   field?: string;
   message: string;
 }
+

@@ -105,5 +105,11 @@
       "expected": 200000,
       "tolerance": 100
     }
-  ]
+  ],
+  "visualization": {
+    "type": "canvas-flow",
+    "component": "ReynoldsFlowCanvas",
+    "title": "Laminar vs Turbulent Flow Visualization"
+  }
 }
+

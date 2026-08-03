@@ -158,5 +158,11 @@
       "tolerance": 0.01,
       "description": "Simply supported, 5kN, 2m, E=210000 MPa, I=8e5 mm4"
     }
-  ]
+  ],
+  "visualization": {
+    "type": "three-beam",
+    "component": "Beam3DVisualization",
+    "title": "3D Beam Deflection Model"
+  }
 }
+

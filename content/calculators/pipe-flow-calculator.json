@@ -80,5 +80,11 @@
       "expected": 56.55,
       "tolerance": 0.01
     }
-  ]
+  ],
+  "visualization": {
+    "type": "canvas-flow",
+    "component": "PipeFlowCanvas",
+    "title": "Live Pipe Flow Simulation"
+  }
 }
+

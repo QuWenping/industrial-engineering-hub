@@ -105,5 +105,11 @@
       "expected": 19.46,
       "tolerance": 0.05
     }
-  ]
+  ],
+  "visualization": {
+    "type": "svg-curve",
+    "component": "PumpPerformanceCurve",
+    "title": "Pump Performance Curve"
+  }
 }
+

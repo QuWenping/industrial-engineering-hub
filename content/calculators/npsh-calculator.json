@@ -114,5 +114,11 @@
       "expected": 11.59,
       "tolerance": 0.2
     }
-  ]
+  ],
+  "visualization": {
+    "type": "canvas-flow",
+    "component": "PipeFlowCanvas",
+    "title": "Flow Visualization"
+  }
 }
+

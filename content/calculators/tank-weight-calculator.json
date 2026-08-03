@@ -112,5 +112,11 @@
       "expected": 45946,
       "tolerance": 200
     }
-  ]
+  ],
+  "visualization": {
+    "type": "three-tank",
+    "component": "Tank3DVisualization",
+    "title": "3D Tank Visualization"
+  }
 }
+

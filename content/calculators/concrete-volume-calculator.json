@@ -87,5 +87,11 @@
       "expected": 7.5,
       "tolerance": 0.01
     }
-  ]
+  ],
+  "visualization": {
+    "type": "svg-section",
+    "component": "SteelSectionDiagram",
+    "title": "Cross-Section Visualization"
+  }
 }
+

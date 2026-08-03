@@ -79,5 +79,11 @@
       "expected": 49.3,
       "tolerance": 0.5
     }
-  ]
+  ],
+  "visualization": {
+    "type": "svg-curve",
+    "component": "HeatExchangerDiagram",
+    "title": "Temperature Field Diagram"
+  }
 }
+

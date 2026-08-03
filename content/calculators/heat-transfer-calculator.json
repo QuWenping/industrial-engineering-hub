@@ -92,5 +92,11 @@
       "expected": 5000,
       "tolerance": 50
     }
-  ]
+  ],
+  "visualization": {
+    "type": "svg-curve",
+    "component": "HeatExchangerDiagram",
+    "title": "Temperature Field Diagram"
+  }
 }
+
