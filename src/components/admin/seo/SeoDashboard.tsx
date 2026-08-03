@@ -73,6 +73,13 @@ export function SeoDashboard({ summary, topQueries, topPages, opportunities }: P
 
   return (
     <div className="space-y-6">
+      {/* SEO sub-navigation */}
+      <div className="flex gap-2 border-b border-slate-200 pb-3">
+        <a href="/admin/seo" className="px-3 py-1.5 text-sm font-medium text-white bg-navy rounded-md">Dashboard</a>
+        <a href="/admin/seo/optimize" className="px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-100 rounded-md">Optimize</a>
+        <a href="/admin/seo/knowledge" className="px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-100 rounded-md">Knowledge</a>
+        <a href="/admin/seo/tasks" className="px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-100 rounded-md">AI Decisions</a>
+      </div>
       {/* Summary cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card>
