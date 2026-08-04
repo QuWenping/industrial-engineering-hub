@@ -1,9 +1,9 @@
 ---
-title: "Diesel Fuel"
-description: "Diesel fuel properties, density (~840 kg/m³), cetane number, viscosity characteristics, energy content, and engineering considerations for engines, storage, and fuel systems."
+title: "Diesel Density, Properties & Engineering Data (kg/m3)"
+description: "Diesel density, specific gravity, viscosity and engineering properties. Reference data for mechanical and industrial calculations."
 category: "Fluid"
 keywords: ["diesel density", "diesel properties", "diesel fuel", "diesel viscosity", "diesel specific gravity"]
-updated: "2026-07-29"
+updated: "2026-08-04"
 related:
   - fluid-density-calculator
   - pump-power-calculator
@@ -91,3 +91,85 @@ Diesel's flash point above 52°C (vs -43°C for gasoline) means diesel does not 
 ## Summary
 
 Diesel fuel (density ~840 kg/m³, #2 grade) is the primary fuel for heavy transportation and power generation due to high energy density and engine efficiency. Its higher viscosity compared to gasoline is essential for fuel injection lubrication and spray patterns, while its flash point above 52°C makes it significantly safer to handle than gasoline. Cold-flow properties (cloud point, CFPP) are critical engineering parameters in winter operation. Ultra-low sulfur diesel (ULSD, &lt;15 ppm) is now the global standard.
+
+
+## Diesel Density vs Temperature
+
+Diesel density varies significantly with temperature — critical for custody transfer and flow measurement:
+
+| Temperature (°C) | Density (kg/m³) | Correction Factor |
+|---|---|---|
+| 0 | 858 | 1.021 |
+| 5 | 854 | 1.016 |
+| 10 | 849 | 1.011 |
+| 15 | 845 | 1.006 (reference) |
+| 20 | 840 | 1.000 |
+| 25 | 836 | 0.995 |
+| 30 | 832 | 0.990 |
+| 40 | 823 | 0.980 |
+| 50 | 815 | 0.970 |
+
+The correction coefficient is approximately **0.7 kg/m³ per °C** (density decreases as temperature rises). For API gravity conversion: API = (141.5 / SG) - 131.5, where SG = density/1000 at 15°C.
+
+## Diesel vs Gasoline Density Comparison
+
+| Property | Diesel | Gasoline | Difference |
+|---|---|---|---|
+| Density (15°C) | 820-845 kg/m³ | 715-770 kg/m³ | Diesel ~10% denser |
+| Energy per liter | 36 MJ/L | 32 MJ/L | Diesel ~12% more |
+| Energy per kg | 43 MJ/kg | 44 MJ/kg | Similar |
+| Viscosity (40°C) | 2-4.5 cSt | 0.5-0.8 cSt | Diesel 4-6× higher |
+| Flash point | >52°C | -43°C | Diesel much safer |
+| Cetane/Octane | CN 40-55 | RON 91-98 | Opposite scales |
+
+## Diesel Weight Calculation
+
+To calculate diesel weight from volume:
+
+<Formula>W = V × ρ (Volume × Density)</Formula>
+
+Example: 1000 liters of diesel at 20°C:
+- W = 1.0 m³ × 840 kg/m³ = **840 kg**
+- Compare: 1000 liters of water = 1000 kg (diesel is ~16% lighter)
+- Compare: 1000 liters of gasoline = ~740 kg (diesel is ~14% heavier)
+
+<Calculator id="density-calculator" label="Calculate Diesel Density" />
+
+## Related Engineering Tools
+
+- [Fluid Density Calculator](/tools/fluid-density-calculator) — Calculate density of any fluid
+- [Pump Power Calculator](/tools/pump-power-calculator) — Diesel pumping power requirements
+- [Motor Power Calculator](/tools/motor-power-calculator) — Engine power output estimation
+- [Flow Rate Calculator](/tools/flow-rate-calculator) — Pipeline flow calculations
+- [Heat Transfer Calculator](/tools/heat-transfer-calculator) — Diesel heating/cooling systems
+
+## Diesel Storage Engineering
+
+### Tank Sizing
+- ULSD storage tanks typically sized for 7-30 days of consumption
+- Fill factor 0.85-0.90 (allow ullage for thermal expansion)
+- Underground tanks: double-wall with leak detection
+- Above-ground tanks: dyke/bund capacity ≥ 110% of largest tank
+
+### Material Compatibility
+- Carbon steel: standard for diesel storage (no corrosion issues with ULSD)
+- Stainless steel 304/316: for biodiesel blends (B20+ may affect elastomers)
+- FRP (fiberglass): underground storage, compatible with all diesel grades
+- Seals/gaskets: Buna-N (NBR) for petroleum diesel; Viton for biodiesel blends
+
+## Frequently Asked Questions
+
+**What is the density of diesel fuel in kg/m³?**
+Standard #2 diesel density is 820-845 kg/m³ at 15°C (EN590 specification). At 20°C, typical diesel density is approximately 840 kg/m³. Diesel is about 10% denser than gasoline.
+
+**How much does 1 liter of diesel weigh?**
+One liter of diesel at 20°C weighs approximately 0.84 kg (840 grams). This is lighter than water (1.0 kg/L) but heavier than gasoline (~0.74 kg/L).
+
+**What is the specific gravity of diesel?**
+Specific gravity (SG) of diesel at 15°C is typically 0.82-0.845 (relative to water at 4°C). API gravity is approximately 36-38 degrees.
+
+**How does temperature affect diesel density?**
+Diesel density decreases by approximately 0.7 kg/m³ per 1°C increase in temperature. At 40°C, diesel density drops to ~823 kg/m³. This correction is critical for fuel custody transfer.
+
+**What is the difference between diesel density and API gravity?**
+API gravity = (141.5 / SG) - 131.5. For diesel with SG 0.84: API = (141.5/0.84) - 131.5 = 37.0°API. Lower API gravity means denser fluid.

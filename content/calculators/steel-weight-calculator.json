@@ -5,8 +5,8 @@
   "priority": "P0",
   "description": "Calculate the weight of steel plates based on dimensions and material density. Used in structural design, fabrication, and cost estimation.",
   "seo": {
-    "title": "Steel Weight Calculator - Free Online Engineering Tool",
-    "description": "Calculate steel weight instantly — Beams, plates, rounds & sections with metric + imperial unit support",
+    "title": "Steel Weight Calculator - Plate, Beam & Section Weight (kg)",
+    "description": "Calculate steel weight for plates, I-beams, H-beams, angles, pipes and rounds. Steel density table, formula and weight chart for fabrication and structural design.",
     "keyword": "steel weight calculator"
   },
   "formula": {
@@ -55,7 +55,7 @@
     "decimals": 2
   },
   "content": {
-    "introduction": "Calculate steel plate weight from dimensions and material density. This calculator supports carbon steel, stainless steel, aluminum and other common engineering materials.",
+    "introduction": "Calculate the weight of steel plates, beams, bars, pipes and structural sections from dimensions and material density. This calculator supports carbon steel, stainless steel, and other common engineering materials. Enter your dimensions and select a material to get instant weight results for fabrication, transportation planning, and cost estimation.",
     "example": {
       "inputs": {
         "length": 1000,
@@ -69,15 +69,31 @@
     "faq": [
       {
         "q": "What is the density of carbon steel?",
-        "a": "Carbon steel density is approximately 7850 kg/m³."
+        "a": "Carbon steel density is approximately 7850 kg/m3 (7.85 g/cm3). This is the standard value used for structural steel weight calculations. Mild steel (A36) and most carbon steels fall within 7830-7870 kg/m3."
       },
       {
         "q": "What is the density of stainless steel 304?",
-        "a": "Stainless steel 304 has a density of approximately 7930 kg/m³."
+        "a": "Stainless steel 304 has a density of approximately 7930 kg/m3, slightly higher than carbon steel. Stainless 316 is about 7990 kg/m3. The 300 series stainless steels are typically 1-2% denser than carbon steel."
       },
       {
-        "q": "How accurate is this calculator?",
-        "a": "This calculator gives theoretical weight based on nominal dimensions. Actual weight may vary slightly due to manufacturing tolerances."
+        "q": "How do you calculate steel plate weight?",
+        "a": "Steel plate weight = Length(m) x Width(m) x Thickness(m) x 7850 kg/m3. For example, a 1000x1000x10mm carbon steel plate weighs 78.5 kg. Use our calculator above for instant results with any dimensions."
+      },
+      {
+        "q": "How much does a steel I-beam weigh per meter?",
+        "a": "An H500x300x11x18 I-beam weighs approximately 119 kg/m. A smaller H200x200x8x12 weighs about 50.5 kg/m. The weight per meter depends on the cross-sectional area and steel density (7850 kg/m3)."
+      },
+      {
+        "q": "How accurate is this steel weight calculator?",
+        "a": "This calculator gives theoretical weight based on nominal dimensions and standard density values. Actual weight may vary by 2-5% due to manufacturing tolerances, surface treatments (galvanizing adds ~3%), and material composition variations."
+      },
+      {
+        "q": "What is the weight of steel per square meter?",
+        "a": "Steel plate weight per m2 = thickness(mm) x 7.85 kg/m2/mm. A 10mm steel plate weighs 78.5 kg/m2. A 6mm plate weighs 47.1 kg/m2. This quick formula works for flat steel plates."
+      },
+      {
+        "q": "How do you calculate steel angle weight?",
+        "a": "Steel angle weight = (2 x leg_length - thickness) x thickness x length x 7.85 / 1000 (for equal leg angles in mm). For an L50x50x5 angle: (2x50 - 5) x 5 x 7.85 / 1000 = 3.73 kg/m. Use our calculator for precise results."
       }
     ],
     "related": [
@@ -85,14 +101,21 @@
       "metal-weight-calculator",
       "aluminum-weight-calculator",
       "copper-weight-calculator",
+      "stainless-steel-weight-calculator",
+      "round-bar-weight-calculator",
+      "steel-plate-weight-calculator",
       "material-volume-calculator"
     ],
     "applications": [
-      "Structural steel fabrication",
-      "Equipment manufacturing",
-      "Transportation planning",
-      "Cost estimation"
-    ]
+      "Structural steel fabrication and erection",
+      "Equipment manufacturing and skid design",
+      "Transportation planning and load calculation",
+      "Cost estimation and material ordering",
+      "Crane lift planning and rigging",
+      "Bridge and building construction",
+      "Shipbuilding and offshore platforms"
+    ],
+    "formula_explanation": "Steel weight is calculated using the fundamental formula: Weight = Volume x Density. For a steel plate: W = Length x Width x Thickness x Density. The engine converts all dimensions to SI base units (meters) and multiplies by material density (kg/m3) to give weight in kilograms. For structural sections (I-beams, H-beams, angles), the cross-sectional area is multiplied by length and density."
   },
   "tests": [
     {
@@ -130,7 +153,6 @@
     "type": "svg-section",
     "component": "SteelSectionDiagram",
     "title": "Interactive Cross-Section Visualization"
-  }
+  },
+  "formula_explanation": "Steel weight is calculated using the fundamental formula: Weight = Volume x Density. For a steel plate: W = Length x Width x Thickness x Density. The engine converts all dimensions to SI base units (meters) and multiplies by material density (kg/m3) to give weight in kilograms."
 }
-
-
