@@ -129,6 +129,30 @@ export default async function CalculatorPage({ params }: Props) {
 
           <Separator />
 
+          {/* How It Works */}
+          <section>
+            <h2 className="text-xl font-bold text-navy mb-3">How This Calculator Works</h2>
+            <div className="space-y-4">
+              {calc.formula.explanation && (
+                <p className="text-muted-foreground leading-relaxed">{calc.formula.explanation}</p>
+              )}
+              {calc.content.formula_explanation && (
+                <p className="text-muted-foreground leading-relaxed">{calc.content.formula_explanation}</p>
+              )}
+              <div className="rounded-lg bg-engineering-blue/5 border border-engineering-blue/20 p-4">
+                <p className="text-sm text-navy font-medium mb-2">Step-by-step process:</p>
+                <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
+                  <li>Enter your input values in the calculator above</li>
+                  <li>The engine converts all inputs to SI base units (meters, kg, Pa)</li>
+                  <li>The formula is evaluated: <code className="font-mono text-engineering-blue">{calc.formula.expression}</code></li>
+                  <li>Result is formatted with the appropriate unit and precision</li>
+                </ol>
+              </div>
+            </div>
+          </section>
+
+          <Separator />
+
           {/* Example */}
           {calc.content.example && (
             <section>
@@ -246,5 +270,6 @@ export default async function CalculatorPage({ params }: Props) {
     </div>
   );
 }
+
 
 

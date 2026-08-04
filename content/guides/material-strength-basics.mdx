@@ -1,9 +1,9 @@
 ---
-title: "Material Strength Basics"
+title: "Material Strength Guide — Tensile, Yield, Hardness & Fatigue"
 description: "Fundamental material properties for engineering design: yield strength, tensile strength, hardness, toughness, fatigue, and stress-strain behavior."
 category: "Materials"
 keywords: ["material strength", "yield strength", "tensile strength", "stress strain", "Young's modulus", "fatigue", "hardness"]
-updated: "2026-07-29"
+updated: "2026-08-04"
 related:
   - "/guides/steel-material-properties"
   - bolt-torque-calculator
@@ -194,3 +194,34 @@ The factor of safety (1.5 on yield, 3.5 on ultimate for vessels) accounts for un
 ## Summary
 
 Yield strength determines design load for static applications; ultimate strength for brittle fracture. Young's modulus is stiffness and is constant within material classes (E = 200 GPa for all steels). Fatigue causes 80-90% of mechanical failures — avoid stress concentrations and consider surface finish. Toughness (Charpy) matters for low-temperature service. Creep limits service life above 0.4 T<sub>melt</sub>. Design codes apply factors of safety (typically 1.5 on yield, 3.5 on ultimate) to establish allowable stresses. Higher strength steel does NOT mean stiffer steel — stiffness comes from geometry (moment of inertia) and E.
+
+
+## Frequently Asked Questions
+
+**What is the difference between yield strength and tensile strength?**
+Yield strength is the stress at which a material begins to deform permanently (plastically). Tensile strength (ultimate tensile strength, UTS) is the maximum stress the material withstands before fracture. For ductile materials (steel, aluminum), yield strength is the design limit. For brittle materials (cast iron), tensile strength is the design limit.
+
+**What is Youngs modulus and why does it matter?**
+Youngs modulus (E) measures material stiffness — the resistance to elastic deformation. Steel has E = 200 GPa regardless of grade; aluminum has E = 69 GPa. This means an aluminum beam deflects 3x more than a steel beam of the same size under the same load. Higher-strength steel does NOT increase stiffness — only geometry changes (larger cross-section) can reduce deflection.
+
+**How is hardness related to tensile strength?**
+For steel, ultimate tensile strength (MPa) is approximately 3.45 times Brinell hardness (BHN). A steel with 200 BHN has approximately 690 MPa UTS. This relationship is widely used for quick estimates but is only approximate — always verify with actual material test reports.
+
+**What is fatigue strength and why is it dangerous?**
+Fatigue failure occurs at stress levels well below yield strength under cyclic loading. It accounts for 80-90% of mechanical failures. Fatigue is dangerous because it occurs without warning — no visible deformation, sudden fracture. Always consider fatigue for rotating shafts, pressure cycling, and vibration.
+
+**What is the ductile-to-brittle transition temperature?**
+Carbon steel (BCC crystal structure) becomes brittle at low temperatures. The DBTT is typically -20 to +20C depending on grade and thickness. Below DBTT, steel can fail catastrophically under impact. This is why pressure vessel codes require Charpy impact testing below -29C. Stainless steel and aluminum (FCC structure) do not have a DBTT and remain tough at cryogenic temperatures.
+
+**What factor of safety do engineering codes use?**
+ASME pressure vessel code uses factor of safety of 1.5 on yield strength and 3.5 on ultimate tensile strength. AISC structural steel uses 0.66 x yield (ASD) or 0.9 x yield (LRFD). These factors account for uncertainties in material properties, loads, and analysis methods.
+
+## Related Engineering Tools & References
+
+- [Steel Weight Calculator](/tools/steel-weight-calculator) — Calculate steel weight for structural design
+- [Aluminum Weight Calculator](/tools/aluminum-weight-calculator) — Aluminum section weight
+- [Beam Deflection Calculator](/tools/beam-deflection-calculator) — Structural beam analysis
+- [Carbon Steel Properties](/materials/carbon-steel) — Carbon steel reference data
+- [Aluminum Properties](/materials/aluminum) — 6061-T6 and other alloy data
+- [Stainless Steel 304](/materials/stainless-steel-304) — 304 properties and comparison
+- [Material Engineering Hub](/materials) — Complete material reference database
