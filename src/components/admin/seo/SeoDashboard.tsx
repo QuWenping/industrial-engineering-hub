@@ -24,6 +24,10 @@ export function SeoDashboard({ summary, topQueries, topPages, opportunities }: P
   const [importResult, setImportResult] = useState<string>("");
   const [importType, setImportType] = useState<"query" | "page">("query");
   const fileRef = useRef<HTMLInputElement>(null);
+  const queryFileRef = useRef<HTMLInputElement>(null);
+  const pageFileRef = useRef<HTMLInputElement>(null);
+  const [queryFileName, setQueryFileName] = useState("");
+  const [pageFileName, setPageFileName] = useState("");
   const [analyzing, setAnalyzing] = useState(false);
   const [analysisResult, setAnalysisResult] = useState("");
 
@@ -63,6 +67,43 @@ export function SeoDashboard({ summary, topQueries, topPages, opportunities }: P
       } else {
         setImportResult(`Error: ${data.error}`);
       }
+    } catch (e: any) {
+      setImportResult(`Error: ${e.message}`);
+    }
+    setImporting(false);
+  }
+
+  async function handleDualImport() {
+    const queryFile = queryFileRef.current?.files?.[0];
+    const pageFile = pageFileRef.current?.files?.[0];
+    if (!queryFile && !pageFile) {
+      setImportResult("Please select at least one CSV file.");
+      return;
+    }
+    setImporting(true);
+    setImportResult("Uploading...");
+    const results: string[] = [];
+    try {
+      if (queryFile) {
+        const text = await queryFile.text();
+        const res = await fetch(`/api/admin/seo/gsc-import?type=query`, {
+          method: "POST", body: text,
+        });
+        const data = await res.json();
+        if (data.ok) results.push(`Queries: ${data.imported} rows imported`);
+        else results.push(`Queries: Error - ${data.error}`);
+      }
+      if (pageFile) {
+        const text = await pageFile.text();
+        const res = await fetch(`/api/admin/seo/gsc-import?type=page`, {
+          method: "POST", body: text,
+        });
+        const data = await res.json();
+        if (data.ok) results.push(`Pages: ${data.imported} rows imported`);
+        else results.push(`Pages: Error - ${data.error}`);
+      }
+      setImportResult(results.join(" | "));
+      setTimeout(() => window.location.reload(), 2000);
     } catch (e: any) {
       setImportResult(`Error: ${e.message}`);
     }
@@ -236,3 +277,5 @@ export function SeoDashboard({ summary, topQueries, topPages, opportunities }: P
     </div>
   );
 }
+
+

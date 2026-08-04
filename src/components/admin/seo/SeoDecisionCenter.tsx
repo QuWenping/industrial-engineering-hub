@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, XCircle, Play, RefreshCw, Activity, Target, TrendingUp, Layers, Eye } from "lucide-react";
+import { CheckCircle2, XCircle, Play, RefreshCw, Activity, Target, TrendingUp, Layers, Eye, Upload } from "lucide-react";
 
 interface Decision {
   id: string;
@@ -82,6 +82,36 @@ export function SeoDecisionCenter({
   const [activeTab, setActiveTab] = useState<"decisions" | "pages" | "clusters" | "keywords">("decisions");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const queryFileRef = useRef<HTMLInputElement>(null);
+  const pageFileRef = useRef<HTMLInputElement>(null);
+  const [queryFileName, setQueryFileName] = useState("");
+  const [pageFileName, setPageFileName] = useState("");
+  const [uploading, setUploading] = useState(false);
+
+  const handleDualUpload = useCallback(async () => {
+    const queryFile = queryFileRef.current?.files?.[0];
+    const pageFile = pageFileRef.current?.files?.[0];
+    if (!queryFile && !pageFile) { setMessage("Please select at least one CSV file."); return; }
+    setUploading(true);
+    setMessage("Uploading GSC data...");
+    const results: string[] = [];
+    try {
+      if (queryFile) {
+        const text = await queryFile.text();
+        const res = await fetch("/api/admin/seo/gsc-import?type=query", { method: "POST", body: text });
+        const data = await res.json();
+        if (data.ok) results.push(`Queries: ${data.imported} rows`); else results.push(`Queries error: ${data.error}`);
+      }
+      if (pageFile) {
+        const text = await pageFile.text();
+        const res = await fetch("/api/admin/seo/gsc-import?type=page", { method: "POST", body: text });
+        const data = await res.json();
+        if (data.ok) results.push(`Pages: ${data.imported} rows`); else results.push(`Pages error: ${data.error}`);
+      }
+      setMessage("Upload complete: " + results.join(" | ") + ". Now click Run Full Analysis.");
+    } catch (e) { setMessage("Upload error: " + String(e)); }
+    setUploading(false);
+  }, []);
 
   const runAnalysis = useCallback(async () => {
     setLoading(true);
@@ -178,14 +208,35 @@ export function SeoDecisionCenter({
         ))}
       </div>
 
-      {/* Action Bar */}
-      <div className="flex items-center gap-3">
-        <Button onClick={runAnalysis} disabled={loading} className="btn-primary-gradient border-0 text-white">
-          {loading ? <RefreshCw className="mr-2 h-4 w-4 animate-spin" /> : <RefreshCw className="mr-2 h-4 w-4" />}
-          Run Full Analysis
-        </Button>
-        {message && <span className="text-sm text-slate-500">{message}</span>}
-      </div>
+      {/* GSC CSV Upload + Action Bar */}
+      <Card className="border-engineering-blue/20 bg-gradient-to-br from-navy/[0.02] to-ai-glow/[0.02]">
+        <CardContent className="p-5 space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="rounded-lg border-2 border-dashed border-slate-300 p-3 hover:border-engineering-blue/40 transition-colors">
+              <label className="block text-sm font-medium text-navy mb-1.5">Top Queries CSV</label>
+              <input ref={queryFileRef} type="file" accept=".csv" className="text-xs w-full" onChange={(e) => setQueryFileName(e.target.files?.[0]?.name || "")} />
+              {queryFileName && <p className="text-xs text-accent-green mt-1">&#10003; {queryFileName}</p>}
+            </div>
+            <div className="rounded-lg border-2 border-dashed border-slate-300 p-3 hover:border-engineering-blue/40 transition-colors">
+              <label className="block text-sm font-medium text-navy mb-1.5">Top Pages CSV</label>
+              <input ref={pageFileRef} type="file" accept=".csv" className="text-xs w-full" onChange={(e) => setPageFileName(e.target.files?.[0]?.name || "")} />
+              {pageFileName && <p className="text-xs text-accent-green mt-1.5">&#10003; {pageFileName}</p>}
+            </div>
+          </div>
+          <div className="flex items-center gap-3 flex-wrap">
+            <Button onClick={handleDualUpload} disabled={uploading} variant="outline" className="border-engineering-blue/30">
+              {uploading ? <RefreshCw className="mr-2 h-4 w-4 animate-spin" /> : <Upload className="mr-2 h-4 w-4" />}
+              Upload GSC CSV
+            </Button>
+            <Button onClick={runAnalysis} disabled={loading} className="btn-primary-gradient border-0 text-white">
+              {loading ? <RefreshCw className="mr-2 h-4 w-4 animate-spin" /> : <RefreshCw className="mr-2 h-4 w-4" />}
+              Run Full Analysis
+            </Button>
+            {message && <span className="text-sm text-slate-500">{message}</span>}
+          </div>
+          <p className="text-xs text-slate-400">Step 1: Upload both GSC CSV files. Step 2: Click Run Full Analysis to generate AI decisions.</p>
+        </CardContent>
+      </Card>
 
       {/* Tabs */}
       <div className="flex gap-2 border-b border-border/60">
@@ -363,3 +414,4 @@ export function SeoDecisionCenter({
     </div>
   );
 }
+
