@@ -62,7 +62,19 @@
     "related": [
       "pipe-flow-calculator",
       "pipe-velocity-calculator",
-      "flow-conversion-calculator"
+      "flow-conversion-calculator",
+      "pipe-diameter-calculator",
+      "pipe-volume-calculator",
+      "water-velocity-calculator",
+      "pressure-drop-calculator",
+      "friction-loss-calculator",
+      "head-loss-calculator",
+      "pressure-loss-calculator",
+      "darcy-weisbach-calculator",
+      "reynolds-number-calculator",
+      "hydraulic-diameter-calculator",
+      "npsh-calculator",
+      "orifice-flow-calculator"
     ],
     "applications": [
       "Flow measurement",
@@ -87,4 +99,3 @@
     "title": "Live Flow Simulation"
   }
 }
-

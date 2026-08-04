@@ -94,7 +94,19 @@
     "related": [
       "flow-rate-calculator",
       "pipe-flow-calculator",
-      "pressure-drop-calculator"
+      "pressure-drop-calculator",
+      "pipe-velocity-calculator",
+      "pipe-diameter-calculator",
+      "pipe-volume-calculator",
+      "water-velocity-calculator",
+      "friction-loss-calculator",
+      "head-loss-calculator",
+      "pressure-loss-calculator",
+      "darcy-weisbach-calculator",
+      "reynolds-number-calculator",
+      "hydraulic-diameter-calculator",
+      "npsh-calculator",
+      "flow-conversion-calculator"
     ],
     "applications": [
       "Flow measurement",
@@ -122,4 +134,3 @@
     "title": "Flow Visualization"
   }
 }
-

@@ -83,7 +83,19 @@
     "related": [
       "pressure-drop-calculator",
       "darcy-weisbach-calculator",
-      "head-loss-calculator"
+      "head-loss-calculator",
+      "pipe-flow-calculator",
+      "flow-rate-calculator",
+      "pipe-velocity-calculator",
+      "pipe-diameter-calculator",
+      "pipe-volume-calculator",
+      "water-velocity-calculator",
+      "pressure-loss-calculator",
+      "reynolds-number-calculator",
+      "hydraulic-diameter-calculator",
+      "npsh-calculator",
+      "orifice-flow-calculator",
+      "flow-conversion-calculator"
     ],
     "applications": [
       "Water distribution",
@@ -110,4 +122,3 @@
     "title": "Flow Visualization"
   }
 }
-

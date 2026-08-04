@@ -73,7 +73,16 @@
     ],
     "related": [
       "pump-power-calculator",
-      "pump-efficiency-calculator"
+      "pump-efficiency-calculator",
+      "pump-flow-calculator",
+      "pump-head-calculator",
+      "pump-affinity-law-calculator",
+      "pump-sizing-calculator",
+      "pump-selection-calculator",
+      "pipe-flow-calculator",
+      "flow-rate-calculator",
+      "pressure-drop-calculator",
+      "reynolds-number-calculator"
     ],
     "applications": [
       "Operating cost budgeting",
@@ -99,4 +108,3 @@
     "title": "Pump Performance Curve"
   }
 }
-

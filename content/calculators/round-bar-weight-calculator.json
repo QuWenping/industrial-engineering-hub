@@ -69,7 +69,14 @@
     ],
     "related": [
       "steel-weight-calculator",
-      "pipe-weight-calculator"
+      "pipe-weight-calculator",
+      "aluminum-weight-calculator",
+      "copper-weight-calculator",
+      "stainless-steel-weight-calculator",
+      "steel-plate-weight-calculator",
+      "metal-weight-calculator",
+      "density-calculator",
+      "material-volume-calculator"
     ],
     "applications": [
       "Rebar estimating",
@@ -95,4 +102,3 @@
     "title": "Interactive Cross-Section Visualization"
   }
 }
-

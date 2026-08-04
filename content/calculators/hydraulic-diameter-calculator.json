@@ -61,7 +61,20 @@
     ],
     "related": [
       "reynolds-number-calculator",
-      "darcy-weisbach-calculator"
+      "darcy-weisbach-calculator",
+      "pipe-flow-calculator",
+      "flow-rate-calculator",
+      "pipe-velocity-calculator",
+      "pipe-diameter-calculator",
+      "pipe-volume-calculator",
+      "water-velocity-calculator",
+      "pressure-drop-calculator",
+      "friction-loss-calculator",
+      "head-loss-calculator",
+      "pressure-loss-calculator",
+      "npsh-calculator",
+      "orifice-flow-calculator",
+      "flow-conversion-calculator"
     ],
     "applications": [
       "HVAC duct design",
@@ -86,4 +99,3 @@
     "title": "Flow Visualization"
   }
 }
-

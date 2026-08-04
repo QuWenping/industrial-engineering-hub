@@ -74,7 +74,16 @@
     ],
     "related": [
       "pump-sizing-calculator",
-      "pump-power-calculator"
+      "pump-power-calculator",
+      "pump-efficiency-calculator",
+      "pump-flow-calculator",
+      "pump-head-calculator",
+      "pump-energy-calculator",
+      "pump-affinity-law-calculator",
+      "pipe-flow-calculator",
+      "flow-rate-calculator",
+      "pressure-drop-calculator",
+      "reynolds-number-calculator"
     ],
     "applications": [
       "Pump type selection",
@@ -100,4 +109,3 @@
     "title": "Pump Performance Curve"
   }
 }
-

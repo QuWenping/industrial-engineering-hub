@@ -85,7 +85,16 @@
       "pump-head-calculator",
       "npsh-calculator",
       "motor-power-calculator",
-      "pump-efficiency-calculator"
+      "pump-efficiency-calculator",
+      "pump-flow-calculator",
+      "pump-energy-calculator",
+      "pump-affinity-law-calculator",
+      "pump-sizing-calculator",
+      "pump-selection-calculator",
+      "pipe-flow-calculator",
+      "flow-rate-calculator",
+      "pressure-drop-calculator",
+      "reynolds-number-calculator"
     ],
     "applications": [
       "Pump selection",
@@ -112,4 +121,3 @@
     "title": "Pump Performance Curve"
   }
 }
-

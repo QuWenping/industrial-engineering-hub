@@ -61,7 +61,21 @@
     ],
     "related": [
       "tank-volume-calculator",
-      "flow-rate-calculator"
+      "flow-rate-calculator",
+      "pipe-flow-calculator",
+      "pipe-velocity-calculator",
+      "pipe-diameter-calculator",
+      "water-velocity-calculator",
+      "pressure-drop-calculator",
+      "friction-loss-calculator",
+      "head-loss-calculator",
+      "pressure-loss-calculator",
+      "darcy-weisbach-calculator",
+      "reynolds-number-calculator",
+      "hydraulic-diameter-calculator",
+      "npsh-calculator",
+      "orifice-flow-calculator",
+      "flow-conversion-calculator"
     ],
     "applications": [
       "Hydrotesting",
@@ -86,4 +100,3 @@
     "title": "Live Flow Simulation"
   }
 }
-

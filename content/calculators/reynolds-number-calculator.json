@@ -85,7 +85,18 @@
       "pressure-drop-calculator",
       "pipe-flow-calculator",
       "friction-loss-calculator",
-      "darcy-weisbach-calculator"
+      "darcy-weisbach-calculator",
+      "flow-rate-calculator",
+      "pipe-velocity-calculator",
+      "pipe-diameter-calculator",
+      "pipe-volume-calculator",
+      "water-velocity-calculator",
+      "head-loss-calculator",
+      "pressure-loss-calculator",
+      "hydraulic-diameter-calculator",
+      "npsh-calculator",
+      "orifice-flow-calculator",
+      "flow-conversion-calculator"
     ],
     "applications": [
       "Flow regime determination",
@@ -112,4 +123,3 @@
     "title": "Laminar vs Turbulent Flow Visualization"
   }
 }
-

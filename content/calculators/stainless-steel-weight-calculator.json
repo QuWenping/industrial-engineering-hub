@@ -79,7 +79,14 @@
     ],
     "related": [
       "steel-weight-calculator",
-      "steel-plate-weight-calculator"
+      "steel-plate-weight-calculator",
+      "aluminum-weight-calculator",
+      "copper-weight-calculator",
+      "round-bar-weight-calculator",
+      "pipe-weight-calculator",
+      "metal-weight-calculator",
+      "density-calculator",
+      "material-volume-calculator"
     ],
     "applications": [
       "Food processing equipment",
@@ -106,4 +113,3 @@
     "title": "Interactive Cross-Section Visualization"
   }
 }
-

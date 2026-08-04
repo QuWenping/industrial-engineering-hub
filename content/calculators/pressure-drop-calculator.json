@@ -95,7 +95,18 @@
       "pipe-flow-calculator",
       "reynolds-number-calculator",
       "darcy-weisbach-calculator",
-      "pipe-velocity-calculator"
+      "pipe-velocity-calculator",
+      "flow-rate-calculator",
+      "pipe-diameter-calculator",
+      "pipe-volume-calculator",
+      "water-velocity-calculator",
+      "friction-loss-calculator",
+      "head-loss-calculator",
+      "pressure-loss-calculator",
+      "hydraulic-diameter-calculator",
+      "npsh-calculator",
+      "orifice-flow-calculator",
+      "flow-conversion-calculator"
     ],
     "applications": [
       "Piping system design",
@@ -123,4 +134,3 @@
     "title": "Flow Visualization"
   }
 }
-

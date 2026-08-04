@@ -103,7 +103,19 @@
     "related": [
       "pressure-drop-calculator",
       "darcy-weisbach-calculator",
-      "friction-loss-calculator"
+      "friction-loss-calculator",
+      "pipe-flow-calculator",
+      "flow-rate-calculator",
+      "pipe-velocity-calculator",
+      "pipe-diameter-calculator",
+      "pipe-volume-calculator",
+      "water-velocity-calculator",
+      "head-loss-calculator",
+      "reynolds-number-calculator",
+      "hydraulic-diameter-calculator",
+      "npsh-calculator",
+      "orifice-flow-calculator",
+      "flow-conversion-calculator"
     ],
     "applications": [
       "Pump head estimation",
@@ -132,4 +144,3 @@
     "title": "Flow Visualization"
   }
 }
-
