@@ -168,14 +168,32 @@ export default async function MaterialPage({ params }: Props) {
           </section>
         )}
 
-        <Card className="mt-10 bg-warning/5 border-warning/20 border-l-4">
-          <CardContent className="p-4 text-sm text-muted-foreground">
-            <strong className="text-navy">Disclaimer:</strong> Material property data is for reference
+        {/* E-E-A-T Section */}
+        <section className="mt-10 rounded-lg bg-navy/[0.03] border border-navy/10 p-6 space-y-4">
+          <div className="text-sm text-muted-foreground">
+            <strong className="text-navy">Engineering Disclaimer:</strong> Material property data is for reference
             and educational purposes. Verify all properties against material test reports (MTRs) and
             applicable ASTM/ASME standards for engineering design.
-          </CardContent>
-        </Card>
+          </div>
+          <div className="flex flex-wrap gap-4 text-xs text-muted-foreground border-t border-border/40 pt-3">
+            <div>
+              <span className="font-semibold text-navy">Reviewed by:</span> Industrial Engineering Team
+            </div>
+            <div>
+              <span className="font-semibold text-navy">References:</span> ASTM International, ASME B31, Perry's Chemical Engineers' Handbook, ASM Material Data
+            </div>
+            <div>
+              <span className="font-semibold text-navy">Methodology:</span>{" "}
+              <Link href="/methodology" className="text-engineering-blue hover:underline">Engineering data methodology</Link>
+            </div>
+            <div>
+              <span className="font-semibold text-navy">Data sources:</span>{" "}
+              <Link href="/data-sources" className="text-engineering-blue hover:underline">View all sources</Link>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
 }
+

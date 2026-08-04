@@ -276,6 +276,7 @@ model PageScore {
   impressions   Int      @default(0)
   clicks       Int      @default(0)
   avgPosition   Float    @default(0)
+  contentMaturity Int      @default(0)
   clusterName   String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
@@ -302,3 +303,4 @@ model KeywordIntent {
   @@index([intent])
   @@index([priority])
 }
+

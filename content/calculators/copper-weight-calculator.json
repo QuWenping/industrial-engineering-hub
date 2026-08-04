@@ -5,8 +5,8 @@
   "priority": "P0",
   "description": "Calculate copper and brass weight for sheets, bars, and electrical conductors.",
   "seo": {
-    "title": "Copper Weight Calculator - Busbar & Sheet",
-    "description": "Copper Weight Calculator — Calculate copper and brass weight for sheets, bars, and electrical conductors with instant results & multiple unit support.",
+    "title": "Copper Weight Calculator - Sheet, Busbar & Round Bar (kg)",
+    "description": "Calculate copper weight for sheets, busbars, round bars and electrical conductors. Copper density table, busbar sizing guide, and weight formula for fabrication.",
     "keyword": "copper weight calculator"
   },
   "formula": {
@@ -56,7 +56,7 @@
     "decimals": 2
   },
   "content": {
-    "introduction": "Calculate copper weight for busbars, electrical conductors, sheets, and copper parts. Copper density is 8960 kg/m³ — heavier than steel but with superior electrical conductivity.",
+    "introduction": "Calculate the weight of copper sheets, busbars, round bars, and electrical conductors from dimensions and material density. Copper has a density of 8,960 kg/m3 — heavier than steel but with superior electrical and thermal conductivity. This calculator supports pure copper, brass, and bronze. Enter your dimensions and select a material to get instant weight results for electrical engineering, plumbing, and fabrication.",
     "example": {
       "inputs": {
         "length": 1000,
@@ -69,24 +69,54 @@
     },
     "faq": [
       {
-        "q": "What is copper density?",
-        "a": "Pure copper is 8960 kg/m³. Brass is 8500 kg/m³, bronze is 8800 kg/m³."
+        "q": "What is the density of copper?",
+        "a": "Pure copper has a density of 8,960 kg/m3 (8.96 g/cm3). This makes copper one of the heaviest common engineering metals — about 14% denser than steel (7,850 kg/m3) and 3.3x denser than aluminum (2,700 kg/m3)."
+      },
+      {
+        "q": "How do I calculate copper sheet weight?",
+        "a": "Copper sheet weight = Length(m) x Width(m) x Thickness(m) x 8960 kg/m3. For example, a 1000x100x10mm copper sheet weighs 8.96 kg. Use our calculator above for instant results with any dimensions."
+      },
+      {
+        "q": "How much does a copper busbar weigh per meter?",
+        "a": "A 40x5mm copper busbar weighs approximately 1.79 kg/m (40 x 5 x 8960 / 1,000,000). A 50x10mm busbar weighs 4.48 kg/m. Busbar weight is critical for switchgear structural design and transport planning."
+      },
+      {
+        "q": "What is the density of brass vs copper?",
+        "a": "Brass (C360) density is 8,500 kg/m3, about 5% lighter than pure copper at 8,960 kg/m3. Bronze is 8,800 kg/m3. All three are significantly heavier than steel (7,850 kg/m3) or aluminum (2,700 kg/m3)."
       },
       {
         "q": "How do I size a copper busbar?",
-        "a": "Busbar sizing depends on current carrying capacity (amps). As a rule of thumb, 1A per mm² of cross-section is conservative for continuous duty."
+        "a": "Busbar cross-section depends on current capacity. Rule of thumb: 1A per mm2 for continuous duty, 2A per mm2 for intermittent. A 1000A busbar needs ~1000 mm2 (e.g., 100x10mm). Always verify with IEC 60439-1 thermal calculations and consider temperature rise limits."
+      },
+      {
+        "q": "How much does copper weigh per square meter?",
+        "a": "Copper sheet weight per m2 = thickness(mm) x 8.96 kg/m2/mm. A 1mm copper sheet weighs 8.96 kg/m2. A 3mm sheet weighs 26.88 kg/m2. A 10mm copper plate weighs 89.6 kg/m2."
+      },
+      {
+        "q": "Is copper heavier than steel?",
+        "a": "Yes, copper (8,960 kg/m3) is about 14% heavier than carbon steel (7,850 kg/m3). However, copper's superior electrical conductivity (100% IACS) and thermal conductivity (401 W/m.K) make it irreplaceable for electrical and heat transfer applications despite the weight penalty."
       }
     ],
     "related": [
       "aluminum-weight-calculator",
-      "metal-weight-calculator"
+      "steel-weight-calculator",
+      "metal-weight-calculator",
+      "brass-weight-calculator",
+      "stainless-steel-weight-calculator",
+      "round-bar-weight-calculator",
+      "pipe-weight-calculator",
+      "density-calculator"
     ],
     "applications": [
-      "Electrical busbars",
-      "Transformer windings",
-      "Plumbing components",
-      "Heat exchangers"
-    ]
+      "Electrical busbars and switchgear",
+      "Transformer and motor windings",
+      "Plumbing and pipe fittings",
+      "Heat exchanger tubes and plates",
+      "Roofing and architectural cladding",
+      "Printed circuit board (PCB) traces",
+      "Grounding and lightning protection"
+    ],
+    "formula_explanation": "Copper weight = Volume x Density. Sheet: W = L x W x T x density. Round bar: W = pi x (D/2)^2 x L x density. Copper density 8960 kg/m3."
   },
   "tests": [
     {
@@ -106,4 +136,3 @@
     "title": "Interactive Cross-Section Visualization"
   }
 }
-

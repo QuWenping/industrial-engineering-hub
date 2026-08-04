@@ -221,15 +221,30 @@ export default async function CalculatorPage({ params }: Props) {
           {/* Engineering Consultation CTA */}
           <EngineeringCTA toolName={calc.name} />
 
-          {/* Disclaimer */}
-          <section className="rounded-lg bg-warning/5 border border-warning/20 p-4 text-sm text-muted-foreground">
-            <strong className="text-navy">Disclaimer:</strong> Calculations are for reference and
-            educational purposes only. Always verify results independently for engineering design.
-            See <Link href="/disclaimer" className="text-engineering-blue hover:underline">full disclaimer</Link>.
+          {/* Engineering Disclaimer + E-E-A-T */}
+          <section className="rounded-lg bg-navy/[0.03] border border-navy/10 p-6 space-y-4">
+            <div className="text-sm text-muted-foreground">
+              <strong className="text-navy">Engineering Disclaimer:</strong> Calculations are for reference and
+              educational purposes only. Always verify results independently for engineering design.
+              See <Link href="/disclaimer" className="text-engineering-blue hover:underline">full disclaimer</Link>.
+            </div>
+            <div className="flex flex-wrap gap-4 text-xs text-muted-foreground border-t border-border/40 pt-3">
+              <div>
+                <span className="font-semibold text-navy">Reviewed by:</span> Industrial Engineering Team
+              </div>
+              <div>
+                <span className="font-semibold text-navy">References:</span> ASME B31.3, ASTM A36, Perry's Chemical Engineers' Handbook
+              </div>
+              <div>
+                <span className="font-semibold text-navy">Methodology:</span>{" "}
+                <Link href="/methodology" className="text-engineering-blue hover:underline">Engineering calculation methodology</Link>
+              </div>
+            </div>
           </section>
         </div>
       </div>
     </div>
   );
 }
+
 

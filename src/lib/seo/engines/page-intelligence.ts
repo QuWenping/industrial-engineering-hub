@@ -15,6 +15,7 @@ export interface PageIntelligence {
   linksScore: number;     // 0-100
   searchScore: number;    // 0-100
   eeattScore: number;     // 0-100
+  contentMaturity: number; // 0-100
   totalScore: number;     // weighted 0-100
   rankingStage: string;
   impressions: number;
@@ -125,12 +126,45 @@ function scoreEeatt(params: {
   hasUpdated: boolean;
   isCalculator: boolean;
 }): number {
-  let score = 30; // Base for being an engineering tool site
-  if (params.hasDisclaimer) score += 15;
+  let score = 50; // Raised base from 30 to 50 — site now has E-E-A-T sections on all pages
+  if (params.hasDisclaimer) score += 20;
   if (params.hasMethodology) score += 15;
   if (params.hasAuthor) score += 10;
   if (params.hasUpdated) score += 10;
-  if (params.isCalculator) score += 20; // Calculators have inherent utility
+  if (params.isCalculator) score += 10; // Calculators have inherent utility
+  return Math.min(100, score);
+}
+
+/**
+ * Content Maturity Score (0-100)
+ * 0: Only data (thin content)
+ * 30: Basic explanation
+ * 60: Tables + examples
+ * 80: Engineering guide
+ * 100: Authority resource
+ */
+function scoreContentMaturity(params: {
+  wordCount: number;
+  hasFaq: boolean;
+  hasTable: boolean;
+  hasFormula: boolean;
+  hasExamples: boolean;
+  hasInternalLinks: boolean;
+}): number {
+  let score = 0;
+  // Word count is the primary maturity indicator
+  if (params.wordCount >= 2000) score += 35;
+  else if (params.wordCount >= 1000) score += 25;
+  else if (params.wordCount >= 500) score += 15;
+  else if (params.wordCount >= 200) score += 8;
+  else score += 3;
+
+  if (params.hasFaq) score += 15;      // FAQ = maturity
+  if (params.hasTable) score += 15;   // Data tables = reference quality
+  if (params.hasFormula) score += 10; // Formulas = engineering depth
+  if (params.hasExamples) score += 15; // Examples = practical authority
+  if (params.hasInternalLinks) score += 10; // Internal links = topic integration
+
   return Math.min(100, score);
 }
 
@@ -209,6 +243,8 @@ export async function analyzePage(pageUrl: string): Promise<PageIntelligence> {
   const searchScore = scoreSearch(avgPosition, impressions, clicks);
   const eeattScore = scoreEeatt({ hasDisclaimer, hasMethodology, hasAuthor, hasUpdated, isCalculator: pageType === "calculator" });
 
+  const contentMaturity = scoreContentMaturity({ wordCount, hasFaq, hasTable, hasFormula, hasExamples: wordCount > 500, hasInternalLinks: internalLinks > 0 });
+
   const totalScore = Math.round(
     contentScore * WEIGHTS.content +
     keywordScore * WEIGHTS.keyword +
@@ -239,6 +275,7 @@ export async function analyzePage(pageUrl: string): Promise<PageIntelligence> {
     linksScore,
     searchScore,
     eeattScore,
+    contentMaturity,
     totalScore,
     rankingStage,
     impressions,
@@ -280,6 +317,7 @@ export async function analyzeAllPages(): Promise<PageIntelligence[]> {
         linksScore: intelligence.linksScore,
         searchScore: intelligence.searchScore,
         eeattScore: intelligence.eeattScore,
+        contentMaturity: intelligence.contentMaturity,
         totalScore: intelligence.totalScore,
         rankingStage: intelligence.rankingStage,
         impressions: intelligence.impressions,
@@ -306,3 +344,7 @@ export async function analyzeAllPages(): Promise<PageIntelligence[]> {
 
   return results.sort((a, b) => b.totalScore - a.totalScore);
 }
+
+
+
+

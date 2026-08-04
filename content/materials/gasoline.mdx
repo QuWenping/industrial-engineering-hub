@@ -1,9 +1,9 @@
 ---
-title: "Gasoline (Petrol)"
-description: "Gasoline properties, density (~750 kg/m³), octane rating, volatility characteristics, Reid vapor pressure, and engineering considerations for storage, fuel systems, and transport."
+title: "Gasoline Density, Properties & Engineering Data (kg/m3)"
+description: "Gasoline density, specific gravity, octane rating and engineering properties. Reference data for fuel storage, piping and combustion calculations."
 category: "Fluid"
 keywords: ["gasoline density", "petrol density", "gasoline properties", "gasoline specific gravity", "fuel density"]
-updated: "2026-07-29"
+updated: "2026-08-04"
 related:
   - fluid-density-calculator
   - tank-volume-calculator
@@ -91,3 +91,98 @@ Gasoline is one of the most flammable common liquids. With a flash point of -43�
 ## Summary
 
 Gasoline (density ~750 kg/m³) is the lightest common refined fuel, highly volatile and flammable. Its low density reduces pump power requirements compared to water or diesel, but its extreme flammability (flash point -43°C) governs all storage, dispensing, and transport design. Seasonal RVP and density variations (winter/summer blends) affect both engine performance and storage tank design.
+
+
+## Gasoline Density vs Temperature
+
+| Temperature (°C) | Density (kg/m³) | Notes |
+|---|---|---|
+| 0 | 752 | Winter blend, denser |
+| 5 | 749 | |
+| 10 | 746 | |
+| 15 | 743 | Reference temperature |
+| 20 | 740 | Standard measurement |
+| 25 | 737 | Summer blend |
+| 30 | 734 | Hot climate |
+| 40 | 728 | |
+
+Gasoline density decreases by approximately **0.65 kg/m³ per °C** — slightly less temperature-sensitive than diesel.
+
+## Gasoline vs Diesel vs Jet Fuel Comparison
+
+| Property | Gasoline | Diesel | Jet A-1 |
+|---|---|---|---|
+| Density (15°C) | 715-770 kg/m³ | 820-845 kg/m³ | 775-840 kg/m³ |
+| Flash Point | -43°C | >52°C | >38°C |
+| Auto-ignition | ~280°C (spark) | ~210°C (compression) | ~210°C |
+| Energy per liter | 32 MJ/L | 36 MJ/L | 34.8 MJ/L |
+| Octane/Cetane | RON 91-98 | CN 40-55 | — |
+| Viscosity (40°C) | 0.5-0.8 cSt | 2-4.5 cSt | 1.2-1.7 cSt |
+
+## Gasoline Weight Calculation
+
+<Formula>W = V x rho (Volume x Density)</Formula>
+
+Example: 1000 liters of gasoline at 20°C:
+- W = 1.0 m3 x 740 kg/m3 = **740 kg**
+- Compare: 1000 liters diesel = 840 kg (gasoline is ~12% lighter)
+- Compare: 1000 liters water = 1000 kg (gasoline floats on water)
+
+<Calculator id="density-calculator" label="Calculate Gasoline Density" />
+
+## Gasoline Grades and Octane Ratings
+
+| Grade | RON | AKI (US) | Use |
+|---|---|---|---|
+| Regular | 91 | 87 | Most passenger cars |
+| Mid-grade | 93 | 89 | Some turbocharged engines |
+| Premium | 95-97 | 91-93 | Performance engines |
+| Racing fuel | 100+ | 93+ | Motorsport, aviation |
+| E10 (10% ethanol) | 91-93 | 87-89 | Standard in many countries |
+| E85 (85% ethanol) | 100+ | 94+ | Flex-fuel vehicles |
+
+Higher octane resists knocking (pre-ignition) but does not inherently produce more energy — it allows higher compression ratios which improve efficiency.
+
+## Engineering Applications
+
+### Storage and Handling
+- Underground storage tanks (UST): double-wall FRP or steel with leak detection
+- Above-ground tanks: must meet fire codes (NFPA 30), minimum separation distances
+- Vapor recovery systems (Stage I: tank filling, Stage II: vehicle refueling)
+- Reid Vapor Pressure (RVP): summer max 7.0-9.0 psi, winter max 13.5-15.0 psi
+
+### Pipeline Transport
+- Density 740 kg/m3 means pump power is 26% less than water at same head/flow
+- Low viscosity (0.5-0.8 cSt) means minimal friction losses
+- Batched with jet fuel and diesel in multi-product pipelines
+
+### Fire Safety
+- Flash point -43°C means gasoline is extremely flammable at all ambient temperatures
+- Area classification: Zone 0/1/2 (vapor-air mixture may be present)
+- Explosion-proof equipment required within classified zones
+- Minimum ignition energy: 0.25 mJ (very low — static sparks can ignite)
+
+## Related Engineering Tools
+
+- [Diesel Density & Properties](/materials/diesel) — Compare with diesel fuel
+- [Fluid Density Calculator](/tools/fluid-density-calculator) — Calculate any fluid density
+- [Tank Volume Calculator](/tools/tank-volume-calculator) — Fuel storage tank sizing
+- [Pump Power Calculator](/tools/pump-power-calculator) — Fuel pumping requirements
+- [Heat Transfer Calculator](/tools/heat-transfer-calculator) — Fuel heating/cooling
+
+## Frequently Asked Questions
+
+**What is the density of gasoline?**
+Gasoline density at 15°C ranges from 715 to 770 kg/m3, with a typical value of approximately 743 kg/m3. This is about 10-12% lighter than diesel (820-845 kg/m3) and 25% lighter than water.
+
+**How much does 1 liter of gasoline weigh?**
+One liter of gasoline at 20°C weighs approximately 0.74 kg (740 grams). This is lighter than water (1.0 kg/L) and lighter than diesel (~0.84 kg/L).
+
+**What is the specific gravity of gasoline?**
+Specific gravity (SG) of gasoline at 15°C is approximately 0.74 (relative to water at 4°C). API gravity is approximately 59-65 degrees.
+
+**What is the flash point of gasoline?**
+Gasoline flash point is approximately -43°C, meaning it is extremely flammable at all normal ambient temperatures. This is vastly different from diesel (flash point >52°C), which is classified as combustible rather than flammable.
+
+**How does ethanol affect gasoline density?**
+Adding ethanol increases density slightly. E10 (10% ethanol) has density approximately 745-750 kg/m3 vs 715-740 for pure gasoline. E85 (85% ethanol) has density approximately 775-785 kg/m3.
