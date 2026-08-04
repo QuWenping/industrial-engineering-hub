@@ -203,3 +203,102 @@ model ShareResult {
   @@index([calculator])
   @@index([createdAt])
 }
+
+// ─── V0.3 SEO Growth Operating System ───────────────────────────────────────
+
+model SeoDecision {
+  id            String   @id @default(cuid())
+  pageUrl       String?  // target page (nullable for site-wide decisions)
+  query         String?  // target query
+  decisionType  String   // content_expansion|title_optimization|internal_links|new_content|cluster_building|technical_seo
+  problem       String?  // description of the problem
+  analysis      Json?    // { query, position, intent, competitors }
+  actions       Json?    // [{ action, payload, priority }]
+  confidence    Float    @default(0)
+  priority      Int      @default(50) // 0-100 Opportunity Score
+  status        String   @default("pending") // pending|approved|rejected|executing|executed
+  approvedBy    String?
+  approvedAt    DateTime?
+  executedAt    DateTime?
+  result        Json?    // post-execution metrics
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  SeoActions    SeoAction[]
+
+  @@index([status])
+  @@index([priority])
+  @@index([pageUrl])
+}
+
+model SeoAction {
+  id            String   @id @default(cuid())
+  decisionId    String
+  SeoDecision   SeoDecision @relation(fields: [decisionId], references: [id], onDelete: Cascade)
+  action        String   // expand_section|rewrite_intro|add_examples|add_table|add_faq|update_title|update_meta|update_schema|improve_internal_links|create_hub|create_pillar|create_support_article
+  payload       Json?    // action-specific data
+  status        String   @default("pending") // pending|approved|executing|done|failed
+  result        String?
+  createdAt     DateTime @default(now())
+  executedAt    DateTime?
+
+  @@index([decisionId])
+  @@index([status])
+}
+
+model TopicCluster {
+  id            String   @id @default(cuid())
+  name          String   @unique
+  parentTopic   String?  // parent cluster name for hierarchy
+  pillarPage    String?  // URL of the pillar page
+  authorityScore Int     @default(0) // 0-100
+  pageCount     Int      @default(0)
+  totalImpressions Int   @default(0)
+  totalClicks   Int      @default(0)
+  avgPosition   Float    @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([parentTopic])
+}
+
+model PageScore {
+  id            String   @id @default(cuid())
+  pageUrl       String   @unique
+  pageType      String   // calculator|guide|material|service|cluster|other
+  contentScore  Int      @default(0)  // 0-100
+  keywordScore  Int      @default(0)
+  linksScore    Int      @default(0)
+  searchScore   Int      @default(0)  // based on GSC performance
+  eeattScore    Int      @default(0)  // E-E-A-T
+  totalScore    Int      @default(0)  // weighted total 0-100
+  rankingStage  String   @default("discovery") // winner|striking_distance|growth|discovery
+  impressions   Int      @default(0)
+  clicks       Int      @default(0)
+  avgPosition   Float    @default(0)
+  clusterName   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([rankingStage])
+  @@index([totalScore])
+  @@index([clusterName])
+}
+
+model KeywordIntent {
+  id            String   @id @default(cuid())
+  query         String   @unique
+  intent        String   // informational|calculator|commercial|reference|comparison
+  searchVolume  Int?
+  difficulty    Int?
+  currentPosition Float?
+  impressions   Int      @default(0)
+  clicks        Int      @default(0)
+  targetPage    String?
+  priority      Int      @default(50)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([intent])
+  @@index([priority])
+}
