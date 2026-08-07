@@ -5,6 +5,7 @@ import { getRankingStages, getStageSummary } from "@/lib/seo/engines/ranking-sta
 import { analyzeAllPages } from "@/lib/seo/engines/page-intelligence";
 import { classifyAllKeywords, getIntentSummary } from "@/lib/seo/engines/keyword-intent";
 import { buildClusters } from "@/lib/seo/engines/topic-cluster";
+import { generateActionPlan } from "@/lib/seo/engines/action-plan";
 
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
@@ -33,6 +34,11 @@ export async function GET(req: NextRequest) {
         topClusters: clusters.slice(0, 5),
         topPages: pageScores.slice(0, 10),
       });
+    }
+
+    if (action === "action-plan") {
+      const plan = await generateActionPlan();
+      return NextResponse.json(plan);
     }
 
     if (action === "opportunities") {
@@ -100,6 +106,11 @@ export async function POST(req: NextRequest) {
         clustersBuilt: clusters.length,
         pagesRanked: stages.length,
       });
+    }
+
+    if (action === "generate-action-plan") {
+      const plan = await generateActionPlan();
+      return NextResponse.json(plan);
     }
 
     if (action === "generate-decisions") {

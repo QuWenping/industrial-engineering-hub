@@ -3,7 +3,7 @@ title: "Pressure Vessel Design Basics"
 description: "Introduction to ASME Section VIII pressure vessel design: shell thickness, head selection, nozzle reinforcement, MAWP calculation, and inspection requirements."
 category: "Mechanical Engineering"
 keywords: ["pressure vessel", "ASME VIII", "shell thickness", "MAWP", "nozzle reinforcement", "hydrotest"]
-updated: "2026-07-29"
+updated: "2026-08-07"
 related:
   - pressure-vessel-volume-calculator
   - tank-weight-calculator
@@ -191,3 +191,93 @@ After installation, pressure vessels must be inspected periodically per API 510 
 ## Summary
 
 ASME Section VIII governs pressure vessel design. Key formulas give minimum shell and head thickness based on pressure, radius, allowable stress, joint efficiency, and corrosion allowance. Nozzles require reinforcement per UG-37. External pressure requires buckling analysis. Hydrostatic testing at 1.3× MAWP verifies integrity before service. Always engage a qualified pressure vessel engineer and obtain ASME U-stamp certification for new vessel fabrication.
+
+
+## Dished Head Volume Calculation
+
+Pressure vessel heads add significant volume beyond the cylindrical shell. Accurate head volume calculation is essential for vessel sizing, capacity estimation, and process design.
+
+### 2:1 Elliptical Head Volume (ASME Standard)
+
+<Formula>V_head = pi x D^3 / 24 (per head)</Formula>
+
+Where D = vessel inside diameter (m). The depth of a 2:1 elliptical head is D/4.
+
+**Example:** A 2m diameter vessel with 2:1 elliptical heads:
+- V_head (each) = pi x 2^3 / 24 = 1.047 m3
+- V_total_heads = 2 x 1.047 = 2.094 m3
+- V_shell (5m straight length) = pi x (2/2)^2 x 5 = 15.71 m3
+- V_total = 15.71 + 2.094 = **17.80 m3**
+
+### Hemispherical Head Volume
+
+<Formula>V_head = pi x D^3 / 12 (per head) = 2/3 x pi x R^3</Formula>
+
+Hemispherical heads have depth D/2 and hold twice the volume of 2:1 elliptical heads.
+
+### Torispherical (ASME F&D) Head Volume
+
+<Formula>V_head approx 0.1 x D^3 (per head, for standard 10% torispherical)</Formula>
+
+The exact formula is complex; the approximation 0.1 x D^3 is accurate to within 2% for standard ASME flanged and dished heads.
+
+### Head Volume Comparison Table
+
+| Head Type | Depth (h) | Volume per Head | % of Shell Volume (L=D) |
+|---|---|---|---|
+| 2:1 Elliptical | D/4 | pi x D^3 / 24 | ~21% |
+| Hemispherical | D/2 | pi x D^3 / 12 | ~42% |
+| Torispherical (F&D) | ~0.069D | ~0.1 x D^3 | ~10% |
+| Flat | 0 | 0 | 0% |
+
+### Quick Reference: Head Volume by Vessel Diameter
+
+| Diameter (m) | 2:1 Elliptical (m3) | Hemispherical (m3) | Torispherical (m3) |
+|---|---|---|---|
+| 0.5 | 0.016 | 0.033 | 0.013 |
+| 1.0 | 0.131 | 0.262 | 0.100 |
+| 1.5 | 0.442 | 0.884 | 0.338 |
+| 2.0 | 1.047 | 2.094 | 0.800 |
+| 2.5 | 2.047 | 4.094 | 1.563 |
+| 3.0 | 3.534 | 7.069 | 2.700 |
+| 4.0 | 8.378 | 16.755 | 6.400 |
+
+<Calculator id="pressure-vessel-volume-calculator" label="Calculate Vessel Volume" />
+
+## ASME Head Selection Guide
+
+| Factor | 2:1 Elliptical | Hemispherical | Torispherical | Flat |
+|---|---|---|---|---|
+| Stress efficiency | Good | Best (lowest) | Fair | Worst |
+| Volume added | Moderate | Highest | Lowest | None |
+| Cost | Moderate | Highest | Lowest | Lowest |
+| Depth | D/4 | D/2 | ~0.07D | 0 |
+| Common use | Most vessels | High pressure | Low pressure | Manways, blind |
+| Weight | Medium | Heaviest | Lightest | Lightest |
+
+<Callout type="info" title="When to Use Each Head Type">
+2:1 Elliptical is the default for most ASME vessels — good balance of strength, cost, and volume. Hemispherical is used for high-pressure vessels where the lower stress justifies the cost. Torispherical (F&D) is used for low-pressure storage tanks where shallow depth saves fabrication cost. Flat heads are only for small openings or where geometry constraints prevent curved heads.
+</Callout>
+
+## Frequently Asked Questions
+
+**How do you calculate ASME dished head volume?**
+For a 2:1 elliptical head: V = pi x D^3 / 24 (per head). For hemispherical: V = pi x D^3 / 12. For torispherical (F&D): V approx 0.1 x D^3. A 2m diameter vessel with 2:1 heads has 2.094 m3 total head volume (1.047 m3 per head).
+
+**What is the volume of a 2:1 elliptical head?**
+A 2:1 elliptical head volume is pi x D^3 / 24 per head, where D is the vessel inside diameter. For a 2m diameter vessel, each head volume is approximately 1.047 m3. The head depth is D/4 = 0.5m.
+
+**How much volume do vessel heads add?**
+For a 2:1 elliptical head with L = D (straight length equals diameter), heads add approximately 21% to the total volume. Hemispherical heads add about 42%. Torispherical (F&D) heads add about 10%.
+
+**What is the difference between elliptical and torispherical heads?**
+2:1 Elliptical heads have D/4 depth and pi x D^3/24 volume. Torispherical (F&D) heads are shallower (~0.07D depth) with ~0.1 x D^3 volume. Elliptical heads are stronger (lower stress) but deeper and more expensive. F&D is common for low-pressure storage tanks.
+
+## Related Engineering Resources
+
+- [Pressure Vessel Engineering Hub](/tools/pressure-vessel-cluster) — Vessel and tank calculators
+- [Piping Engineering Guide](/guides/piping-engineering) — Piping system design
+- [Tank Volume Calculator](/tools/tank-volume-calculator) — Cylinder volume
+- [Cylinder Volume Calculator](/tools/cylinder-volume-calculator) — Simple cylinder
+- [Sphere Volume Calculator](/tools/sphere-volume-calculator) — Spherical tank volume
+- [Material Engineering Hub](/materials) — Material properties database

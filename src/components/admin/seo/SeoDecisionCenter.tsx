@@ -87,6 +87,7 @@ export function SeoDecisionCenter({
   const [queryFileName, setQueryFileName] = useState("");
   const [pageFileName, setPageFileName] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [actionPlan, setActionPlan] = useState<any>(null);
 
   const handleDualUpload = useCallback(async () => {
     const queryFile = queryFileRef.current?.files?.[0];
@@ -111,6 +112,18 @@ export function SeoDecisionCenter({
       setMessage("Upload complete: " + results.join(" | ") + ". Now click Run Full Analysis.");
     } catch (e) { setMessage("Upload error: " + String(e)); }
     setUploading(false);
+  }, []);
+
+  const handleGeneratePlan = useCallback(async () => {
+    setLoading(true);
+    setMessage("Generating SEO Action Plan...");
+    try {
+      const res = await fetch("/api/admin/seo/decisions?action=action-plan", { method: "GET" });
+      const plan = await res.json();
+      setActionPlan(plan);
+      setMessage(`Generated ${plan.totalTasks} tasks across ${plan.sprints.length} sprints.`);
+    } catch (e) { setMessage("Error: " + String(e)); }
+    setLoading(false);
   }, []);
 
   const runAnalysis = useCallback(async () => {
@@ -231,6 +244,10 @@ export function SeoDecisionCenter({
             <Button onClick={runAnalysis} disabled={loading} className="btn-primary-gradient border-0 text-white">
               {loading ? <RefreshCw className="mr-2 h-4 w-4 animate-spin" /> : <RefreshCw className="mr-2 h-4 w-4" />}
               Run Full Analysis
+            </Button>
+            <Button onClick={handleGeneratePlan} disabled={loading} variant="outline" className="border-accent-green/30 text-accent-green hover:bg-accent-green/10">
+              {loading ? <RefreshCw className="mr-2 h-4 w-4 animate-spin" /> : <Target className="mr-2 h-4 w-4" />}
+              Generate Action Plan
             </Button>
             {message && <span className="text-sm text-slate-500">{message}</span>}
           </div>
@@ -411,6 +428,51 @@ export function SeoDecisionCenter({
           </table>
         </div>
       )}
+      {/* Action Plan Display */}
+      {actionPlan && (
+        <Card className="border-accent-green/30">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h2 className="text-lg font-bold text-navy">SEO Sprint Backlog</h2>
+                <p className="text-xs text-slate-500">{actionPlan.totalTasks} tasks · Generated {new Date(actionPlan.generatedAt).toLocaleDateString()}</p>
+              </div>
+            </div>
+            {actionPlan.sprints.map((sprint: any, si: number) => (
+              <div key={si} className="mb-6">
+                <div className="flex items-center gap-2 mb-3 pb-2 border-b border-border/60">
+                  <span className="text-sm font-bold text-navy">{sprint.name}</span>
+                </div>
+                <p className="text-xs text-slate-500 mb-3">{sprint.goal}</p>
+                <div className="space-y-3">
+                  {sprint.tasks.map((task: any, ti: number) => (
+                    <div key={ti} className="rounded-lg border border-border/60 p-4 bg-white">
+                      <div className="flex items-start justify-between gap-3 mb-2">
+                        <div className="flex items-center gap-2">
+                          <Badge className="text-xs bg-navy text-white">{task.id}</Badge>
+                          <span className="text-amber-400">{"★".repeat(task.priority)}</span>
+                          <Badge variant="outline" className="text-xs">{task.taskType.replace(/_/g, " ")}</Badge>
+                        </div>
+                        <Badge className="text-xs bg-accent-green/10 text-accent-green border border-accent-green/30">{task.expectedGain}</Badge>
+                      </div>
+                      <p className="text-sm font-medium text-navy mb-1">{task.title}</p>
+                      <p className="text-xs text-slate-500 mb-2">{task.reason}</p>
+                      <ul className="text-xs text-muted-foreground ml-4 list-disc space-y-0.5">
+                        {task.actions.map((a: string, ai: number) => <li key={ai}>{a}</li>)}
+                      </ul>
+                      <div className="flex items-center gap-3 mt-2 text-xs">
+                        <span className="text-slate-400">URL: <code className="text-engineering-blue">{task.url}</code></span>
+                        <span className="text-slate-400">Effort: {task.effort}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      )}
+
     </div>
   );
 }
