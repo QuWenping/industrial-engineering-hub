@@ -91,7 +91,14 @@
     "related": [
       "tank-volume-calculator",
       "cylinder-volume-calculator",
-      "steel-weight-calculator"
+      "steel-weight-calculator",
+      "pressure-vessel-volume-calculator",
+      "tank-capacity-calculator",
+      "tank-surface-area-calculator",
+      "sphere-volume-calculator",
+      "cone-volume-calculator",
+      "storage-capacity-calculator",
+      "liquid-volume-calculator"
     ],
     "applications": [
       "Foundation loading",
@@ -119,4 +126,3 @@
     "title": "3D Tank Visualization"
   }
 }
-

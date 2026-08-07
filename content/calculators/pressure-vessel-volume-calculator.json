@@ -61,7 +61,14 @@
     ],
     "related": [
       "cylinder-volume-calculator",
-      "tank-volume-calculator"
+      "tank-volume-calculator",
+      "tank-capacity-calculator",
+      "tank-surface-area-calculator",
+      "tank-weight-calculator",
+      "sphere-volume-calculator",
+      "cone-volume-calculator",
+      "storage-capacity-calculator",
+      "liquid-volume-calculator"
     ],
     "applications": [
       "ASME vessel design",
@@ -86,4 +93,3 @@
     "title": "3D Tank Visualization"
   }
 }
-

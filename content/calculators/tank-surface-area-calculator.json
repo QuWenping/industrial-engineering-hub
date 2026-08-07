@@ -61,7 +61,15 @@
     ],
     "related": [
       "tank-weight-calculator",
-      "heat-loss-calculator"
+      "heat-loss-calculator",
+      "pressure-vessel-volume-calculator",
+      "tank-volume-calculator",
+      "tank-capacity-calculator",
+      "cylinder-volume-calculator",
+      "sphere-volume-calculator",
+      "cone-volume-calculator",
+      "storage-capacity-calculator",
+      "liquid-volume-calculator"
     ],
     "applications": [
       "Paint estimating",
@@ -86,4 +94,3 @@
     "title": "3D Tank Visualization"
   }
 }
-

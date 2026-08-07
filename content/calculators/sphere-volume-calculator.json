@@ -51,7 +51,14 @@
     ],
     "related": [
       "cylinder-volume-calculator",
-      "pressure-vessel-volume-calculator"
+      "pressure-vessel-volume-calculator",
+      "tank-volume-calculator",
+      "tank-capacity-calculator",
+      "tank-surface-area-calculator",
+      "tank-weight-calculator",
+      "cone-volume-calculator",
+      "storage-capacity-calculator",
+      "liquid-volume-calculator"
     ],
     "applications": [
       "LPG/propane storage",
@@ -75,4 +82,3 @@
     "title": "3D Tank Visualization"
   }
 }
-

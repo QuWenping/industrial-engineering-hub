@@ -1,0 +1,163 @@
+---
+title: "Piping Engineering Guide — Flow, Pressure Drop, Support & Material Selection"
+description: "Complete piping engineering guide: pipe sizing, pressure drop calculation, support spacing, material selection, valve types and flange ratings for industrial process piping systems."
+category: "Mechanical Engineering"
+keywords: ["piping engineering", "pipe sizing", "pressure drop", "pipe support", "process piping", "pipe material", "valve types", "flange rating"]
+updated: "2026-08-07"
+related:
+  - "/tools/pipe-flow-cluster"
+  - "/tools/pressure-vessel-cluster"
+  - pipe-flow-calculator
+  - pressure-drop-calculator
+  - reynolds-number-calculator
+---
+
+## Overview
+
+Piping engineering is the discipline of designing industrial pipe systems that safely transport fluids under pressure. This guide covers pipe sizing, pressure drop calculation, support spacing, material selection, and the relationship between piping and pressure vessels in process plants.
+
+## Piping System Design Workflow
+
+1. **Define process requirements**: flow rate, pressure, temperature, fluid properties
+2. **Select pipe material**: based on fluid corrosivity, temperature, pressure
+3. **Size the pipe**: choose diameter for target velocity (1.5-2.5 m/s for liquids)
+4. **Calculate pressure drop**: Darcy-Weisbach + minor losses
+5. **Design supports**: span spacing based on pipe weight and code requirements
+6. **Select valves and flanges**: pressure class and type
+7. **Stress analysis**: thermal expansion, seismic, weight loads
+
+<Formula>D = sqrt(4Q / (pi x v))</Formula>
+
+Where D = internal diameter (m), Q = flow rate (m3/s), v = design velocity (m/s).
+
+## Pipe Sizing by Application
+
+| Application | Typical Velocity | Material | Notes |
+|---|---|---|---|
+| Cooling water | 1.5-2.5 m/s | Carbon steel, HDPE | Most common |
+| Process water | 1.0-2.0 m/s | Stainless 316L | Sanitary |
+| Steam (low pressure) | 15-25 m/s | Carbon steel | Saturated |
+| Steam (high pressure) | 30-50 m/s | Carbon steel | Superheated |
+| Compressed air | 10-15 m/s | Carbon steel, copper | Main lines |
+| Chemical process | 1.0-3.0 m/s | SS304/316, alloy | Depends on fluid |
+| Natural gas | 15-25 m/s | Carbon steel | High pressure |
+| Slurry | 1.5-4.0 m/s | Carbon steel, lined | Prevent settling |
+
+## Pipe Material Selection
+
+| Material | Max Temp (C) | Corrosion | Cost | Typical Use |
+|---|---|---|---|---|
+| Carbon steel (A106) | 425 | Poor (needs coating) | Low | General purpose |
+| Carbon steel (A335) | 550 | Poor | Moderate | High temp |
+| SS304 | 870 | Excellent | High | Food, chemical |
+| SS316L | 870 | Superior (pitting) | Higher | Marine, chemical |
+| Duplex 2205 | 315 | Excellent (chloride) | High | Offshore |
+| Copper | 200 | Good | Moderate | Plumbing, HVAC |
+| HDPE | 60 | Excellent | Low | Water, drainage |
+| PVC | 60 | Good (dilute acids) | Low | Drainage, low pressure |
+| FRP | 120 | Excellent | Moderate | Corrosive service |
+
+## Pressure Drop Calculation
+
+<Formula>dp = f x (L/D) x (rho x v^2 / 2) + sum(K_i x rho x v^2 / 2)</Formula>
+
+Where f = Darcy friction factor, L = pipe length, D = diameter, rho = density, v = velocity, K_i = fitting loss coefficients.
+
+| Fitting | K Value | Fitting | K Value |
+|---|---|---|---|
+| 90 elbow | 0.3-0.9 | Gate valve (open) | 0.15 |
+| 45 elbow | 0.2-0.4 | Globe valve (open) | 3-10 |
+| Tee (branch) | 1.0-2.0 | Check valve | 2-4 |
+| Sudden enlargement | ~1.0 | Sudden contraction | 0.4-0.5 |
+
+<Calculator id="pressure-drop-calculator" label="Calculate Pressure Drop" />
+
+## Pipe Support Spacing
+
+Support spacing depends on pipe size, material, insulation weight, and fluid density. Maximum spans from ASME B31.3:
+
+| NPS | Carbon Steel (m) | Stainless (m) | Copper (m) | PVC (m) |
+|---|---|---|---|---|
+| 1 | 2.1 | 2.1 | 1.5 | 1.0 |
+| 2 | 3.0 | 3.0 | 2.1 | 1.5 |
+| 4 | 4.3 | 4.3 | 3.0 | 2.1 |
+| 6 | 5.2 | 5.2 | 3.7 | 2.4 |
+| 8 | 6.0 | 6.0 | - | - |
+| 12 | 7.3 | 7.3 | - | - |
+
+<Callout type="warning" title="Support Design Considerations">
+Supports must handle: (1) pipe weight + fluid + insulation, (2) thermal expansion loads, (3) seismic loads, (4) water hammer. Guide supports allow axial movement; anchor supports prevent all movement. Improper support design is the leading cause of piping failure.
+</Callout>
+
+<Calculator id="darcy-weisbach-calculator" label="Calculate Friction Loss" />
+
+## Valve and Flange Selection
+
+### Valve Types by Application
+
+| Valve Type | Best For | Limitation |
+|---|---|---|
+| Gate | On/off isolation | Not for throttling |
+| Globe | Throttling/control | High pressure drop |
+| Ball | Quick open/close | Limited throttling |
+| Butterfly | Large bore, low pressure | Seating limitations |
+| Check | Backflow prevention | No manual control |
+| Pressure relief | Overpressure protection | Code-required (ASME VIII) |
+
+### Flange Pressure Ratings (ASME B16.5)
+
+| Class | Carbon Steel Max Pressure (bar) | Max Temp |
+|---|---|---|
+| 150# | 19.6 | 540C |
+| 300# | 51.1 | 540C |
+| 600# | 102.1 | 540C |
+| 900# | 153.2 | 540C |
+| 1500# | 255.1 | 540C |
+
+## Process Piping Codes
+
+| Code | Scope |
+|---|---|
+| ASME B31.3 | Process piping (chemical plants, refineries) |
+| ASME B31.1 | Power piping (steam, boilers) |
+| ASME B31.4 | Liquid hydrocarbon pipelines |
+| ASME B31.8 | Gas transmission pipelines |
+| ASME B31.5 | Refrigeration piping |
+
+## Connection to Pressure Vessels
+
+Piping connects to pressure vessels through nozzles. Key considerations:
+
+- **Nozzle loading**: ASME B31.3 limits piping loads on vessel nozzles
+- **Flexibility analysis**: Thermal expansion must be accommodated
+- **Reinforcement**: Nozzle openings require area replacement per ASME VIII
+- **Flange rating**: Must match vessel design pressure
+
+<Calculator id="pipe-flow-calculator" label="Calculate Pipe Flow Rate" />
+
+## Frequently Asked Questions
+
+**What velocity should I use for pipe sizing?**
+For water: 1.5-2.5 m/s is optimal. Below 1 m/s risks sedimentation. Above 3 m/s causes erosion, noise, and high pressure drop. For gases: 10-20 m/s. For viscous liquids: 0.5-1.5 m/s.
+
+**What pipe material should I use for corrosive service?**
+For most corrosive fluids, 316L stainless steel is the standard choice. For chloride environments (seawater), use duplex 2205 or super duplex. For acids, consider FRP or PTFE-lined steel. For cost-sensitive applications, coated carbon steel may suffice.
+
+**What is ASME B31.3?**
+ASME B31.3 is the process piping code — it covers design, materials, fabrication, inspection, and testing of piping systems in chemical plants, petroleum refineries, and similar facilities. It specifies allowable stresses, support spacing, and flexibility analysis requirements.
+
+**How do I calculate pipe support spacing?**
+Support spacing depends on pipe size, material, and loading. ASME B31.3 provides maximum span tables. For a 4-inch carbon steel pipe, maximum span is approximately 4.3 meters. Spans decrease with heavier insulation, higher fluid density, or at concentrated loads (valves).
+
+## Related Engineering Resources
+
+- [Pipe Flow Calculator Hub](/tools/pipe-flow-cluster) — All pipe flow calculators
+- [Pressure Vessel Engineering Hub](/tools/pressure-vessel-cluster) — Vessel and tank calculators
+- [Pipe Flow Engineering Guide](/guides/pipe-flow-engineering) — Detailed flow calculation guide
+- [Pipe Sizing Fundamentals](/guides/pipe-sizing-fundamentals) — Sizing methodology
+- [Pressure Drop in Pipes](/guides/pressure-drop-pipes) — Friction loss calculation
+- [Pipe Support Spacing](/guides/pipe-support-spacing) — Support design
+- [Pipe Material Selection](/guides/pipe-material-selection) — Material guide
+- [Pipe Stress Analysis](/guides/pipe-stress-analysis-basics) — Stress analysis basics
+- [Valve Types and Applications](/guides/valve-types-applications) — Valve selection
+- [Flange Rating Standards](/guides/flange-rating-standards) — Flange specifications

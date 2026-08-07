@@ -65,7 +65,10 @@
       "liquid-volume-calculator",
       "tank-capacity-calculator",
       "tank-weight-calculator",
-      "tank-surface-area-calculator"
+      "tank-surface-area-calculator",
+      "pressure-vessel-volume-calculator",
+      "sphere-volume-calculator",
+      "cone-volume-calculator"
     ],
     "applications": [
       "Storage tank sizing",
@@ -90,4 +93,3 @@
     "title": "3D Tank Visualization"
   }
 }
-

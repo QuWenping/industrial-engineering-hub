@@ -62,7 +62,14 @@
     "related": [
       "tank-volume-calculator",
       "liquid-volume-calculator",
-      "pipe-volume-calculator"
+      "pipe-volume-calculator",
+      "pressure-vessel-volume-calculator",
+      "tank-capacity-calculator",
+      "tank-surface-area-calculator",
+      "tank-weight-calculator",
+      "sphere-volume-calculator",
+      "cone-volume-calculator",
+      "storage-capacity-calculator"
     ],
     "applications": [
       "Tank capacity",
@@ -87,4 +94,3 @@
     "title": "3D Tank Visualization"
   }
 }
-

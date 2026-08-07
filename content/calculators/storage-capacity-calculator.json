@@ -70,7 +70,14 @@
     ],
     "related": [
       "tank-volume-calculator",
-      "cylinder-volume-calculator"
+      "cylinder-volume-calculator",
+      "pressure-vessel-volume-calculator",
+      "tank-capacity-calculator",
+      "tank-surface-area-calculator",
+      "tank-weight-calculator",
+      "sphere-volume-calculator",
+      "cone-volume-calculator",
+      "liquid-volume-calculator"
     ],
     "applications": [
       "Tank farm sizing",
@@ -96,4 +103,3 @@
     "title": "3D Tank Visualization"
   }
 }
-
