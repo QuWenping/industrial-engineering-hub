@@ -1,6 +1,8 @@
 "use client";
+export const dynamic = "force-static";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import {
@@ -122,7 +124,7 @@ function HeroSection() {
     <section className="relative overflow-hidden min-h-screen flex items-center bg-gradient-to-b from-[#0B1F3A] via-[#102B50] to-[#06080E] text-white">
       {/* z1: Background image with Ken Burns slow zoom */}
       <div className="absolute inset-0 overflow-hidden">
-        <img src="/hero-bg.png" alt="" className="ieh-kenburns h-full w-full object-cover opacity-70" />
+        <Image src="/hero-bg.png" alt="" fill priority sizes="100vw" className="ieh-kenburns object-cover opacity-70" />
       </div>
       {/* z2: Overlay layers for text readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#0B1F3A]/95 via-[#0B1F3A]/30 to-transparent" />
@@ -505,4 +507,6 @@ export default function HomePage() {
     </>
   );
 }
+
+
 
