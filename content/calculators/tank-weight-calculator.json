@@ -5,8 +5,8 @@
   "priority": "P0",
   "description": "Calculate empty weight of cylindrical steel tanks and vessels plus weight when filled with liquid.",
   "seo": {
-    "title": "Tank Weight Calculator - Steel Vessel",
-    "description": "Tank Weight Calculator — Calculate empty weight of cylindrical steel tanks and vessels plus weight when filled with liquid with instant results & multiple unit support.",
+    "title": "Tank Weight Calculator - Steel Vessel Weight (Empty & Filled)",
+    "description": "Calculate tank weight for steel vessels and pressure tanks. Empty weight + liquid-filled weight. Steel density table, formula explanation, and sizing examples for fabrication and transport.",
     "keyword": "tank weight calculator"
   },
   "formula": {
@@ -66,7 +66,7 @@
     "decimals": 0
   },
   "content": {
-    "introduction": "Estimate the weight of a vertical cylindrical steel tank including both the steel shell and its liquid contents. Used for foundation design, lifting calculations, and transport planning. (Simplified — does not include heads, nozzles, or stiffeners.)",
+    "introduction": "Calculate the weight of cylindrical steel tanks and pressure vessels — both empty weight and filled weight with liquid. Enter tank dimensions (diameter, height, wall thickness) and material density to get instant weight results for fabrication planning, transportation, and structural load calculations. This calculator supports carbon steel, stainless steel, and other vessel materials with automatic SI unit conversion.",
     "example": {
       "inputs": {
         "diameter": 3,
@@ -80,12 +80,28 @@
     },
     "faq": [
       {
-        "q": "What about head weight?",
-        "a": "Two dished heads add approximately 15-25% to shell weight. For precise weight use pressure vessel design software."
+        "q": "How do you calculate the weight of a steel tank?",
+        "a": "Tank empty weight = pi x D x t x H x rho_steel, where D = diameter, t = wall thickness, H = height, rho_steel = 7850 kg/m3. For a 3m x 6m tank with 10mm wall: W = pi x 3 x 0.01 x 6 x 7850 = 4439 kg."
       },
       {
-        "q": "What safety factor for lifting?",
-        "a": "Use 1.5× operating weight minimum, plus dynamic factors for crane lifts. Always consult a structural engineer for lifting plans."
+        "q": "What is the weight of a filled water tank?",
+        "a": "Filled weight = empty weight + liquid volume x liquid density. A 3m x 6m tank with 10mm steel walls holds ~42,000 liters of water (42,000 kg). Total filled weight = 4,439 + 42,000 = 46,439 kg."
+      },
+      {
+        "q": "How much does a steel tank weigh per square meter?",
+        "a": "Steel tank wall weight per m2 = thickness(mm) x 7.85 kg/m2/mm. A 10mm steel plate wall weighs 78.5 kg/m2. A 6mm wall weighs 47.1 kg/m2. This quick formula works for flat and cylindrical sections."
+      },
+      {
+        "q": "What steel density should I use for tank weight calculation?",
+        "a": "Carbon steel: 7,850 kg/m3. Stainless 304: 7,930 kg/m3. Stainless 316: 7,990 kg/m3. Aluminum: 2,700 kg/m3. For most steel tanks, 7,850 kg/m3 is the standard value."
+      },
+      {
+        "q": "Does this calculator include dished heads?",
+        "a": "No, this calculator computes cylindrical shell weight only. For vessels with 2:1 elliptical heads, add approximately 5-10% to the empty weight for head weight. Use our Pressure Vessel Volume Calculator for head volume calculations."
+      },
+      {
+        "q": "How do I calculate transport weight for a tank?",
+        "a": "Transport weight = empty tank weight + liquid weight (if filled) + nozzle/fitting weight (typically 2-5% of shell weight). Always add a 10% safety factor for crane lift planning. Use this calculator for the base shell weight and add accessories separately."
       }
     ],
     "related": [
@@ -101,11 +117,13 @@
       "liquid-volume-calculator"
     ],
     "applications": [
-      "Foundation loading",
-      "Lift planning",
-      "Transport weight",
-      "Seismic design"
-    ]
+      "Pressure vessel fabrication cost estimation",
+      "Transportation and crane lift planning",
+      "Structural load calculation for tank foundations",
+      "Storage tank inventory and capacity planning",
+      "Comparing empty vs filled weight for safety design"
+    ],
+    "formula_explanation": "Tank weight is calculated as: Empty Weight = Shell Volume x Material Density. Shell Volume = pi x D x thickness x height (the volume of the steel wall). Filled Weight = Empty Weight + Liquid Volume x Liquid Density. Liquid Volume = pi x (D/2 - thickness)^2 x height. The engine converts all inputs to SI base units (meters, kg/m3) and returns weight in kilograms."
   },
   "tests": [
     {

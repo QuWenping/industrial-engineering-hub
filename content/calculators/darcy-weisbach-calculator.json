@@ -90,6 +90,10 @@
       {
         "q": "When should I use Darcy-Weisbach vs Hazen-Williams?",
         "a": "Darcy-Weisbach works for all fluids and flow regimes. Hazen-Williams is only for water at typical temperatures and is simpler but less accurate."
+      },
+      {
+        "q": "What is the Swamee-Jain equation?",
+        "a": "The Swamee-Jain equation is an explicit formula for the Darcy friction factor: f = 0.25 / [log10(epsilon/(3.7D) + 5.74/Re^0.9)]^2. It approximates the Colebrook-White equation within 1% accuracy for Re > 5000 and is widely used in pipe flow calculations. Use this calculator for instant friction factor and pressure drop results."
       }
     ],
     "related": [

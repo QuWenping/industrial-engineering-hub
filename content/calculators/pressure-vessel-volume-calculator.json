@@ -5,8 +5,8 @@
   "priority": "P0",
   "description": "Calculate internal volume of horizontal/vertical pressure vessels including cylindrical shell and 2:1 elliptical heads.",
   "seo": {
-    "title": "Pressure Vessel Volume Calculator - ASME Heads",
-    "description": "Pressure Vessel Volume Calculator — Calculate internal volume of horizontal/vertical pressure vessels including cylindrical shell and 2:1 elliptical heads with instant results & multiple unit support.",
+    "title": "Pressure Vessel Volume Calculator - Shell + ASME Heads (Liters)",
+    "description": "Calculate pressure vessel volume including cylindrical shell and 2:1 elliptical ASME heads. Enter diameter and shell length for instant volume in liters, m3 and gallons. Engineering formula and head type guide.",
     "keyword": "pressure vessel volume calculator"
   },
   "formula": {
@@ -40,7 +40,7 @@
     "decimals": 0
   },
   "content": {
-    "introduction": "Calculate total internal volume of a pressure vessel with cylindrical shell and two 2:1 elliptical heads (standard ASME dish). For other head types: hemispherical heads use πD³/6 each; flat heads use 0 additional volume.",
+    "introduction": "Calculate the total internal volume of a pressure vessel including cylindrical shell and two 2:1 elliptical ASME heads. Enter the vessel diameter and shell length (tangent-to-tangent) to get volume in liters, cubic meters, and gallons. This calculator follows ASME BPVC Section VIII standards for 2:1 elliptical head volume calculation.",
     "example": {
       "inputs": {
         "diameter": 2,
@@ -51,12 +51,28 @@
     },
     "faq": [
       {
-        "q": "What about different head types?",
-        "a": "Hemispherical: each head = πD³/12; 2:1 Elliptical (standard ASME): each head ≈ πD³/24; Flat: ~0. This calculator uses 2:1 elliptical heads × 2."
+        "q": "How do you calculate pressure vessel volume?",
+        "a": "Vessel volume = Shell Volume + 2 x Head Volume. Shell = pi x (D/2)^2 x L. For 2:1 elliptical heads: V = pi x D^3 / 24 (per head). Example: 2m diameter, 5m shell length: V = pi x 1^2 x 5 + 2 x pi x 8/24 = 15.71 + 2.09 = 17.80 m3 = 17,802 liters."
       },
       {
-        "q": "How much volume is in the heads vs shell?",
-        "a": "For a 2:1 vessel (L = 2.5D), heads are about 15-20% of total volume. For tall columns, head volume is negligible."
+        "q": "What is the volume of a 2:1 elliptical head?",
+        "a": "A 2:1 elliptical head volume = pi x D^3 / 24 per head. For a 2m diameter vessel, each head = pi x 8/24 = 1.047 m3 (1,047 liters). Two heads add 2,094 liters to the total vessel volume."
+      },
+      {
+        "q": "What is the difference between shell volume and total vessel volume?",
+        "a": "Shell volume is the straight cylindrical section only: V_shell = pi x (D/2)^2 x L. Total vessel volume includes shell + 2 heads. For 2:1 elliptical heads, heads add approximately 21% to shell volume when L = D."
+      },
+      {
+        "q": "How do I convert vessel volume to gallons?",
+        "a": "1 m3 = 1,000 liters = 264.17 US gallons. Multiply liters by 0.2642 for US gallons. A 17,800 liter vessel holds approximately 4,702 US gallons."
+      },
+      {
+        "q": "What head type does this calculator use?",
+        "a": "This calculator uses 2:1 elliptical heads (ASME standard), the most common head type for pressure vessels. For hemispherical heads (pi x D^3/12) or torispherical (approx 0.1 x D^3), see our Pressure Vessel Engineering Hub for reference tables."
+      },
+      {
+        "q": "What is the formula for ASME vessel volume with heads?",
+        "a": "V_total = pi x (D/2)^2 x L + 2 x (pi x D^3 / 24). This gives volume in m3. Multiply by 1000 for liters. For a 3m diameter, 6m shell: V = pi x 2.25 x 6 + 2 x pi x 27/24 = 42.41 + 7.07 = 49.48 m3 = 49,480 liters."
       }
     ],
     "related": [
@@ -71,11 +87,13 @@
       "liquid-volume-calculator"
     ],
     "applications": [
-      "ASME vessel design",
-      "Chemical reactor sizing",
-      "Compressed gas storage",
-      "Bladder tank sizing"
-    ]
+      "ASME pressure vessel sizing and capacity",
+      "Chemical reactor volume estimation",
+      "Compressed gas storage vessel design",
+      "Separator and scrubber capacity planning",
+      "Process vessel sizing for plant design"
+    ],
+    "formula_explanation": "Total vessel volume = Shell Volume + 2 x Head Volume. Shell Volume = pi x (D/2)^2 x L. Each 2:1 Elliptical Head Volume = pi x D^3 / 24. The calculator uses D and L in meters and converts to liters (x1000). For other head types (hemispherical, torispherical), use the Pressure Vessel Engineering Hub reference tables."
   },
   "tests": [
     {

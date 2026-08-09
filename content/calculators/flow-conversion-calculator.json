@@ -5,7 +5,7 @@
   "priority": "P0",
   "description": "Convert between flow rate units: m³/h, m³/s, L/min, L/s, and GPM (US gallons per minute).",
   "seo": {
-    "title": "Flow Unit Converter - m³/h GPM L/min",
+    "title": "Flow Unit Converter - m3/h, GPM, L/min, CFM | Free Online Tool",
     "description": "Flow Unit Conversion Calculator — Convert between flow rate units: m³/h, m³/s, L/min, L/s, and GPM (US gallons per minute) with instant results & multiple unit support.",
     "keyword": "flow unit converter"
   },
@@ -88,7 +88,7 @@
     "decimals": 2
   },
   "content": {
-    "introduction": "Convert between common volumetric flow rate units used in engineering: cubic meters per hour/second, liters per minute/second, and US gallons per minute.",
+    "introduction": "Convert flow rate units instantly between m3/h, GPM (gallons per minute), L/min, CFM, m3/s, and more. This flow unit converter supports all common engineering flow units for liquids and gases. Enter a value, select from and to units, and get instant conversion for pipe sizing, pump selection, and process engineering calculations.",
     "example": {
       "inputs": {
         "input_flow": 100,
@@ -106,6 +106,22 @@
       {
         "q": "How do I convert mass flow to volumetric flow?",
         "a": "Volumetric flow (m³/s) = mass flow (kg/s) / density (kg/m³). For water, 1 kg/s ≈ 3.6 m³/h."
+      },
+      {
+        "q": "How do you convert m3/h to GPM?",
+        "a": "1 m3/h = 4.403 US GPM. To convert m3/h to GPM, multiply by 4.403. For example, 10 m3/h = 44.03 GPM. Use this converter for instant results with any flow unit."
+      },
+      {
+        "q": "How do you convert L/min to m3/h?",
+        "a": "1 L/min = 0.06 m3/h. To convert L/min to m3/h, multiply by 0.06. For example, 100 L/min = 6 m3/h."
+      },
+      {
+        "q": "What is CFM and how do you convert it?",
+        "a": "CFM (Cubic Feet per Minute) is a flow unit for gases. 1 CFM = 1.699 m3/h = 0.472 L/s. CFM is commonly used for HVAC and compressed air systems."
+      },
+      {
+        "q": "What flow units does this converter support?",
+        "a": "This converter supports: m3/h, m3/s, L/min, L/s, GPM (US), GPM (UK), CFM, and mm3/s. All conversions are based on standard SI unit relationships."
       }
     ],
     "related": [
