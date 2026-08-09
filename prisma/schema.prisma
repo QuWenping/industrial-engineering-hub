@@ -304,3 +304,23 @@ model KeywordIntent {
   @@index([priority])
 }
 
+// ─── Index Status Intelligence (V0.3.1) ──────────────────────────────────────
+
+model PageIndexStatus {
+  id            String   @id @default(cuid())
+  url           String   @unique
+  status        String   @default("unknown") // indexed|discovered|excluded|unknown
+  lastCrawl     DateTime?
+  daysSinceCrawl Int    @default(0)
+  priorityScore Int     @default(50)
+  pageType      String?  // calculator|guide|material|project|service|other
+  impressions   Int      @default(0)
+  clicks        Int      @default(0)
+  position      Float    @default(0)
+  recommendation String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([status])
+  @@index([priorityScore])
+}

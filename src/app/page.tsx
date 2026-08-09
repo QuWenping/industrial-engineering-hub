@@ -79,8 +79,9 @@ const popularTools = [
 
 // ─── Why work with us (section 5) ────────────────────────────────────────────
 const whyUs = [
-  { title: "Engineering Experience", description: "Decades of industrial project delivery across Asia, Middle East, Europe and the Americas." },
-  { title: "Industrial Project Knowledge", description: "Deep domain expertise in battery, chemical, energy and manufacturing facility design." },
+  { title: "Engineering Experience", description: "Decades of industrial project delivery across Asia, Middle East, Europe and the Americas. Our engineering team brings real-world design experience to every calculation and reference." },
+  { title: "Industrial Project Knowledge", description: "Deep domain expertise in battery, chemical, energy and manufacturing facility design. Our calculators are based on standard engineering formulas validated by professional practice." },
+  { title: "Engineering Calculation Platform", description: "Built for engineers, designers and technical professionals. All calculators use SI base units with automatic conversion, following ASME, ASTM and ISO engineering standards." },
   { title: "Multi-Disciplinary Team", description: "Architectural, structural, MEP, process, electrical and digital engineers under one roof." },
   { title: "Digital Engineering Approach", description: "BIM-first delivery, digital twin handover and AI-assisted workflows from project day one." },
 ];
@@ -504,3 +505,4 @@ export default function HomePage() {
     </>
   );
 }
+

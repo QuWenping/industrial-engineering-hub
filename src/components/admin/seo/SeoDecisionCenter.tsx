@@ -88,6 +88,7 @@ export function SeoDecisionCenter({
   const [pageFileName, setPageFileName] = useState("");
   const [uploading, setUploading] = useState(false);
   const [actionPlan, setActionPlan] = useState<any>(null);
+  const [indexStatus, setIndexStatus] = useState<any>(null);
 
   const handleDualUpload = useCallback(async () => {
     const queryFile = queryFileRef.current?.files?.[0];
@@ -112,6 +113,26 @@ export function SeoDecisionCenter({
       setMessage("Upload complete: " + results.join(" | ") + ". Now click Run Full Analysis.");
     } catch (e) { setMessage("Upload error: " + String(e)); }
     setUploading(false);
+  }, []);
+
+  const handleIndexStatus = useCallback(async () => {
+    setLoading(true);
+    setMessage("Generating Index Status Intelligence...");
+    try {
+      const res = await fetch("/api/admin/seo/decisions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "auto-index-status" }),
+      });
+      const data = await res.json();
+      setIndexStatus(data);
+      setMessage(`Index Status: ${data.indexed} indexed, ${data.discovered} discovered, ${data.total} total.`);
+      // Fetch detailed status
+      const res2 = await fetch("/api/admin/seo/decisions?action=index-status");
+      const summary = await res2.json();
+      setIndexStatus(summary);
+    } catch (e) { setMessage("Error: " + String(e)); }
+    setLoading(false);
   }, []);
 
   const handleGeneratePlan = useCallback(async () => {
@@ -248,6 +269,10 @@ export function SeoDecisionCenter({
             <Button onClick={handleGeneratePlan} disabled={loading} variant="outline" className="border-accent-green/30 text-accent-green hover:bg-accent-green/10">
               {loading ? <RefreshCw className="mr-2 h-4 w-4 animate-spin" /> : <Target className="mr-2 h-4 w-4" />}
               Generate Action Plan
+            </Button>
+            <Button onClick={handleIndexStatus} disabled={loading} variant="outline" className="border-ai-glow/30 text-engineering-blue hover:bg-ai-glow/10">
+              {loading ? <RefreshCw className="mr-2 h-4 w-4 animate-spin" /> : <Eye className="mr-2 h-4 w-4" />}
+              Index Status
             </Button>
             {message && <span className="text-sm text-slate-500">{message}</span>}
           </div>
@@ -466,6 +491,31 @@ export function SeoDecisionCenter({
                       </div>
                     </div>
                   ))}
+                </div>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Index Status Display */}
+      {indexStatus && (
+        <Card className="border-ai-glow/30">
+          <CardContent className="p-6">
+            <h2 className="text-lg font-bold text-navy mb-4">Google Index Status Intelligence</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div className="text-center"><p className="text-2xl font-bold text-accent-green">{indexStatus.indexed || 0}</p><p className="text-xs text-slate-500">Indexed</p></div>
+              <div className="text-center"><p className="text-2xl font-bold text-warning">{indexStatus.discovered || 0}</p><p className="text-xs text-slate-500">Discovered</p></div>
+              <div className="text-center"><p className="text-2xl font-bold text-danger">{indexStatus.excluded || 0}</p><p className="text-xs text-slate-500">Excluded</p></div>
+              <div className="text-center"><p className="text-2xl font-bold text-navy">{indexStatus.total || 0}</p><p className="text-xs text-slate-500">Total</p></div>
+            </div>
+            {indexStatus.byType && Object.entries(indexStatus.byType).map(([type, data]: [string, any]) => (
+              <div key={type} className="flex items-center justify-between py-2 border-b border-border/40 text-sm">
+                <span className="font-medium text-navy capitalize">{type}</span>
+                <div className="flex items-center gap-4">
+                  <span className="text-accent-green">{data.indexed} indexed</span>
+                  <span className="text-warning">{data.discovered} discovered</span>
+                  <span className="text-slate-400">{data.total} total</span>
                 </div>
               </div>
             ))}

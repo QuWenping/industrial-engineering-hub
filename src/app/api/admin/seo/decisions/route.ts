@@ -6,6 +6,7 @@ import { analyzeAllPages } from "@/lib/seo/engines/page-intelligence";
 import { classifyAllKeywords, getIntentSummary } from "@/lib/seo/engines/keyword-intent";
 import { buildClusters } from "@/lib/seo/engines/topic-cluster";
 import { generateActionPlan } from "@/lib/seo/engines/action-plan";
+import { autoGenerateIndexStatus, getIndexSummary } from "@/lib/seo/engines/index-status";
 
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
@@ -34,6 +35,11 @@ export async function GET(req: NextRequest) {
         topClusters: clusters.slice(0, 5),
         topPages: pageScores.slice(0, 10),
       });
+    }
+
+    if (action === "index-status") {
+      const summary = await getIndexSummary();
+      return NextResponse.json(summary);
     }
 
     if (action === "action-plan") {
@@ -106,6 +112,11 @@ export async function POST(req: NextRequest) {
         clustersBuilt: clusters.length,
         pagesRanked: stages.length,
       });
+    }
+
+    if (action === "auto-index-status") {
+      const result = await autoGenerateIndexStatus();
+      return NextResponse.json(result);
     }
 
     if (action === "generate-action-plan") {
