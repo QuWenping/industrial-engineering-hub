@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   transpilePackages: ["next-mdx-remote"],
   serverExternalPackages: ["@prisma/client"],
   images: {
-    formats: ["image/webp"],
+    formats: ["image/avif", "image/webp"],
   },
   async redirects() {
     return [
@@ -37,3 +37,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
