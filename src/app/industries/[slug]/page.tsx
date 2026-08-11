@@ -23,6 +23,11 @@ import {
 
 type Props = { params: Promise<{ slug: string }> };
 
+// Force SSG at build time — no runtime MDX compile, no DB round-trips.
+export const dynamic = "force-static";
+export const revalidate = 86400;
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return getAllDocSlugs("industries").map((slug) => ({ slug }));
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import nextDynamic from "next/dynamic";
 import { constructMetadata } from "@/components/seo/SEO";
 import { Badge } from "@/components/ui/badge";
@@ -120,7 +121,9 @@ export default function ToolsPage() {
           </p>
         </div>
 
-        <SearchableCatalog items={items} />
+        <Suspense fallback={<StaticToolsGrid />}>
+          <SearchableCatalog items={items} />
+        </Suspense>
       </div>
     </div>
   );

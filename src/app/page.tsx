@@ -1,10 +1,9 @@
-"use client";
 export const dynamic = "force-static";
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { AnimatedCounter } from "@/components/home/AnimatedCounter";
+import { MotionSection } from "@/components/home/MotionSection";
 import {
   ArrowRight,
   Calculator,
@@ -89,42 +88,12 @@ const whyUs = [
 ];
 
 
-function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (!isInView) return;
-    let start = 0;
-    const duration = 2000;
-    const step = duration / 60;
-    const timer = setInterval(() => {
-      start += target / (duration / step);
-      if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, step);
-    return () => clearInterval(timer);
-  }, [isInView, target]);
-
-  return (
-    <span ref={ref}>
-      {count}
-      {suffix}
-    </span>
-  );
-}
-
 function HeroSection() {
   return (
     <section className="relative overflow-hidden min-h-screen flex items-center bg-gradient-to-b from-[#0B1F3A] via-[#102B50] to-[#06080E] text-white">
       {/* z1: Background image with Ken Burns slow zoom */}
       <div className="absolute inset-0 overflow-hidden">
-        <Image src="/hero-bg.png" alt="" fill priority sizes="100vw" className="ieh-kenburns object-cover opacity-70" />
+        <Image src="/hero-bg.webp" alt="" fill priority sizes="100vw" className="ieh-kenburns object-cover opacity-70" />
       </div>
       {/* z2: Overlay layers for text readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#0B1F3A]/95 via-[#0B1F3A]/30 to-transparent" />
@@ -134,12 +103,7 @@ function HeroSection() {
       <div className="absolute top-32 -right-40 w-[28rem] h-[28rem] bg-ai-glow/6 rounded-full blur-3xl" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-2xl"
-        >
+        <MotionSection className="max-w-2xl" duration={0.8}>
           <Badge className="mb-6 bg-engineering-blue/15 text-ai-glow border-engineering-blue/30 hover:bg-engineering-blue/20">
             Industrial Facility Design &amp; Digital Engineering Solutions
           </Badge>
@@ -193,7 +157,7 @@ function HeroSection() {
             <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-ai-glow" /> Digital-first delivery</span>
             <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-ai-glow" /> Global project delivery</span>
           </div>
-        </motion.div>
+        </MotionSection>
       </div>
 
       {/* z5: Scroll indicator */}
@@ -223,13 +187,7 @@ function CapabilitySection() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {capabilities.map((cap, i) => (
-            <motion.div
-              key={cap.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
-            >
+            <MotionSection key={cap.title} delay={i * 0.06}>
               <Link href={cap.href} className="block h-full">
                 <Card className="h-full card-hover border-slate-200 hover:border-engineering-blue/40 cursor-pointer group">
                   <CardContent className="p-6">
@@ -243,7 +201,7 @@ function CapabilitySection() {
                   </CardContent>
                 </Card>
               </Link>
-            </motion.div>
+            </MotionSection>
           ))}
         </div>
       </div>
@@ -274,13 +232,7 @@ function IndustriesSection() {
 
           <div className="lg:col-span-2 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
             {industries.map((ind, i) => (
-              <motion.div
-                key={ind.title}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.3, delay: i * 0.05 }}
-              >
+              <MotionSection key={ind.title} y={10} duration={0.3} delay={i * 0.05}>
                 <Link href={ind.href} className="block h-full">
                   <Card className="h-full card-hover border-slate-200 hover:border-engineering-blue/40 cursor-pointer group">
                     <CardContent className="p-5 text-center">
@@ -293,7 +245,7 @@ function IndustriesSection() {
                     </CardContent>
                   </Card>
                 </Link>
-              </motion.div>
+              </MotionSection>
             ))}
           </div>
         </div>
@@ -353,13 +305,7 @@ function ToolsSection() {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
           {popularTools.map((tool, i) => (
-            <motion.div
-              key={tool.href}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.3, delay: i * 0.04 }}
-            >
+            <MotionSection key={tool.href} y={10} duration={0.3} delay={i * 0.04}>
               <Link href={tool.href} className="block h-full">
                 <Card className="h-full card-hover border-border/60 hover:border-engineering-blue/30 cursor-pointer group">
                   <CardContent className="p-4">
@@ -372,7 +318,7 @@ function ToolsSection() {
                   </CardContent>
                 </Card>
               </Link>
-            </motion.div>
+            </MotionSection>
           ))}
         </div>
       </div>
@@ -393,13 +339,7 @@ function WhyUsSection() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {whyUs.map((item, i) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-            >
+            <MotionSection key={item.title} delay={i * 0.08}>
               <Card className="h-full border-slate-200">
                 <CardContent className="p-6">
                   <CheckCircle2 className="h-6 w-6 text-engineering-blue mb-3" />
@@ -407,7 +347,7 @@ function WhyUsSection() {
                   <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                 </CardContent>
               </Card>
-            </motion.div>
+            </MotionSection>
           ))}
         </div>
       </div>
@@ -441,13 +381,7 @@ function InsightsPreviewSection() {
             { title: "Structural Load Considerations for Heavy Industrial Equipment", href: "/guides", icon: 'structural' as const },
             { title: "AI Agent Applications in Engineering Design", href: "/guides", icon: 'digital' as const },
           ].map((g, i) => (
-            <motion.div
-              key={g.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-            >
+            <MotionSection key={g.title} delay={i * 0.1}>
               <Link href={g.href} className="block h-full">
                 <Card className="h-full card-hover border-border/60 cursor-pointer group">
                   <CardHeader>
@@ -465,7 +399,7 @@ function InsightsPreviewSection() {
                   </CardContent>
                 </Card>
               </Link>
-            </motion.div>
+            </MotionSection>
           ))}
         </div>
       </div>
