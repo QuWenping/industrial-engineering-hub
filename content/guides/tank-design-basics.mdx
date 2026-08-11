@@ -3,7 +3,7 @@ title: "Tank and Vessel Design Basics"
 description: "Introduction to storage tank and pressure vessel design including codes, volume calculation, wall thickness, materials, and key design considerations."
 category: "Mechanical Engineering"
 keywords: ["tank design", "pressure vessel", "storage tank", "ASME VIII", "API 650", "tank volume"]
-updated: "2026-07-29"
+updated: "2026-08-11"
 related:
   - cylinder-volume-calculator
   - tank-capacity-calculator
@@ -20,6 +20,17 @@ In industrial engineering, tanks and vessels are distinguished by their design p
 - **Pressure vessels** (ASME VIII, EN 13445): > 15 psig
 - **High-pressure vessels**: > 1000 psig (special codes)
 
+The boundary is practical rather than arbitrary. Atmospheric tanks rely primarily on hydrostatic load because their vapor space is essentially at ambient pressure; as soon as the design pressure exceeds about 15 psig, the shell must be treated as a pressure vessel, with the more rigorous rules of ASME Section VIII or EN 13445 applied. Low-pressure storage of gases such as LPG and anhydrous ammonia uses the special API 620 rules for large tanks up to 15 psig. High-pressure vessels — above roughly 1000 psig — follow the same codes but with additional requirements for material quality, fatigue analysis, and inspection.
+
+| Standard | Scope | Typical Use |
+|---|---|---|
+| API 650 | Welded steel tanks for oil storage | Vertical cylindrical atmospheric tanks |
+| API 620 | Large low-pressure tanks | Design pressure up to 15 psig |
+| ASME VIII Div 1 | Pressure vessel rules | General process vessels above 15 psig |
+| ASME VIII Div 2 | Alternative rules, analysis-based | Large or high-pressure vessels |
+| EN 14015 | Welded vertical cylindrical tanks | European practice for storage tanks |
+| EN 13445 | Unfired pressure vessels | European practice for process vessels |
+
 <Calculator id="cylinder-volume-calculator" label="Calculate Cylinder Volume" />
 
 ## Atmospheric Storage Tanks (API 650)
@@ -35,6 +46,8 @@ Used for bulk storage of water, oil, chemicals at near-atmospheric pressure.
 | Internal floating roof | Fixed roof with internal pan; for clean products | Up to 50,000 m³ |
 | Horizontal bullet | Cylindrical, for LPG/NGL (higher pressure) | 50-500 m³ |
 
+Fixed-cone-roof tanks are the default for low-volatility products such as diesel, lubricating oil, and water. Because the vapor space breathes with temperature and level changes, the tank must be vented — normally through an open vent or a pressure/vacuum (P/V) valve sized per API 2000 to prevent overpressure or vacuum collapse during filling, emptying, and thermal cycling. Floating-roof tanks (external or internal) dramatically reduce the vapor space above the liquid, cutting evaporation losses and fire risk for volatile products like crude oil and gasoline. External floating roofs must manage rainwater drainage and rim-seal wind effects, while internal floating roofs are protected from the weather by the fixed outer roof and are preferred for clean products in congested or urban sites. Horizontal cylindrical (bullet) tanks are the standard for pressurized liquefied gas storage such as LPG and NGL.
+
 ### Design Considerations
 
 - **Hydrostatic pressure**: At tank bottom, P = ρgh (e.g., 10m water = ~1 bar)
@@ -43,13 +56,21 @@ Used for bulk storage of water, oil, chemicals at near-atmospheric pressure.
 - **Foundation settlement**: Differential settlement causes shell distortion
 - **Corrosion allowance**: Typically 1-3 mm added to calculated thickness
 
+For an atmospheric tank the dominant load is the hydrostatic head of the stored liquid, which increases linearly with depth. The shell thickness is set by the hoop stress at the bottom course, using a refined version of the ring formula below; the API 650 one-foot method recognizes that the bottom course is also stiffened by the floor and foundation, so the governing pressure is evaluated one foot above the bottom joint. Minimum shell thicknesses are also specified to prevent handling damage and buckling, and they increase with tank diameter. Wind acting on an empty tank can overturn it: per API 650 Annex F, the resisting moment from shell and roof weight must exceed the overturning moment, otherwise anchor bolts or a thicker lower shell are required. Seismic design per Annex E evaluates two response modes — the impulsive motion of the shell and the liquid moving rigidly with it, and the convective sloshing of the liquid surface — and provides design overturning moments and sloshing wave heights for the roof and rim seal. Foundation differential settlement distorts the shell, can wrinkle the floor, and promotes shell buckling, so tank foundations are normally built on compacted fill with a concrete ring wall, and large tanks are surveyed for settlement during hydrotest and early service.
+
 <Formula>t<sub>shell</sub> = (ρgH × D) / (2S × E) + CA</Formula>
 
 Where: t = thickness, ρ = liquid density, g = 9.81, H = liquid height, D = tank diameter, S = allowable stress, E = joint efficiency, CA = corrosion allowance.
 
+The formula above is the fundamental ring (hoop) stress equation: the hoop force at the bottom of the shell is ρgH × D/2 per unit height, divided by the allowable stress and joint efficiency, plus corrosion allowance. For large API 650 tanks this is refined by the one-foot method, and the required thickness is usually governed by the bottom course; upper courses can be thinner because the liquid head decreases with height. The joint efficiency reflects the quality of the vertical welds and the extent of radiography — 0.85 is a common design value for field-welded tanks with spot radiography.
+
 ## Pressure Vessels (ASME Section VIII)
 
 For process vessels operating above atmospheric pressure — reactors, separators, columns, heat exchanger shells.
+
+### Division 1 vs Division 2
+
+ASME Section VIII offers two design routes. Division 1 is the conventional rule-based approach: it uses a design safety factor of 3.5 on the specified minimum tensile strength, conservative formulas, and prescriptive construction rules, and it is the default for most process vessels. Division 2, the alternative rules, allows a lower safety factor (2.4 on tensile strength) but demands a more rigorous design by analysis, higher material quality, more complete non-destructive examination, and fatigue evaluation when required. For very large vessels or high-pressure service, the material savings of Division 2 can offset the higher engineering and inspection cost; for most vessels, Division 1 is simpler and adequate.
 
 ### Basic Design Formula — Internal Pressure
 
@@ -62,6 +83,8 @@ For process vessels operating above atmospheric pressure — reactors, separator
 | R | Inside radius of shell |
 | S | Maximum allowable stress (material-dependent) |
 | E | Joint efficiency (1.0 for full RT, 0.85 for spot RT, 0.7 for no RT) |
+
+This is the ASME Section VIII Division 1 formula (UG-27) for the minimum wall thickness of a cylindrical shell under internal pressure. The denominator term accounts for the geometry of a thin cylindrical shell; it is the practical design form of the hoop-stress equation, and the same code provides analogous formulas for spherical shells and for formed heads (UG-32). The design pressure is not the normal operating pressure: it is a conservative value, normally at least 10% above the maximum operating pressure or 25 psi (0.17 MPa) higher, whichever governs for the project, and it must exceed the set pressure of any relief device protecting the vessel. The design temperature is the highest (or lowest) metal temperature expected in service and determines the allowable stress and material selection; the minimum design metal temperature (MDMT) governs toughness and impact testing.
 
 <Calculator id="pressure-vessel-volume-calculator" label="Pressure Vessel Volume Calculator" />
 
@@ -77,6 +100,8 @@ ASME Section VIII design is a specialized engineering discipline requiring certi
 | Horizontal cylindrical | Drum separators, heat exchangers, storage bullets |
 | Spherical | High-pressure gas storage (LPG, NGL) |
 
+Vertical vessels dominate process service because they occupy a small footprint, allow gravity flow between trays or packing, and simplify liquid level measurement at the base. Horizontal vessels provide a larger liquid surface area per unit volume and are the standard orientation for knockout drums, three-phase separators, and heat exchanger shells. Spherical vessels have the smallest surface area for a given volume — hence the least shell material and heat loss — and are used for large volumes of pressurized gas, although fabrication and support design are more complex than for cylinders.
+
 ### Head Types
 
 | Head Type | Description | Volume | Cost |
@@ -85,6 +110,8 @@ ASME Section VIII design is a specialized engineering discipline requiring certi
 | 2:1 Semi-elliptical | Most common for process vessels | Good | Moderate |
 | Flanged & dished (F&D) | Shallow, low pressure | Lower | Cheapest |
 | Flat head | Rectangular openings | Lowest | High stress — thick steel required |
+
+Heads are pressure-containing closures and are designed to the same pressure as the shell using the applicable code rules (UG-32 for formed heads, UG-34 for flat heads). A hemispherical head has a membrane stress only half that of the cylinder of the same diameter, so it needs the least thickness — but the forming cost is high and the head takes more space. The 2:1 semi-elliptical head is the workhorse of process vessels: its depth is one quarter of the diameter, it requires about the same thickness as the cylinder, and it provides useful volume with moderate cost. Torispherical (F&D) heads are cheaper to form but become increasingly thick at higher pressures because the knuckle radius concentrates stress. Flat heads are structurally inefficient — the required thickness is much higher than for a formed head — and are used only where a flat surface is needed, such as exchanger channels and closures.
 
 ## Materials Selection
 
@@ -96,6 +123,8 @@ ASME Section VIII design is a specialized engineering discipline requiring certi
 | Stainless steel | SA-240-304/316 | 138/115 MPa |
 | Duplex | 2205 | 260 MPa |
 
+Material selection is driven by design temperature, fluid corrosivity, and toughness requirements. Carbon steel (SA-516-70) is the economic default for most non-corrosive services; SA-516-60 in the normalized condition provides improved low-temperature toughness. When the design metal temperature falls below the MDMT, the material must meet impact-testing requirements (UG-84) to guard against brittle fracture. High-temperature hydrogen service follows the Nelson curves of API 941 to select Cr-Mo steels such as SA-387-11 that resist hydrogen attack. Austenitic stainless steels (SA-240-304/316) are used for corrosive media, hygienic service, and low temperatures; duplex stainless steels combine high strength with excellent resistance to chloride stress corrosion cracking. In sour service containing hydrogen sulfide, materials and hardness must comply with NACE MR0175/ISO 15156.
+
 ## Nozzles and Openings
 
 Vessel shells require reinforcement at nozzle openings (per ASME UG-37). Typical nozzles:
@@ -104,6 +133,8 @@ Vessel shells require reinforcement at nozzle openings (per ASME UG-37). Typical
 - Instrument connections (level, pressure, temperature)
 - Relief valve connections
 - Drain and vent connections
+
+An opening removes load-carrying material from the shell and concentrates stress around its edge, so ASME Section VIII requires reinforcement by the equal-area method (UG-37): the reinforcement available in the shell (excess thickness), the nozzle wall, and any reinforcing pad must be at least equal to the area removed by the opening. In practice, large openings such as manways almost always need a reinforcing pad or an integrally reinforced nozzle, and nozzle-to-shell welds must meet the code weld detail requirements. Nozzle spacing must respect minimum edge distances, and the flange rating follows ASME B16.5 based on the design pressure and temperature. Even with adequate opening reinforcement, external nozzle loads from piping can overstress the shell locally — this is evaluated with local-stress methods such as WRC 107/537, and the results must stay within the code-allowable limits.
 
 ## External Loads
 
@@ -114,11 +145,15 @@ Vessel design must consider:
 - **Piping loads**: Nozzle loads from thermal expansion
 - **Vacuum**: External pressure can collapse vessels (buckling analysis needed)
 
+These loads are combined with internal pressure in design load cases rather than applied independently. Wind and seismic loads are normally treated as alternate — the larger governs — and each is combined with weight and pressure. A tall column behaves as a vertical cantilever in wind, so the resulting bending moment must be resisted by the shell, the skirt, and the foundation bolts; large-diameter thin shells may also need stiffening rings to prevent local buckling. Seismic response is evaluated at the vessel center of gravity, with the base shear distributed through the supports. Piping thermal expansion produces forces and moments at the nozzles that must stay within allowable local stresses (WRC 107/537), or the piping must be made more flexible. Finally, any condition that can create external pressure — vacuum during steam-out, nitrogen purging mistakes, or loss of vapor space — must be checked against the buckling rules of UG-28, using stiffening rings where necessary.
+
 ## Tank Volume and Head
 
 For a vertical cylinder with 2:1 elliptical heads:
 
-<Formula>V<sub>total</sub> = π × (D/2)² × L<sub>shell</sub> + (π × D³)/6</Formula>
+<Formula>V<sub>total</sub> = π × (D/2)² × L<sub>shell</sub> + (π × D³)/12</Formula>
+
+The first term is the volume of the cylindrical shell. The second term is the combined volume of the two 2:1 elliptical heads: each head has a depth of D/4 and a volume of πD³/24, so the two heads contribute πD³/12 in total. For comparison, hemispherical heads have a depth of D/2 and contribute πD³/6 in total, and torispherical heads fall between the two; always confirm which head type the vendor is quoting before comparing capacities.
 
 <Calculator id="sphere-volume-calculator" label="Sphere Volume Calculator" />
 <Calculator id="cone-volume-calculator" label="Cone Volume Calculator" />
@@ -127,6 +162,38 @@ For a vertical cylinder with 2:1 elliptical heads:
 For a vertical cylindrical tank: capacity per meter of height = 0.785 × D² (m³/m). A 10m diameter tank holds 78.5 m³ (78,500 liters) per meter of liquid level.
 </Callout>
 
+## Design Pressure, Temperature and Load Cases
+
+Before any calculation, the design basis must be fixed. The design pressure is a conservative value selected above the maximum operating pressure — a common margin is 10% or 25 psi (0.17 MPa), whichever is larger for the project — and above the set pressure of the protecting relief device. The design temperature is the maximum metal temperature expected during normal operation, and the minimum design metal temperature (MDMT) is checked separately for low-temperature embrittlement. Design load cases then combine these conditions systematically: normal operating (pressure + weight), hydrotest (test pressure + full of water), wind or seismic (each with weight, without the other), external pressure (vacuum), and upset conditions such as thermal expansion of trapped liquid or failure of downstream valves.
+
+## Common Design Errors and Lessons Learned
+
+- Using operating pressure instead of design pressure for thickness calculations
+- Ignoring the MDMT, leading to brittle fracture risk in low-temperature or winter service
+- Forgetting the full-of-water and hydrotest cases for tall columns and their foundations
+- Specifying materials without checking fluid compatibility or hydrogen service
+- Undersizing nozzle reinforcement or ignoring external nozzle loads
+- Omitting vacuum / external-pressure checks for vessels that can be drained and steamed
+- For tanks, neglecting foundation settlement, wind overturning, or sloshing loads
+- Oversizing or undersizing tank vents, risking overpressure or vacuum collapse
+
+A disciplined design review catches most of these: verify the design basis against the process data sheet, check every load case, and have the design independently reviewed before fabrication.
+
+## Standards and Codes Overview
+
+| Code / Standard | Scope |
+|---|---|
+| API 650 | Welded steel tanks for oil storage (atmospheric, vertical) |
+| API 620 | Design and construction of large, low-pressure storage tanks |
+| API 2000 | Venting atmospheric and low-pressure storage tanks |
+| API 653 | Tank inspection, repair, alteration, and reconstruction |
+| ASME Section VIII Div 1 | Pressure vessel rules — general process service |
+| ASME Section VIII Div 2 | Alternative rules — analysis-based design |
+| ASME B16.5 | Pipe flanges and flanged fittings — nozzle ratings |
+| EN 14015 / EN 13445 | European tank / vessel codes |
+| API 510 | Pressure vessel inspection and repair in service |
+| API 579 | Fitness-for-service assessment of damaged equipment |
+
 ## Inspection and Testing
 
 - **Hydrostatic test**: Fill with water at 1.3-1.5 × design pressure
@@ -134,6 +201,8 @@ For a vertical cylindrical tank: capacity per meter of height = 0.785 × D² (m�
 - **Radiography**: Weld inspection; full or spot per design joint efficiency
 - **In-service inspection**: API 510 (pressure vessels), API 653 (tanks); periodic thickness testing
 
+Every code-built vessel is proof-tested after fabrication. Hydrostatic testing fills the vessel with water and pressurizes it to at least 1.3 times the design pressure (adjusted for the stress ratio where the test temperature differs), which verifies the strength of the shell and the integrity of every weld and gasket. Pneumatic tests use air or nitrogen at a lower pressure — typically about 1.1 times design pressure — because the stored energy of a compressed gas makes failure far more hazardous; they require additional precautions and approval. Weld quality is verified by radiography (RT), ultrasonic (UT), magnetic particle (MT), or penetrant (PT) testing, with the extent determined by the joint efficiency selected in the design. In service, API 510 for pressure vessels and API 653 for storage tanks require periodic external inspections, internal inspections, and thickness measurements, with intervals based on corrosion rate and risk; corrosion, cracks, and dents found during inspection are assessed against fitness-for-service methods such as API 579.
+
 ## Summary
 
-Atmospheric tanks follow API 650 and are designed primarily for hydrostatic load. Pressure vessels follow ASME VIII Div 1 or Div 2 and require certified design. Key design parameters: design pressure/temperature, material stress, joint efficiency, and corrosion allowance. Always engage qualified pressure vessel engineers — errors can have catastrophic consequences.
+Atmospheric tanks follow API 650 and are designed primarily for hydrostatic load. Pressure vessels follow ASME VIII Div 1 or Div 2 and require certified design. Key design parameters: design pressure/temperature, material stress, joint efficiency, and corrosion allowance. Always verify the design basis, check every load case (including vacuum and hydrotest), and engage qualified pressure vessel engineers — errors can have catastrophic consequences.
