@@ -5,19 +5,19 @@ import Link from "next/link";
 // Featured project cases for the homepage carousel. Static list mirrors
 // content/projects/*.mdx; update here if the case set changes.
 const PROJECTS = [
-  { slug: "bac-dalian-new-factory", title: "BAC Dalian New Factory & Asia-Pacific Lab", category: "Industrial Building", clientType: "Sino-US JV", location: "Dalian", cover: "/projects/bac-dalian-new-factory.jpg?v=2" },
-  { slug: "dalian-hydrogen-testing-center", title: "Dalian Hydrogen Energy Testing Center", category: "Industrial / Energy", clientType: "Inspection institute", location: "Dalian FTZ", cover: "/projects/dalian-hydrogen-testing-center.jpg?v=2" },
-  { slug: "seychelles-hotel-marina-office", title: "Seychelles Hotel, Marina & Office", category: "Public Building", clientType: "Overseas project", location: "Seychelles", cover: "/projects/seychelles-hotel-marina-office.jpg?v=2" },
-  { slug: "korean-stx-shipyard", title: "Korean-Owned STX Shipyard", category: "Steel Structure", clientType: "Korean-owned", location: "Changxing Island", cover: "/projects/korean-stx-shipyard.jpg?v=2" },
-  { slug: "mueller-weingarten-dalian-forging", title: "Müller Weingarten Forging Plant", category: "Steel Structure", clientType: "German-owned", location: "Dalian", cover: "/projects/mueller-weingarten-dalian-forging.jpg?v=2" },
-  { slug: "satake-machinery-rd-manufacturing", title: "Satake Machinery R&D & Manufacturing", category: "Industrial Building", clientType: "Japanese-owned", location: "Dalian Lüshun", cover: "/projects/satake-machinery-rd-manufacturing.jpg?v=2" },
-  { slug: "cosco-shipping-dalian-logistics", title: "COSCO Shipping Dalian Logistics", category: "Industrial Building", clientType: "State-owned", location: "Dalian Bay", cover: "/projects/cosco-shipping-dalian-logistics.jpg?v=2" },
-  { slug: "dalian-songmu-island-chemical-zone", title: "Songmu Island Chemical Zone", category: "Chemical", clientType: "Industrial park", location: "Dalian", cover: "/projects/dalian-songmu-island-chemical-zone.jpg?v=2" },
-  { slug: "dalian-bear-cave-street", title: "Dalian Bear Cave Street", category: "Cultural Tourism", clientType: "Urban renewal", location: "Dalian", cover: "/projects/dalian-bear-cave-street.jpg?v=2" },
-  { slug: "dalian-station-north-parking", title: "Dalian Station North Parking", category: "Steel Structure", clientType: "Municipal", location: "Dalian", cover: "/projects/dalian-station-north-parking.jpg?v=2" },
-  { slug: "henan-university-longzihu-campus", title: "Henan University Longzihu Campus", category: "Public Building", clientType: "University", location: "Zhengzhou", cover: "/projects/henan-university-longzihu-campus.jpg?v=2" },
-  { slug: "smart-energy-management", title: "Smart Energy Management", category: "Energy & Environment", clientType: "Energy solution", location: "China", cover: "/projects/smart-energy-management.jpg?v=2" },
-  { slug: "beijing-tianjiayuan-plant-factory", title: "Beijing Tianjiayuan Plant Factory", category: "Public Building", clientType: "Agri-tech", location: "Beijing", cover: "/projects/beijing-tianjiayuan-plant-factory.jpg?v=2" },
+  { slug: "bac-dalian-new-factory", title: "BAC Dalian New Factory & Asia-Pacific Lab", category: "Industrial Building", clientType: "Sino-US JV", location: "Dalian", cover: "/projects/bac-dalian-new-factory.webp?v=3" },
+  { slug: "dalian-hydrogen-testing-center", title: "Dalian Hydrogen Energy Testing Center", category: "Industrial / Energy", clientType: "Inspection institute", location: "Dalian FTZ", cover: "/projects/dalian-hydrogen-testing-center.webp?v=3" },
+  { slug: "seychelles-hotel-marina-office", title: "Seychelles Hotel, Marina & Office", category: "Public Building", clientType: "Overseas project", location: "Seychelles", cover: "/projects/seychelles-hotel-marina-office.webp?v=3" },
+  { slug: "korean-stx-shipyard", title: "Korean-Owned STX Shipyard", category: "Steel Structure", clientType: "Korean-owned", location: "Changxing Island", cover: "/projects/korean-stx-shipyard.webp?v=3" },
+  { slug: "mueller-weingarten-dalian-forging", title: "Müller Weingarten Forging Plant", category: "Steel Structure", clientType: "German-owned", location: "Dalian", cover: "/projects/mueller-weingarten-dalian-forging.webp?v=3" },
+  { slug: "satake-machinery-rd-manufacturing", title: "Satake Machinery R&D & Manufacturing", category: "Industrial Building", clientType: "Japanese-owned", location: "Dalian Lüshun", cover: "/projects/satake-machinery-rd-manufacturing.webp?v=3" },
+  { slug: "cosco-shipping-dalian-logistics", title: "COSCO Shipping Dalian Logistics", category: "Industrial Building", clientType: "State-owned", location: "Dalian Bay", cover: "/projects/cosco-shipping-dalian-logistics.webp?v=3" },
+  { slug: "dalian-songmu-island-chemical-zone", title: "Songmu Island Chemical Zone", category: "Chemical", clientType: "Industrial park", location: "Dalian", cover: "/projects/dalian-songmu-island-chemical-zone.webp?v=3" },
+  { slug: "dalian-bear-cave-street", title: "Dalian Bear Cave Street", category: "Cultural Tourism", clientType: "Urban renewal", location: "Dalian", cover: "/projects/dalian-bear-cave-street.webp?v=3" },
+  { slug: "dalian-station-north-parking", title: "Dalian Station North Parking", category: "Steel Structure", clientType: "Municipal", location: "Dalian", cover: "/projects/dalian-station-north-parking.webp?v=3" },
+  { slug: "henan-university-longzihu-campus", title: "Henan University Longzihu Campus", category: "Public Building", clientType: "University", location: "Zhengzhou", cover: "/projects/henan-university-longzihu-campus.webp?v=3" },
+  { slug: "smart-energy-management", title: "Smart Energy Management", category: "Energy & Environment", clientType: "Energy solution", location: "China", cover: "/projects/smart-energy-management.webp?v=3" },
+  { slug: "beijing-tianjiayuan-plant-factory", title: "Beijing Tianjiayuan Plant Factory", category: "Public Building", clientType: "Agri-tech", location: "Beijing", cover: "/projects/beijing-tianjiayuan-plant-factory.webp?v=3" },
 ];
 
 export function ProjectsCarousel() {
