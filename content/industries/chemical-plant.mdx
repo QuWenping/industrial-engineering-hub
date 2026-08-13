@@ -26,6 +26,11 @@ relatedCalculators:
   - pump-power-calculator
   - pressure-drop-calculator
   - thermal-resistance-calculator
+  - pressure-vessel-volume-calculator
+  - flow-rate-calculator
+  - pipe-velocity-calculator
+  - pump-head-calculator
+  - steel-weight-calculator
 ---
 
 # Chemical Plant Engineering
@@ -46,14 +51,16 @@ Chemical facilities demand rigorous process safety management, corrosive-environ
 - Compliance with OSHA PSM 29 CFR 1910.119
 
 **Piping & Pressure Systems**
-- Pressure piping design per ASME B31.3 (process) or B31.8 (gas)
+- Pressure piping design per ASME B31.3 (process) or B31.8 (gas) — see the [Pressure Vessel Design](/guides/pressure-vessel-design) guide for equipment-side rules
 - Stress analysis for thermal expansion, vibration and equipment reactions
 - Corrosion allowance and material selection (CS, SS, Duplex, Hastelloy, etc.)
 - Pressure relief device sizing and overpressure protection per API 520/521
 - Flare system design and tail gas disposal
+- Valve selection for process isolation and control — see the [Valve Types and Applications](/guides/valve-types-applications) guide
 
 **Equipment & Structures**
-- Distillation columns, reactors, heat exchangers, storage tanks
+- Distillation columns, reactors, heat exchangers, storage tanks (size with the [Pressure Vessel Volume Calculator](/tools/pressure-vessel-volume-calculator) and [Steel Weight Calculator](/tools/steel-weight-calculator))
+- Positive displacement and centrifugal process pumps ([PD pump guide](/guides/positive-displacement-pumps))
 - Pipe racks with equipment supports and cantilever loads
 - Structural design for future expansion (e.g., module addition)
 - Foundation design for heavy rotating equipment
@@ -129,6 +136,20 @@ We integrate process simulation, 3D plant modeling and safety reviews from proje
 
 **Timeline**: 6–18 months design + 12–24 months construction
 
+## Unit Conversion Reference
+
+Chemical plant engineering data crosses SI and US customary units daily. Common conversions used in process and piping work:
+
+| Quantity | Conversion |
+|---|---|
+| Pressure | 1 bar = 100 kPa = 14.50 psi; 1 MPa = 145.04 psi |
+| Flow | 1 m³/h = 4.403 gpm; 1 m³/h = 0.2778 L/s |
+| Mass flow | 1 kg/h = 2.2046 lb/h; 1 t/h = 2204.6 lb/h |
+| Temperature | °F = (°C × 9/5) + 32; °C = (°F − 32) × 5/9 |
+| Length | 1 m = 3.2808 ft; 1 in = 25.4 mm |
+
+**Example**: a 200 m³/h process line = 200 × 4.403 ≈ 881 gpm. A 10 bar design pressure = 145 psi. Always convert P&ID and data sheet values to one consistent unit system before sizing.
+
 ## Design Standards & Compliance
 
 **Design Codes**:
@@ -201,12 +222,35 @@ Use our tools to size critical piping and equipment:
 - **Pressure drop across pipe runs**: [Pressure Drop Calculator](/tools/pressure-drop-calculator)
 - **Thermal duty calculations**: [Heat Transfer Calculator](/tools/heat-transfer-calculator)
 - **Storage tank volume**: [Tank Volume Calculator](/tools/tank-volume-calculator)
+- **Vessel and head volume**: [Pressure Vessel Volume Calculator](/tools/pressure-vessel-volume-calculator)
+- **Line flow and velocity**: [Flow Rate Calculator](/tools/flow-rate-calculator) and [Pipe Velocity Calculator](/tools/pipe-velocity-calculator)
+- **Pump head and NPSH**: [Pump Head Calculator](/tools/pump-head-calculator)
 
 ## Project Examples
 
 We have engineered greenfield and brownfield projects for petrochemical majors, independent refiners, specialty chemical producers and toll manufacturers. Our portfolio spans commodity chemicals, bulk pharmaceuticals, and environmental processing facilities across multiple continents.
 
 ---
+
+## Frequently Asked Questions
+
+**What does chemical plant engineering cover?**
+Chemical plant engineering covers the full lifecycle of process facilities: process design and simulation, piping and pressure system design (ASME B31.3), equipment specification, pressure relief and flare systems, structural design, instrumentation and control, process safety management (PSM), and environmental compliance. Delivery spans FEED through detailed engineering, construction support, commissioning and startup.
+
+**How often should HAZOP be performed?**
+HAZOP is performed at defined stages of a project — typically at conceptual/FEED stage and again at detailed design before construction — and periodically during operation (often every 3-5 years or after significant modifications). OSHA PSM and IEC 61882 require systematic revalidation of process hazard analyses.
+
+**What is the difference between ASME B31.3 and B31.8?**
+ASME B31.3 covers process piping in chemical, refinery and industrial plants, including fluids with high consequence of release. B31.8 covers gas transmission and distribution piping systems. A chemical plant's in-plant process lines are B31.3; long-distance gas transmission lines to and from the facility are B31.8.
+
+**What is FEED in chemical plant projects?**
+Front-End Engineering Design (FEED) is the engineering phase between conceptual design and detailed engineering. It develops process simulation, preliminary P&IDs, equipment sizing, plot plan, cost estimate (±20-30%) and initial HAZOP so the owner can make a final investment decision before committing to detailed engineering.
+
+**What are the main process safety requirements for a chemical plant?**
+Under OSHA PSM (29 CFR 1910.119) and equivalent regulations, plants handling hazardous chemicals need process safety information, P&IDs, mechanical integrity programs, management of change, pre-startup safety reviews, operating procedures, training, incident investigation, emergency planning, and compliance audits — with HAZOP/LOPA used to establish safeguards and SIL requirements.
+
+**How long does it take to build a chemical plant?**
+A typical $50M-$500M chemical plant takes 6-18 months of design plus 12-24 months of construction. Specialty chemical plants are often faster, large petrochemical crackers slower. Overall project duration is driven by permitting, long-lead equipment, and contractor availability.
 
 ## Next Steps
 

@@ -57,6 +57,22 @@
       {
         "q": "What about insulation thickness?",
         "a": "Surface area increases with insulation O.D. — add 2× insulation thickness to diameter for exterior surface. For 50mm insulation on 3m tank, use 3.1m effective diameter."
+      },
+      {
+        "q": "What is the surface area of a horizontal cylindrical tank?",
+        "a": "A horizontal cylinder with flat ends has the same surface area as a vertical one: A = πD·L + 2 × (πD²/4). For partially filled horizontal tanks, use the wetted-angle method: wetted shell area = πD·L × (θ/360°) and wetted end area = (D²/8)(θ − sin θ) per end."
+      },
+      {
+        "q": "How do I include dished heads in the area calculation?",
+        "a": "A 2:1 elliptical head adds about 1.084 × (πD²/4) per head; a hemispherical head adds (πD²)/2 per head; a torispherical (ASME F&D) head adds roughly 0.842 × πD². Add the head area to the shell area πD·L instead of using the flat-end approximation."
+      },
+      {
+        "q": "Should I use inside or outside dimensions?",
+        "a": "For paint and insulation quantities, use outside dimensions (add insulation thickness when the surface is already insulated). For heat transfer through the wall, use the mean surface area — approximately the average of inside and outside areas — or simply the outside area for thin shells."
+      },
+      {
+        "q": "Why is a large tank cheaper per m² than a small one?",
+        "a": "Surface area scales roughly with the square of size while volume scales with the cube, so the surface-to-volume ratio falls as the tank grows. Heat loss, coating, and insulation costs per stored volume therefore decrease for larger tanks — the A/V argument."
       }
     ],
     "related": [
@@ -75,7 +91,40 @@
       "Paint estimating",
       "Insulation takeoff",
       "Heat loss calc",
-      "Coating inspection"
+      "Coating inspection",
+      "Vessel head area estimation",
+      "Cathodic protection design",
+      "Rectangular basin coating quantity"
+    ],
+    "sections": [
+      {
+        "heading": "How to Calculate Tank Surface Area",
+        "body": "Tank surface area is the total external area that must be painted, insulated, or analyzed for heat transfer. For a closed-top vertical cylindrical tank, the surface area is the sum of the cylindrical shell, the roof (top head), and the floor (bottom head): A = 2πr² + πD·L, where r is the tank radius, D is the diameter, and L is the cylindrical shell length. Open-top tanks subtract one circular end: A = πr² + πD·L.\nFor process vessels with curved heads (hemispherical, 2:1 elliptical, torispherical), the head contribution depends on the head geometry — see the Hemispherical & Dished Ends section below. Always measure the outside dimensions when estimating paint or insulation quantities."
+      },
+      {
+        "heading": "Cylindrical Tank Formulas",
+        "body": "Vertical closed cylinder (roof + floor + shell): A = 2πr² + πD·L = (πD²)/2 + πD·L\nOpen-top vertical cylinder: A = πr² + πD·L = (πD²)/4 + πD·L\nHorizontal cylinder with flat ends: A = 2 × (πD²/4) + πD·L — the same closed-cylinder equation applies; the orientation does not change the area.\nWhen the liquid level is partial, the wetted area of a horizontal tank requires segment geometry: wetted shell area = πD·L × (θ/360°) where θ is the liquid-angle subtended at the tank axis, and wetted end area = (D²/8) × (θ − sin θ) per end."
+      },
+      {
+        "heading": "Rectangular Tank Surface Area",
+        "body": "For rectangular tanks (open or covered basins, fuel day-tanks): A = 2 × (W × L + W × H + L × H) for a closed tank; an open-top rectangular tank has A = W × L + 2 × (W × H + L × H).\nRectangular tanks are common for water storage, chemical dosing, and wastewater basins. The same surface area value is used for cathodic protection design, thermal insulation, and coating quantity takeoffs."
+      },
+      {
+        "heading": "Hemispherical & Dished Ends",
+        "body": "Vessel heads add significant surface area beyond a flat circular end:\nHemispherical head: A_head = 2πr² = (πD²)/2\n2:1 Elliptical head: A_head ≈ 1.084 × (πD²/4)\nTorispherical head (ASME F&D): A_head ≈ 0.842 × πD² (typical approximation, varies with knuckle radius)\nFor a vessel with two hemispherical heads: A_total = πD·L + πD² (shell plus both heads). Compare this with the two flat ends of a plain cylinder: πD·L + πD²/2. Vessel heads can increase the total surface area by 20-50% depending on head type, which matters for paint and insulation estimates."
+      },
+      {
+        "heading": "Worked Example",
+        "body": "A 3 m diameter, 6 m tall closed-top vertical storage tank:\nShell: πD·L = π × 3 × 6 = 56.5 m²\nRoof + floor: 2 × (π × 1.5²) = 14.1 m²\nTotal: A = 56.5 + 14.1 = 70.6 m² (matches the calculator result of 70.7 m²)\nFor a 2-coat epoxy paint system at 7 m²/L coverage: paint required ≈ 70.7 × 2 / 7 ≈ 20 liters. With 20% application loss, order ~24 liters."
+      },
+      {
+        "heading": "Unit Conversion",
+        "body": "1 m² = 10.7639 ft²; 1 ft² = 0.092903 m²\n1 m = 3.28084 ft; 1 ft = 0.3048 m; 1 inch = 25.4 mm\nExample: a 10 ft diameter × 20 ft tank has A = π×10×20 + 2×π×25 = 785 ft² ≈ 73 m².\nFor paint estimates: 1 US gallon covers ~350-400 ft² at 1 mil dry film thickness (epoxy at 5-6 mils covers ~65-80 ft²/gallon)."
+      },
+      {
+        "heading": "Surface Area vs Volume",
+        "body": "Surface area and volume scale differently — this affects tank geometry selection for heat loss and material cost:\nVolume of a cylinder: V = πr²L ∝ D²L (scales with the square of size)\nSurface area of a closed cylinder: A = 2πr² + πDL ∝ D² + DL\nFor geometrically similar tanks (L/D fixed), A/V ∝ 1/D — larger tanks have LESS surface area per unit volume, so per-m³ heat loss and coating cost decrease as tank size grows. This is why large storage tanks are more efficient per unit volume than small day-tanks. The same A/V argument applies to spheres, which have the lowest surface-to-volume ratio of any shape."
+      }
     ]
   },
   "tests": [

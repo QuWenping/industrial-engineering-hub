@@ -40,7 +40,7 @@
     "decimals": 1
   },
   "content": {
-    "introduction": "Calculate the volumetric flow rate through a pipe given its diameter and the fluid velocity. This is the fundamental Q = A × v relationship used in all fluid mechanics.",
+    "introduction": "Calculate volumetric flow rate from pipe diameter and velocity, or convert between common flow units (m3/h, L/s, L/min, GPM, CFM). Enter any two of diameter, velocity and flow rate to size piping, check pump performance, or convert units for process engineering calculations.",
     "example": {
       "inputs": {
         "diameter": 100,
@@ -57,6 +57,22 @@
       {
         "q": "What is typical flow for a 4-inch pipe?",
         "a": "A 4-inch (100mm) pipe at 2 m/s carries about 56 m³/h or 247 GPM."
+      },
+      {
+        "q": "How do I calculate flow rate from pipe diameter and velocity?",
+        "a": "Use Q = pi x D^2 / 4 x v, where D is the pipe inner diameter and v the average velocity. For example, 0.1 m pipe at 2 m/s: Q = 3.1416 x 0.01 / 4 x 2 = 0.0157 m3/s = 56.5 m3/h."
+      },
+      {
+        "q": "What is the flow rate of a 2-inch pipe?",
+        "a": "At the recommended water velocity of 2 m/s, a DN50 (2 inch) pipe with 52.5 mm inner diameter carries about 15.6 m3/h (68.7 US GPM). At 3 m/s the same pipe carries 23.4 m3/h - velocity, not diameter alone, determines flow."
+      },
+      {
+        "q": "How do I convert L/min to m3/h?",
+        "a": "Multiply L/min by 0.06 to get m3/h (60 minutes per hour, 1000 L per m3). Example: 500 L/min = 30 m3/h. Conversely multiply m3/h by 16.667 to get L/min."
+      },
+      {
+        "q": "What is mass flow rate and how is it different from volumetric flow?",
+        "a": "Mass flow rate (kg/s) = rho x Q, the product of density and volumetric flow. It is conserved exactly through a steady system, while volumetric flow changes with temperature and pressure - important for gases and hot liquids. Use mass flow for energy balances and compressor calculations."
       }
     ],
     "related": [
@@ -80,7 +96,25 @@
       "Flow measurement",
       "Pump sizing",
       "Pipeline capacity",
-      "Process control"
+      "Process control",
+      "Pipe sizing and line velocity checking",
+      "Pump performance and system curve development",
+      "Water treatment and cooling water flow audits",
+      "Heat exchanger and process fluid balancing"
+    ],
+    "sections": [
+      {
+        "heading": "Flow Rate Formula Explained",
+        "body": "Volumetric flow rate is the cross-sectional area times the average velocity:\n\nQ = A x v = pi x D^2 / 4 x v\n\nWhere Q = flow rate (m3/s), D = pipe inner diameter (m), v = average flow velocity (m/s). Mass flow rate adds density: m_dot = rho x Q (kg/s).\n\nExample: water at 2 m/s in a 100 mm ID pipe gives Q = pi x 0.1^2 / 4 x 2 = 0.0157 m3/s = 56.5 m3/h. The same velocity in a 200 mm pipe gives 4x the flow (226 m3/h) because area scales with diameter squared."
+      },
+      {
+        "heading": "Flow Rate Unit Conversion Table",
+        "body": "| Unit | Multiplier from m3/h |\n|---|---|\n| L/s | 0.277778 |\n| L/min | 16.6667 |\n| m3/s | 0.000277778 |\n| US GPM | 4.40287 |\n| Imperial GPM | 3.66615 |\n| ft3/min (CFM) | 0.588578 |\n| bbl/h (42 US gal) | 6.28981 |\n\nExample: 100 m3/h = 100 x 4.4029 = 440 GPM = 100 x 16.667 = 1667 L/min. Most pump and pipe calculations can be done in any unit set as long as you are consistent."
+      },
+      {
+        "heading": "Recommended Pipe Velocities",
+        "body": "Economic velocity ranges used for preliminary pipe sizing:\n\n| Service | Velocity (m/s) |\n|---|---|\n| Pump suction line (water) | 0.6 - 1.5 |\n| Pump discharge line (water) | 1.5 - 3.0 |\n| General process water | 1.0 - 3.0 |\n| Viscous oils | 0.3 - 1.0 |\n| Low-pressure steam | 15 - 30 |\n| Compressed air / gas | 10 - 30 |\n\nHigh velocity increases pressure drop, pump power and erosion; low velocity risks settling of solids and sluggish response. Use 1-3 m/s for liquids as the first-pass sizing rule."
+      }
     ]
   },
   "tests": [

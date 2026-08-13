@@ -1,19 +1,105 @@
 ---
 title: "Concrete (Normal Weight)"
-description: "Normal weight reinforced concrete properties, density (2400 kg/m³), compressive strength, thermal properties, mix design basics, and structural applications in buildings, bridges, and foundations."
+description: "Concrete density, unit weight, and weight calculation guide: normal weight (2400 kg/m³), lightweight, and reinforced concrete. kg/m³ to lb/ft³ conversion, typical density ranges, engineering reference tables, and mix design basics for buildings, bridges, and foundations."
 category: "Construction"
-keywords: ["concrete density", "concrete properties", "reinforced concrete", "concrete strength", "concrete weight"]
-updated: "2026-07-29"
+keywords: ["concrete density", "concrete weight", "concrete unit weight", "lightweight concrete", "reinforced concrete", "concrete properties", "kg/m3 to lb/ft3"]
+updated: "2026-08-13"
 related:
   - concrete-volume-calculator
   - material-volume-calculator
+  - density-calculator
 ---
 
 ## Overview
 
-Concrete is a composite material made from cement, water, fine aggregate (sand), and coarse aggregate (rock/gravel), plus optional admixtures. It is the most widely used engineered material on Earth, valued for its high compressive strength, durability, versatility, and low cost. Normal weight concrete (NWC) uses natural aggregates (crushed stone, gravel) at ~2400 kg/m³ density.
+Concrete is a composite material made from cement, water, fine aggregate (sand), and coarse aggregate (rock/gravel), plus optional admixtures. It is the most widely used engineered material on Earth, valued for its high compressive strength, durability, versatility, and low cost. Normal weight concrete (NWC) uses natural aggregates (crushed stone, gravel) at roughly 2,300-2,500 kg/m³ density; reinforced normal weight concrete is commonly taken as **2,400 kg/m³ (150 lb/ft³)** for structural design.
 
-<Formula>ρ = 2400 kg/m³ for normal weight reinforced concrete (plain: ~2300 kg/m³; reinforced adds ~100 kg/m³ for steel)</Formula>
+<Formula>ρ = 2,400 kg/m³ for normal weight reinforced concrete (plain: ~2,300 kg/m³; reinforced adds ~100 kg/m³ for steel)</Formula>
+
+## Concrete Density
+
+Concrete density varies with aggregate type, mix proportions, air content, and whether the concrete is plain or reinforced.
+
+| Concrete Type | Density (kg/m³) | Density (lb/ft³) | Notes |
+|---|---|---|---|
+| Lightweight concrete | 1,400-1,900 | 87-119 | Expanded shale/clay/slag aggregates |
+| Normal weight (plain) | 2,200-2,400 | 137-150 | Crushed stone or gravel aggregate |
+| Normal weight (reinforced) | 2,350-2,500 | 147-156 | Typical design value 2,400 kg/m³ |
+| Heavyweight concrete | 3,000-5,900 | 187-368 | Magnetite, barite, or steel shot (radiation shielding) |
+| Ultra-high performance (UHPC) | 2,400-2,500 | 150-156 | High paste content, no coarse aggregate |
+
+For structural design, most codes (ACI 318, Eurocode 2, BS 8110) use **24 kN/m³ (2,400 kg/m³)** as the unit weight of reinforced normal weight concrete — this is the standard value for self-weight load calculations.
+
+## Concrete Unit Weight
+
+Unit weight (also called specific weight or weight density) is the weight per unit volume, typically expressed in kN/m³ or lb/ft³.
+
+| Quantity | Value |
+|---|---|
+| Mass density (reinforced) | 2,400 kg/m³ |
+| Mass density (plain) | 2,300 kg/m³ |
+| Unit weight (reinforced) | 23.5-24.0 kN/m³ |
+| Unit weight (plain) | 22.5-23.0 kN/m³ |
+| Unit weight (US customary) | 150 lb/ft³ (reinforced normal weight) |
+
+**Conversions:**
+- 1 kg/m³ = 0.0624 lb/ft³ = 0.00981 kN/m³
+- 1 lb/ft³ = 16.018 kg/m³
+- 2,400 kg/m³ × 0.0624 = 149.8 lb/ft³ ≈ 150 lb/ft³
+- 2,400 kg/m³ × 9.81/1000 = 23.5 kN/m³
+
+A simple rule: **150 lb/ft³ ≈ 2,400 kg/m³ ≈ 24 kN/m³** — all three are used interchangeably in structural concrete design.
+
+## Concrete Weight Calculation
+
+Weight of a concrete element: **W = V × ρ** where V = volume (m³) and ρ = density (kg/m³).
+
+**Example 1 — 1 m³ of reinforced concrete:**
+W = 1.0 × 2,400 = **2,400 kg (2.4 tonnes, 5,291 lb)**
+
+**Example 2 — 150 mm slab, 10 m × 8 m (80 m²):**
+- Volume = 80 × 0.15 = 12 m³
+- Weight = 12 × 2,400 = **28,800 kg (28.8 t)**
+
+**Example 3 — kg/m² quick reference:**
+- 100 mm thick normal concrete slab: 240 kg/m²
+- 150 mm slab: 360 kg/m²
+- 200 mm slab: 480 kg/m²
+
+Use the [Concrete Volume Calculator](/tools/concrete-volume-calculator) to find slab, footing, column, or wall volume, then multiply by the density above.
+
+<Calculator id="concrete-volume-calculator" label="Calculate Concrete Volume" />
+
+## Lightweight Concrete
+
+Lightweight concrete uses expanded clay, shale, slate, pumice, or foamed aggregate instead of crushed stone, reducing density to **1,400-1,900 kg/m³** (typically 1,800 kg/m³ / 112 lb/ft³). It provides:
+- 25-40% weight saving for slabs, roofs, and precast panels
+- Better thermal insulation (conductivity 0.3-0.7 W/m·K vs 1.5-2.0 for normal weight)
+- Lower compressive strength (typically 20-40 MPa vs 20-50 MPa for NWC)
+
+See the [Lightweight Concrete material page](/materials/concrete-lightweight) for the full density table, mix guidance, and structural applications. Structural lightweight concrete still uses 24 kN/m³ for code self-weight only when specified; otherwise use 16-19 kN/m³.
+
+## Reinforced Concrete
+
+Steel reinforcement adds about 100 kg/m³ to the density of plain concrete (2,300 → 2,400 kg/m³) and is required for all structural members because concrete is weak in tension:
+
+- Rebar grades: 300/400/500 MPa (deformed bars)
+- Typical reinforcement ratio: 1-4% of cross-sectional area
+- Reinforced concrete density for design: 2,400 kg/m³ (150 lb/ft³, 24 kN/m³)
+
+The steel fraction also affects weight-based quantity take-off: 1 m³ of heavily reinforced column (4% steel) weighs about 2,400 + 0.04 × 7,850 × 0.98 ≈ **2,710 kg/m³**, so use the reinforced value whenever rebar is present.
+
+## Typical Density Reference Table (Engineering Values)
+
+| Aggregate / Mix | Typical Density (kg/m³) | Typical Density (lb/ft³) | Common Use |
+|---|---|---|---|
+| Pumice/foamed | 400-900 | 25-56 | Insulation fills, non-structural |
+| Expanded clay/shale | 1,400-1,800 | 87-112 | Structural lightweight |
+| Normal sand & gravel | 2,200-2,400 | 137-150 | General construction |
+| Crushed limestone | 2,300-2,450 | 144-153 | Structural, pavements |
+| Basalt aggregate | 2,500-2,700 | 156-169 | Heavy-duty slabs, dams |
+| Barite (heavyweight) | 3,300-3,600 | 206-225 | Radiation shielding |
+| Magnetite/steel shot | 3,500-5,900 | 218-368 | Nuclear shielding, counterweights |
 
 ## Mechanical Properties
 
@@ -30,7 +116,7 @@ Concrete is a composite material made from cement, water, fine aggregate (sand),
 | Drying Shrinkage | 400-800 microstrain |
 
 <Callout type="info" title="Concrete is Strong in Compression, Weak in Tension" severity="info">
-Concrete's tensile strength is only ~10% of its compressive strength, so all structural concrete is reinforced with steel rebar (which has high tensile strength and similar thermal expansion coefficient). Unreinforced concrete cracks under tension from bending, shrinkage, or temperature — rebar holds cracks together and carries tensile loads.
+Concrete's tensile strength is only ~10% of its compressive strength, so all structural concrete is reinforced with steel rebar (which has high tensile strength and similar thermal expansion coefficient). Unreinforced concrete cracks under tension from bending, shrinkage, or temperature — rebar holds cracks together and carries tensile loads. Compare rebar properties on the [Steel Material Properties guide](/guides/steel-material-properties) and [Carbon Steel material page](/materials/carbon-steel).
 </Callout>
 
 ## Thermal Properties
@@ -63,8 +149,6 @@ Concrete provides excellent thermal mass, absorbing heat during the day and rele
 | Coarse aggregate (20mm) | 1100 kg |
 | Total | ~2375 kg |
 
-<Calculator id="concrete-volume-calculator" label="Calculate Concrete Volume" />
-
 ## Applications
 
 - **Foundations**: Footings, pile caps, raft foundations, piles (cast-in-place or precast)
@@ -89,6 +173,36 @@ Concrete provides excellent thermal mass, absorbing heat during the day and rele
 - **Corrosion protection**: Epoxy-coated rebar, galvanized rebar, or stainless steel in marine/de-icing salt environments
 - **Curing**: Keep moist for minimum 7 days for full strength development
 
+## Frequently Asked Questions
+
+**What is the density of concrete?**
+Normal weight concrete has a density of about 2,400 kg/m³ (150 lb/ft³) when reinforced, and 2,300 kg/m³ (144 lb/ft³) when plain. Lightweight concrete ranges from 1,400 to 1,900 kg/m³.
+
+**How much does concrete weigh per cubic meter?**
+One cubic meter of normal weight reinforced concrete weighs approximately 2,400 kg (2.4 tonnes, 5,291 lb). Plain concrete weighs about 2,300 kg/m³.
+
+**How do I convert concrete density from kg/m³ to lb/ft³?**
+Divide kg/m³ by 16.018. For example, 2,400 kg/m³ ÷ 16.018 = 149.8 lb/ft³ ≈ 150 lb/ft³. To convert lb/ft³ to kg/m³ multiply by 16.018.
+
+**What is the unit weight of reinforced concrete?**
+The design unit weight of reinforced normal weight concrete is 24 kN/m³ (150 lb/ft³, 2,400 kg/m³). Plain concrete is about 23 kN/m³.
+
+**How much does a concrete slab weigh per square meter?**
+A 100 mm thick normal concrete slab weighs 240 kg/m²; 150 mm = 360 kg/m²; 200 mm = 480 kg/m² (using 2,400 kg/m³).
+
+**Is lightweight concrete lighter than normal concrete?**
+Yes — lightweight concrete (1,400-1,900 kg/m³) is typically 25-40% lighter than normal weight concrete (2,300-2,400 kg/m³). See the [Lightweight Concrete page](/materials/concrete-lightweight) for details.
+
+## Related Tools & Guides
+
+- [Concrete Volume Calculator](/tools/concrete-volume-calculator) — volume of slabs, footings, walls
+- [Density Calculator](/tools/density-calculator) — mass/volume density conversions
+- [Material Volume Calculator](/tools/material-volume-calculator) — general material volume
+- [Lightweight Concrete](/materials/concrete-lightweight) — density and properties of LWAC
+- [Steel Material Properties](/guides/steel-material-properties) — rebar and structural steel data
+- [Material Strength Basics](/guides/material-strength-basics) — strength concepts for design
+- [Carbon Steel](/materials/carbon-steel) — density and properties of reinforcement steel
+
 ## Summary
 
-Normal weight concrete (density 2400 kg/m³ reinforced) is the most widely used construction material worldwide due to its high compressive strength, durability, and low cost. It must always be designed with steel reinforcement for tensile loads. Mix design, water-cement ratio, and proper curing determine both strength and durability. For lightweight applications (weight-saving, insulation), use lightweight concrete (1800 kg/m³) with expanded shale/clay aggregates.
+Normal weight concrete (density 2,400 kg/m³ reinforced, unit weight 24 kN/m³ / 150 lb/ft³) is the most widely used construction material worldwide due to its high compressive strength, durability, and low cost. It must always be designed with steel reinforcement for tensile loads. Mix design, water-cement ratio, and proper curing determine both strength and durability. For weight-saving and insulation applications, use lightweight concrete (1,800 kg/m³) with expanded shale/clay aggregates — see the [Lightweight Concrete page](/materials/concrete-lightweight).

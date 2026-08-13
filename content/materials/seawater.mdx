@@ -3,10 +3,12 @@ title: "Seawater"
 description: "Seawater properties, density (1025 kg/m³), salinity effects on density and viscosity, freezing point depression, and engineering implications for marine pipelines, desalination, and offshore structures."
 category: "Fluid"
 keywords: ["seawater density", "seawater properties", "salt water density", "ocean water", "seawater viscosity"]
-updated: "2026-07-29"
+updated: "2026-08-13"
 related:
   - fluid-density-calculator
+  - density-calculator
   - pipe-flow-calculator
+  - pipe-velocity-calculator
   - pressure-drop-calculator
 ---
 
@@ -46,7 +48,68 @@ Seawater density increases with salinity (~0.7 kg/m³ per PSU) and decreases wit
 Warm surface seawater can be ~1023 kg/m³, while cold deep water is ~1028 kg/m³. This density difference drives thermohaline circulation (the global ocean conveyor belt). Engineering systems drawing seawater must consider depth and temperature effects on density and viscosity.
 </Callout>
 
+## Specific Gravity
+
+Specific gravity is the density ratio to fresh water at 4°C (1000 kg/m³):
+
+<Formula>SG = ρ_seawater / ρ_water = 1025 / 1000 = 1.025</Formula>
+
+Seawater has SG ≈ 1.025 at 20°C/35 PSU, ranging from ~1.020 in warm, low-salinity coastal water (e.g., Baltic ~1.005) to ~1.028 in cold open ocean or high-salinity basins (e.g., Red Sea up to 1.030). This 0.5-3% range is small for floatation but essential for precise buoyancy, cargo load lines (load line rules use density 1.025 t/m³), and desalination osmotic pressure estimates.
+
+## Unit Weight
+
+Unit weight (weight density) is the weight per unit volume: γ = ρ × g.
+
+<Formula>γ = 1025 kg/m³ × 9.81 m/s² ≈ 10.06 kN/m³ (64.0 lb/ft³)</Formula>
+
+| Condition | Density (kg/m³) | Unit Weight (kN/m³) | Unit Weight (lb/ft³) |
+|---|---|---|---|
+| Fresh water (4°C) | 1000 | 9.81 | 62.4 |
+| Seawater 35 PSU, 20°C | 1025 | 10.06 | 64.0 |
+| Seawater 35 PSU, 0°C | 1028 | 10.08 | 64.2 |
+| Deep cold seawater | 1027-1028 | 10.08 | 64.1 |
+
+Hydrostatic pressure at depth: P = ρgh — at 10 m seawater ≈ 100.6 kPa (14.6 psi), about 2.5% higher than fresh water. For a subsea pipeline at 100 m depth the external pressure is ~1.0 MPa (10 bar) of seawater head.
+
+## Unit Conversion Reference
+
+| Quantity | Conversion |
+|---|---|
+| Density | 1025 kg/m³ = 1.025 g/cm³ = 64.0 lb/ft³ |
+| 1 kg/m³ | = 0.06243 lb/ft³ |
+| 1 lb/ft³ | = 16.018 kg/m³ |
+| Salinity | 35 PSU = 35 g/kg = 3.5% by mass |
+| Pressure head | 1 m seawater = 10.06 kPa = 1.46 psi |
+| 1 m water | = 9.81 kPa = 1.42 psi |
+
+Example: a desalination intake pump lifting 500 m³/h of seawater 20 m requires head = 20 m × 1.025 = 20.5 m fresh-water equivalent — a small but real correction for pump selection. Mass flow = 500 m³/h × 1025 kg/m³ = 512,500 kg/h ≈ 142 kg/s.
+
+## Related Calculator
+
+Use the [Fluid Density Calculator](/tools/fluid-density-calculator) for saltwater density at different salinities/temperatures, the [Density Calculator](/tools/density-calculator) for general mass-volume conversions, the [Pipe Flow Calculator](/tools/pipe-flow-calculator) for seawater line sizing, and the [Pipe Velocity Calculator](/tools/pipe-velocity-calculator) to check erosion velocities in copper-nickel and FRP lines.
+
+## Frequently Asked Questions
+
+**What is the density of seawater?**
+About 1025 kg/m³ at 20°C and 35 PSU salinity — 2.5% denser than fresh water. Cold deep ocean water reaches 1027-1028 kg/m³; warm coastal water can be 1020-1024 kg/m³.
+
+**What is the specific gravity of seawater?**
+Approximately 1.025, ranging from 1.005 (Baltic Sea) to 1.030 (Red Sea). SG = density relative to fresh water at 4°C.
+
+**What is the unit weight of seawater?**
+About 10.06 kN/m³ (64.0 lb/ft³) — use this instead of 9.81 kN/m³ for hydrostatic pressure, buoyancy, and pipe stress calculations in marine systems.
+
+**Why is seawater denser than fresh water?**
+Dissolved salts (mostly NaCl, ~35 g/kg) add mass without significantly changing volume. Each additional PSU of salinity raises density by about 0.7 kg/m³.
+
+**How do I convert seawater density to lb/ft³?**
+Multiply kg/m³ by 0.06243: 1025 × 0.06243 = 64.0 lb/ft³. Conversely multiply lb/ft³ by 16.018 to get kg/m³.
+
+**What pressure does 100 m of seawater exert?**
+P = ρgh = 1025 × 9.81 × 100 ≈ 1.006 MPa ≈ 10.1 bar ≈ 146 psi — about 2.5% higher than fresh water at the same depth.
+
 ## Engineering Implications
+
 
 ### Marine Piping & Pumping
 - Use 1025 kg/m³ density for pump head/power calculations (not 1000)

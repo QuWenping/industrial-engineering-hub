@@ -1,13 +1,16 @@
 ---
 title: "Process Plant Layout Fundamentals"
-description: "Principles of process plant layout including equipment spacing, safety distances, pipe routing, maintenance access, HSE requirements, and plot planning."
+description: "Process plant layout principles: equipment spacing, safety distances, plot plan development, pipe rack sizing, tank farm layout, pipe routing, maintenance access, and HSE requirements with typical spacing tables."
 category: "Process Engineering"
-keywords: ["plant layout", "process plant design", "equipment spacing", "plot plan", "safety distances", "pipe routing"]
-updated: "2026-07-29"
+keywords: ["plant layout", "process plant design", "equipment spacing", "plot plan", "safety distances", "pipe routing", "tank farm layout", "pipe rack design"]
+updated: "2026-08-13"
 related:
   - "/guides/understanding-pid-diagrams"
   - "/guides/pressure-vessel-design"
   - tank-weight-calculator
+  - "/guides/tank-design-basics"
+  - "/guides/pipe-stress-analysis-basics"
+  - "/guides/safety-relief-valve-selection"
 ---
 
 ## Plant Layout Objectives
@@ -45,9 +48,17 @@ These are typical minimums — actual distances depend on fire zone classificati
 Equipment spacing tables show minimums. In congested plants, adding even 1-2m beyond minimum dramatically improves safety and maintenance. Over-congested plants cause accidents, make maintenance expensive, and hinder future expansion.
 </Callout>
 
-## Process Unit Layout
+## Equipment Layout Types
 
-Arrange equipment in process flow sequence:
+Process units are typically arranged in one of three basic geometries, chosen by site shape, process flow, and expansion plans:
+
+| Layout Type | Description | Best For |
+|---|---|---|
+| **In-line / straight** | Equipment in one or two parallel rows along a pipe rack | Linear processes, narrow sites |
+| **U-shaped** | Equipment wraps around a central pipe rack bay | Compact sites, shared utility runs |
+| **L-shaped / block** | Units arranged around a central plot with common battery limit | Multi-unit complexes, staged construction |
+
+Within the unit, arrange equipment in process flow sequence:
 
 1. **Feed area** (tank farm, feed pumps, incoming pipelines)
 2. **Reaction section** (reactors, furnaces, high-pressure equipment)
@@ -74,6 +85,19 @@ Place heavier equipment (reactors, columns) near pipe rack center; lighter equip
 If pumps take suction from a vessel, the vessel must be elevated enough to provide NPSH margin. This frequently dictates 5-15m elevation for reflux drums, vacuum equipment, and hot/volatile fluids. Always calculate NPSH early — it's much cheaper to set vessel elevation in design than to add booster pumps later.
 </Callout>
 
+## Tank Farm Layout
+
+Tank farms for flammable liquids follow API 650 (atmospheric tanks), API 653 (inspection), and NFPA 30 (flammable/combustible liquids) requirements:
+
+- **Tank-to-tank spacing** within a dike: typically 0.25 × diameter of the larger tank, minimum 1m; for floating-roof tanks larger spacing is common
+- **Dike capacity**: 110% of the largest tank volume (100% plus freeboard) to contain a full tank failure; walls 1-2m high
+- **Dike floor** sloped to a remote impounding sump; drains normally closed with a valve
+- **Spacing to property line / public area**: 15-50m depending on tank size and liquid class (NFPA 30 Table 22.4.1.1 gives minimum distances)
+- **Firefighting access**: ring road around dikes; hydrants within 45-60m; foam monitors for large tanks
+- **Separation between tank groups**: dikes separated by at least 7.5m fire break, or per company standard
+
+See [Tank Design Basics](/guides/tank-design-basics) for tank sizing and [Tank Weight Calculator](/tools/tank-weight-calculator) for shell/roof weight estimates during layout studies.
+
 ## Pipe Racks and Pipe Routing
 
 The pipe rack is the backbone of the plant, carrying process pipes, utilities, and cables between units.
@@ -96,7 +120,7 @@ The pipe rack is the backbone of the plant, carrying process pipes, utilities, a
 7. **Avoid pocketing** — don't create low points that trap liquid in gas lines or high points that trap air in liquid lines
 
 <Callout type="tip" title="Pipe Rack Pipe Spacing" severity="info">
-Pipe spacing on racks must allow for flange OD, insulation thickness, and wrench access. Typical spacing: nominal pipe diameter + 25mm minimum between pipe ODs. Large lines go outside; small lines in middle.
+Pipe spacing on racks must allow for flange OD, insulation thickness, and wrench access. Typical spacing: nominal pipe diameter + 25mm minimum between pipe ODs. Large lines go outside; small lines in middle. For support span and hanger selection see the [Pipe Support Spacing guide](/guides/pipe-support-spacing); for thermal stress and flexibility see the [Pipe Stress Analysis Basics guide](/guides/pipe-stress-analysis-basics).
 </Callout>
 
 ## Safety Considerations
@@ -153,6 +177,49 @@ Utilities (steam, cooling water, compressed air, instrument air, electricity, ni
 
 Provide utility take-offs with isolation at each unit battery limit.
 
+## Layout Design Deliverables
+
+The layout discipline produces a standard set of documents at each design stage:
+
+| Deliverable | Content | Stage |
+|---|---|---|
+| **Plot Plan** | Overall site arrangement, units, roads, tank farm, utilities | FEED/basic design |
+| **Equipment Layout** | Equipment positions and elevations per unit | Detailed design |
+| **Piping Layout / Plan** | Pipe rack, main headers, major routing | Detailed design |
+| **Pipe Stress Isometrics** | Critical lines with supports and anchors | Detailed design |
+| **Hazardous Area Drawings** | Zone classification extents | Basic design |
+| **Fire Protection Layout** | Hydrants, monitors, deluge coverage | Detailed design |
+| **Escape Route Plan** | Egress, muster points, signage | Detailed design |
+
+These deliverables are reviewed progressively at 30%, 60%, and 90% model reviews with operations, maintenance, construction, and HSE.
+
+## Unit Conversion Reference
+
+Plant layout distances are specified in meters on metric projects and feet on US projects. Common conversions:
+
+| Quantity | Conversion |
+|---|---|
+| Length | 1 m = 3.2808 ft; 1 ft = 0.3048 m |
+| Equipment spacing | 1.5-3 m = 5-10 ft; 15-30 m = 50-100 ft |
+| Dike height | 1-2 m = 3.3-6.6 ft |
+| Road width | 6 m = 19.7 ft (minimum fire access) |
+| Area | 1 m² = 10.764 ft² |
+
+**Example**: a 15 m fired-heater setback = 15 × 3.2808 ≈ 49 ft; a 6 m ring road = 19.7 ft. Convert layout distances to one system before comparing against NFPA 30 and API spacing tables.
+
+## Codes, Standards and References
+
+| Standard | Application |
+|---|---|
+| API 752 / 753 / 754 | Siting of occupied buildings, permanent and portable structures |
+| NFPA 30 | Flammable and combustible liquids storage and tank spacing |
+| NFPA 58 | LPG storage and handling |
+| NFPA 68 / 69 | Deflagration venting and explosion prevention |
+| OSHA 1910.119 | Process safety management, facility siting |
+| IEC 60079-10 | Hazardous area classification |
+| ASME B31.3 | Process piping (spacing, routing, supports) |
+| API 650 / 653 | Atmospheric storage tanks |
+
 ## Environmental and Regulatory Requirements
 
 - **Noise control**: Limit plant boundary noise to 55-65 dBA (per local regulations)
@@ -181,6 +248,35 @@ For cost and schedule efficiency, consider modular construction:
 - **Transport limits**: Modules limited by road transport (typically 4-5m wide, 30m long, 100-500 tons)
 - **Site assembly**: Bolt-up connections between modules
 - Cost savings: 10-25% for modular construction vs stick-built, with better quality
+
+## Frequently Asked Questions
+
+**What is the minimum distance between process equipment?**
+Typical minimum spacing between adjacent process vessels is 1.5-3m centerline; pumps 1.0-1.5m; fired heaters and compressors 15-30m from other equipment. Exact values depend on fire zone, company standards, and applicable codes (API, NFPA, OSHA).
+
+**How wide should a pipe rack be?**
+Estimate rack width as the number of pipes × 0.3m spacing plus 20% future spare. Typical process unit racks are 6-12m wide with 3-4 levels.
+
+**What determines the elevation of a reflux drum?**
+Net positive suction head (NPSH) for the pump taking suction from the drum. Reflux drums are typically elevated 5-10m above grade so pumps have sufficient NPSH margin.
+
+**What is a plot plan in plant design?**
+A plot plan is the overall site arrangement drawing showing unit boundaries, equipment, roads, tank farms, utilities, and future expansion space. It is the master document for plant layout.
+
+**How far apart should storage tanks be?**
+Within a dike, tanks are typically spaced at 0.25 × diameter (minimum 1m). Distance to property lines and public areas ranges 15-50m depending on tank size and liquid class per NFPA 30.
+
+**What is the dike capacity requirement for storage tanks?**
+Dikes must contain 110% of the largest tank volume (100% plus freeboard) so a full tank failure is contained. Walls are typically 1-2m high.
+
+## Related Guides and Tools
+
+- [Understanding P&ID Diagrams](/guides/understanding-pid-diagrams) — the starting document for layout
+- [Pressure Vessel Design](/guides/pressure-vessel-design) — vessel geometry and sizing
+- [Tank Design Basics](/guides/tank-design-basics) — atmospheric tank design
+- [Pipe Stress Analysis Basics](/guides/pipe-stress-analysis-basics) — routing flexibility and supports
+- [Safety Relief Valve Selection](/guides/safety-relief-valve-selection) — relief discharge placement
+- [Tank Weight Calculator](/tools/tank-weight-calculator) — tank weight during layout studies
 
 ## Layout Checklist (Key Items)
 

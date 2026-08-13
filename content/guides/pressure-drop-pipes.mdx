@@ -9,7 +9,15 @@ related:
   - darcy-weisbach-calculator
   - friction-loss-calculator
   - "/tools/reynolds-number-calculator"
+  - pipe-flow-calculator
+  - pipe-velocity-calculator
+  - pipe-diameter-calculator
+  - pressure-loss-calculator
+  - flow-rate-calculator
+  - "/guides/pipe-support-spacing"
+  - "/guides/reynolds-number-guide"
 ---
+  - pipe-flow-calculator
 
 ## Introduction to Pressure Drop
 
@@ -21,7 +29,7 @@ There are two primary methods for calculating pressure drop in pipes:
 2. **Hazen-Williams formula** — simpler, empirical method for water only
 
 <Callout type="info" title="When to use which">
-The Darcy-Weisbach equation is the most universally accurate method and works for all Newtonian fluids. The Hazen-Williams formula is restricted to water at typical ambient temperatures (40-75°F / 5-25°C) but is simpler for water distribution and fire protection design.
+The Darcy-Weisbach equation is the most universally accurate method and works for all Newtonian fluids. The Hazen-Williams formula is restricted to water at typical ambient temperatures (40-75°F / 5-25°C) but is simpler for water distribution and fire protection design. Apply the equations with the [Pressure Drop Calculator](/tools/pressure-loss-calculator) and [Pressure Loss Calculator](/tools/pressure-loss-calculator); sizing inputs come from the [Pipe Velocity Calculator](/tools/pipe-velocity-calculator), [Pipe Flow Calculator](/tools/pipe-flow-calculator), [Pipe Diameter Calculator](/tools/pipe-diameter-calculator) and [Flow Rate Calculator](/tools/flow-rate-calculator).
 </Callout>
 
 ## The Darcy-Weisbach Equation
@@ -32,7 +40,7 @@ The fundamental equation for pressure drop in a straight pipe is:
 
 Where:
 - **ΔP** = pressure drop (Pa)
-- **f** = Darcy friction factor (dimensionless)
+- **f** = Darcy friction factor (dimensionless) (depends on the flow regime — see the [Reynolds Number Guide](/guides/reynolds-number-guide))
 - **L** = pipe length (m)
 - **D** = pipe inner diameter (m)
 - **ρ** = fluid density (kg/m³)

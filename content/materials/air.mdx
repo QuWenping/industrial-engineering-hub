@@ -3,12 +3,14 @@ title: "Air (20°C, 1 atm)"
 description: "Dry air properties at standard conditions, density (1.204 kg/m³), ideal gas behavior, viscosity, humidity effects, and engineering applications in HVAC, pneumatics, and aerodynamics."
 category: "Gas"
 keywords: ["air density", "air properties", "standard air", "dry air density", "air viscosity", "ideal gas air"]
-updated: "2026-07-29"
+updated: "2026-08-13"
 related:
   - density-calculator
   - flow-rate-calculator
   - pressure-drop-calculator
-  - compressible-flow-calculator
+  - "/guides/compressible-flow-basics"
+  - fluid-density-calculator
+  - pipe-flow-calculator
 ---
 
 ## Overview
@@ -46,7 +48,50 @@ Air is the most commonly handled gas in engineering — used in HVAC, pneumatics
 At standard conditions, air (1.2 kg/m³) is approximately 830 times less dense than water (1000 kg/m³). This enormous density difference is why buoyancy, pressure drop, and heat transfer equations all behave very differently in air systems vs liquid systems. Always use compressible flow equations for air moving at significant velocity or across pressure changes &gt;~10%.
 </Callout>
 
+## Specific Gravity
+
+For gases, specific gravity is referenced to air itself (not water): the ratio of gas density to dry air density at the same conditions. By definition, dry air has SG = 1.000.
+
+| Gas | Specific Gravity (vs air) |
+|---|---|
+| Air (dry) | 1.000 |
+| Methane | 0.554 |
+| Natural gas (typical) | 0.60-0.70 |
+| Steam (100°C, 1 atm) | 0.60 |
+| Carbon dioxide | 1.52 |
+| Propane | 1.52 |
+
+Air is denser than methane and natural gas, which is why leaked natural gas rises and dissipates — a key ventilation design consideration for compressor rooms and gas handling areas.
+
+## Unit Weight
+
+Unit weight (weight density) is the weight per unit volume: γ = ρ × g.
+
+<Formula>γ = 1.204 kg/m³ × 9.81 m/s² ≈ 11.8 N/m³ (0.0752 lb/ft³) at 20°C, 1 atm</Formula>
+
+| Condition | Density (kg/m³) | Unit Weight (N/m³) | Unit Weight (lb/ft³) |
+|---|---|---|---|
+| 0°C (STP) | 1.293 | 12.7 | 0.0807 |
+| 15°C (ISO) | 1.225 | 12.0 | 0.0765 |
+| 20°C (NTP) | 1.204 | 11.8 | 0.0752 |
+| 25°C (SATP) | 1.184 | 11.6 | 0.0739 |
+
+The low unit weight of air explains why hydrostatic pressure in air systems is negligible — a 100 m air column exerts only ~1.2 kPa, versus ~981 kPa for water.
+
+## Unit Conversion Reference
+
+| Quantity | Conversion |
+|---|---|
+| Density | 1.204 kg/m³ = 0.001204 g/cm³ = 0.0752 lb/ft³ |
+| 1 kg/m³ | = 0.06243 lb/ft³ |
+| 1 lb/ft³ | = 16.018 kg/m³ |
+| 1 atm | = 101.325 kPa = 14.696 psi = 1.01325 bar |
+| Standard airflow | 1 CFM = 0.4719 L/s = 0.000472 m³/s |
+
+Volume flow conversions are critical in HVAC: a 10,000 CFM fan moves 4.72 m³/s. Mass flow = volume flow × density — always correct for temperature and pressure when converting standard flow (SCFM) to actual flow (ACFM): ρ_actual = ρ_standard × (P_actual/P_standard) × (T_standard/T_actual).
+
 ## Density Variation with Conditions
+
 
 Ideal gas law: ρ = P / (R·T) where P is absolute pressure (Pa), R = 287 J/kg·K, T is absolute temperature (K).
 
@@ -110,8 +155,37 @@ Humidity effect is small for most engineering calculations but matters for preci
 For HVAC ductwork and low-pressure pneumatics (pressure changes &lt;~10%), air can be treated as incompressible with the constant density value. For velocities above 100 m/s, fans with significant pressure rise, or compressed air at high pressure, use compressible flow (isothermal or isentropic) equations.
 </Callout>
 
-<Calculator id="compressible-flow-calculator" label="Compressible Flow Calculator" />
+<Calculator id="density-calculator" label="Density Calculator" />
+
+## Related Calculator
+
+Beyond the [Density Calculator](/tools/density-calculator) above, use the [Fluid Density Calculator](/tools/fluid-density-calculator) for air at non-standard temperature and pressure, the [Flow Rate Calculator](/tools/flow-rate-calculator) for duct and pipe flow, the [Pressure Drop Calculator](/tools/pressure-drop-calculator) for duct and pneumatic line losses, and the [Pipe Flow Calculator](/tools/pipe-flow-calculator) for compressible air line sizing.
+
+## Fluid Properties
+
+Air is the reference fluid for gas calculations across the site. Compare air with other fluids: [Natural Gas Density & Properties](/materials/natural-gas), [Seawater Properties](/materials/seawater), and [Water Hammer Analysis](/guides/water-hammer-analysis) for liquid transients. For piping design, see [Pipe Flow Engineering](/guides/pipe-flow-engineering) and the [Reynolds Number Guide](/guides/reynolds-number-guide).
+
+## Frequently Asked Questions
+
+**What is the density of air at standard conditions?**
+1.204 kg/m³ at 20°C and 101.325 kPa (NTP), 1.225 kg/m³ at 15°C (ISO), and 1.293 kg/m³ at 0°C (STP). Use the value matching your standard — HVAC designers normally use 1.204 kg/m³.
+
+**What is the specific gravity of air?**
+1.000 by definition, since gas specific gravity is referenced to dry air. This makes it easy to compare: natural gas (0.6) is lighter than air; propane (1.52) is heavier.
+
+**What is the unit weight of air?**
+About 11.8 N/m³ (0.0752 lb/ft³) at 20°C. Multiply density by 9.81 m/s². This low value makes hydrostatic pressure effects negligible in air systems.
+
+**How does air density change with temperature and pressure?**
+By the ideal gas law ρ = P/(R·T). Density increases linearly with absolute pressure and decreases with absolute temperature: from 1.395 kg/m³ at -20°C to 0.746 kg/m³ at 200°C; from 1.204 kg/m³ at atmospheric to 13.0 kg/m³ at 10 bar gauge.
+
+**Why is moist air less dense than dry air?**
+Water vapor (MW 18) is lighter than nitrogen/oxygen (MW 29). At 100% relative humidity and 20°C, air density drops about 0.8% (1.194 vs 1.204 kg/m³). Small for most calculations but significant for precision psychrometrics.
+
+**How do I convert air density kg/m³ to lb/ft³?**
+Multiply by 0.06243: 1.204 × 0.06243 = 0.0752 lb/ft³. Conversely multiply lb/ft³ by 16.018 to get kg/m³.
 
 ## Summary
+
 
 Dry air at standard conditions has a density of 1.204 kg/m³ (NTP) or 1.225 kg/m³ (ISA). As an ideal gas, its density varies with P/RT — increasing with pressure and decreasing with temperature. This value is fundamental to HVAC load calculations, pneumatic system design, aerodynamic forces, and fan/pump sizing. Humidity effects are small for most engineering purposes except precision psychrometric calculations.

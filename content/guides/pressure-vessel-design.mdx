@@ -1,13 +1,18 @@
 ---
 title: "Pressure Vessel Design Basics"
-description: "Introduction to ASME Section VIII pressure vessel design: shell thickness, head selection, nozzle reinforcement, MAWP calculation, and inspection requirements."
+description: "ASME Section VIII pressure vessel design: codes, shell thickness formulas, head types, nozzle reinforcement, materials, design workflow, MAWP and hydrotest requirements."
 category: "Mechanical Engineering"
-keywords: ["pressure vessel", "ASME VIII", "shell thickness", "MAWP", "nozzle reinforcement", "hydrotest"]
-updated: "2026-08-07"
+keywords: ["pressure vessel design", "ASME VIII", "shell thickness", "MAWP", "nozzle reinforcement", "hydrotest", "vessel head", "design pressure"]
+updated: "2026-08-13"
 related:
   - pressure-vessel-volume-calculator
   - tank-weight-calculator
+  - storage-capacity-calculator
+  - cylinder-volume-calculator
+  - sphere-volume-calculator
   - "/guides/tank-design-basics"
+  - tank-surface-area-calculator
+  - liquid-volume-calculator
 ---
 
 ## Codes and Standards
@@ -33,6 +38,8 @@ Pressure vessel design is a regulated engineering activity requiring professiona
 - **MAWP (Maximum Allowable Working Pressure)**: The pressure at which the vessel is actually rated, determined by the weakest component.
 - **Design temperature**: Maximum (or minimum) metal temperature expected. Affects material allowable stress.
 - **Minimum design metal temperature (MDMT)**: Governs brittle fracture; Charpy impact testing may be required.
+
+For a practical introduction to tank and vessel geometry, capacity and weight estimation, see the [Tank Design Basics](/guides/tank-design-basics) guide and the [Storage Capacity Calculator](/tools/storage-capacity-calculator).
 
 ## Cylindrical Shell Design — Internal Pressure
 
@@ -71,6 +78,20 @@ t = (1.5 × 1000) / (138 × 0.85 − 0.6 × 1.5) + 3
 = 12.9 + 3 = 15.9 mm
 
 Use 16 mm plate. At standard 16mm nominal plate, MAWP = (S × E × t<sub>nom</sub>) / (R + 0.6 × t<sub>nom</sub>).
+
+## Unit Conversion Reference
+
+Pressure vessel calculations mix SI and US customary units. Convert consistently before applying UG-27/UG-32:
+
+| Quantity | Conversion |
+|---|---|
+| Pressure | 1 MPa = 10 bar = 145.04 psi; 1 bar = 100 kPa = 14.50 psi |
+| Stress | 1 MPa = 0.1450 ksi; 1 ksi = 6.895 MPa |
+| Length | 1 mm = 0.03937 in; 1 in = 25.4 mm |
+| Temperature | °F = (°C × 9/5) + 32; °C = (°F − 32) × 5/9 |
+| Corrosion allowance | 3 mm ≈ 1/8 in |
+
+**Example**: 15 bar design pressure = 1.5 MPa = 217.6 psi. A 3 mm corrosion allowance is roughly 1/8 in. When comparing MAWP against a nameplate rating, always convert to the same unit first.
 
 ## Head Design
 
@@ -148,6 +169,8 @@ WRC 107/537 (now WRC 297/328) bulletins provide methods to calculate local shell
 | 304 SS | SA-240-304 | -254°C (solution treated) | Cryogenic, corrosion |
 | 316 SS | SA-240-316 | -254°C | Corrosion, marine |
 
+For dead load and weight estimation of the shell, heads and contents, use the [Tank Weight Calculator](/tools/tank-weight-calculator) and [Liquid Volume Calculator](/tools/liquid-volume-calculator); surface area for heat transfer and insulation comes from the [Tank Surface Area Calculator](/tools/tank-surface-area-calculator).
+
 ## Testing Requirements
 
 ### Hydrostatic Test
@@ -187,6 +210,51 @@ After installation, pressure vessels must be inspected periodically per API 510 
 - Thickness testing (UT) at known corrosion points
 - Risk-Based Inspection (RBI) programs can extend intervals
 - Typical interval: 5 years internal, 5 years external (varies by jurisdiction)
+
+## Pressure Vessel Design Workflow
+
+A typical ASME Section VIII Div 1 vessel design project follows these steps:
+
+1. **Define the service**: fluid composition, operating pressure and temperature, corrosive constituents, required life.
+2. **Set design conditions**: design pressure (operating + margin, typically ≥ operating + 1.8 bar or +10%), design temperature, and MDMT.
+3. **Select material**: choose plate/specification from ASME II-D with allowable stress at the design temperature; check MDMT and corrosion compatibility.
+4. **Fix geometry**: vessel diameter and length from process volume requirements (see [Pressure Vessel Volume Calculator](/tools/pressure-vessel-volume-calculator)); select head type.
+5. **Calculate shell and head thickness** per UG-27/UG-32, then round up to commercial plate thickness and add corrosion allowance.
+6. **Add corrosion allowance and re-check** the thinned (end-of-life) condition — the vessel must be adequate at the end of its design life, not just new.
+7. **Design nozzles and reinforcement** per UG-37 (area replacement), including manways and instrument connections.
+8. **Check external loads**: wind, seismic, piping nozzle loads (WRC 107/537), and external pressure/vacuum if applicable.
+9. **Specify fabrication details**: weld joint categories, joint efficiency, PWHT, NDE (RT/UT/MT/PT) and tolerances.
+10. **Verify with hydrostatic/pneumatic test** at 1.3 × MAWP and document the design file for ASME U-stamp certification.
+
+Each step feeds the next — changing material, head type, or corrosion allowance early is cheap; changing it after fabrication drawings are issued is expensive.
+
+## Common Design Errors and Pitfalls
+
+- **Using operating pressure as design pressure**: no margin for surges, relief valve set point tolerance, or fire cases. Design pressure must be defined independently of operating pressure.
+- **Forgetting corrosion allowance in the calculation**: thickness computed for the new condition only can be undersized at end of life. Subtract CA from nominal thickness before checking.
+- **Wrong joint efficiency**: claiming E = 1.0 without full RT, or using an inappropriate joint category for the weld configuration.
+- **Head type chosen by cost only**: a flat head may be cheap to form but dramatically thicker than an elliptical head; compare total cost including material.
+- **Nozzle openings without reinforcement check**: even a small instrument connection removes load-bearing material and must be checked per UG-37.
+- **Ignoring external pressure**: a vessel designed only for internal pressure can buckle under vacuum, wind, or hydrostatic test with partial fill.
+- **Material allowable stress at wrong temperature**: allowable stress drops with temperature; always use the value at the design temperature from ASME II-D.
+- **Skipping MDMT assessment**: brittle fracture risk at low ambient temperature requires Charpy testing or material upgrading.
+
+## Frequently Asked Questions
+
+**What is the difference between design pressure and MAWP?**
+Design pressure is the pressure used for calculating the required thickness — typically the maximum operating pressure plus margin. MAWP (Maximum Allowable Working Pressure) is the maximum pressure at which the completed vessel may be operated, calculated from the actual (rounded-up) thickness of the weakest component. MAWP is normally higher than design pressure.
+
+**What is a corrosion allowance and why does it matter?**
+Corrosion allowance (CA) is extra wall thickness added beyond the structural minimum to absorb metal loss from corrosion or erosion over the vessel life — commonly 1.5-3 mm for carbon steel. Thickness calculations must use t<sub>required</sub> + CA, and the vessel must remain adequate at the corroded condition.
+
+**Which head type should I use?**
+2:1 ellipsoidal is the default for most ASME vessels — good strength, moderate cost and depth. Hemispherical heads are used for high pressure where lower stress pays for the deeper forming. Torispherical (F&D) is chosen for low-pressure storage where shallow depth saves cost. Flat heads are limited to small openings and blind flanges.
+
+**Why is hydrostatic testing required?**
+The hydrostatic test at 1.3 × MAWP (Div 1) proves the vessel, welds, and nozzle attachments can contain pressure with a wide margin before service. The test also stresses the vessel above operating pressure, which helps reveal fabrication defects.
+
+**Can a vessel be repaired without re-certification?**
+Repairs must follow the rules of the original code (ASME NBIC or the jurisdiction), and typically require an authorized inspector. Major repairs may require re-rating and new documentation; never assume a repair is exempt.
 
 ## Summary
 
@@ -259,7 +327,7 @@ The exact formula is complex; the approximation 0.1 x D^3 is accurate to within 
 2:1 Elliptical is the default for most ASME vessels — good balance of strength, cost, and volume. Hemispherical is used for high-pressure vessels where the lower stress justifies the cost. Torispherical (F&D) is used for low-pressure storage tanks where shallow depth saves fabrication cost. Flat heads are only for small openings or where geometry constraints prevent curved heads.
 </Callout>
 
-## Frequently Asked Questions
+## Vessel Head Volume FAQ
 
 **How do you calculate ASME dished head volume?**
 For a 2:1 elliptical head: V = pi x D^3 / 24 (per head). For hemispherical: V = pi x D^3 / 12. For torispherical (F&D): V approx 0.1 x D^3. A 2m diameter vessel with 2:1 heads has 2.094 m3 total head volume (1.047 m3 per head).
@@ -275,7 +343,7 @@ For a 2:1 elliptical head with L = D (straight length equals diameter), heads ad
 
 ## Related Engineering Resources
 
-- [Pressure Vessel Engineering Hub](/tools/pressure-vessel-cluster) — Vessel and tank calculators
+- [Tank Design Basics](/guides/tank-design-basics) — Vessel and tank fundamentals
 - [Piping Engineering Guide](/guides/piping-engineering) — Piping system design
 - [Tank Volume Calculator](/tools/tank-volume-calculator) — Cylinder volume
 - [Cylinder Volume Calculator](/tools/cylinder-volume-calculator) — Simple cylinder

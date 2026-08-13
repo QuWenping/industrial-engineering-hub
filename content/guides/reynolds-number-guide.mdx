@@ -8,7 +8,11 @@ related:
   - pressure-drop-calculator
   - darcy-weisbach-calculator
   - pipe-velocity-calculator
+  - pipe-flow-calculator
+  - flow-rate-calculator
+  - pipe-diameter-calculator
   - "/guides/pressure-drop-pipes"
+  - pressure-loss-calculator
 ---
 
 ## What is Reynolds Number?
@@ -94,6 +98,10 @@ Heavy fuel oil at 20°C in same pipe at same velocity:
 
 ## How to Interpret Reynolds Number for Design
 
+Line layout interacts with the flow regime — see the [Pipe Support Spacing](/guides/pipe-support-spacing) guide — and overall line loss is estimated with the [Pressure Drop Calculator](/tools/pressure-drop-calculator).
+
+## How to Interpret Reynolds Number for Design
+
 | Re Range | Design Implication |
 |---|---|
 | < 500 | Very viscous; laminar; pressure drop linear with flow; may need PD pumps |
@@ -121,13 +129,13 @@ For pipe flow, Re = 2,300 is the classical upper limit for laminar flow, but wit
 ## Practical Design Implications
 
 ### 1. Pumping Power
-In turbulent flow, power ∝ Q³ (double flow → 8× power). In laminar flow, power ∝ Q² (double flow → 4× power). Increasing pipe diameter reduces power much more in turbulent systems.
+In turbulent flow, power ∝ Q³ (double flow → 8× power). In laminar flow, power ∝ Q² (double flow → 4× power). Increasing pipe diameter reduces power much more in turbulent systems. Estimate the pump duty with the [Pump Power Calculator](/tools/pump-power-calculator) and the flow regime impact with the [Pipe Flow Calculator](/tools/pipe-flow-calculator).
 
 ### 2. Heat Transfer
-Turbulent flow gives much higher heat transfer coefficients (5-10× laminar). For heat exchangers, turbulent flow is desirable — design for Re > 10,000 on both sides when possible.
+Turbulent flow gives much higher heat transfer coefficients (5-10× laminar). For heat exchangers, turbulent flow is desirable — design for Re > 10,000 on both sides when possible (see the [Heat Exchanger Calculator](/tools/heat-exchanger-calculator)).
 
 ### 3. Flow Measurement
-Orifice plates, venturis, and most DP meters require turbulent flow (Re > 10,000) for rated accuracy. At low Re, discharge coefficient changes unpredictably.
+Orifice plates, venturis, and most DP meters require turbulent flow (Re > 10,000) for rated accuracy. At low Re, discharge coefficient changes unpredictably. Convert meter readings between unit systems with the [Flow Rate Calculator](/tools/flow-rate-calculator).
 
 ### 4. Mixing
 In stirred tanks, Reynolds number based on impeller diameter determines mixing regime:
@@ -137,6 +145,8 @@ In stirred tanks, Reynolds number based on impeller diameter determines mixing r
 
 ### 5. Drag Reduction
 Adding small amounts of polymers can reduce turbulent drag by 50-70% by suppressing turbulent eddies. This is used in pipelines (Trans-Alaska pipeline uses this).
+
+Velocity and diameter inputs come from the [Pipe Velocity Calculator](/tools/pipe-velocity-calculator) and [Pipe Diameter Calculator](/tools/pipe-diameter-calculator); once the friction factor is known, estimate the line loss with the [Pressure Loss Calculator](/tools/pressure-loss-calculator).
 
 ## Reynolds Number and Friction Factor (Moody Chart)
 
@@ -149,6 +159,26 @@ The Moody chart plots f vs Re for various ε/D:
 - **Fully rough**: f depends on ε/D only (horizontal lines on Moody chart)
 
 <Calculator id="darcy-weisbach-calculator" label="Calculate Friction Factor" />
+
+## Frequently Asked Questions
+
+**How do I calculate Reynolds number?**
+Re = rho x v x D / mu, or Re = v x D / nu using kinematic viscosity. Use consistent SI units: density (kg/m3), velocity (m/s), pipe inner diameter (m), dynamic viscosity (Pa.s). Example: water at 2 m/s in a 100 mm pipe gives Re = 1000 x 2 x 0.1 / 0.001 = 200,000.
+
+**What is a good Reynolds number for pipe flow?**
+For most process piping, Re > 10,000 is desirable — fully turbulent flow with predictable friction and good heat transfer. Avoid the transition zone (2,300-4,000). For heat exchanger tubes, design for Re > 10,000 to maintain high heat transfer coefficients.
+
+**What does Reynolds number below 2,300 mean?**
+It means the flow is laminar — smooth parallel layers with a parabolic velocity profile, friction factor f = 64/Re, and pressure drop proportional to velocity (not v squared). Laminar flow is common for viscous fluids like heavy oils and polymers.
+
+**Why does the critical Reynolds number matter?**
+The critical Reynolds number (about 2,300 for pipe flow) marks the boundary between laminar and turbulent regimes. Designing in the transition zone is risky because friction factor and heat transfer are unpredictable there. The critical value differs by geometry: ~500,000 for a flat plate, ~2,000 for a sphere or cylinder.
+
+**Can Reynolds number be used for non-circular ducts?**
+Yes, replace diameter with hydraulic diameter D_h = 4A/P (four times cross-sectional area divided by wetted perimeter). For annuli, D_h = D_outer - D_inner. The critical Re remains approximately 2,300 for most duct shapes.
+
+**How does temperature affect Reynolds number?**
+Temperature changes viscosity far more than density. Hot fluids have lower viscosity, so Re rises with temperature — e.g., hot water has higher Re than cold water at the same velocity, meaning hot systems are more likely to be turbulent. For viscous oils, preheating is often used specifically to raise Re and reduce friction.
 
 ## Summary
 

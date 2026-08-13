@@ -5,8 +5,8 @@
   "priority": "P0",
   "description": "Calculate the weight of steel plates based on dimensions and material density. Used in structural design, fabrication, and cost estimation.",
   "seo": {
-    "title": "Steel Weight Calculator - Plate, Beam & Section Weight (kg)",
-    "description": "Calculate steel weight for plates, I-beams, H-beams, angles, pipes and rounds. Steel density table, formula and weight chart for fabrication and structural design.",
+    "title": "Steel Weight Calculator - Plate, Beam, Pipe & Section Weight (kg, lb)",
+    "description": "Steel weight calculator for plates, beams, angles, pipes and rounds. Steel density table, weight per meter chart, unit conversion and formula for fabrication and structural design.",
     "keyword": "steel weight calculator"
   },
   "formula": {
@@ -55,7 +55,7 @@
     "decimals": 2
   },
   "content": {
-    "introduction": "Calculate the weight of steel plates, beams, bars, pipes and structural sections from dimensions and material density. This calculator supports carbon steel, stainless steel, and other common engineering materials. Enter your dimensions and select a material to get instant weight results for fabrication, transportation planning, and cost estimation.",
+    "introduction": "Calculate the weight of steel plates, beams, bars, pipes and structural sections from dimensions and material density. This calculator supports carbon steel, stainless steel, and other common engineering materials. Enter your dimensions and select a material to get instant weight results for fabrication, transportation planning, and cost estimation. Results can be read directly in kilograms or pounds using the unit conversion table below.",
     "example": {
       "inputs": {
         "length": 1000,
@@ -94,6 +94,18 @@
       {
         "q": "How do you calculate steel angle weight?",
         "a": "Steel angle weight = (2 x leg_length - thickness) x thickness x length x 7.85 / 1000 (for equal leg angles in mm). For an L50x50x5 angle: (2x50 - 5) x 5 x 7.85 / 1000 = 3.73 kg/m. Use our calculator for precise results."
+      },
+      {
+        "q": "How much does a cubic meter of steel weigh?",
+        "a": "A cubic meter of carbon steel weighs approximately 7850 kg (7.85 tonnes). Stainless steel 304 is about 7930 kg/m3 and stainless 316 about 7990 kg/m3. This density is the basis for all steel weight calculations."
+      },
+      {
+        "q": "How do I convert steel weight from kg to pounds?",
+        "a": "Multiply the weight in kilograms by 2.20462 to get pounds. For example, 1000 kg of steel = 1000 x 2.20462 = 2204.6 lb. Our calculator results can be converted using the table in the Unit Conversion section."
+      },
+      {
+        "q": "How much does a 6mm steel plate weigh per square meter?",
+        "a": "A 6 mm carbon steel plate weighs 6 x 7.85 = 47.1 kg/m2. The quick rule is: plate weight per m2 = thickness (mm) x 7.85 kg/m2/mm for carbon steel."
       }
     ],
     "related": [
@@ -113,9 +125,27 @@
       "Cost estimation and material ordering",
       "Crane lift planning and rigging",
       "Bridge and building construction",
-      "Shipbuilding and offshore platforms"
+      "Shipbuilding and offshore platforms",
+      "Material takeoff and quantity surveying",
+      "Steel stock inventory management",
+      "Freight, export and import documentation",
+      "CNC cutting and fabrication cost estimation"
     ],
-    "formula_explanation": "Steel weight is calculated using the fundamental formula: Weight = Volume x Density. For a steel plate: W = Length x Width x Thickness x Density. The engine converts all dimensions to SI base units (meters) and multiplies by material density (kg/m3) to give weight in kilograms. For structural sections (I-beams, H-beams, angles), the cross-sectional area is multiplied by length and density."
+    "formula_explanation": "Steel weight is calculated using the fundamental formula: Weight = Volume x Density. For a steel plate: W = Length x Width x Thickness x Density. For pipes: W = pi/4 x (OD^2 - ID^2) x Length x Density. For solid rounds: W = pi/4 x D^2 x Length x Density. The engine converts all dimensions to SI base units (meters) and multiplies by material density (kg/m3) to give weight in kilograms.",
+    "sections": [
+      {
+        "heading": "Steel Density Reference Table",
+        "body": "Density is the only material property needed for a weight calculation. Standard design values:\n\n| Steel Grade | Density (kg/m3) | Density (lb/ft3) |\n|---|---|---|\n| Carbon steel (A36, S275, S355) | 7850 | 490 |\n| Low alloy steel (e.g. ASTM A572) | 7850 | 490 |\n| Stainless steel 304/304L | 7930 | 495 |\n| Stainless steel 316/316L | 7990 | 499 |\n| Stainless steel 410 | 7750 | 484 |\n| Tool steel | 7700 - 8100 | 481 - 506 |\n\nFor structural design always use the density of the specified grade, not a generic value. The 300-series stainless steels are roughly 1-2% denser than carbon steel, which matters on large fabricated structures."
+      },
+      {
+        "heading": "Weight Per Meter for Common Steel Sections",
+        "body": "For rolled sections, weight per meter is cross-sectional area x density. Common values (carbon steel, 7850 kg/m3):\n\n| Section | Weight (kg/m) |\n|---|---|\n| I-beam H200x200x8x12 | 50.5 |\n| I-beam H300x300x10x15 | 94.0 |\n| I-beam H500x300x11x18 | 119.0 |\n| Channel UPN 100 | 10.6 |\n| Angle L50x50x5 | 3.73 |\n| Angle L75x75x8 | 9.03 |\n| Round bar 20 mm dia | 2.47 |\n| Round bar 50 mm dia | 15.4 |\n| Pipe 114.3 x 6.3 mm | 16.8 |\n| Pipe 168.3 x 7.1 mm | 28.2 |\n| Steel plate 10 mm | 78.5 kg/m2 |\n\nSection properties should be verified from the manufacturer's table for exact values; these are standard theoretical weights."
+      },
+      {
+        "heading": "Unit Conversion for Steel Weight",
+        "body": "| Convert | Multiply by |\n|---|---|\n| kg to lb | 2.20462 |\n| lb to kg | 0.453592 |\n| tonne (t) to kg | 1000 |\n| kg/m to lb/ft | 0.671969 |\n| lb/ft to kg/m | 1.48816 |\n| kg/m2 to lb/ft2 | 0.204816 |\n\nExample: a 500 kg steel beam weighs 500 x 2.20462 = 1102 lb. A 10 mm plate is 78.5 kg/m2 = 78.5 x 0.2048 = 16.1 lb/ft2."
+      }
+    ]
   },
   "tests": [
     {

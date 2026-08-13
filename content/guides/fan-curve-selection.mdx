@@ -3,11 +3,14 @@ title: "Fan Selection and Fan Curve Basics"
 description: "How to select industrial fans: centrifugal vs axial, fan laws, system curves, operating point, stall/surge, efficiency, brake horsepower, and duct system effects."
 category: "HVAC"
 keywords: ["fan selection", "fan curve", "centrifugal fan", "axial fan", "fan laws", "fan brake horsepower", "fan system curve"]
-updated: "2026-07-29"
+updated: "2026-08-13"
 related:
   - pressure-drop-calculator
   - duct-sizing-basics
   - motor-power-calculator
+  - "/guides/motor-efficiency-guide"
+  - "/guides/engineering-unit-conversion"
+  - "/materials/air"
 ---
 
 ## Overview
@@ -169,6 +172,56 @@ For systems with variable load (VAV HVAC, demand-controlled ventilation, variabl
 
 VFD cost payback is typically 1-3 years on variable-duty fans, and VFDs also allow soft starting (reduces mechanical stress and inrush current).
 
+## Unit Conversion Reference
+
+| Quantity | Conversion |
+|---|---|
+| Flow | 1 m³/s = 2118.9 cfm; 1 m³/h = 0.5886 cfm |
+| Pressure | 1 Pa = 0.00402 in wg; 1 in wg = 249.1 Pa |
+| Pressure | 1 kPa = 4.02 in wg; 1 bar = 401.5 in wg |
+| Power | 1 hp = 0.746 kW; 1 kW = 1.341 hp |
+| Density | 1 kg/m³ = 0.06243 lb/ft³ |
+| Velocity | 1 m/s = 196.85 fpm |
+
+Example: a system requiring 2.5 m³/s and 1200 Pa equals 5,297 cfm at 4.83 in wg. Fan data sheets often mix SI and imperial — convert every value before applying the fan laws. Use the [Engineering Unit Conversion Guide](/guides/engineering-unit-conversion) for the complete reference.
+
+### Worked Example: Exhaust Fan Selection
+
+Select a fan for a paint shop exhausting 3.0 m³/s (6,360 cfm) through a 200 Pa duct system plus 150 Pa filter — total 350 Pa (1.41 in wg):
+
+1. **Flow & pressure**: Q = 3.0 m³/s; P_system = 350 Pa. Add 15% safety: design P = 400 Pa
+2. **Fan type**: 400 Pa is in the centrifugal BC/AF range (250-2000 Pa) → choose backward-curved centrifugal
+3. **Candidate curve**: pick a fan whose curve crosses Q = 3.0 m³/s at P ≈ 400 Pa near its peak efficiency (~80%)
+4. **BHP check** (SI): BHP = Q × P / (1000 × η_fan × η_drive) = 3.0 × 400 / (1000 × 0.80 × 1.0) = 1.5 kW
+5. **Motor sizing**: 1.5 kW × 1.15 service factor ≈ 1.75 kW → select 2.2 kW motor
+6. **Verify**: at 60 Hz, the fan speed for this curve may be ~1450 rpm; confirm with the [Pressure Drop Calculator](/tools/pressure-drop-calculator) that duct losses at design flow match the system curve used
+
+The selected operating point sits near peak efficiency, avoiding the low-flow stall region and the high-flow overload region. Confirm motor selection with the [Motor Power Calculator](/tools/motor-power-calculator) and [Motor Efficiency Guide](/guides/motor-efficiency-guide).
+
+## Frequently Asked Questions
+
+**How do I read a fan curve?**
+A fan curve plots static or total pressure (Y-axis) against volumetric flow (X-axis) at constant speed. The system curve (ΔP = K·Q²) is overlaid; the intersection is the operating point. Check where that point falls relative to the efficiency curve (target 70-85% region) and the power curve (avoid overloading).
+
+**What is the difference between static pressure and total pressure for fans?**
+Static pressure is what the fan must overcome against duct/equipment resistance; velocity pressure is the kinetic component (ρv²/2); total pressure = static + velocity. HVAC fans are typically rated in static pressure; industrial fans often in total pressure. Confirm which curve you are reading.
+
+**What are the fan laws?**
+For the same fan, flow ∝ speed, pressure ∝ speed², and power ∝ speed³. Doubling speed → 2× flow, 4× pressure, 8× power. They also apply across geometrically similar fans with diameter terms (Q ∝ D³N, P ∝ D²N², BHP ∝ D⁵N³).
+
+**Why do forward-curved fans overload motors?**
+Their power curve rises continuously with flow. If the system offers less resistance than designed (missing filters, open dampers), flow increases and power exceeds motor rating. Backward-curved/airfoil fans have non-overloading curves — power peaks mid-flow and drops beyond, so a properly sized motor is safe.
+
+**What is fan stall and surge?**
+At low flow, vaneaxial blade airflow separates (stall), causing pressure collapse, vibration, and noise; surge is a violent flow oscillation between fan and system. Select vaneaxial fans with 15-20% stall margin and never run them below the recommended flow range.
+
+**How does altitude affect fan performance?**
+Fan curves are for standard air (1.2 kg/m³). At altitude, air density drops (~0.98 kg/m³ at 2000 m), so the fan produces proportionally less pressure and power for the same volumetric flow — size the fan and motor using actual site density.
+
+**How much energy does a VFD save on a fan?**
+Power ∝ speed³: 80% speed = 51% power, 60% speed = 22% power. Compared to outlet dampers (which waste energy as added resistance), VFDs typically save 30-50% on variable-duty fans with 1-3 year payback.
+
 ## Summary
+
 
 Fan selection matches the fan's pressure-flow curve to the system's quadratic resistance curve (the operating point) near peak efficiency. Centrifugal fans (backward-curved/airfoil preferred for efficiency, radial for dirty air) handle medium-to-high pressure; axial fans (vaneaxial) handle high-volume low-to-medium pressure in compact inline space. Fan laws predict cubic power reduction with speed — VFDs deliver enormous savings on variable-duty systems. Watch for stall on vaneaxial fans (select with stall margin), overloading risk on forward-curved fans, and density corrections for altitude or high temperature. Always provide adequate straight duct at fan inlet/outlet to avoid performance loss from poor airflow.

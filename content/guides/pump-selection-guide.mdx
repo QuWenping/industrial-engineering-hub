@@ -9,7 +9,14 @@ related:
   - npsh-calculator
   - pump-sizing-calculator
   - "/tools/pump-efficiency-calculator"
+  - pump-head-calculator
+  - pump-energy-calculator
+  - pump-flow-calculator
+  - "/guides/positive-displacement-pumps"
+  - "/guides/centrifugal-pump-fundamentals"
+  - "/guides/pump-installation-commissioning"
 ---
+  - pump-head-calculator
 
 ## Introduction
 
@@ -33,11 +40,11 @@ The first decision is pump family. The table below summarizes typical applicatio
 | Capital cost | Lower | Higher |
 | Efficiency | 40 – 85% | 70 – 90% |
 
-Rule of thumb: **centrifugal for low-viscosity, high-flow, moderate-head** duties (water, hydrocarbons, chemicals). **PD for high viscosity, metering, or high pressure** (oils, polymers, dosing, hydraulics).
+Rule of thumb: **centrifugal for low-viscosity, high-flow, moderate-head** duties (water, hydrocarbons, chemicals) — see [Centrifugal Pump Fundamentals](/guides/centrifugal-pump-fundamentals). **PD for high viscosity, metering, or high pressure** (oils, polymers, dosing, hydraulics) — see [Positive Displacement Pumps](/guides/positive-displacement-pumps).
 
 ## The System Curve
 
-Any pump must be matched to the system it feeds. The system curve is the head the piping requires as a function of flow:
+Any pump must be matched to the system it feeds. Cross-check the duty point with the [Pump Head Calculator](/tools/pump-head-calculator), [Pump Flow Calculator](/tools/pump-flow-calculator) and [Pump Energy Calculator](/tools/pump-energy-calculator), and verify the margin with the [NPSH Calculator](/tools/npsh-calculator). The system curve is the head the piping requires as a function of flow:
 
 <Formula>H<sub>sys</sub> = H<sub>static</sub> + K × Q²</Formula>
 

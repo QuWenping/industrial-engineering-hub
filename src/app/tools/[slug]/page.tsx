@@ -183,6 +183,23 @@ export default async function CalculatorPage({ params }: Props) {
             </section>
           )}
 
+          {/* Extended Sections */}
+          {calc.content.sections && calc.content.sections.length > 0 && (
+            <>
+              {calc.content.sections.map((s, i) => (
+                <div key={i}>
+                  <section>
+                    <h2 className="text-xl font-bold text-navy mb-3">{s.heading}</h2>
+                    {s.body.split("\n").map((line, j) => (
+                      <p key={j} className="text-muted-foreground leading-relaxed mb-3">{line}</p>
+                    ))}
+                  </section>
+                  <Separator />
+                </div>
+              ))}
+            </>
+          )}
+
           {/* Applications */}
           {calc.content.applications && calc.content.applications.length > 0 && (
             <section>

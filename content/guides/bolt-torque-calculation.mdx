@@ -1,13 +1,14 @@
 ---
 title: "Bolt Torque Calculation Guide"
-description: "Calculate bolt tightening torque, preload, and clamping force using standard formulas including friction coefficients, torque-tension relationships, and bolt grades."
+description: "Bolt torque calculation: T=K×D×F formula, torque-tension relationship, friction coefficients, preload targets, bolt grades, worked examples, N·m to lb·ft conversion, flange bolt torque per ASME PCC-1, and FAQ."
 category: "Mechanical Engineering"
-keywords: ["bolt torque", "bolt preload", "torque calculation", "bolt tightening", "clamping force"]
-updated: "2026-07-29"
+keywords: ["bolt torque", "bolt torque calculator", "bolt preload", "torque calculation", "bolt tightening", "clamping force", "N·m to lb·ft", "bolt torque chart"]
+updated: "2026-08-13"
 related:
   - bolt-torque-calculator
   - "/guides/welding-symbols-basics"
   - "/guides/flange-rating-standards"
+  - "/guides/pressure-vessel-design"
 ---
 
 ## Why Torque Matters
@@ -58,6 +59,19 @@ cos(30°) = 0.866
 
 <Calculator id="bolt-torque-calculator" label="Bolt Torque Calculator" />
 
+## Thread and Collar Friction Coefficients
+
+| Surface Condition | Thread µ<sub>t</sub> | Collar µ<sub>c</sub> | Effective K |
+|---|---|---|---|
+| As-received, clean, dry | 0.15-0.25 | 0.15-0.25 | 0.30 |
+| Lightly oiled | 0.10-0.15 | 0.10-0.15 | 0.20 |
+| Molybdenum disulfide (moly) | 0.08-0.12 | 0.06-0.10 | 0.15 |
+| Zinc-plated | 0.12-0.18 | 0.10-0.15 | 0.22 |
+| Hot-dip galvanized | 0.25-0.35 | 0.30-0.40 | 0.40 |
+| Cadmium-plated | 0.08-0.12 | 0.08-0.12 | 0.16 |
+
+Friction is the dominant term: it consumes roughly 80-90% of the applied torque. Only 10-20% of torque actually stretches the bolt and creates preload.
+
 ## Bolt Grades and Strength
 
 | Metric Grade | Property Class | Proof Strength (MPa) | Ultimate (MPa) | SAE/Imperial |
@@ -87,6 +101,22 @@ Tensile stress area for metric bolts (ISO 898-1):
 | M30 | 3.5 | 580 |
 | M36 | 4.0 | 840 |
 
+## Unit Conversion Reference
+
+| Quantity | Convert From | Multiply By | To Get |
+|---|---|---|---|
+| Torque | lb·ft | 1.3558 | N·m |
+| Torque | N·m | 0.7376 | lb·ft |
+| Torque | lb·in | 0.1130 | N·m |
+| Torque | N·m | 8.8507 | lb·in |
+| Force | kN | 224.8 | lbf |
+| Force | lbf | 4.448 | N |
+| Stress | MPa | 0.1450 | ksi |
+| Stress | ksi | 6.895 | MPa |
+| Length | mm | 0.03937 | in |
+
+**Example**: 300 N·m = 300 × 0.7376 = **221 lb·ft**. An M16 grade 8.8 bolt at 210 N·m (from the chart below) = 210 × 0.7376 = **155 lb·ft**.
+
 ## Standard Torque Values (Metric, K=0.20 Lubricated)
 
 | Bolt | 8.8 (N·m) | 10.9 (N·m) | 12.9 (N·m) |
@@ -113,6 +143,21 @@ The same bolt torqued to 300 N·m with K=0.20 (lubricated) produces ~50% MORE pr
 - Dry (K = 0.30): T = 0.30 × 0.020 × 116,000 = **696 N·m**
 
 Same bolt, same preload, different torque values depending on K.
+
+## Worked Example — Flange Bolt Torque (ASME B16.5)
+
+A DN150 Class 150 RF flange uses 8 × M20 bolts. For a spiral-wound gasket with target seating stress of 70 MPa on a 3.2mm wide gasket at a mean gasket diameter of 190mm:
+
+1. Gasket seating load: F<sub>g</sub> = π × 190 × 3.2 × 70 = **133.7 kN**
+2. Required preload per bolt: F = 133.7 / 8 = **16.7 kN**
+3. Check bolt stress: σ = F / A<sub>s</sub> = 16,700 / 258 = **64.7 MPa** (comfortably below 8.8 proof = 600 MPa)
+4. Torque per bolt (lubricated, K = 0.20): T = 0.20 × 0.020 × 16,700 = **67 N·m**
+
+This is why real flange torques are much lower than the bolt capacity table values — the gasket seating load, not bolt strength, sets the target.
+
+## Related Calculator
+
+Rotating machinery torque and power are linked by P = T × ω — use the [Pump Power Calculator](/tools/pump-power-calculator) for pump and driver torque-power checks, and the [Motor Power Calculator](/tools/motor-power-calculator) for motor sizing at the target speed. For bolted flange and fastener weight estimates during material takeoffs, see the [Steel Weight Calculator](/tools/steel-weight-calculator).
 
 ## Tightening Methods
 
@@ -149,6 +194,8 @@ For ASME B16.5 flange joints per ASME PCC-1:
 
 For spiral-wound gaskets: target gasket stress ≈ 50-70 MPa (7-10 ksi), which sets the bolt load.
 
+See the [Flange Rating Standards guide](/guides/flange-rating-standards) for flange class ratings and the [Pressure Vessel Design guide](/guides/pressure-vessel-design) for vessel nozzle and flange loads.
+
 ## Bolt Relaxation and Re-Torquing
 
 - **Embedding**: Bolts and gaskets relax in the first 24 hours; re-torque hot bolts after heat cycle
@@ -168,6 +215,26 @@ For high-temperature flanges (steam, process), it is common practice to: torque 
 5. Ignoring bolt material differences (Grade 5 vs Grade 8 torque values differ)
 6. Overlooking thread condition (dirty/rusty threads = high friction = low preload)
 7. Mixing bolt grades in same joint (uneven load sharing)
+
+## Frequently Asked Questions
+
+**What is the formula for bolt torque?**
+The standard formula is T = K × D × F, where T = torque (N·m), K = nut factor (0.20 lubricated, 0.30 dry), D = nominal bolt diameter (m), and F = desired preload (N). For a more accurate result use the long form with thread pitch and friction coefficients.
+
+**How do I convert N·m to lb·ft?**
+Multiply N·m by 0.7376 to get lb·ft. For example, 464 N·m × 0.7376 = 342 lb·ft. To convert lb·ft to N·m, multiply by 1.3558.
+
+**What torque should I use for an M10 bolt?**
+For an M10 grade 8.8 bolt, lubricated (K = 0.20), use about 49 N·m (36 lb·ft); for grade 10.9 use 73 N·m (54 lb·ft); for grade 12.9 use 88 N·m (65 lb·ft). Dry conditions require roughly 50% more torque.
+
+**How much torque is 30 N·m in lb·ft?**
+30 N·m × 0.7376 = 22.1 lb·ft. As a reference, 30 N·m is close to the standard lubricated torque for an M8 grade 8.8 bolt (25 N·m) and below the M10 grade 8.8 value (49 N·m). Always check the bolt grade chart for the exact size and grade.
+
+**What is the recommended preload for a bolt?**
+For permanent connections, use 75% of the bolt proof load. For 8.8 grade M20: F = 0.75 × 600 MPa × 258 mm² = 116 kN. This ensures the joint stays tight under operating loads without yielding the bolt.
+
+**What is a bolt torque chart used for?**
+A bolt torque chart gives pre-calculated torque values by bolt size and grade for a stated K factor and preload percentage. Charts assume specific friction conditions — verify the lubrication and coating assumption before use.
 
 ## Summary
 

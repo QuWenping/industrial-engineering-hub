@@ -77,7 +77,7 @@
     "decimals": 3
   },
   "content": {
-    "introduction": "Calculate the maximum deflection of a beam under a point load for two common support conditions: a simply supported beam with the load at midspan, and a cantilever beam with the load at the free end. The calculator uses the classic elastic flexure formula delta = P*L^3 / (k*E*I), where E is the modulus of elasticity and I is the second moment of area of the cross-section. Results are in millimeters and assume linear-elastic, small-deflection behavior with a prismatic beam.",
+    "introduction": "Calculate the maximum deflection of a beam under a point load for two common support conditions: a simply supported beam with the load at midspan, and a cantilever beam with the load at the free end. The calculator uses the classic elastic flexure formula delta = P*L^3 / (k*E*I), where P = point load (N), L = span (m), E = modulus of elasticity (Pa), I = second moment of area (m4), and k is a support-condition constant (48 for simply supported center load, 3 for cantilever end load). Results are in millimeters and assume linear-elastic, small-deflection behavior with a prismatic beam. This Tool + Formula + Example + Guide page supports beam sizing checks, serviceability verification, and structural education.",
     "example": {
       "inputs": {
         "supportType": "48",
@@ -105,6 +105,18 @@
       {
         "q": "What deflection limit should I check against?",
         "a": "Common serviceability limits are span/360 for total load or span/240 for live load, but always verify against the governing code (e.g. AISC, ACI, Eurocode) and project specification."
+      },
+      {
+        "q": "How do I convert beam deflection from mm to inches?",
+        "a": "Multiply the deflection in mm by 0.03937. For example, 28.125 mm = 1.107 inches. Conversely multiply inches by 25.4 to get mm."
+      },
+      {
+        "q": "What is a typical deflection limit for steel beams?",
+        "a": "A common rule is span/360 for total load and span/240 to span/360 for live load only. For a 6 m span that means roughly 16.7 mm maximum. Crane girders and sensitive flooring are stricter (L/600 or tighter). Always check AISC, ACI, or Eurocode for the applicable limit."
+      },
+      {
+        "q": "Can this calculator handle uniformly distributed loads?",
+        "a": "The interactive tool models a single point load (centre load for simply supported, end load for cantilever). For distributed load w (N/m), use delta = 5wL^4/(384EI) for a simply supported beam, or wL^4/(8EI) for a cantilever, with consistent SI units."
       }
     ],
     "related": [
@@ -118,7 +130,27 @@
       "Beam and girder sizing checks",
       "Serviceability (deflection) verification",
       "Preliminary structural design",
-      "Educational engineering analysis"
+      "Educational engineering analysis",
+      "Crane runway girder serviceability checks",
+      "Industrial platform and mezzanine design"
+    ],
+    "sections": [
+      {
+        "heading": "Load Cases & Deflection Formulas",
+        "body": "Simply supported beam, point load at midspan: delta = P x L^3 / (48 x E x I).\nCantilever beam, point load at free end: delta = P x L^3 / (3 x E x I).\nSimply supported beam, uniformly distributed load w (N/m): delta = 5 x w x L^4 / (384 x E x I). Use this approximation when the dominant load is distributed (floors, platforms) rather than a single point load.\nCantilever, uniformly distributed load: delta = w x L^4 / (8 x E x I).\nAll formulas assume elastic material behaviour, small deflections, and constant cross-section (prismatic beam)."
+      },
+      {
+        "heading": "Worked Design Example: Steel Floor Beam",
+        "body": "Check a 6 m simply supported steel beam (UB 305 x 165 x 40, I = 87,300,000 mm4) under a 12 kN centre load. E = 200,000 MPa.\ndelta = 12,000 x 6.0^3 / (48 x 200,000 x 87.3 x 10^-6) = 2,592,000 / 838,080,000 = 0.00309 m = 3.1 mm.\nAllowable deflection L/360 = 6,000 / 360 = 16.7 mm. Actual 3.1 mm < 16.7 mm, so the beam satisfies the serviceability limit with large margin."
+      },
+      {
+        "heading": "Deflection Limits for Structural Design",
+        "body": "Typical serviceability limits (verify against governing code and project spec):\nFloor beams, total load: L/240 to L/360. Floor beams, live load only: L/360 to L/480.\nRoof purlins and girts: L/180 to L/240. Crane runway girders: L/600 to L/1000 (often governed by crane manufacturer).\nIndustrial platforms and mezzanines: L/360 total load is common. Precast or brittle cladding systems require tighter limits to avoid cracking.\nIn US practice AISC recommends L/360 for floors; Eurocode EN 1993-1-1 suggests L/300 to L/360 for floors depending on occupancy."
+      },
+      {
+        "heading": "Unit Conversion Guide",
+        "body": "Force: 1 N = 0.2248 lbf; 1 kN = 224.8 lbf; 10 kN ≈ 2,248 lbf.\nLength: 1 mm = 0.03937 in; 1 m = 3.281 ft.\nModulus: 1 MPa = 0.145 ksi; steel E = 200 GPa ≈ 29,000 ksi; aluminum E = 69 GPa ≈ 10,000 ksi.\nMoment of inertia: 1 mm4 = 2.402 x 10^-6 in4.\nTo use US inputs with this SI engine, convert lbf to N (x 4.4482), inches to mm (x 25.4), ksi to MPa (x 6.8948)."
+      }
     ]
   },
   "tests": [
@@ -165,4 +197,3 @@
     "title": "3D Beam Deflection Model"
   }
 }
-

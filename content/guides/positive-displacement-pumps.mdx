@@ -1,15 +1,53 @@
 ---
 title: "Positive Displacement Pumps"
-description: "Guide to positive displacement pump types — gear, screw, diaphragm, peristaltic, progressive cavity — with selection and application guidance."
+description: "Positive displacement pump types and selection: gear, screw, lobe, piston, diaphragm, peristaltic and progressive cavity pumps — working principle, PD vs centrifugal, applications and sizing."
 category: "Pump Engineering"
-keywords: ["positive displacement pump", "gear pump", "screw pump", "diaphragm pump", "progressive cavity"]
-updated: "2026-07-29"
+keywords: ["positive displacement pump", "gear pump", "screw pump", "lobe pump", "piston pump", "diaphragm pump", "progressive cavity", "positive displacement pump vs centrifugal pump"]
+updated: "2026-08-13"
 related:
   - pump-power-calculator
   - pump-flow-calculator
+  - pump-head-calculator
+  - npsh-calculator
   - "/guides/centrifugal-pump-fundamentals"
   - "/guides/pump-selection-guide"
+  - pump-energy-calculator
+  - "/guides/pump-installation-commissioning"
 ---
+
+## How Positive Displacement Pumps Work
+
+Positive displacement pumps move fluid by trapping a fixed volume in a cavity and mechanically forcing that volume into the discharge pipe, regardless of the downstream pressure. The theoretical flow rate is set by geometry and speed alone:
+
+<Formula>Q<sub>theoretical</sub> = V<sub>d</sub> × n</Formula>
+
+Where:
+- Q<sub>theoretical</sub> = theoretical flow rate (m³/s)
+- V<sub>d</sub> = displaced volume per revolution (m³/rev)
+- n = rotational speed (rev/s)
+
+In practice, actual flow is slightly lower because of internal leakage ("slip") past clearances:
+
+<Formula>Q<sub>actual</sub> = V<sub>d</sub> × n − Q<sub>slip</sub></Formula>
+
+Slip increases with discharge pressure and with lower fluid viscosity — a gear pump moving thin solvent at high pressure may lose 5-15% of its theoretical flow, while the same pump on a viscous oil may lose less than 1%. This is why PD pump flow is described as "relatively constant" rather than exactly constant: it is nearly independent of pressure compared with centrifugal pumps, but not perfectly so.
+
+Volumetric efficiency captures the slip loss:
+
+<Formula>η<sub>v</sub> = Q<sub>actual</sub> / Q<sub>theoretical</sub></Formula>
+
+### Flow Rate Unit Conversion
+
+| Unit | Conversion from m³/h |
+|---|---|
+| m³/h | 1 |
+| L/min | × 16.667 |
+| L/s | × 0.2778 |
+| US GPM | × 4.403 |
+| Imperial GPM | × 3.666 |
+| bbl/h (42 US gal) | × 6.290 |
+
+For pump selection and power sizing, use the [Pump Flow Calculator](/tools/pump-flow-calculator) to convert between flow units, and the [Pump Head Calculator](/tools/pump-head-calculator) to build the system head curve the pump must overcome.
 
 ## PD vs Centrifugal Pumps
 
@@ -60,6 +98,19 @@ One, two, or three helical screws move fluid axially along the screw axis.
 - **Pressure**: Up to 300+ bar
 - **Best for**: High-viscosity oils, fuel oil transfer, multi-phase (oil/gas/water)
 - **Advantages**: Low noise, high reliability, handles gas entrainment
+
+## Lobe Pumps
+
+Two (or three) lobe-shaped rotors rotate in opposite directions, trapping fluid between the rotor lobes and the casing and carrying it from suction to discharge. Lobe pumps look similar to gear pumps but use larger, rounded rotors with more clearance.
+
+- **Flow**: Smooth, low-pulsation (tri-lobe designs smoother than bi-lobe)
+- **Pressure**: Typically up to ~15 bar (some hygienic designs less)
+- **Viscosity**: Low to very high, including shear-sensitive fluids
+- **Best for**: Food and beverage, pharmaceuticals, cosmetics, shear-sensitive chemicals, fluids with soft solids
+- **Advantages**: Hygienic CIP/SIP designs, gentle low-shear action, handles solids better than gear pumps (larger clearances), some designs run dry briefly
+- **Limitations**: Lower pressure capability than gear or piston pumps; larger footprint for same flow
+
+Because the rotors do not contact each other, lobe pumps are a common choice for sanitary and food-grade service where product integrity matters more than maximum pressure.
 
 ## Diaphragm Pumps
 
@@ -132,7 +183,26 @@ Typical applications: Chlorine injection, pH adjustment, corrosion inhibitors, p
 5. **Relief valve**: Mandatory on discharge to protect against overpressure
 6. **Speed reduction**: For high viscosity, run slower (consult viscosity vs speed curves)
 
+## PD Pump Applications by Industry
+
+| Industry | Typical Duty | Preferred PD Pump |
+|---|---|---|
+| Oil & gas / fuel transfer | Fuel oil, crude transfer, lubrication | Screw, gear, three-screw |
+| Chemical processing | Dosing, corrosive chemicals, metering | Diaphragm, peristaltic, metering |
+| Food & beverage | Sanitary transfer, CIP, shear-sensitive products | Lobe, peristaltic, progressive cavity |
+| Water & wastewater | Sludge, slurry, polymer dosing | Progressive cavity, diaphragm |
+| Pharmaceutical | Sterile filling, precise dosing | Peristaltic, diaphragm metering |
+| Marine | Lube oil, fuel transfer, bilge | Gear, screw, piston |
+| Hydraulics | High-pressure hydraulic power | Gear, piston (axial) |
+| Pulp & paper | Coating, starch, high-solids slurries | Progressive cavity, lobe |
+| Construction | Grouting, concrete pumping | Piston, progressive cavity |
+| Mining | Abrasive slurry transfer | Peristaltic, heavy-duty diaphragm |
+
+When the pumped fluid is viscous, shear-sensitive, solids-laden, or must be metered accurately, a PD pump is usually the right family. For clean low-viscosity fluids at high flow and low pressure, a [centrifugal pump](/guides/centrifugal-pump-fundamentals) is often more economical. The full decision procedure is covered in the [Pump Selection Guide](/guides/pump-selection-guide), and the [NPSH Calculator](/tools/npsh-calculator) should be used to verify suction conditions for any PD installation.
+
 ## Power Calculation for PD Pumps
+
+To estimate the long-term operating cost of the driver, use the [Pump Energy Calculator](/tools/pump-energy-calculator) alongside the power figures below. Field verification of the installed driver is covered in the [Pump Installation and Commissioning](/guides/pump-installation-commissioning) guide, and the required driver power is estimated with the [Pump Power Calculator](/tools/pump-power-calculator).
 
 <Calculator id="pump-power-calculator" label="Pump Power Calculator" />
 
@@ -150,6 +220,26 @@ Brake power = hydraulic power / efficiency. PD pump efficiencies:
 <Callout type="warning" title="Air Consumption of AODD Pumps">
 AODD pumps are inefficient in energy terms — they consume significant compressed air, which is expensive to generate. Use them where their unique capabilities are needed, not for general transfer duty.
 </Callout>
+
+## Frequently Asked Questions
+
+**What is a positive displacement pump?**
+A positive displacement pump traps a fixed volume of fluid and mechanically forces it into the discharge pipe. Unlike centrifugal pumps, flow is produced by volume displacement rather than velocity, so flow stays roughly constant as discharge pressure changes.
+
+**Which is better, positive displacement or centrifugal pump?**
+It depends on the duty. PD pumps are better for high viscosity, high pressure, shear-sensitive fluids, solids, self-priming, and accurate metering. Centrifugal pumps are better for high flow rates, clean low-viscosity fluids, and lower pressures where their smooth continuous flow and low cost per unit flow win.
+
+**How do you calculate positive displacement pump flow rate?**
+Q = V<sub>d</sub> × n − Q<sub>slip</sub>, where V<sub>d</sub> is the displaced volume per revolution, n is speed, and Q<sub>slip</sub> is internal leakage. Flow is proportional to speed, so variable-speed drives are the standard way to vary PD pump flow.
+
+**Why must a relief valve be installed on a PD pump?**
+A PD pump keeps displacing fluid even when the discharge is closed, so pressure rises until something fails. A pressure relief valve on the discharge (or an internal relief) protects the pump, pipework, and driver.
+
+**Can positive displacement pumps run dry?**
+Only some types — air-operated diaphragm, peristaltic, and some lobe designs tolerate short dry running. Gear, screw, progressive cavity, and piston pumps require liquid lubrication and will be damaged quickly if run dry.
+
+**What viscosity range do PD pumps handle?**
+PD pumps handle up to 1,000,000+ cSt (e.g., screw and progressive cavity pumps), versus roughly 500 cP practical limit for most centrifugal pumps. High viscosity normally requires derating pump speed.
 
 ## Summary
 

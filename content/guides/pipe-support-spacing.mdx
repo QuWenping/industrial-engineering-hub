@@ -1,14 +1,24 @@
 ---
 title: "Pipe Support Spacing Guide"
-description: "Recommended pipe support spacing for steel, copper, PVC, and insulated piping across common pipe sizes — including span calculation methods."
+description: "Recommended pipe support spacing for steel, copper, PVC, and insulated piping across common pipe sizes — including span calculation methods, support load calculation, ASME B31.1/B31.3 criteria, and FAQ."
 category: "Mechanical Engineering"
-keywords: ["pipe support", "pipe span", "pipe hanger", "support spacing", "pipe stress"]
-updated: "2026-07-29"
+keywords: ["pipe support spacing", "pipe span", "pipe hanger spacing", "support spacing", "pipe stress", "ASME B31.1", "pipe support distance"]
+updated: "2026-08-13"
 related:
   - pipe-weight-calculator
   - "/guides/pipe-material-selection"
   - "/guides/water-hammer-analysis"
+  - "/guides/pipe-stress-analysis-basics"
+  - "/guides/pipe-flow-engineering"
+  - pipe-flow-calculator
+  - pipe-velocity-calculator
+  - pipe-diameter-calculator
+  - pressure-loss-calculator
+  - flow-rate-calculator
+  - "/guides/reynolds-number-guide"
+  - "/guides/pressure-drop-pipes"
 ---
+  - pipe-flow-calculator
 
 ## Why Support Spacing Matters
 
@@ -21,7 +31,7 @@ Proper pipe support prevents excessive sagging, overloading of connected equipme
 
 ## Maximum Spacing for Horizontal Carbon Steel Pipe (Sch 40, Water-Filled)
 
-Based on ASME B31.1/B31.3 with stress limits and 2.5mm maximum sag:
+Based on ASME B31.1/B31.3 with stress limits and 2.5mm maximum sag. Spacing also shapes the hydraulic design of the line — see the [Pipe Flow Calculator](/tools/pipe-flow-calculator), [Pipe Velocity Calculator](/tools/pipe-velocity-calculator), [Pipe Diameter Calculator](/tools/pipe-diameter-calculator) and [Pressure Loss Calculator](/tools/pressure-loss-calculator) for the flow calculations that go with the spans; cross-check with the [Pressure Drop Calculator](/tools/pressure-drop-calculator) and [Flow Rate Calculator](/tools/flow-rate-calculator):
 
 | NPS | DN | Max Span (m) | Max Span (ft) |
 |---|---|---|---|
@@ -42,6 +52,20 @@ Based on ASME B31.1/B31.3 with stress limits and 2.5mm maximum sag:
 <Callout type="info" title="Insulated Pipes Need Closer Supports">
 Add insulation weight (typically 10-25% of fluid-filled pipe weight) and reduce span by 10-15% for insulated lines. Heavy insulation (calcium silicate with aluminum jacket) requires closer spacing.
 </Callout>
+
+## Unit Conversion Reference
+
+| Quantity | Convert From | Multiply By | To Get |
+|---|---|---|---|
+| Length | m | 3.2808 | ft |
+| Length | ft | 0.3048 | m |
+| Length | mm | 0.03937 | in |
+| Length | in | 25.4 | mm |
+| Load | N/m | 0.06852 | lb/ft |
+| Load | lb/ft | 14.594 | N/m |
+| Stress | MPa | 0.1450 | ksi |
+
+**Example**: a 4 m span = 4 × 3.2808 = **13.1 ft**. An NPS 3" line at 4.5m span = 4.5 × 3.2808 = **14.8 ft**.
 
 ## Factors That Reduce Spacing
 
@@ -76,6 +100,21 @@ Where E = modulus of elasticity, I = moment of inertia, δ = allowable sag (typi
 For pipes up to NPS 6, sag deflection is typically the limiting factor. For large pipes (>12"), bending stress usually governs. Steam headers with condensate traps need very tight sag limits to avoid trapping condensate.
 </Callout>
 
+## Support Load Calculation
+
+Each support carries the weight of pipe, fluid, insulation, and any fittings between adjacent mid-span points. For a uniformly loaded beam with two supports:
+
+<Formula>W<sub>support</sub> = w × L<sub>span</sub> + fittings allowance</Formula>
+
+**Worked example — NPS 4" Sch 40 carbon steel, water-filled, 5.0m span:**
+- Pipe weight: 16.3 kg/m (Sch 40, 4" NPS)
+- Water weight: 4.5 kg/m (bore volume × density)
+- Total w = 16.3 + 4.5 = 20.8 kg/m = 204 N/m
+- Load per support = 204 × 5.0 = **1,020 N ≈ 1.0 kN**
+- With 10% fittings allowance: **1.1 kN per support**
+
+Add 25% for valves/flanges near the support, and 20-25% for insulation. Use our [Pipe Weight Calculator](/tools/pipe-weight-calculator) for pipe and fluid weights.
+
 ## Support Types
 
 | Type | Purpose | Movement Allowed |
@@ -108,7 +147,7 @@ Supports must not restrict thermal growth. Use:
 - Guides at appropriate intervals to direct expansion into loops/expansion joints
 
 <Callout type="warning" title="Don't Restrict Thermal Expansion">
-A steel pipe heated from 20°C to 200°C expands ~2.2mm per meter. If supports prevent movement, enormous forces develop (thousands of kN) that can bend pipe, break anchors, or damage equipment.
+A steel pipe heated from 20°C to 200°C expands ~2.2mm per meter. If supports prevent movement, enormous forces develop (thousands of kN) that can bend pipe, break anchors, or damage equipment. See [Pipe Stress Analysis Basics](/guides/pipe-stress-analysis-basics) for flexibility analysis.
 </Callout>
 
 ### Near Equipment
@@ -152,6 +191,34 @@ PVC/CPVC/HDPE expand much more than steel and creep under sustained load:
 5. Don't support pipe from other pipes (especially not small pipes!)
 6. Field-verify critical hanger positions against stress isometrics
 7. Maintain clearances for welding, inspection, and maintenance
+
+## Frequently Asked Questions
+
+**How far apart should pipe supports be?**
+For carbon steel Schedule 40 water-filled pipe: 2.0m for ½", 2.5m for 1", 3.5m for 2", 4.5m for 3", 5.0m for 4", 6.0m for 6", and up to 12.5m for 24". Insulated, plastic, and high-temperature lines need closer spacing.
+
+**What is the maximum pipe support spacing per ASME B31.1?**
+ASME B31.1/B31.3 do not give a single spacing table; they require spans limited by stress and deflection (typically 2.5mm sag). The widely used engineering table above satisfies B31.1/B31.3 for standard Sch 40 steel.
+
+**How do I calculate pipe support spacing?**
+Use the smaller of: L(stress) = √(Z × S_allow / (w × 0.125)) and L(sag) = (384 × E × I × δ / (5 × w))^(1/4), where w = weight per unit length including pipe, fluid, and insulation.
+
+**What is the pipe support spacing for 3 inch pipe?**
+NPS 3" carbon steel Sch 40 water-filled: maximum span 4.5m (15 ft). Reduce by 10-15% if insulated.
+
+**What is the difference between a pipe hanger and a pipe support?**
+A hanger supports the pipe from above (rod/clevis), while a support (stanchion/rigid) supports from below. Both carry vertical load; the choice depends on available structure and whether the pipe moves axially.
+
+**Why do small pipes need closer supports?**
+Small pipes have low section modulus and stiffness (I), so sag deflection becomes the limiting criterion. The sag limit grows with the fourth root of stiffness, so stiffness must increase a lot to allow longer spans.
+
+## Related Guides and Tools
+
+- [Pipe Material Selection](/guides/pipe-material-selection) — material properties and joining
+- [Pipe Stress Analysis Basics](/guides/pipe-stress-analysis-basics) — thermal stress and flexibility
+- [Pipe Flow Engineering](/guides/pipe-flow-engineering) — sizing and pressure drop
+- [Water Hammer Analysis](/guides/water-hammer-analysis) — transient loads on supports
+- [Pipe Weight Calculator](/tools/pipe-weight-calculator) — pipe and fluid weights
 
 ## Summary
 

@@ -3,12 +3,15 @@ title: "Natural Gas (Methane)"
 description: "Natural gas properties, density (~0.8 kg/m³ at standard conditions), methane composition, energy content, compressibility, and engineering for pipelines, combustion, and storage."
 category: "Gas"
 keywords: ["natural gas density", "methane density", "natural gas properties", "gas pipeline", "methane properties"]
-updated: "2026-07-29"
+updated: "2026-08-13"
 related:
   - density-calculator
-  - compressible-flow-calculator
+  - "/guides/compressible-flow-basics"
   - pressure-drop-calculator
-  - pump-power-calculator
+  - pressure-unit-converter
+  - "/materials/air"
+  - "/guides/compressible-flow-basics"
+  - "/guides/flow-measurement-methods"
 ---
 
 ## Overview
@@ -62,7 +65,48 @@ Using the ideal gas law corrected for compressibility: ρ = (P × M) / (Z × R �
 - R: universal gas constant = 8.314 J/mol·K
 - T: absolute temperature (K)
 
-### Pipeline Density Examples
+### Density at Standard Conditions
+
+Natural gas density is always quoted at a reference standard — the value depends on which standard you use:
+
+| Standard | Temperature | Pressure | Methane Density | Typical NG Density |
+|---|---|---|---|---|
+| ISO (15°C) | 15°C / 288.15 K | 1.01325 bar | 0.678 kg/m³ | 0.72-0.85 kg/m³ |
+| NTP (20°C) | 20°C / 293.15 K | 1.01325 bar | 0.668 kg/m³ | 0.70-0.83 kg/m³ |
+| STP (0°C) | 0°C / 273.15 K | 1.01325 bar | 0.717 kg/m³ | 0.77-0.90 kg/m³ |
+| 60°F (US) | 15.6°C | 14.73 psia | 0.0423 lb/ft³ | 0.045-0.053 lb/ft³ |
+
+Always state the reference standard when quoting gas density: a "standard" density of 0.8 kg/m³ at ISO conditions becomes ~0.85 kg/m³ at STP and ~0.78 kg/m³ at NTP — differences of 5-8% that matter for flow and energy calculations.
+
+### Density vs Temperature
+
+At constant pressure, gas density falls as temperature rises (ideal gas: ρ ∝ 1/T):
+
+| Temperature (°C) | Methane Density (kg/m³) | Typical NG (kg/m³) |
+|---|---|---|
+| -40 | 0.87 | 0.95-1.10 |
+| -10 | 0.74 | 0.80-0.93 |
+| 0 | 0.72 | 0.77-0.90 |
+| 15 | 0.68 | 0.72-0.85 |
+| 50 | 0.59 | 0.63-0.74 |
+| 100 | 0.51 | 0.55-0.64 |
+
+This temperature sensitivity matters for meter calibration (gas meters measure volume — a gas at 50°C contains ~15% less mass than the same volume at 0°C), compressor sizing, and custody transfer. For flowing gas, use the actual temperature and the [Density Calculator](/tools/density-calculator).
+
+### Density vs Pressure
+
+Density rises approximately linearly with absolute pressure at low pressure, then deviates as compressibility Z drops:
+
+| Gauge Pressure | Absolute Pressure | Density (kg/m³, 15°C) | Z factor |
+|---|---|---|---|
+| 0 (atm) | 1.013 bar | 0.80 | 1.000 |
+| 4 bar | 5.013 bar | 3.9 | 0.995 |
+| 20 bar | 21.013 bar | 16.5 | 0.97 |
+| 70 bar | 71.013 bar | 52 | 0.88 |
+| 100 bar | 101.013 bar | 75 | 0.82 |
+
+At 100 bar the density is ~94x the standard value rather than 100x because of the Z factor — an 8% correction that is essential for transmission line sizing and compressor duty. Use the [Compressible Flow Basics Guide](/guides/compressible-flow-basics) and [Pressure Loss Calculator](/tools/pressure-loss-calculator) for high-pressure line calculations.
+
 
 | Condition | Pressure | Density |
 |---|---|---|
@@ -73,7 +117,59 @@ Using the ideal gas law corrected for compressibility: ρ = (P × M) / (Z × R �
 
 At 70-100 bar, natural gas is still much less dense than gasoline (~750 kg/m³), but compressibility effects (Z factor) become significant — do not use ideal gas law for high-pressure pipeline calculations.
 
+## Unit Conversion Reference (kg/m³ and lb/ft³)
+
+| Quantity | Conversion |
+|---|---|
+| Methane | 0.678 kg/m³ = 0.0423 lb/ft³ |
+| Typical NG | 0.80 kg/m³ = 0.050 lb/ft³ |
+| 1 kg/m³ | = 0.06243 lb/ft³ |
+| 1 lb/ft³ | = 16.018 kg/m³ |
+| Standard volume | 1 SCM = 35.31 SCF (standard cubic feet) |
+| Energy | 1 MJ = 0.9478 Btu; 1 SCM NG ≈ 36 MJ ≈ 34,100 Btu |
+| Pressure | 1 bar = 14.5 psi; 1 atm = 1.01325 bar |
+
+Example: 10,000 SCM/h of natural gas at 0.8 kg/m³ = 8,000 kg/h ≈ 4,470 SCFM. At 70 bar transmission pressure the actual volume flow is roughly 10,000/66 ≈ 152 m³/h at line conditions.
+
+## Natural Gas vs Air
+
+| Property | Natural Gas | Air |
+|---|---|---|
+| Density (15°C, 1 atm) | 0.72-0.85 kg/m³ | 1.225 kg/m³ |
+| Specific Gravity | 0.60-0.70 | 1.000 |
+| Molecular Weight | 17-19 g/mol | 28.97 g/mol |
+| Lighter / heavier | Lighter (rises) | Reference |
+| Flammable in air | 4-15% vol | — |
+| Viscosity | 1.1 × 10⁻⁵ Pa·s | 1.8 × 10⁻⁵ Pa·s |
+
+Natural gas is about 60-70% the density of air, so leaks rise toward the ceiling and high points. Ventilation design for gas facilities targets roof-level extraction; detectors for natural gas are installed high, while propane/CO₂ (heavier than air) detectors are installed low. This buoyancy difference is also why natural gas storage requires gas-tight roofs and why LNG vapor disperses differently from LPG vapor.
+
+## Natural Gas Calculator
+
+Use the [Density Calculator](/tools/density-calculator) to compute gas density at any pressure/temperature, the [Pressure Loss Calculator](/tools/pressure-loss-calculator) for pipeline and orifice sizing, the [Pressure Drop Calculator](/tools/pressure-drop-calculator) for line friction loss, and the [Pressure Unit Converter](/tools/pressure-unit-converter) when mixing bar/psi units. For gas-specific flow measurement, review the [Flow Measurement Methods](/guides/flow-measurement-methods) guide.
+
+## Frequently Asked Questions
+
+**What is the density of natural gas in kg/m³?**
+Typical pipeline-quality natural gas is 0.72-0.85 kg/m³ at ISO standard conditions (15°C, 1 atm); pure methane is 0.678 kg/m³. At 20°C use ~0.70-0.83 kg/m³; at 0°C ~0.77-0.90 kg/m³.
+
+**What is the density of natural gas in lb/ft³?**
+0.045-0.053 lb/ft³ at 60°F, 14.73 psia (US standard). Multiply kg/m³ by 0.06243 to convert: 0.80 kg/m³ × 0.06243 = 0.050 lb/ft³.
+
+**Is natural gas heavier or lighter than air?**
+Lighter. Natural gas specific gravity is 0.60-0.70 versus air at 1.00, so it rises and dissipates. This is why gas detectors are mounted at ceiling level and ventilation extracts from high points.
+
+**Why is natural gas density not a single fixed value?**
+Because it is a mixture (methane content 85-96%) and gas density depends strongly on pressure, temperature, and composition. Always state composition, pressure, and reference temperature when quoting density.
+
+**How does density change with pressure in a pipeline?**
+Nearly linearly at low pressure (4 bar gauge ≈ 4 kg/m³) then deviates as the compressibility factor Z drops below 1.0: at 70 bar gauge ≈ 52 kg/m³, at 100 bar ≈ 75 kg/m³. Use Z-corrected equations for high-pressure design.
+
+**What is the energy content of 1 m³ of natural gas?**
+About 34-38 MJ/m³ (LHV) at standard conditions — roughly 9.4-10.5 kWh. Billing and custody transfer are normally based on energy, not volume, because density varies with composition and conditions.
+
 ## Engineering Applications
+
 
 ### Pipeline Transmission
 - Transmission pipelines operate at 50-100 bar (700-1500 psi); distribution lines at 1-7 bar

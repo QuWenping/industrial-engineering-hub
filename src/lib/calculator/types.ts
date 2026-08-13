@@ -41,6 +41,11 @@ export interface CalculatorExample {
   description?: string;
 }
 
+export interface CalculatorContentSection {
+  heading: string;
+  body: string;
+}
+
 export interface CalculatorContent {
   introduction: string;
   example?: CalculatorExample;
@@ -48,6 +53,8 @@ export interface CalculatorContent {
   related?: string[];
   applications?: string[];
   formula_explanation?: string;
+  /** Optional extended sections rendered as H2 blocks (line-separated paragraphs) */
+  sections?: CalculatorContentSection[];
 }
 
 export interface CalculatorSEO {

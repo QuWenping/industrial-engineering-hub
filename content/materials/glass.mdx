@@ -3,10 +3,12 @@ title: "Glass (Soda-Lime)"
 description: "Soda-lime glass properties, density (2500 kg/m³), optical transparency, brittle fracture behavior, thermal shock sensitivity, and applications in windows, bottles, and industrial equipment."
 category: "Ceramic"
 keywords: ["glass density", "glass properties", "soda lime glass", "glass strength", "silica glass"]
-updated: "2026-07-29"
+updated: "2026-08-13"
 related:
-  - pressure-vessel-volume-calculator
+  - density-calculator
+  - material-volume-calculator
   - thermal-resistance-calculator
+  - pressure-vessel-volume-calculator
 ---
 
 ## Overview
@@ -33,7 +35,43 @@ Soda-lime glass is the most common form of glass (~90% of all glass produced), c
 Glass is a classic brittle material with ~20x higher compressive strength than tensile strength. Surface microcracks propagate in tension (Griffith fracture criterion), so practical glass strength is governed by surface flaws and edge condition — not inherent material strength. Tempering puts the surface in compression, dramatically increasing effective strength.
 </Callout>
 
+## Specific Gravity
+
+Specific gravity (SG) is the ratio of a material's density to water at 4°C (1000 kg/m³):
+
+<Formula>SG = ρ_glass / ρ_water = 2500 / 1000 = 2.5</Formula>
+
+Soda-lime glass has SG ≈ 2.5 — about 2.5x heavier than the same volume of water, similar to aluminum (2.7) and lighter than steel (7.85). Borosilicate glass is slightly lighter (SG ≈ 2.23), while fused silica is ~2.20. Specific gravity is used to convert between weight and volume in handling, packaging, and structural design calculations.
+
+## Unit Weight
+
+Unit weight (weight density) is the weight per unit volume — density multiplied by gravitational acceleration:
+
+<Formula>γ = ρ × g = 2500 kg/m³ × 9.81 m/s² ≈ 24.5 kN/m³ (156 lb/ft³)</Formula>
+
+| Glass Type | Unit Weight |
+|---|---|
+| Soda-lime | 24.5 kN/m³ (156 lb/ft³) |
+| Borosilicate (Pyrex) | 21.9 kN/m³ (139 lb/ft³) |
+| Fused silica | 21.6 kN/m³ (137 lb/ft³) |
+| Tempered (same composition) | 24.5 kN/m³ (156 lb/ft³) |
+
+Use unit weight when calculating glass panel dead loads, glazing support reactions, and shipping/transport weights.
+
+## Unit Conversion Reference
+
+| Quantity | Conversion |
+|---|---|
+| Density | 2500 kg/m³ = 2.5 g/cm³ = 0.0903 lb/in³ = 156 lb/ft³ |
+| 1 kg/m³ | = 0.06243 lb/ft³ |
+| 1 g/cm³ | = 1000 kg/m³ |
+| 1 lb/ft³ | = 16.018 kg/m³ |
+| Thickness | 1 mm = 0.0394 in; 6mm glass = 15 kg/m² panel weight |
+
+Glass panel weight per area: 6mm float glass ≈ 15 kg/m²; 10mm ≈ 25 kg/m²; 12mm ≈ 30 kg/m². Quick estimate: panel weight (kg/m²) ≈ 2.5 × thickness (mm).
+
 ## Thermal Properties
+
 
 | Property | Value |
 |---|---|
@@ -98,6 +136,31 @@ Soda-lime glass breaks from rapid temperature change because thermal gradients c
 - **Design stress**: use 7-15 MPa allowable tensile for long-term annealed service (safety factor of 3-5)
 - **Never load glass in bending from the edge**
 
+## Related Calculator
+
+Use the [Density Calculator](/tools/density-calculator) to compute glass mass and volume, the [Material Volume Calculator](/tools/material-volume-calculator) for volume takeoffs, and the [Thermal Resistance Calculator](/tools/thermal-resistance-calculator) for glazing heat transfer estimates.
+
+## Frequently Asked Questions
+
+**What is the density of glass?**
+Soda-lime glass (the common window/bottle type) has a density of 2500 kg/m³ (2.5 g/cm³). Borosilicate glass is 2230 kg/m³ and fused silica 2200 kg/m³.
+
+**What is the specific gravity of glass?**
+Approximately 2.5 for soda-lime glass, meaning it weighs 2.5 times as much as an equal volume of water. This value is used to estimate panel weights and buoyancy.
+
+**What is the unit weight of glass?**
+About 24.5 kN/m³ (156 lb/ft³) for soda-lime. A 6mm glass panel weighs roughly 15 kg/m² — a common number for glazing dead-load calculations.
+
+**Why is glass strong in compression but weak in tension?**
+Glass has ~20x higher compressive strength (900-1000 MPa) than tensile strength (30-50 MPa annealed). Tensile failure is driven by surface microcracks that propagate under tension (Griffith fracture); tempering puts the surface in compression to suppress crack opening and raise effective strength to 120-200 MPa.
+
+**Is glass heavier than aluminum?**
+Slightly: soda-lime glass is 2500 kg/m³ vs aluminum 2700 kg/m³ — actually slightly lighter by volume. Glass feels heavier than aluminum only in bulk because products are usually thicker.
+
+**How do I convert kg/m³ to lb/ft³ for glass?**
+Multiply by 0.06243: 2500 × 0.06243 = 156 lb/ft³. Conversely, multiply lb/ft³ by 16.018 to get kg/m³.
+
 ## Summary
+
 
 Soda-lime glass (density 2500 kg/m³) is the least expensive, most common glass — transparent, chemically inert, and easily formed. Its engineering use is governed by its brittle nature and flaw-controlled tensile strength (30-50 MPa annealed, 120-200 MPa tempered). Glass is strong in compression but vulnerable to tensile stress from surface flaws, impact, and thermal shock. Always use borosilicate for sight glasses or thermal shock service, tempered/laminated for safety-critical applications, and respect its brittle fracture design rules.

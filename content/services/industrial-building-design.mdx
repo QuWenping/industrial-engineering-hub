@@ -1,6 +1,6 @@
 ---
 title: Industrial Building Design
-description: Comprehensive industrial building design services — factory layout, building envelope, steel/concrete structures, architecture and site planning for manufacturing and process facilities.
+description: Comprehensive industrial building design services — factory layout, building envelope, steel/concrete structures, architecture and site planning for manufacturing and process facilities, including design loads, bay sizing, fire protection, and FAQ.
 slug: industrial-building-design
 icon: "🏭"
 capabilities:
@@ -34,6 +34,95 @@ Industrial buildings are more than shelter — they are production assets. Our a
 - **Logistics integration** — loading docks, racking, mezzanines, material flow
 - **Code & fire compliance** — IBC, NFPA, FM Global, local AHJ coordination
 
+## Design Process
+
+Industrial building design follows a staged approach that keeps cost and schedule predictable:
+
+| Stage | Deliverables | Key Decisions |
+|---|---|---|
+| **1. Programming** | Space program, capacity study | Production lines, storage, offices, utilities |
+| **2. Master planning** | Site plan, phasing, utility routing | Building footprint, truck/rail access, expansion |
+| **3. Schematic design** | Concept layouts, massing, section | Bay size, clear height, crane systems |
+| **4. Design development** | Structural framing, envelope, MEP | Steel vs precast, roof system, fire rating |
+| **5. Construction documents** | Permit and bid sets | Shop drawings, specifications |
+| **6. Site support** | Field coordination, closeout | As-builts, commissioning |
+
+## Key Design Considerations
+
+### Structural Loads
+
+Industrial buildings must resist both conventional and special loads:
+
+| Load Type | Typical Values / Notes |
+|---|---|
+| Dead load | Steel frame 0.5-1.0 kN/m²; metal panel envelope 0.3-0.5 kN/m² |
+| Live load (roof) | 0.6-1.0 kN/m² (ASCE 7 minimum 0.58 kN/m²) |
+| Live load (floor) | Warehouse 12-25 kN/m²; light manufacturing 7.5-15 kN/m² |
+| Crane loads | Wheel loads, longitudinal/transverse thrust per CMAA |
+| Seismic | Site-specific response spectrum per ASCE 7 / IBC |
+| Wind | Basic wind speed per ASCE 7 (e.g., 115-140 mph coastal) |
+| Snow | Ground snow load per local code (0.5-3.5 kN/m² common) |
+| Equipment | Point loads from mezzanines, process equipment, conveyors |
+
+Use our [Beam Deflection Calculator](/tools/beam-deflection-calculator) to check structural members and [Steel Weight Calculator](/tools/steel-weight-calculator) to estimate member weights during schematic design.
+
+### Unit Conversion Reference
+
+Industrial building loads and dimensions appear in both SI and US customary units depending on the jurisdiction:
+
+| Quantity | Conversion |
+|---|---|
+| Load | 1 kN/m² = 20.886 psf; 1 psf = 0.0479 kN/m² |
+| Length | 1 m = 3.2808 ft; 1 ft = 0.3048 m |
+| Area | 1 m² = 10.764 ft² |
+| Force | 1 kN = 224.8 lbf |
+| Wind speed | 1 m/s = 2.237 mph |
+
+**Example**: a 15 kN/m² warehouse floor live load = 15 × 20.886 ≈ 313 psf. A 12 m bay = 39.4 ft. Convert consistently when comparing ASCE 7 loads (psf) with European (kN/m²) data sheets.
+
+### Bay Sizes and Clear Heights
+
+| Facility Type | Typical Bay (m) | Clear Height (m) |
+|---|---|---|
+| Light manufacturing | 12 × 24 to 15 × 30 | 6-9 |
+| General manufacturing | 15 × 30 to 24 × 36 | 8-12 |
+| Warehouse / distribution | 12 × 24 to 15 × 30 | 10-14 (AS/RS up to 30+) |
+| Process building | 7.5 × 12 to 12 × 24 | 8-15 (multi-level) |
+| Battery / cleanroom | 12 × 24 to 15 × 30 | 6-9 |
+
+Bay size and clear height are driven by the material handling system: crane clearance, fork truck stacking height, conveyor envelopes, and automated storage/retrieval systems.
+
+### Building Envelope
+
+- **Wall systems**: insulated metal panels (R-10 to R-20), precast concrete sandwich panels (R-8 to R-16), tilt-up
+- **Roof systems**: standing seam metal (cold-formed purlins), single-ply membrane on structural deck
+- **Daylighting**: roof monitors, skylights (target 2-4% skylight-to-roof ratio for LEED daylight credits)
+- **Insulation**: continuous insulation to meet ASHRAE 90.1 / local energy code
+- **Air barriers** and vapor retarders per climate zone
+
+### Material Flow and Logistics
+
+- Loading docks: 8-12 dock doors per 10,000 m² typical for distribution; drive-through vs dock-high decisions
+- Truck court depth: 35-45m for 53-ft trailers; turning radii per turning template
+- Aisle widths: 3.7m for standard counterbalance forklift; 1.6-2.0m for VNA (very narrow aisle) systems
+- Mezzanine placement: over storage, never over main aisles or dock staging
+- Material flow follows the production sequence — minimize cross-traffic between receiving, production, and shipping
+
+### Fire Protection and Code Compliance
+
+- Building type and height limit fire area per IBC Chapter 5; sprinkler trade-offs
+- Fire walls / fire barriers separate high-hazard occupancies
+- NFPA 13 sprinkler design: warehouse protection depends on storage height, commodity class, and rack type
+- NFPA 409 aircraft hangar standards for large openings where applicable
+- Egress: occupant load, travel distance, exit capacity per IBC
+- Seismic bracing for non-structural components (sprinklers, ductwork, racks)
+
+### Sustainability
+
+- LEED / net-zero-ready: daylighting, high-efficiency HVAC, cool roofs, EV charging
+- Structural efficiency: optimize steel tonnage (see [Steel Material Properties](/guides/steel-material-properties) and [Material Strength Basics](/guides/material-strength-basics) for design values)
+- Rainwater management, low-flow fixtures, commissioning (fundamental + enhanced)
+
 ## Typical Projects
 
 - Greenfield battery manufacturing plants
@@ -41,5 +130,33 @@ Industrial buildings are more than shelter — they are production assets. Our a
 - Chemical processing buildings
 - Warehouse and distribution centers
 - High-tech / cleanroom facilities
+
+## Frequently Asked Questions
+
+**What is the typical column spacing for an industrial building?**
+Typical bays are 12m × 24m to 15m × 30m for manufacturing and warehouse buildings. Bay size is driven by the material handling system — crane clearance, rack layout, and truck court geometry often set the bay module.
+
+**What is a good clear height for a warehouse?**
+General distribution warehouses use 10-14m clear height; automated storage/retrieval systems can require 20-30m. Light manufacturing buildings typically use 6-9m.
+
+**What is the difference between steel and precast concrete industrial buildings?**
+Steel frames offer long spans, fast erection, and easy future modification; precast concrete offers lower maintenance, better fire resistance, and thermal mass. Steel is typically preferred where cranes and expansion flexibility matter; precast for exterior walls and heavy-duty facilities.
+
+**How do you calculate dead load for a steel building?**
+Sum structural members (steel frame 0.5-1.0 kN/m²), roof/wall cladding (0.3-0.5 kN/m²), insulation, MEP hung loads, and equipment. For member sizing, apply live loads per ASCE 7 / IBC with load combinations.
+
+**What NFPA codes apply to industrial buildings?**
+NFPA 13 (sprinklers), NFPA 101 (life safety), NFPA 70 (electrical), NFPA 409 (hangars), and NFPA 30 (flammable liquids) are the most common. Local AHJ amendments always govern.
+
+**Do industrial buildings need to be LEED certified?**
+LEED certification is optional but increasingly required by corporate sustainability policy. Industrial facilities commonly pursue LEED BD+C: Warehouses & Distribution Centers; key credits come from daylighting, energy performance, and material efficiency.
+
+## Related Services and Resources
+
+- [Steel Weight Calculator](/tools/steel-weight-calculator) — member weight estimation
+- [Beam Deflection Calculator](/tools/beam-deflection-calculator) — structural member checks
+- [Steel Material Properties](/guides/steel-material-properties) — steel grades for framing
+- [Material Strength Basics](/guides/material-strength-basics) — strength, modulus, and allowable stress concepts
+- Explore related industries: [Battery Factory](/industries/battery-factory) and [Smart Factory](/industries/smart-factory)
 
 <CallToAction />

@@ -3,11 +3,14 @@ title: "Electric Motor Efficiency Guide"
 description: "Guide to electric motor efficiency classes (IE1-IE4), premium efficiency motors, part-load efficiency, power factor, and energy-saving VFD applications."
 category: "Electrical Engineering"
 keywords: ["motor efficiency", "IE3", "IE4", "premium efficiency", "power factor", "electric motor energy"]
-updated: "2026-07-29"
+updated: "2026-08-13"
 related:
   - motor-power-calculator
   - pump-power-calculator
   - pump-energy-calculator
+  - "/guides/fan-curve-selection"
+  - "/guides/centrifugal-pump-fundamentals"
+  - "/guides/engineering-unit-conversion"
 ---
 
 ## Motor Efficiency Classes
@@ -158,6 +161,61 @@ When a motor fails, repair is typically 30-50% of new motor cost. However, rewin
 
 Larger motors are inherently more efficient. High-speed (2-pole) motors are slightly more efficient than low-speed (6-8 pole) for same power.
 
+## Unit Conversion Reference
+
+| Quantity | Conversion |
+|---|---|
+| Power | 1 hp = 0.746 kW; 1 kW = 1.341 hp; 1 PS (metric hp) = 0.7355 kW |
+| Energy | 1 kWh = 3.6 MJ = 3412 Btu; 1 MJ = 0.2778 kWh |
+| Torque | 1 N·m = 0.7376 lb·ft; 1 lb·ft = 1.356 N·m |
+| Speed | 1 rpm = 0.1047 rad/s |
+| Temperature | T(K) = T(°C) + 273.15 |
+| Efficiency | η = P_out / P_in (fraction); η% = fraction × 100 |
+
+Motor power at shaft: P (kW) = T (N·m) × N (rpm) / 9549. In hp: P (hp) = T (lb·ft) × N (rpm) / 5252. See the [Engineering Unit Conversion Guide](/guides/engineering-unit-conversion) for the full reference.
+
+### Worked Example: Motor Shaft Power from Torque
+
+A conveyor motor delivers 320 N·m at 1450 rpm. Shaft power:
+
+P = 320 × 1450 / 9549 = **48.6 kW (65.2 hp)**
+
+With an IE3 motor at 94% efficiency, the electrical input is 48.6 / 0.94 = 51.7 kW. Confirm with the [Motor Power Calculator](/tools/motor-power-calculator) and check energy cost with the [Pump Energy Calculator](/tools/pump-energy-calculator).
+
+### Worked Example: VFD Savings for a Fan
+
+A 75 kW fan runs at full speed 24/7 delivering more airflow than required. Running at 85% speed for 70% of the time:
+
+- Power at 85% speed: 0.85³ = 61% of full load
+- Savings during part-load hours: (1 − 0.61) × 75 kW × 0.70 × 8760 h × $0.10/kWh ≈ **$17,900/year**
+- VFD installed cost ~$12-15k → payback under 1 year
+
+Selection must respect the fan curve operating range — see [Fan Curve Selection](/guides/fan-curve-selection) and [Centrifugal Pump Fundamentals](/guides/centrifugal-pump-fundamentals) for matching drivers to loads.
+
+## Frequently Asked Questions
+
+**What is motor efficiency and how is it calculated?**
+Motor efficiency η = shaft output power / electrical input power. For example, a motor drawing 10 kW electrical while delivering 9.2 kW mechanical has η = 92%. Losses are copper (I²R), iron, friction, windage, and stray load losses.
+
+**What is the difference between IE1, IE2, IE3, IE4 and IE5 motors?**
+They are IEC 60034-30 efficiency classes: IE1 standard (~88%), IE2 high (~90%), IE3 premium (~92%), IE4 super premium (~94%), IE5 ultra premium (~96%) at full load for an 11 kW 4-pole motor. Most countries now mandate IE3 minimum.
+
+**What is the formula for motor power from torque and speed?**
+P (kW) = T (N·m) × N (rpm) / 9549. In imperial: P (hp) = T (lb·ft) × N (rpm) / 5252. A 320 N·m motor at 1450 rpm delivers 48.6 kW.
+
+**Why does motor efficiency drop at low load?**
+Fixed losses (iron, friction, windage, magnetizing current) remain nearly constant regardless of load, so at 25% load the fixed losses dominate and efficiency falls to ~80%. Oversized motors running at low load waste energy and have poor power factor.
+
+**How much can a VFD save on a pump or fan?**
+For centrifugal loads, power ∝ speed³ (affinity laws): running at 80% speed uses only 51% power. Typical savings of 20-50% on pump/fan energy are common, with 1-3 year payback — but VFD losses (~2-3%) and harmonic effects must be included.
+
+**What is power factor and why does it matter?**
+Power factor = real power / apparent power (kW/kVA). Motors draw magnetizing current, giving lagging PF (0.75-0.92 typical). Low PF increases cable/transformer loading and attracts utility penalties. Capacitor banks correct PF to ~0.95, reducing upstream current draw by 20-30%.
+
+**Is 1 hp equal to 0.746 kW?**
+Yes, 1 mechanical horsepower = 0.7457 kW. Metric horsepower (PS/CV) = 0.7355 kW. Use the correct value when converting motor nameplate data between hp and kW.
+
 ## Summary
+
 
 IE3 premium efficiency motors are now the standard; IE4 super-premium is increasingly cost-effective. Motor efficiency peaks at 75-100% load and drops sharply below 50% load — avoid oversized motors. VFDs on centrifugal pumps and fans provide major savings via the cube-law power relationship. Always consider lifecycle energy cost (purchase + energy) rather than just purchase price — a motor costs 20-50× its purchase price in energy over a 20-year life.

@@ -3,11 +3,15 @@ title: "Compressible Flow Basics"
 description: "Introduction to compressible gas flow in pipes: Mach number, choked flow, isothermal and adiabatic flow, pressure drop for gases, and sonic velocity."
 category: "Fluid Mechanics"
 keywords: ["compressible flow", "Mach number", "choked flow", "gas pipeline", "sonic velocity", "isentropic flow"]
-updated: "2026-07-29"
+updated: "2026-08-13"
 related:
   - pressure-drop-calculator
   - flow-rate-calculator
   - pipe-velocity-calculator
+  - "/tools/pressure-loss-calculator"
+  - "/materials/natural-gas"
+  - "/guides/pipe-flow-engineering"
+  - "/guides/engineering-unit-conversion"
 ---
 
 ## Incompressible vs Compressible Flow
@@ -141,7 +145,55 @@ Convert between actual and standard flow:
 
 <Formula>Q<sub>actual</sub> = Q<sub>std</sub> × (P<sub>std</sub>/P<sub>actual</sub>) × (T<sub>actual</sub>/T<sub>std</sub>)</Formula>
 
+## Unit Conversion Reference
+
+| Quantity | Conversion |
+|---|---|
+| Flow | 1 Nm³/h = 0.5886 SCFM; 1 SCFM = 1.699 m³/h (std) |
+| Pressure | 1 bar = 100 kPa = 14.5 psi; 1 atm = 1.01325 bar |
+| Mass flow | m (kg/s) = Q (m³/s) × ρ (kg/m³) |
+| Velocity | 1 m/s = 196.85 ft/min = 3.281 ft/s |
+| Density | 1 kg/m³ = 0.06243 lb/ft³ |
+| Temperature | T(K) = T(°C) + 273.15 |
+
+Example: 1000 Nm³/h = 588.6 SCFM. At 7 barg and 20°C this becomes Q_actual = 1000 × (1.013/8.013) × (293/273) = 135.5 m³/h. See the [Engineering Unit Conversion Guide](/guides/engineering-unit-conversion) for the full unit reference.
+
+### Worked Example: Natural Gas Pipeline Pressure Drop
+
+A 5 km DN300 natural gas transmission line carries 50,000 Nm³/h at 60 bar gauge inlet, 20°C. Estimate the outlet pressure using the general flow equation:
+
+1. Convert to standard mass flow: m = Q_std × ρ_std = (50,000/3600) × 0.80 = 11.1 kg/s
+2. For DN300 (ID 0.303 m), f ≈ 0.012 (fully turbulent)
+3. Apply the isothermal general flow equation for P₂:
+   m² = (P₁² − P₂²) × (π² × D⁵) / (16 × R × T × L × f)
+4. Rearranging: P₂ = √[P₁² − (16 × R × T × L × f × m²)/(π² × D⁵)]
+   = √[(6.1013×10⁶)² − (16 × 518 × 293 × 5000 × 0.012 × 11.1²)/(π² × 0.303⁵)]
+5. P₂ ≈ 5.79 MPa abs ≈ 57.9 bar abs ≈ 56.9 barg — about 3.5% drop over 5 km
+
+For full design, iterate with the Weymouth/Panhandle correlations and Z factor corrections; use the [Pressure Loss Calculator](/tools/pressure-loss-calculator) and [Pressure Drop Calculator](/tools/pressure-drop-calculator) for automated sizing. Compare with [Natural Gas Density & Properties](/materials/natural-gas) for density values at line conditions.
+
+## Frequently Asked Questions
+
+**When should I use compressible flow equations instead of incompressible?**
+When pressure drop exceeds ~10% of absolute inlet pressure. Below 10%, Darcy-Weisbach with average density is adequate. Above 40% pressure drop, choking is possible and full compressible analysis is required.
+
+**What is choked flow?**
+When gas reaches sonic velocity (Ma = 1) at a restriction (valve, orifice, relief nozzle), downstream pressure changes no longer affect the flow rate — mass flow is set by upstream pressure, temperature, and throat area. Relief valves discharging to atmosphere are almost always choked.
+
+**How do I convert Nm³/h to SCFM?**
+Multiply Nm³/h by 0.5886 (1 Nm³ = 35.31 SCF; 1 h = 60 min; 35.31/60 = 0.5886). Both are standard-condition volume flows; the density at those standard conditions differs (0°C vs 60°F), so the ratio is fixed.
+
+**What is the speed of sound in air and natural gas?**
+343 m/s for air at 20°C and about 446 m/s for natural gas (methane), because the lighter gas has a higher sound speed. Sonic velocity c = √(γRT) increases with temperature and gas lightness.
+
+**Why are gas velocities limited to 20 m/s in plant piping?**
+To control noise (jet noise grows roughly with the 6th power of velocity), erosion of fittings, and pressure drop. Long pipelines use even lower velocities (5-10 m/s) for economic compressor sizing. Relief headers are the exception — they run near Mach.
+
+**What is the difference between Weymouth and Panhandle equations?**
+Both are empirical isothermal pipeline flow correlations. Weymouth is conservative for short, high-pressure lines; Panhandle A/B better fit large-diameter, high-Reynolds transmission lines. Use the applicable equation within its tested Reynolds number range.
+
 ## Pressure Ratings for Gas vs Liquid Piping
+
 
 Gas piping has stricter requirements than liquid piping due to:
 - Higher stored energy (compressible fluid releases energy on failure)

@@ -56,7 +56,7 @@
     "decimals": 2
   },
   "content": {
-    "introduction": "Calculate the weight of a flat steel plate from its dimensions and material density. Essential for structural steel estimating, shipping weight calculations, and material ordering.",
+    "introduction": "Calculate the weight of a flat steel plate from its dimensions and material density. Essential for structural steel estimating, shipping weight calculations, and material ordering. The quick rule for carbon steel is 7.85 kg per square meter per millimeter of thickness — see the tables below for common plate weights.",
     "example": {
       "inputs": {
         "length": 2000,
@@ -75,6 +75,18 @@
       {
         "q": "How do I calculate weight per square meter?",
         "a": "Weight per m² = thickness (m) × density (kg/m³). For 10mm steel: 0.01 × 7850 = 78.5 kg/m²."
+      },
+      {
+        "q": "How much does a 4x8 steel plate weigh?",
+        "a": "A standard 4 ft x 8 ft (1220 x 2440 mm) carbon steel plate weighs 233.7 kg at 10 mm thickness, 140.2 kg at 6 mm, and 467.4 kg at 20 mm. Use the plate weight table in this calculator for the full range."
+      },
+      {
+        "q": "How much does 1 square meter of 10mm steel plate weigh?",
+        "a": "A 10 mm carbon steel plate weighs 78.5 kg/m2 (10 x 7.85). Stainless steel 304 weighs about 79.3 kg/m2 at the same thickness."
+      },
+      {
+        "q": "How much extra weight does galvanizing add to steel plate?",
+        "a": "Hot-dip galvanizing typically adds about 3% to steel plate weight, depending on coating thickness (commonly 70-85 microns per face). The zinc coating weighs roughly 0.5-0.6 kg/m2 for standard G90/galvanized classes."
       }
     ],
     "related": [
@@ -92,7 +104,25 @@
       "Structural steel estimating",
       "Shipping weight calculation",
       "Material ordering",
-      "Load estimation"
+      "Load estimation",
+      "CNC plasma and laser cutting cost estimation",
+      "Flame-cut blank and fabrication quoting",
+      "Shipbuilding and offshore plate ordering",
+      "Floor plate and access platform design"
+    ],
+    "sections": [
+      {
+        "heading": "Steel Plate Weight per Square Meter",
+        "body": "For carbon steel, plate weight per unit area = thickness (mm) x 7.85 kg/m2/mm:\n\n| Thickness (mm) | kg/m2 | lb/ft2 |\n|---|---|---|\n| 3 | 23.6 | 4.83 |\n| 5 | 39.3 | 8.04 |\n| 6 | 47.1 | 9.65 |\n| 8 | 62.8 | 12.9 |\n| 10 | 78.5 | 16.1 |\n| 12 | 94.2 | 19.3 |\n| 16 | 125.6 | 25.7 |\n| 20 | 157.0 | 32.2 |\n| 25 | 196.3 | 40.2 |\n| 30 | 235.5 | 48.2 |\n| 40 | 314.0 | 64.3 |\n| 50 | 392.5 | 80.4 |\n\nThese values assume carbon steel density 7850 kg/m3. Multiply by 1.010 for SS304 and 1.018 for SS316."
+      },
+      {
+        "heading": "Common Plate Sizes and Weights",
+        "body": "Standard 4 ft x 8 ft plate (1220 x 2440 mm):\n\n| Thickness (mm) | Weight per plate (kg) |\n|---|---|\n| 3 | 70.1 |\n| 5 | 116.8 |\n| 6 | 140.2 |\n| 8 | 186.9 |\n| 10 | 233.7 |\n| 12 | 280.4 |\n| 16 | 373.9 |\n| 20 | 467.4 |\n| 25 | 584.3 |\n\nEuropean standard plate is often 1500 x 3000 mm or 2000 x 6000 mm; enter the actual dimensions in the calculator above for exact values."
+      },
+      {
+        "heading": "Unit Conversion",
+        "body": "| Convert | Multiply by |\n|---|---|\n| kg to lb | 2.20462 |\n| kg/m2 to lb/ft2 | 0.204816 |\n| lb/ft2 to kg/m2 | 4.88243 |\n\nExample: a 2000 x 1000 x 10 mm carbon steel plate = 157 kg = 157 x 2.20462 = 346 lb. Galvanized plate adds roughly 3% weight for the zinc coating."
+      }
     ]
   },
   "tests": [

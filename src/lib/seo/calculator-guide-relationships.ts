@@ -154,6 +154,34 @@ export const CALCULATOR_GUIDE_RELATIONSHIPS: Record<string, GuideLinkConfig[]> =
       keywords: ['structural steel', 'properties'],
     },
   ],
+  'tank-weight-calculator': [
+    {
+      title: 'Tank Design Basics',
+      description: 'Size storage tanks and understand shell, head, and foundation weight considerations.',
+      href: '/guides/tank-design-basics',
+      keywords: ['tank design', 'storage tanks'],
+    },
+    {
+      title: 'Pressure Vessel Design',
+      description: 'Pressure vessel codes, wall thickness, and weight considerations for ASME VIII vessels.',
+      href: '/guides/pressure-vessel-design',
+      keywords: ['pressure vessel', 'ASME VIII'],
+    },
+  ],
+  'pressure-vessel-volume-calculator': [
+    {
+      title: 'Pressure Vessel Design',
+      description: 'Design pressure vessels with correct head types, volumes, and ASME code requirements.',
+      href: '/guides/pressure-vessel-design',
+      keywords: ['pressure vessel', 'ASME VIII'],
+    },
+    {
+      title: 'Tank Design Basics',
+      description: 'Tank sizing, head styles, and volume relationships for storage vessels.',
+      href: '/guides/tank-design-basics',
+      keywords: ['tank design', 'head volume'],
+    },
+  ],
   'motor-power-calculator': [
     {
       title: 'Motor Efficiency Guide',

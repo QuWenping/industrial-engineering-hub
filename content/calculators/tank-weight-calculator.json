@@ -66,7 +66,7 @@
     "decimals": 0
   },
   "content": {
-    "introduction": "Calculate the weight of cylindrical steel tanks and pressure vessels — both empty weight and filled weight with liquid. Enter tank dimensions (diameter, height, wall thickness) and material density to get instant weight results for fabrication planning, transportation, and structural load calculations. This calculator supports carbon steel, stainless steel, and other vessel materials with automatic SI unit conversion.",
+    "introduction": "Calculate the weight of cylindrical steel tanks and pressure vessels — both empty weight and filled weight with liquid. Enter tank dimensions (diameter, height, wall thickness) and material density to get instant weight results in kilograms (kg), with automatic SI unit conversion. This tool is used by engineers and fabricators for steel plate take-off, transportation and crane lift planning, foundation and support load checks, and empty-vs-filled safety evaluation. It supports carbon steel, stainless steel, aluminum, and other vessel materials.",
     "example": {
       "inputs": {
         "diameter": 3,
@@ -102,6 +102,18 @@
       {
         "q": "How do I calculate transport weight for a tank?",
         "a": "Transport weight = empty tank weight + liquid weight (if filled) + nozzle/fitting weight (typically 2-5% of shell weight). Always add a 10% safety factor for crane lift planning. Use this calculator for the base shell weight and add accessories separately."
+      },
+      {
+        "q": "How much does a 10,000 litre steel water tank weigh?",
+        "a": "A 10,000 L (10 m3) cylindrical tank with a 4 mm carbon steel shell has a surface area of roughly 28-32 m2, so the empty steel weight is about 900-1,200 kg (28 m2 x 0.004 m x 7850 kg/m3 ≈ 880 kg plus heads). Filled with water it totals approximately 11,000-11,200 kg."
+      },
+      {
+        "q": "How do I convert tank weight from kg to pounds?",
+        "a": "Multiply the weight in kg by 2.20462. A 46,000 kg tank = 101,413 lb. For quick estimation, 1 tonne ≈ 2,205 lb."
+      },
+      {
+        "q": "Does the liquid weight affect foundation design?",
+        "a": "Yes. Foundation and support design must use the filled (operating) weight plus live loads such as seismic and wind. For a 3 m x 6 m water tank, the liquid contributes 42 t compared with only 3.5-4.4 t of steel, so liquid dominates the dead load."
       }
     ],
     "related": [
@@ -121,9 +133,29 @@
       "Transportation and crane lift planning",
       "Structural load calculation for tank foundations",
       "Storage tank inventory and capacity planning",
-      "Comparing empty vs filled weight for safety design"
+      "Comparing empty vs filled weight for safety design",
+      "Steel plate take-off and material ordering",
+      "Dead load input for API 650 / ASME VIII foundation design"
     ],
-    "formula_explanation": "Tank weight is calculated as: Empty Weight = Shell Volume x Material Density. Shell Volume = pi x D x thickness x height (the volume of the steel wall). Filled Weight = Empty Weight + Liquid Volume x Liquid Density. Liquid Volume = pi x (D/2 - thickness)^2 x height. The engine converts all inputs to SI base units (meters, kg/m3) and returns weight in kilograms."
+    "formula_explanation": "Tank weight is calculated as: Empty Weight = Shell Volume x Material Density. Shell Volume = pi x D x thickness x height (the volume of the steel wall). Filled Weight = Empty Weight + Liquid Volume x Liquid Density. Liquid Volume = pi x (D/2 - thickness)^2 x height. The engine converts all inputs to SI base units (meters, kg/m3) and returns weight in kilograms.",
+    "sections": [
+      {
+        "heading": "Tank Weight Formula Explained",
+        "body": "Empty (shell) weight: W_shell = pi x D x t x H x rho, where D = tank diameter (m), t = wall thickness (m, converted from mm), H = shell height (m), rho = material density (kg/m3). The shell weight is the steel volume of the cylindrical wall (surface area pi x D x H times thickness) multiplied by density.\nHeads: each flat/elliptical head adds approximately pi x D^2 / 4 x t x rho for a flat head, and roughly 5-10% of shell weight for two 2:1 elliptical heads. This engine reports shell + liquid weight; add head weight separately for total empty vessel weight.\nLiquid weight: W_liquid = pi x (D/2)^2 x H x rho_liquid. Filled weight = empty weight + liquid weight. Always use the filled weight for foundation design and the empty weight plus fittings for transport planning."
+      },
+      {
+        "heading": "Worked Example: 3 m x 6 m Carbon Steel Water Tank",
+        "body": "Inputs: D = 3 m, H = 6 m, t = 8 mm, carbon steel rho = 7850 kg/m3, water rho = 1000 kg/m3.\nShell surface area = pi x 3 x 6 = 56.55 m2; shell steel volume = 56.55 x 0.008 = 0.452 m3; shell weight = 0.452 x 7850 = 3,551 kg.\nLiquid volume = pi x 1.5^2 x 6 = 42.41 m3; water weight = 42,411 kg. Total = 45,962 kg, or about 46.0 tonnes.\nIf two 8 mm elliptical heads are added (approx 890 kg), the full empty vessel weight is about 4,440 kg and the filled total is about 46,850 kg."
+      },
+      {
+        "heading": "Unit Conversion Reference",
+        "body": "Weight: 1 kg = 2.20462 lb; 1 tonne = 1,000 kg; weight in kN = mass (kg) x 9.80665 / 1000. A 46,000 kg tank weighs about 101,400 lb or 451 kN.\nMaterial density (kg/m3): carbon steel 7,850; stainless 304 7,930; stainless 316 7,990; aluminum 2,700; water 1,000; crude oil 850-900; diesel 830-850.\nDensity conversion: 1 kg/m3 = 0.0624 lb/ft3. Carbon steel in US units is 490 lb/ft3."
+      },
+      {
+        "heading": "Tank Weight vs. Capacity",
+        "body": "Empty weight is governed by shell surface area and wall thickness, not by capacity alone: a thin-walled large-diameter tank can weigh less than a smaller thick-walled pressure vessel of the same volume. For foundation and support design, use the filled (operating) weight including liquid and fittings; for shipping and lifting, use empty weight plus a 10% rigging safety factor. Related volume tools: Tank Volume Calculator, Tank Capacity Calculator, and Tank Surface Area Calculator provide the geometric inputs used here."
+      }
+    ]
   },
   "tests": [
     {

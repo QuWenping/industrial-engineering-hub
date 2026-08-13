@@ -1,11 +1,14 @@
 ---
 title: "Valve Types and Applications"
-description: "Comprehensive guide to industrial valve types: gate, globe, ball, butterfly, check, diaphragm, and control valves — with selection criteria and applications."
+description: "Industrial valve types explained: gate, globe, ball, butterfly, check, diaphragm, and control valves — functions, valve selection by application and industry, Cv sizing and FAQ."
 category: "Process Equipment"
-keywords: ["valve types", "gate valve", "ball valve", "butterfly valve", "control valve", "check valve"]
-updated: "2026-08-11"
+keywords: ["types of valves", "valve types", "valve selection", "gate valve", "ball valve", "butterfly valve", "globe valve", "control valve", "check valve"]
+updated: "2026-08-13"
 related:
   - pressure-loss-calculator
+  - control-valve-sizing-guide
+  - safety-relief-valve-selection
+  - gasket-selection-guide
   - "/guides/understanding-pid-diagrams"
   - "/guides/flange-rating-standards"
 ---
@@ -130,7 +133,7 @@ The control valve is the final control element of a process control loop. The ac
 
 Fail-safe action is a critical selection decision. Air-to-close (fail-open) valves open on loss of air, which is appropriate for cooling water, fuel, and other services where full flow on failure is the safer state. Air-to-open (fail-close) valves close on loss of air, protecting downstream equipment from overpressure or overfill. This choice must be documented in the piping and instrumentation diagram (P&ID) and the control philosophy.
 
-Valve flow characteristic — linear, equal percentage, or quick opening — must match the loop. Equal-percentage trim is the default for pressure and flow control because it gives a consistent percentage change in flow per unit of stem travel, compensating for the increasing valve gain at high loads. Sizing follows the C<sub>v</sub> equation; for compressible flow, gas expansion factors and critical-flow limits must be considered, and ISA/IEC 60534 provides the standard sizing and noise prediction methods.
+Valve flow characteristic — linear, equal percentage, or quick opening — must match the loop. Equal-percentage trim is the default for pressure and flow control because it gives a consistent percentage change in flow per unit of stem travel, compensating for the increasing valve gain at high loads. Sizing follows the C<sub>v</sub> equation; for compressible flow, gas expansion factors and critical-flow limits must be considered, and ISA/IEC 60534 provides the standard sizing and noise prediction methods. The [Control Valve Sizing Guide](/guides/control-valve-sizing-guide) walks through C<sub>v</sub> calculation, inherent vs installed characteristics, and actuator selection in detail.
 
 <Calculator id="pressure-loss-calculator" label="Calculate Valve Pressure Drop" />
 
@@ -150,7 +153,9 @@ Valve flow characteristic — linear, equal percentage, or quick opening — mus
 
 Overpressure protection is a safety-critical function governed by code. ASME Section VIII requires pressure vessels to be protected by a relief device certified to the requirements of UG-125 through UG-136, and API 520/521 provide the sizing methodology and the overpressure scenarios that must be evaluated — blocked outlet, fire, thermal expansion, control valve failure, and cooling-water failure, among others. Safety valves open with a rapid pop action, while relief valves open more gradually in proportion to the overpressure; both must have sufficient relieving capacity. A common design error is installing a relief valve with the correct set pressure but inadequate flow capacity.
 
-The set pressure must be selected with respect to the vessel MAWP and the allowable accumulation, and backpressure can significantly reduce capacity — conventional spring valves are affected by built-up backpressure, whereas balanced-bellows designs compensate for it. Rupture discs provide very fast, full-bore relief for high-rate scenarios but are one-shot devices and require a pressure-sensing device if used alone; they are frequently installed upstream of a relief valve to protect it from corrosive media.
+The set pressure must be selected with respect to the vessel MAWP and the allowable accumulation, and sizing details are covered in the [Safety Relief Valve Selection](/guides/safety-relief-valve-selection) guide. and backpressure can significantly reduce capacity — conventional spring valves are affected by built-up backpressure, whereas balanced-bellows designs compensate for it. Rupture discs provide very fast, full-bore relief for high-rate scenarios but are one-shot devices and require a pressure-sensing device if used alone; they are frequently installed upstream of a relief valve to protect it from corrosive media.
+
+Valve selection must be reconciled with the piping network — friction losses in the connected lines are estimated with the [Pressure Loss Calculator](/tools/pressure-loss-calculator).
 
 ## Valve Selection Decision Guide
 
@@ -183,7 +188,7 @@ Follow a systematic procedure rather than matching by habit:
 | Seals/gaskets | Buna-N, EPDM, Viton, PTFE, graphite |
 | Stem | 316SS, 17-4PH, Monel |
 
-Material selection starts with the fluid: carbon steel (WCB) is the economic default for non-corrosive hydrocarbon and water service; stainless steels resist general corrosion and are required for many chemical services; Alloy 20 and Hastelloy address aggressive acids; and bronze is common in seawater and fire-protection service. Elastomers must be checked against the fluid and temperature — Buna-N for oil, EPDM for steam and many acids, Viton for high-temperature and aggressive chemicals, PTFE for broad chemical resistance, and graphite for fire-safe sealing. For sour service, materials must comply with NACE MR0175/ISO 15156 to prevent sulfide stress cracking. Trim selection is equally important: Stellite-faced seats resist erosion in high-velocity steam and flashing service, and 410SS or 17-4PH stems provide strength with corrosion resistance.
+Material selection starts with the fluid: carbon steel (WCB) is the economic default for non-corrosive hydrocarbon and water service; stainless steels resist general corrosion and are required for many chemical services; Alloy 20 and Hastelloy address aggressive acids; and bronze is common in seawater and fire-protection service. Elastomers must be checked against the fluid and temperature — Buna-N for oil, EPDM for steam and many acids, Viton for high-temperature and aggressive chemicals, PTFE for broad chemical resistance, and graphite for fire-safe sealing. For sour service, materials must comply with NACE MR0175/ISO 15156 to prevent sulfide stress cracking. Flange joint integrity also depends on the gasket — see the [Gasket Selection Guide](/guides/gasket-selection-guide) for material, style, and seating load recommendations. Trim selection is equally important: Stellite-faced seats resist erosion in high-velocity steam and flashing service, and 410SS or 17-4PH stems provide strength with corrosion resistance.
 
 ## End Connections and Standards
 
@@ -210,6 +215,41 @@ Manual operation is acceptable for infrequent service, but large valves need gea
 - **Stem binding / sticking**: common in seldom-operated valves; mitigated by regular cycling and lubrication
 
 A simple preventive program dramatically improves valve life: operate isolation valves periodically, lubricate stems and gears per the manufacturer schedule, check packing for leakage, and test critical safety valves on the required schedule. For control valves, monitor stem travel and air supply, and inspect trim during planned turnarounds. Valve maintenance records should include test results, the seat class achieved, and the condition of seals and packing.
+
+## Valve Selection by Industry
+
+| Industry | Common Valve Types | Key Considerations |
+|---|---|---|
+| Oil & gas upstream | Trunnion ball, gate (API 6D), check | High pressure, NACE sour service, piggable full-bore |
+| Refining / petrochemical | Gate, globe, ball, control, PSV | API 600/603, fire-safe designs, fugitive emissions |
+| Chemical processing | Ball, diaphragm, control, rupture disc | Corrosion-resistant alloys, lined bodies, PTFE seals |
+| Water & wastewater | Butterfly, gate, check, knife gate | Large diameters, low pressure, slurry tolerance |
+| Power / steam | Globe, gate, safety/relief | High-temperature steam, low leakage classes |
+| HVAC | Butterfly, ball, 2-way/3-way control | Compact, low pressure drop, cost efficiency |
+| Food & pharmaceutical | Sanitary diaphragm, tri-clamp ball | Hygienic design, CIP/SIP cleanability |
+| Pulp & paper | Knife gate, V-port ball, diaphragm | Slurries, fibers, erosive media |
+
+Across all industries, follow the systematic procedure in the selection guide above: define the duty, establish process conditions, verify materials compatibility, choose end connections and rating, select actuation and fail-safe position, then confirm the governing standards.
+
+## Frequently Asked Questions
+
+**What are the main types of valves?**
+The main industrial valve types are gate, globe, ball, butterfly, check, diaphragm, plug, and control valves, plus pressure relief devices. They fall into functional groups: isolation (gate, ball, butterfly), throttling (globe, needle, control), overpressure protection (PSV, PRV, rupture disc), and backflow prevention (check).
+
+**How do I choose the right valve type?**
+Start with the duty: isolation, throttling, relief, or backflow prevention. Then match process conditions (pressure class, temperature, fluid compatibility), end connections, and actuation requirements. For isolation with minimal pressure drop use gate or ball; for throttling use globe or control valve; for large low-pressure lines use butterfly; for reverse-flow protection use a check valve.
+
+**What is the difference between a gate valve and a ball valve?**
+Both are isolation valves. A gate valve uses a sliding wedge and requires multiple turns to open/close, giving a low pressure drop when fully open. A ball valve rotates a ball 90° for fast quarter-turn operation with bubble-tight shutoff on soft seats. Ball valves are quicker and lighter; gate valves are preferred in some high-temperature and high-pressure services.
+
+**What is C<sub>v</sub> and how is valve size selected?**
+C<sub>v</sub> (flow coefficient) is the flow of water in US GPM through the valve at a 1 psi pressure drop. Sizing uses C<sub>v</sub> = Q × √(G/ΔP) for liquids, with correction factors for gases and critical flow. Never choose a valve purely on pipe size — calculate the required C<sub>v</sub> at the design flow and available pressure drop.
+
+**When should I use a globe valve instead of a ball valve for control?**
+Globe valves provide stable, precise throttling across the full stroke with replaceable seats and trims, making them ideal for frequent regulation. Ball valves are for isolation; even V-port balls are limited in control accuracy. For automatic regulation use a control valve with an actuator and positioner sized per ISA/IEC 60534.
+
+**Why do check valves slam and how do I prevent it?**
+Check valves slam when flow reverses suddenly and the disc closes violently, causing water hammer. Use spring-loaded, dual-plate, or axial (nozzle-type) check valves in systems with rapid flow changes, such as pump discharge lines, and check the valve's closing speed against the system deceleration time.
 
 ## Summary
 

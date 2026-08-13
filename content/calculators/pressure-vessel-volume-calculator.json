@@ -40,7 +40,7 @@
     "decimals": 0
   },
   "content": {
-    "introduction": "Calculate the total internal volume of a pressure vessel including cylindrical shell and two 2:1 elliptical ASME heads. Enter the vessel diameter and shell length (tangent-to-tangent) to get volume in liters, cubic meters, and gallons. This calculator follows ASME BPVC Section VIII standards for 2:1 elliptical head volume calculation.",
+    "introduction": "Calculate the total internal volume of a pressure vessel including the cylindrical shell and two 2:1 elliptical ASME heads. Enter the vessel diameter and shell length (tangent-to-tangent) to get volume in liters, cubic meters, and gallons. This calculator follows ASME BPVC Section VIII practice for 2:1 elliptical head volume (V_head = pi x D^3 / 24) and is used for vessel sizing, capacity planning, reactor volume estimation, and separator design. Shell volume uses V = pi x (D/2)^2 x L with the straight tangent-to-tangent length; head volume is added automatically.",
     "example": {
       "inputs": {
         "diameter": 2,
@@ -73,6 +73,18 @@
       {
         "q": "What is the formula for ASME vessel volume with heads?",
         "a": "V_total = pi x (D/2)^2 x L + 2 x (pi x D^3 / 24). This gives volume in m3. Multiply by 1000 for liters. For a 3m diameter, 6m shell: V = pi x 2.25 x 6 + 2 x pi x 27/24 = 42.41 + 7.07 = 49.48 m3 = 49,480 liters."
+      },
+      {
+        "q": "How do I find the volume of a horizontal cylinder with liquid at a partial level?",
+        "a": "This calculator gives total vessel volume. For partial liquid level in a horizontal cylinder you need the segment-area integration V = L x A(segment) (or a partial-fill table). Use our Liquid Volume Calculator for partially filled tanks and cylinders."
+      },
+      {
+        "q": "What is the difference between T/T length and overall length?",
+        "a": "Tangent-to-tangent (T/T) length is the straight cylindrical shell only. Overall length adds both head depths: for 2:1 elliptical heads each head depth is D/4, so overall = T/T + D/2. Enter the T/T length in this calculator; head volume is added automatically."
+      },
+      {
+        "q": "Do nozzles and internals affect the volume?",
+        "a": "Nozzles, baffles, and internal piping typically occupy well under 1% of vessel volume and are ignored for sizing purposes. For ultra-accurate hold-up calculations, subtract major internal hardware volume explicitly."
       }
     ],
     "related": [
@@ -91,9 +103,28 @@
       "Chemical reactor volume estimation",
       "Compressed gas storage vessel design",
       "Separator and scrubber capacity planning",
-      "Process vessel sizing for plant design"
+      "Process vessel sizing for plant design",
+      "Liquid hold-up time and operating volume checks"
     ],
-    "formula_explanation": "Total vessel volume = Shell Volume + 2 x Head Volume. Shell Volume = pi x (D/2)^2 x L. Each 2:1 Elliptical Head Volume = pi x D^3 / 24. The calculator uses D and L in meters and converts to liters (x1000). For other head types (hemispherical, torispherical), use the Pressure Vessel Engineering Hub reference tables."
+    "formula_explanation": "Total vessel volume = Shell Volume + 2 x Head Volume. Shell Volume = pi x (D/2)^2 x L. Each 2:1 Elliptical Head Volume = pi x D^3 / 24. The calculator uses D and L in meters and converts to liters (x1000). For other head types (hemispherical, torispherical), use the Pressure Vessel Engineering Hub reference tables.",
+    "sections": [
+      {
+        "heading": "Head Types and Volume Formulas",
+        "body": "2:1 Elliptical (ASME standard, most common): V = pi x D^3 / 24 per head. Head depth = D/4.\nHemispherical: V = pi x D^3 / 12 per head. Head depth = D/2.\nTorispherical (ASME F&D): V ≈ 0.10 x D^3 per head (approximate, depends on knuckle radius).\nThe engine uses the 2:1 elliptical head volume. For hemispherical heads multiply the head allowance by 2; for torispherical heads use about 0.10 x D^3 per head for preliminary estimates."
+      },
+      {
+        "heading": "Worked Example: 3 m x 8 m Horizontal Vessel",
+        "body": "Inputs: D = 3 m, shell length L = 8 m (tangent-to-tangent), 2:1 elliptical heads.\nShell volume = pi x (1.5)^2 x 8 = 56.55 m3.\nTwo heads = pi x 27 / 12 = 7.07 m3. Total = 63.62 m3 = 63,620 liters = 16,805 US gallons.\nThe two 2:1 heads add about 12.5% to the shell volume at L/D = 2.67."
+      },
+      {
+        "heading": "Unit Conversion Reference",
+        "body": "Volume: 1 m3 = 1,000 liters = 264.17 US gallons = 35.315 ft3 = 220.0 UK gallons.\nTo convert liters to US gallons multiply by 0.2642. A 17,802 L vessel = 4,702 US gallons.\n1 US gallon = 3.785 liters; 1 ft3 = 28.32 liters."
+      },
+      {
+        "heading": "Vessel Sizing Considerations",
+        "body": "Common pressure vessel proportions: L/D (tangent-to-tangent) from 2.5 to 5 for horizontal separators; vertical vessels often sized by required liquid hold-up time.\nOperating fill is typically 80-90% of total volume for liquid service; gas service uses the remaining vapor space.\nNozzle and internal volumes are normally ignored (less than 1% of total). The 2:1 elliptical head depth is D/4, so overall length = T/T length + D/2."
+      }
+    ]
   },
   "tests": [
     {
