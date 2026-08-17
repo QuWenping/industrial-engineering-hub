@@ -49,6 +49,10 @@
       {
         "q": "How does temperature affect density?",
         "a": "Most fluids expand when heated, reducing density. Water: ~1000 kg/m³ at 4°C, ~998 at 20°C, ~958 at 100°C. Use operating temperature densities for accurate pump calcs."
+      },
+      {
+        "q": "How do I convert density between kg/m³ and lb/ft³?",
+        "a": "1 kg/m³ = 0.06243 lb/ft³. For example, 800 kg/m³ = 49.94 lb/ft³. Conversely, multiply lb/ft³ by 16.018 to get kg/m³."
       }
     ],
     "related": [
@@ -78,4 +82,3 @@
     "title": "Flow Visualization"
   }
 }
-

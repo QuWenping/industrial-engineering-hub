@@ -69,6 +69,10 @@
       {
         "q": "How much does pump operation cost vs purchase?",
         "a": "Over a 15-year life, energy cost is typically 50-90% of total lifecycle cost. Purchase price is often <10%."
+      },
+      {
+        "q": "How do I convert energy units between kWh and MMBtu?",
+        "a": "1 kWh = 3.6 MJ = 0.003412 MMBtu. Electricity is usually billed per kWh; convert to consistent units when comparing electric vs fuel-driven pumps."
       }
     ],
     "related": [
@@ -89,6 +93,12 @@
       "Energy audits",
       "Pump replacement ROI",
       "VFD savings analysis"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Pump Energy",
+        "body": "**Energy units**\n\n- 1 kWh = 3.6 MJ = 0.003412 MMBtu\n- 1 MMBtu = 293.1 kWh\n- 1 kWh = 860.4 kcal\n\n**Power units**\n\n- 1 kW = 1.341 hp\n- 1 hp = 0.7457 kW\n\n**Time units**\n\n- 1 year ≈ 8760 hours\n\nAnnual energy cost = power (kW) × operating hours × electricity rate. Convert power and energy to consistent units before computing cost."
+      }
     ]
   },
   "tests": [

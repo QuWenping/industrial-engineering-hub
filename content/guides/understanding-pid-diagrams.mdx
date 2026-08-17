@@ -3,7 +3,7 @@ title: "Understanding P&ID Diagrams"
 description: "A practical guide to reading Piping and Instrumentation Diagrams (P&IDs), including ISA S5.1 symbols, tag numbering, line designations, and best practices."
 category: "Process Engineering"
 keywords: ["P&ID", "piping diagram", "ISA S5.1", "instrument tags", "process diagram"]
-updated: "2026-07-29"
+updated: "2026-08-17"
 related:
   - pipe-flow-calculator
   - valve-sizing-calculator
@@ -152,3 +152,30 @@ A PFD shows heat/mass balance and major equipment only. A P&ID shows every valve
 ## Summary
 
 P&IDs are the definitive engineering record of a process plant. Fluency in reading them requires understanding ISA S5.1 tags, line numbering, and equipment symbols. Investing an hour learning your site's legend sheet pays dividends every day you work with the plant — for design reviews, safety studies, maintenance, and troubleshooting alike.
+
+## Frequently Asked Questions
+
+**What is the difference between a P&ID and a PFD?**
+A Process Flow Diagram (PFD) shows the overall process concept with major equipment and heat/mass balance only. A P&ID shows every pipe, valve, drain, vent, and instrument as installed — it is the definitive engineering record used for operations, maintenance, and safety reviews.
+
+**What does FIC-201 mean on a P&ID?**
+FIC-201 is an ISA S5.1 instrument tag: F = flow (measured variable), I = indicate, C = control, and 201 is the loop number. It identifies a flow indicating controller in loop 201.
+
+**What is the difference between a control valve and a safety valve on a P&ID?**
+A control valve (e.g., FV-201) modulates flow continuously to maintain a process setpoint. A safety/relief valve is a protective device that opens automatically to relieve overpressure. Control valves are shown with an actuator symbol; safety valves have their own distinct symbol and are tagged with PSV/PSHH designations.
+
+**How do I read a line number like 6"-CWS-101-A1A-H?**
+The line number encodes size (6"), service (CWS = chilled water supply), sequence number (101), pipe spec (A1A), and insulation (H = hot insulated). The pipe spec defines materials, wall thickness, flange rating, gaskets, and bolting for that line.
+
+**What is a loop number and why does it matter?**
+A loop number groups all instruments serving one control function. Everything tagged 201 in a loop belongs to the same control loop — when troubleshooting, chase the whole loop by matching the number.
+
+## Related Engineering Tools
+
+- [Pressure Drop Calculator](/tools/pressure-drop-calculator) — Estimate line pressure loss for P&ID sizing
+- [Flow Rate Calculator](/tools/flow-rate-calculator) — Convert flow and velocity for line sizing
+- [Pipe Velocity Calculator](/tools/pipe-velocity-calculator) — Check design velocity in process lines
+- [Orifice Flow Calculator](/tools/orifice-flow-calculator) — Size orifice plates (FE elements)
+- [Control Valve Sizing Guide](/guides/control-valve-sizing-guide) — Select control valves (FV tags)
+- [Safety Relief Valve Selection](/guides/safety-relief-valve-selection) — Size relief valves (PSV tags)
+- [Chemical Plant Engineering](/industries/chemical-plant) — P&ID practice in process plants

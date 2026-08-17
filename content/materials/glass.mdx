@@ -3,12 +3,20 @@ title: "Glass (Soda-Lime)"
 description: "Soda-lime glass properties, density (2500 kg/m³), optical transparency, brittle fracture behavior, thermal shock sensitivity, and applications in windows, bottles, and industrial equipment."
 category: "Ceramic"
 keywords: ["glass density", "glass properties", "soda lime glass", "glass strength", "silica glass"]
-updated: "2026-08-13"
+updated: "2026-08-17"
 related:
   - density-calculator
   - material-volume-calculator
   - thermal-resistance-calculator
   - pressure-vessel-volume-calculator
+  - "/materials/concrete"
+  - "/materials/hdpe"
+  - "/materials/natural-gas"
+  - "/materials/water"
+  - "/materials/air"
+  - "/materials/aluminum"
+  - "/materials/stainless-steel-304"
+  - "/materials/carbon-steel"
 ---
 
 ## Overview
@@ -101,6 +109,21 @@ Glass panel weight per area: 6mm float glass ≈ 15 kg/m²; 10mm ≈ 25 kg/m²; 
 | Heat-strengthened | Partial temper, intermediate strength | 60-90 MPa |
 | Borosilicate (Pyrex) | Low expansion, thermal shock resistant | Similar strength |
 
+### Composition Comparison: Soda-Lime vs Borosilicate vs Fused Silica
+
+| Property | Soda-Lime | Borosilicate (Pyrex) | Fused Silica / Quartz |
+|---|---|---|---|
+| SiO₂ content | 70-75% | 80-81% | >99.9% |
+| Density (kg/m³) | 2,500 | 2,230 | 2,200 |
+| Thermal expansion (×10⁻⁶/°C) | 8-9 | 3.2-3.3 | 0.55 |
+| Thermal conductivity (W/m·K) | 1.0 | 1.1 | 1.4 |
+| Max continuous service temp | ~450°C | ~500°C | ~1000°C |
+| Thermal shock resistance | Poor | Good | Excellent |
+| Relative cost | Lowest | Moderate | Highest |
+| Typical uses | Windows, bottles, containers | Labware, sight glasses, cookware | Optical fibers, quartz lamps, semiconductor |
+
+Fused silica (also called quartz glass) is the highest-performance engineering glass: its near-zero thermal expansion (0.55 × 10⁻⁶/°C) makes it virtually immune to thermal shock, and it survives continuous service above 1000°C. It is the material of choice for optical fibers, high-temperature lamp envelopes, and semiconductor processing. Borosilicate is the practical middle ground for process sight glasses and laboratory ware.
+
 ## Applications
 
 ### Construction
@@ -124,6 +147,21 @@ Glass panel weight per area: 6mm float glass ≈ 15 kg/m²; 10mm ≈ 25 kg/m²; 
 - Optical fibers (high-purity fused silica, different composition)
 - Display glass (aluminosilicate, thin, chemically strengthened — Gorilla Glass class)
 
+## Glass vs Steel vs Aluminum
+
+| Property | Soda-Lime Glass | Structural Steel (A36) | Aluminum 6061-T6 |
+|---|---|---|---|
+| Density (kg/m³) | 2,500 | 7,850 | 2,700 |
+| Young's Modulus (GPa) | 70 | 200 | 69 |
+| Tensile Strength (MPa) | 30-50 (annealed) | 400-550 | 310 |
+| Compressive Strength (MPa) | 900-1000 | ~250 (yield) | ~276 (yield) |
+| Thermal Conductivity (W/m·K) | 1.0 | 50 | 167 |
+| Thermal Expansion (×10⁻⁶/°C) | 8-9 | 12 | 23 |
+| Fracture Behavior | Brittle (no yield) | Ductile | Ductile |
+| Relative Cost | Low | Low | Moderate |
+
+Glass is a thermal and electrical insulator (1.0 W/m·K vs 50 for steel and 167 for aluminum), which is why glazing dominates building heat loss. Its modulus (70 GPa) matches aluminum, but unlike metals it has zero plastic deformation — design must keep tensile stress below the flaw-limited strength. For weight-critical glazing, glass (2,500 kg/m³) is only slightly lighter than aluminum (2,700 kg/m³) and about one-third the weight of steel.
+
 <Callout type="warning" title="Thermal Shock is a Glass Killer" severity="warning">
 Soda-lime glass breaks from rapid temperature change because thermal gradients create differential expansion. The classic example: pouring boiling water into a cold glass bottle fails at stresses well below design strength. Borosilicate glass (Pyrex) has ~3x lower thermal expansion and resists thermal shock, making it the correct choice for sight glasses, laboratory ware, and any service involving rapid temperature changes.
 </Callout>
@@ -139,6 +177,8 @@ Soda-lime glass breaks from rapid temperature change because thermal gradients c
 ## Related Calculator
 
 Use the [Density Calculator](/tools/density-calculator) to compute glass mass and volume, the [Material Volume Calculator](/tools/material-volume-calculator) for volume takeoffs, and the [Thermal Resistance Calculator](/tools/thermal-resistance-calculator) for glazing heat transfer estimates.
+
+For weight estimation of glass panels, apply the same method as the [Steel Weight Calculator](/tools/steel-weight-calculator) or [Aluminum Weight Calculator](/tools/aluminum-weight-calculator) using glass density. For strength context and comparison with metals, see the [Material Strength Guide](/guides/material-strength-basics) and the [Steel Material Properties Guide](/guides/steel-material-properties).
 
 ## Frequently Asked Questions
 
@@ -159,6 +199,20 @@ Slightly: soda-lime glass is 2500 kg/m³ vs aluminum 2700 kg/m³ — actually sl
 
 **How do I convert kg/m³ to lb/ft³ for glass?**
 Multiply by 0.06243: 2500 × 0.06243 = 156 lb/ft³. Conversely, multiply lb/ft³ by 16.018 to get kg/m³.
+
+**Is glass stronger than acrylic?**
+In compression, yes — glass reaches 900-1000 MPa vs acrylic's ~80 MPa. But in practical bending and impact, acrylic (PMMA) is tougher: it yields and deforms rather than shattering, has roughly 10x higher impact resistance, and is about half the density (1190 kg/m³). Glass wins on hardness, scratch resistance, chemical inertness, and UV stability; acrylic wins on impact safety, weight, and formability. Choose glass for optics, chemical service, and scratch-critical glazing; acrylic for impact-prone, lightweight applications.
+
+## Related Engineering Resources
+
+- [Concrete](/materials/concrete) — density and properties of normal weight concrete
+- [HDPE](/materials/hdpe) — polymer density and pipe applications
+- [Natural Gas](/materials/natural-gas) — gas density and flow properties
+- [Water](/materials/water) — water density and properties
+- [Air](/materials/air) — air density and properties
+- [Aluminum](/materials/aluminum) — light metal density and properties
+- [Stainless Steel 304](/materials/stainless-steel-304) — corrosion-resistant steel properties
+- [Carbon Steel](/materials/carbon-steel) — structural steel density and properties
 
 ## Summary
 

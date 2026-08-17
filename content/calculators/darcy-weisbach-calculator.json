@@ -94,6 +94,10 @@
       {
         "q": "What is the Swamee-Jain equation?",
         "a": "The Swamee-Jain equation is an explicit formula for the Darcy friction factor: f = 0.25 / [log10(epsilon/(3.7D) + 5.74/Re^0.9)]^2. It approximates the Colebrook-White equation within 1% accuracy for Re > 5000 and is widely used in pipe flow calculations. Use this calculator for instant friction factor and pressure drop results."
+      },
+      {
+        "q": "How do I convert pressure drop between bar and psi?",
+        "a": "1 bar = 14.5038 psi = 100 kPa. For water, 1 m head ≈ 0.0981 bar. Convert using these factors when comparing results with pump curves or valve datasheets."
       }
     ],
     "related": [
@@ -118,6 +122,12 @@
       "Pump head calculation",
       "HVAC hydronic design",
       "Process piping"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Darcy-Weisbach",
+        "body": "**Pressure units**\n\n- 1 bar = 100 kPa = 14.5038 psi\n- 1 psi = 6.8948 kPa = 0.06895 bar\n- 1 m water head ≈ 9.81 kPa ≈ 0.0981 bar\n\n**Length units**\n\n- 1 m = 3.28084 ft\n- 1 inch = 25.4 mm\n\n**Flow units**\n\n- 1 m³/h = 0.2778 L/s = 4.403 US gpm\n\nThe Darcy-Weisbach equation ΔP = f × (L/D) × (ρV²/2) requires consistent SI units: length in m, velocity in m/s, density in kg/m³, giving pressure drop in Pa. Convert to bar or psi afterwards."
+      }
     ]
   },
   "tests": [

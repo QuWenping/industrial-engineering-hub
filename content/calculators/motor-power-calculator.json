@@ -58,19 +58,54 @@
       },
       {
         "q": "How do I convert kW to HP?",
-        "a": "1 HP = 0.7457 kW. Divide kW by 0.7457 to get HP."
+        "a": "1 HP = 0.7457 kW. Divide kW by 0.7457 to get HP. Example: 22 kW = 22 / 0.7457 = 29.5 HP."
+      },
+      {
+        "q": "What is the difference between input power and shaft power?",
+        "a": "Input power is the electrical power drawn from the supply. Shaft power is the mechanical power delivered to the load, equal to input power times efficiency. The difference is lost as heat in the motor windings and bearings."
+      },
+      {
+        "q": "How do I select the right motor power?",
+        "a": "Calculate the driven load's shaft power requirement (e.g., pump power, fan power), then select the next standard motor size above it. Add margin for starting torque, service factor, and future load growth. For pumps, use the pump shaft power at the duty point."
+      },
+      {
+        "q": "What are IE3 and IE4 efficiency classes?",
+        "a": "IE3 (Premium) and IE4 (Super Premium) are international efficiency classes defined by IEC 60034-30-1. IE3 is the regulatory minimum in most regions; IE4 adds 1-3% efficiency. Higher classes reduce energy cost and are required for new large motors in many jurisdictions."
+      },
+      {
+        "q": "How do I estimate annual motor energy cost?",
+        "a": "Annual cost = input power (kW) x operating hours x electricity rate. A 22 kW motor at 90% efficiency running 8,000 h/yr at $0.10/kWh costs 24.4 x 8,000 x 0.10 = $19,520/yr. Improving efficiency by 5% saves roughly $1,000/yr."
       }
     ],
     "related": [
       "pump-power-calculator",
       "pump-efficiency-calculator",
-      "pump-energy-calculator"
+      "pump-energy-calculator",
+      "pump-sizing-calculator",
+      "pump-head-calculator",
+      "pump-affinity-law-calculator",
+      "pump-selection-calculator",
+      "pump-flow-calculator"
     ],
     "applications": [
       "Motor sizing",
       "Pump drive selection",
       "Energy consumption estimation",
       "Electrical design"
+    ],
+    "sections": [
+      {
+        "heading": "Motor Power Formula Explained",
+        "body": "The mechanical shaft power delivered by an electric motor is the electrical input power times efficiency:\n\nP_shaft = P_in x eta\n\nWhere P_shaft = shaft power output (kW), P_in = electrical input power (kW), eta = motor efficiency (decimal, 0-1).\n\nExample: a 22 kW motor at 90% efficiency delivers 22 x 0.9 = 19.8 kW of shaft power. The remaining 2.2 kW is lost as heat. For kW to HP: 1 HP = 0.7457 kW, so 19.8 kW = 19.8 / 0.7457 = 26.6 HP."
+      },
+      {
+        "heading": "Motor Efficiency Classes",
+        "body": "| Efficiency Class | Typical Efficiency (large motors) |\n|---|---|\n| IE1 (Standard) | 82 - 90% |\n| IE2 (High) | 86 - 93% |\n| IE3 (Premium) | 88 - 96% |\n| IE4 (Super Premium) | 90 - 97% |\n\nEfficiency rises with motor size — a 200 kW IE3 motor can exceed 96% while a 1 kW motor is typically below 85%. IE3 is now the regulatory minimum in most regions. The efficiency difference between IE2 and IE3 on a continuously running motor often pays back the price premium in under a year."
+      },
+      {
+        "heading": "Worked Example: kW to HP and Energy Cost",
+        "body": "A pump drive needs 19.8 kW of shaft power. Select a 22 kW (30 HP) motor:\n\n- In HP: 22 kW / 0.7457 = 29.5 HP → standard 30 HP frame\n- Input power at 90% efficiency: 22 / 0.9 = 24.4 kW\n- Annual energy at 8,000 h/yr: 24.4 x 8,000 = 195,200 kWh\n- At $0.10/kWh: $19,520/yr\n\nUpgrading from IE2 (88%) to IE3 (93%) cuts input power to 23.7 kW, saving 5,600 kWh and $560/yr on this duty."
+      }
     ]
   },
   "tests": [
@@ -97,4 +132,3 @@
     "title": "Cross-Section Visualization"
   }
 }
-

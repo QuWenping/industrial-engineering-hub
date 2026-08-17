@@ -75,6 +75,10 @@
       {
         "q": "Is stainless heavier than carbon steel?",
         "a": "Yes, slightly. Carbon steel = 7850 kg/m³ vs 7930 for 304 (about 1% heavier)."
+      },
+      {
+        "q": "How do I convert weight between kg and lb?",
+        "a": "1 kg = 2.20462 lb. For example, a 50 kg stainless plate weighs 110.2 lb. Convert dimensions to consistent units before computing."
       }
     ],
     "related": [
@@ -93,6 +97,12 @@
       "Chemical tanks",
       "Architectural finishes",
       "Medical devices"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Stainless Steel Weight",
+        "body": "**Weight units**\n\n- 1 kg = 2.20462 lb\n- 1 tonne = 1000 kg\n- 1 lb = 0.4536 kg\n\n**Length units**\n\n- 1 m = 3.28084 ft\n- 1 inch = 25.4 mm\n\n**Density units**\n\n- 1 kg/m³ = 0.06243 lb/ft³\n\nStainless steel density is about 7900-8000 kg/m³ (304: 7930, 316: 7990). Weight = density × volume; keep all dimensions in the same unit system before computing."
+      }
     ]
   },
   "tests": [

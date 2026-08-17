@@ -3,7 +3,7 @@ title: "Steam System Fundamentals"
 description: "Complete overview of industrial steam systems: boilers, steam distribution, condensate return, steam traps, pressure reduction, and energy efficiency."
 category: "Thermal Engineering"
 keywords: ["steam system", "steam trap", "boiler", "condensate", "steam pressure", "saturated steam"]
-updated: "2026-07-29"
+updated: "2026-08-17"
 related:
   - heat-transfer-calculator
   - "/guides/heat-exchanger-selection"
@@ -182,3 +182,31 @@ Audits of industrial steam systems routinely identify 15-30% energy savings oppo
 ## Summary
 
 Steam is an efficient heat transport medium using latent heat of vaporization. Saturated steam temperature depends only on pressure — select pressure based on process temperature needs. Key components: boiler, distribution piping with drip traps, PRVs, steam traps, and condensate return system. Returning condensate and fixing failed traps are the highest-return energy improvements. Design steam lines for 15-40 m/s velocity and slope them to drain condensate safely. Always warm steam lines gradually to avoid water hammer.
+
+## Frequently Asked Questions
+
+**What is the difference between saturated and superheated steam?**
+Saturated steam is at its boiling point for a given pressure — temperature and pressure are directly linked, and it carries maximum latent heat. Superheated steam is heated above saturation temperature at the same pressure, carrying additional sensible heat; it is used in turbines to avoid condensation damage.
+
+**How much steam do I need for a given heating load?**
+Steam flow (kg/h) = Q (kW) × 3600 / h_fg (kJ/kg). For example, a 500 kW heater using 5 barg steam (h_fg = 2085 kJ/kg) needs 500 × 3600 / 2085 = 863 kg/h.
+
+**Why is condensate return important?**
+Condensate is hot (90-150°C) distilled water. Returning it saves 15-20% of fuel energy, reduces boiler water treatment chemicals, and cuts makeup water and blowdown. Target 70-90% condensate return.
+
+**What is flash steam and how is it recovered?**
+When hot condensate at high pressure discharges to lower pressure, a percentage flashes to steam. For example, 10 barg condensate flashing to atmosphere produces ~16% flash steam, which can be recovered in a flash tank for low-pressure heating instead of being vented.
+
+**How often should steam traps be checked?**
+20-30% of steam traps fail open in typical plants. Implement an annual trap survey using ultrasonic testing. A single failed 10mm trap at 7 barg can waste ~$5,000/year in steam.
+
+## Related Engineering Tools
+
+- [Steam Trap Selection](/guides/steam-trap-selection) — Choose the right trap type
+- [Condensate Recovery Systems](/guides/condensate-recovery-systems) — Design condensate return
+- [Heat Transfer Calculator](/tools/heat-transfer-calculator) — Sizing heat exchangers
+- [Heat Exchanger Selection](/guides/heat-exchanger-selection) — Select process heat exchangers
+- [Insulation Selection Guide](/guides/insulation-selection-guide) — Insulate steam lines
+- [Pressure Drop Calculator](/tools/pressure-drop-calculator) — Steam line pressure loss
+- [Pipe Velocity Calculator](/tools/pipe-velocity-calculator) — Steam line sizing
+- [Water Hammer Analysis](/guides/water-hammer-analysis) — Prevent steam line water hammer

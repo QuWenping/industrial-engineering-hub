@@ -98,6 +98,10 @@
       {
         "q": "What is the difference between K-factor and L/D?",
         "a": "Equivalent length (L/D) methods convert fittings to equivalent pipe length. K-factor method uses velocity head directly: h_loss = K × v²/2g. Both give same result."
+      },
+      {
+        "q": "How do I convert pressure loss between bar, psi, and kPa?",
+        "a": "1 bar = 100 kPa = 14.5038 psi = 10.197 m of water column. 1 psi = 6.8948 kPa = 0.06895 bar. Use these factors to convert results when comparing with pump curves or valve datasheets."
       }
     ],
     "related": [

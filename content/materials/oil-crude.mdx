@@ -3,7 +3,7 @@ title: "Crude Oil"
 description: "Crude oil properties, density (~870 kg/m³), API gravity classification, viscosity variation with temperature, and engineering implications for pipelines, storage tanks, and pumping systems."
 category: "Fluid"
 keywords: ["crude oil density", "crude oil properties", "API gravity", "crude oil viscosity", "petroleum properties"]
-updated: "2026-07-29"
+updated: "2026-08-17"
 related:
   - fluid-density-calculator
   - pipe-flow-calculator
@@ -90,6 +90,45 @@ Using 1000 kg/m³ instead of 870 kg/m³ for crude oil overestimates pump power b
 
 <Calculator id="pump-power-calculator" label="Calculate Pump Power for Crude Oil" />
 
+## Frequently Asked Questions
+
+**What is the density of crude oil?**
+Typical medium crude is about 870 kg/m³ (API ~31°). Light crude can be as low as 800 kg/m³, while heavy crude ranges from 920 to 980 kg/m³. Always use the actual assay value for design.
+
+**What is API gravity and how is it calculated?**
+API gravity = (141.5 / specific gravity at 60°F) − 131.5. Higher API means lighter, less dense oil. Water has an API gravity of 10°; values above 10° float on water, values below 10° sink.
+
+**Why does crude oil viscosity matter for pipeline transport?**
+Viscosity determines the Reynolds number and pressure drop. Heavy crude is often laminar at ambient temperature and may be too viscous to pump economically — requiring heating, diluent blending (dilbit), or emulsion transport.
+
+**What is the difference between light and heavy crude?**
+Light crude (API above 31°) has lower density and viscosity, higher value, and yields more gasoline and diesel. Heavy crude (API below 22°) is dense, viscous, and requires more processing and special transport.
+
+**Why can't I use water density for oil calculations?**
+Using 1000 kg/m³ instead of 870 kg/m³ overestimates pump power by about 15%. Conversely, heavy crude at 950 kg/m³ needs 9% more power than water density suggests. Always use the actual measured density.
+
+**What is the flash point of crude oil?**
+It ranges from about -7°C for light crude to +65°C for heavy crude. Light crude is Class 1B (highly flammable); heavy crude is combustible rather than flammable.
+
+**How does temperature affect crude oil viscosity?**
+Viscosity drops dramatically with temperature — heavy crude can fall from 500 cSt at 10°C to 15 cSt at 80°C. This is why heating is the primary strategy for transporting heavy crudes.
+
 ## Summary
 
 Crude oil density (~870 kg/m³ for typical medium crude) and viscosity vary widely by grade and temperature — classified by API gravity from heavy (high density, viscous) to light (low density, fluid). Pipeline and pump design must use actual assay values rather than assuming water density. Heavy crude requires heating, diluent, or emulsion transport. Viscosity is highly temperature-sensitive and the key design parameter for heavy oil systems.
+
+## Related Guides and Tools
+
+- [Fluid Density Calculator](/tools/fluid-density-calculator) — density of crude and other fluids
+- [Pipe Flow Calculator](/tools/pipe-flow-calculator) — flow and velocity in oil pipelines
+- [Pump Power Calculator](/tools/pump-power-calculator) — hydraulic power using actual crude density
+- [Tank Volume Calculator](/tools/tank-volume-calculator) — storage tank sizing
+- [Tank Weight Calculator](/tools/tank-weight-calculator) — tank shell and content weight
+- [Pressure Drop Calculator](/tools/pressure-drop-calculator) — friction loss in crude pipelines
+- [Reynolds Number Calculator](/tools/reynolds-number-calculator) — laminar/turbulent regime for viscous crude
+- [Pump Selection Calculator](/tools/pump-selection-calculator) — pump sizing for oil service
+- [Tank Design Basics](/guides/tank-design-basics) — storage tank fundamentals
+- [Centrifugal Pump Fundamentals](/guides/centrifugal-pump-fundamentals) — pump curves and NPSH
+- [Pipe Flow Engineering](/guides/pipe-flow-engineering) — pipe sizing for viscous fluids
+- [Water Hammer Analysis](/guides/water-hammer-analysis) — surge in liquid pipelines
+- [Water Properties](/materials/water) — comparison with the most common process fluid

@@ -73,6 +73,10 @@
       {
         "q": "Why is a large tank cheaper per m² than a small one?",
         "a": "Surface area scales roughly with the square of size while volume scales with the cube, so the surface-to-volume ratio falls as the tank grows. Heat loss, coating, and insulation costs per stored volume therefore decrease for larger tanks — the A/V argument."
+      },
+      {
+        "q": "What is the surface area of a sphere or cone tank?",
+        "a": "A sphere has surface area A = 4πr² (πD²), and a cone (including base) has A = πr(r + √(r² + h²)). For a sphere of 2 m diameter, A = 12.57 m². These shapes minimize surface area for a given volume, which is why spherical pressure vessels and storage tanks are the most material-efficient — but they are also the most expensive to fabricate."
       }
     ],
     "related": [

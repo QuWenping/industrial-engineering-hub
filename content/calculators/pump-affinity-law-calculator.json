@@ -87,6 +87,10 @@
       {
         "q": "How accurate are affinity laws?",
         "a": "Within ±5% for speed changes up to 20-30%. For larger changes or diameter trimming, efficiency changes and accuracy decreases."
+      },
+      {
+        "q": "How do I convert pump speed units?",
+        "a": "Pump speed is usually expressed in rpm. 1 rpm = 1/60 rps. Affinity laws are ratio-based, so any consistent speed unit works as long as both speeds use the same unit."
       }
     ],
     "related": [
@@ -107,6 +111,12 @@
       "Pump speed selection",
       "Impeller trimming",
       "Retrofit evaluation"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Affinity Laws",
+        "body": "**Speed units**\n\n- 1 rpm = 1/60 rps\n- 1 rps = 60 rpm\n\n**Flow units**\n\n- 1 m³/h = 0.2778 L/s = 4.403 US gpm\n\n**Head units**\n\n- 1 m = 3.28084 ft\n\n**Power units**\n\n- 1 kW = 1.341 hp\n\nAffinity laws are ratio-based: Q₂/Q₁ = N₂/N₁, H₂/H₁ = (N₂/N₁)², P₂/P₁ = (N₂/N₁)³. Any consistent unit set works because only ratios are used."
+      }
     ]
   },
   "tests": [

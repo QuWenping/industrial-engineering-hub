@@ -89,6 +89,10 @@
       {
         "q": "What permanent pressure loss does an orifice cause?",
         "a": "Permanent loss ≈ (1−β²) × ΔP ≈ 60-90% of measured differential. This is the main drawback vs venturi (10-20% loss)."
+      },
+      {
+        "q": "How do I convert flow units for orifice sizing?",
+        "a": "1 m³/h = 0.2778 L/s = 4.403 US gpm. 1 kg/s of water ≈ 3.6 m³/h. For pressure drop, 1 bar = 100 kPa = 14.5 psi. Convert all inputs to one consistent system before applying the orifice equation."
       }
     ],
     "related": [
@@ -113,6 +117,12 @@
       "Process control",
       "Custody transfer",
       "Pump performance testing"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Orifice Flow",
+        "body": "**Flow rate units**\n\n- 1 m³/h = 0.2778 L/s = 4.403 US gpm\n- 1 US gpm = 0.2271 m³/h = 3.785 L/min\n- 1 kg/s (water) ≈ 3.6 m³/h\n\n**Pressure units**\n\n- 1 bar = 100 kPa = 14.5038 psi\n- 1 psi = 6.8948 kPa\n\n**Diameter units**\n\n- 1 inch = 25.4 mm\n\nOrifice flow uses the discharge coefficient C_d and beta ratio β = d/D. Keep diameter, pressure, and flow in consistent units (SI recommended) before applying the equation."
+      }
     ]
   },
   "tests": [

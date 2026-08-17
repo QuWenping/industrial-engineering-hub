@@ -58,6 +58,10 @@
       {
         "q": "How do I convert head to pressure for other fluids?",
         "a": "P(kPa) = h(m) × ρ(kg/m³) × 9.81 / 1000. 10m of water = 98.1 kPa; 10m of gasoline (750 kg/m³) = 73.6 kPa."
+      },
+      {
+        "q": "How do I convert head loss to pressure drop?",
+        "a": "Multiply head by fluid density and gravity: ΔP = ρgh. For water, 1 m head ≈ 9.81 kPa ≈ 0.0981 bar. For other fluids, scale by specific gravity: ΔP = SG × 9.81 kPa per metre of head."
       }
     ],
     "related": [

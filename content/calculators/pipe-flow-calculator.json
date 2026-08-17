@@ -57,6 +57,22 @@
       {
         "q": "What formula does this use?",
         "a": "Q = π × d² / 4 × v × 3600 (continuity equation, converted to m³/h). This assumes the pipe is flowing full."
+      },
+      {
+        "q": "How do I convert m3/h to L/s?",
+        "a": "Divide m3/h by 3.6. For example, 56.55 m3/h = 15.7 L/s. To convert L/s to m3/h, multiply by 3.6."
+      },
+      {
+        "q": "How do I convert m3/h to US gpm?",
+        "a": "Multiply m3/h by 4.403. For example, 56.55 m3/h = 249 US gpm. Conversely divide gpm by 4.403 to get m3/h."
+      },
+      {
+        "q": "What is the flow rate of a 50mm pipe at 1 m/s?",
+        "a": "Q = pi x 0.05^2 / 4 x 1 x 3600 = 7.07 m3/h (1.96 L/s). At 2 m/s the same pipe carries 14.1 m3/h."
+      },
+      {
+        "q": "How do I calculate pipe diameter from flow rate?",
+        "a": "Rearrange the continuity equation: d = sqrt(4Q / (pi x v)). Use consistent units - with Q in m3/s and v in m/s, d is in meters. Then select the nearest standard pipe size."
       }
     ],
     "related": [
@@ -81,6 +97,20 @@
       "Pump system design",
       "Hydraulic calculations",
       "Flow measurement"
+    ],
+    "sections": [
+      {
+        "heading": "Typical Design Velocities by Service",
+        "body": "Recommended design velocities for common services:\nPump suction (water): 0.6-1.5 m/s | Pump discharge (water): 1.5-3.0 m/s | General water lines: 1-3 m/s | Boiler feed water: 1.5-4.5 m/s | Oil (viscous): 0.3-1.5 m/s | Steam (low pressure): 20-40 m/s | Compressed air: 6-15 m/s | Gas (natural): 10-30 m/s.\nVelocities above 3 m/s for water increase erosion and pressure drop; above 4.5 m/s erosion-corrosion risk rises sharply."
+      },
+      {
+        "heading": "Worked Example: Sizing a Water Line",
+        "body": "A pump must deliver 30 m3/h of water. Select a pipe diameter for a design velocity of 2 m/s.\nStep 1 - required area: A = Q / v = (30/3600) / 2 = 4.167 x 10^-3 m2.\nStep 2 - required diameter: d = sqrt(4A/pi) = sqrt(4 x 4.167 x 10^-3 / pi) = 0.0728 m = 72.8 mm.\nStep 3 - select standard pipe: use 80 mm nominal bore (ID ~80 mm).\nCheck: Q = pi x 0.08^2/4 x 2 x 3600 = 36.2 m3/h, velocity at 30 m3/h = 1.66 m/s - within the 1-3 m/s range."
+      },
+      {
+        "heading": "Unit Conversion Guide",
+        "body": "Flow rate: 1 m3/h = 0.2778 L/s = 4.403 US gpm = 3.667 UK gpm.\n1 L/s = 3.6 m3/h = 15.85 US gpm. 1 US gpm = 0.2271 m3/h.\nVelocity: 1 m/s = 3.281 ft/s. Diameter: 1 mm = 0.03937 in.\nExample: 56.55 m3/h = 56.55 x 4.403 = 249 US gpm."
+      }
     ]
   },
   "tests": [

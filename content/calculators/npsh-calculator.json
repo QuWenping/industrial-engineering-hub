@@ -89,6 +89,10 @@
       {
         "q": "How do I improve NPSHa?",
         "a": "Increase static head (raise tank), reduce suction friction (larger pipe, shorter runs, fewer fittings), pressurize the suction tank, or reduce fluid temperature."
+      },
+      {
+        "q": "How do I convert NPSH between meters and feet?",
+        "a": "Multiply meters by 3.28084 to get feet. For example, 3 m NPSH = 9.84 ft. NPSH is always expressed as a head of the pumped liquid, not as pressure, so conversion is purely a length-unit conversion."
       }
     ],
     "related": [

@@ -5,7 +5,7 @@
   "priority": "P0",
   "description": "Calculate volumetric flow rate from pipe diameter and velocity, with unit conversions.",
   "seo": {
-    "title": "Flow Rate Calculator - Pipe Flow",
+    "title": "Flow Rate Calculator - Pipe Velocity & Diameter",
     "description": "Flow rate calculator for volumetric fluid calculations — Multiple unit conversions for engineering precision",
     "keyword": "flow rate calculator"
   },

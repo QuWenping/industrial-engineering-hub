@@ -57,6 +57,10 @@
       {
         "q": "How do I calculate horizontal tank partial volume?",
         "a": "Partial volume (with liquid level) requires the circular segment formula, which is a separate calculation."
+      },
+      {
+        "q": "How do I convert tank volume between m³ and gallons?",
+        "a": "1 m³ = 1000 L = 264.17 US gallons. For example, a 50 m³ tank holds 13,208 US gallons. Convert using these factors for fill and hydrotest planning."
       }
     ],
     "related": [
@@ -75,6 +79,12 @@
       "Capacity planning",
       "Process vessel design",
       "Inventory management"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Tank Volume",
+        "body": "**Volume units**\n\n- 1 m³ = 1000 L = 264.17 US gal = 219.97 imp gal\n- 1 US gal = 3.785 L\n- 1 bbl (oil) = 42 US gal = 0.159 m³\n\n**Length units**\n\n- 1 m = 3.28084 ft\n- 1 inch = 25.4 mm\n\nTank volume V = π/4 × D² × L (cylindrical) requires consistent units. Convert diameter and length to the same unit before computing, then convert the result to the desired volume unit."
+      }
     ]
   },
   "tests": [

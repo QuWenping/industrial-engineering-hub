@@ -3,12 +3,20 @@ title: "Water Properties (20°C)"
 description: "Water physical properties including density, viscosity, specific heat, thermal conductivity, and vapor pressure at various temperatures for engineering calculations."
 category: "Fluid"
 keywords: ["water properties", "water density", "water viscosity", "specific heat water", "vapor pressure water"]
-updated: "2026-07-29"
+updated: "2026-08-17"
 related:
   - pressure-drop-calculator
   - reynolds-number-calculator
   - pipe-velocity-calculator
   - "/guides/pressure-drop-pipes"
+  - "/materials/glass"
+  - "/materials/hdpe"
+  - "/materials/concrete"
+  - "/materials/natural-gas"
+  - "/materials/air"
+  - "/materials/aluminum"
+  - "/materials/stainless-steel-304"
+  - "/materials/carbon-steel"
 ---
 
 ## Overview
@@ -133,6 +141,43 @@ For 100mm pipe at 2 m/s: Re ≈ 1000 × 2 × 0.1 / 0.001 = 200,000 (turbulent)
 Seawater is highly corrosive to carbon steel and causes pitting/SCC in 304/316 stainless above ~40°C. Use 90/10 copper-nickel, 2205 duplex, FRP, or titanium for seawater piping and equipment.
 </Callout>
 
+## Frequently Asked Questions
+
+**What is the density of water at 20°C?**
+998.2 kg/m³ (0.9982 g/cm³). For preliminary engineering calculations, 1000 kg/m³ is a widely used approximation.
+
+**Why does water have its maximum density at 4°C?**
+Water reaches its maximum density of 999.97 kg/m³ at 4°C. Below this temperature, hydrogen bonding expands the molecular structure as it approaches freezing, which is why ice (917 kg/m³) floats on liquid water.
+
+**What is the dynamic viscosity of water at 20°C?**
+1.002 × 10⁻³ Pa·s, commonly rounded to 1 cP (centipoise). Viscosity drops by roughly 70% between 0°C and 100°C, which significantly affects pressure drop in hot water systems.
+
+**What is the specific heat of water?**
+4.186 kJ/kg·K at 20°C — one of the highest of common fluids, which is why water is the preferred heat-transfer medium for cooling and heating duty.
+
+**What is the thermal conductivity of water?**
+0.60 W/m·K at 20°C, roughly 4-5 times higher than most organic liquids, making water an efficient heat-transfer fluid.
+
+**Why does hot water cause NPSH problems in pumps?**
+Vapor pressure rises exponentially with temperature — at 90°C it is 70.1 kPa (7.16 m of water head), which subtracts directly from available NPSH. Above ~50°C, vapor pressure must be checked carefully in pump suction design.
+
+**How much does water density change with pressure?**
+Almost none — water is nearly incompressible, changing less than 0.005% per bar. Only temperature has a significant effect on density.
+
 ## Summary
 
 Water at 20°C has density 998 kg/m³, dynamic viscosity 0.001 Pa·s, specific heat 4.186 kJ/kg·K, and thermal conductivity 0.60 W/m·K. Density changes modestly with temperature; viscosity decreases significantly (important for hot water pressure drop); vapor pressure rises exponentially — critical for NPSH at temperatures above 50°C. Use 1000 kg/m³ and 0.001 Pa·s as defaults for preliminary calculations; use precise values from steam tables for design work.
+
+## Related Guides and Tools
+
+- [Pressure Drop Calculator](/tools/pressure-drop-calculator) — pipe friction loss for water systems
+- [Reynolds Number Calculator](/tools/reynolds-number-calculator) — flow regime for water in pipes
+- [Pipe Velocity Calculator](/tools/pipe-velocity-calculator) — velocity and flow sizing
+- [Pump Power Calculator](/tools/pump-power-calculator) — hydraulic power for water pumping
+- [Heat Transfer Calculator](/tools/heat-transfer-calculator) — heating/cooling duty
+- [Fluid Density Calculator](/tools/fluid-density-calculator) — density of water and other fluids
+- [Pipe Pressure Drop Guide](/guides/pressure-drop-pipes) — Darcy-Weisbach and Hazen-Williams
+- [Water Hammer Analysis](/guides/water-hammer-analysis) — surge and acoustic velocity
+- [NPSH Calculation Explained](/guides/npsh-calculation-explained) — cavitation and suction head
+- [Pipe Flow Engineering](/guides/pipe-flow-engineering) — pipe sizing fundamentals
+- [Seawater Properties](/materials/seawater) — comparison for marine systems

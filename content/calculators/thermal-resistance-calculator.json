@@ -119,6 +119,14 @@
       {
         "q": "What are typical building U-values?",
         "a": "Modern insulated walls: 0.2-0.4 W/m²K; roofs: 0.15-0.25; windows: 1.5-3.0; uninsulated solid brick: 2.0-3.0."
+      },
+      {
+        "q": "How do I convert R-value between SI and imperial units?",
+        "a": "SI R-value (m²·K/W) × 5.678 = imperial R-value (ft²·°F·hr/BTU). For example, 1 m²·K/W = 5.678 ft²·°F·hr/BTU."
+      },
+      {
+        "q": "How do I convert U-value between W/m²·K and BTU/hr·ft²·°F?",
+        "a": "1 W/m²·K = 0.1761 BTU/hr·ft²·°F. U = 1/R, so convert R first, then invert to get U in the target unit system."
       }
     ],
     "related": [
@@ -130,6 +138,12 @@
       "HVAC load calculation",
       "Energy code compliance",
       "Wall/roof assembly rating"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Thermal Resistance",
+        "body": "**R-value units**\n\n- 1 m²·K/W = 5.678 ft²·°F·hr/BTU\n- 1 ft²·°F·hr/BTU = 0.1761 m²·K/W\n\n**U-value units**\n\n- 1 W/m²·K = 0.1761 BTU/hr·ft²·°F\n- 1 BTU/hr·ft²·°F = 5.678 W/m²·K\n\n**Conductivity units**\n\n- 1 W/m·K = 0.578 BTU/hr·ft·°F\n\nR = thickness / k for a single layer; U = 1/R_total for the assembly. Convert all layers to one consistent unit system before summing R-values."
+      }
     ]
   },
   "tests": [
@@ -154,4 +168,3 @@
     "title": "Temperature Field Diagram"
   }
 }
-

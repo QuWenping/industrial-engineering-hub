@@ -3,7 +3,7 @@
   "name": "Steel Weight Calculator",
   "category": "Material Engineering",
   "priority": "P0",
-  "description": "Calculate the weight of steel plates based on dimensions and material density. Used in structural design, fabrication, and cost estimation.",
+  "description": "Calculate the weight of steel plates, round bars, pipes, beams and structural sections from dimensions and material density. The pillar calculator for all steel weight calculations in structural design, fabrication and cost estimation.",
   "seo": {
     "title": "Steel Weight Calculator - Plate, Beam, Pipe & Section Weight (kg, lb)",
     "description": "Steel weight calculator for plates, beams, angles, pipes and rounds. Steel density table, weight per meter chart, unit conversion and formula for fabrication and structural design.",
@@ -116,7 +116,8 @@
       "stainless-steel-weight-calculator",
       "round-bar-weight-calculator",
       "steel-plate-weight-calculator",
-      "material-volume-calculator"
+      "material-volume-calculator",
+      "density-calculator"
     ],
     "applications": [
       "Structural steel fabrication and erection",

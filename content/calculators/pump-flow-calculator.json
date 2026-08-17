@@ -79,6 +79,10 @@
       {
         "q": "Why does flow decrease as head increases?",
         "a": "Centrifugal pumps have a falling head-flow curve. At higher system resistance (more head), less flow can be produced for the same power."
+      },
+      {
+        "q": "How do I convert flow between m³/h and gpm?",
+        "a": "1 m³/h = 4.403 US gpm. For example, 50 m³/h = 220 gpm. Conversely, divide gpm by 4.403 to get m³/h. 1 m³/h also equals 0.2778 L/s."
       }
     ],
     "related": [
@@ -99,6 +103,12 @@
       "System curve analysis",
       "Flow verification",
       "Retrofit planning"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Pump Flow",
+        "body": "**Flow rate units**\n\n- 1 m³/h = 0.2778 L/s = 4.403 US gpm\n- 1 US gpm = 0.2271 m³/h = 3.785 L/min\n- 1 L/s = 3.6 m³/h\n\n**Volume units**\n\n- 1 m³ = 1000 L = 264.17 US gal\n\nPump flow is the volumetric rate at the pump suction conditions. Convert all flow inputs to one consistent unit before applying the pump curve or affinity laws."
+      }
     ]
   },
   "tests": [

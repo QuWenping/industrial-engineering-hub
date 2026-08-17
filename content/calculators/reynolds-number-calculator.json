@@ -79,6 +79,10 @@
       {
         "q": "Why does Reynolds number matter?",
         "a": "Re determines which pressure drop equation to use and is required to find the friction factor in the Darcy-Weisbach equation."
+      },
+      {
+        "q": "How do I convert kinematic viscosity units?",
+        "a": "1 cSt = 1 mm²/s = 1×10⁻⁶ m²/s. To convert cSt to m²/s multiply by 1e-6. Dynamic viscosity μ (Pa·s) = kinematic viscosity ν (m²/s) × density ρ (kg/m³); 1 cP = 0.001 Pa·s."
       }
     ],
     "related": [
@@ -103,6 +107,12 @@
       "Friction factor calculation",
       "Pressure drop estimation",
       "Heat transfer design"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Reynolds Number",
+        "body": "**Viscosity units**\n\n- 1 cSt = 1 mm²/s = 1×10⁻⁶ m²/s\n- 1 cP = 0.001 Pa·s = 0.001 kg/(m·s)\n- 1 Pa·s = 1000 cP\n\n**Density units**\n\n- 1 kg/m³ = 0.06243 lb/ft³\n- 1 lb/ft³ = 16.018 kg/m³\n\n**Length units**\n\n- 1 inch = 25.4 mm\n- 1 m = 3.28084 ft\n\nRe = ρVD/μ requires consistent SI units: density in kg/m³, velocity in m/s, diameter in m, dynamic viscosity in Pa·s. Convert all inputs to SI before computing."
+      }
     ]
   },
   "tests": [

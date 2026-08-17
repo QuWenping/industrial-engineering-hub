@@ -57,6 +57,10 @@
       {
         "q": "What is the difference between US and imperial gallons?",
         "a": "1 US gallon = 3.785 L; 1 imperial (UK) gallon = 4.546 L. US gallons are ~20% smaller."
+      },
+      {
+        "q": "How do I convert capacity between liters and cubic meters?",
+        "a": "1 m³ = 1000 L. For example, 10 m³ = 10,000 L. Multiply m³ by 1000 to get liters, or divide liters by 1000 to get m³."
       }
     ],
     "related": [

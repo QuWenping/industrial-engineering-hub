@@ -116,7 +116,13 @@
       "Printed circuit board (PCB) traces",
       "Grounding and lightning protection"
     ],
-    "formula_explanation": "Copper weight = Volume x Density. Sheet: W = L x W x T x density. Round bar: W = pi x (D/2)^2 x L x density. Copper density 8960 kg/m3."
+    "formula_explanation": "Copper weight = Volume x Density. Sheet: W = L x W x T x density. Round bar: W = pi x (D/2)^2 x L x density. Copper density 8960 kg/m3.",
+    "sections": [
+      {
+        "heading": "Unit Conversion for Copper Weight",
+        "body": "**Weight units**\n\n- 1 kg = 2.20462 lb\n- 1 tonne = 1000 kg\n- 1 lb = 0.4536 kg\n\n**Length units**\n\n- 1 m = 3.28084 ft\n- 1 inch = 25.4 mm\n\n**Density units**\n\n- 1 kg/m³ = 0.06243 lb/ft³\n\nCopper density is 8960 kg/m³ (0.324 lb/in³). Weight = density × volume. Convert dimensions to a consistent unit system before computing, then convert the result to kg or lb as needed."
+      }
+    ]
   },
   "tests": [
     {

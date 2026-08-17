@@ -107,6 +107,10 @@
       {
         "q": "How much energy does insulation save?",
         "a": "Uninsulated 150°C pipes lose ~20x more heat than well-insulated ones. Insulation typically pays back in under a year on hot pipes."
+      },
+      {
+        "q": "How do I convert heat loss between W and BTU/hr?",
+        "a": "1 W = 3.412 BTU/hr. For example, 500 W = 1706 BTU/hr. Convert to consistent units when comparing insulation options."
       }
     ],
     "related": [
@@ -118,6 +122,12 @@
       "Insulation specification",
       "Steam tracing design",
       "Heat-up calculations"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Heat Loss",
+        "body": "**Heat rate units**\n\n- 1 W = 3.412 BTU/hr\n- 1 kW = 3412 BTU/hr\n- 1 BTU/hr = 0.2931 W\n\n**Temperature units**\n\n- °F = °C × 9/5 + 32\n- ΔT in °C = ΔT in K\n\n**Area units**\n\n- 1 m² = 10.764 ft²\n\n**Conductivity units**\n\n- 1 W/m·K = 0.578 BTU/hr·ft·°F\n\nHeat loss Q = U × A × ΔT. Convert all inputs to one consistent unit system before computing, then convert the result to W or BTU/hr as needed."
+      }
     ]
   },
   "tests": [
@@ -141,4 +151,3 @@
     "title": "Temperature Field Diagram"
   }
 }
-

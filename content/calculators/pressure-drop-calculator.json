@@ -89,6 +89,22 @@
       {
         "q": "How accurate is Darcy-Weisbach?",
         "a": "It is the most accurate general equation for pressure drop in pipes, valid for all flow regimes when the correct friction factor is used."
+      },
+      {
+        "q": "How do I calculate the friction factor?",
+        "a": "For laminar flow (Re < 2300), f = 64/Re exactly. For turbulent flow, use the Moody chart or Colebrook equation with the pipe's relative roughness. A value of 0.02 is a good first estimate for clean commercial steel or plastic water lines."
+      },
+      {
+        "q": "How does pressure drop scale with velocity?",
+        "a": "Pressure drop is proportional to velocity squared (v^2) in the Darcy-Weisbach equation. Doubling velocity quadruples the pressure drop. This is why economic pipe sizing balances smaller pipe (lower cost) against higher pumping energy."
+      },
+      {
+        "q": "How do I convert kPa to bar or psi?",
+        "a": "1 bar = 100 kPa; 1 psi = 6.895 kPa. Example: 40 kPa = 0.4 bar = 5.8 psi. For pump head, divide pressure drop in Pa by (rho x g) to get meters of head."
+      },
+      {
+        "q": "What is the difference between pressure drop and head loss?",
+        "a": "Pressure drop (Pa or kPa) is the actual pressure loss. Head loss (m) is pressure drop expressed as an equivalent fluid column height: h = DeltaP / (rho x g). For water, 1 bar ≈ 10.2 m head. Head loss is used directly in pump and piping calculations."
       }
     ],
     "related": [
@@ -113,6 +129,20 @@
       "Pump head calculation",
       "Hydraulic analysis",
       "Process piping"
+    ],
+    "sections": [
+      {
+        "heading": "Darcy-Weisbach Equation Explained",
+        "body": "The Darcy-Weisbach equation is the most accurate general method for pressure drop in pipes:\n\nDeltaP = f x (L / D) x (rho x v^2 / 2)\n\nWhere DeltaP = pressure drop (Pa), f = Darcy friction factor, L = pipe length (m), D = inner diameter (m), rho = fluid density (kg/m3), v = average velocity (m/s).\n\nExample: water (1000 kg/m3) at 2 m/s in a 100 mm pipe, 100 m long, f = 0.02: DeltaP = 0.02 x (100/0.1) x (1000 x 4 / 2) = 40,000 Pa = 40 kPa. Doubling velocity quadruples the drop because v appears squared."
+      },
+      {
+        "heading": "Typical Friction Factors",
+        "body": "| Pipe Condition | Darcy Friction Factor (f) |\n|---|---|\n| Smooth drawn tubing (copper, plastic) | 0.01 - 0.02 |\n| New commercial steel | 0.015 - 0.025 |\n| Slightly corroded steel | 0.02 - 0.04 |\n| Heavily fouled / old pipe | 0.04 - 0.08 |\n\nFor laminar flow (Re < 2300), f = 64/Re exactly. For turbulent flow, f depends on Reynolds number and relative roughness — use the Moody chart or Colebrook equation. A 0.02 default is a reasonable first estimate for clean industrial water lines."
+      },
+      {
+        "heading": "Worked Example: Sizing a Pump for Line Loss",
+        "body": "A 100 m long, 100 mm ID water line carries 2 m/s (56.5 m3/h). With f = 0.02:\n\nDeltaP = 0.02 x (100/0.1) x (1000 x 2^2 / 2) = 40 kPa\n\nConvert to head: h = DeltaP / (rho x g) = 40,000 / (1000 x 9.81) = 4.1 m. This head loss must be added to static head when sizing the pump. A 200 m line doubles the drop to 80 kPa (8.1 m); a 50 mm line at the same velocity quadruples it to 160 kPa."
+      }
     ]
   },
   "tests": [

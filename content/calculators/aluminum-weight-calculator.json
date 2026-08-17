@@ -75,6 +75,22 @@
       {
         "q": "How much lighter is aluminum than steel?",
         "a": "Aluminum is about 65% lighter than carbon steel for the same volume (2700 vs 7850 kg/m³)."
+      },
+      {
+        "q": "How do I calculate the weight of an aluminum sheet?",
+        "a": "Multiply length x width x thickness (in meters) by density (2700 kg/m3). Example: 1000 x 500 x 5 mm sheet = 1.0 x 0.5 x 0.005 x 2700 = 6.75 kg."
+      },
+      {
+        "q": "What is the density of 6061 aluminum?",
+        "a": "6061 aluminum has a density of 2700 kg/m3 (2.70 g/cm3). It is the most common structural alloy, used for extrusions, plates, and machined parts."
+      },
+      {
+        "q": "How much does an aluminum plate weigh?",
+        "a": "A 2000 x 1000 x 10 mm 6061 plate weighs 54 kg. The same carbon steel plate weighs 157 kg — aluminum is about 2.9x lighter for the same dimensions."
+      },
+      {
+        "q": "How do I convert mm to meters in the formula?",
+        "a": "Divide each mm dimension by 1000. Example: 1000 mm = 1.0 m, 500 mm = 0.5 m, 5 mm = 0.005 m. Then multiply the three dimensions by density (2700 kg/m3) to get weight in kg."
       }
     ],
     "related": [
@@ -93,6 +109,24 @@
       "Automotive lightweighting",
       "Sheet metal fabrication",
       "Structural framing"
+    ],
+    "sections": [
+      {
+        "heading": "Aluminum Weight Formula Explained",
+        "body": "Weight is volume times density:\n\nW = L x W x T x rho\n\nWhere L, W, T = length, width, thickness (m), rho = density (kg/m3). Convert mm inputs to meters first (divide by 1000).\n\nExample: a 1000 x 500 x 5 mm aluminum sheet: V = 1.0 x 0.5 x 0.005 = 0.0025 m3, W = 0.0025 x 2700 = 6.75 kg. The same sheet in steel (7850 kg/m3) weighs 19.6 kg — aluminum is about 2.9x lighter for the same volume."
+      },
+      {
+        "heading": "Common Aluminum Alloy Densities",
+        "body": "| Alloy | Density (kg/m3) | Typical Use |\n|---|---|---|\n| 1050 (pure) | 2705 | Electrical, food |\n| 3003 | 2730 | Sheet, cookware |\n| 5052 | 2680 | Marine, tanks |\n| 6061 | 2700 | Structural, extrusions |\n| 6063 | 2700 | Architectural extrusions |\n| 7075 | 2810 | Aerospace, high strength |\n\nMost structural alloys fall in the 2680-2810 kg/m3 range. Using 2700 kg/m3 is accurate to within 2% for common grades like 6061 and 6063."
+      },
+      {
+        "heading": "Worked Example: Sheet and Plate Weight",
+        "body": "A 2000 x 1000 x 10 mm 6061 aluminum plate:\n\nV = 2.0 x 1.0 x 0.01 = 0.02 m3\nW = 0.02 x 2700 = 54 kg\n\nCompare: the same carbon steel plate weighs 157 kg (7850 kg/m3) — aluminum saves 103 kg, about 66%. For a 6 m x 1 m x 3 mm sheet: V = 0.018 m3, W = 48.6 kg. Use the calculator for any flat part; for round bar or pipe use the dedicated weight calculators."
+      },
+      {
+        "heading": "Unit Conversion for Aluminum Weight",
+        "body": "**Weight units**\n\n- 1 kg = 2.20462 lb\n- 1 tonne = 1000 kg\n- 1 lb = 0.4536 kg\n\n**Length units**\n\n- 1 m = 3.28084 ft\n- 1 inch = 25.4 mm\n\n**Density units**\n\n- 1 kg/m³ = 0.06243 lb/ft³\n\nAluminum density is about 2700 kg/m³ (6061: 2700, 7075: 2810). Weight = density × volume. Convert all dimensions to one consistent unit system before computing, then convert the result to the required weight unit."
+      }
     ]
   },
   "tests": [

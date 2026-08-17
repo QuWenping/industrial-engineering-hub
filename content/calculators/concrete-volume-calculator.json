@@ -67,6 +67,10 @@
       {
         "q": "What does 1 m³ of concrete weigh?",
         "a": "Normal weight concrete weighs approximately 2400 kg/m³."
+      },
+      {
+        "q": "How do I convert concrete volume between m³ and yd³?",
+        "a": "1 m³ = 1.308 yd³. For example, 10 m³ = 13.08 yd³. Ready-mix concrete is often ordered in cubic yards in the US, so convert before placing an order."
       }
     ],
     "related": [],
@@ -94,4 +98,3 @@
     "title": "Cross-Section Visualization"
   }
 }
-

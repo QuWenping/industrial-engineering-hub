@@ -77,6 +77,10 @@
       {
         "q": "What is wire-to-water efficiency?",
         "a": "It includes motor efficiency: η_total = η_pump × η_motor. Typical motor efficiency is 85-95%, so wire-to-water is 60-75%."
+      },
+      {
+        "q": "How do I convert power between kW and hp?",
+        "a": "1 kW = 1.341 hp. For example, 15 kW = 20.1 hp. Conversely, divide hp by 1.341 to get kW. Efficiency is a dimensionless ratio and does not depend on the power unit used."
       }
     ],
     "related": [
@@ -98,6 +102,12 @@
       "Energy audits",
       "Pump replacement decisions",
       "Operating cost estimation"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Pump Efficiency",
+        "body": "**Power units**\n\n- 1 kW = 1.341 hp\n- 1 hp = 0.7457 kW\n- 1 kW = 1000 W\n\n**Flow units**\n\n- 1 m³/h = 0.2778 L/s = 4.403 US gpm\n\n**Pressure units**\n\n- 1 bar = 100 kPa = 14.5038 psi\n\nHydraulic power P = ρgQH/η requires consistent SI units: density in kg/m³, flow in m³/s, head in m, giving power in W. Convert to kW or hp afterwards."
+      }
     ]
   },
   "tests": [

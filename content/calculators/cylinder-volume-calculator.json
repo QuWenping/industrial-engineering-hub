@@ -57,6 +57,10 @@
       {
         "q": "Does this work for horizontal tanks?",
         "a": "This gives total (100% full) volume. For partially-filled horizontal tanks, use the liquid-volume calculator which accounts for fill height."
+      },
+      {
+        "q": "How do I convert cylinder volume between m³ and liters?",
+        "a": "1 m³ = 1000 L. For example, a 0.5 m³ cylinder = 500 L. Multiply m³ by 1000 to get liters, or divide liters by 1000 to get m³."
       }
     ],
     "related": [

@@ -57,6 +57,10 @@
       {
         "q": "What if ΔT1 = ΔT2?",
         "a": "The formula gives 0/0, but as ΔT1→ΔT2, LMTD→ΔT (the arithmetic mean). The calculator will handle this case by using ΔT directly."
+      },
+      {
+        "q": "How do I convert temperature between °C and °F?",
+        "a": "°F = °C × 9/5 + 32. For example, 50°C = 122°F. LMTD is a temperature difference, so ΔT in °C equals ΔT in K, and ΔT in °F equals ΔT in °R."
       }
     ],
     "related": [
@@ -68,6 +72,12 @@
       "Process thermal rating",
       "Boiler/condenser design",
       "HVAC coil selection"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for LMTD",
+        "body": "**Temperature units**\n\n- °F = °C × 9/5 + 32\n- K = °C + 273.15\n- ΔT in °C = ΔT in K; ΔT in °F = ΔT in °R\n\n**Heat duty units**\n\n- 1 kW = 3412 BTU/hr\n- 1 W = 3.412 BTU/hr\n\nLMTD = (ΔT₁ - ΔT₂) / ln(ΔT₁/ΔT₂). Because LMTD is a ratio of temperature differences, it is unit-consistent as long as both ΔT₁ and ΔT₂ use the same temperature unit."
+      }
     ]
   },
   "tests": [
@@ -86,4 +96,3 @@
     "title": "Temperature Field Diagram"
   }
 }
-

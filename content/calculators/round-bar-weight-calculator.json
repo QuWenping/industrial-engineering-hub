@@ -65,6 +65,22 @@
       {
         "q": "Does this work for rebar?",
         "a": "Yes, for plain round bars. Deformed rebar is typically 1-2% heavier due to ribs."
+      },
+      {
+        "q": "What is the weight of a 12mm steel bar per meter?",
+        "a": "A 12mm diameter carbon steel round bar weighs approximately 0.888 kg/m (pi x 36 x 7850 / 1,000,000)."
+      },
+      {
+        "q": "What is the weight of a 20mm steel bar per meter?",
+        "a": "A 20mm diameter carbon steel round bar weighs approximately 2.47 kg/m. A standard 12m length weighs about 29.6 kg."
+      },
+      {
+        "q": "How do I convert round bar weight from kg to pounds?",
+        "a": "Multiply the weight in kg by 2.20462. For example, 92.5 kg = 204 lb. For weight per meter, multiply kg/m by 0.67197 to get lb/ft."
+      },
+      {
+        "q": "What is the difference between round bar and rebar weight?",
+        "a": "Plain round bar uses the exact cylinder formula. Deformed rebar is typically 1-2% heavier due to the surface ribs, so use a 1-2% uplift for rebar estimating."
       }
     ],
     "related": [
@@ -83,6 +99,20 @@
       "Shaft stock ordering",
       "Machining material calculation",
       "Steel fabrication"
+    ],
+    "sections": [
+      {
+        "heading": "Weight per Meter Reference (Carbon Steel)",
+        "body": "Weight per meter for common round bar diameters (carbon steel, density 7850 kg/m3):\n6 mm: 0.222 kg/m | 8 mm: 0.395 kg/m | 10 mm: 0.617 kg/m | 12 mm: 0.888 kg/m | 16 mm: 1.58 kg/m | 20 mm: 2.47 kg/m | 25 mm: 3.85 kg/m | 32 mm: 6.31 kg/m | 40 mm: 9.87 kg/m | 50 mm: 15.4 kg/m | 60 mm: 22.2 kg/m | 80 mm: 39.5 kg/m | 100 mm: 61.7 kg/m.\nFormula: W (kg/m) = pi x (D/2)^2 x rho / 1,000,000 with D in mm and rho in kg/m3."
+      },
+      {
+        "heading": "Worked Example: 20 mm Rebar",
+        "body": "Estimate the weight of a 12 m long, 20 mm diameter carbon steel rebar.\nStep 1 - cross-section area: A = pi x (20/2)^2 = 314.2 mm2 = 3.142 x 10^-4 m2.\nStep 2 - volume: V = A x L = 3.142 x 10^-4 x 12 = 3.770 x 10^-3 m3.\nStep 3 - weight: W = V x rho = 3.770 x 10^-3 x 7850 = 29.6 kg.\nCheck: 2.47 kg/m x 12 m = 29.6 kg. The bar weighs approximately 29.6 kg."
+      },
+      {
+        "heading": "Unit Conversion Guide",
+        "body": "Weight: 1 kg = 2.20462 lb; 1 tonne = 1000 kg = 2204.6 lb.\nWeight per meter: 1 kg/m = 0.67197 lb/ft; 1 lb/ft = 1.488 kg/m.\nDiameter: 1 mm = 0.03937 in; 1 in = 25.4 mm.\nLength: 1 m = 3.281 ft.\nExample: a 50 mm bar at 15.4 kg/m = 15.4 x 0.67197 = 10.35 lb/ft."
+      }
     ]
   },
   "tests": [

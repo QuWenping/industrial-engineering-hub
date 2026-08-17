@@ -1,6 +1,6 @@
 {
   "id": "pump-selection-calculator",
-  "name": "Pump Selection Guide Calculator",
+  "name": "Pump Selection Calculator",
   "category": "Mechanical Engineering",
   "priority": "P0",
   "description": "Estimate pump type selection based on flow rate, head, and fluid properties for preliminary engineering.",
@@ -70,6 +70,10 @@
       {
         "q": "What is specific speed?",
         "a": "Specific speed Ns characterizes pump geometry: high Ns (>100) = axial/propeller; medium (30-100) = mixed flow; low (<30) = radial/centrifugal; very low = multi-stage or PD."
+      },
+      {
+        "q": "How do I convert units when comparing pump curves?",
+        "a": "Convert head: 1 m = 3.28084 ft. Flow: 1 m³/h = 4.403 gpm. Power: 1 kW = 1.341 hp. NPSH: 1 m = 3.28084 ft. Use one consistent unit system across the entire selection to avoid curve-matching errors."
       }
     ],
     "related": [
@@ -90,6 +94,12 @@
       "FEED studies",
       "Budget estimating",
       "Vendor inquiry preparation"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Pump Selection",
+        "body": "**Head units**\n\n- 1 m = 3.28084 ft\n- 1 ft = 0.3048 m\n\n**Flow units**\n\n- 1 m³/h = 0.2778 L/s = 4.403 US gpm\n- 1 US gpm = 0.2271 m³/h\n\n**Power units**\n\n- 1 kW = 1.341 hp\n- 1 hp = 0.7457 kW\n\n**NPSH units**\n\n- 1 m = 3.28084 ft\n\nPump selection matches the duty point (flow, head) to a manufacturer curve. Convert the duty point and NPSH requirement to the same unit system as the curve before selecting."
+      }
     ]
   },
   "tests": [

@@ -3,7 +3,7 @@ title: "Compressible Flow Basics"
 description: "Introduction to compressible gas flow in pipes: Mach number, choked flow, isothermal and adiabatic flow, pressure drop for gases, and sonic velocity."
 category: "Fluid Mechanics"
 keywords: ["compressible flow", "Mach number", "choked flow", "gas pipeline", "sonic velocity", "isentropic flow"]
-updated: "2026-08-13"
+updated: "2026-08-17"
 related:
   - pressure-drop-calculator
   - flow-rate-calculator
@@ -192,6 +192,12 @@ To control noise (jet noise grows roughly with the 6th power of velocity), erosi
 **What is the difference between Weymouth and Panhandle equations?**
 Both are empirical isothermal pipeline flow correlations. Weymouth is conservative for short, high-pressure lines; Panhandle A/B better fit large-diameter, high-Reynolds transmission lines. Use the applicable equation within its tested Reynolds number range.
 
+
+**What is the isentropic relation between temperature and pressure in compressible flow?**
+For an isentropic (reversible adiabatic) process, T₂/T₁ = (P₂/P₁)^((γ-1)/γ), where γ is the specific heat ratio (1.4 for air, ~1.3 for natural gas). This relation governs the temperature change when gas accelerates or decelerates without heat transfer or friction — the basis of isentropic nozzle and diffuser analysis. Real pipe flow adds friction, so actual temperature changes are larger than isentropic predictions.
+
+**How does Mach number affect pressure drop in gas piping?**
+Below Mach 0.3, gas can be treated as incompressible and standard liquid pressure-drop methods apply. Above Mach 0.3, compressibility effects become significant: density changes along the pipe, the pressure gradient steepens, and the flow can choke at Mach 1.0. Practical plant piping keeps gas velocity below 20 m/s (typically Mach 0.05-0.1) to avoid excessive pressure drop and noise.
 ## Pressure Ratings for Gas vs Liquid Piping
 
 

@@ -3,7 +3,7 @@ title: "Pipe Flow Engineering Guide — Flow Rate, Pressure Drop & Sizing"
 description: "Complete pipe flow engineering guide: continuity equation, Darcy-Weisbach friction loss, Reynolds number, laminar vs turbulent flow, pipe sizing methodology, and pressure drop calculations with worked examples."
 category: "Mechanical Engineering"
 keywords: ["pipe flow", "pipe sizing", "pressure drop", "reynolds number", "friction loss", "darcy weisbach", "flow rate", "pipe velocity"]
-updated: "2026-08-04"
+updated: "2026-08-17"
 related:
   - "/tools/pipe-flow-cluster"
   - pipe-flow-calculator
@@ -74,6 +74,25 @@ Where epsilon = pipe roughness (m). Typical roughness values:
 | Copper | 0.0015 |
 | Concrete | 0.3-3.0 |
 | Galvanized steel | 0.15 |
+
+## Hazen-Williams Equation
+
+For water systems, the **Hazen-Williams** formula is a widely used empirical alternative to Darcy-Weisbach. It is simpler and calibrated for water at typical temperatures, but only valid for turbulent water flow (Re > 4000) in pipes larger than about 50 mm:
+
+<Formula>hf = 10.67 x L x Q^1.852 / (C^1.852 x D^4.87)</Formula>
+
+Where hf = head loss (m), L = pipe length (m), Q = flow rate (m³/s), C = Hazen-Williams roughness coefficient, D = internal diameter (m).
+
+| Pipe Material | Hazen-Williams C |
+|---|---|
+| New steel / cast iron | 130-140 |
+| Old / corroded steel | 80-100 |
+| PVC / HDPE | 150 |
+| Copper | 130-140 |
+| Concrete | 100-120 |
+| Asbestos cement | 140 |
+
+The C factor is a lumped roughness parameter: higher C = smoother pipe = lower head loss. Unlike the Darcy friction factor, C is treated as constant regardless of Reynolds number, which is why Hazen-Williams is only recommended for fully turbulent water flow. For other fluids, gases, or laminar flow, always use Darcy-Weisbach.
 
 ## Pipe Sizing Methodology
 
@@ -159,6 +178,9 @@ Darcy-Weisbach is the universal method, valid for all fluids and flow regimes. H
 **What Reynolds number is turbulent?**
 Re > 4000 is turbulent. Re < 2300 is laminar. Between 2300-4000 is transitional (unstable). Most industrial pipe flow is turbulent because typical velocities and diameters give Re > 10,000.
 
+**What is a typical Hazen-Williams C factor for new steel pipe?**
+New steel pipe has a C factor of 130-140. PVC and HDPE are smoother at C = 150, while old or corroded steel drops to 80-100. A lower C means higher friction loss for the same flow, so aging systems often need larger pumps or pipe replacement to maintain capacity.
+
 ## Related Engineering Tools
 
 - [Pipe Flow Calculator Hub](/tools/pipe-flow-cluster) — All pipe flow calculators in one place
@@ -167,5 +189,7 @@ Re > 4000 is turbulent. Re < 2300 is laminar. Between 2300-4000 is transitional 
 - [Reynolds Number Calculator](/tools/reynolds-number-calculator) — Flow regime classification
 - [Flow Rate Calculator](/tools/flow-rate-calculator) — Volumetric flow rate
 - [Darcy-Weisbach Calculator](/tools/darcy-weisbach-calculator) — Friction factor and head loss
+- [Pipe Velocity Calculator](/tools/pipe-velocity-calculator) — Velocity from flow rate and diameter
+- [Pipe Diameter Calculator](/tools/pipe-diameter-calculator) — Size pipes from flow and target velocity
 - [Pipe Sizing Fundamentals](/guides/pipe-sizing-fundamentals) — Detailed pipe sizing guide
 - [Pressure Drop in Pipes](/guides/pressure-drop-pipes) — Pressure loss methodology

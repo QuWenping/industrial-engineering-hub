@@ -57,6 +57,10 @@
       {
         "q": "Why does velocity matter?",
         "a": "Too high causes erosion, noise, and high pressure drop. Too low means oversized pipe and higher cost, plus sediment deposition in slurry service."
+      },
+      {
+        "q": "How do I convert velocity between m/s and ft/s?",
+        "a": "Multiply m/s by 3.28084 to get ft/s. Conversely, divide ft/s by 3.28084. For example, 2 m/s = 6.56 ft/s."
       }
     ],
     "related": [
@@ -81,6 +85,12 @@
       "Pump system design",
       "Hydraulic calculations",
       "Flow measurement"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Velocity",
+        "body": "**Velocity units**\n\n- 1 m/s = 3.28084 ft/s\n- 1 ft/s = 0.3048 m/s\n- 1 m/s = 196.85 ft/min\n\n**Flow rate units**\n\n- 1 m³/h = 0.2778 L/s = 4.403 US gpm\n- 1 US gpm = 0.2271 m³/h\n\n**Diameter units**\n\n- 1 inch = 25.4 mm\n- 1 mm = 0.03937 inch\n\nVelocity is computed as V = Q / A, so keep flow and area in consistent units (e.g., m³/s with m², or L/s with cm²)."
+      }
     ]
   },
   "tests": [

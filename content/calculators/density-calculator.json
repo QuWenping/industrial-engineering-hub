@@ -58,11 +58,22 @@
       {
         "q": "What is the density of water?",
         "a": "Water density is 1000 kg/m³ at 4°C. At room temperature it is approximately 998 kg/m³."
+      },
+      {
+        "q": "How do I convert density between kg/m³ and lb/ft³?",
+        "a": "1 kg/m³ = 0.06243 lb/ft³. For example, water at 1000 kg/m³ = 62.43 lb/ft³. Conversely, multiply lb/ft³ by 16.018 to get kg/m³."
       }
     ],
     "related": [
       "material-volume-calculator",
-      "metal-weight-calculator"
+      "metal-weight-calculator",
+      "steel-weight-calculator",
+      "aluminum-weight-calculator",
+      "copper-weight-calculator",
+      "stainless-steel-weight-calculator",
+      "round-bar-weight-calculator",
+      "steel-plate-weight-calculator",
+      "pipe-weight-calculator"
     ],
     "applications": [
       "Material identification",
@@ -87,4 +98,3 @@
     "title": "Flow Visualization"
   }
 }
-

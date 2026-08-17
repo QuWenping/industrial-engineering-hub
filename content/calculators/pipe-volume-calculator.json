@@ -57,6 +57,10 @@
       {
         "q": "What about pipe wall thickness?",
         "a": "Use inner diameter (ID), not outer diameter (OD). Schedule 40 4-inch pipe has ~102mm ID vs 114.3mm OD."
+      },
+      {
+        "q": "How do I convert pipe volume between liters and gallons?",
+        "a": "1 m³ = 1000 L = 264.17 US gallons = 219.97 imperial gallons. For a 100 mm ID pipe, 1 m of length holds about 7.85 L. Multiply volume in m³ by 1000 to get liters."
       }
     ],
     "related": [
@@ -82,6 +86,12 @@
       "Pipeline filling",
       "Chemical dosing",
       "Fluid inventory"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Pipe Volume",
+        "body": "**Volume units**\n\n- 1 m³ = 1000 L = 264.17 US gal = 219.97 imp gal\n- 1 US gal = 3.785 L\n- 1 L = 0.001 m³\n\n**Length units**\n\n- 1 m = 3.28084 ft\n- 1 inch = 25.4 mm\n\n**Diameter units**\n\n- 1 inch = 25.4 mm\n\nPipe volume V = π/4 × D² × L requires consistent units. For hydrotest fill volumes, convert the result to liters or gallons as needed."
+      }
     ]
   },
   "tests": [

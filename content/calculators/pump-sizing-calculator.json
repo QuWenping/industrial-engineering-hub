@@ -91,6 +91,10 @@
       {
         "q": "How do I select standard motor size?",
         "a": "IEC standard sizes: 0.75, 1.1, 1.5, 2.2, 3, 4, 5.5, 7.5, 11, 15, 18.5, 22, 30, 37, 45, 55, 75, 90, 110 kW. Round up to nearest size."
+      },
+      {
+        "q": "How do I convert head and flow units for pump sizing?",
+        "a": "Convert head: 1 m = 3.28084 ft. Convert flow: 1 m³/h = 4.403 gpm. Convert power: 1 kW = 1.341 hp. Always size using the same unit system as the pump curve to avoid errors."
       }
     ],
     "related": [
@@ -111,6 +115,12 @@
       "Equipment specification",
       "Capital cost estimating",
       "Procurement"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Pump Sizing",
+        "body": "**Head units**\n\n- 1 m = 3.28084 ft\n- 1 ft = 0.3048 m\n\n**Flow units**\n\n- 1 m³/h = 0.2778 L/s = 4.403 US gpm\n- 1 US gpm = 0.2271 m³/h\n\n**Power units**\n\n- 1 kW = 1.341 hp\n- 1 hp = 0.7457 kW\n\n**NPSH units**\n\n- 1 m = 3.28084 ft\n\nPump sizing combines flow, head, and NPSH requirements. Convert all values to one consistent unit system (metric or imperial) before selecting from a pump curve."
+      }
     ]
   },
   "tests": [

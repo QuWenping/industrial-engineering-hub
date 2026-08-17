@@ -59,6 +59,10 @@
       {
         "q": "What velocity should I design for?",
         "a": "Water discharge: 2-3 m/s; suction: <1.5 m/s; compressed air: 6-10 m/s; natural gas: 10-20 m/s."
+      },
+      {
+        "q": "What is the difference between nominal and actual pipe diameter?",
+        "a": "Nominal pipe size (NPS/DN) is a label, not a dimension. Actual outside diameter is fixed per size, while wall thickness varies with schedule (Sch 40, Sch 80, etc.), so inside diameter = OD - 2 × wall thickness. Always use the actual ID for flow and velocity calculations."
       }
     ],
     "related": [
@@ -83,6 +87,12 @@
       "Hydraulic system design",
       "Plumbing design",
       "Pump suction sizing"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Pipe Sizing",
+        "body": "**Diameter units**\n\n- 1 inch = 25.4 mm\n- 1 mm = 0.03937 inch\n- DN 50 = NPS 2 (nominal labels, not exact dimensions)\n\n**Flow rate units**\n\n- 1 m³/h = 0.2778 L/s = 4.403 US gpm\n- 1 US gpm = 0.2271 m³/h\n\n**Velocity units**\n\n- 1 m/s = 3.28084 ft/s\n\nWhen sizing, convert all inputs to one consistent unit system (metric or imperial) before applying the continuity equation Q = V × A."
+      }
     ]
   },
   "tests": [

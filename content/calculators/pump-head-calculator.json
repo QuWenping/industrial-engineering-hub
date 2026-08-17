@@ -77,6 +77,10 @@
       {
         "q": "Do I need to add velocity head?",
         "a": "Velocity head (v²/2g) is usually negligible (0.1-0.5m) compared to other heads and is omitted in most practical calculations."
+      },
+      {
+        "q": "How do I convert head between meters and feet?",
+        "a": "Multiply meters by 3.28084 to get feet. For example, 20 m head = 65.6 ft. Pump curves are often given in feet for imperial systems and meters for metric systems, so convert before comparing."
       }
     ],
     "related": [
@@ -99,6 +103,12 @@
       "Hydronic system design",
       "Booster pump sizing",
       "Irrigation design"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Pump Head",
+        "body": "**Head units**\n\n- 1 m = 3.28084 ft\n- 1 ft = 0.3048 m\n- 1 m water head ≈ 9.81 kPa ≈ 0.0981 bar\n\n**Pressure units**\n\n- 1 bar = 100 kPa = 14.5038 psi\n- 1 psi = 6.8948 kPa\n\n**Flow units**\n\n- 1 m³/h = 0.2778 L/s = 4.403 US gpm\n\nTotal dynamic head (TDH) = static head + friction head + velocity head. Keep all head terms in the same length unit (m or ft) before summing."
+      }
     ]
   },
   "tests": [

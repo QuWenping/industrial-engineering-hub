@@ -55,11 +55,22 @@
       {
         "q": "When would I use this?",
         "a": "Casting volume estimation, material displacement (Archimedes), tank fill calculations, and 3D printing material estimation."
+      },
+      {
+        "q": "How do I convert volume between m³ and ft³?",
+        "a": "1 m³ = 35.315 ft³. For example, 5 m³ = 176.6 ft³. Conversely, divide ft³ by 35.315 to get m³."
       }
     ],
     "related": [
       "density-calculator",
-      "metal-weight-calculator"
+      "metal-weight-calculator",
+      "steel-weight-calculator",
+      "aluminum-weight-calculator",
+      "copper-weight-calculator",
+      "stainless-steel-weight-calculator",
+      "round-bar-weight-calculator",
+      "steel-plate-weight-calculator",
+      "pipe-weight-calculator"
     ],
     "applications": [
       "Casting estimation",
@@ -84,4 +95,3 @@
     "title": "Cross-Section Visualization"
   }
 }
-

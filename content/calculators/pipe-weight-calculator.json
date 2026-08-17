@@ -74,6 +74,22 @@
       {
         "q": "How much does 4 inch Schedule 40 pipe weigh?",
         "a": "A 4 inch (114.3mm OD) Schedule 40 pipe with 6.02mm wall weighs about 16.07 kg/m for carbon steel."
+      },
+      {
+        "q": "How much does 6 inch Schedule 40 pipe weigh per meter?",
+        "a": "A 6 inch (168.3mm OD) Schedule 40 carbon steel pipe with 7.11mm wall weighs about 28.3 kg/m. A 6m length weighs approximately 170 kg."
+      },
+      {
+        "q": "How much does 2 inch Schedule 40 pipe weigh?",
+        "a": "A 2 inch (60.3mm OD) Schedule 40 carbon steel pipe with 3.91mm wall weighs about 5.44 kg/m."
+      },
+      {
+        "q": "How do I convert pipe weight from kg/m to lb/ft?",
+        "a": "Multiply kg/m by 0.67197. For example, 16.07 kg/m = 10.8 lb/ft. Conversely multiply lb/ft by 1.488 to get kg/m."
+      },
+      {
+        "q": "Does pipe weight include the weight of the fluid inside?",
+        "a": "No. The pipe weight formula calculates the metal wall only. For total installed weight, add the fluid weight (pi x (OD-2WT)^2/4 x rho_fluid) plus insulation, coating, and fittings."
       }
     ],
     "related": [
@@ -94,6 +110,20 @@
       "Structural support calculation",
       "Transportation and rigging",
       "Cost estimation"
+    ],
+    "sections": [
+      {
+        "heading": "Schedule 40 & 80 Pipe Weight Reference (Carbon Steel)",
+        "body": "Approximate weight per meter for carbon steel pipe (density 7850 kg/m3):\nNPS 1/2 in Sch 40 (21.3 mm OD, 2.77 mm WT): 1.27 kg/m | NPS 3/4 in (26.7, 2.87): 1.69 kg/m | NPS 1 in (33.4, 3.38): 2.50 kg/m | NPS 1.5 in (48.3, 3.68): 4.05 kg/m | NPS 2 in (60.3, 3.91): 5.44 kg/m | NPS 3 in (88.9, 5.49): 11.3 kg/m | NPS 4 in (114.3, 6.02): 16.1 kg/m | NPS 6 in (168.3, 7.11): 28.3 kg/m | NPS 8 in (219.1, 8.18): 42.5 kg/m | NPS 10 in (273.0, 9.27): 60.3 kg/m | NPS 12 in (323.9, 9.53): 73.9 kg/m.\nSchedule 80 (heavier wall): NPS 2 in (60.3, 5.54): 7.48 kg/m | NPS 4 in (114.3, 8.56): 22.3 kg/m | NPS 6 in (168.3, 10.97): 42.6 kg/m.\nFormula: W (kg/m) = pi x (OD - WT) x WT x rho / 1,000,000 with OD and WT in mm."
+      },
+      {
+        "heading": "Worked Example: 6-inch Schedule 40",
+        "body": "Calculate the weight of a 6 m length of 6-inch Schedule 40 carbon steel pipe (OD 168.3 mm, WT 7.11 mm).\nStep 1 - metal area: A = pi x (OD - WT) x WT = pi x 161.19 x 7.11 = 3600 mm2 = 3.600 x 10^-3 m2.\nStep 2 - volume: V = A x L = 3.600 x 10^-3 x 6 = 0.0216 m3.\nStep 3 - weight: W = V x rho = 0.0216 x 7850 = 169.6 kg.\nCheck: 28.3 kg/m x 6 m = 169.6 kg. The pipe weighs approximately 170 kg."
+      },
+      {
+        "heading": "Unit Conversion Guide",
+        "body": "Weight per meter: 1 kg/m = 0.67197 lb/ft; 1 lb/ft = 1.488 kg/m.\nWeight: 1 kg = 2.20462 lb; 1 tonne = 2204.6 lb.\nDimensions: 1 mm = 0.03937 in; 1 in = 25.4 mm.\nExample: 16.07 kg/m = 16.07 x 0.67197 = 10.8 lb/ft for 4-inch Schedule 40.\nNote: pipe weight is the metal only - it does not include the weight of the fluid inside or any insulation/coating."
+      }
     ]
   },
   "tests": [

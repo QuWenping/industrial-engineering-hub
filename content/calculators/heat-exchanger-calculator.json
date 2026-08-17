@@ -93,6 +93,10 @@
       {
         "q": "What is a typical U value?",
         "a": "For liquid-liquid exchangers: 300-1000 W/m²K. For gas-liquid: 50-300 W/m²K. For condensing/boiling: 1000-5000 W/m²K."
+      },
+      {
+        "q": "How do I convert heat duty between kW and MMBtu/hr?",
+        "a": "1 kW = 3412 BTU/hr = 0.003412 MMBtu/hr. For example, 100 kW = 0.3412 MMBtu/hr. Convert to consistent units for exchanger sizing."
       }
     ],
     "related": [
@@ -106,6 +110,12 @@
       "Process thermal design",
       "HVAC design",
       "Energy recovery"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Heat Exchanger Duty",
+        "body": "**Heat duty units**\n\n- 1 kW = 3412 BTU/hr = 0.003412 MMBtu/hr\n- 1 MMBtu/hr = 293.1 kW\n- 1 W = 3.412 BTU/hr\n\n**Temperature units**\n\n- °F = °C × 9/5 + 32\n- ΔT in °C = ΔT in K\n\n**Area units**\n\n- 1 m² = 10.764 ft²\n\nExchanger duty Q = m × cp × ΔT or Q = U × A × LMTD. Keep mass flow, specific heat, and temperature difference in one consistent unit system before computing."
+      }
     ]
   },
   "tests": [
@@ -128,4 +138,3 @@
     "title": "Temperature Field Diagram"
   }
 }
-

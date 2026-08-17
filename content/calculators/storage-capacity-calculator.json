@@ -66,6 +66,14 @@
       {
         "q": "What is a good fill factor?",
         "a": "Storage (m³) = daily consumption × 7 / fill factor. For 10 m³/h = 240 m³/day × 7 / 0.9 = 1,867 m³ needed."
+      },
+      {
+        "q": "How do I convert capacity between m³ and barrels?",
+        "a": "1 m³ = 6.2898 US barrels (42 gal). For example, 100 m³ = 629 barrels. Use this factor for tank farm capacity planning in the oil and gas industry."
+      },
+      {
+        "q": "What is the difference between gross and net capacity?",
+        "a": "Gross capacity is the full geometric volume of the tank. Net usable capacity subtracts dead volume (bottom sediment, heating coils, minimum pump-out level) and applies the fill factor, typically 85-95% of gross for working storage."
       }
     ],
     "related": [
@@ -84,6 +92,12 @@
       "Supply chain planning",
       "Buffer stock calculation",
       "Process plant design"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Storage Capacity",
+        "body": "**Volume units**\n\n- 1 m³ = 1000 L = 264.17 US gal = 6.2898 US bbl\n- 1 US bbl = 42 US gal = 0.159 m³\n- 1 imp gal = 4.546 L\n\n**Length units**\n\n- 1 m = 3.28084 ft\n\nStorage capacity planning uses gross volume, fill factor, and net usable volume. Convert all dimensions to one consistent unit system before computing, then express the result in the required volume unit (m³, bbl, or gal)."
+      }
     ]
   },
   "tests": [

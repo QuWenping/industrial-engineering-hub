@@ -114,6 +114,10 @@
       {
         "q": "What is the difference between gauge and absolute pressure?",
         "a": "P_abs = P_gauge + P_atm. 100 kPa gauge = ~201.3 kPa absolute. This converter works with both, just be consistent."
+      },
+      {
+        "q": "How do I convert between kPa and bar?",
+        "a": "1 bar = 100 kPa. For example, 5 bar = 500 kPa. Conversely, divide kPa by 100 to get bar."
       }
     ],
     "related": [
@@ -153,4 +157,3 @@
     "title": "Cross-Section Visualization"
   }
 }
-

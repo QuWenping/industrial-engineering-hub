@@ -79,6 +79,22 @@
       {
         "q": "What is typical pump efficiency?",
         "a": "Centrifugal pump efficiency is typically 60-85% depending on size and specific speed. Large pumps can exceed 90%."
+      },
+      {
+        "q": "How do I convert flow from m³/h to m³/s?",
+        "a": "Divide by 3600. Example: 100 m³/h = 100 / 3600 = 0.0278 m³/s. The pump power formula requires flow in m³/s."
+      },
+      {
+        "q": "What is the difference between hydraulic power and shaft power?",
+        "a": "Hydraulic power is the useful energy added to the fluid (rho x g x Q x H). Shaft power is the mechanical power the pump consumes, equal to hydraulic power divided by efficiency. The motor must be sized for shaft power, not hydraulic power."
+      },
+      {
+        "q": "How do I size the motor for a pump?",
+        "a": "Calculate shaft power at the duty point, then select the next standard motor size above it (e.g., 19.5 kW → 22 kW). Add margin for service factor, viscosity, and off-design operation. For continuous duty, also check annual energy cost."
+      },
+      {
+        "q": "How much does pump energy cost per year?",
+        "a": "Annual energy = P_shaft (kW) x operating hours x electricity rate. A 19.5 kW pump running 8000 h/yr at $0.10/kWh costs 19.5 x 8000 x 0.10 = $15,600/yr. Improving efficiency from 70% to 80% saves about $1,950/yr on this duty."
       }
     ],
     "related": [
@@ -101,6 +117,20 @@
       "Motor sizing",
       "Energy estimation",
       "Process design"
+    ],
+    "sections": [
+      {
+        "heading": "Pump Power Formula Explained",
+        "body": "Hydraulic power is the useful work done on the fluid:\n\nP_h = rho x g x Q x H / 1000\n\nWhere P_h = hydraulic power (kW), rho = fluid density (kg/m3), g = 9.81 m/s2, Q = flow rate (m3/s), H = total head (m). Shaft power adds pump efficiency:\n\nP_shaft = P_h / eta\n\nExample: pumping water (1000 kg/m3) at 100 m3/h against 50 m head with 70% efficiency: Q = 100/3600 = 0.0278 m3/s, P_h = 1000 x 9.81 x 0.0278 x 50 / 1000 = 13.6 kW, P_shaft = 13.6 / 0.7 = 19.5 kW."
+      },
+      {
+        "heading": "Typical Pump Efficiencies",
+        "body": "| Pump Type | Typical Efficiency |\n|---|---|\n| Large centrifugal (best point) | 80 - 90% |\n| Medium centrifugal | 70 - 85% |\n| Small centrifugal | 50 - 70% |\n| Positive displacement (screw, gear) | 70 - 90% |\n| Multistage centrifugal | 75 - 85% |\n\nEfficiency varies with flow rate and specific speed. Operating far from the best efficiency point (BEP) drops efficiency sharply and increases energy cost. Always select the pump so the duty point sits near BEP."
+      },
+      {
+        "heading": "Worked Example: Sizing a Pump Motor",
+        "body": "A process needs 100 m3/h of water (density 1000 kg/m3) at 50 m total head. With a centrifugal pump at 70% efficiency:\n\nP_shaft = 1000 x 9.81 x (100/3600) x 50 / 0.7 / 1000 = 19.5 kW\n\nSelect a standard motor size above this: 22 kW (30 HP). Add service factor and check starting torque for the actual pump curve. For viscous or high-density fluids, use the actual density — pumping 1200 kg/m3 fluid raises shaft power to 23.3 kW, requiring a 30 kW motor."
+      }
     ]
   },
   "tests": [

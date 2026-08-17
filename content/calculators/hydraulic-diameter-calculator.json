@@ -57,6 +57,10 @@
       {
         "q": "What about annular flow?",
         "a": "For an annulus between outer diameter D_o and inner D_i: Dh = D_o − D_i. This calculator handles rectangular ducts."
+      },
+      {
+        "q": "What units should I use for hydraulic diameter?",
+        "a": "Any consistent length unit works because D_h = 4A/P is a ratio of area to perimeter. Use m with m² and m, or mm with mm² and mm — the result is in the same length unit as the inputs."
       }
     ],
     "related": [
@@ -81,6 +85,12 @@
       "Shell-and-tube exchangers",
       "Rectangular channels",
       "Annular flow"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Hydraulic Diameter",
+        "body": "**Length units**\n\n- 1 m = 1000 mm = 3.28084 ft\n- 1 inch = 25.4 mm\n\n**Area units**\n\n- 1 m² = 10.764 ft²\n- 1 mm² = 1×10⁻⁶ m²\n\n**Perimeter units**\n\n- Same length unit as the diameter result\n\nD_h = 4A/P is dimensionally consistent: if area is in m² and wetted perimeter in m, D_h is in m. Convert all inputs to the same unit system before computing."
+      }
     ]
   },
   "tests": [

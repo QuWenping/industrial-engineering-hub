@@ -5,7 +5,7 @@
   "priority": "P0",
   "description": "Calculate friction head loss in pipes per 100m using Hazen-Williams C-factor for water systems.",
   "seo": {
-    "title": "Friction Loss Calculator - Pipe Head Loss",
+    "title": "Friction Loss Calculator - Hazen-Williams Pipe Friction",
     "description": "Friction Loss Calculator — Calculate friction head loss in pipes per 100m using Hazen-Williams C-factor for water systems with instant results & multiple unit support.",
     "keyword": "friction loss calculator"
   },
@@ -78,6 +78,10 @@
       {
         "q": "When is Hazen-Williams applicable?",
         "a": "Only for water at 40-75°F (5-25°C) in turbulent flow. Use Darcy-Weisbach for other fluids or higher accuracy."
+      },
+      {
+        "q": "What is the difference between friction loss and head loss?",
+        "a": "Friction loss is the pressure drop caused by pipe wall friction, usually expressed in bar, psi, or kPa. Head loss is the same energy loss expressed as an equivalent fluid column height in m or ft. They are related by h_f = ΔP / (ρg), so for water 1 m head ≈ 9.81 kPa."
       }
     ],
     "related": [

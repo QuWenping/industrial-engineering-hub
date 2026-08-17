@@ -75,6 +75,10 @@
       {
         "q": "How accurate is the calculation?",
         "a": "The calculator uses standard published density values. Actual weights may vary slightly due to alloy composition and manufacturing tolerances."
+      },
+      {
+        "q": "How do I convert weight between kg and lb?",
+        "a": "1 kg = 2.20462 lb. For example, a 100 kg steel bar weighs 220.5 lb. Conversely, divide lb by 2.20462 to get kg."
       }
     ],
     "related": [
@@ -93,6 +97,12 @@
       "Shipping calculation",
       "Cost estimation",
       "Inventory management"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Metal Weight",
+        "body": "**Weight units**\n\n- 1 kg = 2.20462 lb\n- 1 tonne = 1000 kg = 2204.62 lb\n- 1 lb = 0.4536 kg\n\n**Length units**\n\n- 1 m = 3.28084 ft\n- 1 inch = 25.4 mm\n\n**Density units**\n\n- 1 kg/m³ = 0.06243 lb/ft³\n\nWeight = density × volume. Convert all dimensions to one consistent unit system (metric or imperial) before computing, then convert the result to the required weight unit."
+      }
     ]
   },
   "tests": [

@@ -68,6 +68,22 @@
       {
         "q": "What volume is at 50% fill?",
         "a": "At h = r (half full), the volume is exactly half the total volume. Due to the circular geometry, fill height is not linear with volume: at 30% height you have ~25% volume, at 50% height you have exactly 50% volume."
+      },
+      {
+        "q": "How do I calculate the total (100%) tank volume?",
+        "a": "Total volume = pi x r^2 x L. For a 3 m diameter x 6 m tank: 3.1416 x 1.5^2 x 6 = 42.41 m3 = 42,412 L. The calculator's result at h = 2r (full) equals this value."
+      },
+      {
+        "q": "Why is fill height not linear with volume?",
+        "a": "The cross-section is a circle, so the wetted area grows slowly near the bottom and top and fastest at mid-height. At 25% height you have only ~19.5% volume; at 75% height you already have ~80.5%. Always use the segment formula or a dipstick chart."
+      },
+      {
+        "q": "How do I convert liters to gallons?",
+        "a": "1 US gallon = 3.785 L; 1 imperial gallon = 4.546 L. Example: 7,370 L = 7,370 / 3.785 = 1,947 US gallons = 1,621 imperial gallons."
+      },
+      {
+        "q": "How accurate is this for tanks with dished heads?",
+        "a": "The formula covers only the straight cylindrical shell. Dished or elliptical heads add 5-15% volume depending on head type and depth. For custody-transfer accuracy, calibrate with a strapping table or use the head-volume correction."
       }
     ],
     "related": [
@@ -86,6 +102,20 @@
       "Truck tank dipstick calibration",
       "Bulk storage inventory",
       "Process vessel level measurement"
+    ],
+    "sections": [
+      {
+        "heading": "Horizontal Tank Volume Formula Explained",
+        "body": "The liquid volume in a partially filled horizontal cylinder is the circular segment area times the shell length:\n\nV = [r^2 x acos((r - h)/r) - (r - h) x sqrt(2 x r x h - h^2)] x L\n\nWhere r = tank radius (m), h = liquid fill height (m), L = straight shell length (m). The result is in m3; multiply by 1000 for liters.\n\nExample: a 3 m diameter (r = 1.5 m) x 6 m tank filled to h = 1 m: segment area = 1.5^2 x acos(0.5/1.5) - 0.5 x sqrt(2 x 1.5 x 1 - 1) = 1.228 m2, volume = 1.228 x 6 = 7.37 m3 = 7,370 L."
+      },
+      {
+        "heading": "Fill Height vs Volume Reference",
+        "body": "For a horizontal cylinder, volume is NOT linear with fill height:\n\n| Fill Height (h/r) | % of Total Volume |\n|---|---|\n| 10% | 5.2% |\n| 25% | 19.5% |\n| 50% (h = r) | 50.0% |\n| 75% | 80.5% |\n| 90% | 94.8% |\n\nAt 30% height you have only ~25% volume; at 70% height you already have ~75%. This nonlinearity is why dipstick charts are needed for accurate inventory — a linear gauge would be wrong by up to 10% of tank volume."
+      },
+      {
+        "heading": "Worked Example: Dipstick Calibration",
+        "body": "A 3 m diameter x 6 m horizontal tank (total capacity 42,412 L) needs a dipstick chart. At h = 1 m:\n\nV = 7.37 m3 = 7,370 L (17.4% of capacity)\n\nAt h = 1.5 m (half full): V = 21,206 L (exactly 50%). At h = 2.5 m: V = 35,042 L (82.6%). Generate a table at 0.1 m increments for the operator's dipstick. For tanks with dished heads, add the head volume and calibrate against a strapping table."
+      }
     ]
   },
   "tests": [

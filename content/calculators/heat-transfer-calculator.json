@@ -68,6 +68,10 @@
       {
         "q": "How do I calculate U from k (conductivity)?",
         "a": "For a flat wall: U = k/L (conductivity/thickness). For composite walls: U = 1/Σ(L_i/k_i) including convection resistances on each side."
+      },
+      {
+        "q": "How do I convert heat transfer rate between W and BTU/hr?",
+        "a": "1 W = 3.412 BTU/hr. For example, 1000 W = 3412 BTU/hr. Conversely, divide BTU/hr by 3.412 to get W."
       }
     ],
     "related": [
@@ -80,6 +84,12 @@
       "Heat exchanger rating",
       "Insulation design",
       "HVAC load calc"
+    ],
+    "sections": [
+      {
+        "heading": "Unit Conversion for Heat Transfer",
+        "body": "**Heat rate units**\n\n- 1 W = 3.412 BTU/hr = 0.860 kcal/h\n- 1 kW = 3412 BTU/hr\n- 1 BTU/hr = 0.2931 W\n\n**Temperature units**\n\n- °F = °C × 9/5 + 32\n- ΔT in °C = ΔT in K; ΔT in °F = ΔT in °R\n\n**Area units**\n\n- 1 m² = 10.764 ft²\n\nHeat transfer Q = U × A × ΔT requires consistent units. Convert area, temperature difference, and U-value to one unit system before computing."
+      }
     ]
   },
   "tests": [
@@ -99,4 +109,3 @@
     "title": "Temperature Field Diagram"
   }
 }
-

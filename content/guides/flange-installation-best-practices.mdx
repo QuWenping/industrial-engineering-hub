@@ -3,12 +3,17 @@ title: "Flange Installation Best Practices"
 description: "Step-by-step flange assembly: bolt torque, gasket selection, alignment, bolt-up procedures, ASME PCC-1 joint assembly guidelines, and common leakage causes."
 category: "Mechanical"
 keywords: ["flange installation", "flange torque", "gasket installation", "ASME PCC-1", "flange bolt torque", "flange leak"]
-updated: "2026-07-29"
+updated: "2026-08-17"
 related:
   - flange-bolt-torque
   - flange-rating-calculator
   - pressure-vessel-design-check
   - "/guides/gasket-selection-guide"
+  - "/guides/valve-types-applications"
+  - "/guides/steam-trap-selection"
+  - "/guides/fan-curve-selection"
+  - "/guides/motor-efficiency-guide"
+  - "/guides/welding-symbols-basics"
 ---
 
 ## Overview
@@ -143,6 +148,23 @@ Torque formula T = K × D × F:
 3. After hydrotest/pressurization, inspect for weeping
 4. After reaching operating temperature, check for leaks during first 72 hours
 5. Record torque values, bolt/gasket lot numbers, and installer name in the joint log
+
+## Frequently Asked Questions
+
+**What is the correct bolt tightening sequence for a flange?**
+Always tighten in a star or cross pattern, never around the circumference. For a 4-bolt flange: 1-3-2-4. For 8 bolts: 1-5-3-7-2-6-4-8. Complete at least three passes at 30%, 60%, and 100% of target torque, checking gasket compression between passes. See the [Bolt Torque Calculation Guide](/guides/bolt-torque-calculation) for the T = K×D×F method and preload targets.
+
+**How do I choose the right gasket for my flange?**
+Match the gasket to the fluid, temperature, and pressure class. Compressed fiber for low-pressure water/air, spiral-wound for steam and hydrocarbons, PTFE for chemical service, and metal ring joints for high-pressure API flanges. The [Gasket Selection Guide](/guides/gasket-selection-guide) covers material and type selection in detail.
+
+**What torque should I apply to flange bolts?**
+Torque depends on bolt size, material, lubricant, and gasket type. Use T = K×D×F where K is the nut factor (0.15-0.25 depending on lubrication), D is nominal bolt diameter, and F is the required preload. Always verify against the flange class rating — see [Flange Rating Standards](/guides/flange-rating-standards) for ANSI/ASME B16.5 pressure-temperature limits.
+
+**Why do flanges leak after proper tightening?**
+Common causes: uneven bolt-up (not using star pattern), gasket over- or under-compression, damaged gasket seating surfaces, thermal cycling loosening bolts, and using the wrong gasket for the service. Re-torque after the first thermal cycle — bolts relax as the gasket compresses and the joint reaches operating temperature.
+
+**Should I lubricate flange bolts?**
+Yes, but consistently. Lubrication reduces the nut factor K and gives more consistent preload for the same torque. Use anti-seize for high-temperature or stainless steel bolts to prevent galling. Never mix lubricated and dry bolts in the same joint — it produces uneven bolt load.
 
 ## Summary
 
