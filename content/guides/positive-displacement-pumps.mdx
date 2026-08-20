@@ -1,9 +1,9 @@
 ---
-title: "Positive Displacement Pumps"
-description: "Positive displacement pump types and selection: gear, screw, lobe, piston, diaphragm, peristaltic and progressive cavity pumps — working principle, PD vs centrifugal, applications and sizing."
+title: "Positive Displacement Pumps: Engineering Guide & Calculator"
+description: "Positive Displacement Pump engineering hub — PD pump types (gear, screw, lobe, piston, plunger, diaphragm), selection guide, PD vs centrifugal comparison, troubleshooting, performance curves, and free pump calculators for flow, power and sizing."
 category: "Pump Engineering"
-keywords: ["positive displacement pump", "gear pump", "screw pump", "lobe pump", "piston pump", "diaphragm pump", "progressive cavity", "positive displacement pump vs centrifugal pump"]
-updated: "2026-08-17"
+keywords: ["positive displacement pump", "pd pump calculator", "gear pump", "screw pump", "lobe pump", "piston pump", "plunger pump", "diaphragm pump", "progressive cavity", "positive displacement pump vs centrifugal pump", "pd pump troubleshooting"]
+updated: "2026-08-20"
 related:
   - pump-power-calculator
   - pump-flow-calculator
@@ -18,6 +18,34 @@ related:
   - pump-affinity-law-calculator
   - pump-selection-calculator
 ---
+
+## PD Pump Engineering Center
+
+Welcome to the Positive Displacement Pump Engineering Center — part engineering guide, part interactive tool suite. Follow the engineering workflow below, or jump straight to the tool you need.
+
+**Learn → Calculate → Select → Troubleshoot**
+
+| Stage | What you will find here |
+|---|---|
+| [Learn](#how-positive-displacement-pumps-work) | Working principle, pump types, performance curves |
+| [Calculate](#what-do-you-need-to-calculate) | Flow, power, displacement, torque, RPM, pressure tools |
+| [Select](#pd-pump-selection-guide) | PD vs centrifugal, type selection, sizing considerations |
+| [Troubleshoot](#pd-pump-troubleshooting) | Common faults, causes and corrective actions |
+
+### What do you need to calculate?
+
+| I want to calculate... | Use this tool | What it returns |
+|---|---|---|
+| **Pump Flow** (Q from power, head & efficiency) | [Pump Flow Calculator](/tools/pump-flow-calculator) | Flow rate in m³/h, L/s, GPM |
+| **Pump Power** (shaft power from flow & head) | [Pump Power Calculator](/tools/pump-power-calculator) | Required shaft power in kW |
+| **Displacement / Sizing** (required pump size) | [Pump Sizing Calculator](/tools/pump-sizing-calculator) | Design flow, head and motor power |
+| **Torque** (from power & speed, T = 9550 × P/N) | [Pump Power Calculator](/tools/pump-power-calculator) | Use with T = 9550 × P(kW) / N(rpm) |
+| **RPM** (effect of speed change on flow & power) | [Pump Affinity Law Calculator](/tools/pump-affinity-law-calculator) | New flow, head and power at changed speed |
+| **Pressure** (unit conversion, bar/psi/MPa) | [Pressure Unit Converter](/tools/pressure-unit-converter) | Converted pressure in any unit |
+
+<Callout type="info" title="PD Pump sizing workflow">
+For a complete selection workflow, start with the [Pump Sizing Calculator](/tools/pump-sizing-calculator), verify suction conditions with the [NPSH Calculator](/tools/npsh-calculator), then confirm the driver with the [Pump Power Calculator](/tools/pump-power-calculator).
+</Callout>
 
 ## How Positive Displacement Pumps Work
 
@@ -55,7 +83,7 @@ For pump selection and power sizing, use the [Pump Flow Calculator](/tools/pump-
 
 ## PD vs Centrifugal Pumps
 
-Positive Displacement (PD) pumps move fluid by trapping a fixed volume and mechanically forcing it into the discharge pipe. Unlike centrifugal pumps, PD pumps produce flow directly proportional to speed and relatively independent of discharge pressure.
+Positive Displacement (PD) pumps move fluid by trapping a fixed volume and mechanically forcing it into the discharge pipe. Unlike centrifugal pumps, PD pumps produce flow directly proportional to speed and relatively independent of discharge pressure. Run your duty through the [Pump Selection Calculator](/tools/pump-selection-calculator) to get a quantitative PD-vs-centrifugal recommendation based on flow, head and viscosity.
 
 | Characteristic | Centrifugal | Positive Displacement |
 |---|---|---|
@@ -178,6 +206,22 @@ Typical applications: Chlorine injection, pH adjustment, corrosion inhibitors, p
 | Completely leak-free/sealless | Diaphragm, peristaltic, mag-drive gear |
 | Abrasive slurry | Peristaltic or heavy-duty diaphragm |
 
+### PD Pump Type Selection Matrix
+
+Use this matrix to shortlist a pump family from your duty, then refine with the [Pump Selection Calculator](/tools/pump-selection-calculator) and the [Pump Sizing Calculator](/tools/pump-sizing-calculator).
+
+| Pump type | Typical pressure | Typical viscosity | Best when | Avoid when |
+|---|---|---|---|---|
+| Gear | Up to ~250 bar | Up to ~10,000 cSt | Clean oils, hydraulics, high pressure | Solids or abrasives |
+| Screw | Up to 300+ bar | Up to 1,000,000+ cSt | High-viscosity oils, multi-phase fluids | Dry running, severe abrasives |
+| Lobe | Up to ~15 bar | Low to very high | Food, pharma, shear-sensitive fluids | High pressure duty |
+| Piston / Plunger | 100 to 700+ bar | Low to medium | High pressure, water jetting, metering | Abrasive or very viscous fluids |
+| Diaphragm | Up to ~20 bar (AODD) | Up to ~50,000 cSt | Chemicals, hazardous areas, dry running | High flow rates, very high pressure |
+| Progressive cavity | Up to 60+ bar | 1 to 1,000,000+ cSt | Slurries, sludge, shear-sensitive products | High speed, clean solvents |
+| Peristaltic | Up to ~15 bar | Broad range | Corrosive fluids, metering, dry running | High flow, continuous heavy duty |
+
+Duty guidance on viscosity, shear sensitivity and solids content is also covered in the [Pump Selection Guide](/guides/pump-selection-guide). For low-viscosity clean fluids at high flow and low pressure, review the [Centrifugal Pump Fundamentals](/guides/centrifugal-pump-fundamentals) before committing to a PD pump.
+
 ## Key Sizing Considerations for PD Pumps
 
 1. **Slip factor**: Internal leakage (clearances) reduces net flow as pressure increases — more significant at low viscosity
@@ -225,6 +269,38 @@ Brake power = hydraulic power / efficiency. PD pump efficiencies:
 AODD pumps are inefficient in energy terms — they consume significant compressed air, which is expensive to generate. Use them where their unique capabilities are needed, not for general transfer duty.
 </Callout>
 
+## PD Pump Performance Curves
+
+PD pump performance curves look very different from centrifugal pump curves, and reading them correctly prevents misapplication.
+
+- **Flow vs speed**: Flow is directly proportional to speed (Q = V<sub>d</sub> × n). Doubling RPM roughly doubles flow — this is why variable-speed drives are the standard flow-control method for PD pumps. Explore this relationship with the [Pump Affinity Law Calculator](/tools/pump-affinity-law-calculator).
+- **Flow vs pressure**: Flow is nearly flat against discharge pressure. Only internal slip reduces flow slightly as pressure rises, and slip is larger for low-viscosity fluids and worn clearances. Unlike a centrifugal pump curve, there is no drooping head-flow curve.
+- **Power vs pressure**: Shaft power rises roughly linearly with discharge pressure because the pump is always displacing the same volume against system resistance. A pump selected for 10 bar can overload its motor if the relief valve is set at 15 bar — always size the driver for the relief valve setting.
+- **Viscosity effect**: Higher viscosity increases internal resistance and shaft power, and normally requires derating speed. Most PD pump manufacturers publish viscosity-versus-speed correction curves.
+- **NPSH behavior**: NPSH required is relatively constant across the operating range rather than rising steeply with flow, but suction line losses and fluid vapor pressure still govern the available NPSH.
+
+Interactive visualisation of the flow-head-power operating point is provided in the [Pump Flow Calculator](/tools/pump-flow-calculator) and [Pump Power Calculator](/tools/pump-power-calculator) performance curve modules.
+
+## PD Pump Troubleshooting
+
+Work through the [Pump Installation and Commissioning](/guides/pump-installation-commissioning) guide for site procedures. The table below covers the most common field faults for PD pumps.
+
+| Problem | Possible causes | Recommended action |
+|---|---|---|
+| Flow too low | Low RPM; excessive internal leakage/slip; low volumetric efficiency; high fluid viscosity; suction restriction; worn pump components | Verify drive speed; check relief valve bypass; inspect clearances/rotor wear; confirm viscosity and speed derating; check suction strainer and line |
+| Pump overheating | High discharge pressure; relief valve set too high; excessive speed; internal friction from high viscosity; insufficient cooling | Reset relief valve to duty; reduce speed for viscosity; check cooling flow; verify motor loading |
+| Excessive noise | Cavitation (low NPSH); gas entrainment; worn bearings or gears; misalignment; pulsation resonance | Improve suction conditions; use [NPSH Calculator](/tools/npsh-calculator) to verify margin; bleed gas; inspect bearings and alignment; fit pulsation dampener |
+| Excessive vibration | Cavitation; mechanical imbalance; worn internal parts; foundation/pipe strain; pulsation | Check NPSH margin; balance rotating parts; relieve pipe strain; install dampeners and flexible connections |
+| Pressure too high | Blocked discharge; relief valve stuck closed; wrong relief valve setting | Open isolation valve; service relief valve; reset to system design pressure |
+| Motor overload | Relief valve setting above driver rating; viscosity higher than design; mechanical seizure; low voltage | Set relief valve within motor rating; re-check viscosity derating; inspect for seizure; check supply voltage |
+| Pump losing prime | Suction lift too high; air leak in suction line; clogged strainer; running dry | Check suction lift and NPSH; tighten suction joints; clean strainer; use foot valve; never run dry on lubrication-dependent types |
+| Leakage | Worn mechanical seal or packing; corroded joints; overpressure | Replace seal; re-torque joints; verify relief valve setting |
+| Pulsating flow | Reciprocating action (piston/plunger/diaphragm); air in system; worn check valves | Fit pulsation dampener; bleed air; inspect and replace check valves |
+
+<Callout type="danger" title="Never Dead-Head a PD Pump While Diagnosing">
+When troubleshooting a blocked or throttled discharge, never run the PD pump against a closed valve — pressure will rise until the pump, pipework, or relief valve fails. Always ensure the relief valve is operational before testing.
+</Callout>
+
 ## Frequently Asked Questions
 
 **What is a positive displacement pump?**
@@ -252,9 +328,13 @@ PD pumps handle up to 1,000,000+ cSt (e.g., screw and progressive cavity pumps),
 - [Pump Flow Calculator](/tools/pump-flow-calculator) — volumetric flow and displacement rate
 - [Pump Efficiency Calculator](/tools/pump-efficiency-calculator) — volumetric and mechanical efficiency
 - [Pump Sizing Calculator](/tools/pump-sizing-calculator) — complete pump selection workflow
+- [Pump Selection Calculator](/tools/pump-selection-calculator) — quantitative PD vs centrifugal recommendation
+- [Pump Energy Calculator](/tools/pump-energy-calculator) — operating cost of the driver
 - [NPSH Calculator](/tools/npsh-calculator) — net positive suction head margin
 - [Pump Affinity Law Calculator](/tools/pump-affinity-law-calculator) — speed and impeller scaling
+- [Pressure Unit Converter](/tools/pressure-unit-converter) — bar / psi / MPa conversion
 - [Pump Selection Guide](/guides/pump-selection-guide) — PD vs centrifugal selection criteria
+- [Pump Installation and Commissioning](/guides/pump-installation-commissioning) — site procedures and troubleshooting
 - [Centrifugal Pump Fundamentals](/guides/centrifugal-pump-fundamentals) — the complementary pump class
 
 ## Summary
