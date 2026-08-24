@@ -85,6 +85,14 @@
       {
         "q": "Do nozzles and internals affect the volume?",
         "a": "Nozzles, baffles, and internal piping typically occupy well under 1% of vessel volume and are ignored for sizing purposes. For ultra-accurate hold-up calculations, subtract major internal hardware volume explicitly."
+      },
+      {
+        "q": "What is the volume per meter of shell for common vessel diameters?",
+        "a": "Shell volume per meter (V/m = pi x (D/2)^2): 1.0 m diameter = 0.785 m3/m, 1.5 m = 1.767 m3/m, 2.0 m = 3.142 m3/m, 2.5 m = 4.909 m3/m, 3.0 m = 7.069 m3/m, 4.0 m = 12.566 m3/m. Multiply by shell length, then add two 2:1 heads (pi x D^3 / 12) for total vessel volume."
+      },
+      {
+        "q": "How do I size a vessel for a required liquid hold-up time?",
+        "a": "Required volume = liquid flow rate x hold-up time. For a 5 m3/h liquid and 10 minutes of hold-up, you need about 0.83 m3 of working liquid volume; at 80% operating fill that means roughly 1.04 m3 total. Then select a standard diameter and solve for shell length using this calculator."
       }
     ],
     "related": [
@@ -123,6 +131,10 @@
       {
         "heading": "Vessel Sizing Considerations",
         "body": "Common pressure vessel proportions: L/D (tangent-to-tangent) from 2.5 to 5 for horizontal separators; vertical vessels often sized by required liquid hold-up time.\nOperating fill is typically 80-90% of total volume for liquid service; gas service uses the remaining vapor space.\nNozzle and internal volumes are normally ignored (less than 1% of total). The 2:1 elliptical head depth is D/4, so overall length = T/T length + D/2."
+      },
+      {
+        "heading": "Shell Volume Per Meter Reference",
+        "body": "For quick capacity checks, remember the shell volume per meter of length for common diameters (shell only, V/m = pi x (D/2)^2):\nD = 1.0 m: 0.785 m3/m (785 L/m).\nD = 1.5 m: 1.767 m3/m (1,767 L/m).\nD = 2.0 m: 3.142 m3/m (3,142 L/m).\nD = 2.5 m: 4.909 m3/m (4,909 L/m).\nD = 3.0 m: 7.069 m3/m (7,069 L/m).\nD = 4.0 m: 12.566 m3/m (12,566 L/m).\nTo include 2:1 elliptical heads, add pi x D^3 / 12 for the pair (about 0.21 x D^2 per meter at L/D = 1). A 3 m diameter vessel with 6 m shell: 7.069 x 6 + 7.07 = 49.48 m3, matching the worked example above."
       }
     ]
   },

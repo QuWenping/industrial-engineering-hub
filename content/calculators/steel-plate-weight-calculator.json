@@ -5,8 +5,8 @@
   "priority": "P0",
   "description": "Calculate steel plate weight from length, width, and thickness with various steel grades.",
   "seo": {
-    "title": "Steel Plate Weight Calculator - Free Online",
-    "description": "Steel Plate Weight Calculator — Calculate steel plate weight from length, width, and thickness with various steel grades with instant results & multiple unit support.",
+    "title": "Steel Plate Weight Calculator - Per Square Meter & Sheet Weight (kg, lb)",
+    "description": "Steel plate weight calculator focused on flat plate and sheet - weight per square meter, common 4x8 plate sizes, unit conversion (kg, lb, lb/ft2) and formulas for structural estimating and ordering.",
     "keyword": "steel plate weight calculator"
   },
   "formula": {
@@ -87,6 +87,10 @@
       {
         "q": "How much extra weight does galvanizing add to steel plate?",
         "a": "Hot-dip galvanizing typically adds about 3% to steel plate weight, depending on coating thickness (commonly 70-85 microns per face). The zinc coating weighs roughly 0.5-0.6 kg/m2 for standard G90/galvanized classes."
+      },
+      {
+        "q": "How much does a 4x8 foot 1/4 inch steel plate weigh?",
+        "a": "A 1/4 inch (6.35 mm) 4 ft x 8 ft carbon steel plate weighs about 6.35 x 7.85 = 49.8 kg/m2 over an area of 2.97 m2, giving roughly 148 kg (326 lb). In practice the 6 mm row of the common plate table (140.2 kg) is used for estimating. Enter the exact thickness in the calculator above for a precise value."
       }
     ],
     "related": [
@@ -122,6 +126,10 @@
       {
         "heading": "Unit Conversion",
         "body": "| Convert | Multiply by |\n|---|---|\n| kg to lb | 2.20462 |\n| kg/m2 to lb/ft2 | 0.204816 |\n| lb/ft2 to kg/m2 | 4.88243 |\n\nExample: a 2000 x 1000 x 10 mm carbon steel plate = 157 kg = 157 x 2.20462 = 346 lb. Galvanized plate adds roughly 3% weight for the zinc coating."
+      },
+      {
+        "heading": "How to Order Steel Plate",
+        "body": "When ordering steel plate you typically specify: grade (e.g. A36, S275, SS304), thickness (mm or inches), width and length (metric sheets are often 1500 x 3000 mm or 2000 x 6000 mm; US plates are often 4 ft x 8 ft), and quantity. Plate is usually supplied with sheared or flame-cut edges. Estimate the shipped weight with the calculator, then add about 3% if the plate is hot-dip galvanized. For pressure vessel plate, order to the specified grade standard (e.g. ASTM A516) and verify the mill certificate on delivery."
       }
     ]
   },

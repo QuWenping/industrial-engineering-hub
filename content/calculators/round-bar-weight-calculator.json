@@ -5,8 +5,8 @@
   "priority": "P0",
   "description": "Calculate the weight of round steel bars and rods from diameter and length.",
   "seo": {
-    "title": "Round Bar Weight Calculator - Steel Rod",
-    "description": "Round Bar Weight Calculator — Calculate the weight of round steel bars and rods from diameter and length with instant results & multiple unit support.",
+    "title": "Round Bar Weight Calculator - Rebar & Rod Weight per Meter (kg, lb)",
+    "description": "Round bar weight calculator for solid steel rod, shaft stock and rebar - weight per meter from diameter, standard bar sizes, unit conversion (kg, lb) and rebar estimating guidance.",
     "keyword": "round bar weight calculator"
   },
   "formula": {
@@ -81,6 +81,10 @@
       {
         "q": "What is the difference between round bar and rebar weight?",
         "a": "Plain round bar uses the exact cylinder formula. Deformed rebar is typically 1-2% heavier due to the surface ribs, so use a 1-2% uplift for rebar estimating."
+      },
+      {
+        "q": "How many 12m lengths of 12mm rebar make a tonne?",
+        "a": "A 12mm round bar weighs 0.888 kg/m, so a 12 m length weighs 0.888 x 12 = 10.66 kg. One tonne (1000 kg) is 1000 / 10.66 = 93.8, so about 94 standard 12m lengths make a tonne of 12mm rebar."
       }
     ],
     "related": [
@@ -112,6 +116,10 @@
       {
         "heading": "Unit Conversion Guide",
         "body": "Weight: 1 kg = 2.20462 lb; 1 tonne = 1000 kg = 2204.6 lb.\nWeight per meter: 1 kg/m = 0.67197 lb/ft; 1 lb/ft = 1.488 kg/m.\nDiameter: 1 mm = 0.03937 in; 1 in = 25.4 mm.\nLength: 1 m = 3.281 ft.\nExample: a 50 mm bar at 15.4 kg/m = 15.4 x 0.67197 = 10.35 lb/ft."
+      },
+      {
+        "heading": "Round Bar for Shaft and Machining Stock",
+        "body": "Round bar is a common raw material for turned shafts, pins, rollers and fasteners. For machining stock, order bar with a machining allowance (typically 3-6 mm oversize for turned shafts) and estimate weight from the nominal diameter so the stock order covers the finished part plus scrap. Common machining stock sizes: 20, 25, 30, 40, 50, 60, 80 and 100 mm. Bright (cold-drawn) bar has tighter tolerances and a better surface finish than hot-rolled bar; both use the same density for weight estimating."
       }
     ]
   },

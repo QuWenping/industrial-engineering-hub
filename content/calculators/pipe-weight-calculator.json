@@ -5,8 +5,8 @@
   "priority": "P0",
   "description": "Calculate the weight of steel pipes per unit length or total length based on outer diameter, wall thickness and material density.",
   "seo": {
-    "title": "Pipe Weight Calculator - Free Online Engineering Tool",
-    "description": "Pipe Weight Calculator — Calculate the weight of steel pipes per unit length or total length based on outer diameter, wall thickness and material density with instant results & multiple unit support.",
+    "title": "Pipe Weight Calculator - Schedule 40/80 Weight per Meter (kg/m, lb/ft)",
+    "description": "Pipe weight calculator for steel, stainless and alloy pipe - weight per meter from OD and wall thickness, Schedule 40/80 reference tables, unit conversion (kg/m, lb/ft) and installed weight guidance for piping design and rigging.",
     "keyword": "pipe weight calculator"
   },
   "formula": {
@@ -90,6 +90,10 @@
       {
         "q": "Does pipe weight include the weight of the fluid inside?",
         "a": "No. The pipe weight formula calculates the metal wall only. For total installed weight, add the fluid weight (pi x (OD-2WT)^2/4 x rho_fluid) plus insulation, coating, and fittings."
+      },
+      {
+        "q": "How much heavier is stainless steel pipe than carbon steel?",
+        "a": "Stainless steel 304 has density 7930 kg/m3 versus 7850 kg/m3 for carbon steel, about 1.0% heavier. A 4-inch Schedule 40 carbon steel pipe weighs 16.07 kg/m; the same pipe in SS304 weighs about 16.2 kg/m. Use the density selector in this calculator for any grade."
       }
     ],
     "related": [
@@ -123,6 +127,10 @@
       {
         "heading": "Unit Conversion Guide",
         "body": "Weight per meter: 1 kg/m = 0.67197 lb/ft; 1 lb/ft = 1.488 kg/m.\nWeight: 1 kg = 2.20462 lb; 1 tonne = 2204.6 lb.\nDimensions: 1 mm = 0.03937 in; 1 in = 25.4 mm.\nExample: 16.07 kg/m = 16.07 x 0.67197 = 10.8 lb/ft for 4-inch Schedule 40.\nNote: pipe weight is the metal only - it does not include the weight of the fluid inside or any insulation/coating."
+      },
+      {
+        "heading": "Pipe Weight vs Total Installed Weight",
+        "body": "The pipe weight formula gives the metal wall weight only. For structural loading and shipping you need the total installed weight:\n\nTotal per meter = pipe wall weight + fluid weight + insulation/coating weight.\n\nFluid weight per meter = pi x (ID/2)^2 x fluid density, where ID = OD - 2 x WT. For a 4-inch Schedule 40 pipe (ID 102.3 mm) full of water: pi x 0.0511^2 x 1000 = 8.2 kg/m. Add this to the 16.1 kg/m pipe weight to get 24.3 kg/m full of water. Insulation adds roughly 1-3 kg/m depending on thickness and density. Always use the total weight for pipe support spacing, hanger design and crane lifts."
       }
     ]
   },

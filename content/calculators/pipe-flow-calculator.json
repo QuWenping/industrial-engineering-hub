@@ -5,8 +5,8 @@
   "priority": "P0",
   "description": "Calculate volumetric flow rate in a pipe from pipe diameter and fluid velocity using Q = A × v.",
   "seo": {
-    "title": "Pipe Flow Calculator - Free Online Engineering Tool",
-    "description": "Calculate pipe flow rate from diameter and velocity — Continuity equation Q = πd²/4 × v with unit conversion",
+    "title": "Pipe Flow Calculator - Flow Rate from Diameter & Velocity (m3/h, gpm)",
+    "description": "Pipe flow rate calculator using Q = A x v (continuity equation) - volumetric flow from pipe diameter and velocity, typical design velocities, unit conversion to L/s and gpm, and worked pipe sizing examples.",
     "keyword": "pipe flow calculator"
   },
   "formula": {
@@ -73,6 +73,14 @@
       {
         "q": "How do I calculate pipe diameter from flow rate?",
         "a": "Rearrange the continuity equation: d = sqrt(4Q / (pi x v)). Use consistent units - with Q in m3/s and v in m/s, d is in meters. Then select the nearest standard pipe size."
+      },
+      {
+        "q": "How do I calculate flow velocity from flow rate?",
+        "a": "Rearrange the continuity equation: v = Q / A, where A = pi x d^2 / 4. For 56.55 m3/h in a 100mm ID pipe: v = (56.55/3600) / (pi x 0.1^2/4) = 0.01571 / 0.007854 = 2.0 m/s. Use the pipe velocity calculator in Related Calculators for a direct velocity output."
+      },
+      {
+        "q": "What is the flow rate of a 150mm pipe at 1.5 m/s?",
+        "a": "Q = pi x 0.075^2 / 4 x 1.5 x 3600 = 95.4 m3/h (26.5 L/s, 420 gpm). The same pipe at 1 m/s carries 63.6 m3/h and at 2 m/s carries 127.2 m3/h. Doubling velocity doubles flow because the cross-section is fixed."
       }
     ],
     "related": [
@@ -110,6 +118,10 @@
       {
         "heading": "Unit Conversion Guide",
         "body": "Flow rate: 1 m3/h = 0.2778 L/s = 4.403 US gpm = 3.667 UK gpm.\n1 L/s = 3.6 m3/h = 15.85 US gpm. 1 US gpm = 0.2271 m3/h.\nVelocity: 1 m/s = 3.281 ft/s. Diameter: 1 mm = 0.03937 in.\nExample: 56.55 m3/h = 56.55 x 4.403 = 249 US gpm."
+      },
+      {
+        "heading": "Flow Rate by Common Pipe Size at 2 m/s",
+        "body": "At a typical design velocity of 2 m/s for water, the volumetric flow for common nominal pipe sizes is:\n\n| Nominal pipe size (ID) | Flow at 2 m/s |\n|---|---|\n| 25 mm (1 in) | 3.5 m3/h |\n| 50 mm (2 in) | 14.1 m3/h |\n| 80 mm (3 in) | 36.2 m3/h |\n| 100 mm (4 in) | 56.5 m3/h |\n| 150 mm (6 in) | 127.2 m3/h |\n| 200 mm (8 in) | 226.2 m3/h |\n\nFlow scales with the square of the diameter: a 200mm pipe carries four times the flow of a 100mm pipe at the same velocity. Choose the design velocity first from the guidance above, then size the pipe to the required flow."
       }
     ]
   },

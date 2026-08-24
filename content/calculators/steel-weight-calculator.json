@@ -6,7 +6,7 @@
   "description": "Calculate the weight of steel plates, round bars, pipes, beams and structural sections from dimensions and material density. The pillar calculator for all steel weight calculations in structural design, fabrication and cost estimation.",
   "seo": {
     "title": "Steel Weight Calculator - Plate, Beam, Pipe & Section Weight (kg, lb)",
-    "description": "Steel weight calculator for plates, beams, angles, pipes and rounds. Steel density table, weight per meter chart, unit conversion and formula for fabrication and structural design.",
+    "description": "Steel weight calculator for all shapes - plates, pipes, round bars, beams, angles and channels. The pillar entry point for the steel weight cluster: density tables, weight per meter charts, unit conversion, and links to the dedicated plate, pipe and round bar calculators.",
     "keyword": "steel weight calculator"
   },
   "formula": {
@@ -106,6 +106,10 @@
       {
         "q": "How much does a 6mm steel plate weigh per square meter?",
         "a": "A 6 mm carbon steel plate weighs 6 x 7.85 = 47.1 kg/m2. The quick rule is: plate weight per m2 = thickness (mm) x 7.85 kg/m2/mm for carbon steel."
+      },
+      {
+        "q": "Which steel weight calculator should I use for my shape?",
+        "a": "Flat plate: use the steel plate weight calculator (W = L x W x T x density). Pipe and tube: use the pipe weight calculator (W = pi x (OD - WT) x WT x density x L). Solid round bar: use the round bar weight calculator (W = pi x (D/2)^2 x density x L). This pillar calculator covers plates, beams, angles, channels and general sections with the volume x density method."
       }
     ],
     "related": [
@@ -145,6 +149,10 @@
       {
         "heading": "Unit Conversion for Steel Weight",
         "body": "| Convert | Multiply by |\n|---|---|\n| kg to lb | 2.20462 |\n| lb to kg | 0.453592 |\n| tonne (t) to kg | 1000 |\n| kg/m to lb/ft | 0.671969 |\n| lb/ft to kg/m | 1.48816 |\n| kg/m2 to lb/ft2 | 0.204816 |\n\nExample: a 500 kg steel beam weighs 500 x 2.20462 = 1102 lb. A 10 mm plate is 78.5 kg/m2 = 78.5 x 0.2048 = 16.1 lb/ft2."
+      },
+      {
+        "heading": "Steel Weight by Shape: Choosing the Right Calculator",
+        "body": "All steel weight calculations reduce to Weight = Volume x Density, but the volume formula changes with the cross-section. Use the matching dedicated tool for each shape:\n\n| Steel shape | Volume formula | Typical result |\n|---|---|---|\n| Flat plate / sheet | Length x Width x Thickness | 2000x1000x10mm plate = 157 kg |\n| Pipe / tube | pi/4 x (OD^2 - ID^2) x Length | 114.3mm OD x 6.02mm wall = 16.1 kg/m |\n| Round bar / solid rod | pi/4 x D^2 x Length | 50mm dia bar = 15.4 kg/m |\n| I-beam / channel / angle | Section area x Length | H200x200x8x12 beam = 50.5 kg/m |\n\nThis page is the single entry point for the whole steel weight cluster. The dedicated plate, pipe and round bar calculators (see Related Calculators below) give shape-specific formulas, worked examples and ordering guidance, while this page keeps the density tables and section weight references in one place."
       }
     ]
   },

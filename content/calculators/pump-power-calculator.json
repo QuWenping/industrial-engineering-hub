@@ -95,6 +95,10 @@
       {
         "q": "How much does pump energy cost per year?",
         "a": "Annual energy = P_shaft (kW) x operating hours x electricity rate. A 19.5 kW pump running 8000 h/yr at $0.10/kWh costs 19.5 x 8000 x 0.10 = $15,600/yr. Improving efficiency from 70% to 80% saves about $1,950/yr on this duty."
+      },
+      {
+        "q": "How do I convert pump power from kW to horsepower?",
+        "a": "Multiply kW by 1.341 to get mechanical horsepower. A 19.5 kW motor is 19.5 x 1.341 = 26.1 hp; the standard US motor above it is 30 hp. Conversely, 1 hp = 0.7457 kW. Use metric horsepower only where the equipment is specified in that unit (1 kW = 1.36 metric hp)."
       }
     ],
     "related": [
@@ -130,6 +134,14 @@
       {
         "heading": "Worked Example: Sizing a Pump Motor",
         "body": "A process needs 100 m3/h of water (density 1000 kg/m3) at 50 m total head. With a centrifugal pump at 70% efficiency:\n\nP_shaft = 1000 x 9.81 x (100/3600) x 50 / 0.7 / 1000 = 19.5 kW\n\nSelect a standard motor size above this: 22 kW (30 HP). Add service factor and check starting torque for the actual pump curve. For viscous or high-density fluids, use the actual density — pumping 1200 kg/m3 fluid raises shaft power to 23.3 kW, requiring a 30 kW motor."
+      },
+      {
+        "heading": "Power Unit Conversion",
+        "body": "Pump and motor power is expressed in several units depending on region and industry:\n\n| Convert | Multiply by |\n|---|---|\n| kW to mechanical hp | 1.341 |\n| hp to kW | 0.7457 |\n| kW to BTU/hr | 3412 |\n| kW to kcal/h | 860 |\n\nExample: a 22 kW motor is 22 x 1.341 = 29.5 hp (standard 30 hp frame) and consumes 22 x 3412 = 75,064 BTU/hr at full load. Energy cost is always calculated from kW (input power), not hp."
+      },
+      {
+        "heading": "Affinity Laws and Variable Speed Power",
+        "body": "For a fixed pump and impeller, changing speed N changes flow, head and power:\n\nQ2/Q1 = N2/N1, H2/H1 = (N2/N1)^2, P2/P1 = (N2/N1)^3.\n\nBecause power varies with the cube of speed, a small speed reduction saves a lot of energy. Running a 19.5 kW pump at 90% speed needs only 0.9^3 = 0.729 of the power, about 14.2 kW - a 27% saving. This is why variable-speed drives are the primary energy-saving measure for pumps. Use the pump affinity law calculator for detailed speed-change results."
       }
     ]
   },

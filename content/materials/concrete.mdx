@@ -3,11 +3,13 @@ title: "Concrete (Normal Weight)"
 description: "Concrete density, unit weight, and weight calculation guide: normal weight (2400 kg/m³), lightweight, and reinforced concrete. kg/m³ to lb/ft³ conversion, typical density ranges, engineering reference tables, and mix design basics for buildings, bridges, and foundations."
 category: "Construction"
 keywords: ["concrete density", "concrete weight", "concrete unit weight", "lightweight concrete", "reinforced concrete", "concrete properties", "kg/m3 to lb/ft3"]
-updated: "2026-08-17"
+updated: "2026-08-24"
 related:
   - concrete-volume-calculator
   - material-volume-calculator
   - density-calculator
+  - beam-deflection-calculator
+  - thermal-resistance-calculator
   - "/materials/glass"
   - "/materials/hdpe"
   - "/materials/natural-gas"
@@ -126,6 +128,19 @@ The steel fraction also affects weight-based quantity take-off: 1 m³ of heavily
 Concrete's tensile strength is only ~10% of its compressive strength, so all structural concrete is reinforced with steel rebar (which has high tensile strength and similar thermal expansion coefficient). Unreinforced concrete cracks under tension from bending, shrinkage, or temperature — rebar holds cracks together and carries tensile loads. Compare rebar properties on the [Steel Material Properties guide](/guides/steel-material-properties) and [Carbon Steel material page](/materials/carbon-steel).
 </Callout>
 
+## Compressive vs Tensile Strength
+
+Concrete's strength is highly directional — it carries compression well but is roughly an order of magnitude weaker in tension:
+
+| Strength Property | Typical Value (30 MPa / 4000 psi mix) | Test Method |
+|---|---|---|
+| Compressive strength (f'c) | 20-50 MPa (cylinder, 28 days) | ASTM C39 / BS EN 12390-3 |
+| Split tensile strength | 2-4 MPa (~8-10% of f'c) | ASTM C496 / BS EN 12390-6 |
+| Flexural strength (modulus of rupture) | 3-6 MPa (~15-20% of f'c) | ASTM C78 / BS EN 12390-5 |
+| Direct tensile strength | 2-3 MPa | Rarely tested directly |
+
+The ratio of tensile to compressive strength is not constant — it falls as f'c rises. A 60 MPa high-strength mix has a split tensile strength of only about 4-5 MPa, a lower relative ratio than a 20 MPa mix. Because tensile capacity is so low, structural concrete is always reinforced: rebar carries tension while the concrete carries compression. This is why unreinforced concrete is not used in bending or tension; even slabs-on-grade crack under shrinkage and restraint unless properly detailed.
+
 ## Thermal Properties
 
 | Property | Value |
@@ -135,6 +150,19 @@ Concrete's tensile strength is only ~10% of its compressive strength, so all str
 | Thermal Diffusivity | ~0.7 mm²/s |
 
 Concrete provides excellent thermal mass, absorbing heat during the day and releasing it at night — widely used in passive solar building design.
+
+### Thermal Conductivity by Concrete Type
+
+Conductivity varies strongly with density — lighter, more porous concretes insulate better but carry less load:
+
+| Concrete Type | Density (kg/m³) | Thermal Conductivity (W/m·K) |
+|---|---|---|
+| Aerated / cellular | 300-500 | 0.10-0.20 |
+| Lightweight (expanded clay/shale) | 1,400-1,900 | 0.30-0.70 |
+| Normal weight (plain) | 2,200-2,400 | 1.4-2.0 |
+| Heavyweight (barite/magnetite) | 3,000-5,900 | 2.0-3.5 |
+
+For insulating roof screeds or thermal-break applications, lightweight concrete at 0.3-0.7 W/m·K is about 3-5x more insulating than normal weight concrete at 1.5-2.0 W/m·K — at the cost of lower strength and higher water absorption. Conductivity also rises with moisture content.
 
 ## Standard Strength Grades
 
@@ -199,6 +227,12 @@ A 100 mm thick normal concrete slab weighs 240 kg/m²; 150 mm = 360 kg/m²; 200 
 
 **Is lightweight concrete lighter than normal concrete?**
 Yes — lightweight concrete (1,400-1,900 kg/m³) is typically 25-40% lighter than normal weight concrete (2,300-2,400 kg/m³). See the [Lightweight Concrete page](/materials/concrete-lightweight) for details.
+
+**What is the tensile strength of concrete?**
+Concrete's tensile strength is roughly 10% of its compressive strength — typically 2-5 MPa for a 30 MPa mix, measured by split-cylinder (2-4 MPa) or flexural tests (3-6 MPa). This low tensile capacity is exactly why structural concrete is always reinforced with steel.
+
+**What is the thermal conductivity of concrete?**
+Normal weight concrete has a thermal conductivity of about 1.5-2.0 W/m·K (dry). Lightweight concrete (expanded clay/shale) is more insulating at 0.3-0.7 W/m·K, while heavyweight shielding concrete reaches 2.0-3.5 W/m·K. Moisture increases conductivity.
 
 ## Related Tools & Guides
 

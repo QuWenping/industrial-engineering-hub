@@ -6,7 +6,7 @@
   "description": "Universal metal weight calculator supporting steel, stainless, aluminum, copper, brass, bronze, titanium, and more.",
   "seo": {
     "title": "Metal Weight Calculator - All Metals",
-    "description": "Metal Weight Calculator — Universal metal weight calculator supporting steel, stainless, aluminum, copper, brass, bronze, titanium, and more with instant results & multiple unit support.",
+    "description": "Universal metal weight calculator across 25+ metals and alloys - steel, stainless, aluminum, copper, brass, bronze, titanium. Compare densities and convert weight between kg and lb for any metal in one place.",
     "keyword": "metal weight calculator"
   },
   "formula": {
@@ -79,6 +79,10 @@
       {
         "q": "How do I convert weight between kg and lb?",
         "a": "1 kg = 2.20462 lb. For example, a 100 kg steel bar weighs 220.5 lb. Conversely, divide lb by 2.20462 to get kg."
+      },
+      {
+        "q": "How much lighter is aluminum than steel?",
+        "a": "Aluminum density is about 2700 kg/m3 versus 7850 kg/m3 for carbon steel, so an aluminum part of the same size weighs about 34% of the steel version - roughly two-thirds lighter. This is why aluminum is chosen for aircraft, truck bodies and lightweight structures. For strength at the same weight, aluminum sections are often made thicker, so compare finished geometry, not just density."
       }
     ],
     "related": [
@@ -102,6 +106,10 @@
       {
         "heading": "Unit Conversion for Metal Weight",
         "body": "**Weight units**\n\n- 1 kg = 2.20462 lb\n- 1 tonne = 1000 kg = 2204.62 lb\n- 1 lb = 0.4536 kg\n\n**Length units**\n\n- 1 m = 3.28084 ft\n- 1 inch = 25.4 mm\n\n**Density units**\n\n- 1 kg/m³ = 0.06243 lb/ft³\n\nWeight = density × volume. Convert all dimensions to one consistent unit system (metric or imperial) before computing, then convert the result to the required weight unit."
+      },
+      {
+        "heading": "Metal Density Comparison",
+        "body": "Weight of any metal part = Volume x Density, so density drives the comparison between metals:\n\n| Metal | Density (kg/m3) |\n|---|---|\n| Carbon steel | 7850 |\n| Stainless steel 304 | 7930 |\n| Stainless steel 316 | 7990 |\n| Aluminum | 2700 |\n| Copper | 8960 |\n| Brass | 8500 |\n| Bronze | 8800 |\n| Titanium | 4510 |\n| Cast iron | 7200 |\n| Zinc | 7140 |\n| Nickel | 8908 |\n| Lead | 11340 |\n\nFor the same dimensions, copper weighs about 14% more than carbon steel, aluminum about 66% less, and titanium about 43% less. Use the calculator with the correct material selected - the pre-loaded densities give the right result without manual unit conversion."
       }
     ]
   },

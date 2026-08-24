@@ -5,8 +5,8 @@
   "priority": "P0",
   "description": "Calculate the maximum deflection of a beam under a point load. Supports simply supported beams with a center load and cantilever beams with an end load, using delta = P*L^3 / (k*E*I).",
   "seo": {
-    "title": "Beam Deflection Calculator - Free Online Structural Tool",
-    "description": "Calculate beam deflection under load — Simply supported & cantilever beams using standard formulas",
+    "title": "Beam Deflection Calculator - Simply Supported & Cantilever Beams (mm)",
+    "description": "Calculate maximum beam deflection for simply supported (center point load) and cantilever (end load) beams. SI formula deflection = P x L^3 / (k x E x I), mm output, distributed-load formulas and worked examples.",
     "keyword": "beam deflection calculator"
   },
   "formula": {
@@ -142,6 +142,10 @@
       {
         "heading": "Worked Design Example: Steel Floor Beam",
         "body": "Check a 6 m simply supported steel beam (UB 305 x 165 x 40, I = 87,300,000 mm4) under a 12 kN centre load. E = 200,000 MPa.\ndelta = 12,000 x 6.0^3 / (48 x 200,000 x 87.3 x 10^-6) = 2,592,000 / 838,080,000 = 0.00309 m = 3.1 mm.\nAllowable deflection L/360 = 6,000 / 360 = 16.7 mm. Actual 3.1 mm < 16.7 mm, so the beam satisfies the serviceability limit with large margin."
+      },
+      {
+        "heading": "Additional Worked Examples: Cantilever & Distributed Load",
+        "body": "Cantilever, point load at free end: a 2 m cantilever steel beam (E = 200,000 MPa, I = 1e7 mm4) with a 5 kN end load deflects delta = 5,000 x 2.0^3 / (3 x 200,000 x 1e-5) = 0.00667 m = 6.67 mm at the free end.\nSimply supported, uniformly distributed load: a 6 m steel beam (I = 87,300,000 mm4) under w = 10 kN/m deflects delta = 5 x 10,000 x 6.0^4 / (384 x 200,000 x 8.73e-5) = 0.00967 m = 9.67 mm at midspan.\nCantilever, uniformly distributed load: a 3 m cantilever (I = 1e7 mm4) under w = 5 kN/m deflects delta = 5,000 x 3.0^4 / (8 x 200,000 x 1e-5) = 0.0253 m = 25.3 mm at the free end.\nThese three cases cover the four standard combinations — simply supported and cantilever, each with point or distributed load — so you can cross-check the interactive tool against hand calculation."
       },
       {
         "heading": "Deflection Limits for Structural Design",

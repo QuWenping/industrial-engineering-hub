@@ -3,11 +3,17 @@ title: "Understanding P&ID Diagrams"
 description: "A practical guide to reading Piping and Instrumentation Diagrams (P&IDs), including ISA S5.1 symbols, tag numbering, line designations, and best practices."
 category: "Process Engineering"
 keywords: ["P&ID", "piping diagram", "ISA S5.1", "instrument tags", "process diagram"]
-updated: "2026-08-17"
+updated: "2026-08-24"
 related:
   - pipe-flow-calculator
-  - valve-sizing-calculator
+  - "/guides/control-valve-sizing-guide"
+  - "/guides/valve-types-applications"
+  - "/guides/safety-relief-valve-selection"
+  - "/guides/flow-measurement-methods"
   - "/tools/orifice-flow-calculator"
+  - "/tools/pressure-drop-calculator"
+  - "/tools/pipe-velocity-calculator"
+  - "/tools/flow-rate-calculator"
 ---
 
 ## What is a P&ID?
@@ -85,7 +91,38 @@ The **pipe spec** (e.g., A1A, CS150, SS300) defines materials, wall thickness, f
 | Butterfly wafer | Butterfly valve |
 | Bowtie with actuator top | Control valve |
 
-<Calculator id="valve-sizing-calculator" label="Try the Valve Sizing Calculator" />
+### Valve Symbols
+
+Valves are the most symbol-dense area of a P&ID. It is worth separating isolation valves from control and safety valves — they play very different roles:
+
+| Valve Type | Symbol Shape | Function on P&ID |
+|---|---|---|
+| Gate valve | Two opposing triangles (bow-tie) meeting at the line | Isolation/block; fully open or closed, not for throttling |
+| Globe valve | Bow-tie with a small circle at the junction | Throttling or frequent isolation |
+| Ball valve | Filled small circle (or circle with handle mark) | Quick quarter-turn isolation |
+| Butterfly valve | Vertical line with two small arcs (wafer) | Isolation and throttling in large-diameter lines |
+| Check valve | Open triangle pointing in the flow direction | One-way flow; prevents backflow |
+| Diaphragm valve | Bow-tie with a horizontal bar over the body | Corrosive or slurry service with tight shutoff |
+| Control valve | Bow-tie with actuator symbol (e.g., diaphragm/spring or motor on top) | Modulates flow, level, pressure or temperature automatically |
+| Safety/relief valve | Distinct spring-loaded symbol venting to atmosphere or a header | Overpressure protection; opens at set pressure |
+
+A quick reading habit: if the valve has an actuator symbol (FV, PV, LV, TV tags), it is a control device tied to an instrument loop; if it has no actuator and a hand-wheel mark, it is a manual isolation or throttling valve.
+
+### Piping Line Symbols
+
+| Line Type | Drawing Convention | Meaning |
+|---|---|---|
+| Main process line | Heavy solid line | Primary flow path |
+| Utility line | Medium solid line | Cooling water, steam, air, nitrogen services |
+| Instrument impulse line | Thin solid line from process tap to transmitter | Sensing line for the instrument |
+| Pneumatic signal | Dotted line with slashes | Air signal to a valve actuator or controller |
+| Electrical signal | Dashed line | 4-20 mA, digital I/O or alarm wiring |
+| Hydraulic / capillary | Zigzag or bubble line | Hydraulic signal or capillary fill |
+| Insulated line | Solid line with an insulation note (e.g., H = hot insulated) | Thermal insulation required |
+| Heat-traced line | Solid line with a tracing note (e.g., TR) | Steam/electric heat tracing |
+| Jacketed line | Outer parallel line around the pipe | Double-wall construction |
+| Sloped line | Line with an arrow and slope percentage | Gravity flow with a required fall |
+| Spec break | A short vertical tick on the line | Pipe specification changes at this point |
 
 ## Signal Line Conventions
 
@@ -95,6 +132,22 @@ The **pipe spec** (e.g., A1A, CS150, SS300) defines materials, wall thickness, f
 - **Line with bubbles** — capillary tubing
 - **Zigzag line** — hydraulic signal
 - **Wavy line** — sonic / radio
+
+### Common Instrument Loops
+
+Most P&IDs use the same handful of loop configurations. Recognizing them quickly is the fastest way to read a drawing:
+
+| Loop Tag | Measured Variable | Typical Configuration |
+|---|---|---|
+| FIC-xxx | Flow indicating control | FE (element) + FT (transmitter) + FIC (controller) + FV (valve) |
+| PIC-xxx | Pressure indicating control | PT + PIC + PV |
+| LIC-xxx | Level indicating control | LT + LIC + LV |
+| TIC-xxx | Temperature indicating control | TE + TT + TIC + TV |
+| PSHH-xxx | Pressure switch, high-high | Switch feeds shutdown logic (trip) |
+| LAL-xxx | Level alarm, low | Alarm only, no control action |
+| AIC-xxx | Analysis indicating control | AE + AT + AIC (e.g., pH, conductivity) |
+
+When you see a control loop, ask three questions: what is measured (first letter), what is done with it (succeeding letters), and where is the final control element (the valve tag). That single sequence — sensor, transmitter, controller, valve — covers most automatic loops on a P&ID.
 
 ## Worked Example: Reading a Simple Loop
 
@@ -141,6 +194,18 @@ A PFD shows heat/mass balance and major equipment only. A P&ID shows every valve
 </Callout>
 
 <Calculator id="orifice-flow-calculator" label="Try the Orifice Flow Calculator" />
+
+## Reading a Complete P&ID: Cooling Water Supply
+
+Put the pieces together on a typical cooling water supply section (header line 8"-CWS-101-A1A-H feeding a heat exchanger):
+
+1. **Pump station**: Pumps P-101 A/B take suction from a basin through a strainer. Each discharge has a check valve (to prevent backflow through the idle pump) and an isolation gate valve before joining the common header.
+2. **Flow control**: FE-101 (orifice element) + FT-101 (transmitter) + FIC-101 (DCS controller) + FV-101 (control valve). The controller compares measured flow to setpoint and modulates FV-101.
+3. **Pressure monitoring**: PI-102 reads the header pressure, and PSHH-103 trips the pump on high-high pressure.
+4. **Overpressure protection**: PSV-104 on the header discharges back to the cooling tower basin.
+5. **Line details**: The 8"-CWS-101-A1A-H line is hot insulated (suffix H), spec A1A, with a spec break shown where the service changes near the exchanger.
+
+A reliable reading sequence: start at the pump, trace flow through every valve and instrument to the exchanger, then list every trip and alarm (PSHH, TSHH, LAL) on the loop before checking isolation, drains, and spec breaks. That order — supply, control, protection, isolation — turns a busy drawing into four readable layers.
 
 ## Best Practices for Engineers
 

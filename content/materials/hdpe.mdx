@@ -3,19 +3,22 @@ title: "HDPE Density, Properties & Engineering Data (High-Density Polyethylene)"
 description: "HDPE plastic properties, density (960 kg/m³), excellent chemical resistance, flexibility, UV resistance, and applications in piping, geomembranes, tanks, and packaging."
 category: "Polymer"
 keywords: ["HDPE density", "HDPE properties", "polyethylene pipe", "HDPE plastic", "high density polyethylene"]
-updated: "2026-08-17"
+updated: "2026-08-24"
 related:
   - metal-weight-calculator
   - pipe-flow-calculator
   - pressure-drop-calculator
+  - pipe-velocity-calculator
   - "/materials/glass"
   - "/materials/concrete"
+  - "/materials/pvc"
   - "/materials/natural-gas"
   - "/materials/water"
   - "/materials/air"
   - "/materials/aluminum"
   - "/materials/stainless-steel-304"
   - "/materials/carbon-steel"
+  - "/guides/pipe-material-selection"
 ---
 
 ## Overview
@@ -79,6 +82,24 @@ HDPE pipe uses pressure-rated PE grades:
 - **Industrial**: Chemical process piping, acid drains, landfill leachate collection
 - **Marine/offshore**: Flexible risers, subsea flowlines
 - **Mining**: Slurry lines, tailings transport (abrasion resistant)
+
+## SDR & Pressure Rating
+
+HDPE pipe pressure capacity is expressed by the Standard Dimension Ratio (SDR) or the PN rating. SDR is the ratio of outside diameter to minimum wall thickness:
+
+<Formula>SDR = OD / wall thickness</Formula>
+
+Higher SDR means a thinner wall and a lower pressure rating:
+
+| SDR | Wall relative to OD | Pressure Rating (PE100, 20°C) |
+|---|---|---|
+| SDR 11 | OD/11 | PN 16 (16 bar) |
+| SDR 17 | OD/17 | PN 10 (10 bar) |
+| SDR 21 | OD/21 | PN 8 (8 bar) |
+| SDR 26 | OD/26 | PN 6 (6 bar) |
+| SDR 33 | OD/33 | PN 5 (5 bar) |
+
+Pressure ratings drop with temperature — at 40°C a PE100 SDR 11 pipe may be derated to roughly 70% of its 20°C rating, and at 60°C to about 50%. For gas service the pressure is further limited by the material's minimum required strength (MRS: 8 MPa for PE80, 10 MPa for PE100) and the applicable design factor. Always use the manufacturer's validated pressure/temperature curve rather than extrapolating.
 
 ## Key Advantages as Piping Material
 
@@ -209,6 +230,12 @@ Yes. HDPE is FDA-compliant and NSF-61 certified for potable water service. It do
 
 **How is HDPE pipe joined?**
 HDPE pipe is joined by heat fusion (butt fusion, electrofusion, socket fusion), creating a monolithic, leak-free joint with no gaskets or thread sealant. This is a key advantage over PVC (solvent cement) and steel (welding/threading).
+
+**What does SDR mean for HDPE pipe?**
+SDR (Standard Dimension Ratio) is the ratio of pipe outside diameter to wall thickness — SDR 11 means the wall is 1/11 of the outside diameter. Lower SDR means a thicker wall and a higher pressure rating. For PE100 pipe, SDR 11 is rated PN 16 (16 bar), SDR 17 is PN 10 (10 bar), and SDR 26 is PN 6 (6 bar) at 20°C.
+
+**What is the pressure rating of HDPE pipe?**
+The pressure rating depends on the grade and SDR: PE100 SDR 11 is rated 16 bar (PN 16), SDR 17 is 10 bar (PN 10), and SDR 26 is 6 bar (PN 6) at 20°C. Ratings decrease with temperature — derate to roughly 70% of the 20°C value at 40°C and about 50% at 60°C. Always use the manufacturer's validated rating curve.
 
 ## Related Engineering Tools
 
