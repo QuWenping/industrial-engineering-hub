@@ -5,8 +5,8 @@
   "priority": "P0",
   "description": "Calculate volumetric flow rate in a pipe from pipe diameter and fluid velocity using Q = A × v.",
   "seo": {
-    "title": "Pipe Flow Calculator - Flow Rate from Diameter & Velocity (m3/h, gpm)",
-    "description": "Pipe flow rate calculator using Q = A x v (continuity equation) - volumetric flow from pipe diameter and velocity, typical design velocities, unit conversion to L/s and gpm, and worked pipe sizing examples.",
+    "title": "Pipe Flow Calculator - Flow Rate & Velocity from Pipe Size",
+    "description": "Pipe flow hub: calculate flow rate & velocity from pipe size (m3/h, gpm, L/s) with Darcy-Weisbach, Hazen-Williams, design velocities and capacity tables.",
     "keyword": "pipe flow calculator"
   },
   "formula": {
@@ -84,17 +84,17 @@
       }
     ],
     "related": [
-      "pressure-drop-calculator",
       "pipe-velocity-calculator",
       "reynolds-number-calculator",
-      "flow-rate-calculator",
+      "darcy-weisbach-calculator",
       "pipe-diameter-calculator",
+      "flow-rate-calculator",
+      "pressure-drop-calculator",
       "pipe-volume-calculator",
       "water-velocity-calculator",
       "friction-loss-calculator",
       "head-loss-calculator",
       "pressure-loss-calculator",
-      "darcy-weisbach-calculator",
       "hydraulic-diameter-calculator",
       "npsh-calculator",
       "orifice-flow-calculator",
@@ -122,6 +122,14 @@
       {
         "heading": "Flow Rate by Common Pipe Size at 2 m/s",
         "body": "At a typical design velocity of 2 m/s for water, the volumetric flow for common nominal pipe sizes is:\n\n| Nominal pipe size (ID) | Flow at 2 m/s |\n|---|---|\n| 25 mm (1 in) | 3.5 m3/h |\n| 50 mm (2 in) | 14.1 m3/h |\n| 80 mm (3 in) | 36.2 m3/h |\n| 100 mm (4 in) | 56.5 m3/h |\n| 150 mm (6 in) | 127.2 m3/h |\n| 200 mm (8 in) | 226.2 m3/h |\n\nFlow scales with the square of the diameter: a 200mm pipe carries four times the flow of a 100mm pipe at the same velocity. Choose the design velocity first from the guidance above, then size the pipe to the required flow."
+      },
+      {
+        "heading": "Darcy-Weisbach & Hazen-Williams Friction Formulas",
+        "body": "This calculator sizes flow from pipe geometry; once diameter and velocity are known, friction pressure loss follows from two classic formulas. Darcy-Weisbach (all fluids, most accurate): head loss hf = f x (L/D) x (v^2 / 2g), with friction factor f from the Moody diagram or the Darcy-Weisbach calculator. Hazen-Williams (water and dilute aqueous systems, empirical): v = k x C x R^0.63 x S^0.54, where C is the pipe roughness coefficient (140-150 for clean new steel pipe, 100-120 for older or bitumen-lined pipe), R is the hydraulic radius and S is the slope of the energy line. Use Darcy-Weisbach for accuracy and for non-water fluids; use Hazen-Williams for quick water-system estimates. Both dedicated tools are in the Related Calculators list."
+      },
+      {
+        "heading": "The Pipe Flow Toolbox: From Diameter to Pressure Drop",
+        "body": "A complete pipe flow study chains the calculators in the related list into one workflow: start with this Pipe Flow Calculator to get flow from diameter and velocity, use the Pipe Diameter Calculator to solve for size from a target flow, check the regime with the Reynolds Number Calculator (below 2300 is laminar — most process flows are turbulent), apply Darcy-Weisbach or Hazen-Williams for friction and pressure drop, and finally feed the results into the pump sizing and pump power calculators for the driver. Keeping one consistent set of units through the chain — m3/h, m/s and mm diameter — is the simplest way to make every number line up."
       }
     ]
   },

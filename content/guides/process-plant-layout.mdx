@@ -3,7 +3,7 @@ title: "Process Plant Layout Fundamentals"
 description: "Process plant layout principles: equipment spacing, safety distances, plot plan development, pipe rack sizing, tank farm layout, pipe routing, maintenance access, and HSE requirements with typical spacing tables."
 category: "Process Engineering"
 keywords: ["plant layout", "process plant design", "equipment spacing", "plot plan", "safety distances", "pipe routing", "tank farm layout", "pipe rack design"]
-updated: "2026-08-13"
+updated: "2026-09-02"
 related:
   - "/guides/understanding-pid-diagrams"
   - "/guides/pressure-vessel-design"
@@ -26,6 +26,17 @@ A good plant layout optimizes multiple competing goals:
 7. **Future expansion** — plot space for debottlenecking
 
 Layout decisions account for 10-20% of total installed cost and significantly impact long-term safety and operability.
+
+## From P&ID to Plot Plan
+
+The starting point of any layout is the P&ID — it defines how many pumps, exchangers, vessels and valves must be placed, and which lines connect them. Before sketching a plot, extract from the P&ID the following lists:
+
+- **Equipment list** — tag, type, size, elevation constraints (P-101 pumps, T-101 tanks, E-301 exchangers)
+- **Line list** — each line number with size, service, temperature, pressure and insulation / tracing class
+- **Valve and instrument list** — control valves, relief valves and major instruments that need access platforms
+- **Utility requirements** — steam, cooling water, instrument air per consumer
+
+The layout discipline then resolves the conflicts between these lists: route the major process lines first, place relief valve discharges safely, satisfy pump NPSH elevation, and keep control valves accessible. If the P&ID is still evolving, the layout changes with it — lock the P&ID revision before freezing the plot plan. See [Understanding P&ID Diagrams](/guides/understanding-pid-diagrams) for reading these documents.
 
 ## Plot Planning
 
@@ -118,6 +129,12 @@ The pipe rack is the backbone of the plant, carrying process pipes, utilities, a
 5. **Slope lines** — for gravity flow, drainage (1:100 minimum for steam/condensate)
 6. **Provide flexibility** — loops or offsets for thermal expansion
 7. **Avoid pocketing** — don't create low points that trap liquid in gas lines or high points that trap air in liquid lines
+8. **Check routing against the P&ID** — no line may cross a valve or instrument that must later be accessed
+9. **Route relief and flare lines separately** — never share headers with process lines
+
+### Routing Checkpoints
+
+Before accepting a pipe route, verify each checkpoint: pipe class and insulation are continuous (see the [Pipe Stress Analysis Basics](/guides/pipe-stress-analysis-basics) guide); flanges, valves and instruments keep maintenance clearance; thermal expansion loops do not foul adjacent pipe; gravity and two-phase lines hold the required slope; and no route passes through a hazardous area extent it is not rated for (see Safety Considerations below). Routing errors are the most expensive to correct after steelwork is erected — review the 3D model before issuing isometrics.
 
 <Callout type="tip" title="Pipe Rack Pipe Spacing" severity="info">
 Pipe spacing on racks must allow for flange OD, insulation thickness, and wrench access. Typical spacing: nominal pipe diameter + 25mm minimum between pipe ODs. Large lines go outside; small lines in middle. For support span and hanger selection see the [Pipe Support Spacing guide](/guides/pipe-support-spacing); for thermal stress and flexibility see the [Pipe Stress Analysis Basics guide](/guides/pipe-stress-analysis-basics).
@@ -149,6 +166,21 @@ Distance from potential release sources determines classification extent (typica
 - Emergency escape routes marked and unobstructed
 - Muster points upwind/safe distance from process
 - Safety showers/eyewash within 10-15m of chemical handling
+
+### Occupied Building Siting (API 752/753/754)
+
+Where personnel occupy buildings near process equipment, siting follows API 752 (permanent buildings), API 753 (portable structures) and API 754 (process safety incidents). The key spacing inputs are blast overpressure, fire radiation and toxic vapor dispersion — evaluated for the worst credible event, not for average operations. Control rooms are normally placed upwind at the maximum practical setback, and are frequently built blast-resistant where setback cannot be achieved. Involve consequence modeling early: moving a building 10-15 m at the layout stage costs a fraction of re-siting it after equipment is placed.
+
+### Typical Safety Setbacks (Summary)
+
+| Source | Receiver | Typical Distance |
+|---|---|---|
+| Fired heater | Other equipment | 15-30 m |
+| Compressor | Ignition sources | 15-30 m |
+| Process equipment | Control room | 30 m+ (or blast-rated) |
+| Storage tank | Property line | 15-50 m |
+| Flare | Process units | 60-150 m (per dispersion model) |
+| Pressure relief discharge | Safe location | up / away, never at grade |
 
 ## Maintenance Access
 

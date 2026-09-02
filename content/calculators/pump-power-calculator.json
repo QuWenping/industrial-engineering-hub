@@ -5,8 +5,8 @@
   "priority": "P0",
   "description": "Calculate pump hydraulic power and shaft power from flow rate, head, fluid density and pump efficiency.",
   "seo": {
-    "title": "Pump Power Calculator - Free Online Engineering Tool",
-    "description": "Calculate hydraulic and shaft power for centrifugal pumps — Enter flow rate, head, density & efficiency for instant results",
+    "title": "Pump Power Calculator - Hydraulic & Shaft Power (kW, hp)",
+    "description": "Calculate pump hydraulic power, shaft power and motor horsepower (kW, hp) from flow, head, density and efficiency, with worked examples.",
     "keyword": "pump power calculator"
   },
   "formula": {
@@ -60,7 +60,7 @@
     "decimals": 2
   },
   "content": {
-    "introduction": "Calculate the shaft power required for a centrifugal pump using flow rate, total head, fluid density and pump efficiency. This is the fundamental pump selection calculation.",
+    "introduction": "Calculate the hydraulic power and shaft power a pump must deliver — the core number behind pump selection, motor sizing and energy cost. Enter flow rate (m3/h), total head (m), fluid density (kg/m3) and pump efficiency to get shaft power in kW, with horsepower conversion built in. The same power formula P = rho x g x Q x H / eta applies to centrifugal and positive displacement pumps. Pump power is a hydraulics calculation; deciding between a centrifugal and a positive displacement machine is a separate pump-type selection covered in the related guides.",
     "example": {
       "inputs": {
         "flow": 100,
@@ -142,6 +142,10 @@
       {
         "heading": "Affinity Laws and Variable Speed Power",
         "body": "For a fixed pump and impeller, changing speed N changes flow, head and power:\n\nQ2/Q1 = N2/N1, H2/H1 = (N2/N1)^2, P2/P1 = (N2/N1)^3.\n\nBecause power varies with the cube of speed, a small speed reduction saves a lot of energy. Running a 19.5 kW pump at 90% speed needs only 0.9^3 = 0.729 of the power, about 14.2 kW - a 27% saving. This is why variable-speed drives are the primary energy-saving measure for pumps. Use the pump affinity law calculator for detailed speed-change results."
+      },
+      {
+        "heading": "Centrifugal vs Positive Displacement: Same Power Math, Different Machines",
+        "body": "The pump power equation is identical for every pump type — centrifugal or positive displacement: shaft power P = rho x g x Q x H / eta. What changes between machine types is not the power math but the flow-head characteristic, the efficiency curve and the best operating range. A centrifugal pump delivers variable flow against a BEP-centred head, while a positive displacement pump (gear, screw, lobe, piston, plunger, diaphragm) delivers near-constant flow regardless of head. Use this calculator for the hydraulic power duty point in both cases, then choose pump type by flow rate, viscosity, discharge pressure and flow-stability requirements — a decision covered separately in the Positive Displacement Pumps guide and the Pump Selection Guide shown in the related section."
       }
     ]
   },

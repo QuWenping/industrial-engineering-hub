@@ -5,8 +5,8 @@
   "priority": "P0",
   "description": "Calculate the maximum deflection of a beam under a point load. Supports simply supported beams with a center load and cantilever beams with an end load, using delta = P*L^3 / (k*E*I).",
   "seo": {
-    "title": "Beam Deflection Calculator - Simply Supported & Cantilever Beams (mm)",
-    "description": "Calculate maximum beam deflection for simply supported (center point load) and cantilever (end load) beams. SI formula deflection = P x L^3 / (k x E x I), mm output, distributed-load formulas and worked examples.",
+    "title": "Beam Deflection Calculator - Formula & Steel Beam Examples",
+    "description": "Calculate max beam deflection and slope for simply supported and cantilever steel beams - point and UDL formulas with a worked 5 m example.",
     "keyword": "beam deflection calculator"
   },
   "formula": {
@@ -77,7 +77,7 @@
     "decimals": 3
   },
   "content": {
-    "introduction": "Calculate the maximum deflection of a beam under a point load for two common support conditions: a simply supported beam with the load at midspan, and a cantilever beam with the load at the free end. The calculator uses the classic elastic flexure formula delta = P*L^3 / (k*E*I), where P = point load (N), L = span (m), E = modulus of elasticity (Pa), I = second moment of area (m4), and k is a support-condition constant (48 for simply supported center load, 3 for cantilever end load). Results are in millimeters and assume linear-elastic, small-deflection behavior with a prismatic beam. This Tool + Formula + Example + Guide page supports beam sizing checks, serviceability verification, and structural education.",
+    "introduction": "Calculate the maximum deflection and slope of a beam under point or distributed loads for two common support conditions: a simply supported beam with the load at midspan, and a cantilever beam with the load at the free end. This Tool + Formula + Example + Guide page uses the classic elastic flexure formula delta = P*L^3/(k*E*I) with a linear-elastic, small-deflection, prismatic-beam assumption, and walks every input through a real steel beam example (Input → Formula → Result) so you can cross-check the numbers by hand. Use it for beam sizing checks, serviceability (deflection limit) verification, and structural education on steel and aluminium beams.",
     "example": {
       "inputs": {
         "supportType": "48",
@@ -137,7 +137,7 @@
     "sections": [
       {
         "heading": "Load Cases & Deflection Formulas",
-        "body": "Simply supported beam, point load at midspan: delta = P x L^3 / (48 x E x I).\nCantilever beam, point load at free end: delta = P x L^3 / (3 x E x I).\nSimply supported beam, uniformly distributed load w (N/m): delta = 5 x w x L^4 / (384 x E x I). Use this approximation when the dominant load is distributed (floors, platforms) rather than a single point load.\nCantilever, uniformly distributed load: delta = w x L^4 / (8 x E x I).\nAll formulas assume elastic material behaviour, small deflections, and constant cross-section (prismatic beam)."
+        "body": "Simply supported beam, point load at midspan: delta = P x L^3 / (48 x E x I).\nCantilever beam, point load at free end: delta = P x L^3 / (3 x E x I).\nSimply supported beam, uniformly distributed load w (N/m): delta = 5 x w x L^4 / (384 x E x I). Use this approximation when the dominant load is distributed (floors, platforms) rather than a single point load.\nCantilever, uniformly distributed load: delta = w x L^4 / (8 x E x I).\nAll formulas assume elastic material behaviour, small deflections, and constant cross-section (prismatic beam).\nSlope (rotation) at key points: simply supported beam with a centre point load, maximum slope at the supports theta = P x L^2 / (16 x E x I). Cantilever with an end point load, slope at the free end theta = P x L^2 / (2 x E x I). For a uniformly distributed load w on a simply supported beam, maximum slope at the supports theta = w x L^3 / (24 x E x I)."
       },
       {
         "heading": "Worked Design Example: Steel Floor Beam",
@@ -154,6 +154,10 @@
       {
         "heading": "Unit Conversion Guide",
         "body": "Force: 1 N = 0.2248 lbf; 1 kN = 224.8 lbf; 10 kN ≈ 2,248 lbf.\nLength: 1 mm = 0.03937 in; 1 m = 3.281 ft.\nModulus: 1 MPa = 0.145 ksi; steel E = 200 GPa ≈ 29,000 ksi; aluminum E = 69 GPa ≈ 10,000 ksi.\nMoment of inertia: 1 mm4 = 2.402 x 10^-6 in4.\nTo use US inputs with this SI engine, convert lbf to N (x 4.4482), inches to mm (x 25.4), ksi to MPa (x 6.8948)."
+      },
+      {
+        "heading": "Worked Example: 5 m Simply Supported Steel Beam",
+        "body": "Input: a 5 m simply supported steel beam (E = 200,000 MPa) with I = 10,000,000 mm4 (10 x 10^-6 m4), carrying a 10 kN (10,000 N) point load at midspan.\nFormula: delta = P x L^3 / (48 x E x I) = 10,000 x 5.0^3 / (48 x 200,000 x 10 x 10^-6).\nResult: delta = 1,250,000 / 96,000,000 = 0.01302 m = 13.02 mm deflection at midspan.\nCheck: allowable serviceability limit L/360 = 5,000 / 360 = 13.9 mm. Actual deflection 13.02 mm is below 13.9 mm, so this beam passes the common floor serviceability limit with a margin of about 0.9 mm. The margin is small, so for live-load-sensitive floors consider a stiffer section or a shorter span. Always confirm against AISC, ACI or Eurocode."
       }
     ]
   },

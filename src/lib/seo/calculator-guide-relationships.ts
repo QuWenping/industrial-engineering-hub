@@ -35,6 +35,12 @@ export const CALCULATOR_GUIDE_RELATIONSHIPS: Record<string, GuideLinkConfig[]> =
       href: '/guides/motor-efficiency-guide',
       keywords: ['motor sizing', 'efficiency'],
     },
+    {
+      title: 'Positive Displacement Pumps: Types & Working Principle',
+      description: 'Centrifugal vs positive displacement pump comparison to separate hydraulic power math from the machine-type decision.',
+      href: '/guides/positive-displacement-pumps',
+      keywords: ['positive displacement pump', 'pd vs centrifugal'],
+    },
   ],
   'pump-head-calculator': [
     {
@@ -96,6 +102,30 @@ export const CALCULATOR_GUIDE_RELATIONSHIPS: Record<string, GuideLinkConfig[]> =
       description: 'Learn yield strength, tensile strength, and other key material properties.',
       href: '/guides/material-strength-basics',
       keywords: ['material strength', 'engineering properties'],
+    },
+  ],
+  'steel-plate-weight-calculator': [
+    {
+      title: 'Steel Material Properties',
+      description: 'Understanding steel grades, densities, and selection criteria for structural applications.',
+      href: '/guides/steel-material-properties',
+      keywords: ['steel properties', 'material selection'],
+    },
+  ],
+  'round-bar-weight-calculator': [
+    {
+      title: 'Steel Material Properties',
+      description: 'Understanding steel grades, densities, and selection criteria for structural applications.',
+      href: '/guides/steel-material-properties',
+      keywords: ['steel properties', 'material selection'],
+    },
+  ],
+  'pipe-weight-calculator': [
+    {
+      title: 'Steel Material Properties',
+      description: 'Understanding steel grades, densities, and selection criteria for structural applications.',
+      href: '/guides/steel-material-properties',
+      keywords: ['steel properties', 'material selection'],
     },
   ],
   'heat-exchanger-calculator': [

@@ -3,10 +3,13 @@ title: "Understanding P&ID Diagrams"
 description: "A practical guide to reading Piping and Instrumentation Diagrams (P&IDs), including ISA S5.1 symbols, tag numbering, line designations, and best practices."
 category: "Process Engineering"
 keywords: ["P&ID", "piping diagram", "ISA S5.1", "instrument tags", "process diagram"]
-updated: "2026-08-24"
+updated: "2026-09-02"
 related:
   - pipe-flow-calculator
   - "/guides/control-valve-sizing-guide"
+  - "/guides/process-plant-layout"
+  - "/guides/positive-displacement-pumps"
+  - "/guides/pipe-flow-engineering"
   - "/guides/valve-types-applications"
   - "/guides/safety-relief-valve-selection"
   - "/guides/flow-measurement-methods"
@@ -23,6 +26,23 @@ A **Piping and Instrumentation Diagram (P&ID)** is the master document of a proc
 <Callout type="info" title="Governing standards">
 Symbol conventions come from ISA S5.1 (instrumentation) and ISO 10628 / ASME Y32.11 (equipment). Most owners have a company-specific "legend sheet" that overrides the standard for their site — always read the legend first.
 </Callout>
+
+## P&ID vs PFD: What Each Document Is For
+
+A P&ID is frequently confused with a Process Flow Diagram (PFD). They serve different purposes and live at different points in the design lifecycle:
+
+| | PFD | P&ID |
+|---|---|---|
+| Purpose | Overall process concept and heat / material balance | Definitive engineering record |
+| Equipment | Major equipment only | Every item with tag and size |
+| Piping | Main process lines only | Every line: size, service, spec, insulation |
+| Instruments | Major control loops only | Every instrument and its loop function |
+| Valves | Not shown | Every valve: isolation, control, safety, drain, vent |
+| Drains / vents | Not shown | All drains, vents, sample points |
+| Used for | Process design, heat balance | Operations, maintenance, safety, HAZOP |
+| Status | Conceptual | Accurate to the installed plant |
+
+**Rule of thumb:** never operate or safety-review from a PFD. The PFD answers "what does the process do?"; the P&ID answers "exactly how is it built?".
 
 ## What Appears on a P&ID
 
@@ -75,7 +95,7 @@ For example: **6"-CWS-101-A1A-H** = 6-inch diameter, chilled water supply, line 
 
 <Formula>Line number = SIZE − SERVICE − NUMBER − SPEC − INSULATION</Formula>
 
-The **pipe spec** (e.g., A1A, CS150, SS300) defines materials, wall thickness, flange rating, gaskets, and bolting for that line. All lines in the same spec share the same material of construction — this is fundamental to procurement and quality control.
+The **pipe spec** (e.g., A1A, CS150, SS300) defines materials, wall thickness, flange rating, gaskets, and bolting for that line. All lines in the same spec share the same material of construction — this is fundamental to procurement and quality control. For sizing those lines once the service is fixed, see the [Pipe Flow Engineering](/guides/pipe-flow-engineering) guide and the flow calculators in the related tools.
 
 ## Common Symbols
 
@@ -123,6 +143,12 @@ A quick reading habit: if the valve has an actuator symbol (FV, PV, LV, TV tags)
 | Jacketed line | Outer parallel line around the pipe | Double-wall construction |
 | Sloped line | Line with an arrow and slope percentage | Gravity flow with a required fall |
 | Spec break | A short vertical tick on the line | Pipe specification changes at this point |
+
+### Pump, Compressor and Motor Symbols
+
+Rotating equipment carries its own symbol conventions. A pump is drawn as a circle with a triangle inlet joined to the discharge line and is tagged P-101; a duty/spare train appears as P-101 A/B. Compressors (C-), blowers (K-) and motors (M-) use similar conventions with the driver drawn beside or above the driven machine.
+
+The symbol also shows the machine class: a centrifugal impeller, a gear / screw / lobe pump body, or a piston / plunger / diaphragm head, so a reader can tell the duty class at a glance. Choosing between a centrifugal and a positive displacement machine is driven by flow, viscosity, pressure and stability requirements — see the [Positive Displacement Pumps](/guides/positive-displacement-pumps) guide for the comparison, and the [Pump Power Calculator](/tools/pump-power-calculator) for the hydraulic duty each machine must satisfy.
 
 ## Signal Line Conventions
 
@@ -242,5 +268,9 @@ A loop number groups all instruments serving one control function. Everything ta
 - [Pipe Velocity Calculator](/tools/pipe-velocity-calculator) — Check design velocity in process lines
 - [Orifice Flow Calculator](/tools/orifice-flow-calculator) — Size orifice plates (FE elements)
 - [Control Valve Sizing Guide](/guides/control-valve-sizing-guide) — Select control valves (FV tags)
+- [Process Plant Layout](/guides/process-plant-layout) — Plot planning from the P&ID
+- [Valve Types and Applications](/guides/valve-types-applications) — Common process valve types on P&IDs
+- [Positive Displacement Pumps](/guides/positive-displacement-pumps) — PD machine selection
+- [Pipe Flow Engineering](/guides/pipe-flow-engineering) — Line sizing and flow design for P&ID lines
 - [Safety Relief Valve Selection](/guides/safety-relief-valve-selection) — Size relief valves (PSV tags)
 - [Chemical Plant Engineering](/industries/chemical-plant) — P&ID practice in process plants
