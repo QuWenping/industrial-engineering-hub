@@ -6,7 +6,7 @@
   "description": "Calculate steel plate weight from length, width, and thickness with various steel grades.",
   "seo": {
     "title": "Steel Plate Weight Calculator - Per Square Meter & Sheet Weight (kg, lb)",
-    "description": "Steel plate weight calculator focused on flat plate and sheet - weight per square meter, common 4x8 plate sizes, unit conversion (kg, lb, lb/ft2) and formulas for structural estimating and ordering.",
+    "description": "Steel plate weight calculator dedicated to flat plate and sheet only - weight per square meter, common 4x8 plate sizes, unit conversion (kg, lb, lb/ft2) and ordering guidance. For round bar, pipe or structural beam weight, use the steel weight calculator hub.",
     "keyword": "steel plate weight calculator"
   },
   "formula": {
@@ -56,7 +56,7 @@
     "decimals": 2
   },
   "content": {
-    "introduction": "Calculate the weight of a flat steel plate from its dimensions and material density. Essential for structural steel estimating, shipping weight calculations, and material ordering. The quick rule for carbon steel is 7.85 kg per square meter per millimeter of thickness — see the tables below for common plate weights.",
+    "introduction": "Calculate the weight of a flat steel plate from its dimensions and material density. Essential for structural steel estimating, shipping weight calculations, and material ordering. The quick rule for carbon steel is 7.85 kg per square meter per millimeter of thickness - see the tables below for common plate weights. This page is dedicated to flat plate and sheet only (Weight = L x W x T x density); for round bar, pipe or structural beam weight use the Steel Weight Calculator hub.",
     "example": {
       "inputs": {
         "length": 2000,
@@ -91,6 +91,10 @@
       {
         "q": "How much does a 4x8 foot 1/4 inch steel plate weigh?",
         "a": "A 1/4 inch (6.35 mm) 4 ft x 8 ft carbon steel plate weighs about 6.35 x 7.85 = 49.8 kg/m2 over an area of 2.97 m2, giving roughly 148 kg (326 lb). In practice the 6 mm row of the common plate table (140.2 kg) is used for estimating. Enter the exact thickness in the calculator above for a precise value."
+      },
+      {
+        "q": "Do you also calculate round bar or pipe weight?",
+        "a": "No - this page is dedicated to flat steel plate and sheet (Weight = L x W x T x density). For solid round bar use the round bar weight calculator (pi/4 x D^2 x L x density), for pipe use the pipe weight calculator (pi x (OD - WT) x WT x L x density), and for beams use the steel weight calculator hub - all are linked from the related section above."
       }
     ],
     "related": [

@@ -6,7 +6,7 @@
   "description": "Calculate volumetric flow rate in a pipe from pipe diameter and fluid velocity using Q = A × v.",
   "seo": {
     "title": "Pipe Flow Calculator - Flow Rate & Velocity from Pipe Size",
-    "description": "Pipe flow hub: calculate flow rate & velocity from pipe size (m3/h, gpm, L/s) with Darcy-Weisbach, Hazen-Williams, design velocities and capacity tables.",
+    "description": "Calculate pipe flow rate in m3/h, L/s or gpm instantly from diameter and velocity with Q = A x v (continuity equation). Includes design velocities, common pipe capacity tables, and Darcy-Weisbach & Hazen-Williams friction formulas.",
     "keyword": "pipe flow calculator"
   },
   "formula": {
@@ -40,7 +40,7 @@
     "decimals": 2
   },
   "content": {
-    "introduction": "Calculate volumetric flow rate through a pipe given its inner diameter and the fluid velocity. This is the fundamental continuity equation used in pipe sizing and hydraulic design.",
+    "introduction": "Get the volumetric flow rate through a pipe in m3/h, L/s or gpm instantly from just the inner diameter and fluid velocity, using the continuity equation Q = A x v. A capacity table below shows common pipe sizes at typical design velocities, so you can size a line in seconds. The design-velocity and Darcy-Weisbach / Hazen-Williams sections complete the workflow from pipe geometry to pressure drop for pump system design and hydraulic calculations.",
     "example": {
       "inputs": {
         "diameter": 100,

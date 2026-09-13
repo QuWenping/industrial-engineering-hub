@@ -6,7 +6,7 @@
   "description": "Calculate pump hydraulic power and shaft power from flow rate, head, fluid density and pump efficiency.",
   "seo": {
     "title": "Pump Power Calculator - Hydraulic & Shaft Power (kW, hp)",
-    "description": "Calculate pump hydraulic power, shaft power and motor horsepower (kW, hp) from flow, head, density and efficiency, with worked examples.",
+    "description": "Calculate pump hydraulic power, shaft power and motor horsepower (kW, hp) from flow, head, density and efficiency - the same formula applies to centrifugal and positive displacement pumps, with motor sizing worked examples.",
     "keyword": "pump power calculator"
   },
   "formula": {

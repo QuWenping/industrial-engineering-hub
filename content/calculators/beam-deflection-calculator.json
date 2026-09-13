@@ -6,7 +6,7 @@
   "description": "Calculate the maximum deflection of a beam under a point load. Supports simply supported beams with a center load and cantilever beams with an end load, using delta = P*L^3 / (k*E*I).",
   "seo": {
     "title": "Beam Deflection Calculator - Formula & Steel Beam Examples",
-    "description": "Calculate max beam deflection and slope for simply supported and cantilever steel beams - point and UDL formulas with a worked 5 m example.",
+    "description": "Calculate beam deflection in mm instantly - simply supported and cantilever beams with point and UDL load formulas (delta = PL^3/48EI), plus the L/360 serviceability check and a worked 5 m steel beam example.",
     "keyword": "beam deflection calculator"
   },
   "formula": {
@@ -77,7 +77,7 @@
     "decimals": 3
   },
   "content": {
-    "introduction": "Calculate the maximum deflection and slope of a beam under point or distributed loads for two common support conditions: a simply supported beam with the load at midspan, and a cantilever beam with the load at the free end. This Tool + Formula + Example + Guide page uses the classic elastic flexure formula delta = P*L^3/(k*E*I) with a linear-elastic, small-deflection, prismatic-beam assumption, and walks every input through a real steel beam example (Input → Formula → Result) so you can cross-check the numbers by hand. Use it for beam sizing checks, serviceability (deflection limit) verification, and structural education on steel and aluminium beams.",
+    "introduction": "Get the maximum deflection and slope of a steel or aluminium beam in mm instantly. Enter the support condition (simply supported with a centre point load, or cantilever with an end load), the load, the span, the modulus of elasticity E (steel ~200,000 MPa) and the moment of inertia I, and the tool returns the deflection directly, ready to compare against the common L/360 serviceability limit. The point and UDL formulas are tabulated below with a worked 5 m steel beam example you can cross-check by hand. Use it for beam sizing checks, serviceability (deflection limit) verification, and structural education.",
     "example": {
       "inputs": {
         "supportType": "48",

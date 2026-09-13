@@ -81,6 +81,24 @@ Volumetric efficiency captures the slip loss:
 
 For pump selection and power sizing, use the [Pump Flow Calculator](/tools/pump-flow-calculator) to convert between flow units, and the [Pump Head Calculator](/tools/pump-head-calculator) to build the system head curve the pump must overcome.
 
+## PD Pump Power: Same Formula, Different Machine
+
+The hydraulic and shaft power of a PD pump is calculated with the **exact same equation as a centrifugal pump**:
+
+<Formula>P<sub>shaft</sub> = ρ × g × Q × H / η  (kW)</Formula>
+
+The difference is not the power math — it is the **flow-head characteristic**. Run any PD duty through the [Pump Power Calculator](/tools/pump-power-calculator) to get shaft power in kW, then convert to motor horsepower (kW × 1.341). Because a PD pump delivers near-constant flow against rising pressure, its power **rises with discharge pressure**, unlike a centrifugal pump whose flow simply drops. Always size the PD driver for the relief-valve setting so the motor is not overloaded if the discharge is blocked.
+
+| PD pump type | Typical efficiency | Power note |
+|---|---|---|
+| Plunger / piston | 80 - 95% | Highest efficiency, strong at high pressure |
+| Gear | 70 - 90% | Clean, predictable duty |
+| Screw | 70 - 85% | Stable across high viscosity |
+| Progressive cavity | 60 - 75% | Slips more on low-viscosity fluids |
+| Diaphragm (AODD) | 50 - 70% | Consumes compressed air — run cost is high |
+
+For total driver operating cost, combine the shaft power with the [Pump Energy Calculator](/tools/pump-energy-calculator). The comparison table below explains when a PD pump is the right family versus a centrifugal machine.
+
 ## PD vs Centrifugal Pumps
 
 Positive Displacement (PD) pumps move fluid by trapping a fixed volume and mechanically forcing it into the discharge pipe. Unlike centrifugal pumps, PD pumps produce flow directly proportional to speed and relatively independent of discharge pressure. Run your duty through the [Pump Selection Calculator](/tools/pump-selection-calculator) to get a quantitative PD-vs-centrifugal recommendation based on flow, head and viscosity.
@@ -194,6 +212,22 @@ Small, precise PD pumps for accurate chemical addition:
 Typical applications: Chlorine injection, pH adjustment, corrosion inhibitors, polymer dosing.
 
 ## PD Pump Selection Guide
+
+### PD Pump Types: Flow, Self-Priming & Dry-Run Comparison
+
+A quick cross-type view on the operating traits that decide which PD pump survives your site conditions. Values are typical for standard commercial machines.
+
+| Pump type | Flow character | Self-priming | Tolerates dry run | Flow control method | Pressure relief |
+|---|---|---|---|---|---|
+| Gear | Smooth, low pulsation | Fair | No - needs lubrication | Speed (VFD) | Yes - mandatory |
+| Screw | Very smooth, quiet | Fair | No - needs lubrication | Speed (VFD) | Yes - mandatory |
+| Lobe | Smooth, low pulsation | Fair | Some designs briefly | Speed (VFD) | Yes - mandatory |
+| Diaphragm (AODD) | Pulsating | Excellent | Yes | Air regulation / stall | Built-in relief common |
+| Progressive cavity | Very smooth | Excellent | No - burns stator | Speed (VFD) | Yes - mandatory |
+| Peristaltic | Pulsating (rollers reduce it) | Excellent | Yes | Speed (VFD) | Not needed - hose self-seals |
+| Piston / Plunger | Pulsating (triplex smooths) | Poor | No - needs lubrication | Speed / stroke | Yes - mandatory |
+
+Use this with the selection table above to shortlist a pump family, then confirm with the [Pump Selection Calculator](/tools/pump-selection-calculator).
 
 | Need | Best PD Pump Type |
 |---|---|
