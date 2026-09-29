@@ -30,16 +30,16 @@ export const CALCULATOR_GUIDE_RELATIONSHIPS: Record<string, GuideLinkConfig[]> =
       keywords: ['pump basics', 'performance curves'],
     },
     {
-      title: 'Motor Efficiency Guide',
-      description: 'Motor selection and efficiency optimization to minimize energy consumption in pump systems.',
-      href: '/guides/motor-efficiency-guide',
-      keywords: ['motor sizing', 'efficiency'],
+      title: 'NPSH Calculation Explained',
+      description: 'Prevent pump cavitation by understanding NPSHa, NPSHr, and the suction margin required for reliable pump operation.',
+      href: '/guides/npsh-calculation-explained',
+      keywords: ['NPSH', 'cavitation prevention'],
     },
     {
-      title: 'Positive Displacement Pumps: Types & Working Principle',
-      description: 'Centrifugal vs positive displacement pump comparison to separate hydraulic power math from the machine-type decision.',
-      href: '/guides/positive-displacement-pumps',
-      keywords: ['positive displacement pump', 'pd vs centrifugal'],
+      title: 'Diesel Density, Properties & Engineering Data (kg/m3)',
+      description: 'Diesel fuel density, specific gravity and viscosity reference data for pump power and fluid calculations.',
+      href: '/materials/diesel',
+      keywords: ['diesel density', 'fuel properties'],
     },
   ],
   'pump-head-calculator': [
@@ -75,6 +75,12 @@ export const CALCULATOR_GUIDE_RELATIONSHIPS: Record<string, GuideLinkConfig[]> =
       href: '/guides/pressure-drop-pipes',
       keywords: ['friction loss', 'pressure drop'],
     },
+    {
+      title: 'HDPE Density, Properties & Engineering Data (High-Density Polyethylene)',
+      description: 'HDPE plastic density, chemical resistance and flexibility data for plastic pipe flow applications.',
+      href: '/materials/hdpe',
+      keywords: ['HDPE pipe', 'plastic pipe'],
+    },
   ],
   'pressure-drop-calculator': [
     {
@@ -102,6 +108,18 @@ export const CALCULATOR_GUIDE_RELATIONSHIPS: Record<string, GuideLinkConfig[]> =
       description: 'Learn yield strength, tensile strength, and other key material properties.',
       href: '/guides/material-strength-basics',
       keywords: ['material strength', 'engineering properties'],
+    },
+    {
+      title: 'Brass (70/30 Yellow Brass)',
+      description: 'Yellow brass density, machinability and corrosion resistance data for non-ferrous weight calculations.',
+      href: '/materials/brass',
+      keywords: ['brass density', 'yellow brass'],
+    },
+    {
+      title: 'Copper Density, Properties & Engineering Data (kg/m3)',
+      description: 'Pure copper density, electrical and thermal conductivity reference data for weight and sizing calculations.',
+      href: '/materials/copper',
+      keywords: ['copper density', 'copper properties'],
     },
   ],
   'steel-plate-weight-calculator': [
@@ -182,6 +200,12 @@ export const CALCULATOR_GUIDE_RELATIONSHIPS: Record<string, GuideLinkConfig[]> =
       description: 'Typical properties of structural steel used in beam calculations.',
       href: '/guides/steel-material-properties',
       keywords: ['structural steel', 'properties'],
+    },
+    {
+      title: 'Aluminum Alloy 6061-T6',
+      description: 'Aluminum 6061-T6 density, yield strength and modulus reference data for lightweight beam deflection checks.',
+      href: '/materials/aluminum',
+      keywords: ['aluminum 6061', 'lightweight beams'],
     },
   ],
   'tank-weight-calculator': [
