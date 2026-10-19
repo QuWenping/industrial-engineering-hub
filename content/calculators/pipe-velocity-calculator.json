@@ -5,8 +5,8 @@
   "priority": "P0",
   "description": "Calculate fluid velocity in a pipe from flow rate and pipe diameter.",
   "seo": {
-    "title": "Pipe Velocity Calculator - Fluid Flow",
-    "description": "Pipe Velocity Calculator — Calculate fluid velocity in a pipe from flow rate and pipe diameter with instant results & multiple unit support.",
+    "title": "Pipe Velocity Calculator - Velocity from Flow Rate & Pipe Size",
+    "description": "Pipe Velocity Calculator — Calculate fluid velocity in a pipe from flow rate and pipe diameter with instant results & multiple unit support. This is the inverse of the Pipe Flow Calculator: enter a flow and pipe size to get the resulting velocity.",
     "keyword": "pipe velocity calculator"
   },
   "formula": {

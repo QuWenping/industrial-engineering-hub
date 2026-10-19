@@ -3,10 +3,10 @@
   "name": "Flow Rate Calculator",
   "category": "Mechanical Engineering",
   "priority": "P0",
-  "description": "Calculate volumetric flow rate from pipe diameter and velocity, with unit conversions.",
+  "description": "Calculate volumetric flow rate and convert between common flow units (m³/h, L/s, L/min, GPM, CFM) for general engineering calculations.",
   "seo": {
-    "title": "Flow Rate Calculator - Pipe Velocity & Diameter",
-    "description": "Flow rate calculator for volumetric fluid calculations — Multiple unit conversions for engineering precision",
+    "title": "Flow Rate Calculator - Volumetric Flow & Unit Conversion (m³/h, L/s, GPM)",
+    "description": "General-purpose flow rate calculator: compute volumetric flow from pipe diameter and velocity, or convert between common flow units (m3/h, L/s, L/min, GPM, CFM). Includes mass flow (m = rho x Q), unit conversion tables and recommended pipe velocities for engineering estimates.",
     "keyword": "flow rate calculator"
   },
   "formula": {

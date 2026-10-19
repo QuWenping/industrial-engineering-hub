@@ -91,7 +91,7 @@
     "sections": [
       {
         "heading": "Unit Conversion for Pipe Sizing",
-        "body": "**Diameter units**\n\n- 1 inch = 25.4 mm\n- 1 mm = 0.03937 inch\n- DN 50 = NPS 2 (nominal labels, not exact dimensions)\n\n**Flow rate units**\n\n- 1 m³/h = 0.2778 L/s = 4.403 US gpm\n- 1 US gpm = 0.2271 m³/h\n\n**Velocity units**\n\n- 1 m/s = 3.28084 ft/s\n\nWhen sizing, convert all inputs to one consistent unit system (metric or imperial) before applying the continuity equation Q = V × A."
+        "body": "**Diameter units**\n\n- 1 inch = 25.4 mm\n- 1 mm = 0.03937 inch\n- DN 50 = NPS 2 (nominal labels, not exact dimensions)\n\n**Flow rate units**\n\n- 1 m³/h = 0.2778 L/s = 4.403 US gpm\n- 1 US gpm = 0.2271 m³/h\n\n**Velocity units**\n\n- 1 m/s = 3.28084 ft/s\n\nWhen sizing, convert all inputs to one consistent unit system (metric or imperial) before applying the continuity equation Q = V × A.\n\nThis page solves for pipe size from a target flow. To go the other way - flow rate from a known diameter and velocity - use the [Pipe Flow Calculator](/tools/pipe-flow-calculator)."
       }
     ]
   },

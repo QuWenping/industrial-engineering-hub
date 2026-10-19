@@ -5,8 +5,8 @@
   "priority": "P0",
   "description": "Calculate volumetric flow rate in a pipe from pipe diameter and fluid velocity using Q = A × v.",
   "seo": {
-    "title": "Pipe Flow Calculator - Flow Rate & Velocity from Pipe Size",
-    "description": "Calculate pipe flow rate in m3/h, L/s or gpm instantly from diameter and velocity with Q = A x v (continuity equation). Includes design velocities, common pipe capacity tables, and Darcy-Weisbach & Hazen-Williams friction formulas.",
+    "title": "Pipe Flow Calculator - Pipe Flow Rate from Pipe Size & Velocity",
+    "description": "Calculate pipe flow rate in m3/h, L/s or gpm instantly from pipe inner diameter and fluid velocity using Q = A x v (continuity equation). Includes design velocities, common pipe capacity tables and unit conversion. For friction loss and pressure drop, use the dedicated pressure drop calculators.",
     "keyword": "pipe flow calculator"
   },
   "formula": {
@@ -40,7 +40,7 @@
     "decimals": 2
   },
   "content": {
-    "introduction": "Get the volumetric flow rate through a pipe in m3/h, L/s or gpm instantly from just the inner diameter and fluid velocity, using the continuity equation Q = A x v. A capacity table below shows common pipe sizes at typical design velocities, so you can size a line in seconds. The design-velocity and Darcy-Weisbach / Hazen-Williams sections complete the workflow from pipe geometry to pressure drop for pump system design and hydraulic calculations.",
+    "introduction": "Get the volumetric flow rate through a pipe in m3/h, L/s or gpm instantly from just the inner diameter and fluid velocity, using the continuity equation Q = A x v. A capacity table below shows common pipe sizes at typical design velocities, so you can size a line in seconds. This page focuses on the flow rate calculation itself - for friction loss and pressure drop, use the dedicated Pressure Drop and Darcy-Weisbach calculators.",
     "example": {
       "inputs": {
         "diameter": 100,
@@ -85,20 +85,20 @@
     ],
     "related": [
       "pipe-velocity-calculator",
-      "reynolds-number-calculator",
-      "darcy-weisbach-calculator",
       "pipe-diameter-calculator",
-      "flow-rate-calculator",
-      "pressure-drop-calculator",
       "pipe-volume-calculator",
       "water-velocity-calculator",
+      "flow-conversion-calculator",
+      "flow-rate-calculator",
+      "npsh-calculator",
+      "orifice-flow-calculator",
+      "reynolds-number-calculator",
+      "darcy-weisbach-calculator",
+      "pressure-drop-calculator",
       "friction-loss-calculator",
       "head-loss-calculator",
       "pressure-loss-calculator",
-      "hydraulic-diameter-calculator",
-      "npsh-calculator",
-      "orifice-flow-calculator",
-      "flow-conversion-calculator"
+      "hydraulic-diameter-calculator"
     ],
     "applications": [
       "Pipe sizing",
@@ -125,7 +125,7 @@
       },
       {
         "heading": "Darcy-Weisbach & Hazen-Williams Friction Formulas",
-        "body": "This calculator sizes flow from pipe geometry; once diameter and velocity are known, friction pressure loss follows from two classic formulas. Darcy-Weisbach (all fluids, most accurate): head loss hf = f x (L/D) x (v^2 / 2g), with friction factor f from the Moody diagram or the Darcy-Weisbach calculator. Hazen-Williams (water and dilute aqueous systems, empirical): v = k x C x R^0.63 x S^0.54, where C is the pipe roughness coefficient (140-150 for clean new steel pipe, 100-120 for older or bitumen-lined pipe), R is the hydraulic radius and S is the slope of the energy line. Use Darcy-Weisbach for accuracy and for non-water fluids; use Hazen-Williams for quick water-system estimates. Both dedicated tools are in the Related Calculators list."
+        "body": "This calculator focuses on volumetric flow from pipe geometry. Once diameter and velocity are known, friction pressure loss follows from Darcy-Weisbach (all fluids) or Hazen-Williams (water) - both are covered in detail by the [Pressure Drop Calculator](/tools/pressure-drop-calculator) and the [Pressure Drop in Pipes guide](/guides/pressure-drop-pipes), including friction factors, roughness tables and worked examples."
       },
       {
         "heading": "The Pipe Flow Toolbox: From Diameter to Pressure Drop",
