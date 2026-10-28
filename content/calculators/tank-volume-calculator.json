@@ -5,7 +5,7 @@
   "priority": "P0",
   "description": "Calculate the volume of a cylindrical tank from diameter and height.",
   "seo": {
-    "title": "Tank Volume Calculator - Cylinder Volume",
+    "title": "Tank Volume Calculator: Cylinder, Rectangular & Spherical (Liters, m³)",
     "description": "Calculate tank volume — Cylindrical, rectangular & spherical vessels with multiple unit options",
     "keyword": "tank volume calculator"
   },
@@ -61,6 +61,18 @@
       {
         "q": "How do I convert tank volume between m³ and gallons?",
         "a": "1 m³ = 1000 L = 264.17 US gallons. For example, a 50 m³ tank holds 13,208 US gallons. Convert using these factors for fill and hydrotest planning."
+      },
+      {
+        "q": "How do I calculate the volume of a rectangular tank?",
+        "a": "V = L x W x H. A 4m x 2m x 1.5m basin: 4 x 2 x 1.5 = 12 m3 = 12,000 L (3,170 US gal)."
+      },
+      {
+        "q": "How many gallons does a 3m x 6m cylindrical tank hold?",
+        "a": "A 3m diameter x 6m tall tank holds 42,412 L, which is 42.41 m3 = 11,204 US gallons (9,329 imperial gallons)."
+      },
+      {
+        "q": "How do I calculate the volume of a spherical tank?",
+        "a": "V = pi/6 x D^3. A 3m sphere: pi/6 x 27 = 14.14 m3 = 14,137 L (3,735 US gal). Spheres minimize surface area for a given volume but are the most expensive tank shape to fabricate."
       }
     ],
     "related": [
@@ -84,6 +96,14 @@
       {
         "heading": "Unit Conversion for Tank Volume",
         "body": "**Volume units**\n\n- 1 m³ = 1000 L = 264.17 US gal = 219.97 imp gal\n- 1 US gal = 3.785 L\n- 1 bbl (oil) = 42 US gal = 0.159 m³\n\n**Length units**\n\n- 1 m = 3.28084 ft\n- 1 inch = 25.4 mm\n\nTank volume V = π/4 × D² × L (cylindrical) requires consistent units. Convert diameter and length to the same unit before computing, then convert the result to the desired volume unit."
+      },
+      {
+        "heading": "Tank Volume Formulas for Common Shapes",
+        "body": "Three standard geometries cover most storage tanks:\nCylindrical (vertical or horizontal): V = pi/4 x D^2 x H, where D = diameter and H = height or length. A 3m x 6m cylinder holds 42.4 m3.\nRectangular: V = L x W x H. A 2m x 2m x 2m basin holds 8 m3 (8,000 L).\nSpherical: V = pi/6 x D^3. A 3m sphere holds 14.14 m3 (14,137 L).\nConvert volume to liters by multiplying m3 by 1000, and to US gallons by multiplying m3 by 264.17."
+      },
+      {
+        "heading": "Worked Example: 3 m x 6 m Vertical Cylinder",
+        "body": "A vertical cylindrical tank with D = 3 m and H = 6 m: radius = 1.5 m, so V = pi x 1.5^2 x 6 = 42.41 m3 = 42,412 L, or about 11,204 US gallons. This matches the calculator result. For the same tank laid horizontally with a partial liquid level, use the circular segment method: find the segment area from the fill height, then multiply by the tank length - the filled volume is not a linear fraction of the total volume."
       }
     ]
   },

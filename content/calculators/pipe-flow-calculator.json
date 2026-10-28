@@ -5,7 +5,7 @@
   "priority": "P0",
   "description": "Calculate volumetric flow rate in a pipe from pipe diameter and fluid velocity using Q = A × v.",
   "seo": {
-    "title": "Pipe Flow Calculator - Pipe Flow Rate from Pipe Size & Velocity",
+    "title": "Pipe Flow Calculator: Flow Rate from Pipe Size & Velocity (m³/h, gpm)",
     "description": "Calculate pipe flow rate in m3/h, L/s or gpm instantly from pipe inner diameter and fluid velocity using Q = A x v (continuity equation). Includes design velocities, common pipe capacity tables and unit conversion. For friction loss and pressure drop, use the dedicated pressure drop calculators.",
     "keyword": "pipe flow calculator"
   },
@@ -81,6 +81,10 @@
       {
         "q": "What is the flow rate of a 150mm pipe at 1.5 m/s?",
         "a": "Q = pi x 0.075^2 / 4 x 1.5 x 3600 = 95.4 m3/h (26.5 L/s, 420 gpm). The same pipe at 1 m/s carries 63.6 m3/h and at 2 m/s carries 127.2 m3/h. Doubling velocity doubles flow because the cross-section is fixed."
+      },
+      {
+        "q": "What is the maximum flow rate through a 100mm pipe?",
+        "a": "At the common 2 m/s design velocity a 100mm pipe carries 56.5 m3/h (249 gpm). At 3 m/s (water erosion threshold) it carries 84.8 m3/h, and at 4.5 m/s (erosion-corrosion limit) about 127.2 m3/h. Flow is directly proportional to velocity for a fixed pipe size."
       }
     ],
     "related": [

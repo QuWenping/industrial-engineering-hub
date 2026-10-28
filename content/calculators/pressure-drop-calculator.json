@@ -5,7 +5,7 @@
   "priority": "P0",
   "description": "Calculate pressure drop in a pipe using the Darcy-Weisbach equation: ΔP = f × L/D × ρv²/2.",
   "seo": {
-    "title": "Pressure Drop Calculator - Darcy-Weisbach - Free Online",
+    "title": "Pressure Drop Calculator: Darcy-Weisbach Equation (ΔP = f·L/D·ρv²/2)",
     "description": "Calculate pressure drop in pipes using Darcy-Weisbach equation — Accounts for friction factor, length, diameter & fluid properties",
     "keyword": "pressure drop calculator"
   },
@@ -105,6 +105,10 @@
       {
         "q": "What is the difference between pressure drop and head loss?",
         "a": "Pressure drop (Pa or kPa) is the actual pressure loss. Head loss (m) is pressure drop expressed as an equivalent fluid column height: h = DeltaP / (rho x g). For water, 1 bar ≈ 10.2 m head. Head loss is used directly in pump and piping calculations."
+      },
+      {
+        "q": "What is a typical pressure drop per meter for water?",
+        "a": "At 2 m/s with f = 0.02, a 100mm water line loses about 0.4 kPa per meter (40 kPa per 100 m). A 50mm line at the same velocity loses 0.8 kPa/m (80 kPa per 100 m). Doubling the velocity quadruples the per-meter drop because pressure drop scales with v2."
       }
     ],
     "related": [
@@ -141,7 +145,11 @@
       },
       {
         "heading": "Worked Example: Sizing a Pump for Line Loss",
-        "body": "A 100 m long, 100 mm ID water line carries 2 m/s (56.5 m3/h). With f = 0.02:\n\nDeltaP = 0.02 x (100/0.1) x (1000 x 2^2 / 2) = 40 kPa\n\nConvert to head: h = DeltaP / (rho x g) = 40,000 / (1000 x 9.81) = 4.1 m. This head loss must be added to static head when sizing the pump. A 200 m line doubles the drop to 80 kPa (8.1 m); a 50 mm line at the same velocity quadruples it to 160 kPa."
+        "body": "A 100 m long, 100 mm ID water line carries 2 m/s (56.5 m3/h). With f = 0.02:\n\nDeltaP = 0.02 x (100/0.1) x (1000 x 2^2 / 2) = 40 kPa\n\nConvert to head: h = DeltaP / (rho x g) = 40,000 / (1000 x 9.81) = 4.1 m. This head loss must be added to static head when sizing the pump. A 200 m line doubles the drop to 80 kPa (8.1 m); a 50 mm line at the same velocity doubles the drop to 80 kPa (8.1 m)."
+      },
+      {
+        "heading": "Pressure Drop Per Meter — Quick Sizing Feel",
+        "body": "For a clean water line at 2 m/s with f = 0.02, the per-meter loss is easy to estimate: a 100mm pipe loses about 0.4 kPa per meter (40 kPa per 100 m), a 50mm pipe loses 0.8 kPa per meter (80 kPa per 100 m), and a 25mm pipe loses 1.6 kPa per meter (160 kPa per 100 m). Halving the diameter doubles the per-meter drop because L/D doubles; doubling the velocity quadruples it because v appears squared. These quick values are useful for sanity-checking a line before running the full calculation."
       }
     ]
   },

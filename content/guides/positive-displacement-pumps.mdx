@@ -335,6 +335,16 @@ Work through the [Pump Installation and Commissioning](/guides/pump-installation
 When troubleshooting a blocked or throttled discharge, never run the PD pump against a closed valve — pressure will rise until the pump, pipework, or relief valve fails. Always ensure the relief valve is operational before testing.
 </Callout>
 
+## Gear Pump Flow Calculation (Worked Example)
+
+PD pump flow follows Q = Vd x n, where Vd is the displaced volume per revolution and n is rotational speed. For a typical external gear pump with Vd = 50 cm3/rev running at 1450 rpm:
+
+- Theoretical flow = 50 cm3/rev x 1450 rev/min = 72,500 cm3/min = 72.5 L/min (4.35 m3/h)
+- With 90% volumetric efficiency (typical for clean oil): actual flow = 4.35 x 0.90 = 3.92 m3/h
+- Slowing the same pump to 1000 rpm drops flow proportionally to 50 L/min (3.0 m3/h theoretical), which is why variable-speed drives are the standard flow-control method for PD pumps.
+
+Apply the same procedure to any gear, screw, lobe, or progressive cavity pump once the manufacturer's displacement per revolution is known.
+
 ## Frequently Asked Questions
 
 **What is a positive displacement pump?**
@@ -354,6 +364,9 @@ Only some types — air-operated diaphragm, peristaltic, and some lobe designs t
 
 **What viscosity range do PD pumps handle?**
 PD pumps handle up to 1,000,000+ cSt (e.g., screw and progressive cavity pumps), versus roughly 500 cP practical limit for most centrifugal pumps. High viscosity normally requires derating pump speed.
+
+**How do you calculate gear pump flow rate?**
+Gear pump theoretical flow is Q = Vd x n, where Vd is displacement per revolution and n is speed. For a pump with Vd = 50 cm3/rev at 1450 rpm: Q = 50 x 1450 = 72,500 cm3/min = 72.5 L/min (4.35 m3/h). Actual flow = theoretical x volumetric efficiency (typically 85-95% for gear pumps on lubricating oils), so expect about 3.9-4.1 m3/h for this example.
 
 ## Related Engineering Resources
 
