@@ -60,7 +60,13 @@ export function InputField({ input, value, error, onChange }: InputFieldProps) {
         </Label>
         <Select value={String(value || "")} onValueChange={(v) => v && onChange(v)}>
           <SelectTrigger id={input.id} className="w-full">
-            <SelectValue placeholder="Select..." />
+            {value !== undefined && value !== null && String(value) !== "" ? (
+              <SelectValue>
+                {input.options.find((opt) => String(opt.value) === String(value))?.label ?? "Select..."}
+              </SelectValue>
+            ) : (
+              <SelectValue placeholder="Select..." />
+            )}
           </SelectTrigger>
           <SelectContent className="min-w-[16rem] w-max max-w-[92vw]">
             {input.options.map((opt) => (
