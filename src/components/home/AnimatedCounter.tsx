@@ -1,34 +1,17 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { useInView } from "framer-motion";
-
+/**
+ * Renders the exact statistic value in both server-rendered HTML (crawlers
+ * and no-JS clients) and the hydrated client. A purely client-side animated
+ * counter starting at 0 produced "0+" in the static HTML, which contradicted
+ * the advertised 54+/50+ tool counts during AdSense review.
+ */
 export function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (!isInView) return;
-    let start = 0;
-    const duration = 2000;
-    const step = duration / 60;
-    const timer = setInterval(() => {
-      start += target / (duration / step);
-      if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, step);
-    return () => clearInterval(timer);
-  }, [isInView, target]);
-
   return (
-    <span ref={ref}>
-      {count}
+    <span>
+      {target}
       {suffix}
     </span>
   );
 }
+

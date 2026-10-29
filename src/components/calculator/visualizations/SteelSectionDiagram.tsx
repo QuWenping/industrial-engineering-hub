@@ -22,15 +22,18 @@ const LIGHT = "#F1F5F9";
 
 export default function SteelSectionDiagram({ values, result }: Props) {
   const v = values as Record<string, number>;
+  const shape = Number(v.shape || 1);
   const length = v.length || 1000;
-  const width = v.width || 1000;
-  const thickness = v.thickness || 10;
-  const diameter = v.diameter || v.d || 100;
+  const widthOrDia = v.width_or_diameter || v.width || 1000;
+  const thicknessOrWall = v.thickness_or_wall || v.thickness || 10;
+  const diameter = widthOrDia;
 
   const sectionType = useMemo(() => {
-    if (v.diameter || v.d) return "round";
+    if (shape === 2) return "round";
+    if (shape === 3) return "square";
+    if (shape === 4) return "pipe";
     return "plate";
-  }, [v]);
+  }, [shape]);
 
   const W = 480;
   const H = 380;
@@ -95,19 +98,36 @@ export default function SteelSectionDiagram({ values, result }: Props) {
         </text>
 
         {/* Main visualization area */}
-        {sectionType === "plate" && <IsometricPlate cx={W / 2} cy={200} length={length} width={width} thickness={thickness} />}
+        {sectionType === "plate" && <IsometricPlate cx={W / 2} cy={200} length={length} width={widthOrDia} thickness={thicknessOrWall} />}
         {sectionType === "round" && <RoundBarIso cx={W / 2} cy={200} diameter={diameter} length={length} />}
+        {sectionType === "square" && <SquareBarIso cx={W / 2} cy={200} side={widthOrDia} length={length} />}
+        {sectionType === "pipe" && <PipeIso cx={W / 2} cy={200} outerDia={diameter} wall={thicknessOrWall} length={length} />}
 
         {/* Dimension labels */}
         {sectionType === "plate" && (
           <>
             <text x={W / 2} y={330} textAnchor="middle" fontSize="11" fill={NAVY} fontFamily="monospace" fontWeight="600">
-              {width} × {length} × {thickness} mm
+              {widthOrDia} × {length} × {thicknessOrWall} mm
             </text>
             <text x={W / 2} y={348} textAnchor="middle" fontSize="10" fill={SLATE} fontFamily="monospace">
-              Plate Volume = {(width * length * thickness / 1e6).toFixed(3)} m³
+              Plate Volume = {(widthOrDia * length * thicknessOrWall / 1e6).toFixed(3)} m³
             </text>
           </>
+        )}
+        {sectionType === "round" && (
+          <text x={W / 2} y={330} textAnchor="middle" fontSize="11" fill={NAVY} fontFamily="monospace" fontWeight="600">
+            Ø{diameter} × {length} mm
+          </text>
+        )}
+        {sectionType === "square" && (
+          <text x={W / 2} y={330} textAnchor="middle" fontSize="11" fill={NAVY} fontFamily="monospace" fontWeight="600">
+            {widthOrDia} × {widthOrDia} × {length} mm
+          </text>
+        )}
+        {sectionType === "pipe" && (
+          <text x={W / 2} y={330} textAnchor="middle" fontSize="11" fill={NAVY} fontFamily="monospace" fontWeight="600">
+            OD Ø{diameter} × WT {thicknessOrWall} × {length} mm
+          </text>
         )}
 
         {/* Result badge — premium style */}
@@ -228,6 +248,42 @@ function RoundBarIso({ cx, cy, diameter, length }: { cx: number; cy: number; dia
       {/* Dimension */}
       <line x1={cx} y1={cy + r * 0.35 + 20} x2={cx} y2={cy - r * 0.35 - 20} stroke={SLATE} strokeWidth="1.2" markerStart="url(#dim-arrow-rev)" markerEnd="url(#dim-arrow)" />
       <text x={cx - 12} y={cy + 4} textAnchor="end" fontSize="10" fill={NAVY} fontFamily="monospace" fontWeight="600">Ø{diameter}</text>
+      <text x={cx + dx + 20} y={cy - dy + 4} fontSize="10" fill={NAVY} fontFamily="monospace" fontWeight="600">L={length}</text>
+    </g>
+  );
+}
+
+/* ── Isometric Square Bar ──────────────────────────────────── */
+
+function SquareBarIso({ cx, cy, side, length }: { cx: number; cy: number; side: number; length: number }) {
+  return <IsometricPlate cx={cx} cy={cy} length={length} width={side} thickness={side} />;
+}
+
+/* ── Isometric Pipe (hollow round section) ─────────────────── */
+
+function PipeIso({ cx, cy, outerDia, wall, length }: { cx: number; cy: number; outerDia: number; wall: number; length: number }) {
+  const r = Math.min(outerDia * 0.5, 50);
+  const ri = Math.max(r - Math.max(wall * 0.35, 6), r * 0.45);
+  const l = Math.min(length * 0.15, 160);
+  const dx = Math.cos(Math.PI / 6) * l;
+  const dy = Math.sin(Math.PI / 6) * l;
+
+  return (
+    <g>
+      {/* Back ellipse */}
+      <ellipse cx={cx + dx} cy={cy - dy} rx={r} ry={r * 0.35} fill="url(#metal-top)" stroke={NAVY} strokeWidth="2" />
+      {/* Body edges */}
+      <line x1={cx - r} y1={cy} x2={cx - r + dx} y2={cy - dy} stroke={NAVY} strokeWidth="2" />
+      <line x1={cx + r} y1={cy} x2={cx + r + dx} y2={cy - dy} stroke={NAVY} strokeWidth="2" />
+      {/* Front ring */}
+      <ellipse cx={cx} cy={cy} rx={r} ry={r * 0.35} fill="url(#metal-plate)" stroke={NAVY} strokeWidth="2.5" />
+      <ellipse cx={cx} cy={cy} rx={ri} ry={ri * 0.35} fill="#FFFFFF" stroke={NAVY} strokeWidth="1.5" />
+      {/* Hatching on ring */}
+      <path d={`M ${cx - r} ${cy} A ${r} ${r * 0.35} 0 1 0 ${cx + r} ${cy} A ${ri} ${ri * 0.35} 0 1 1 ${cx - r} ${cy} Z`} fill="url(#hatch)" opacity="0.4" />
+
+      {/* Dimension */}
+      <line x1={cx} y1={cy + r * 0.35 + 20} x2={cx} y2={cy - r * 0.35 - 20} stroke={SLATE} strokeWidth="1.2" markerStart="url(#dim-arrow-rev)" markerEnd="url(#dim-arrow)" />
+      <text x={cx - 12} y={cy + 4} textAnchor="end" fontSize="10" fill={NAVY} fontFamily="monospace" fontWeight="600">Ø{outerDia}</text>
       <text x={cx + dx + 20} y={cy - dy + 4} fontSize="10" fill={NAVY} fontFamily="monospace" fontWeight="600">L={length}</text>
     </g>
   );

@@ -10,11 +10,37 @@
     "keyword": "steel weight calculator"
   },
   "formula": {
-    "expression": "length * width * thickness * density",
+    "expression": "shape == 1 ? length * width_or_diameter * thickness_or_wall * density : shape == 2 ? pi * width_or_diameter^2 / 4 * length * density : shape == 3 ? width_or_diameter^2 * length * density : shape == 4 ? pi * (width_or_diameter^2 - (width_or_diameter - 2 * thickness_or_wall)^2) / 4 * length * density : 0",
     "unit": "kg",
-    "explanation": "Weight = Length × Width × Thickness × Density. The engine converts all dimensions to SI base units (meters). Result is in kilograms."
+    "explanation": "Weight = Volume x Density. The shape selector picks the matching cross-section formula: flat plate -> Length x Width x Thickness x Density; round bar -> pi/4 x D^2 x Length x Density; square bar -> Side^2 x Length x Density; pipe -> pi/4 x (OD^2 - ID^2) x Length x Density. All dimensions are converted to SI base units (meters); result is in kilograms."
   },
   "inputs": [
+    {
+      "id": "shape",
+      "label": "Steel Shape",
+      "type": "select",
+      "required": true,
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "Flat Plate / Sheet"
+        },
+        {
+          "value": "2",
+          "label": "Round Bar / Rod"
+        },
+        {
+          "value": "3",
+          "label": "Square Bar"
+        },
+        {
+          "value": "4",
+          "label": "Pipe / Tube"
+        }
+      ],
+      "hint": "Select the cross-section shape to use the matching formula."
+    },
     {
       "id": "length",
       "label": "Length",
@@ -25,22 +51,24 @@
       "min": 0
     },
     {
-      "id": "width",
-      "label": "Width",
+      "id": "width_or_diameter",
+      "label": "Width / Diameter",
       "type": "number",
       "unit": "mm",
       "required": true,
       "default": 1000,
-      "min": 0
+      "min": 0,
+      "hint": "Plate: width | Round bar: diameter | Square bar: side | Pipe: outer diameter"
     },
     {
-      "id": "thickness",
-      "label": "Thickness",
+      "id": "thickness_or_wall",
+      "label": "Thickness / Wall",
       "type": "number",
       "unit": "mm",
       "required": true,
       "default": 10,
-      "min": 0
+      "min": 0,
+      "hint": "Plate: thickness | Pipe: wall thickness (ignored for round/square bars)"
     },
     {
       "id": "density",
@@ -55,16 +83,17 @@
     "decimals": 2
   },
   "content": {
-    "introduction": "Get steel weight in kg instantly for any shape from dimensions and density. Each shape uses its own cross-section formula: flat plate & sheet -> Length x Width x Thickness x Density; round bar -> pi/4 x D^2 x Length x Density; pipe & tube -> pi/4 x (OD^2 - ID^2) x Length x Density; beams, angles & channels -> section area x Length x Density. Choose carbon steel (7850 kg/m3), stainless or another grade, enter dimensions and read the result directly, or convert to pounds with the unit table below. This pillar page keeps the density and weight-per-meter references for the whole steel weight cluster - jump to the dedicated plate, round bar and pipe calculators for shape-specific worked examples and ordering guidance.",
+    "introduction": "Get steel weight in kg instantly for any shape from dimensions and density. Select the cross-section shape, choose carbon steel (7850 kg/m3), stainless or another grade, enter dimensions and read the result directly, or convert to pounds with the unit table below. Each shape uses its own cross-section formula: flat plate & sheet -> Length x Width x Thickness x Density; round bar -> pi/4 x D^2 x Length x Density; square bar -> Side^2 x Length x Density; pipe & tube -> pi/4 x (OD^2 - ID^2) x Length x Density; beams, angles & channels -> section area x Length x Density. This pillar page keeps the density and weight-per-meter references for the whole steel weight cluster - jump to the dedicated plate, round bar and pipe calculators for shape-specific worked examples and ordering guidance.",
     "example": {
       "inputs": {
+        "shape": 1,
         "length": 1000,
-        "width": 1000,
-        "thickness": 10,
+        "width_or_diameter": 1000,
+        "thickness_or_wall": 10,
         "density": 7850
       },
       "result": 78.5,
-      "description": "A 1000×1000×10mm carbon steel plate weighs 78.5 kg"
+      "description": "A 1000x1000x10mm carbon steel plate weighs 78.5 kg"
     },
     "faq": [
       {
@@ -109,7 +138,7 @@
       },
       {
         "q": "Which steel weight calculator should I use for my shape?",
-        "a": "Flat plate: use the steel plate weight calculator (W = L x W x T x density). Pipe and tube: use the pipe weight calculator (W = pi x (OD - WT) x WT x density x L). Solid round bar: use the round bar weight calculator (W = pi x (D/2)^2 x density x L). This pillar calculator covers plates, beams, angles, channels and general sections with the volume x density method."
+        "a": "Use the shape selector on this page for the four common sections: flat plate (W = L x W x T x density), round bar (W = pi/4 x D^2 x density x L), square bar (W = S^2 x density x L) and pipe (W = pi/4 x (OD^2 - ID^2) x density x L). For beams, angles and channels use this pillar calculator with the section area x density x length method, or jump to the dedicated plate, round bar and pipe weight calculators for shape-specific worked examples."
       },
       {
         "q": "What is the weight formula for a steel sheet?",
@@ -148,7 +177,7 @@
       "Freight, export and import documentation",
       "CNC cutting and fabrication cost estimation"
     ],
-    "formula_explanation": "Steel weight is calculated using the fundamental formula: Weight = Volume x Density. For a steel plate: W = Length x Width x Thickness x Density. For pipes: W = pi/4 x (OD^2 - ID^2) x Length x Density. For solid rounds: W = pi/4 x D^2 x Length x Density. The engine converts all dimensions to SI base units (meters) and multiplies by material density (kg/m3) to give weight in kilograms.",
+    "formula_explanation": "Steel weight is calculated using the fundamental formula: Weight = Volume x Density. The shape selector applies the matching cross-section formula: for a steel plate W = Length x Width x Thickness x Density; for round bars W = pi/4 x D^2 x Length x Density; for square bars W = Side^2 x Length x Density; for pipes W = pi/4 x (OD^2 - ID^2) x Length x Density. The engine converts all dimensions to SI base units (meters) and multiplies by material density (kg/m3) to give weight in kilograms.",
     "sections": [
       {
         "heading": "Steel Density Reference Table",
@@ -175,33 +204,75 @@
   "tests": [
     {
       "inputs": {
+        "shape": 1,
         "length": 1000,
-        "width": 1000,
-        "thickness": 10,
+        "width_or_diameter": 1000,
+        "thickness_or_wall": 10,
         "density": 7850
       },
       "expected": 78.5,
-      "tolerance": 0.001
+      "tolerance": 0.001,
+      "description": "Carbon steel plate 1000x1000x10 mm"
     },
     {
       "inputs": {
+        "shape": 1,
         "length": 2000,
-        "width": 1000,
-        "thickness": 20,
+        "width_or_diameter": 1000,
+        "thickness_or_wall": 20,
         "density": 7850
       },
       "expected": 314,
-      "tolerance": 0.001
+      "tolerance": 0.001,
+      "description": "Carbon steel plate 2000x1000x20 mm"
     },
     {
       "inputs": {
+        "shape": 1,
         "length": 1000,
-        "width": 1000,
-        "thickness": 10,
+        "width_or_diameter": 1000,
+        "thickness_or_wall": 10,
         "density": 2700
       },
       "expected": 27,
-      "tolerance": 0.001
+      "tolerance": 0.001,
+      "description": "Aluminum plate 1000x1000x10 mm"
+    },
+    {
+      "inputs": {
+        "shape": 2,
+        "length": 2000,
+        "width_or_diameter": 50,
+        "thickness_or_wall": 10,
+        "density": 7850
+      },
+      "expected": 30.83,
+      "tolerance": 0.001,
+      "description": "Round bar 50 mm dia x 2 m (carbon steel)"
+    },
+    {
+      "inputs": {
+        "shape": 3,
+        "length": 2000,
+        "width_or_diameter": 50,
+        "thickness_or_wall": 10,
+        "density": 7850
+      },
+      "expected": 39.25,
+      "tolerance": 0.001,
+      "description": "Square bar 50x50 mm x 2 m (carbon steel)"
+    },
+    {
+      "inputs": {
+        "shape": 4,
+        "length": 2000,
+        "width_or_diameter": 100,
+        "thickness_or_wall": 5,
+        "density": 7850
+      },
+      "expected": 23.43,
+      "tolerance": 0.001,
+      "description": "Pipe OD 100 mm / WT 5 mm x 2 m (carbon steel)"
     }
   ],
   "visualization": {
@@ -209,5 +280,5 @@
     "component": "SteelSectionDiagram",
     "title": "Interactive Cross-Section Visualization"
   },
-  "formula_explanation": "Steel weight is calculated using the fundamental formula: Weight = Volume x Density. For a steel plate: W = Length x Width x Thickness x Density. The engine converts all dimensions to SI base units (meters) and multiplies by material density (kg/m3) to give weight in kilograms."
+  "formula_explanation": "Steel weight is calculated using the fundamental formula: Weight = Volume x Density. The shape selector applies the matching cross-section formula: for a steel plate W = Length x Width x Thickness x Density; for round bars W = pi/4 x D^2 x Length x Density; for square bars W = Side^2 x Length x Density; for pipes W = pi/4 x (OD^2 - ID^2) x Length x Density. The engine converts all dimensions to SI base units (meters) and multiplies by material density (kg/m3) to give weight in kilograms."
 }

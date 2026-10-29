@@ -1,5 +1,7 @@
 export const dynamic = "force-static";
 
+import fs from "node:fs";
+import path from "node:path";
 import Link from "next/link";
 import Image from "next/image";
 import { AnimatedCounter } from "@/components/home/AnimatedCounter";
@@ -15,6 +17,19 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ProjectsCarousel } from "@/components/home/ProjectsCarousel";
 import { UnifiedIcon } from "@/components/icons/UnifiedIcon";
+import { getAllCalculatorSlugs } from "@/lib/calculator/loader";
+
+// ─── Build-time content stats (kept in sync with content/ on every build) ────
+const contentRoot = path.join(process.cwd(), "content");
+const contentStats = {
+  tools: getAllCalculatorSlugs().length,
+  guides: fs
+    .readdirSync(path.join(contentRoot, "guides"))
+    .filter((f) => f.endsWith(".mdx")).length,
+  projects: fs
+    .readdirSync(path.join(contentRoot, "projects"))
+    .filter((f) => f.endsWith(".mdx")).length,
+};
 
 // ─── Capabilities (section 1) ─────────────────────────────────────────────────
 const capabilities = [
@@ -121,9 +136,9 @@ function HeroSection() {
 
           <div className="grid grid-cols-3 gap-6 sm:gap-12 max-w-md mb-10">
             {[
-              { value: 54, suffix: "+", label: "Engineering Tools" },
-              { value: 50, suffix: "+", label: "Technical Guides" },
-              { value: 14, suffix: "", label: "Featured Projects" },
+              { value: contentStats.tools, suffix: "+", label: "Engineering Tools" },
+              { value: contentStats.guides, suffix: "+", label: "Technical Guides" },
+              { value: contentStats.projects, suffix: "", label: "Featured Projects" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-3xl sm:text-4xl font-bold text-gradient-hero">
@@ -298,7 +313,7 @@ function ToolsSection() {
               href="/tools"
               className="text-engineering-blue hover:text-engineering-blue/80 text-sm font-medium inline-flex items-center"
             >
-              All 50+ Calculators <ArrowRight className="ml-1 h-4 w-4" />
+              All {contentStats.tools}+ Calculators <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </div>
         </div>
