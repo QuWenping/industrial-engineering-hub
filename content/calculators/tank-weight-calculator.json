@@ -6,13 +6,13 @@
   "description": "Calculate empty weight of cylindrical steel tanks and vessels plus weight when filled with liquid.",
   "seo": {
     "title": "Tank Weight Calculator - Steel Vessel Weight (Empty & Filled)",
-    "description": "Calculate tank weight for steel vessels and pressure tanks. Empty weight + liquid-filled weight. Steel density table, formula explanation, and sizing examples for fabrication and transport.",
+    "description": "Calculate tank weight for steel vessels and pressure tanks. Empty weight + liquid-filled weight, with vertical, horizontal, cone-bottom and dished-head structures plus carbon steel, stainless and aluminum density. Formula explanation, steel density table and sizing examples for fabrication and transport.",
     "keyword": "tank weight calculator"
   },
   "formula": {
-    "expression": "pi * diameter * height * thickness * density + pi * (diameter/2)^2 * height * liquid_density",
+    "expression": "pi * diameter * height * thickness * density + (structure == 2 ? 1.0843 * pi * diameter^2 / 4 * thickness * density : structure == 3 ? pi * diameter^2 / 2 * thickness * density : structure == 4 ? 2 * 1.0843 * pi * diameter^2 / 4 * thickness * density : 0) + pi * (diameter/2)^2 * height * liquid_density",
     "unit": "kg",
-    "explanation": "Steel weight: π × D × H × t × ρ (cylindrical shell). Contents weight: π(D/2)² × H × ρ_liquid. Both dimensions in m, thickness in m (converted from mm). Plus two heads ≈ 2 × (πD²/4) × t × ρ."
+    "explanation": "Shell weight: pi x D x H x t x rho (cylindrical wall only, identical for every structure option). End closures are added by structure: option 2 adds one 2:1 elliptical head (1.0843 x pi x D^2 / 4 x t x rho), option 3 adds a 60 degree conical bottom (pi x D^2 / 2 x t x rho), option 4 adds two elliptical heads (2 x 1.0843 x pi x D^2 / 4 x t x rho), option 1 adds nothing. Contents weight: pi x (D/2)^2 x H x rho_liquid, computed on the cylindrical shell volume only. Dimensions in m, thickness converted from mm to m, densities in kg/m3. Nozzles, manways, saddles, skirts and internal supports are not included."
   },
   "inputs": [
     {
@@ -58,6 +58,32 @@
       "default": 1000,
       "min": 0,
       "hint": "Water = 1000, oil ≈ 850-900"
+    },
+    {
+      "id": "structure",
+      "label": "Tank Structure",
+      "type": "select",
+      "required": true,
+      "default": 1,
+      "hint": "1 = vertical shell only, 2 = vertical + elliptical top head, 3 = vertical + 60 degree cone bottom, 4 = horizontal + two elliptical heads",
+      "options": [
+        {
+          "label": "Vertical cylinder, flat ends (shell only)",
+          "value": 1
+        },
+        {
+          "label": "Vertical cylinder + 2:1 elliptical top head",
+          "value": 2
+        },
+        {
+          "label": "Vertical cylinder + 60 degree conical bottom",
+          "value": 3
+        },
+        {
+          "label": "Horizontal cylinder + two 2:1 elliptical heads",
+          "value": 4
+        }
+      ]
     }
   ],
   "result": {
@@ -97,7 +123,7 @@
       },
       {
         "q": "Does this calculator include dished heads?",
-        "a": "No, this calculator computes cylindrical shell weight only. For vessels with 2:1 elliptical heads, add approximately 5-10% to the empty weight for head weight. Use our Pressure Vessel Volume Calculator for head volume calculations."
+        "a": "It depends on the structure option. Option 1 reports the cylindrical shell only, so heads are excluded. Options 2 and 4 add formed 2:1 elliptical heads, each with a developed area of 1.0843 x pi x D^2 / 4; option 3 adds a 60 degree conical bottom with a developed area of pi x D^2 / 2. Nozzles, manways, saddles, skirts, ladders and internal trays are never included - allow 2-5% of shell weight for these. Use the Pressure Vessel Volume Calculator for head and cone volumes."
       },
       {
         "q": "How do I calculate transport weight for a tank?",
@@ -114,6 +140,18 @@
       {
         "q": "Does the liquid weight affect foundation design?",
         "a": "Yes. Foundation and support design must use the filled (operating) weight plus live loads such as seismic and wind. For a 3 m x 6 m water tank, the liquid contributes 42 t compared with only 3.5-4.4 t of steel, so liquid dominates the dead load."
+      },
+      {
+        "q": "How much does a horizontal tank weigh?",
+        "a": "A horizontal tank weighs the shell plus two heads plus its saddles. For a 3 m diameter, 6 m shell, 8 mm carbon steel vessel the shell is 3,551 kg and two 2:1 elliptical heads add about 963 kg, giving roughly 4,514 kg empty and 46,925 kg full of water on a full-shell basis. Horizontal vessels are usually not filled above the top of the shell, so the real operating weight is a little lower. Select option 4 in the calculator to get this figure automatically."
+      },
+      {
+        "q": "How much does a cone-bottom tank weigh?",
+        "a": "Add the cone plate to the shell. A 60 degree cone has a developed area of pi x D^2 / 2, twice the plan area, so for a 3 m diameter, 8 mm carbon steel tank the cone weighs about 888 kg against 3,551 kg for the 6 m shell - roughly 25% extra empty weight. Cone-bottom tanks weigh more than flat-bottom tanks of the same capacity because the hopper needs its own support structure as well as the plate."
+      },
+      {
+        "q": "How much does an aluminum tank weigh compared with a steel tank?",
+        "a": "Aluminum is 2,700 kg/m3 against 7,850 for carbon steel, so the same plate thickness gives 34% of the steel weight - a saving of about two thirds. In practice aluminum needs roughly 1.5 times the wall thickness of carbon steel at equal pressure duty, so the finished saving is closer to 50-55% on empty weight. On the filled weight the difference nearly disappears, because the liquid load is unchanged: 1,386 kg empty versus 4,032 kg empty becomes 43,799 kg versus 46,444 kg total in the 3 m x 6 m example."
       }
     ],
     "related": [
@@ -154,6 +192,22 @@
       {
         "heading": "Tank Weight vs. Capacity",
         "body": "Empty weight is governed by shell surface area and wall thickness, not by capacity alone: a thin-walled large-diameter tank can weigh less than a smaller thick-walled pressure vessel of the same volume. For foundation and support design, use the filled (operating) weight including liquid and fittings; for shipping and lifting, use empty weight plus a 10% rigging safety factor. Related volume tools: Tank Volume Calculator, Tank Capacity Calculator, and Tank Surface Area Calculator provide the geometric inputs used here."
+      },
+      {
+        "heading": "Vessel Structure Options: Vertical, Horizontal, Cone Bottom and Dished Heads",
+        "body": "Tank weight depends on how the vessel is closed, not on the shell alone. The shell term (pi x D x H x t x rho) is identical for every structure at the same diameter, height and plate thickness; the difference is the extra plate needed for heads or a conical bottom. Choose the structure in the calculator and the added plate weight is included automatically.\nOption 1 - vertical cylinder, flat ends (shell only). The baseline value used by most plate take-offs. Flat ends are normally formed by the floor or roof structure rather than a dished head, so no head plate is added. Use it for open-top tanks, tanks standing on a concrete slab, and quick fabrication estimates.\nOption 2 - vertical cylinder with a 2:1 elliptical top head. A formed head with depth equal to one quarter of the diameter. The developed head area is taken as 1.0843 x pi x D^2 / 4, so for a tank with H = 2D the head plate is about 13.6% of the shell plate weight, and the share grows quickly for squat, large-diameter tanks.\nOption 3 - vertical cylinder with a 60 degree conical bottom. A self-draining hopper bottom. At 60 degrees from horizontal the cone slant length equals the diameter, so the developed area is pi x D^2 / 2, twice the plan area. For H = 2D the cone plate is roughly 25% of the shell plate weight, and the cone holds about 0.227 x D^3 m3 below the shell.\nOption 4 - horizontal cylinder with two 2:1 elliptical heads. The standard horizontal storage vessel, with both ends formed, so twice a single head plate is added (about 27% of shell plate at H = 2D). Saddles, nozzles, manways and the reinforcing pads around them are not included.\nFlat-ended and dished-head vessels of the same volume do not weigh the same: dished heads use less plate than a flat end of equal pressure rating but add depth and shop hours, so for small tanks flat ends often win on cost while dished heads win on pressure capability."
+      },
+      {
+        "heading": "Material Selection: Carbon Steel, Stainless Steel and Aluminum",
+        "body": "Plate weight scales linearly with density. For 1 mm of plate, weight per square metre is density / 1000: carbon steel 7.85 kg/m2 per mm, stainless 304 7.93, stainless 316 7.99, aluminum 2.70. The same 3 m x 6 m x 8 mm shell weighs 3,551 kg in carbon steel, 3,587 kg in 304 stainless (about 1% more) and only 1,221 kg in aluminum (66% less).\nStainless steel is chosen for product contact, hygiene and corrosion allowance, not for weight saving. The 1% density penalty is negligible against the cost step, and stainless vessels are often built in a heavier gauge than carbon steel because allowable stress falls at elevated temperature.\nAluminum cuts empty weight by two thirds, which matters for transport, lifting and tanks carried on light structures. The saving is partly given back in service, because aluminum needs roughly 1.5 times the wall thickness of carbon steel at equal pressure duty once the lower modulus and lower allowable stress are accounted for.\nContents weight is unaffected by shell material: it depends only on volume and liquid density - water 1,000 kg/m3, diesel 830-850, crude oil 850-900, 98% sulfuric acid 1,840, saturated brine 1,200. Use the filled weight for foundation and support design and the empty weight plus fittings for transport."
+      },
+      {
+        "heading": "Worked Examples: How Structure and Material Change the Weight",
+        "body": "All examples use D = 3 m, H = 6 m shell, t = 8 mm plate and water at 1,000 kg/m3, so only structure and material change between cases.\nOption 1, carbon steel: shell = pi x 3 x 6 x 0.008 x 7850 = 3,551 kg; water = pi x 1.5^2 x 6 x 1000 = 42,412 kg; total 45,963 kg, of which the empty weight is just 7.7%.\nOption 2, carbon steel with a 2:1 elliptical top head: head plate = 1.0843 x pi x 3^2 / 4 x 0.008 x 7850 = 481 kg; empty weight 4,032 kg; total 46,444 kg.\nOption 3, carbon steel with a 60 degree conical bottom: cone plate = pi x 3^2 / 2 x 0.008 x 7850 = 888 kg; empty weight 4,439 kg; total 46,851 kg. The cone is the heaviest of the single-end options because its developed area is twice the plan area.\nOption 4, horizontal carbon steel with two elliptical heads: head plate = 2 x 481 = 963 kg; empty weight 4,514 kg; total 46,925 kg on a full-shell basis, which is conservative because a horizontal vessel is rarely filled to the centreline of the top head.\nMaterial comparison on option 2: the same geometry in 304 stainless gives 4,073 kg empty and 46,485 kg total; in aluminum it gives 1,386 kg empty and 43,799 kg total. The liquid load dominates every case, so shell material choice moves total weight by only a few percent while it moves empty weight by a factor of three."
+      },
+      {
+        "heading": "How to Check the Result Before Fabrication",
+        "body": "Use the weight as a plate take-off cross-check, not as a bill of materials. Multiply the shell area (pi x D x H) by plate thickness and density, then add heads, nozzles, manways, reinforcing pads, ladders, platforms, insulation supports and any internal trays. Nozzle and manway assemblies typically add 2-5% of shell weight on small vessels and rather less on large storage tanks.\nFor lifting, add a rigging factor: 10% is the usual allowance for a single crane lift with certified slings, and the empty weight plus rigging factor is what the crane chart should be read against. For transport, use empty weight plus saddles or transport frame, and check axle loads against the road limit rather than against the tank weight alone.\nFor foundation design, use the filled operating weight plus snow, wind and seismic components. A 46 tonne water load on a 3 m diameter tank is a 65 kPa bearing pressure on the base ring, which is normally well inside a reinforced concrete slab but must be checked against the local soil capacity when the tank sits on grade.\nCross-check geometry with the Tank Volume Calculator for capacity, the Tank Surface Area Calculator for plate area, and the Pressure Vessel Volume Calculator for head and cone volumes. The Cylinder Volume Calculator and Steel Weight Calculator cover the simpler cases."
       }
     ]
   },
@@ -164,10 +218,83 @@
         "height": 6,
         "thickness": 8,
         "density": 7850,
-        "liquid_density": 1000
+        "liquid_density": 1000,
+        "structure": 1
       },
       "expected": 45946,
       "tolerance": 200
+    },
+    {
+      "inputs": {
+        "diameter": 3,
+        "height": 6,
+        "thickness": 8,
+        "density": 7850,
+        "liquid_density": 1000,
+        "structure": 2
+      },
+      "expected": 46444,
+      "tolerance": 50
+    },
+    {
+      "inputs": {
+        "diameter": 3,
+        "height": 6,
+        "thickness": 8,
+        "density": 7850,
+        "liquid_density": 1000,
+        "structure": 3
+      },
+      "expected": 46851,
+      "tolerance": 50
+    },
+    {
+      "inputs": {
+        "diameter": 3,
+        "height": 6,
+        "thickness": 8,
+        "density": 7850,
+        "liquid_density": 1000,
+        "structure": 4
+      },
+      "expected": 46925,
+      "tolerance": 50
+    },
+    {
+      "inputs": {
+        "diameter": 3,
+        "height": 6,
+        "thickness": 8,
+        "density": 7930,
+        "liquid_density": 1000,
+        "structure": 2
+      },
+      "expected": 46485,
+      "tolerance": 50
+    },
+    {
+      "inputs": {
+        "diameter": 3,
+        "height": 6,
+        "thickness": 8,
+        "density": 2700,
+        "liquid_density": 1000,
+        "structure": 2
+      },
+      "expected": 43799,
+      "tolerance": 50
+    },
+    {
+      "inputs": {
+        "diameter": 3,
+        "height": 6,
+        "thickness": 8,
+        "density": 7850,
+        "liquid_density": 850,
+        "structure": 4
+      },
+      "expected": 40564,
+      "tolerance": 50
     }
   ],
   "visualization": {

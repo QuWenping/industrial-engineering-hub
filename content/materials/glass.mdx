@@ -1,9 +1,9 @@
 ---
-title: "Soda-Lime Glass Properties: Density 2500 kg/m³ & Strength Data"
-description: "Soda-lime glass engineering data: density 2500 kg/m³ (2.5 g/cm³), compressive strength 900-1000 MPa, tensile 30-50 MPa, thermal conductivity 1.0 W/m·K. Compare with steel and aluminum for material selection."
+title: "Soda Lime Glass Properties: Density 2500 kg/m³, Borosilicate 2230"
+description: "Soda lime glass properties: hard, chemically stable, density 2500 kg/m³, compressive 900-1000 MPa vs tensile 30-50 MPa, thermal conductivity 1.0 W/m·K."
 category: "Ceramic"
-keywords: ["glass density", "glass properties", "soda lime glass", "glass strength", "silica glass"]
-updated: "2026-09-02"
+keywords: ["glass density", "soda lime glass density", "borosilicate glass density", "tempered glass density", "compressive strength of glass", "glass properties", "glass strength"]
+updated: "2026-11-18"
 related:
   - density-calculator
   - material-volume-calculator
@@ -111,6 +111,28 @@ Glass panel weight per area: 6mm float glass ≈ 15 kg/m²; 10mm ≈ 25 kg/m²; 
 | Heat-strengthened | Partial temper, intermediate strength | 60-90 MPa |
 | Borosilicate (Pyrex) | Low expansion, thermal shock resistant | Similar strength |
 
+## Density and Strength by Glass Type
+
+Density is set by composition, while strength is set by composition, surface condition and heat treatment. The two are often confused: tempering raises the usable tensile strength by 3-4 times without changing density at all, because the silica network is the same — only the residual stress pattern differs. The table below keeps both numbers side by side so panel weight and allowable stress can be read from one place.
+
+| Glass type | Density (kg/m³) | Compressive strength (MPa) | Design tensile (MPa) | Young's modulus (GPa) |
+|---|---|---|---|---|
+| Soda-lime, annealed | 2,500 | 900-1,000 | 30-50 | 70 |
+| Soda-lime, heat-strengthened | 2,500 | 900-1,000 | 60-90 | 70 |
+| Soda-lime, tempered (toughened) | 2,500 | 900-1,000 | 120-200 | 70 |
+| Laminated (annealed glass layers) | 2,500 | 900-1,000 | 30-50 per layer | 70 |
+| Borosilicate (Pyrex) | 2,230 | 900-1,000 | 60-70 | 64 |
+| Fused silica / quartz glass | 2,200 | about 1,100 | 50-70 | 72 |
+| Aluminosilicate, chemically strengthened | 2,450 | 1,000+ | 400-700 | 75 |
+
+Three practical readings from this table:
+
+- **Density depends on the oxide mix, not the treatment.** Soda-lime, heat-strengthened and tempered glass are all 2,500 kg/m³ because they share the same 70-75% SiO₂ composition; only borosilicate (2,230 kg/m³) and fused silica (2,200 kg/m³) are lighter. A tempered 6 mm panel and an annealed 6 mm panel weigh the same 15 kg/m².
+- **Compressive strength is not a design value for glass.** Although soda-lime glass reaches 900-1,000 MPa in compression, glazing almost never fails in compression — it fails in tension at surface flaws, at 30-50 MPa when annealed. The compressive number matters only where glass bears directly on a support, such as a glass column or a bearing block.
+- **Tempered glass density is often quoted as 2,500 kg/m³.** Because the process changes no chemistry, the value used for weight takeoffs is the same as annealed soda-lime. Tempered glass is specified for its strength (120-200 MPa), not for its weight.
+
+For a quick panel weight, multiply density by thickness: a 2,500 kg/m³ glass panel in 1 mm thickness is 2.5 kg/m², so 6 mm is 15 kg/m², 10 mm is 25 kg/m² and 12 mm is 30 kg/m². Borosilicate panels run about 11% lighter for the same thickness (2.23 kg/m² per mm).
+
 ### Composition Comparison: Soda-Lime vs Borosilicate vs Fused Silica
 
 | Property | Soda-Lime | Borosilicate (Pyrex) | Fused Silica / Quartz |
@@ -210,6 +232,15 @@ Soda-lime glass is the most common glass (~90% of all production), composed of a
 
 **What is the glass transition temperature of glass?**
 For soda-lime glass the glass transition (T_g) is about 520-560°C. Below T_g, glass behaves as a rigid amorphous solid; above it, it gradually softens into a viscous liquid rather than melting sharply. The softening point (~700°C) is where glass deforms under its own weight, and practical forming and blowing are done above 700°C. This temperature-dependent viscosity, not a distinct melting point, is what makes glass so formable.
+
+**What is the density of borosilicate glass?**
+Borosilicate glass (Pyrex, Kimax) has a density of 2,230 kg/m³ (2.23 g/cm³) at room temperature, about 11% lighter than soda-lime glass at 2,500 kg/m³. The lower value comes from boron oxide replacing part of the soda and lime flux in the silica network, which also drops the Young's modulus from 70 GPa to 64 GPa and the thermal expansion from 8-9 down to 3.2 × 10⁻⁶/°C. For weight takeoffs, a 6 mm borosilicate pane is roughly 13.4 kg/m² against 15 kg/m² for the same thickness in soda-lime.
+
+**What is the density of tempered glass?**
+Tempered (toughened) glass has a density of 2,500 kg/m³, identical to annealed soda-lime glass, because tempering is a thermal quench that locks the surface into compression without changing the glass composition. Density therefore cannot be used to identify tempered glass, and a tempered panel weighs exactly what an annealed panel of the same thickness weighs — 6 mm is 15 kg/m², 10 mm is 25 kg/m². What changes is strength: design tensile strength rises from 30-50 MPa to 120-200 MPa, and the pane breaks into small blunt fragments instead of shards.
+
+**What is the compressive strength of glass?**
+Soda-lime and borosilicate glass reach 900-1,000 MPa in compression, and fused silica about 1,100 MPa — roughly 20 to 30 times the tensile strength of the same material. That figure is real but rarely governs design: glazing fails in tension, where surface microcracks open at only 30-50 MPa (annealed) or 120-200 MPa (tempered). Compressive strength becomes the governing value only in direct bearing applications such as glass columns, glass fins, or bearing pads, where allowable contact stress is further limited by edge condition and the risk of local crushing.
 
 ## Related Engineering Resources
 
