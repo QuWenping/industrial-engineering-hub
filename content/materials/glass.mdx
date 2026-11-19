@@ -3,7 +3,7 @@ title: "Soda Lime Glass Properties: Density 2500 kg/m³, Borosilicate 2230"
 description: "Soda lime glass properties: hard, chemically stable, density 2500 kg/m³, compressive 900-1000 MPa vs tensile 30-50 MPa, thermal conductivity 1.0 W/m·K."
 category: "Ceramic"
 keywords: ["glass density", "soda lime glass density", "borosilicate glass density", "tempered glass density", "compressive strength of glass", "glass properties", "glass strength"]
-updated: "2026-11-18"
+updated: "2026-11-19"
 related:
   - density-calculator
   - material-volume-calculator
@@ -21,11 +21,61 @@ related:
   - "/materials/carbon-steel"
 ---
 
+## Soda Lime Glass Properties (Quick Reference)
+
+This table is a single-page roll-up of the soda lime glass properties documented in the sections that follow: mechanical, specific gravity, unit weight, thermal and optical. It exists so that one lookup answers most property questions without scrolling. Every value in the table is identical to the number given in its detailed section, where the temperature basis, test condition and engineering commentary are spelled out. Nothing here is a separate data set — read the row for the number, then read the section for what that number assumes.
+
+| Property | Typical value | Basis |
+|---|---|---|
+| Density | 2,500 kg/m³ (2.5 g/cm³; 156 lb/ft³) | Room temperature, annealed |
+| Specific gravity | 2.50 | Relative to water at 4°C |
+| Unit weight | 24.5 kN/m³ (156 lb/ft³) | Density times 9.81 m/s² |
+| Young's modulus | 70 GPa | Annealed, room temperature |
+| Poisson's ratio | 0.22 | Annealed |
+| Compressive strength | 900-1,000 MPa | Annealed, sound surfaces |
+| Tensile strength, design (annealed) | 30-50 MPa | Flaw-limited |
+| Tensile strength, theoretical | about 200 MPa | Flaw-free glass |
+| Tensile strength, tempered | 120-200 MPa | Surface in residual compression |
+| Hardness (Knoop) | 400-500 HK | Room temperature |
+| Fracture toughness (K_IC) | 0.7 MPa·√m | Room temperature |
+| Thermal conductivity | 1.0 W/m·K | 20°C |
+| Specific heat | 800 J/kg·K | 20°C |
+| Coefficient of thermal expansion | 8-9 × 10⁻⁶ /°C | 20-300°C |
+| Glass transition temperature | 520-560°C | Viscosity-defined |
+| Annealing point | about 500°C | Stress-relief range |
+| Softening point | about 700°C | Deforms under own weight |
+| Melting and processing range | about 1500°C | Forming range |
+| Refractive index | 1.52 | Visible light |
+| Visible light transmittance | 85-90% | Clear glass, 3 mm thick |
+
+Two readings matter more than the rest of the table. The 900-1,000 MPa compressive figure is a material capacity, not an allowable: glazing fails in tension at surface flaws, at 30-50 MPa when annealed, so the tensile rows are the ones that govern sizing. Density and unit weight are fixed by composition alone — heat-strengthened and tempered glass carry exactly the same 2,500 kg/m³ and 24.5 kN/m³, and only the strength rows change. How compression and tension come to differ by a factor of twenty, and what each test condition means, is covered under Mechanical Properties.
+
 ## Overview
 
 Soda-lime glass is the most common form of glass (~90% of all glass produced), composed of approximately 70-75% silica (SiO₂), 12-15% soda (Na₂O), and 8-12% lime (CaO). It is optically transparent, inexpensive, chemically inert, and easily formed — the material of windows, bottles, jars, and light bulbs. As an amorphous ceramic, it exhibits brittle fracture at room temperature but becomes viscous above its glass transition temperature (~550°C).
 
 <Formula>ρ = 2500 kg/m³ (2.5 g/cm³) — higher than most polymers and light metals, lower than steel</Formula>
+
+## Soda Lime Glass Composition
+
+Soda-lime glass is a three-component system — silica, soda and lime — with small additions that fine-tune melting behaviour and durability. The mass fractions below are typical commercial windows for float and container glass, not unique values: individual plants and product families shift within these ranges, and the approximate figures quoted in the Overview above sit inside them.
+
+| Oxide | Typical content (mass %) | Role in the glass |
+|---|---|---|
+| SiO₂ (silica) | 70-75 (container glass is often quoted lower, at 70-74) | Network former — builds the amorphous silica framework |
+| Na₂O (soda) | 12-16 | Flux — breaks silica bridges and drops the melting temperature |
+| CaO (lime) | 5-12 | Stabiliser — restores the durability that soda takes away |
+| MgO (magnesia) | 0-4 | Stabiliser — lowers viscosity at forming temperatures |
+| Al₂O₃ (alumina) | 0-2 | Improves chemical durability, suppresses devitrification |
+| K₂O (potash) | 0-1 | Flux — fine-tunes expansion and working range |
+| Fe₂O₃ (iron oxide) | below 0.5 | Colorant — green tint; low-iron grades for clarity |
+| SO₃ and other refining agents | below 1 | Fining — remove seed bubbles during melting |
+
+Two of these roles decide most of the engineering behaviour. Silica is the network former: it supplies the continuous random tetrahedral framework that gives glass its hardness, its 70 GPa modulus and its transparency. Soda is the flux that makes the batch melt at around 1500°C instead of the far higher temperature pure silica demands, but each sodium ion sits in the structure as a non-bridging modifier that opens it up and weakens it. Lime is the compensator: calcium ions tighten the network back, which is why the three oxides are used together — a silica-soda binary is water-soluble and useless as a container material.
+
+Composition, not heat treatment, sets density. Sodium and calcium ions occupy the interstices of the silica framework and are denser per unit volume than the voids they fill, which is why adding them takes the solid from roughly 2,200 kg/m³ for pure fused silica to 2,500 kg/m³ for soda-lime. Substituting boron oxide for part of the soda and lime reverses the effect: borosilicate glass lands at 2,230 kg/m³ through a similar processing route. That is why density works as a composition fingerprint on this page, while tempering leaves it untouched — annealed and tempered soda-lime glass are both 2,500 kg/m³.
+
+Composition also fixes chemical durability, and here the soda content is the weak point. Water and acids exchange with the sodium ions at the surface, while strong alkali attacks the silica network outright, so soda-lime glass is the wrong choice for caustic service, for hydrofluoric acid, and for repeated hot alkaline washing. Raising lime and alumina, or replacing part of the soda with boron oxide, buys durability at higher cost — which is exactly why laboratory and process sight glass moves to borosilicate while windows and bottles stay on soda-lime. The oxide-by-oxide comparison against borosilicate and fused silica is in the Composition Comparison table further down this page.
 
 ## Mechanical Properties (annealed soda-lime glass)
 
@@ -44,6 +94,18 @@ Soda-lime glass is the most common form of glass (~90% of all glass produced), c
 <Callout type="info" title="Strong in Compression, Weak in Tension" severity="info">
 Glass is a classic brittle material with ~20x higher compressive strength than tensile strength. Surface microcracks propagate in tension (Griffith fracture criterion), so practical glass strength is governed by surface flaws and edge condition — not inherent material strength. Tempering puts the surface in compression, dramatically increasing effective strength.
 </Callout>
+
+### Compressive Strength of Soda-Lime Glass (900-1000 MPa, Typical Values)
+
+When a soda-lime specimen is loaded in pure compression, failure occurs at 900-1000 MPa — roughly twenty times the strength the same glass shows in tension, and several times the compressive capacity of structural steel or an aluminium alloy on the same area basis. The figure is a genuine material property, reproducible across annealed, heat-strengthened and tempered glass, because all three share the same silica network.
+
+The spread within that 900-1000 MPa band is a test artefact rather than a material variation. Compression testing of glass loads a small prism or cylinder between flat, hardened platens with the end faces ground parallel; the measured stress then depends on specimen slenderness, on friction between platen and glass (which prevents the specimen from expanding laterally and inflates the apparent strength), and on how squarely the load is applied. Cushioning the ends or changing the height-to-width ratio moves the result within the range, which is why test programmes report a distribution rather than a single allowable number. Note also that glazing codes do not qualify structural glass by a compression test at all — bending tests are specified instead, because that is how glazing actually fails in service.
+
+The gap against tensile strength comes from how a crack responds to the sign of the stress. Glass carries surface microcracks from cutting, handling and grinding. Under tension those cracks open and concentrate stress at their tips, and with no plastic zone to blunt them they run at a stress far below the theoretical strength of the bonds — the Griffith criterion — so the practical tensile limit is set by the worst flaw present, not by the bulk material. Under compression the same cracks are squeezed shut and cannot propagate; the glass can then only fail by shear or crushing, which requires the full 900-1000 MPa. That asymmetry is a direct consequence of brittleness: a ductile metal redistributes a local overload by yielding, while glass has no such mechanism.
+
+Heat treatment does not raise compressive strength, and this is where tempered glass is widely misread. Tempering quenches the surface into residual compression and leaves the core in tension. That pre-compression opposes the tensile stress a bending load produces, so usable tensile strength climbs from 30-50 MPa to 120-200 MPa — the factor of three to four noted in the type comparison below. Set against a compressive capacity of 900-1000 MPa, however, the residual surface stress is small, so the compression figure is essentially unchanged. Tempering buys tensile performance, not compressive performance.
+
+For design the rule follows from the same asymmetry: glass is never sized on compressive strength. Panels, fins and overhead glazing fail in bending, where the tensile face reaches its flaw-limited strength long before the compressive face comes anywhere near its capacity. Compressive strength becomes the governing value only in direct bearing — glass columns, glass fins seated in shoes, bearing pads and point-supported fittings — and even there the allowable contact stress is held well below 900-1000 MPa to account for edge condition, local crushing and stress concentration at the contact patch. Where glass bears on a support, check the bearing detail rather than the material data sheet.
 
 ## Specific Gravity
 
