@@ -17,6 +17,12 @@ export interface DocFrontmatter {
   updated?: string;
   author?: string;
   related?: string[];
+  /**
+   * Opt-in flag: emit FAQPage structured data parsed from this page's
+   * "Frequently Asked Questions" section. Only enable where that section
+   * exists and its answers are complete.
+   */
+  faqSchema?: boolean;
 }
 
 export interface DocMeta {
@@ -27,7 +33,7 @@ export interface DocMeta {
 
 const CONTENT_ROOT = path.join(process.cwd(), "content");
 
-function readMDXFile(slug: string, subdir: string): { content: string; frontmatter: DocFrontmatter } | null {
+export function readMDXFile(slug: string, subdir: string): { content: string; frontmatter: DocFrontmatter } | null {
   const filePath = path.join(CONTENT_ROOT, subdir, `${slug}.mdx`);
   if (!fs.existsSync(filePath)) return null;
   const raw = fs.readFileSync(filePath, "utf-8");

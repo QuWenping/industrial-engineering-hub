@@ -13,9 +13,10 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { ChevronRight, Calendar, BookOpen } from "lucide-react";
-import { getAllDocSlugs, getDocBySlug, getAllDocMeta } from "@/lib/mdx";
+import { getAllDocSlugs, getDocBySlug, getAllDocMeta, readMDXFile } from "@/lib/mdx";
 import { getMaterialById } from "@/lib/calculator/materials";
-import { constructMetadata, schemaArticle, schemaBreadcrumb, schemaDataset } from "@/components/seo/SEO";
+import { constructMetadata, schemaArticle, schemaBreadcrumb, schemaDataset, schemaFAQ } from "@/components/seo/SEO";
+import { extractFaqItems } from "@/lib/seo/faq";
 import { mdxComponents } from "@/components/mdx/MDXComponents";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -54,6 +55,13 @@ export default async function MaterialPage({ params }: Props) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.industrialengineeringstudio.com";
   const pageUrl = `${baseUrl}/materials/${slug}`;
 
+  // FAQPage is opt-in per page (frontmatter.faqSchema) and is parsed from the
+  // rendered FAQ section itself, so the structured data never drifts from the
+  // visible copy.
+  const faqItems = frontmatter.faqSchema
+    ? extractFaqItems(readMDXFile(slug, "materials")?.content ?? "")
+    : [];
+
   const jsonLd = [
     schemaArticle({
       title: frontmatter.title,
@@ -71,6 +79,7 @@ export default async function MaterialPage({ params }: Props) {
       { name: "Materials", url: `${baseUrl}/materials` },
       { name: frontmatter.title, url: pageUrl },
     ]),
+    ...(faqItems.length > 0 ? [schemaFAQ(faqItems)] : []),
   ];
 
   return (

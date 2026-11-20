@@ -8,7 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { constructMetadata, schemaOrganization, schemaWebsiteSearch } from "@/components/seo/SEO";
+import { BASE_URL, constructMetadata, schemaOrganization, schemaWebsiteSearch } from "@/components/seo/SEO";
 import Script from "next/script";
 import "./globals.css";
 
@@ -47,9 +47,8 @@ export const metadata: Metadata = constructMetadata({
   ],
 });
 
-metadata.metadataBase = new URL(
-  process.env.NEXT_PUBLIC_SITE_URL || "https://industrialengineeringstudio.com"
-);
+// Single source of truth: the canonical origin lives in components/seo/SEO.
+metadata.metadataBase = new URL(BASE_URL);
 
 export default function RootLayout({
   children,

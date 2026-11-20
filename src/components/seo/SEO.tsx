@@ -15,8 +15,10 @@ interface SEOInput {
 export const SITE_NAME = "Industrial Engineering Studio";
 export const SITE_NAME_SHORT = "IE Studio";
 
+// Canonical origin for the whole site. Must stay in sync with the GSC property
+// and the canonical URLs emitted by constructMetadata (www host).
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://industrialengineeringstudio.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.industrialengineeringstudio.com";
 
 export { BASE_URL };
 
